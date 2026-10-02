@@ -1,0 +1,329 @@
+"""Cross-source POI conflation: OSM + Overture + Foursquare -> one competitor set.
+
+project_plan_v3.md's rule "records from different sources are never
+summed directly" is what this module enforces for POIs. Each source's
+latest per-area snapshot (entity_type='poi_source') is cut to the same
+radius, matched shop-to-shop, and written as one new snapshot
+(source_name='poi_conflated', entity_type='poi') -- the only POI set
+metrics_pipeline / scoring / report / agent_followup read.
+
+Matching rules (deterministic, Program work -- no LLM judgment):
+  - two records match if both are named, sit within MATCH_DISTANCE_M,
+    and their names agree (equal after normalization, one contains the
+    other, or difflib ratio >= NAME_SIMILARITY_MIN);
+  - candidate pairs are merged closest-first, and a cluster may hold at
+    most one OSM record: OSM was already deduplicated within itself
+    (poi_pipeline.DEDUP_DISTANCE_M), so two OSM shops are two shops even
+    if an Overture row sits between them;
+  - unnamed records are never merged (same rule as the OSM dedup).
+
+Each output record keeps its provenance: every member record, and the
+set of independent upstream providers behind it. Overture is itself a
+conflation of Meta / Microsoft / Foursquare / AllThePlaces /
+BrightQuery, so providers are counted upstream -- a place seen by
+Overture-via-Foursquare and by FSQ OS Places is one provider, not two.
+"""
+
+from __future__ import annotations
+
+import json
+import re
+import sqlite3
+from datetime import datetime, timezone
+from difflib import SequenceMatcher
+from pathlib import Path
+
+from geo import haversine_m
+from models import LocationInput
+
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
+RAW_DIR = PROJECT_ROOT / "db" / "raw" / "conflated"
+
+SOURCE_ENTITY_TYPE = "poi_source"
+CONFLATED_SOURCE_NAME = "poi_conflated"
+CONFLATION_METHOD_VERSION = "conflation_v1"
+
+# Priority when picking a cluster's primary record (name, category,
+# coordinates, opening hours): OSM carries hours and was the v1 source
+# of record; Overture next (confidence-scored); FSQ last.
+SOURCE_PRIORITY = ("osm_overpass", "overture_places", "fsq_os_places")
+REQUIRED_SOURCE = "osm_overpass"
+
+# 60m: the same shop's coordinates differ between sources by up to a
+# building's width (entrance node vs. geocoded address vs. check-in
+# centroid); 60m absorbs that while two same-name branches (e.g. two
+# Starbucks at Warschauer Straße) still sit further apart.
+MATCH_DISTANCE_M = 60.0
+NAME_SIMILARITY_MIN = 0.8
+MIN_CONTAINMENT_LEN = 4
+
+CONFLATED_LICENSE = "Derived: ODbL (OSM) + Overture (CDLA-Permissive-2.0/ODbL) + Apache-2.0 (FSQ OS Places)"
+
+
+class ConflationError(Exception):
+    """Raised when an area has no OSM snapshot to conflate against."""
+
+
+def _normalize_name(name: str | None) -> str:
+    if not name:
+        return ""
+    return "".join(ch.lower() for ch in name if ch.isalnum())
+
+
+# Words that say what a place is or where, not which place it is --
+# Overture/FSQ names often carry them ("ama Café", "Berlin Einshtein
+# Kaffee") where OSM has the bare name ("ama", "Cafe Einstein"). Removed
+# before comparing; if nothing is left ("Kiosk"), the full name is used.
+GENERIC_NAME_WORDS = frozenset(
+    """cafe café kaffee coffee coffeeshop espresso bar restaurant bistro imbiss
+    bäckerei baeckerei backerei bakery backshop berlin shop store späti spätkauf
+    kiosk markt to go the und and am an der die das gmbh""".split()
+)
+
+
+def _core_name(name: str | None) -> str:
+    if not name:
+        return ""
+    words = re.findall(r"\w+", name.lower())
+    core = "".join(w for w in words if w not in GENERIC_NAME_WORDS)
+    return core or _normalize_name(name)
+
+
+def names_match(a: str | None, b: str | None) -> bool:
+    if not _normalize_name(a) or not _normalize_name(b):
+        return False
+    na, nb = _core_name(a), _core_name(b)
+    if not na or not nb:
+        return False
+    if na == nb:
+        return True
+    shorter, longer = sorted((na, nb), key=len)
+    if len(shorter) >= MIN_CONTAINMENT_LEN and shorter in longer:
+        return True
+    return SequenceMatcher(None, na, nb).ratio() >= NAME_SIMILARITY_MIN
+
+
+def providers_of(record: dict) -> set[str]:
+    """Independent upstream providers behind one source record."""
+    if record["source"] == "osm_overpass":
+        return {"openstreetmap"}
+    if record["source"] == "fsq_os_places":
+        return {"foursquare"}
+    upstream = record["payload"].get("upstream_datasets") or []
+    return {d.lower() for d in upstream} or {"overture"}
+
+
+def _latest_source_snapshot(conn: sqlite3.Connection, area_id: str, source_name: str) -> dict | None:
+    row = conn.execute(
+        """
+        SELECT s.snapshot_id, s.data_as_of_date, s.raw_file_ref
+        FROM observations o JOIN source_snapshots s ON s.snapshot_id = o.snapshot_id
+        WHERE o.area_id = ? AND o.entity_type = ? AND s.source_name = ?
+        ORDER BY s.fetched_at DESC, s.snapshot_id DESC
+        LIMIT 1
+        """,
+        (area_id, SOURCE_ENTITY_TYPE, source_name),
+    ).fetchone()
+    if row is None:
+        return None
+    return {"snapshot_id": row[0], "data_as_of_date": row[1], "raw_file_ref": row[2]}
+
+
+def _load_records(conn: sqlite3.Connection, area_id: str, source_name: str, snapshot_id: int) -> list[dict]:
+    rows = conn.execute(
+        """
+        SELECT external_ref, name, category, lat, lon, opening_hours_raw, payload_json
+        FROM observations
+        WHERE area_id = ? AND entity_type = ? AND snapshot_id = ?
+        """,
+        (area_id, SOURCE_ENTITY_TYPE, snapshot_id),
+    ).fetchall()
+    return [
+        {
+            "source": source_name,
+            "ref": r[0],
+            "name": r[1],
+            "category": r[2],
+            "lat": r[3],
+            "lon": r[4],
+            "opening_hours_raw": r[5],
+            "payload": json.loads(r[6] or "{}"),
+        }
+        for r in rows
+    ]
+
+
+def _station_paths_from_raw(raw_file_ref: str | None) -> list | None:
+    """Station anchors from the OSM snapshot's raw Overpass file, so
+    Overture/FSQ-only records get the same in-station test as OSM ones.
+    None if the raw file is unavailable."""
+    from poi_pipeline import _station_paths
+
+    if not raw_file_ref:
+        return None
+    path = PROJECT_ROOT / raw_file_ref
+    if not path.exists():
+        return None
+    return _station_paths(json.loads(path.read_text()).get("elements", []))
+
+
+def cluster_records(records: list[dict]) -> list[list[dict]]:
+    """Group source records into physical shops (see module docstring)."""
+    parent = list(range(len(records)))
+    osm_count = [1 if r["source"] == "osm_overpass" else 0 for r in records]
+
+    def find(i: int) -> int:
+        while parent[i] != i:
+            parent[i] = parent[parent[i]]
+            i = parent[i]
+        return i
+
+    pairs = []
+    for i in range(len(records)):
+        for j in range(i + 1, len(records)):
+            a, b = records[i], records[j]
+            if a["source"] == "osm_overpass" and b["source"] == "osm_overpass":
+                continue
+            d = haversine_m(a["lat"], a["lon"], b["lat"], b["lon"])
+            if d <= MATCH_DISTANCE_M and names_match(a["name"], b["name"]):
+                pairs.append((d, i, j))
+
+    for _, i, j in sorted(pairs):
+        ri, rj = find(i), find(j)
+        if ri == rj or osm_count[ri] + osm_count[rj] > 1:
+            continue
+        parent[rj] = ri
+        osm_count[ri] += osm_count[rj]
+
+    clusters: dict[int, list[dict]] = {}
+    for i, rec in enumerate(records):
+        clusters.setdefault(find(i), []).append(rec)
+    return list(clusters.values())
+
+
+def _primary(cluster: list[dict]) -> dict:
+    return min(
+        cluster,
+        key=lambda r: (SOURCE_PRIORITY.index(r["source"]), -(r["payload"].get("confidence") or 0.0)),
+    )
+
+
+def build_competitor_set(
+    node: LocationInput, records_by_source: dict[str, list[dict]], station_paths: list | None
+) -> tuple[list[dict], dict]:
+    """Pure function: per-source records -> conflated competitor records + stats."""
+    from poi_pipeline import _in_station
+
+    in_radius, outside = [], 0
+    for records in records_by_source.values():
+        for rec in records:
+            if haversine_m(node.lat, node.lon, rec["lat"], rec["lon"]) <= node.radius_m:
+                in_radius.append(rec)
+            else:
+                outside += 1
+
+    competitors = []
+    for cluster in cluster_records(in_radius):
+        primary = _primary(cluster)
+        osm_member = next((r for r in cluster if r["source"] == "osm_overpass"), None)
+        providers = set().union(*(providers_of(r) for r in cluster))
+        if osm_member is not None and "in_station" in osm_member["payload"]:
+            in_station = bool(osm_member["payload"]["in_station"])
+        elif station_paths is not None:
+            in_station = _in_station(primary["lat"], primary["lon"], station_paths)
+        else:
+            in_station = False
+        competitors.append(
+            {
+                "external_ref": primary["ref"],
+                "name": primary["name"],
+                "category": primary["category"],
+                "lat": primary["lat"],
+                "lon": primary["lon"],
+                "opening_hours_raw": osm_member["opening_hours_raw"] if osm_member else None,
+                "payload": {
+                    "primary_source": primary["source"],
+                    "sources": sorted({r["source"] for r in cluster}, key=SOURCE_PRIORITY.index),
+                    "providers": sorted(providers),
+                    "n_providers": len(providers),
+                    "in_station": in_station,
+                    "category_conflict": len({r["category"] for r in cluster}) > 1,
+                    "members": [
+                        {"source": r["source"], "ref": r["ref"], "name": r["name"], "category": r["category"]}
+                        for r in cluster
+                    ],
+                },
+            }
+        )
+    stats = {
+        "source_records": sum(len(v) for v in records_by_source.values()),
+        "outside_radius": outside,
+        "competitors": len(competitors),
+        "with_osm": sum(1 for c in competitors if "osm_overpass" in c["payload"]["sources"]),
+        "corroborated": sum(1 for c in competitors if c["payload"]["n_providers"] >= 2),
+    }
+    return competitors, stats
+
+
+def conflate_area(conn: sqlite3.Connection, node: LocationInput) -> dict:
+    """Build and persist the conflated competitor snapshot for one area."""
+    now = datetime.now(timezone.utc)
+    snapshots = {name: _latest_source_snapshot(conn, node.area_id, name) for name in SOURCE_PRIORITY}
+    if snapshots[REQUIRED_SOURCE] is None:
+        raise ConflationError(f"[{node.area_id}] no OSM source snapshot to conflate against")
+    used = {name: snap for name, snap in snapshots.items() if snap is not None}
+    records_by_source = {
+        name: _load_records(conn, node.area_id, name, snap["snapshot_id"]) for name, snap in used.items()
+    }
+    station_paths = _station_paths_from_raw(used[REQUIRED_SOURCE]["raw_file_ref"])
+    competitors, stats = build_competitor_set(node, records_by_source, station_paths)
+
+    RAW_DIR.mkdir(parents=True, exist_ok=True)
+    raw_path = RAW_DIR / f"{node.area_id}_{now.strftime('%Y%m%dT%H%M%SZ')}.json"
+    raw_path.write_text(json.dumps({"stats": stats, "competitors": competitors}, ensure_ascii=False, indent=2))
+
+    missing = [name for name in SOURCE_PRIORITY if name not in used]
+    notes = (
+        f"method={CONFLATION_METHOD_VERSION}; radius_m={node.radius_m}; "
+        f"source_snapshots={json.dumps({n: s['snapshot_id'] for n, s in used.items()})}; "
+        f"source_as_of={json.dumps({n: s['data_as_of_date'] for n, s in used.items()})}; "
+        f"missing_sources={json.dumps(missing)}; stats={json.dumps(stats)}"
+    )
+    cur = conn.execute(
+        """
+        INSERT INTO source_snapshots (source_name, data_as_of_date, fetched_at, license, raw_file_ref, notes)
+        VALUES (?, ?, ?, ?, ?, ?)
+        """,
+        (
+            CONFLATED_SOURCE_NAME,
+            # A derived set is only as current as its oldest input.
+            min(s["data_as_of_date"] for s in used.values()),
+            now.isoformat(),
+            CONFLATED_LICENSE,
+            str(raw_path.relative_to(PROJECT_ROOT)),
+            notes,
+        ),
+    )
+    snapshot_id = cur.lastrowid
+    for c in competitors:
+        conn.execute(
+            """
+            INSERT OR IGNORE INTO observations
+                (snapshot_id, area_id, entity_type, external_ref, name, category,
+                 lat, lon, opening_hours_raw, payload_json)
+            VALUES (?, ?, 'poi', ?, ?, ?, ?, ?, ?, ?)
+            """,
+            (
+                snapshot_id,
+                node.area_id,
+                c["external_ref"],
+                c["name"],
+                c["category"],
+                c["lat"],
+                c["lon"],
+                c["opening_hours_raw"],
+                json.dumps(c["payload"], ensure_ascii=False),
+            ),
+        )
+    conn.commit()
+    return {"area_id": node.area_id, "snapshot_id": snapshot_id, "missing_sources": missing, **stats}

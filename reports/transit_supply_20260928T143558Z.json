@@ -1,0 +1,1438 @@
+{
+  "computed_at": "2026-09-28T14:35:58.453449+00:00",
+  "source": {
+    "gtfs": "vbb_gtfs_20260924.zip",
+    "publisher": "VBB",
+    "feed_valid": "20260924-20261212",
+    "license": "CC BY 4.0 (VBB GTFS open data)"
+  },
+  "assumptions": {
+    "capacity": {
+      "s_bahn_8car": 1200,
+      "s_bahn": 900,
+      "u_kleinprofil": 600,
+      "u_grossprofil": 750,
+      "tram": 200,
+      "bus_double_deck": 120,
+      "bus": 80
+    },
+    "occupancy": {
+      "weekday": {
+        "8": 0.45,
+        "9": 0.35,
+        "10": 0.25,
+        "11": 0.25,
+        "12": 0.28,
+        "13": 0.3,
+        "14": 0.32,
+        "15": 0.38,
+        "16": 0.45,
+        "17": 0.45,
+        "18": 0.38,
+        "19": 0.28,
+        "20": 0.22,
+        "21": 0.18,
+        "22": 0.15,
+        "23": 0.12
+      },
+      "saturday": {
+        "8": 0.12,
+        "9": 0.16,
+        "10": 0.22,
+        "11": 0.28,
+        "12": 0.32,
+        "13": 0.34,
+        "14": 0.35,
+        "15": 0.35,
+        "16": 0.35,
+        "17": 0.33,
+        "18": 0.3,
+        "19": 0.27,
+        "20": 0.24,
+        "21": 0.22,
+        "22": 0.22,
+        "23": 0.22
+      },
+      "sunday_holiday": {
+        "8": 0.08,
+        "9": 0.1,
+        "10": 0.15,
+        "11": 0.2,
+        "12": 0.25,
+        "13": 0.28,
+        "14": 0.3,
+        "15": 0.3,
+        "16": 0.28,
+        "17": 0.26,
+        "18": 0.22,
+        "19": 0.18,
+        "20": 0.15,
+        "21": 0.13,
+        "22": 0.12,
+        "23": 0.1
+      }
+    },
+    "turnover": {
+      "low": 0.2,
+      "mid": 0.3,
+      "high": 0.4
+    },
+    "share_of_day_in_window": 0.9,
+    "day_types": {
+      "weekday": [
+        "20260929",
+        "20260930",
+        "20261006",
+        "20261007",
+        "20261008"
+      ],
+      "saturday": [
+        "20261010"
+      ],
+      "sunday_holiday": [
+        "20261011"
+      ]
+    },
+    "radius_m": 400
+  },
+  "calibration": {
+    "bt_s_bahn_trains_full_day": 697,
+    "anchor_section_load_per_day": 120000,
+    "target_load_8_24": 108000,
+    "uncalibrated_model_load_8_24": 186876,
+    "occupancy_scale": 0.578,
+    "calibrated_weekday_mean_occupancy_8_24": 0.174,
+    "warschauer_published_daily_2012": 85000
+  },
+  "nodes": {
+    "Brandenburger Tor": {
+      "weekday": {
+        "hourly": [
+          {
+            "hour": 8,
+            "departures": 74,
+            "capacity": 59910,
+            "movements_low": 3117,
+            "movements_mid": 4675,
+            "movements_high": 6233
+          },
+          {
+            "hour": 9,
+            "departures": 74,
+            "capacity": 59280,
+            "movements_low": 2398,
+            "movements_mid": 3598,
+            "movements_high": 4797
+          },
+          {
+            "hour": 10,
+            "departures": 74,
+            "capacity": 59280,
+            "movements_low": 1713,
+            "movements_mid": 2570,
+            "movements_high": 3426
+          },
+          {
+            "hour": 11,
+            "departures": 74,
+            "capacity": 59280,
+            "movements_low": 1713,
+            "movements_mid": 2570,
+            "movements_high": 3426
+          },
+          {
+            "hour": 12,
+            "departures": 74,
+            "capacity": 59280,
+            "movements_low": 1919,
+            "movements_mid": 2878,
+            "movements_high": 3838
+          },
+          {
+            "hour": 13,
+            "departures": 74,
+            "capacity": 59280,
+            "movements_low": 2056,
+            "movements_mid": 3084,
+            "movements_high": 4112
+          },
+          {
+            "hour": 14,
+            "departures": 75,
+            "capacity": 60030,
+            "movements_low": 2221,
+            "movements_mid": 3331,
+            "movements_high": 4441
+          },
+          {
+            "hour": 15,
+            "departures": 74,
+            "capacity": 59280,
+            "movements_low": 2604,
+            "movements_mid": 3906,
+            "movements_high": 5208
+          },
+          {
+            "hour": 16,
+            "departures": 76,
+            "capacity": 60780,
+            "movements_low": 3162,
+            "movements_mid": 4743,
+            "movements_high": 6324
+          },
+          {
+            "hour": 17,
+            "departures": 76,
+            "capacity": 60780,
+            "movements_low": 3162,
+            "movements_mid": 4743,
+            "movements_high": 6324
+          },
+          {
+            "hour": 18,
+            "departures": 75,
+            "capacity": 60030,
+            "movements_low": 2637,
+            "movements_mid": 3955,
+            "movements_high": 5274
+          },
+          {
+            "hour": 19,
+            "departures": 74,
+            "capacity": 59280,
+            "movements_low": 1919,
+            "movements_mid": 2878,
+            "movements_high": 3838
+          },
+          {
+            "hour": 20,
+            "departures": 74,
+            "capacity": 59280,
+            "movements_low": 1508,
+            "movements_mid": 2261,
+            "movements_high": 3015
+          },
+          {
+            "hour": 21,
+            "departures": 68,
+            "capacity": 50310,
+            "movements_low": 1047,
+            "movements_mid": 1570,
+            "movements_high": 2094
+          },
+          {
+            "hour": 22,
+            "departures": 60,
+            "capacity": 42960,
+            "movements_low": 745,
+            "movements_mid": 1117,
+            "movements_high": 1490
+          },
+          {
+            "hour": 23,
+            "departures": 51,
+            "capacity": 34320,
+            "movements_low": 476,
+            "movements_mid": 714,
+            "movements_high": 952
+          }
+        ],
+        "departures_by_line_8_24": {
+          "100": 125,
+          "300": 96,
+          "M41": 18,
+          "S1": 189,
+          "S2": 184,
+          "S25": 96,
+          "S26": 81,
+          "U5": 358
+        },
+        "total_departures_8_24": 1147,
+        "total_capacity_8_24": 903360,
+        "total_movements_low_8_24": 32397,
+        "total_movements_mid_8_24": 48593,
+        "total_movements_high_8_24": 64792
+      },
+      "saturday": {
+        "hourly": [
+          {
+            "hour": 8,
+            "departures": 50,
+            "capacity": 44940,
+            "movements_low": 623,
+            "movements_mid": 935,
+            "movements_high": 1247
+          },
+          {
+            "hour": 9,
+            "departures": 69,
+            "capacity": 52110,
+            "movements_low": 964,
+            "movements_mid": 1446,
+            "movements_high": 1928
+          },
+          {
+            "hour": 10,
+            "departures": 72,
+            "capacity": 54360,
+            "movements_low": 1382,
+            "movements_mid": 2074,
+            "movements_high": 2765
+          },
+          {
+            "hour": 11,
+            "departures": 72,
+            "capacity": 54360,
+            "movements_low": 1760,
+            "movements_mid": 2639,
+            "movements_high": 3519
+          },
+          {
+            "hour": 12,
+            "departures": 72,
+            "capacity": 54360,
+            "movements_low": 2011,
+            "movements_mid": 3016,
+            "movements_high": 4022
+          },
+          {
+            "hour": 13,
+            "departures": 71,
+            "capacity": 54240,
+            "movements_low": 2132,
+            "movements_mid": 3198,
+            "movements_high": 4264
+          },
+          {
+            "hour": 14,
+            "departures": 72,
+            "capacity": 54360,
+            "movements_low": 2199,
+            "movements_mid": 3299,
+            "movements_high": 4399
+          },
+          {
+            "hour": 15,
+            "departures": 72,
+            "capacity": 54360,
+            "movements_low": 2199,
+            "movements_mid": 3299,
+            "movements_high": 4399
+          },
+          {
+            "hour": 16,
+            "departures": 73,
+            "capacity": 54480,
+            "movements_low": 2204,
+            "movements_mid": 3306,
+            "movements_high": 4409
+          },
+          {
+            "hour": 17,
+            "departures": 72,
+            "capacity": 54360,
+            "movements_low": 2074,
+            "movements_mid": 3111,
+            "movements_high": 4147
+          },
+          {
+            "hour": 18,
+            "departures": 62,
+            "capacity": 53160,
+            "movements_low": 1844,
+            "movements_mid": 2765,
+            "movements_high": 3687
+          },
+          {
+            "hour": 19,
+            "departures": 54,
+            "capacity": 52200,
+            "movements_low": 1629,
+            "movements_mid": 2444,
+            "movements_high": 3259
+          },
+          {
+            "hour": 20,
+            "departures": 54,
+            "capacity": 52200,
+            "movements_low": 1448,
+            "movements_mid": 2172,
+            "movements_high": 2896
+          },
+          {
+            "hour": 21,
+            "departures": 55,
+            "capacity": 53100,
+            "movements_low": 1350,
+            "movements_mid": 2026,
+            "movements_high": 2701
+          },
+          {
+            "hour": 22,
+            "departures": 49,
+            "capacity": 48450,
+            "movements_low": 1232,
+            "movements_mid": 1848,
+            "movements_high": 2464
+          },
+          {
+            "hour": 23,
+            "departures": 37,
+            "capacity": 37200,
+            "movements_low": 946,
+            "movements_mid": 1419,
+            "movements_high": 1892
+          }
+        ],
+        "departures_by_line_8_24": {
+          "100": 120,
+          "300": 57,
+          "S1": 191,
+          "S2": 188,
+          "S25": 96,
+          "S26": 2,
+          "U5": 352
+        },
+        "total_departures_8_24": 1006,
+        "total_capacity_8_24": 828240,
+        "total_movements_low_8_24": 25997,
+        "total_movements_mid_8_24": 38997,
+        "total_movements_high_8_24": 51998
+      },
+      "sunday_holiday": {
+        "hourly": [
+          {
+            "hour": 8,
+            "departures": 37,
+            "capacity": 29640,
+            "movements_low": 274,
+            "movements_mid": 411,
+            "movements_high": 548
+          },
+          {
+            "hour": 9,
+            "departures": 54,
+            "capacity": 39240,
+            "movements_low": 454,
+            "movements_mid": 680,
+            "movements_high": 907
+          },
+          {
+            "hour": 10,
+            "departures": 61,
+            "capacity": 45480,
+            "movements_low": 789,
+            "movements_mid": 1183,
+            "movements_high": 1577
+          },
+          {
+            "hour": 11,
+            "departures": 60,
+            "capacity": 45360,
+            "movements_low": 1049,
+            "movements_mid": 1573,
+            "movements_high": 2097
+          },
+          {
+            "hour": 12,
+            "departures": 69,
+            "capacity": 52110,
+            "movements_low": 1506,
+            "movements_mid": 2259,
+            "movements_high": 3012
+          },
+          {
+            "hour": 13,
+            "departures": 72,
+            "capacity": 54360,
+            "movements_low": 1760,
+            "movements_mid": 2639,
+            "movements_high": 3519
+          },
+          {
+            "hour": 14,
+            "departures": 72,
+            "capacity": 54360,
+            "movements_low": 1885,
+            "movements_mid": 2828,
+            "movements_high": 3770
+          },
+          {
+            "hour": 15,
+            "departures": 72,
+            "capacity": 54360,
+            "movements_low": 1885,
+            "movements_mid": 2828,
+            "movements_high": 3770
+          },
+          {
+            "hour": 16,
+            "departures": 72,
+            "capacity": 54360,
+            "movements_low": 1760,
+            "movements_mid": 2639,
+            "movements_high": 3519
+          },
+          {
+            "hour": 17,
+            "departures": 72,
+            "capacity": 54360,
+            "movements_low": 1634,
+            "movements_mid": 2451,
+            "movements_high": 3268
+          },
+          {
+            "hour": 18,
+            "departures": 62,
+            "capacity": 52530,
+            "movements_low": 1336,
+            "movements_mid": 2004,
+            "movements_high": 2672
+          },
+          {
+            "hour": 19,
+            "departures": 42,
+            "capacity": 43200,
+            "movements_low": 899,
+            "movements_mid": 1348,
+            "movements_high": 1798
+          },
+          {
+            "hour": 20,
+            "departures": 42,
+            "capacity": 43200,
+            "movements_low": 749,
+            "movements_mid": 1124,
+            "movements_high": 1498
+          },
+          {
+            "hour": 21,
+            "departures": 42,
+            "capacity": 43200,
+            "movements_low": 649,
+            "movements_mid": 974,
+            "movements_high": 1298
+          },
+          {
+            "hour": 22,
+            "departures": 39,
+            "capacity": 39600,
+            "movements_low": 549,
+            "movements_mid": 824,
+            "movements_high": 1099
+          },
+          {
+            "hour": 23,
+            "departures": 32,
+            "capacity": 31200,
+            "movements_low": 361,
+            "movements_mid": 541,
+            "movements_high": 721
+          }
+        ],
+        "departures_by_line_8_24": {
+          "100": 119,
+          "300": 59,
+          "S1": 178,
+          "S2": 176,
+          "S25": 96,
+          "U5": 272
+        },
+        "total_departures_8_24": 900,
+        "total_capacity_8_24": 736560,
+        "total_movements_low_8_24": 17539,
+        "total_movements_mid_8_24": 26306,
+        "total_movements_high_8_24": 35073
+      }
+    },
+    "Warschauer Straße": {
+      "weekday": {
+        "hourly": [
+          {
+            "hour": 8,
+            "departures": 134,
+            "capacity": 82800,
+            "movements_low": 4307,
+            "movements_mid": 6461,
+            "movements_high": 8615
+          },
+          {
+            "hour": 9,
+            "departures": 123,
+            "capacity": 72900,
+            "movements_low": 2950,
+            "movements_mid": 4424,
+            "movements_high": 5899
+          },
+          {
+            "hour": 10,
+            "departures": 120,
+            "capacity": 70200,
+            "movements_low": 2029,
+            "movements_mid": 3043,
+            "movements_high": 4058
+          },
+          {
+            "hour": 11,
+            "departures": 120,
+            "capacity": 70200,
+            "movements_low": 2029,
+            "movements_mid": 3043,
+            "movements_high": 4058
+          },
+          {
+            "hour": 12,
+            "departures": 120,
+            "capacity": 70200,
+            "movements_low": 2272,
+            "movements_mid": 3408,
+            "movements_high": 4544
+          },
+          {
+            "hour": 13,
+            "departures": 122,
+            "capacity": 72000,
+            "movements_low": 2497,
+            "movements_mid": 3745,
+            "movements_high": 4994
+          },
+          {
+            "hour": 14,
+            "departures": 135,
+            "capacity": 83700,
+            "movements_low": 3096,
+            "movements_mid": 4644,
+            "movements_high": 6192
+          },
+          {
+            "hour": 15,
+            "departures": 137,
+            "capacity": 86280,
+            "movements_low": 3790,
+            "movements_mid": 5685,
+            "movements_high": 7580
+          },
+          {
+            "hour": 16,
+            "departures": 138,
+            "capacity": 86400,
+            "movements_low": 4495,
+            "movements_mid": 6742,
+            "movements_high": 8989
+          },
+          {
+            "hour": 17,
+            "departures": 138,
+            "capacity": 86400,
+            "movements_low": 4495,
+            "movements_mid": 6742,
+            "movements_high": 8989
+          },
+          {
+            "hour": 18,
+            "departures": 130,
+            "capacity": 79200,
+            "movements_low": 3479,
+            "movements_mid": 5219,
+            "movements_high": 6958
+          },
+          {
+            "hour": 19,
+            "departures": 121,
+            "capacity": 71100,
+            "movements_low": 2301,
+            "movements_mid": 3452,
+            "movements_high": 4603
+          },
+          {
+            "hour": 20,
+            "departures": 119,
+            "capacity": 69300,
+            "movements_low": 1762,
+            "movements_mid": 2644,
+            "movements_high": 3525
+          },
+          {
+            "hour": 21,
+            "departures": 108,
+            "capacity": 63800,
+            "movements_low": 1328,
+            "movements_mid": 1991,
+            "movements_high": 2655
+          },
+          {
+            "hour": 22,
+            "departures": 91,
+            "capacity": 55800,
+            "movements_low": 968,
+            "movements_mid": 1451,
+            "movements_high": 1935
+          },
+          {
+            "hour": 23,
+            "departures": 84,
+            "capacity": 51200,
+            "movements_low": 710,
+            "movements_mid": 1065,
+            "movements_high": 1420
+          }
+        ],
+        "departures_by_line_8_24": {
+          "300": 95,
+          "347": 96,
+          "M10": 354,
+          "M13": 95,
+          "S3": 230,
+          "S5": 252,
+          "S7": 189,
+          "S75": 175,
+          "S9": 96,
+          "U1": 18,
+          "U3": 340
+        },
+        "total_departures_8_24": 1940,
+        "total_capacity_8_24": 1171480,
+        "total_movements_low_8_24": 42508,
+        "total_movements_mid_8_24": 63759,
+        "total_movements_high_8_24": 85014
+      },
+      "saturday": {
+        "hourly": [
+          {
+            "hour": 8,
+            "departures": 87,
+            "capacity": 54920,
+            "movements_low": 762,
+            "movements_mid": 1143,
+            "movements_high": 1524
+          },
+          {
+            "hour": 9,
+            "departures": 100,
+            "capacity": 62600,
+            "movements_low": 1158,
+            "movements_mid": 1737,
+            "movements_high": 2316
+          },
+          {
+            "hour": 10,
+            "departures": 110,
+            "capacity": 68200,
+            "movements_low": 1734,
+            "movements_mid": 2602,
+            "movements_high": 3469
+          },
+          {
+            "hour": 11,
+            "departures": 120,
+            "capacity": 70200,
+            "movements_low": 2272,
+            "movements_mid": 3408,
+            "movements_high": 4544
+          },
+          {
+            "hour": 12,
+            "departures": 120,
+            "capacity": 70200,
+            "movements_low": 2597,
+            "movements_mid": 3895,
+            "movements_high": 5194
+          },
+          {
+            "hour": 13,
+            "departures": 120,
+            "capacity": 70200,
+            "movements_low": 2759,
+            "movements_mid": 4139,
+            "movements_high": 5518
+          },
+          {
+            "hour": 14,
+            "departures": 120,
+            "capacity": 70200,
+            "movements_low": 2840,
+            "movements_mid": 4260,
+            "movements_high": 5681
+          },
+          {
+            "hour": 15,
+            "departures": 120,
+            "capacity": 70200,
+            "movements_low": 2840,
+            "movements_mid": 4260,
+            "movements_high": 5681
+          },
+          {
+            "hour": 16,
+            "departures": 120,
+            "capacity": 70200,
+            "movements_low": 2840,
+            "movements_mid": 4260,
+            "movements_high": 5681
+          },
+          {
+            "hour": 17,
+            "departures": 120,
+            "capacity": 70200,
+            "movements_low": 2678,
+            "movements_mid": 4017,
+            "movements_high": 5356
+          },
+          {
+            "hour": 18,
+            "departures": 120,
+            "capacity": 70200,
+            "movements_low": 2435,
+            "movements_mid": 3652,
+            "movements_high": 4869
+          },
+          {
+            "hour": 19,
+            "departures": 118,
+            "capacity": 69180,
+            "movements_low": 2159,
+            "movements_mid": 3239,
+            "movements_high": 4318
+          },
+          {
+            "hour": 20,
+            "departures": 116,
+            "capacity": 66600,
+            "movements_low": 1848,
+            "movements_mid": 2772,
+            "movements_high": 3696
+          },
+          {
+            "hour": 21,
+            "departures": 115,
+            "capacity": 65000,
+            "movements_low": 1653,
+            "movements_mid": 2480,
+            "movements_high": 3306
+          },
+          {
+            "hour": 22,
+            "departures": 111,
+            "capacity": 63000,
+            "movements_low": 1602,
+            "movements_mid": 2403,
+            "movements_high": 3204
+          },
+          {
+            "hour": 23,
+            "departures": 96,
+            "capacity": 53600,
+            "movements_low": 1363,
+            "movements_mid": 2045,
+            "movements_high": 2726
+          }
+        ],
+        "departures_by_line_8_24": {
+          "300": 91,
+          "347": 96,
+          "M10": 352,
+          "M13": 95,
+          "S3": 192,
+          "S5": 191,
+          "S7": 189,
+          "S75": 163,
+          "S9": 96,
+          "U1": 156,
+          "U3": 192
+        },
+        "total_departures_8_24": 1813,
+        "total_capacity_8_24": 1064700,
+        "total_movements_low_8_24": 33540,
+        "total_movements_mid_8_24": 50312,
+        "total_movements_high_8_24": 67083
+      },
+      "sunday_holiday": {
+        "hourly": [
+          {
+            "hour": 8,
+            "departures": 70,
+            "capacity": 42580,
+            "movements_low": 394,
+            "movements_mid": 591,
+            "movements_high": 788
+          },
+          {
+            "hour": 9,
+            "departures": 93,
+            "capacity": 56300,
+            "movements_low": 651,
+            "movements_mid": 976,
+            "movements_high": 1302
+          },
+          {
+            "hour": 10,
+            "departures": 109,
+            "capacity": 63720,
+            "movements_low": 1105,
+            "movements_mid": 1657,
+            "movements_high": 2210
+          },
+          {
+            "hour": 11,
+            "departures": 114,
+            "capacity": 69000,
+            "movements_low": 1595,
+            "movements_mid": 2393,
+            "movements_high": 3191
+          },
+          {
+            "hour": 12,
+            "departures": 114,
+            "capacity": 69000,
+            "movements_low": 1994,
+            "movements_mid": 2991,
+            "movements_high": 3988
+          },
+          {
+            "hour": 13,
+            "departures": 114,
+            "capacity": 69000,
+            "movements_low": 2233,
+            "movements_mid": 3350,
+            "movements_high": 4467
+          },
+          {
+            "hour": 14,
+            "departures": 114,
+            "capacity": 69000,
+            "movements_low": 2393,
+            "movements_mid": 3589,
+            "movements_high": 4786
+          },
+          {
+            "hour": 15,
+            "departures": 114,
+            "capacity": 69000,
+            "movements_low": 2393,
+            "movements_mid": 3589,
+            "movements_high": 4786
+          },
+          {
+            "hour": 16,
+            "departures": 114,
+            "capacity": 69000,
+            "movements_low": 2233,
+            "movements_mid": 3350,
+            "movements_high": 4467
+          },
+          {
+            "hour": 17,
+            "departures": 114,
+            "capacity": 69000,
+            "movements_low": 2074,
+            "movements_mid": 3111,
+            "movements_high": 4148
+          },
+          {
+            "hour": 18,
+            "departures": 114,
+            "capacity": 69000,
+            "movements_low": 1755,
+            "movements_mid": 2632,
+            "movements_high": 3510
+          },
+          {
+            "hour": 19,
+            "departures": 113,
+            "capacity": 68100,
+            "movements_low": 1417,
+            "movements_mid": 2126,
+            "movements_high": 2834
+          },
+          {
+            "hour": 20,
+            "departures": 106,
+            "capacity": 64680,
+            "movements_low": 1122,
+            "movements_mid": 1682,
+            "movements_high": 2243
+          },
+          {
+            "hour": 21,
+            "departures": 95,
+            "capacity": 56900,
+            "movements_low": 855,
+            "movements_mid": 1283,
+            "movements_high": 1710
+          },
+          {
+            "hour": 22,
+            "departures": 84,
+            "capacity": 49800,
+            "movements_low": 691,
+            "movements_mid": 1036,
+            "movements_high": 1382
+          },
+          {
+            "hour": 23,
+            "departures": 81,
+            "capacity": 48500,
+            "movements_low": 561,
+            "movements_mid": 841,
+            "movements_high": 1121
+          }
+        ],
+        "departures_by_line_8_24": {
+          "300": 90,
+          "347": 96,
+          "M10": 256,
+          "M13": 94,
+          "S3": 185,
+          "S5": 189,
+          "S7": 172,
+          "S75": 151,
+          "S9": 96,
+          "U1": 142,
+          "U3": 192
+        },
+        "total_departures_8_24": 1663,
+        "total_capacity_8_24": 1002580,
+        "total_movements_low_8_24": 23466,
+        "total_movements_mid_8_24": 35197,
+        "total_movements_high_8_24": 46933
+      }
+    },
+    "Schönhauser Allee": {
+      "weekday": {
+        "hourly": [
+          {
+            "hour": 8,
+            "departures": 72,
+            "capacity": 50880,
+            "movements_low": 2647,
+            "movements_mid": 3970,
+            "movements_high": 5294
+          },
+          {
+            "hour": 9,
+            "departures": 70,
+            "capacity": 49680,
+            "movements_low": 2010,
+            "movements_mid": 3015,
+            "movements_high": 4020
+          },
+          {
+            "hour": 10,
+            "departures": 64,
+            "capacity": 45480,
+            "movements_low": 1314,
+            "movements_mid": 1972,
+            "movements_high": 2629
+          },
+          {
+            "hour": 11,
+            "departures": 60,
+            "capacity": 41880,
+            "movements_low": 1210,
+            "movements_mid": 1815,
+            "movements_high": 2421
+          },
+          {
+            "hour": 12,
+            "departures": 60,
+            "capacity": 41880,
+            "movements_low": 1356,
+            "movements_mid": 2033,
+            "movements_high": 2711
+          },
+          {
+            "hour": 13,
+            "departures": 62,
+            "capacity": 43680,
+            "movements_low": 1515,
+            "movements_mid": 2272,
+            "movements_high": 3030
+          },
+          {
+            "hour": 14,
+            "departures": 68,
+            "capacity": 48480,
+            "movements_low": 1793,
+            "movements_mid": 2690,
+            "movements_high": 3587
+          },
+          {
+            "hour": 15,
+            "departures": 72,
+            "capacity": 50880,
+            "movements_low": 2235,
+            "movements_mid": 3353,
+            "movements_high": 4470
+          },
+          {
+            "hour": 16,
+            "departures": 72,
+            "capacity": 50880,
+            "movements_low": 2647,
+            "movements_mid": 3970,
+            "movements_high": 5294
+          },
+          {
+            "hour": 17,
+            "departures": 72,
+            "capacity": 50880,
+            "movements_low": 2647,
+            "movements_mid": 3970,
+            "movements_high": 5294
+          },
+          {
+            "hour": 18,
+            "departures": 72,
+            "capacity": 50880,
+            "movements_low": 2235,
+            "movements_mid": 3353,
+            "movements_high": 4470
+          },
+          {
+            "hour": 19,
+            "departures": 68,
+            "capacity": 48480,
+            "movements_low": 1569,
+            "movements_mid": 2354,
+            "movements_high": 3138
+          },
+          {
+            "hour": 20,
+            "departures": 66,
+            "capacity": 47280,
+            "movements_low": 1202,
+            "movements_mid": 1804,
+            "movements_high": 2405
+          },
+          {
+            "hour": 21,
+            "departures": 60,
+            "capacity": 41880,
+            "movements_low": 871,
+            "movements_mid": 1307,
+            "movements_high": 1743
+          },
+          {
+            "hour": 22,
+            "departures": 42,
+            "capacity": 29280,
+            "movements_low": 508,
+            "movements_mid": 762,
+            "movements_high": 1015
+          },
+          {
+            "hour": 23,
+            "departures": 42,
+            "capacity": 29280,
+            "movements_low": 406,
+            "movements_mid": 609,
+            "movements_high": 812
+          }
+        ],
+        "departures_by_line_8_24": {
+          "M1": 96,
+          "S41": 171,
+          "S42": 165,
+          "S8": 96,
+          "S85": 96,
+          "U2": 398
+        },
+        "total_departures_8_24": 1022,
+        "total_capacity_8_24": 721680,
+        "total_movements_low_8_24": 26165,
+        "total_movements_mid_8_24": 39249,
+        "total_movements_high_8_24": 52333
+      },
+      "saturday": {
+        "hourly": [
+          {
+            "hour": 8,
+            "departures": 42,
+            "capacity": 29280,
+            "movements_low": 406,
+            "movements_mid": 609,
+            "movements_high": 812
+          },
+          {
+            "hour": 9,
+            "departures": 42,
+            "capacity": 29280,
+            "movements_low": 542,
+            "movements_mid": 812,
+            "movements_high": 1083
+          },
+          {
+            "hour": 10,
+            "departures": 52,
+            "capacity": 35280,
+            "movements_low": 897,
+            "movements_mid": 1346,
+            "movements_high": 1794
+          },
+          {
+            "hour": 11,
+            "departures": 54,
+            "capacity": 36480,
+            "movements_low": 1181,
+            "movements_mid": 1771,
+            "movements_high": 2362
+          },
+          {
+            "hour": 12,
+            "departures": 59,
+            "capacity": 40980,
+            "movements_low": 1516,
+            "movements_mid": 2274,
+            "movements_high": 3032
+          },
+          {
+            "hour": 13,
+            "departures": 60,
+            "capacity": 41880,
+            "movements_low": 1646,
+            "movements_mid": 2469,
+            "movements_high": 3292
+          },
+          {
+            "hour": 14,
+            "departures": 60,
+            "capacity": 41880,
+            "movements_low": 1694,
+            "movements_mid": 2542,
+            "movements_high": 3389
+          },
+          {
+            "hour": 15,
+            "departures": 60,
+            "capacity": 41880,
+            "movements_low": 1694,
+            "movements_mid": 2542,
+            "movements_high": 3389
+          },
+          {
+            "hour": 16,
+            "departures": 60,
+            "capacity": 41880,
+            "movements_low": 1694,
+            "movements_mid": 2542,
+            "movements_high": 3389
+          },
+          {
+            "hour": 17,
+            "departures": 60,
+            "capacity": 41880,
+            "movements_low": 1598,
+            "movements_mid": 2396,
+            "movements_high": 3195
+          },
+          {
+            "hour": 18,
+            "departures": 60,
+            "capacity": 41880,
+            "movements_low": 1452,
+            "movements_mid": 2179,
+            "movements_high": 2905
+          },
+          {
+            "hour": 19,
+            "departures": 60,
+            "capacity": 41880,
+            "movements_low": 1307,
+            "movements_mid": 1961,
+            "movements_high": 2614
+          },
+          {
+            "hour": 20,
+            "departures": 60,
+            "capacity": 41880,
+            "movements_low": 1162,
+            "movements_mid": 1743,
+            "movements_high": 2324
+          },
+          {
+            "hour": 21,
+            "departures": 55,
+            "capacity": 37380,
+            "movements_low": 951,
+            "movements_mid": 1426,
+            "movements_high": 1901
+          },
+          {
+            "hour": 22,
+            "departures": 54,
+            "capacity": 36480,
+            "movements_low": 928,
+            "movements_mid": 1392,
+            "movements_high": 1856
+          },
+          {
+            "hour": 23,
+            "departures": 48,
+            "capacity": 32880,
+            "movements_low": 836,
+            "movements_mid": 1254,
+            "movements_high": 1672
+          }
+        ],
+        "departures_by_line_8_24": {
+          "M1": 96,
+          "S41": 123,
+          "S42": 123,
+          "S8": 96,
+          "S85": 96,
+          "U2": 352
+        },
+        "total_departures_8_24": 886,
+        "total_capacity_8_24": 613080,
+        "total_movements_low_8_24": 19504,
+        "total_movements_mid_8_24": 29258,
+        "total_movements_high_8_24": 39009
+      },
+      "sunday_holiday": {
+        "hourly": [
+          {
+            "hour": 8,
+            "departures": 42,
+            "capacity": 29280,
+            "movements_low": 271,
+            "movements_mid": 406,
+            "movements_high": 542
+          },
+          {
+            "hour": 9,
+            "departures": 42,
+            "capacity": 29280,
+            "movements_low": 338,
+            "movements_mid": 508,
+            "movements_high": 677
+          },
+          {
+            "hour": 10,
+            "departures": 42,
+            "capacity": 29280,
+            "movements_low": 508,
+            "movements_mid": 762,
+            "movements_high": 1015
+          },
+          {
+            "hour": 11,
+            "departures": 42,
+            "capacity": 29280,
+            "movements_low": 677,
+            "movements_mid": 1015,
+            "movements_high": 1354
+          },
+          {
+            "hour": 12,
+            "departures": 57,
+            "capacity": 39780,
+            "movements_low": 1150,
+            "movements_mid": 1724,
+            "movements_high": 2299
+          },
+          {
+            "hour": 13,
+            "departures": 60,
+            "capacity": 41880,
+            "movements_low": 1356,
+            "movements_mid": 2033,
+            "movements_high": 2711
+          },
+          {
+            "hour": 14,
+            "departures": 60,
+            "capacity": 41880,
+            "movements_low": 1452,
+            "movements_mid": 2179,
+            "movements_high": 2905
+          },
+          {
+            "hour": 15,
+            "departures": 60,
+            "capacity": 41880,
+            "movements_low": 1452,
+            "movements_mid": 2179,
+            "movements_high": 2905
+          },
+          {
+            "hour": 16,
+            "departures": 60,
+            "capacity": 41880,
+            "movements_low": 1356,
+            "movements_mid": 2033,
+            "movements_high": 2711
+          },
+          {
+            "hour": 17,
+            "departures": 60,
+            "capacity": 41880,
+            "movements_low": 1259,
+            "movements_mid": 1888,
+            "movements_high": 2517
+          },
+          {
+            "hour": 18,
+            "departures": 60,
+            "capacity": 41880,
+            "movements_low": 1065,
+            "movements_mid": 1598,
+            "movements_high": 2130
+          },
+          {
+            "hour": 19,
+            "departures": 54,
+            "capacity": 38280,
+            "movements_low": 797,
+            "movements_mid": 1195,
+            "movements_high": 1593
+          },
+          {
+            "hour": 20,
+            "departures": 45,
+            "capacity": 31980,
+            "movements_low": 555,
+            "movements_mid": 832,
+            "movements_high": 1109
+          },
+          {
+            "hour": 21,
+            "departures": 42,
+            "capacity": 29280,
+            "movements_low": 440,
+            "movements_mid": 660,
+            "movements_high": 880
+          },
+          {
+            "hour": 22,
+            "departures": 42,
+            "capacity": 29280,
+            "movements_low": 406,
+            "movements_mid": 609,
+            "movements_high": 812
+          },
+          {
+            "hour": 23,
+            "departures": 42,
+            "capacity": 29280,
+            "movements_low": 338,
+            "movements_mid": 508,
+            "movements_high": 677
+          }
+        ],
+        "departures_by_line_8_24": {
+          "M1": 96,
+          "S41": 121,
+          "S42": 121,
+          "S8": 96,
+          "S85": 96,
+          "U2": 280
+        },
+        "total_departures_8_24": 810,
+        "total_capacity_8_24": 566280,
+        "total_movements_low_8_24": 13420,
+        "total_movements_mid_8_24": 20129,
+        "total_movements_high_8_24": 26837
+      }
+    }
+  }
+}

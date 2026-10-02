@@ -1,0 +1,866 @@
+{
+ "n": 83,
+ "release": "2026-09-23.1",
+ "percentiles": {
+  "direct_format_competitors": {
+   "p10": 5.2,
+   "p25": 9.0,
+   "p50": 14.0,
+   "p75": 19.5,
+   "p90": 26.8
+  },
+  "competitor_density_per_km2": {
+   "p10": 34.2183127647575,
+   "p25": 59.68310365946074,
+   "p50": 99.47183943243458,
+   "p75": 164.12853506351706,
+   "p90": 227.98945597914008
+  },
+  "nearest_competitor_m": {
+   "p10": 8.737778981348251,
+   "p25": 15.013374345337661,
+   "p50": 25.545629031144234,
+   "p75": 44.59319070971698,
+   "p90": 86.73884990231308
+  },
+  "nearest_direct_format_m": {
+   "p10": 16.67547308791963,
+   "p25": 24.421100312511516,
+   "p50": 49.683641775956666,
+   "p75": 95.49107011114488,
+   "p90": 141.1224963748231
+  }
+ },
+ "stations": [
+  {
+   "station": "Adenauerplatz",
+   "lat": 52.5,
+   "lon": 13.30732,
+   "competitors": 74,
+   "direct_format_competitors": 16,
+   "competitor_density_per_km2": 147.21832236000319,
+   "nearest_competitor_m": 8.07770179657354,
+   "nearest_direct_format_m": 26.30385349629421
+  },
+  {
+   "station": "Alexanderplatz",
+   "lat": 52.52158,
+   "lon": 13.41259,
+   "competitors": 146,
+   "direct_format_competitors": 26,
+   "competitor_density_per_km2": 290.45777114270896,
+   "nearest_competitor_m": 7.171706995825607,
+   "nearest_direct_format_m": 59.620634151017406
+  },
+  {
+   "station": "Amrumer Straße",
+   "lat": 52.54233,
+   "lon": 13.35015,
+   "competitors": 39,
+   "direct_format_competitors": 12,
+   "competitor_density_per_km2": 77.58803475729897,
+   "nearest_competitor_m": 52.729899042990375,
+   "nearest_direct_format_m": 74.5658414220217
+  },
+  {
+   "station": "Anton-Wilhelm-Amo-Straße",
+   "lat": 52.51179,
+   "lon": 13.38509,
+   "competitors": 76,
+   "direct_format_competitors": 11,
+   "competitor_density_per_km2": 151.19719593730056,
+   "nearest_competitor_m": 59.64800651662915,
+   "nearest_direct_format_m": 59.64800651662915
+  },
+  {
+   "station": "Bayerischer Platz",
+   "lat": 52.48858,
+   "lon": 13.34054,
+   "competitors": 50,
+   "direct_format_competitors": 15,
+   "competitor_density_per_km2": 99.47183943243458,
+   "nearest_competitor_m": 31.631648132375467,
+   "nearest_direct_format_m": 74.83653699378121
+  },
+  {
+   "station": "Bellevue",
+   "lat": 52.51998,
+   "lon": 13.34807,
+   "competitors": 16,
+   "direct_format_competitors": 4,
+   "competitor_density_per_km2": 31.830988618379067,
+   "nearest_competitor_m": 3.8232983576494677,
+   "nearest_direct_format_m": 3.8232983576494677
+  },
+  {
+   "station": "Beusselstraße",
+   "lat": 52.53441,
+   "lon": 13.32939,
+   "competitors": 30,
+   "direct_format_competitors": 18,
+   "competitor_density_per_km2": 59.68310365946075,
+   "nearest_competitor_m": 132.09882897598794,
+   "nearest_direct_format_m": 132.09882897598794
+  },
+  {
+   "station": "Bismarckstraße",
+   "lat": 52.51151,
+   "lon": 13.30524,
+   "competitors": 98,
+   "direct_format_competitors": 28,
+   "competitor_density_per_km2": 194.96480528757178,
+   "nearest_competitor_m": 9.483151527876942,
+   "nearest_direct_format_m": 63.938336182481194
+  },
+  {
+   "station": "Boddinstraße",
+   "lat": 52.48017,
+   "lon": 13.42528,
+   "competitors": 98,
+   "direct_format_competitors": 27,
+   "competitor_density_per_km2": 194.96480528757178,
+   "nearest_competitor_m": 25.46363204573909,
+   "nearest_direct_format_m": 64.05649941998425
+  },
+  {
+   "station": "Brandenburger Tor",
+   "lat": 52.51652,
+   "lon": 13.38142,
+   "competitors": 32,
+   "direct_format_competitors": 3,
+   "competitor_density_per_km2": 63.66197723675813,
+   "nearest_competitor_m": 15.15675837562797,
+   "nearest_direct_format_m": 79.84415207307234
+  },
+  {
+   "station": "Bundesplatz",
+   "lat": 52.47765,
+   "lon": 13.32902,
+   "competitors": 34,
+   "direct_format_competitors": 9,
+   "competitor_density_per_km2": 67.64085081405551,
+   "nearest_competitor_m": 19.19389548217662,
+   "nearest_direct_format_m": 76.4078077303057
+  },
+  {
+   "station": "Charlottenburg",
+   "lat": 52.50505,
+   "lon": 13.30452,
+   "competitors": 119,
+   "direct_format_competitors": 28,
+   "competitor_density_per_km2": 236.7429778491943,
+   "nearest_competitor_m": 88.7267868229477,
+   "nearest_direct_format_m": 108.41711194663694
+  },
+  {
+   "station": "Deutsche Oper",
+   "lat": 52.51184,
+   "lon": 13.31053,
+   "competitors": 67,
+   "direct_format_competitors": 19,
+   "competitor_density_per_km2": 133.29226483946235,
+   "nearest_competitor_m": 36.344841203812564,
+   "nearest_direct_format_m": 59.97536610831416
+  },
+  {
+   "station": "Eisenacher Straße",
+   "lat": 52.48955,
+   "lon": 13.35017,
+   "competitors": 82,
+   "direct_format_competitors": 19,
+   "competitor_density_per_km2": 163.1338166691927,
+   "nearest_competitor_m": 26.954477515074185,
+   "nearest_direct_format_m": 94.52762260921875
+  },
+  {
+   "station": "Ernst-Reuter-Platz",
+   "lat": 52.51189,
+   "lon": 13.32216,
+   "competitors": 49,
+   "direct_format_competitors": 7,
+   "competitor_density_per_km2": 97.48240264378589,
+   "nearest_competitor_m": 11.93721469637238,
+   "nearest_direct_format_m": 193.2312569391456
+  },
+  {
+   "station": "Frankfurter Tor",
+   "lat": 52.51582,
+   "lon": 13.45397,
+   "competitors": 61,
+   "direct_format_competitors": 17,
+   "competitor_density_per_km2": 121.35564410757019,
+   "nearest_competitor_m": 40.32572459336143,
+   "nearest_direct_format_m": 92.27060414747618
+  },
+  {
+   "station": "Friedenau",
+   "lat": 52.47072,
+   "lon": 13.3415,
+   "competitors": 30,
+   "direct_format_competitors": 5,
+   "competitor_density_per_km2": 59.68310365946075,
+   "nearest_competitor_m": 71.48120450235025,
+   "nearest_direct_format_m": 104.92378897114244
+  },
+  {
+   "station": "Friedrich-Wilhelm-Platz",
+   "lat": 52.47212,
+   "lon": 13.32873,
+   "competitors": 25,
+   "direct_format_competitors": 10,
+   "competitor_density_per_km2": 49.73591971621729,
+   "nearest_competitor_m": 100.19867714739473,
+   "nearest_direct_format_m": 166.8215133645904
+  },
+  {
+   "station": "Gesundbrunnen",
+   "lat": 52.549,
+   "lon": 13.38919,
+   "competitors": 60,
+   "direct_format_competitors": 20,
+   "competitor_density_per_km2": 119.3662073189215,
+   "nearest_competitor_m": 7.825638931088393,
+   "nearest_direct_format_m": 33.7758381726653
+  },
+  {
+   "station": "Gleisdreieck",
+   "lat": 52.49953,
+   "lon": 13.37403,
+   "competitors": 15,
+   "direct_format_competitors": 6,
+   "competitor_density_per_km2": 29.841551829730374,
+   "nearest_competitor_m": 69.69192511507885,
+   "nearest_direct_format_m": 204.3721423906958
+  },
+  {
+   "station": "Gneisenaustraße",
+   "lat": 52.49129,
+   "lon": 13.39582,
+   "competitors": 108,
+   "direct_format_competitors": 21,
+   "competitor_density_per_km2": 214.8591731740587,
+   "nearest_competitor_m": 39.95116114531413,
+   "nearest_direct_format_m": 46.06840959788052
+  },
+  {
+   "station": "Greifswalder Straße",
+   "lat": 52.54025,
+   "lon": 13.43899,
+   "competitors": 29,
+   "direct_format_competitors": 13,
+   "competitor_density_per_km2": 57.69366687081206,
+   "nearest_competitor_m": 29.422329892543495,
+   "nearest_direct_format_m": 36.87309309445038
+  },
+  {
+   "station": "Hackescher Markt",
+   "lat": 52.52268,
+   "lon": 13.40234,
+   "competitors": 119,
+   "direct_format_competitors": 24,
+   "competitor_density_per_km2": 236.7429778491943,
+   "nearest_competitor_m": 37.32437682262923,
+   "nearest_direct_format_m": 41.96365473692181
+  },
+  {
+   "station": "Halensee",
+   "lat": 52.49602,
+   "lon": 13.29056,
+   "competitors": 44,
+   "direct_format_competitors": 10,
+   "competitor_density_per_km2": 87.53521870054243,
+   "nearest_competitor_m": 74.19326639240519,
+   "nearest_direct_format_m": 74.19326639240519
+  },
+  {
+   "station": "Hallesches Tor",
+   "lat": 52.49839,
+   "lon": 13.39118,
+   "competitors": 29,
+   "direct_format_competitors": 11,
+   "competitor_density_per_km2": 57.69366687081206,
+   "nearest_competitor_m": 24.046257406300608,
+   "nearest_direct_format_m": 24.046257406300608
+  },
+  {
+   "station": "Hauptbahnhof",
+   "lat": 52.52524,
+   "lon": 13.36973,
+   "competitors": 64,
+   "direct_format_competitors": 9,
+   "competitor_density_per_km2": 127.32395447351627,
+   "nearest_competitor_m": 6.705998225589617,
+   "nearest_direct_format_m": 7.469221035739278
+  },
+  {
+   "station": "Heidelberger Platz",
+   "lat": 52.48005,
+   "lon": 13.31216,
+   "competitors": 12,
+   "direct_format_competitors": 6,
+   "competitor_density_per_km2": 23.8732414637843,
+   "nearest_competitor_m": 11.529782681993748,
+   "nearest_direct_format_m": 11.529782681993748
+  },
+  {
+   "station": "Hohenzollerndamm",
+   "lat": 52.48863,
+   "lon": 13.30024,
+   "competitors": 13,
+   "direct_format_competitors": 6,
+   "competitor_density_per_km2": 25.86267825243299,
+   "nearest_competitor_m": 48.90148063387035,
+   "nearest_direct_format_m": 48.90148063387035
+  },
+  {
+   "station": "Innsbrucker Platz",
+   "lat": 52.47855,
+   "lon": 13.34261,
+   "competitors": 19,
+   "direct_format_competitors": 9,
+   "competitor_density_per_km2": 37.79929898432514,
+   "nearest_competitor_m": 61.0417866226419,
+   "nearest_direct_format_m": 153.50652738567456
+  },
+  {
+   "station": "Jannowitzbrücke",
+   "lat": 52.51479,
+   "lon": 13.41883,
+   "competitors": 33,
+   "direct_format_competitors": 9,
+   "competitor_density_per_km2": 65.65141402540682,
+   "nearest_competitor_m": 16.713389117697236,
+   "nearest_direct_format_m": 16.713389117697236
+  },
+  {
+   "station": "Julius-Leber-Brücke",
+   "lat": 52.48651,
+   "lon": 13.36117,
+   "competitors": 104,
+   "direct_format_competitors": 32,
+   "competitor_density_per_km2": 206.9014260194639,
+   "nearest_competitor_m": 30.42128381668237,
+   "nearest_direct_format_m": 77.88555815050596
+  },
+  {
+   "station": "Karl-Marx-Straße",
+   "lat": 52.47627,
+   "lon": 13.43934,
+   "competitors": 76,
+   "direct_format_competitors": 24,
+   "competitor_density_per_km2": 151.19719593730056,
+   "nearest_competitor_m": 15.213725481378923,
+   "nearest_direct_format_m": 20.512866951447783
+  },
+  {
+   "station": "Klosterstraße",
+   "lat": 52.51723,
+   "lon": 13.41243,
+   "competitors": 70,
+   "direct_format_competitors": 10,
+   "competitor_density_per_km2": 139.2605752054084,
+   "nearest_competitor_m": 78.78710221977455,
+   "nearest_direct_format_m": 126.579853493126
+  },
+  {
+   "station": "Kurfürstendamm",
+   "lat": 52.50382,
+   "lon": 13.33144,
+   "competitors": 138,
+   "direct_format_competitors": 24,
+   "competitor_density_per_km2": 274.54227683351945,
+   "nearest_competitor_m": 14.369903380945628,
+   "nearest_direct_format_m": 15.770831439219142
+  },
+  {
+   "station": "Kurfürstenstraße",
+   "lat": 52.49996,
+   "lon": 13.36194,
+   "competitors": 76,
+   "direct_format_competitors": 19,
+   "competitor_density_per_km2": 151.19719593730056,
+   "nearest_competitor_m": 24.241436648280988,
+   "nearest_direct_format_m": 31.353605324902453
+  },
+  {
+   "station": "Leinestraße",
+   "lat": 52.47298,
+   "lon": 13.42835,
+   "competitors": 78,
+   "direct_format_competitors": 23,
+   "competitor_density_per_km2": 155.17606951459794,
+   "nearest_competitor_m": 18.64052981694816,
+   "nearest_direct_format_m": 141.2328147612306
+  },
+  {
+   "station": "Leopoldplatz",
+   "lat": 52.54638,
+   "lon": 13.35917,
+   "competitors": 98,
+   "direct_format_competitors": 27,
+   "competitor_density_per_km2": 194.96480528757178,
+   "nearest_competitor_m": 17.10682973047496,
+   "nearest_direct_format_m": 17.10682973047496
+  },
+  {
+   "station": "Messe Nord-ZOB",
+   "lat": 52.50771,
+   "lon": 13.28347,
+   "competitors": 37,
+   "direct_format_competitors": 14,
+   "competitor_density_per_km2": 73.60916118000159,
+   "nearest_competitor_m": 45.88671870607167,
+   "nearest_direct_format_m": 112.99258233370053
+  },
+  {
+   "station": "Moritzplatz",
+   "lat": 52.50366,
+   "lon": 13.41075,
+   "competitors": 42,
+   "direct_format_competitors": 16,
+   "competitor_density_per_km2": 83.55634512324505,
+   "nearest_competitor_m": 56.28937343878146,
+   "nearest_direct_format_m": 89.95275884454242
+  },
+  {
+   "station": "Naturkundemuseum",
+   "lat": 52.53127,
+   "lon": 13.38216,
+   "competitors": 43,
+   "direct_format_competitors": 9,
+   "competitor_density_per_km2": 85.54578191189374,
+   "nearest_competitor_m": 12.621401896704551,
+   "nearest_direct_format_m": 23.072808465627823
+  },
+  {
+   "station": "Nauener Platz",
+   "lat": 52.55141,
+   "lon": 13.36717,
+   "competitors": 46,
+   "direct_format_competitors": 20,
+   "competitor_density_per_km2": 91.51409227783981,
+   "nearest_competitor_m": 25.545629031144234,
+   "nearest_direct_format_m": 25.545629031144234
+  },
+  {
+   "station": "Nollendorfplatz",
+   "lat": 52.4996,
+   "lon": 13.35373,
+   "competitors": 83,
+   "direct_format_competitors": 17,
+   "competitor_density_per_km2": 165.1232534578414,
+   "nearest_competitor_m": 17.683722960039532,
+   "nearest_direct_format_m": 23.148665419423747
+  },
+  {
+   "station": "Nordbahnhof",
+   "lat": 52.53227,
+   "lon": 13.38784,
+   "competitors": 37,
+   "direct_format_competitors": 8,
+   "competitor_density_per_km2": 73.60916118000159,
+   "nearest_competitor_m": 30.930080038632607,
+   "nearest_direct_format_m": 61.9286622082718
+  },
+  {
+   "station": "Oranienburger Tor",
+   "lat": 52.5256,
+   "lon": 13.38736,
+   "competitors": 78,
+   "direct_format_competitors": 14,
+   "competitor_density_per_km2": 155.17606951459794,
+   "nearest_competitor_m": 42.3995814742837,
+   "nearest_direct_format_m": 95.81221927845358
+  },
+  {
+   "station": "Ostbahnhof",
+   "lat": 52.51074,
+   "lon": 13.43517,
+   "competitors": 50,
+   "direct_format_competitors": 7,
+   "competitor_density_per_km2": 99.47183943243458,
+   "nearest_competitor_m": 33.83069074333208,
+   "nearest_direct_format_m": 45.74191943183487
+  },
+  {
+   "station": "Ostkreuz",
+   "lat": 52.50315,
+   "lon": 13.46958,
+   "competitors": 77,
+   "direct_format_competitors": 17,
+   "competitor_density_per_km2": 153.18663272594927,
+   "nearest_competitor_m": 18.717828031909495,
+   "nearest_direct_format_m": 50.465802918042975
+  },
+  {
+   "station": "Platz der Luftbrücke",
+   "lat": 52.48608,
+   "lon": 13.38595,
+   "competitors": 37,
+   "direct_format_competitors": 10,
+   "competitor_density_per_km2": 73.60916118000159,
+   "nearest_competitor_m": 106.18374743078351,
+   "nearest_direct_format_m": 138.54225218584236
+  },
+  {
+   "station": "Potsdamer Platz",
+   "lat": 52.5094,
+   "lon": 13.37664,
+   "competitors": 116,
+   "direct_format_competitors": 16,
+   "competitor_density_per_km2": 230.77466748324824,
+   "nearest_competitor_m": 16.405283946222617,
+   "nearest_direct_format_m": 45.33878567655514
+  },
+  {
+   "station": "Prenzlauer Allee",
+   "lat": 52.54479,
+   "lon": 13.42598,
+   "competitors": 60,
+   "direct_format_competitors": 21,
+   "competitor_density_per_km2": 119.3662073189215,
+   "nearest_competitor_m": 20.045017962760888,
+   "nearest_direct_format_m": 55.80587004250441
+  },
+  {
+   "station": "Prinzenstraße",
+   "lat": 52.4984,
+   "lon": 13.40591,
+   "competitors": 17,
+   "direct_format_competitors": 6,
+   "competitor_density_per_km2": 33.820425407027756,
+   "nearest_competitor_m": 29.258760704718924,
+   "nearest_direct_format_m": 29.258760704718924
+  },
+  {
+   "station": "Richard-Wagner-Platz",
+   "lat": 52.51739,
+   "lon": 13.30659,
+   "competitors": 43,
+   "direct_format_competitors": 15,
+   "competitor_density_per_km2": 85.54578191189374,
+   "nearest_competitor_m": 14.084157819657982,
+   "nearest_direct_format_m": 16.67126019572212
+  },
+  {
+   "station": "Rosenthaler Platz",
+   "lat": 52.5299,
+   "lon": 13.40112,
+   "competitors": 122,
+   "direct_format_competitors": 20,
+   "competitor_density_per_km2": 242.71128821514037,
+   "nearest_competitor_m": 16.26687283909972,
+   "nearest_direct_format_m": 41.86148156907561
+  },
+  {
+   "station": "S Anhalter Bahnhof",
+   "lat": 52.50358,
+   "lon": 13.38148,
+   "competitors": 22,
+   "direct_format_competitors": 10,
+   "competitor_density_per_km2": 43.767609350271215,
+   "nearest_competitor_m": 20.34878302482287,
+   "nearest_direct_format_m": 103.94282569714899
+  },
+  {
+   "station": "S Friedrichstraße",
+   "lat": 52.52063,
+   "lon": 13.38676,
+   "competitors": 88,
+   "direct_format_competitors": 15,
+   "competitor_density_per_km2": 175.07043740108486,
+   "nearest_competitor_m": 7.559151637420873,
+   "nearest_direct_format_m": 57.212012193200685
+  },
+  {
+   "station": "Schillingstraße",
+   "lat": 52.52079,
+   "lon": 13.42111,
+   "competitors": 14,
+   "direct_format_competitors": 5,
+   "competitor_density_per_km2": 27.85211504108168,
+   "nearest_competitor_m": 181.8880976568959,
+   "nearest_direct_format_m": 181.8880976568959
+  },
+  {
+   "station": "Schlesisches Tor",
+   "lat": 52.50083,
+   "lon": 13.44146,
+   "competitors": 109,
+   "direct_format_competitors": 28,
+   "competitor_density_per_km2": 216.84860996270737,
+   "nearest_competitor_m": 19.955386071056516,
+   "nearest_direct_format_m": 21.11442908104255
+  },
+  {
+   "station": "Schwartzkopffstraße",
+   "lat": 52.53516,
+   "lon": 13.37732,
+   "competitors": 25,
+   "direct_format_competitors": 5,
+   "competitor_density_per_km2": 49.73591971621729,
+   "nearest_competitor_m": 29.500076844730703,
+   "nearest_direct_format_m": 140.1296308971554
+  },
+  {
+   "station": "Schöneberg",
+   "lat": 52.47935,
+   "lon": 13.35192,
+   "competitors": 52,
+   "direct_format_competitors": 16,
+   "competitor_density_per_km2": 103.45071300973196,
+   "nearest_competitor_m": 33.717647720056625,
+   "nearest_direct_format_m": 33.717647720056625
+  },
+  {
+   "station": "Schönhauser Allee",
+   "lat": 52.54937,
+   "lon": 13.41465,
+   "competitors": 145,
+   "direct_format_competitors": 42,
+   "competitor_density_per_km2": 288.4683343540603,
+   "nearest_competitor_m": 6.808786415482472,
+   "nearest_direct_format_m": 6.808786415482472
+  },
+  {
+   "station": "Schönleinstraße",
+   "lat": 52.49306,
+   "lon": 13.42206,
+   "competitors": 134,
+   "direct_format_competitors": 38,
+   "competitor_density_per_km2": 266.5845296789247,
+   "nearest_competitor_m": 14.678787632682182,
+   "nearest_direct_format_m": 40.97864786685242
+  },
+  {
+   "station": "Seestraße",
+   "lat": 52.5498,
+   "lon": 13.35312,
+   "competitors": 94,
+   "direct_format_competitors": 32,
+   "competitor_density_per_km2": 187.00705813297702,
+   "nearest_competitor_m": 10.357367668092813,
+   "nearest_direct_format_m": 10.357367668092813
+  },
+  {
+   "station": "Senefelderplatz",
+   "lat": 52.53239,
+   "lon": 13.41269,
+   "competitors": 67,
+   "direct_format_competitors": 17,
+   "competitor_density_per_km2": 133.29226483946235,
+   "nearest_competitor_m": 37.25897957257045,
+   "nearest_direct_format_m": 44.04161679408765
+  },
+  {
+   "station": "Sonnenallee",
+   "lat": 52.47298,
+   "lon": 13.45569,
+   "competitors": 31,
+   "direct_format_competitors": 9,
+   "competitor_density_per_km2": 61.67254044810944,
+   "nearest_competitor_m": 30.32975477754519,
+   "nearest_direct_format_m": 37.338835393900695
+  },
+  {
+   "station": "Sophie-Charlotte-Platz",
+   "lat": 52.51091,
+   "lon": 13.29633,
+   "competitors": 52,
+   "direct_format_competitors": 13,
+   "competitor_density_per_km2": 103.45071300973196,
+   "nearest_competitor_m": 97.27668076887794,
+   "nearest_direct_format_m": 107.55766754340678
+  },
+  {
+   "station": "Spittelmarkt",
+   "lat": 52.5113,
+   "lon": 13.40412,
+   "competitors": 27,
+   "direct_format_competitors": 10,
+   "competitor_density_per_km2": 53.714793293514674,
+   "nearest_competitor_m": 109.54350743852919,
+   "nearest_direct_format_m": 141.88391331414843
+  },
+  {
+   "station": "Stadtmitte",
+   "lat": 52.51135,
+   "lon": 13.38975,
+   "competitors": 66,
+   "direct_format_competitors": 12,
+   "competitor_density_per_km2": 131.30282805081364,
+   "nearest_competitor_m": 18.910983764078985,
+   "nearest_direct_format_m": 31.24999475738984
+  },
+  {
+   "station": "Strausberger Platz",
+   "lat": 52.5181,
+   "lon": 13.43153,
+   "competitors": 11,
+   "direct_format_competitors": 4,
+   "competitor_density_per_km2": 21.883804675135607,
+   "nearest_competitor_m": 66.02290973116078,
+   "nearest_direct_format_m": 116.01002782945426
+  },
+  {
+   "station": "Südkreuz (Ringbahn)",
+   "lat": 52.47598,
+   "lon": 13.36507,
+   "competitors": 22,
+   "direct_format_competitors": 6,
+   "competitor_density_per_km2": 43.767609350271215,
+   "nearest_competitor_m": 15.681880683467801,
+   "nearest_direct_format_m": 18.210548799593717
+  },
+  {
+   "station": "Südstern",
+   "lat": 52.4893,
+   "lon": 13.40767,
+   "competitors": 43,
+   "direct_format_competitors": 8,
+   "competitor_density_per_km2": 85.54578191189374,
+   "nearest_competitor_m": 8.551435844716078,
+   "nearest_direct_format_m": 8.551435844716078
+  },
+  {
+   "station": "Tempelhof",
+   "lat": 52.47097,
+   "lon": 13.38445,
+   "competitors": 31,
+   "direct_format_competitors": 11,
+   "competitor_density_per_km2": 61.67254044810944,
+   "nearest_competitor_m": 43.299662713362295,
+   "nearest_direct_format_m": 47.686115297280956
+  },
+  {
+   "station": "Tiergarten",
+   "lat": 52.51437,
+   "lon": 13.33645,
+   "competitors": 6,
+   "direct_format_competitors": 0,
+   "competitor_density_per_km2": 11.93662073189215,
+   "nearest_competitor_m": 70.49560852545538,
+   "nearest_direct_format_m": null
+  },
+  {
+   "station": "Treptower Park",
+   "lat": 52.49385,
+   "lon": 13.46183,
+   "competitors": 25,
+   "direct_format_competitors": 3,
+   "competitor_density_per_km2": 49.73591971621729,
+   "nearest_competitor_m": 32.94677255967031,
+   "nearest_direct_format_m": 109.66175205018038
+  },
+  {
+   "station": "U Friedrichstraße",
+   "lat": 52.52026,
+   "lon": 13.38829,
+   "competitors": 97,
+   "direct_format_competitors": 19,
+   "competitor_density_per_km2": 192.97536849892307,
+   "nearest_competitor_m": 9.613722153384103,
+   "nearest_direct_format_m": 29.199388922002413
+  },
+  {
+   "station": "U Potsdamer Platz",
+   "lat": 52.50916,
+   "lon": 13.37821,
+   "competitors": 104,
+   "direct_format_competitors": 12,
+   "competitor_density_per_km2": 206.9014260194639,
+   "nearest_competitor_m": 18.20521707282755,
+   "nearest_direct_format_m": 18.20521707282755
+  },
+  {
+   "station": "Voltastraße",
+   "lat": 52.54229,
+   "lon": 13.39288,
+   "competitors": 37,
+   "direct_format_competitors": 16,
+   "competitor_density_per_km2": 73.60916118000159,
+   "nearest_competitor_m": 23.371205240700018,
+   "nearest_direct_format_m": 23.371205240700018
+  },
+  {
+   "station": "Warschauer Straße",
+   "lat": 52.50569,
+   "lon": 13.44956,
+   "competitors": 73,
+   "direct_format_competitors": 17,
+   "competitor_density_per_km2": 145.22888557135448,
+   "nearest_competitor_m": 38.368691885287745,
+   "nearest_direct_format_m": 38.368691885287745
+  },
+  {
+   "station": "Weberwiese",
+   "lat": 52.51675,
+   "lon": 13.44471,
+   "competitors": 18,
+   "direct_format_competitors": 6,
+   "competitor_density_per_km2": 35.80986219567645,
+   "nearest_competitor_m": 97.11451802554161,
+   "nearest_direct_format_m": 165.97974313613196
+  },
+  {
+   "station": "Wedding",
+   "lat": 52.54292,
+   "lon": 13.36602,
+   "competitors": 55,
+   "direct_format_competitors": 16,
+   "competitor_density_per_km2": 109.41902337567804,
+   "nearest_competitor_m": 10.908075520611792,
+   "nearest_direct_format_m": 10.908075520611792
+  },
+  {
+   "station": "Weinmeisterstraße",
+   "lat": 52.52547,
+   "lon": 13.40502,
+   "competitors": 108,
+   "direct_format_competitors": 22,
+   "competitor_density_per_km2": 214.8591731740587,
+   "nearest_competitor_m": 12.774928325388908,
+   "nearest_direct_format_m": 90.90433400478004
+  },
+  {
+   "station": "Westend",
+   "lat": 52.51801,
+   "lon": 13.28442,
+   "competitors": 30,
+   "direct_format_competitors": 10,
+   "competitor_density_per_km2": 59.68310365946075,
+   "nearest_competitor_m": 96.31905501450235,
+   "nearest_direct_format_m": 159.91324507488554
+  },
+  {
+   "station": "Westkreuz",
+   "lat": 52.50079,
+   "lon": 13.28392,
+   "competitors": 4,
+   "direct_format_competitors": 1,
+   "competitor_density_per_km2": 7.957747154594767,
+   "nearest_competitor_m": 14.869990315047348,
+   "nearest_direct_format_m": 20.787026309742767
+  },
+  {
+   "station": "Yorckstraße",
+   "lat": 52.49252,
+   "lon": 13.37142,
+   "competitors": 27,
+   "direct_format_competitors": 8,
+   "competitor_density_per_km2": 53.714793293514674,
+   "nearest_competitor_m": 27.90043674929716,
+   "nearest_direct_format_m": 52.68276819199183
+  },
+  {
+   "station": "Zoologischer Garten",
+   "lat": 52.5065,
+   "lon": 13.33245,
+   "competitors": 122,
+   "direct_format_competitors": 23,
+   "competitor_density_per_km2": 242.71128821514037,
+   "nearest_competitor_m": 5.851068992385239,
+   "nearest_direct_format_m": 16.79792922377713
+  }
+ ]
+}

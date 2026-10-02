@@ -1,0 +1,624 @@
+{
+  "computed_at": "2026-10-01T13:02:05.737259+00:00",
+  "pageview_window": [
+    "2025-09-01",
+    "2026-09-01"
+  ],
+  "input": "visitor_counts_published.csv",
+  "model": "proportional",
+  "intercept": 1.010653248641754,
+  "slope": 1.0,
+  "visitors_per_pageview": 10.248333474465023,
+  "visitors_per_pageview_p25": 4.597887880364611,
+  "visitors_per_pageview_p75": 22.61292328565775,
+  "n": 37,
+  "residual_sd_log10": 0.41053867399571276,
+  "typical_error_factor": 2.5735859324767727,
+  "free_loglog_fit_diagnostic": {
+    "intercept": 3.406549183900617,
+    "slope": 0.4855651720371602,
+    "r2": 0.23161789314803238,
+    "n": 37,
+    "residual_sd_log10": 0.3599044079564672,
+    "typical_error_factor": 2.2903634680944474
+  },
+  "pageview_range": [
+    8636,
+    470553
+  ],
+  "failed": [],
+  "data": [
+    {
+      "de_title": "Zoologischer Garten Berlin",
+      "annual_visitors": 3600000,
+      "year": "2024",
+      "source_url": "https://about.visitberlin.de/was-sind-berlins-meistbesuchte-sehenswuerdigkeiten-attraktionen",
+      "titles": {
+        "dewiki": "Zoologischer Garten Berlin",
+        "enwiki": "Berlin Zoo"
+      },
+      "pageviews_by_site": {
+        "dewiki": 42799,
+        "enwiki": 27585
+      },
+      "pageviews": 70384,
+      "fitted_visitors": 721319
+    },
+    {
+      "de_title": "Humboldt Forum",
+      "annual_visitors": 3300000,
+      "year": "2024",
+      "source_url": "https://about.visitberlin.de/was-sind-berlins-meistbesuchte-sehenswuerdigkeiten-attraktionen",
+      "titles": {
+        "dewiki": "Humboldt Forum",
+        "enwiki": "Humboldt Forum"
+      },
+      "pageviews_by_site": {
+        "dewiki": 51678,
+        "enwiki": 28354
+      },
+      "pageviews": 80032,
+      "fitted_visitors": 820195
+    },
+    {
+      "de_title": "Uber Arena",
+      "annual_visitors": 1900000,
+      "year": "2025",
+      "source_url": "https://about.visitberlin.de/was-sind-berlins-meistbesuchte-sehenswuerdigkeiten-attraktionen",
+      "titles": {
+        "dewiki": "Uber Arena",
+        "enwiki": "Uber Arena"
+      },
+      "pageviews_by_site": {
+        "dewiki": 89560,
+        "enwiki": 74672
+      },
+      "pageviews": 164232,
+      "fitted_visitors": 1683104
+    },
+    {
+      "de_title": "Reichstagsgebäude",
+      "annual_visitors": 1850000,
+      "year": "2023",
+      "source_url": "https://about.visitberlin.de/was-sind-berlins-meistbesuchte-sehenswuerdigkeiten-attraktionen",
+      "titles": {
+        "dewiki": "Reichstagsgebäude",
+        "enwiki": "Reichstag building"
+      },
+      "pageviews_by_site": {
+        "dewiki": 147024,
+        "enwiki": 323529
+      },
+      "pageviews": 470553,
+      "fitted_visitors": 4822384
+    },
+    {
+      "de_title": "Topographie des Terrors",
+      "annual_visitors": 1600000,
+      "year": "2025",
+      "source_url": "https://about.visitberlin.de/was-sind-berlins-meistbesuchte-sehenswuerdigkeiten-attraktionen",
+      "titles": {
+        "dewiki": "Topographie des Terrors",
+        "enwiki": "Topography of Terror"
+      },
+      "pageviews_by_site": {
+        "dewiki": 25125,
+        "enwiki": 45631
+      },
+      "pageviews": 70756,
+      "fitted_visitors": 725131
+    },
+    {
+      "de_title": "Tierpark Berlin",
+      "annual_visitors": 1600000,
+      "year": "2024",
+      "source_url": "https://about.visitberlin.de/was-sind-berlins-meistbesuchte-sehenswuerdigkeiten-attraktionen",
+      "titles": {
+        "dewiki": "Tierpark Berlin",
+        "enwiki": "Tierpark Berlin"
+      },
+      "pageviews_by_site": {
+        "dewiki": 30526,
+        "enwiki": 10089
+      },
+      "pageviews": 40615,
+      "fitted_visitors": 416236
+    },
+    {
+      "de_title": "Olympiastadion Berlin",
+      "annual_visitors": 1500000,
+      "year": "2023",
+      "source_url": "https://about.visitberlin.de/was-sind-berlins-meistbesuchte-sehenswuerdigkeiten-attraktionen",
+      "titles": {
+        "dewiki": "Olympiastadion Berlin",
+        "enwiki": "Olympiastadion (Berlin)"
+      },
+      "pageviews_by_site": {
+        "dewiki": 150962,
+        "enwiki": 257750
+      },
+      "pageviews": 408712,
+      "fitted_visitors": 4188617
+    },
+    {
+      "de_title": "Gärten der Welt",
+      "annual_visitors": 1000000,
+      "year": "2024",
+      "source_url": "https://about.visitberlin.de/was-sind-berlins-meistbesuchte-sehenswuerdigkeiten-attraktionen",
+      "titles": {
+        "dewiki": "Gärten der Welt",
+        "enwiki": "Gärten der Welt"
+      },
+      "pageviews_by_site": {
+        "dewiki": 18225,
+        "enwiki": 3473
+      },
+      "pageviews": 21698,
+      "fitted_visitors": 222368
+    },
+    {
+      "de_title": "Berliner Fernsehturm",
+      "annual_visitors": 1000000,
+      "year": "2024",
+      "source_url": "https://about.visitberlin.de/was-sind-berlins-meistbesuchte-sehenswuerdigkeiten-attraktionen",
+      "titles": {
+        "dewiki": "Berliner Fernsehturm",
+        "enwiki": "Fernsehturm Berlin"
+      },
+      "pageviews_by_site": {
+        "dewiki": 164324,
+        "enwiki": 101354
+      },
+      "pageviews": 265678,
+      "fitted_visitors": 2722757
+    },
+    {
+      "de_title": "Jüdisches Museum Berlin",
+      "annual_visitors": 729559,
+      "year": "2023",
+      "source_url": "https://about.visitberlin.de/was-sind-berlins-meistbesuchte-sehenswuerdigkeiten-attraktionen",
+      "titles": {
+        "dewiki": "Jüdisches Museum Berlin",
+        "enwiki": "Jewish Museum Berlin"
+      },
+      "pageviews_by_site": {
+        "dewiki": 19962,
+        "enwiki": 23161
+      },
+      "pageviews": 43123,
+      "fitted_visitors": 441939
+    },
+    {
+      "de_title": "Futurium",
+      "annual_visitors": 708000,
+      "year": "2024",
+      "source_url": "https://about.visitberlin.de/was-sind-berlins-meistbesuchte-sehenswuerdigkeiten-attraktionen",
+      "titles": {
+        "dewiki": "Futurium",
+        "enwiki": "Futurium"
+      },
+      "pageviews_by_site": {
+        "dewiki": 12054,
+        "enwiki": 2659
+      },
+      "pageviews": 14713,
+      "fitted_visitors": 150784
+    },
+    {
+      "de_title": "Museum für Naturkunde (Berlin)",
+      "annual_visitors": 700000,
+      "year": "2024",
+      "source_url": "https://about.visitberlin.de/was-sind-berlins-meistbesuchte-sehenswuerdigkeiten-attraktionen",
+      "titles": {
+        "dewiki": "Museum für Naturkunde (Berlin)",
+        "enwiki": "Museum für Naturkunde Berlin"
+      },
+      "pageviews_by_site": {
+        "dewiki": 16327,
+        "enwiki": 3315
+      },
+      "pageviews": 19642,
+      "fitted_visitors": 201298
+    },
+    {
+      "de_title": "Deutsches Technikmuseum",
+      "annual_visitors": 691143,
+      "year": "2025",
+      "source_url": "https://about.visitberlin.de/was-sind-berlins-meistbesuchte-sehenswuerdigkeiten-attraktionen",
+      "titles": {
+        "dewiki": "Deutsches Technikmuseum",
+        "enwiki": "German Museum of Technology"
+      },
+      "pageviews_by_site": {
+        "dewiki": 14884,
+        "enwiki": 9650
+      },
+      "pageviews": 24534,
+      "fitted_visitors": 251433
+    },
+    {
+      "de_title": "Neue Nationalgalerie",
+      "annual_visitors": 608000,
+      "year": "2025",
+      "source_url": "https://about.visitberlin.de/was-sind-berlins-meistbesuchte-sehenswuerdigkeiten-attraktionen",
+      "titles": {
+        "dewiki": "Neue Nationalgalerie",
+        "enwiki": "Neue Nationalgalerie"
+      },
+      "pageviews_by_site": {
+        "dewiki": 39062,
+        "enwiki": 23115
+      },
+      "pageviews": 62177,
+      "fitted_visitors": 637211
+    },
+    {
+      "de_title": "Neues Museum (Berlin)",
+      "annual_visitors": 520000,
+      "year": "2025",
+      "source_url": "https://about.visitberlin.de/was-sind-berlins-meistbesuchte-sehenswuerdigkeiten-attraktionen",
+      "titles": {
+        "dewiki": "Neues Museum (Berlin)",
+        "enwiki": "Neues Museum"
+      },
+      "pageviews_by_site": {
+        "dewiki": 35773,
+        "enwiki": 43281
+      },
+      "pageviews": 79054,
+      "fitted_visitors": 810172
+    },
+    {
+      "de_title": "DDR-Museum Berlin",
+      "annual_visitors": 512456,
+      "year": "2023",
+      "source_url": "https://about.visitberlin.de/was-sind-berlins-meistbesuchte-sehenswuerdigkeiten-attraktionen",
+      "titles": {
+        "dewiki": "DDR-Museum Berlin",
+        "enwiki": "DDR Museum"
+      },
+      "pageviews_by_site": {
+        "dewiki": 8364,
+        "enwiki": 16837
+      },
+      "pageviews": 25201,
+      "fitted_visitors": 258268
+    },
+    {
+      "de_title": "Friedrichstadt-Palast",
+      "annual_visitors": 508000,
+      "year": "2025",
+      "source_url": "https://about.visitberlin.de/was-sind-berlins-meistbesuchte-sehenswuerdigkeiten-attraktionen",
+      "titles": {
+        "dewiki": "Friedrichstadt-Palast",
+        "enwiki": "Friedrichstadt-Palast"
+      },
+      "pageviews_by_site": {
+        "dewiki": 70997,
+        "enwiki": 9634
+      },
+      "pageviews": 80631,
+      "fitted_visitors": 826333
+    },
+    {
+      "de_title": "Hamburger Bahnhof – Nationalgalerie der Gegenwart",
+      "annual_visitors": 445000,
+      "year": "2025",
+      "source_url": "https://about.visitberlin.de/was-sind-berlins-meistbesuchte-sehenswuerdigkeiten-attraktionen",
+      "titles": {
+        "dewiki": "Hamburger Bahnhof – Nationalgalerie der Gegenwart",
+        "enwiki": "Hamburger Bahnhof"
+      },
+      "pageviews_by_site": {
+        "dewiki": 7080,
+        "enwiki": 7785
+      },
+      "pageviews": 14865,
+      "fitted_visitors": 152341
+    },
+    {
+      "de_title": "Deutsches Spionagemuseum",
+      "annual_visitors": 441537,
+      "year": "2023",
+      "source_url": "https://about.visitberlin.de/was-sind-berlins-meistbesuchte-sehenswuerdigkeiten-attraktionen",
+      "titles": {
+        "dewiki": "Deutsches Spionagemuseum",
+        "enwiki": "Berlin Spy Museum"
+      },
+      "pageviews_by_site": {
+        "dewiki": 4145,
+        "enwiki": 4491
+      },
+      "pageviews": 8636,
+      "fitted_visitors": 88505
+    },
+    {
+      "de_title": "Alte Nationalgalerie",
+      "annual_visitors": 402000,
+      "year": "2025",
+      "source_url": "https://about.visitberlin.de/was-sind-berlins-meistbesuchte-sehenswuerdigkeiten-attraktionen",
+      "titles": {
+        "dewiki": "Alte Nationalgalerie",
+        "enwiki": "Alte Nationalgalerie"
+      },
+      "pageviews_by_site": {
+        "dewiki": 30367,
+        "enwiki": 30379
+      },
+      "pageviews": 60746,
+      "fitted_visitors": 622545
+    },
+    {
+      "de_title": "Berliner Waldbühne",
+      "annual_visitors": 353017,
+      "year": "2023",
+      "source_url": "https://about.visitberlin.de/was-sind-berlins-meistbesuchte-sehenswuerdigkeiten-attraktionen",
+      "titles": {
+        "dewiki": "Berliner Waldbühne",
+        "enwiki": "Waldbühne"
+      },
+      "pageviews_by_site": {
+        "dewiki": 55314,
+        "enwiki": 20128
+      },
+      "pageviews": 75442,
+      "fitted_visitors": 773155
+    },
+    {
+      "de_title": "Gedenkstätte Berlin-Hohenschönhausen",
+      "annual_visitors": 333968,
+      "year": "2025",
+      "source_url": "https://about.visitberlin.de/was-sind-berlins-meistbesuchte-sehenswuerdigkeiten-attraktionen",
+      "titles": {
+        "dewiki": "Gedenkstätte Berlin-Hohenschönhausen",
+        "enwiki": "Berlin-Hohenschönhausen Memorial"
+      },
+      "pageviews_by_site": {
+        "dewiki": 33655,
+        "enwiki": 14796
+      },
+      "pageviews": 48451,
+      "fitted_visitors": 496542
+    },
+    {
+      "de_title": "Altes Museum",
+      "annual_visitors": 285000,
+      "year": "2025",
+      "source_url": "https://about.visitberlin.de/was-sind-berlins-meistbesuchte-sehenswuerdigkeiten-attraktionen",
+      "titles": {
+        "dewiki": "Altes Museum",
+        "enwiki": "Altes Museum"
+      },
+      "pageviews_by_site": {
+        "dewiki": 30600,
+        "enwiki": 42714
+      },
+      "pageviews": 73314,
+      "fitted_visitors": 751346
+    },
+    {
+      "de_title": "Schloss Charlottenburg",
+      "annual_visitors": 261936,
+      "year": "2023",
+      "source_url": "https://about.visitberlin.de/was-sind-berlins-meistbesuchte-sehenswuerdigkeiten-attraktionen",
+      "titles": {
+        "dewiki": "Schloss Charlottenburg",
+        "enwiki": "Schloss Charlottenburg"
+      },
+      "pageviews_by_site": {
+        "dewiki": 72815,
+        "enwiki": 38764
+      },
+      "pageviews": 111579,
+      "fitted_visitors": 1143499
+    },
+    {
+      "de_title": "Deutsche Oper Berlin",
+      "annual_visitors": 253411,
+      "year": "2025",
+      "source_url": "https://about.visitberlin.de/was-sind-berlins-meistbesuchte-sehenswuerdigkeiten-attraktionen",
+      "titles": {
+        "dewiki": "Deutsche Oper Berlin",
+        "enwiki": "Deutsche Oper Berlin"
+      },
+      "pageviews_by_site": {
+        "dewiki": 24341,
+        "enwiki": 9173
+      },
+      "pageviews": 33514,
+      "fitted_visitors": 343463
+    },
+    {
+      "de_title": "Staatsoper Unter den Linden",
+      "annual_visitors": 238589,
+      "year": "2025",
+      "source_url": "https://about.visitberlin.de/was-sind-berlins-meistbesuchte-sehenswuerdigkeiten-attraktionen",
+      "titles": {
+        "dewiki": "Staatsoper Unter den Linden",
+        "enwiki": "Berlin State Opera"
+      },
+      "pageviews_by_site": {
+        "dewiki": 31119,
+        "enwiki": 20772
+      },
+      "pageviews": 51891,
+      "fitted_visitors": 531796
+    },
+    {
+      "de_title": "Berlinische Galerie",
+      "annual_visitors": 223332,
+      "year": "2023",
+      "source_url": "https://about.visitberlin.de/was-sind-berlins-meistbesuchte-sehenswuerdigkeiten-attraktionen",
+      "titles": {
+        "dewiki": "Berlinische Galerie",
+        "enwiki": "Berlinische Galerie"
+      },
+      "pageviews_by_site": {
+        "dewiki": 6980,
+        "enwiki": 3839
+      },
+      "pageviews": 10819,
+      "fitted_visitors": 110877
+    },
+    {
+      "de_title": "Berliner Ensemble",
+      "annual_visitors": 220790,
+      "year": "2025",
+      "source_url": "https://about.visitberlin.de/was-sind-berlins-meistbesuchte-sehenswuerdigkeiten-attraktionen",
+      "titles": {
+        "dewiki": "Berliner Ensemble",
+        "enwiki": "Berliner Ensemble"
+      },
+      "pageviews_by_site": {
+        "dewiki": 29769,
+        "enwiki": 9224
+      },
+      "pageviews": 38993,
+      "fitted_visitors": 399613
+    },
+    {
+      "de_title": "Bode-Museum",
+      "annual_visitors": 210245,
+      "year": "2023",
+      "source_url": "https://about.visitberlin.de/was-sind-berlins-meistbesuchte-sehenswuerdigkeiten-attraktionen",
+      "titles": {
+        "dewiki": "Bode-Museum",
+        "enwiki": "Bode Museum"
+      },
+      "pageviews_by_site": {
+        "dewiki": 33513,
+        "enwiki": 26202
+      },
+      "pageviews": 59715,
+      "fitted_visitors": 611979
+    },
+    {
+      "de_title": "Gemäldegalerie (Berlin)",
+      "annual_visitors": 192948,
+      "year": "2023",
+      "source_url": "https://about.visitberlin.de/was-sind-berlins-meistbesuchte-sehenswuerdigkeiten-attraktionen",
+      "titles": {
+        "dewiki": "Gemäldegalerie (Berlin)",
+        "enwiki": "Gemäldegalerie, Berlin"
+      },
+      "pageviews_by_site": {
+        "dewiki": 17818,
+        "enwiki": 24888
+      },
+      "pageviews": 42706,
+      "fitted_visitors": 437665
+    },
+    {
+      "de_title": "Gedenkstätte Deutscher Widerstand",
+      "annual_visitors": 191052,
+      "year": "2025",
+      "source_url": "https://about.visitberlin.de/was-sind-berlins-meistbesuchte-sehenswuerdigkeiten-attraktionen",
+      "titles": {
+        "dewiki": "Gedenkstätte Deutscher Widerstand",
+        "enwiki": "German Resistance Memorial Center"
+      },
+      "pageviews_by_site": {
+        "dewiki": 11056,
+        "enwiki": 9582
+      },
+      "pageviews": 20638,
+      "fitted_visitors": 211505
+    },
+    {
+      "de_title": "Komische Oper Berlin",
+      "annual_visitors": 169869,
+      "year": "2025",
+      "source_url": "https://about.visitberlin.de/was-sind-berlins-meistbesuchte-sehenswuerdigkeiten-attraktionen",
+      "titles": {
+        "dewiki": "Komische Oper Berlin",
+        "enwiki": "Komische Oper Berlin"
+      },
+      "pageviews_by_site": {
+        "dewiki": 14910,
+        "enwiki": 4857
+      },
+      "pageviews": 19767,
+      "fitted_visitors": 202579
+    },
+    {
+      "de_title": "Konzerthaus Berlin",
+      "annual_visitors": 156449,
+      "year": "2025",
+      "source_url": "https://about.visitberlin.de/was-sind-berlins-meistbesuchte-sehenswuerdigkeiten-attraktionen",
+      "titles": {
+        "dewiki": "Schauspielhaus (Berlin)",
+        "enwiki": "Konzerthaus Berlin"
+      },
+      "pageviews_by_site": {
+        "dewiki": 22947,
+        "enwiki": 13494
+      },
+      "pageviews": 36441,
+      "fitted_visitors": 373460
+    },
+    {
+      "de_title": "Deutsches Theater Berlin",
+      "annual_visitors": 148538,
+      "year": "2025",
+      "source_url": "https://about.visitberlin.de/was-sind-berlins-meistbesuchte-sehenswuerdigkeiten-attraktionen",
+      "titles": {
+        "dewiki": "Deutsches Theater Berlin",
+        "enwiki": "Deutsches Theater (Berlin)"
+      },
+      "pageviews_by_site": {
+        "dewiki": 18269,
+        "enwiki": 3777
+      },
+      "pageviews": 22046,
+      "fitted_visitors": 225935
+    },
+    {
+      "de_title": "Schaubühne am Lehniner Platz",
+      "annual_visitors": 146650,
+      "year": "2025",
+      "source_url": "https://about.visitberlin.de/was-sind-berlins-meistbesuchte-sehenswuerdigkeiten-attraktionen",
+      "titles": {
+        "dewiki": "Schaubühne am Lehniner Platz",
+        "enwiki": "Schaubühne"
+      },
+      "pageviews_by_site": {
+        "dewiki": 17981,
+        "enwiki": 3922
+      },
+      "pageviews": 21903,
+      "fitted_visitors": 224469
+    },
+    {
+      "de_title": "Volksbühne Berlin",
+      "annual_visitors": 134448,
+      "year": "2025",
+      "source_url": "https://about.visitberlin.de/was-sind-berlins-meistbesuchte-sehenswuerdigkeiten-attraktionen",
+      "titles": {
+        "dewiki": "Volksbühne am Rosa-Luxemburg-Platz",
+        "enwiki": "Volksbühne"
+      },
+      "pageviews_by_site": {
+        "dewiki": 31754,
+        "enwiki": 10079
+      },
+      "pageviews": 41833,
+      "fitted_visitors": 428719
+    },
+    {
+      "de_title": "James-Simon-Galerie",
+      "annual_visitors": 126000,
+      "year": "2025",
+      "source_url": "https://about.visitberlin.de/was-sind-berlins-meistbesuchte-sehenswuerdigkeiten-attraktionen",
+      "titles": {
+        "dewiki": "James-Simon-Galerie",
+        "enwiki": "James Simon Gallery"
+      },
+      "pageviews_by_site": {
+        "dewiki": 9525,
+        "enwiki": 8252
+      },
+      "pageviews": 17777,
+      "fitted_visitors": 182185
+    }
+  ]
+}

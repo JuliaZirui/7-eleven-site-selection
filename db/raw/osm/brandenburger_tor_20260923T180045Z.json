@@ -1,0 +1,59 @@
+{
+  "version": 0.6,
+  "generator": "Overpass API 0.7.62.11 87bfad18",
+  "osm3s": {
+    "timestamp_osm_base": "2026-09-23T17:59:45Z",
+    "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL."
+  },
+  "elements": [
+    {
+      "type": "node",
+      "id": 531305449,
+      "lat": 52.5162817,
+      "lon": 13.3822317,
+      "tags": {
+        "addr:city": "Berlin",
+        "addr:country": "DE",
+        "addr:housenumber": "69",
+        "addr:postcode": "10117",
+        "addr:street": "Unter den Linden",
+        "addr:suburb": "Mitte",
+        "amenity": "cafe",
+        "brewery": "Berliner Pilsener",
+        "contact:phone": "+49 30 44721930",
+        "diet:vegetarian": "yes",
+        "indoor_seating": "yes",
+        "internet_access": "wlan",
+        "name": "Café Lebensart",
+        "name:fr": "Café Lebensart",
+        "opening_hours": "Mo-Th 09:00-20:00, Fr-Su 09:00-22:00",
+        "outdoor_seating": "yes",
+        "payment:credit_cards": "yes",
+        "payment:debit_cards": "yes",
+        "smoking": "no",
+        "website": "https://www.cafe-lebensart.de/cafe-unter-den-linden/",
+        "wheelchair": "no"
+      }
+    },
+    {
+      "type": "node",
+      "id": 5765887860,
+      "lat": 52.5178712,
+      "lon": 13.3802677,
+      "tags": {
+        "addr:city": "Berlin",
+        "addr:country": "DE",
+        "addr:housenumber": "68a",
+        "addr:postcode": "10117",
+        "addr:street": "Wilhelmstraße",
+        "bakery": "yes",
+        "name": "Lindner",
+        "opening_hours": "Mo-Fr 07:30-18:00; Sa-Su off",
+        "outdoor_seating": "sidewalk",
+        "shop": "deli",
+        "website": "https://www.lindner-esskultur.de",
+        "wheelchair": "yes"
+      }
+    }
+  ]
+}

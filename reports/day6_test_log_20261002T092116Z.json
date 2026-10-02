@@ -1,0 +1,98 @@
+{
+  "run_at": "2026-10-02T09:21:16.339596+00:00",
+  "python": "3.9.6",
+  "categories": {
+    "missing_data": {
+      "tests": 20,
+      "passed": 20,
+      "failed": 0,
+      "errors": 0,
+      "seconds": 0.16,
+      "mocked_api_calls": 0,
+      "real_api_calls": 0,
+      "llm_tokens": 0,
+      "cost_eur": 0.0,
+      "problems": []
+    },
+    "duplicate_records": {
+      "tests": 14,
+      "passed": 14,
+      "failed": 0,
+      "errors": 0,
+      "seconds": 0.059,
+      "mocked_api_calls": 1,
+      "real_api_calls": 0,
+      "llm_tokens": 0,
+      "cost_eur": 0.0,
+      "problems": []
+    },
+    "api_failure": {
+      "tests": 18,
+      "passed": 18,
+      "failed": 0,
+      "errors": 0,
+      "seconds": 1.082,
+      "mocked_api_calls": 49,
+      "real_api_calls": 0,
+      "llm_tokens": 0,
+      "cost_eur": 0.0,
+      "problems": []
+    },
+    "overnight_hours": {
+      "tests": 15,
+      "passed": 15,
+      "failed": 0,
+      "errors": 0,
+      "seconds": 0.006,
+      "mocked_api_calls": 0,
+      "real_api_calls": 0,
+      "llm_tokens": 0,
+      "cost_eur": 0.0,
+      "problems": []
+    },
+    "day5_supplementary": {
+      "tests": 40,
+      "passed": 40,
+      "failed": 0,
+      "errors": 0,
+      "seconds": 0.139,
+      "mocked_api_calls": 0,
+      "real_api_calls": 0,
+      "llm_tokens": 0,
+      "cost_eur": 0.0,
+      "problems": []
+    },
+    "multi_source_pois": {
+      "tests": 21,
+      "passed": 21,
+      "failed": 0,
+      "errors": 0,
+      "seconds": 0.019,
+      "mocked_api_calls": 0,
+      "real_api_calls": 0,
+      "llm_tokens": 0,
+      "cost_eur": 0.0,
+      "problems": []
+    }
+  },
+  "totals": {
+    "tests": 128,
+    "passed": 128,
+    "failed": 0,
+    "errors": 0,
+    "mocked_api_calls": 50,
+    "seconds": 1.465
+  },
+  "end_to_end": {
+    "status": "reproducible",
+    "baseline_run_id": 15,
+    "differences": [],
+    "metrics_seconds": 1.999,
+    "report_seconds": 0.052,
+    "citations_verified": 66,
+    "report_lines": 320,
+    "real_api_calls": 0,
+    "llm_tokens": 0,
+    "cost_eur": 0.0
+  }
+}

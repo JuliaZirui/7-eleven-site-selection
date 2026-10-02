@@ -1,0 +1,145 @@
+  [1/139] Tiergarten: 6 competitors
+  [2/139] Storkower Straße: Overpass failed, excluded (https://overpass.atownsend.org.uk/api/interpreter -> incomplete dataset: 0 buildings in radius (canary minimum 25))
+  [3/139] Jannowitzbrücke: 33 competitors
+  [4/139] Westend: 30 competitors
+  [5/139] Hohenzollerndamm: 13 competitors
+  [6/139] Bellevue: 16 competitors
+  [7/139] Amrumer Straße: 39 competitors
+  [8/139] Zoologischer Garten: 122 competitors
+  [9/139] Kurfürstendamm: 138 competitors
+  [10/139] Güntzelstraße: Overpass failed, excluded (https://overpass.atownsend.org.uk/api/interpreter -> incomplete dataset: 0 buildings in radius (canary minimum 25))
+  [11/139] Berliner Straße: Overpass failed, excluded (https://overpass.atownsend.org.uk/api/interpreter -> incomplete dataset: 0 buildings in radius (canary minimum 25))
+  [12/139] Friedrich-Wilhelm-Platz: 25 competitors
+  [13/139] Beusselstraße: 30 competitors
+  [14/139] Deutsche Oper: 67 competitors
+  [15/139] Ernst-Reuter-Platz: 49 competitors
+  [16/139] Innsbrucker Platz: 19 competitors
+  [17/139] Bayerischer Platz: 50 competitors
+  [18/139] Brandenburger Tor: 32 competitors
+  [19/139] Bismarckstraße: 98 competitors
+  [20/139] Richard-Wagner-Platz: 43 competitors
+  [21/139] Westkreuz: 4 competitors
+  [22/139] Eisenacher Straße: 82 competitors
+  [23/139] Julius-Leber-Brücke: 103 competitors
+  [24/139] Südstern: 43 competitors
+  [25/139] Yorckstraße: 27 competitors
+  [26/139] Gneisenaustraße: 108 competitors
+  [27/139] Treptower Park: 25 competitors
+  [28/139] Kaiserdamm: Overpass failed, excluded (https://overpass.atownsend.org.uk/api/interpreter -> incomplete dataset: 0 buildings in radius (canary minimum 25))
+  [29/139] Schönhauser Allee: 145 competitors
+  [30/139] Heidelberger Platz: 12 competitors
+  [31/139] Savignyplatz: Overpass failed, excluded (https://overpass.atownsend.org.uk/api/interpreter -> incomplete dataset: 0 buildings in radius (canary minimum 25))
+  [32/139] Wedding: 55 competitors
+  [33/139] Halensee: 44 competitors
+  [34/139] Ostkreuz: 77 competitors
+  [35/139] Südkreuz (Ringbahn): 22 competitors
+  [36/139] Gesundbrunnen: 60 competitors
+  [37/139] Rosenthaler Platz: 122 competitors
+  [38/139] Tempelhof: 31 competitors
+  [39/139] Nordbahnhof: 37 competitors
+  [40/139] Gleisdreieck: 15 competitors
+  [41/139] Oranienburger Straße: Overpass failed, excluded (https://overpass.atownsend.org.uk/api/interpreter -> incomplete dataset: 0 buildings in radius (canary minimum 25))
+  [42/139] Messe Nord/ZOB: 37 competitors
+  [43/139] Humboldthain: Overpass failed, excluded (https://overpass.atownsend.org.uk/api/interpreter -> incomplete dataset: 1 buildings in radius (canary minimum 25))
+  [44/139] Schöneberg: 52 competitors
+  [45/139] Ostbahnhof: 50 competitors
+  [46/139] Prenzlauer Allee: 60 competitors
+  [47/139] Stadtmitte: 66 competitors
+  [48/139] Sonnenallee: 31 competitors
+  [49/139] Warschauer Straße: 73 competitors
+  [50/139] Greifswalder Straße: 29 competitors
+  [51/139] Seestraße: 94 competitors
+  [52/139] Leopoldplatz: 98 competitors
+  [53/139] Bundesplatz: 34 competitors
+  [54/139] Charlottenburg: 119 competitors
+  [55/139] Naturkundemuseum: 43 competitors
+  [56/139] Voltastraße: 37 competitors
+  [57/139] Moritzplatz: 42 competitors
+  [58/139] Schönleinstraße: 134 competitors
+  [59/139] Boddinstraße: 98 competitors
+  [60/139] Leinestraße: 78 competitors
+  [61/139] Strausberger Platz: 11 competitors
+  [62/139] Weberwiese: 18 competitors
+  [63/139] S Anhalter Bahnhof: 22 competitors
+  [64/139] Potsdamer Platz: 116 competitors
+  [65/139] Hallesches Tor: 29 competitors
+  [66/139] U Potsdamer Platz: 104 competitors
+  [67/139] Hauptbahnhof: 64 competitors
+  [68/139] Hackescher Markt: 119 competitors
+  [69/139] Weinmeisterstraße: 108 competitors
+  [70/139] S Friedrichstraße: 88 competitors
+  [71/139] U Friedrichstraße: 97 competitors
+  [72/139] Anton-Wilhelm-Amo-Straße: 76 competitors
+  [73/139] Landsberger Allee: Overpass failed, excluded (https://overpass.atownsend.org.uk/api/interpreter -> incomplete dataset: 0 buildings in radius (canary minimum 25))
+  [74/139] Friedenau: 30 competitors
+  [75/139] Görlitzer Bahnhof: Overpass failed, excluded (https://overpass.atownsend.org.uk/api/interpreter -> incomplete dataset: 0 buildings in radius (canary minimum 25))
+  [76/139] Klosterstraße: 70 competitors
+  [77/139] Schillingstraße: 14 competitors
+  [78/139] Frankfurter Tor: 61 competitors
+  [79/139] Schlesisches Tor: 109 competitors
+  [80/139] Westhafen: Overpass failed, excluded (https://overpass.atownsend.org.uk/api/interpreter -> incomplete dataset: 0 buildings in radius (canary minimum 25))
+  [81/139] Prinzenstraße: 17 competitors
+  [82/139] Platz der Luftbrücke: 37 competitors
+  [83/139] Kottbusser Tor: Overpass failed, excluded (https://overpass.atownsend.org.uk/api/interpreter -> incomplete dataset: 0 buildings in radius (canary minimum 25))
+  [84/139] Sophie-Charlotte-Platz: 52 competitors
+  [85/139] Nollendorfplatz: 83 competitors
+  [86/139] Spittelmarkt: 27 competitors
+  [87/139] Kurfürstenstraße: 76 competitors
+  [88/139] Schwartzkopffstraße: 25 competitors
+  [89/139] Alexanderplatz: 146 competitors
+  [90/139] Senefelderplatz: 67 competitors
+  [91/139] Konstanzer Straße: Overpass failed, excluded (https://overpass.atownsend.org.uk/api/interpreter -> timeout (attempt 3/3): _ssl.c:1112: The handshake operation timed out)
+  [92/139] Karl-Marx-Straße: 76 competitors
+  [93/139] Oranienburger Tor: 78 competitors
+  [94/139] Adenauerplatz: 74 competitors
+  [95/139] Nauener Platz: 46 competitors
+  [96/139] Mendelssohn-Bartholdy-Park: 27 competitors
+  [97/139] Möckernbrücke: 20 competitors
+  [98/139] Samariterstraße: 118 competitors
+  [99/139] Bülowstraße: 72 competitors
+  [100/139] Hausvogteiplatz: 34 competitors
+  [101/139] Mehringdamm: 59 competitors
+  [102/139] Paradestraße: 2 competitors
+  [103/139] Uhlandstraße: 101 competitors
+  [104/139] Wittenbergplatz: 81 competitors
+  [105/139] Hansaplatz: 15 competitors
+  [106/139] Birkenstraße: 31 competitors
+  [107/139] Blissestraße: 50 competitors
+  [108/139] Bundestag: 0 competitors
+  [109/139] Turmstraße: 90 competitors
+  [110/139] Jungfernheide: 11 competitors
+  [111/139] Märkisches Museum: 32 competitors
+  [112/139] Westkreuz (Stadtbahn): 4 competitors
+  [113/139] Kleistpark: 57 competitors
+  [114/139] Kochstraße/Checkpoint Charlie: 74 competitors
+  [115/139] Rathaus Schöneberg: 27 competitors
+  [116/139] Viktoria-Luise-Platz: 38 competitors
+  [117/139] Rüdesheimer Platz: 23 competitors
+  [118/139] Augsburger Straße: 66 competitors
+  [119/139] Hohenzollernplatz: 57 competitors
+  [120/139] Spichernstraße: 33 competitors
+  [121/139] Fehrbelliner Platz: 18 competitors
+  [122/139] Hermannplatz: 119 competitors
+  [123/139] Rathaus Neukölln: 153 competitors
+  [124/139] Jakob-Kaiser-Platz: 0 competitors
+  [125/139] Wilmersdorfer Straße: 158 competitors
+  [126/139] Halemweg: 7 competitors
+  [127/139] Reinickendorfer Straße: 21 competitors
+  [128/139] Rosa-Luxemburg-Platz: 66 competitors
+  [129/139] Mierendorffplatz: 32 competitors
+  [130/139] Ostkreuz (Ringbahn): 73 competitors
+  [131/139] Yorckstraße (Großgörschenstraße): 36 competitors
+  [132/139] Heinrich-Heine-Straße: 32 competitors
+  [133/139] Eberswalder Straße: 124 competitors
+  [134/139] Bernauer Straße: 44 competitors
+  [135/139] Südkreuz (Nord-Süd): 22 competitors
+  [136/139] Unter den Linden: 92 competitors
+  [137/139] Rotes Rathaus: 99 competitors
+  [138/139] Museumsinsel: 23 competitors
+  [139/139] Berlin Hauptbahnhof Tunnel (S-Bahn): 65 competitors
+127 reference stations -> db/raw/calibration/competition_anchors_20260928T150337Z.json
+  direct_format_competitors      p10=5.0  p25=7.0  p50=12.0  p75=19.0  p90=27.4
+  competitor_density_per_km2     p10=29.8  p25=53.7  p50=97.5  p75=158.2  p90=232.4
+  nearest_competitor_m           p10=7.5  p25=15.0  p50=26.8  p75=44.2  p90=84.6
+  nearest_direct_format_m        p10=11.7  p25=23.8  p50=51.3  p75=104.4  p90=152.2
+EXIT=0

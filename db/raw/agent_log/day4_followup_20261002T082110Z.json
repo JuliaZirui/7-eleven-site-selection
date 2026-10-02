@@ -1,0 +1,35 @@
+[
+  {
+    "area_id": "brandenburger_tor",
+    "gap_type": "missing_poi_hours",
+    "detail": "22 competitor POI(s) with no recorded opening_hours: Wurst, Linden Grill, Segafredo, Curry and Burger, Abia, Pavilion, Monument, Cafe Bar Italia, Panini Bar, Burgerkette, Gate Kebap, way/881527237, Sagar Restaurant, Cafe and Bar, K-bap, Hoflieferantenberlin, Bäckerei Bich Ha, Adlon To Go Coffee Shop, MAREDO Steakhouse Berlin Unter den Linden, Zollernhof, Espresso Eleganza, Midtown Coffeeshop, 7tappi Wein & Feinkost",
+    "tool": "flag_for_field_research",
+    "stop_reason": null,
+    "result": {
+      "status": "flagged",
+      "question": "Confirm opening hours on-site for 22 competitors without recorded hours: Wurst, Linden Grill, Segafredo, Curry and Burger, Abia, Pavilion, Monument, Cafe Bar Italia, Panini Bar, Burgerkette and 12 more."
+    }
+  },
+  {
+    "area_id": "warschauer_strasse",
+    "gap_type": "missing_poi_hours",
+    "detail": "54 competitor POI(s) with no recorded opening_hours: Skatehalle Berlin, Urban Falafel, Bistro Istanbul, Smack Burger, KEBmeUP, Bro Burger, Spätkauf, Kiezbalkon, Kiosk, Loco Chicken, mundis, Eat Berlin, Cosmo, Rewe Deli am Markt, Key‘s, Cigo, nuts & co, Nepal Momo, Bistro Anh Yen, Teufel Curry, SLICE, Kumpir Club, McDonald's, Pizza City, Späti Nightshop, Fatih Servet, Saray, Starbucks, Wrapublic, Waffel, Dakwah, Wat is' mit vegan?, Curry-one, Grandmamaswafflehouse, Eckart Saucen Feinkost, Bean Fifteen Espressobar, Adagio830 Espresso, Holi Cow, Starbucks, 365 Coffee & Snacks, HonigKrone Bäckerei & Café, Fresh Rolls, CI Berlin EKZ East Side Mall, McCafé, Burgermeister, Eat Berlin, SIRPLUS, Yuzu Ramen, Denns BioMarkt, Caffeinery, Starbucks, Curry Fritze, Steinecke, Morsh",
+    "tool": "flag_for_field_research",
+    "stop_reason": null,
+    "result": {
+      "status": "flagged",
+      "question": "Confirm opening hours on-site for 54 competitors without recorded hours: Skatehalle Berlin, Urban Falafel, Bistro Istanbul, Smack Burger, KEBmeUP, Bro Burger, Spätkauf, Kiezbalkon, Kiosk, Loco Chicken and 44 more."
+    }
+  },
+  {
+    "area_id": "schoenhauser_allee",
+    "gap_type": "missing_poi_hours",
+    "detail": "76 competitor POI(s) with no recorded opening_hours: Steinofen Pizza To-Go, Alain Snack, Pizza Star, Spätkauf -Late Shopping, Weingallerie, Clerk's Späti, Stargarder Burger, Pension Palermo, Kuki's, Kaplan, Wilhelm Burger, B.est of Shop, CTR Chicken, Internetcafe - Day & Nightstore, Miran, Happy Food, node/9436615201, Nordsee, Mate Mate Spätshop, Ali Baba Späti, Starbucks, Späti Booth, L'Epicerie, Inka Markt, Waffle Brothers, Joachim Rong Weingalerie, Godshot Coffee Lab, Der Havelbäcker Schivelbeiner Str. Berlin, Sonnenreich wines at Arnimplatz, Veganz Berlin-Prenzlauer Berg, Milchbart, Q62-Lounge, Kamps, Le Petit Café, Balzac Coffee, Kettwurst!, K_eins, Wiener Feinbäcker (Arkadencenter / S-Bhf), Back-Factory, Café Woyda, Cafe Wunderlich, Traumwein Berlin, Portuguese Bakery, Kohlenquelle, Cafe Rhino, Glitzer Café , Eetcafé Linda Carrell Berlin, YogaCafé - Mindful Life, Lavazza, Nah und Gut Kurschus, ShuGa Café Patisserie Artisanale, Balabait Eatery & Deli, Hala Hala, McDonald's, Hermes PaketShop, St. Gaudy Café, Berliner Kaffeekontor, Hermes PaketShop, Spreegold, Panorama-weinhandlung, Café LUC, Eckert Kiosk, Maître vite, Unternehmensgruppe Dr. Eckert, Tchibo Filiale, Party Shop Berlin, Berlin Schönhauser Allee Arc, ServiceStore DB, Francisco Deutschland GmbH, Ciao Bella, Wrapublic, EDEKA Schönhauser Allee, REWE, Aisa Mekong - Mini Markt, مطبخ شغف - Passion, Marietta",
+    "tool": "flag_for_field_research",
+    "stop_reason": null,
+    "result": {
+      "status": "flagged",
+      "question": "Confirm opening hours on-site for 76 competitors without recorded hours: Steinofen Pizza To-Go, Alain Snack, Pizza Star, Spätkauf -Late Shopping, Weingallerie, Clerk's Späti, Stargarder Burger, Pension Palermo, Kuki's, Kaplan and 66 more."
+    }
+  }
+]

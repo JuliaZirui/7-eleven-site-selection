@@ -1,0 +1,16 @@
+.DS_Store
+__pycache__/
+*.pyc
+.venv/
+venv/
+.env
+.pytest_cache/
+
+# Full VBB GTFS feed (~75MB), not committed. The stops-only extract
+# next to it is committed; see db/raw/vbb_gtfs/README.md.
+db/raw/vbb_gtfs/vbb_gtfs_20260924.zip
+
+# Local-only material
+notes/
+reports/archive/
+*.indd

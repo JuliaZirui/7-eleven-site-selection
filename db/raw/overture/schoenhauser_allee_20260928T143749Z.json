@@ -1,0 +1,3323 @@
+{
+  "meta": {
+    "release": "2026-09-23.1",
+    "files": [
+      "https://overturemaps-us-west-2.s3.us-west-2.amazonaws.com/release/2026-09-23.1/theme=places/type=place/part-00011-9aa07e3a-309b-5031-8820-4ec743a80d43-c000.zstd.parquet"
+    ],
+    "bbox": [
+      13.407719388489223,
+      52.54569878409752,
+      13.419537749899085,
+      52.55293598330143
+    ]
+  },
+  "rows": [
+    {
+      "id": "e5f6bb10-5b14-43ac-ab12-a06dfd950951",
+      "name": "Hermes PaketShop",
+      "category_primary": "convenience_store",
+      "category_hierarchy": [
+        "shopping",
+        "convenience_store"
+      ],
+      "confidence": 0.85,
+      "operating_status": null,
+      "brand": null,
+      "upstream_datasets": [
+        "Overture",
+        "Microsoft"
+      ],
+      "lat": 52.545711517333984,
+      "lon": 13.413530349731445
+    },
+    {
+      "id": "c2436b75-5939-4b41-b023-70bd54d25058",
+      "name": "Espresso Weinbar",
+      "category_primary": "cafe",
+      "category_hierarchy": [
+        "food_and_drink",
+        "casual_eatery",
+        "cafe"
+      ],
+      "confidence": 0.6404682397842407,
+      "operating_status": "permanently_closed",
+      "brand": null,
+      "upstream_datasets": [
+        "Overture",
+        "BrightQuery"
+      ],
+      "lat": 52.54570388793945,
+      "lon": 13.413304328918457
+    },
+    {
+      "id": "2945ff44-935a-4660-8f31-4539439139d7",
+      "name": "Späti Spätkauf 24/7 - Zigaretten, Getränke, Snacks",
+      "category_primary": "kiosk",
+      "category_hierarchy": [
+        "shopping",
+        "kiosk"
+      ],
+      "confidence": 0.5,
+      "operating_status": "open",
+      "brand": null,
+      "upstream_datasets": [
+        "Overture",
+        "BrightQuery"
+      ],
+      "lat": 52.54620361328125,
+      "lon": 13.412614822387695
+    },
+    {
+      "id": "e3bd39cd-8dcf-4bdd-b679-c782ffae529f",
+      "name": "Kiosk 127",
+      "category_primary": "kiosk",
+      "category_hierarchy": [
+        "shopping",
+        "kiosk"
+      ],
+      "confidence": 0.5,
+      "operating_status": "open",
+      "brand": null,
+      "upstream_datasets": [
+        "Overture",
+        "BrightQuery"
+      ],
+      "lat": 52.54620361328125,
+      "lon": 13.412614822387695
+    },
+    {
+      "id": "f44c066c-4ff6-492f-991c-630f5845d01c",
+      "name": "Bio Und Feinkost",
+      "category_primary": "delicatessen",
+      "category_hierarchy": [
+        "food_and_drink",
+        "casual_eatery",
+        "delicatessen"
+      ],
+      "confidence": 0.3460305631160736,
+      "operating_status": null,
+      "brand": null,
+      "upstream_datasets": [
+        "Overture",
+        "meta"
+      ],
+      "lat": 52.54643249511719,
+      "lon": 13.41340446472168
+    },
+    {
+      "id": "07280fe9-d71e-4d1a-bc79-d301de727475",
+      "name": "Joachim Rong Weingalerie",
+      "category_primary": "liquor_store",
+      "category_hierarchy": [
+        "shopping",
+        "food_and_beverage_store",
+        "liquor_store"
+      ],
+      "confidence": 0.996475315595788,
+      "operating_status": null,
+      "brand": null,
+      "upstream_datasets": [
+        "Overture",
+        "meta"
+      ],
+      "lat": 52.54650115966797,
+      "lon": 13.411839485168457
+    },
+    {
+      "id": "030173c0-2f62-4b77-81b1-47af893cccd2",
+      "name": "Godshot Coffee Lab",
+      "category_primary": "coffee_shop",
+      "category_hierarchy": [
+        "food_and_drink",
+        "non_alcoholic_beverage_venue",
+        "coffee_shop"
+      ],
+      "confidence": 0.9909214675426483,
+      "operating_status": null,
+      "brand": null,
+      "upstream_datasets": [
+        "Overture",
+        "meta"
+      ],
+      "lat": 52.54652404785156,
+      "lon": 13.410799980163574
+    },
+    {
+      "id": "306fb56b-229b-4e21-993d-685aa7a58573",
+      "name": "Con Calma Café",
+      "category_primary": "cafe",
+      "category_hierarchy": [
+        "food_and_drink",
+        "casual_eatery",
+        "cafe"
+      ],
+      "confidence": 0.5,
+      "operating_status": "permanently_closed",
+      "brand": null,
+      "upstream_datasets": [
+        "Overture",
+        "BrightQuery"
+      ],
+      "lat": 52.55169677734375,
+      "lon": 13.408052444458008
+    },
+    {
+      "id": "6187fa15-f00e-4162-8c78-6324f05f77c3",
+      "name": "Les Enfants Du Paradis",
+      "category_primary": "cafe",
+      "category_hierarchy": [
+        "food_and_drink",
+        "casual_eatery",
+        "cafe"
+      ],
+      "confidence": 0.5,
+      "operating_status": "permanently_closed",
+      "brand": null,
+      "upstream_datasets": [
+        "Overture",
+        "BrightQuery"
+      ],
+      "lat": 52.55169677734375,
+      "lon": 13.408052444458008
+    },
+    {
+      "id": "2a933f6e-2c8d-4fa3-a877-45aa2eabd05a",
+      "name": "Cafe Sgaminegg",
+      "category_primary": "cafe",
+      "category_hierarchy": [
+        "food_and_drink",
+        "casual_eatery",
+        "cafe"
+      ],
+      "confidence": 0.992983438372612,
+      "operating_status": null,
+      "brand": null,
+      "upstream_datasets": [
+        "Overture",
+        "meta"
+      ],
+      "lat": 52.550418853759766,
+      "lon": 13.41039752960205
+    },
+    {
+      "id": "300a1e37-14f1-4921-9c99-08bce94a1f41",
+      "name": "REWE",
+      "category_primary": "grocery_store",
+      "category_hierarchy": [
+        "shopping",
+        "food_and_beverage_store",
+        "grocery_store"
+      ],
+      "confidence": 0.9999723945975304,
+      "operating_status": null,
+      "brand": "REWE",
+      "upstream_datasets": [
+        "Overture",
+        "meta"
+      ],
+      "lat": 52.55078887939453,
+      "lon": 13.409981727600098
+    },
+    {
+      "id": "b3c5f3c3-ebed-43a7-a1db-a734be027cf1",
+      "name": "Brotmeisterei Steinecke",
+      "category_primary": "bakery",
+      "category_hierarchy": [
+        "food_and_drink",
+        "casual_eatery",
+        "bakery"
+      ],
+      "confidence": 0.9787210583686828,
+      "operating_status": null,
+      "brand": null,
+      "upstream_datasets": [
+        "Overture",
+        "meta"
+      ],
+      "lat": 52.550804138183594,
+      "lon": 13.410172462463379
+    },
+    {
+      "id": "37d711d5-1acb-4600-894b-dbc662ca16f3",
+      "name": "Der Havelbäcker Schivelbeiner Str. Berlin",
+      "category_primary": "bakery",
+      "category_hierarchy": [
+        "food_and_drink",
+        "casual_eatery",
+        "bakery"
+      ],
+      "confidence": 0.8980832356214523,
+      "operating_status": null,
+      "brand": null,
+      "upstream_datasets": [
+        "Overture",
+        "meta"
+      ],
+      "lat": 52.5507698059082,
+      "lon": 13.409590721130371
+    },
+    {
+      "id": "59ba7133-5e0e-4e2c-9f6e-8101c1dd0372",
+      "name": "solide - Café & Bar",
+      "category_primary": "cafe",
+      "category_hierarchy": [
+        "food_and_drink",
+        "casual_eatery",
+        "cafe"
+      ],
+      "confidence": 0.995820050239563,
+      "operating_status": null,
+      "brand": null,
+      "upstream_datasets": [
+        "Overture",
+        "meta"
+      ],
+      "lat": 52.5511474609375,
+      "lon": 13.410635948181152
+    },
+    {
+      "id": "70daf902-e810-40f6-b5c5-70d04f058e21",
+      "name": "Café Ravn",
+      "category_primary": "coffee_shop",
+      "category_hierarchy": [
+        "food_and_drink",
+        "non_alcoholic_beverage_venue",
+        "coffee_shop"
+      ],
+      "confidence": 0.5,
+      "operating_status": "open",
+      "brand": null,
+      "upstream_datasets": [
+        "Overture",
+        "BrightQuery"
+      ],
+      "lat": 52.551361083984375,
+      "lon": 13.410685539245605
+    },
+    {
+      "id": "0df6abd5-8f3a-44b0-80c7-476c12db8afc",
+      "name": "Sonnenreich wines at Arnimplatz",
+      "category_primary": "liquor_store",
+      "category_hierarchy": [
+        "shopping",
+        "food_and_beverage_store",
+        "liquor_store"
+      ],
+      "confidence": 0.997281896173954,
+      "operating_status": null,
+      "brand": null,
+      "upstream_datasets": [
+        "Overture",
+        "meta"
+      ],
+      "lat": 52.551536560058594,
+      "lon": 13.410638809204102
+    },
+    {
+      "id": "37e992be-5a88-473c-bedf-69c91ca3b014",
+      "name": "Veganz Berlin-Prenzlauer Berg",
+      "category_primary": "grocery_store",
+      "category_hierarchy": [
+        "shopping",
+        "food_and_beverage_store",
+        "grocery_store"
+      ],
+      "confidence": 0.9655,
+      "operating_status": null,
+      "brand": null,
+      "upstream_datasets": [
+        "Overture",
+        "Microsoft"
+      ],
+      "lat": 52.55096435546875,
+      "lon": 13.408605575561523
+    },
+    {
+      "id": "b5a9603e-3011-4304-ac25-53891392cd3b",
+      "name": "Siebert Bakery",
+      "category_primary": "bakery",
+      "category_hierarchy": [
+        "food_and_drink",
+        "casual_eatery",
+        "bakery"
+      ],
+      "confidence": 0.9988376560807228,
+      "operating_status": null,
+      "brand": null,
+      "upstream_datasets": [
+        "Overture",
+        "meta"
+      ],
+      "lat": 52.55292892456055,
+      "lon": 13.408327102661133
+    },
+    {
+      "id": "7a4fc7a2-9c38-4f86-b19b-b043bdf3f5e8",
+      "name": "Café Gold",
+      "category_primary": "cafe",
+      "category_hierarchy": [
+        "food_and_drink",
+        "casual_eatery",
+        "cafe"
+      ],
+      "confidence": 0.5,
+      "operating_status": "open",
+      "brand": null,
+      "upstream_datasets": [
+        "Overture",
+        "BrightQuery"
+      ],
+      "lat": 52.55242156982422,
+      "lon": 13.411755561828613
+    },
+    {
+      "id": "4a45e1dc-0e66-4a2f-8c55-d9e85079bf31",
+      "name": "Kalopsia",
+      "category_primary": "cafe",
+      "category_hierarchy": [
+        "food_and_drink",
+        "casual_eatery",
+        "cafe"
+      ],
+      "confidence": 0.5,
+      "operating_status": "open",
+      "brand": null,
+      "upstream_datasets": [
+        "Overture",
+        "BrightQuery"
+      ],
+      "lat": 52.55242156982422,
+      "lon": 13.411755561828613
+    },
+    {
+      "id": "3493aa64-a6fc-4ada-ab52-575fbc1c1e08",
+      "name": "Milchbart",
+      "category_primary": "cafe",
+      "category_hierarchy": [
+        "food_and_drink",
+        "casual_eatery",
+        "cafe"
+      ],
+      "confidence": 0.8890505433082581,
+      "operating_status": null,
+      "brand": null,
+      "upstream_datasets": [
+        "Overture",
+        "meta"
+      ],
+      "lat": 52.55242156982422,
+      "lon": 13.411850929260254
+    },
+    {
+      "id": "be9fd1cc-f3f7-46ef-a6fc-11e7fd0c475b",
+      "name": "Best Of Shop",
+      "category_primary": "kiosk",
+      "category_hierarchy": [
+        "shopping",
+        "kiosk"
+      ],
+      "confidence": 0.5,
+      "operating_status": "open",
+      "brand": null,
+      "upstream_datasets": [
+        "Overture",
+        "BrightQuery"
+      ],
+      "lat": 52.55111312866211,
+      "lon": 13.413606643676758
+    },
+    {
+      "id": "ae54abe5-22cd-4144-97c7-aab526ad179f",
+      "name": "Allee 111",
+      "category_primary": "coffee_shop",
+      "category_hierarchy": [
+        "food_and_drink",
+        "non_alcoholic_beverage_venue",
+        "coffee_shop"
+      ],
+      "confidence": 0.5,
+      "operating_status": "open",
+      "brand": null,
+      "upstream_datasets": [
+        "Overture",
+        "BrightQuery"
+      ],
+      "lat": 52.55111312866211,
+      "lon": 13.413606643676758
+    },
+    {
+      "id": "f85261b1-4487-4352-ac04-03279b9c806e",
+      "name": "Q62-Lounge",
+      "category_primary": "coffee_shop",
+      "category_hierarchy": [
+        "food_and_drink",
+        "non_alcoholic_beverage_venue",
+        "coffee_shop"
+      ],
+      "confidence": 0.9596611261367798,
+      "operating_status": null,
+      "brand": null,
+      "upstream_datasets": [
+        "Overture",
+        "meta"
+      ],
+      "lat": 52.551151275634766,
+      "lon": 13.41356086730957
+    },
+    {
+      "id": "d92bebd8-25ad-43f1-b72e-a7407392c34c",
+      "name": "Kamps",
+      "category_primary": "bakery",
+      "category_hierarchy": [
+        "food_and_drink",
+        "casual_eatery",
+        "bakery"
+      ],
+      "confidence": 0.8,
+      "operating_status": null,
+      "brand": "Kamps",
+      "upstream_datasets": [
+        "Overture",
+        "AllThePlaces"
+      ],
+      "lat": 52.55172348022461,
+      "lon": 13.412302017211914
+    },
+    {
+      "id": "ac37b5e6-526e-4f30-94ea-50cd0c618449",
+      "name": "Pjano Please",
+      "category_primary": "cafe",
+      "category_hierarchy": [
+        "food_and_drink",
+        "casual_eatery",
+        "cafe"
+      ],
+      "confidence": 0.5,
+      "operating_status": "open",
+      "brand": null,
+      "upstream_datasets": [
+        "Overture",
+        "BrightQuery"
+      ],
+      "lat": 52.550994873046875,
+      "lon": 13.411468505859375
+    },
+    {
+      "id": "77a8539d-9eb9-4e38-9c1e-41b2af2f8610",
+      "name": "Schivelbeiner Café",
+      "category_primary": "cafe",
+      "category_hierarchy": [
+        "food_and_drink",
+        "casual_eatery",
+        "cafe"
+      ],
+      "confidence": 0.5,
+      "operating_status": "open",
+      "brand": null,
+      "upstream_datasets": [
+        "Overture",
+        "BrightQuery"
+      ],
+      "lat": 52.55097579956055,
+      "lon": 13.411701202392578
+    },
+    {
+      "id": "26509181-69de-4dfa-b500-dea722b6c644",
+      "name": "Café Hainz",
+      "category_primary": "cafe",
+      "category_hierarchy": [
+        "food_and_drink",
+        "casual_eatery",
+        "cafe"
+      ],
+      "confidence": 0.5,
+      "operating_status": "open",
+      "brand": null,
+      "upstream_datasets": [
+        "Overture",
+        "BrightQuery"
+      ],
+      "lat": 52.55097579956055,
+      "lon": 13.411701202392578
+    },
+    {
+      "id": "dc3280ca-cac7-4cac-b296-ea799e4ee2b1",
+      "name": "Zuckerstück",
+      "category_primary": "cafe",
+      "category_hierarchy": [
+        "food_and_drink",
+        "casual_eatery",
+        "cafe"
+      ],
+      "confidence": 0.9979105636119843,
+      "operating_status": null,
+      "brand": null,
+      "upstream_datasets": [
+        "Overture",
+        "meta"
+      ],
+      "lat": 52.550941467285156,
+      "lon": 13.41176700592041
+    },
+    {
+      "id": "a0f2df3a-b597-40aa-a772-b38ea2c55208",
+      "name": "L'épicerie",
+      "category_primary": "grocery_store",
+      "category_hierarchy": [
+        "shopping",
+        "food_and_beverage_store",
+        "grocery_store"
+      ],
+      "confidence": 0.5,
+      "operating_status": "open",
+      "brand": null,
+      "upstream_datasets": [
+        "Overture",
+        "BrightQuery"
+      ],
+      "lat": 52.55039596557617,
+      "lon": 13.413477897644043
+    },
+    {
+      "id": "65d35ecf-cac2-4c11-9bf7-99e189ade256",
+      "name": "Le Petit Café",
+      "category_primary": "bakery",
+      "category_hierarchy": [
+        "food_and_drink",
+        "casual_eatery",
+        "bakery"
+      ],
+      "confidence": 0.8570402264595032,
+      "operating_status": null,
+      "brand": null,
+      "upstream_datasets": [
+        "Overture",
+        "meta"
+      ],
+      "lat": 52.550113677978516,
+      "lon": 13.413541793823242
+    },
+    {
+      "id": "4105630a-826f-4f52-b46a-c00ba8aa3eaa",
+      "name": "Balzac Coffee",
+      "category_primary": "coffee_shop",
+      "category_hierarchy": [
+        "food_and_drink",
+        "non_alcoholic_beverage_venue",
+        "coffee_shop"
+      ],
+      "confidence": 0.77,
+      "operating_status": null,
+      "brand": null,
+      "upstream_datasets": [
+        "Overture",
+        "Foursquare"
+      ],
+      "lat": 52.54978561401367,
+      "lon": 13.41337776184082
+    },
+    {
+      "id": "ec74e963-034d-4372-9aa7-ae6a6c497954",
+      "name": "Espresso House",
+      "category_primary": "coffee_shop",
+      "category_hierarchy": [
+        "food_and_drink",
+        "non_alcoholic_beverage_venue",
+        "coffee_shop"
+      ],
+      "confidence": 0.9995681972503662,
+      "operating_status": null,
+      "brand": "Espresso House",
+      "upstream_datasets": [
+        "Overture",
+        "meta"
+      ],
+      "lat": 52.549835205078125,
+      "lon": 13.413387298583984
+    },
+    {
+      "id": "1694061b-36f4-432f-9a4f-530be910a07c",
+      "name": "Alain Snack",
+      "category_primary": "fast_food_restaurant",
+      "category_hierarchy": [
+        "food_and_drink",
+        "casual_eatery",
+        "fast_food_restaurant"
+      ],
+      "confidence": 0.99648721575737,
+      "operating_status": null,
+      "brand": null,
+      "upstream_datasets": [
+        "Overture",
+        "meta"
+      ],
+      "lat": 52.54958724975586,
+      "lon": 13.413393020629883
+    },
+    {
+      "id": "169fadf5-1112-4a24-ae00-676094cae0fe",
+      "name": "Kaplan Döner",
+      "category_primary": "doner_kebab_restaurant",
+      "category_hierarchy": [
+        "food_and_drink",
+        "restaurant",
+        "middle_eastern_restaurant",
+        "turkish_restaurant",
+        "doner_kebab_restaurant"
+      ],
+      "confidence": 0.994535757303238,
+      "operating_status": null,
+      "brand": "Kaplan Europe",
+      "upstream_datasets": [
+        "Overture",
+        "meta"
+      ],
+      "lat": 52.549346923828125,
+      "lon": 13.413359642028809
+    },
+    {
+      "id": "17c21656-5973-4a20-a979-eb7ad4cf5415",
+      "name": "Kettwurst!",
+      "category_primary": "fast_food_restaurant",
+      "category_hierarchy": [
+        "food_and_drink",
+        "casual_eatery",
+        "fast_food_restaurant"
+      ],
+      "confidence": 0.7021308541297913,
+      "operating_status": null,
+      "brand": null,
+      "upstream_datasets": [
+        "Overture",
+        "meta"
+      ],
+      "lat": 52.54937744140625,
+      "lon": 13.413458824157715
+    },
+    {
+      "id": "cf21ee12-7b26-4487-9e26-56a297500030",
+      "name": "Hofpfisterei",
+      "category_primary": "bakery",
+      "category_hierarchy": [
+        "food_and_drink",
+        "casual_eatery",
+        "bakery"
+      ],
+      "confidence": 0.77,
+      "operating_status": null,
+      "brand": null,
+      "upstream_datasets": [
+        "Overture",
+        "Foursquare"
+      ],
+      "lat": 52.54887008666992,
+      "lon": 13.413052558898926
+    },
+    {
+      "id": "e9de36b2-966c-4eed-8c83-efeab965453e",
+      "name": "K_eins",
+      "category_primary": "liquor_store",
+      "category_hierarchy": [
+        "shopping",
+        "food_and_beverage_store",
+        "liquor_store"
+      ],
+      "confidence": 0.9995475835066436,
+      "operating_status": "open",
+      "brand": null,
+      "upstream_datasets": [
+        "Overture",
+        "BrightQuery"
+      ],
+      "lat": 52.54884338378906,
+      "lon": 13.413008689880371
+    },
+    {
+      "id": "b5dec4cf-438e-4197-bbfe-40b6b0a5b565",
+      "name": "Wiener Feinbäcker (Arkadencenter / S-Bhf)",
+      "category_primary": "bakery",
+      "category_hierarchy": [
+        "food_and_drink",
+        "casual_eatery",
+        "bakery"
+      ],
+      "confidence": 0.954,
+      "operating_status": null,
+      "brand": "Wiener Feinbäcker Heberer",
+      "upstream_datasets": [
+        "Overture",
+        "AllThePlaces"
+      ],
+      "lat": 52.548580169677734,
+      "lon": 13.413585662841797
+    },
+    {
+      "id": "1e53818b-f270-4347-a98a-98db839fd7c9",
+      "name": "GutenDag",
+      "category_primary": "fast_food_restaurant",
+      "category_hierarchy": [
+        "food_and_drink",
+        "casual_eatery",
+        "fast_food_restaurant"
+      ],
+      "confidence": 0.9819577919988944,
+      "operating_status": null,
+      "brand": null,
+      "upstream_datasets": [
+        "Overture",
+        "meta"
+      ],
+      "lat": 52.54841232299805,
+      "lon": 13.413544654846191
+    },
+    {
+      "id": "4877a7b4-b856-4331-b0f5-57e32635585b",
+      "name": "Lidl",
+      "category_primary": "grocery_store",
+      "category_hierarchy": [
+        "shopping",
+        "food_and_beverage_store",
+        "grocery_store"
+      ],
+      "confidence": 0.8,
+      "operating_status": null,
+      "brand": "Lidl",
+      "upstream_datasets": [
+        "Overture",
+        "AllThePlaces"
+      ],
+      "lat": 52.548667907714844,
+      "lon": 13.413250923156738
+    },
+    {
+      "id": "13aa5a06-38ff-409d-8b65-1edcb8f1b7ef",
+      "name": "Back-Factory",
+      "category_primary": "bakery",
+      "category_hierarchy": [
+        "food_and_drink",
+        "casual_eatery",
+        "bakery"
+      ],
+      "confidence": 0.77,
+      "operating_status": null,
+      "brand": null,
+      "upstream_datasets": [
+        "Overture",
+        "Foursquare"
+      ],
+      "lat": 52.54872512817383,
+      "lon": 13.413287162780762
+    },
+    {
+      "id": "39b0b41a-b20b-4a29-81fa-96594d66935d",
+      "name": "Café Woyda",
+      "category_primary": "cafe",
+      "category_hierarchy": [
+        "food_and_drink",
+        "casual_eatery",
+        "cafe"
+      ],
+      "confidence": 0.77,
+      "operating_status": null,
+      "brand": null,
+      "upstream_datasets": [
+        "Overture",
+        "Foursquare"
+      ],
+      "lat": 52.5485725402832,
+      "lon": 13.412299156188965
+    },
+    {
+      "id": "a106c9d0-631e-4d9c-bb89-c133c5471aa6",
+      "name": "Asia Markt",
+      "category_primary": "grocery_store",
+      "category_hierarchy": [
+        "shopping",
+        "food_and_beverage_store",
+        "grocery_store"
+      ],
+      "confidence": 0.9981486451625824,
+      "operating_status": null,
+      "brand": null,
+      "upstream_datasets": [
+        "Overture",
+        "meta"
+      ],
+      "lat": 52.54884719848633,
+      "lon": 13.412742614746094
+    },
+    {
+      "id": "11cce848-a1dd-408c-82d3-13745bf9195c",
+      "name": "Cup & Cino Coffeehouse",
+      "category_primary": "cafe",
+      "category_hierarchy": [
+        "food_and_drink",
+        "casual_eatery",
+        "cafe"
+      ],
+      "confidence": 0.5,
+      "operating_status": "open",
+      "brand": null,
+      "upstream_datasets": [
+        "Overture",
+        "BrightQuery"
+      ],
+      "lat": 52.54867172241211,
+      "lon": 13.411636352539062
+    },
+    {
+      "id": "cf7b8926-4f22-479e-8ead-3c5b72470b96",
+      "name": "Cafe Wunderlich",
+      "category_primary": "cafe",
+      "category_hierarchy": [
+        "food_and_drink",
+        "casual_eatery",
+        "cafe"
+      ],
+      "confidence": 0.77,
+      "operating_status": null,
+      "brand": null,
+      "upstream_datasets": [
+        "Overture",
+        "Foursquare"
+      ],
+      "lat": 52.548789978027344,
+      "lon": 13.4111967086792
+    },
+    {
+      "id": "e611473a-ec22-449d-8744-06c6f5b008ac",
+      "name": "Café Mohn",
+      "category_primary": "cafe",
+      "category_hierarchy": [
+        "food_and_drink",
+        "casual_eatery",
+        "cafe"
+      ],
+      "confidence": 0.5,
+      "operating_status": "open",
+      "brand": null,
+      "upstream_datasets": [
+        "Overture",
+        "BrightQuery"
+      ],
+      "lat": 52.54895782470703,
+      "lon": 13.411200523376465
+    },
+    {
+      "id": "146d1729-9c96-4a0f-96eb-418e91e717a9",
+      "name": "Fav'coffee",
+      "category_primary": "coffee_shop",
+      "category_hierarchy": [
+        "food_and_drink",
+        "non_alcoholic_beverage_venue",
+        "coffee_shop"
+      ],
+      "confidence": 0.5943605195077506,
+      "operating_status": "open",
+      "brand": null,
+      "upstream_datasets": [
+        "Overture",
+        "BrightQuery"
+      ],
+      "lat": 52.54895782470703,
+      "lon": 13.411200523376465
+    },
+    {
+      "id": "761199cf-a1b3-431f-b77a-56f2360fa9ed",
+      "name": "Cafe Aya",
+      "category_primary": "cafe",
+      "category_hierarchy": [
+        "food_and_drink",
+        "casual_eatery",
+        "cafe"
+      ],
+      "confidence": 0.5,
+      "operating_status": "permanently_closed",
+      "brand": null,
+      "upstream_datasets": [
+        "Overture",
+        "BrightQuery"
+      ],
+      "lat": 52.54895782470703,
+      "lon": 13.411200523376465
+    },
+    {
+      "id": "a7b274b9-1185-4d37-9176-1277dd53a790",
+      "name": "Bar Salumeria Sigismondo",
+      "category_primary": "coffee_shop",
+      "category_hierarchy": [
+        "food_and_drink",
+        "non_alcoholic_beverage_venue",
+        "coffee_shop"
+      ],
+      "confidence": 0.9999232497744877,
+      "operating_status": "open",
+      "brand": null,
+      "upstream_datasets": [
+        "Overture",
+        "BrightQuery"
+      ],
+      "lat": 52.54893493652344,
+      "lon": 13.411483764648438
+    },
+    {
+      "id": "63af35ab-d8ac-4900-8184-c2375873099c",
+      "name": "Traumwein Berlin",
+      "category_primary": "liquor_store",
+      "category_hierarchy": [
+        "shopping",
+        "food_and_beverage_store",
+        "liquor_store"
+      ],
+      "confidence": 0.9900714968190876,
+      "operating_status": null,
+      "brand": null,
+      "upstream_datasets": [
+        "Overture",
+        "meta"
+      ],
+      "lat": 52.548954010009766,
+      "lon": 13.411500930786133
+    },
+    {
+      "id": "d719de65-bed8-4e9f-a3d8-d576a7139514",
+      "name": "Portuguese Bakery",
+      "category_primary": "bakery",
+      "category_hierarchy": [
+        "food_and_drink",
+        "casual_eatery",
+        "bakery"
+      ],
+      "confidence": 0.8801208734512329,
+      "operating_status": null,
+      "brand": null,
+      "upstream_datasets": [
+        "Overture",
+        "meta"
+      ],
+      "lat": 52.550045013427734,
+      "lon": 13.408472061157227
+    },
+    {
+      "id": "07ef02e1-1091-4eb4-9c35-76997a877df3",
+      "name": "Unser Café",
+      "category_primary": "cafe",
+      "category_hierarchy": [
+        "food_and_drink",
+        "casual_eatery",
+        "cafe"
+      ],
+      "confidence": 0.9981655895709991,
+      "operating_status": null,
+      "brand": null,
+      "upstream_datasets": [
+        "Overture",
+        "meta"
+      ],
+      "lat": 52.55003356933594,
+      "lon": 13.408272743225098
+    },
+    {
+      "id": "ecc86719-a26d-4195-9cc0-aa81ec41b394",
+      "name": "Taste Of Anatolia",
+      "category_primary": "delicatessen",
+      "category_hierarchy": [
+        "food_and_drink",
+        "casual_eatery",
+        "delicatessen"
+      ],
+      "confidence": 0.5,
+      "operating_status": "permanently_closed",
+      "brand": null,
+      "upstream_datasets": [
+        "Overture",
+        "BrightQuery"
+      ],
+      "lat": 52.54909896850586,
+      "lon": 13.408929824829102
+    },
+    {
+      "id": "32bcdf1e-d175-4f4c-aa33-0773b3321004",
+      "name": "Koppe",
+      "category_primary": "cafe",
+      "category_hierarchy": [
+        "food_and_drink",
+        "casual_eatery",
+        "cafe"
+      ],
+      "confidence": 0.5,
+      "operating_status": "open",
+      "brand": null,
+      "upstream_datasets": [
+        "Overture",
+        "BrightQuery"
+      ],
+      "lat": 52.54914474487305,
+      "lon": 13.408218383789062
+    },
+    {
+      "id": "66f2af28-1aad-41db-9965-a0fc88a609a3",
+      "name": "Kohlenquelle",
+      "category_primary": "cafe",
+      "category_hierarchy": [
+        "food_and_drink",
+        "casual_eatery",
+        "cafe"
+      ],
+      "confidence": 0.9999726447393651,
+      "operating_status": null,
+      "brand": null,
+      "upstream_datasets": [
+        "Overture",
+        "meta"
+      ],
+      "lat": 52.54912567138672,
+      "lon": 13.408138275146484
+    },
+    {
+      "id": "7522d27c-8512-4ac7-b0d4-fb1e401f3922",
+      "name": "Bamya",
+      "category_primary": "delicatessen",
+      "category_hierarchy": [
+        "food_and_drink",
+        "casual_eatery",
+        "delicatessen"
+      ],
+      "confidence": 0.5,
+      "operating_status": "open",
+      "brand": null,
+      "upstream_datasets": [
+        "Overture",
+        "BrightQuery"
+      ],
+      "lat": 52.548858642578125,
+      "lon": 13.408470153808594
+    },
+    {
+      "id": "bca4339f-9f2c-4720-b276-6a5f080c8800",
+      "name": "Berlin Kaffee",
+      "category_primary": "cafe",
+      "category_hierarchy": [
+        "food_and_drink",
+        "casual_eatery",
+        "cafe"
+      ],
+      "confidence": 0.5,
+      "operating_status": "open",
+      "brand": null,
+      "upstream_datasets": [
+        "Overture",
+        "BrightQuery"
+      ],
+      "lat": 52.548404693603516,
+      "lon": 13.410163879394531
+    },
+    {
+      "id": "f401d290-55e5-4757-8c38-06d893ae3b3b",
+      "name": "Bar Centrale",
+      "category_primary": "coffee_shop",
+      "category_hierarchy": [
+        "food_and_drink",
+        "non_alcoholic_beverage_venue",
+        "coffee_shop"
+      ],
+      "confidence": 0.5,
+      "operating_status": "permanently_closed",
+      "brand": null,
+      "upstream_datasets": [
+        "Overture",
+        "BrightQuery"
+      ],
+      "lat": 52.548404693603516,
+      "lon": 13.410163879394531
+    },
+    {
+      "id": "8b5fb3dd-fad3-466a-8541-0f0e3406ea57",
+      "name": "Cafè Canto",
+      "category_primary": "cafe",
+      "category_hierarchy": [
+        "food_and_drink",
+        "casual_eatery",
+        "cafe"
+      ],
+      "confidence": 0.5,
+      "operating_status": "permanently_closed",
+      "brand": null,
+      "upstream_datasets": [
+        "Overture",
+        "BrightQuery"
+      ],
+      "lat": 52.548789978027344,
+      "lon": 13.409582138061523
+    },
+    {
+      "id": "92e7b760-279a-48bd-b092-7bd17f4cf5e9",
+      "name": "Cafe Rhino",
+      "category_primary": "cafe",
+      "category_hierarchy": [
+        "food_and_drink",
+        "casual_eatery",
+        "cafe"
+      ],
+      "confidence": 0.77,
+      "operating_status": null,
+      "brand": null,
+      "upstream_datasets": [
+        "Overture",
+        "Foursquare"
+      ],
+      "lat": 52.54839324951172,
+      "lon": 13.410185813903809
+    },
+    {
+      "id": "51087feb-ba3b-4379-9d17-7ee12d2700d4",
+      "name": "Glitzer Café ",
+      "category_primary": "cafe",
+      "category_hierarchy": [
+        "food_and_drink",
+        "casual_eatery",
+        "cafe"
+      ],
+      "confidence": 0.8749060034751892,
+      "operating_status": null,
+      "brand": null,
+      "upstream_datasets": [
+        "Overture",
+        "meta"
+      ],
+      "lat": 52.54768371582031,
+      "lon": 13.41002082824707
+    },
+    {
+      "id": "e15e5ee0-4068-4606-a030-511cc435f6c3",
+      "name": "Wim Kaffee",
+      "category_primary": "coffee_shop",
+      "category_hierarchy": [
+        "food_and_drink",
+        "non_alcoholic_beverage_venue",
+        "coffee_shop"
+      ],
+      "confidence": 0.39415040612220764,
+      "operating_status": "open",
+      "brand": null,
+      "upstream_datasets": [
+        "Overture",
+        "BrightQuery"
+      ],
+      "lat": 52.547672271728516,
+      "lon": 13.41000747680664
+    },
+    {
+      "id": "d6430848-df73-4660-84f1-30513f631085",
+      "name": "Eetcafé Linda Carrell Berlin",
+      "category_primary": "coffee_shop",
+      "category_hierarchy": [
+        "food_and_drink",
+        "non_alcoholic_beverage_venue",
+        "coffee_shop"
+      ],
+      "confidence": 0.9920649993419647,
+      "operating_status": null,
+      "brand": null,
+      "upstream_datasets": [
+        "Overture",
+        "Microsoft"
+      ],
+      "lat": 52.548091888427734,
+      "lon": 13.40983772277832
+    },
+    {
+      "id": "b0d5ae21-6e36-47c8-a771-1ca660c7cc44",
+      "name": "Kűcűk Kanaria Kaffebar",
+      "category_primary": "cafe",
+      "category_hierarchy": [
+        "food_and_drink",
+        "casual_eatery",
+        "cafe"
+      ],
+      "confidence": 0.5,
+      "operating_status": "open",
+      "brand": null,
+      "upstream_datasets": [
+        "Overture",
+        "BrightQuery"
+      ],
+      "lat": 52.54823303222656,
+      "lon": 13.410127639770508
+    },
+    {
+      "id": "16f09a02-6915-420c-8bc0-f4e76f11f544",
+      "name": "Weingold",
+      "category_primary": "beer_wine_spirits_store",
+      "category_hierarchy": [
+        "shopping",
+        "food_and_beverage_store",
+        "beer_wine_spirits_store"
+      ],
+      "confidence": 0.5,
+      "operating_status": "permanently_closed",
+      "brand": null,
+      "upstream_datasets": [
+        "Overture",
+        "BrightQuery"
+      ],
+      "lat": 52.548301696777344,
+      "lon": 13.40965747833252
+    },
+    {
+      "id": "7f69665c-1d82-4e75-850b-65696fb89b8d",
+      "name": "YogaCafé - Mindful Life",
+      "category_primary": "cafe",
+      "category_hierarchy": [
+        "food_and_drink",
+        "casual_eatery",
+        "cafe"
+      ],
+      "confidence": 0.77,
+      "operating_status": null,
+      "brand": null,
+      "upstream_datasets": [
+        "Overture",
+        "Foursquare"
+      ],
+      "lat": 52.5475959777832,
+      "lon": 13.409470558166504
+    },
+    {
+      "id": "9962148a-d066-4106-919b-4c02097210e7",
+      "name": "Lavazza",
+      "category_primary": "coffee_shop",
+      "category_hierarchy": [
+        "food_and_drink",
+        "non_alcoholic_beverage_venue",
+        "coffee_shop"
+      ],
+      "confidence": 0.77,
+      "operating_status": null,
+      "brand": null,
+      "upstream_datasets": [
+        "Overture",
+        "Foursquare"
+      ],
+      "lat": 52.54718017578125,
+      "lon": 13.409367561340332
+    },
+    {
+      "id": "be86913c-5fdf-438a-bf2f-577aec7721ff",
+      "name": "The Goodcoffee",
+      "category_primary": "coffee_shop",
+      "category_hierarchy": [
+        "food_and_drink",
+        "non_alcoholic_beverage_venue",
+        "coffee_shop"
+      ],
+      "confidence": 0.5,
+      "operating_status": "open",
+      "brand": null,
+      "upstream_datasets": [
+        "Overture",
+        "BrightQuery"
+      ],
+      "lat": 52.54717254638672,
+      "lon": 13.40927505493164
+    },
+    {
+      "id": "fff03c37-0370-4dcd-a2a0-e5a06e6ae6ed",
+      "name": "Nah und Gut Kurschus",
+      "category_primary": "grocery_store",
+      "category_hierarchy": [
+        "shopping",
+        "food_and_beverage_store",
+        "grocery_store"
+      ],
+      "confidence": 0.9775,
+      "operating_status": null,
+      "brand": null,
+      "upstream_datasets": [
+        "Overture",
+        "Microsoft"
+      ],
+      "lat": 52.54717254638672,
+      "lon": 13.409281730651855
+    },
+    {
+      "id": "04c275e1-9572-4e73-95d2-6a46edf8962c",
+      "name": "Shabuvas Gazaca Iqbal",
+      "category_primary": "fast_food_restaurant",
+      "category_hierarchy": [
+        "food_and_drink",
+        "casual_eatery",
+        "fast_food_restaurant"
+      ],
+      "confidence": 0.5,
+      "operating_status": "open",
+      "brand": null,
+      "upstream_datasets": [
+        "Overture",
+        "BrightQuery"
+      ],
+      "lat": 52.54713439941406,
+      "lon": 13.408930778503418
+    },
+    {
+      "id": "1c3dbf98-e8a7-4c6b-b3ee-69a16e26951a",
+      "name": "ShuGa Café Patisserie Artisanale",
+      "category_primary": "cafe",
+      "category_hierarchy": [
+        "food_and_drink",
+        "casual_eatery",
+        "cafe"
+      ],
+      "confidence": 0.9549744129180908,
+      "operating_status": null,
+      "brand": null,
+      "upstream_datasets": [
+        "Overture",
+        "meta"
+      ],
+      "lat": 52.54747009277344,
+      "lon": 13.408960342407227
+    },
+    {
+      "id": "65842e4e-2673-4ab2-8c30-a827ef848ba7",
+      "name": "Balabait Eatery & Deli",
+      "category_primary": "delicatessen",
+      "category_hierarchy": [
+        "food_and_drink",
+        "casual_eatery",
+        "delicatessen"
+      ],
+      "confidence": 0.9927362389887833,
+      "operating_status": "open",
+      "brand": null,
+      "upstream_datasets": [
+        "Overture",
+        "BrightQuery"
+      ],
+      "lat": 52.547428131103516,
+      "lon": 13.408818244934082
+    },
+    {
+      "id": "5c2bab6a-0edd-4f12-8326-68e23e77eb9e",
+      "name": "Shuga",
+      "category_primary": "cafe",
+      "category_hierarchy": [
+        "food_and_drink",
+        "casual_eatery",
+        "cafe"
+      ],
+      "confidence": 0.5,
+      "operating_status": "open",
+      "brand": null,
+      "upstream_datasets": [
+        "Overture",
+        "BrightQuery"
+      ],
+      "lat": 52.547428131103516,
+      "lon": 13.408818244934082
+    },
+    {
+      "id": "d93dc820-38fc-4497-97a1-b27f40edcbb3",
+      "name": "Back-bär",
+      "category_primary": "bakery",
+      "category_hierarchy": [
+        "food_and_drink",
+        "casual_eatery",
+        "bakery"
+      ],
+      "confidence": 0.5,
+      "operating_status": "open",
+      "brand": null,
+      "upstream_datasets": [
+        "Overture",
+        "BrightQuery"
+      ],
+      "lat": 52.547428131103516,
+      "lon": 13.408818244934082
+    },
+    {
+      "id": "2e8eb397-f344-4d65-9c65-d1ed07ba94ef",
+      "name": "Café Fog",
+      "category_primary": "cafe",
+      "category_hierarchy": [
+        "food_and_drink",
+        "casual_eatery",
+        "cafe"
+      ],
+      "confidence": 0.5,
+      "operating_status": "permanently_closed",
+      "brand": null,
+      "upstream_datasets": [
+        "Overture",
+        "BrightQuery"
+      ],
+      "lat": 52.54737854003906,
+      "lon": 13.408273696899414
+    },
+    {
+      "id": "00bd88b6-0c40-4c5a-9b02-6f8b4e71e776",
+      "name": "Samer Café",
+      "category_primary": "cafe",
+      "category_hierarchy": [
+        "food_and_drink",
+        "casual_eatery",
+        "cafe"
+      ],
+      "confidence": 0.9907739162445068,
+      "operating_status": null,
+      "brand": null,
+      "upstream_datasets": [
+        "Overture",
+        "meta"
+      ],
+      "lat": 52.54742431640625,
+      "lon": 13.40833854675293
+    },
+    {
+      "id": "dbaacc05-2ea6-43bc-88ec-a4c61c786647",
+      "name": "Store Prenzlauer Berg - U-Bhf Schönhauser Allee - Berlin",
+      "category_primary": "coffee_shop",
+      "category_hierarchy": [
+        "food_and_drink",
+        "non_alcoholic_beverage_venue",
+        "coffee_shop"
+      ],
+      "confidence": 0.5100145998634877,
+      "operating_status": null,
+      "brand": null,
+      "upstream_datasets": [
+        "Overture",
+        "meta"
+      ],
+      "lat": 52.546844482421875,
+      "lon": 13.408696174621582
+    },
+    {
+      "id": "a8b9eeb0-ca4a-408a-b65c-5c1b69853810",
+      "name": "Brocca Café",
+      "category_primary": "cafe",
+      "category_hierarchy": [
+        "food_and_drink",
+        "casual_eatery",
+        "cafe"
+      ],
+      "confidence": 0.9671173095703125,
+      "operating_status": null,
+      "brand": null,
+      "upstream_datasets": [
+        "Overture",
+        "meta"
+      ],
+      "lat": 52.54752731323242,
+      "lon": 13.409590721130371
+    },
+    {
+      "id": "1bdc540e-3307-4c23-9114-844144de8d78",
+      "name": "Zuccherino",
+      "category_primary": "cafe",
+      "category_hierarchy": [
+        "food_and_drink",
+        "casual_eatery",
+        "cafe"
+      ],
+      "confidence": 0.9853627681732178,
+      "operating_status": null,
+      "brand": null,
+      "upstream_datasets": [
+        "Overture",
+        "meta"
+      ],
+      "lat": 52.54729080200195,
+      "lon": 13.409893035888672
+    },
+    {
+      "id": "a0e20113-15e4-4c24-9144-8fc8f7898135",
+      "name": "Simply Great Whisky",
+      "category_primary": "liquor_store",
+      "category_hierarchy": [
+        "shopping",
+        "food_and_beverage_store",
+        "liquor_store"
+      ],
+      "confidence": 0.9998325756981856,
+      "operating_status": null,
+      "brand": null,
+      "upstream_datasets": [
+        "Overture",
+        "meta"
+      ],
+      "lat": 52.54742431640625,
+      "lon": 13.412261009216309
+    },
+    {
+      "id": "160d42c8-5e9d-4176-8c09-73f5680e4370",
+      "name": "Kaffee, Snacks & Backwaren",
+      "category_primary": "bakery",
+      "category_hierarchy": [
+        "food_and_drink",
+        "casual_eatery",
+        "bakery"
+      ],
+      "confidence": 0.5,
+      "operating_status": "open",
+      "brand": null,
+      "upstream_datasets": [
+        "Overture",
+        "BrightQuery"
+      ],
+      "lat": 52.547401428222656,
+      "lon": 13.411794662475586
+    },
+    {
+      "id": "30321e1d-4da7-4531-bca5-e4ca9b3c99fc",
+      "name": "Hala Hala",
+      "category_primary": "grocery_store",
+      "category_hierarchy": [
+        "shopping",
+        "food_and_beverage_store",
+        "grocery_store"
+      ],
+      "confidence": 0.9690305590629578,
+      "operating_status": null,
+      "brand": null,
+      "upstream_datasets": [
+        "Overture",
+        "meta"
+      ],
+      "lat": 52.54747009277344,
+      "lon": 13.41152286529541
+    },
+    {
+      "id": "d75f786a-bb03-4744-9547-430ff9ec8efb",
+      "name": "BIO COMPANY",
+      "category_primary": "organic_grocery_store",
+      "category_hierarchy": [
+        "shopping",
+        "food_and_beverage_store",
+        "grocery_store",
+        "organic_grocery_store"
+      ],
+      "confidence": 0.9931,
+      "operating_status": null,
+      "brand": null,
+      "upstream_datasets": [
+        "Overture",
+        "Microsoft"
+      ],
+      "lat": 52.54787826538086,
+      "lon": 13.412550926208496
+    },
+    {
+      "id": "338a7971-082f-4757-ac79-b3296c714a0f",
+      "name": "budni",
+      "category_primary": "organic_grocery_store",
+      "category_hierarchy": [
+        "shopping",
+        "food_and_beverage_store",
+        "grocery_store",
+        "organic_grocery_store"
+      ],
+      "confidence": 0.9932427755594253,
+      "operating_status": null,
+      "brand": null,
+      "upstream_datasets": [
+        "Overture",
+        "Microsoft"
+      ],
+      "lat": 52.54831314086914,
+      "lon": 13.413047790527344
+    },
+    {
+      "id": "eaab4e02-0033-4111-9bc2-2d55f30b12fe",
+      "name": "McDonald's",
+      "category_primary": "fast_food_restaurant",
+      "category_hierarchy": [
+        "food_and_drink",
+        "casual_eatery",
+        "fast_food_restaurant"
+      ],
+      "confidence": 0.8465094259381294,
+      "operating_status": null,
+      "brand": "McDonald's",
+      "upstream_datasets": [
+        "Overture",
+        "meta"
+      ],
+      "lat": 52.54836654663086,
+      "lon": 13.413139343261719
+    },
+    {
+      "id": "468accee-7a9d-4fa6-8b68-bc3a65a0036c",
+      "name": "Hermes PaketShop",
+      "category_primary": "convenience_store",
+      "category_hierarchy": [
+        "shopping",
+        "convenience_store"
+      ],
+      "confidence": 0.85,
+      "operating_status": null,
+      "brand": null,
+      "upstream_datasets": [
+        "Overture",
+        "Microsoft"
+      ],
+      "lat": 52.54829025268555,
+      "lon": 13.413338661193848
+    },
+    {
+      "id": "6684adfd-6185-43a8-8cb5-0d1129768f5c",
+      "name": "4 You Spätkauf",
+      "category_primary": "kiosk",
+      "category_hierarchy": [
+        "shopping",
+        "kiosk"
+      ],
+      "confidence": 0.5,
+      "operating_status": "open",
+      "brand": null,
+      "upstream_datasets": [
+        "Overture",
+        "BrightQuery"
+      ],
+      "lat": 52.54789352416992,
+      "lon": 13.413060188293457
+    },
+    {
+      "id": "f7fdf9e7-159a-4fc3-b059-09e4f3026669",
+      "name": "Daddy‘s Kebap",
+      "category_primary": "doner_kebab_restaurant",
+      "category_hierarchy": [
+        "food_and_drink",
+        "restaurant",
+        "middle_eastern_restaurant",
+        "turkish_restaurant",
+        "doner_kebab_restaurant"
+      ],
+      "confidence": 0.5,
+      "operating_status": "open",
+      "brand": null,
+      "upstream_datasets": [
+        "Overture",
+        "BrightQuery"
+      ],
+      "lat": 52.54789352416992,
+      "lon": 13.413060188293457
+    },
+    {
+      "id": "f095273a-c75f-468b-9fe7-8a2c71e7252a",
+      "name": "Kuki`s",
+      "category_primary": "kiosk",
+      "category_hierarchy": [
+        "shopping",
+        "kiosk"
+      ],
+      "confidence": 0.5,
+      "operating_status": "open",
+      "brand": null,
+      "upstream_datasets": [
+        "Overture",
+        "BrightQuery"
+      ],
+      "lat": 52.54789352416992,
+      "lon": 13.413060188293457
+    },
+    {
+      "id": "509e72f2-9a60-4d7e-9efa-8930dcb71a24",
+      "name": "Caffè Xpress",
+      "category_primary": "coffee_shop",
+      "category_hierarchy": [
+        "food_and_drink",
+        "non_alcoholic_beverage_venue",
+        "coffee_shop"
+      ],
+      "confidence": 0.5,
+      "operating_status": "permanently_closed",
+      "brand": null,
+      "upstream_datasets": [
+        "Overture",
+        "BrightQuery"
+      ],
+      "lat": 52.54743576049805,
+      "lon": 13.412954330444336
+    },
+    {
+      "id": "c5a7a1db-d07b-47d5-8b7d-71f5e8d12020",
+      "name": "Konditorei Krautzig",
+      "category_primary": "bakery",
+      "category_hierarchy": [
+        "food_and_drink",
+        "casual_eatery",
+        "bakery"
+      ],
+      "confidence": 0.9941483527421952,
+      "operating_status": null,
+      "brand": null,
+      "upstream_datasets": [
+        "Overture",
+        "meta"
+      ],
+      "lat": 52.547142028808594,
+      "lon": 13.412880897521973
+    },
+    {
+      "id": "ad2785a1-1400-4b21-922a-194a3681a3b0",
+      "name": "Formidable",
+      "category_primary": "sandwich_shop",
+      "category_hierarchy": [
+        "food_and_drink",
+        "casual_eatery",
+        "sandwich_shop"
+      ],
+      "confidence": 0.9999637158792539,
+      "operating_status": null,
+      "brand": null,
+      "upstream_datasets": [
+        "Overture",
+        "meta"
+      ],
+      "lat": 52.547096252441406,
+      "lon": 13.41296672821045
+    },
+    {
+      "id": "09cb2502-ba36-4e24-97a2-f0aacbc7e332",
+      "name": "St. Gaudy Café",
+      "category_primary": "cafe",
+      "category_hierarchy": [
+        "food_and_drink",
+        "casual_eatery",
+        "cafe"
+      ],
+      "confidence": 0.77,
+      "operating_status": null,
+      "brand": null,
+      "upstream_datasets": [
+        "Overture",
+        "Foursquare"
+      ],
+      "lat": 52.546783447265625,
+      "lon": 13.412493705749512
+    },
+    {
+      "id": "d8e1767d-637e-4c63-8b58-3033b8a94663",
+      "name": "179 Coffee Bar :)",
+      "category_primary": "cafe",
+      "category_hierarchy": [
+        "food_and_drink",
+        "casual_eatery",
+        "cafe"
+      ],
+      "confidence": 0.9476624429225922,
+      "operating_status": null,
+      "brand": null,
+      "upstream_datasets": [
+        "Overture",
+        "meta"
+      ],
+      "lat": 52.546791076660156,
+      "lon": 13.4137544631958
+    },
+    {
+      "id": "a2ca30cf-e7e9-4307-afcc-febcf4d8797c",
+      "name": "Berliner Kaffeekontor",
+      "category_primary": "coffee_shop",
+      "category_hierarchy": [
+        "food_and_drink",
+        "non_alcoholic_beverage_venue",
+        "coffee_shop"
+      ],
+      "confidence": 0.9996380785405636,
+      "operating_status": null,
+      "brand": null,
+      "upstream_datasets": [
+        "Overture",
+        "meta"
+      ],
+      "lat": 52.54747009277344,
+      "lon": 13.414844512939453
+    },
+    {
+      "id": "fc92ae81-c552-4a28-a722-eb6efa642c22",
+      "name": "Hermes PaketShop",
+      "category_primary": "convenience_store",
+      "category_hierarchy": [
+        "shopping",
+        "convenience_store"
+      ],
+      "confidence": 0.85,
+      "operating_status": null,
+      "brand": null,
+      "upstream_datasets": [
+        "Overture",
+        "Microsoft"
+      ],
+      "lat": 52.547401428222656,
+      "lon": 13.41409969329834
+    },
+    {
+      "id": "44dc6872-1b5a-4788-a5b4-d4e784745e40",
+      "name": "Spreegold",
+      "category_primary": "coffee_shop",
+      "category_hierarchy": [
+        "food_and_drink",
+        "non_alcoholic_beverage_venue",
+        "coffee_shop"
+      ],
+      "confidence": 0.9995895977914333,
+      "operating_status": null,
+      "brand": null,
+      "upstream_datasets": [
+        "Overture",
+        "meta"
+      ],
+      "lat": 52.54780960083008,
+      "lon": 13.413814544677734
+    },
+    {
+      "id": "c6622b82-092c-4cd8-8ded-b102035d8e81",
+      "name": "BioBackHaus",
+      "category_primary": "bakery",
+      "category_hierarchy": [
+        "food_and_drink",
+        "casual_eatery",
+        "bakery"
+      ],
+      "confidence": 0.9832075840234756,
+      "operating_status": null,
+      "brand": "Biobackhaus - Berlin Friedrichshain",
+      "upstream_datasets": [
+        "Overture",
+        "meta"
+      ],
+      "lat": 52.54800033569336,
+      "lon": 13.413802146911621
+    },
+    {
+      "id": "2a243884-e607-40ec-886a-1698b288bb3c",
+      "name": "Caffè Monelli Berlin",
+      "category_primary": "coffee_shop",
+      "category_hierarchy": [
+        "food_and_drink",
+        "non_alcoholic_beverage_venue",
+        "coffee_shop"
+      ],
+      "confidence": 0.9992741802334786,
+      "operating_status": null,
+      "brand": null,
+      "upstream_datasets": [
+        "Overture",
+        "meta"
+      ],
+      "lat": 52.54799270629883,
+      "lon": 13.4154691696167
+    },
+    {
+      "id": "e33b196b-87b0-40fb-8622-c9d4426d63a0",
+      "name": "Le Midi",
+      "category_primary": "cafe",
+      "category_hierarchy": [
+        "food_and_drink",
+        "casual_eatery",
+        "cafe"
+      ],
+      "confidence": 0.998576107621193,
+      "operating_status": null,
+      "brand": null,
+      "upstream_datasets": [
+        "Overture",
+        "meta"
+      ],
+      "lat": 52.54713821411133,
+      "lon": 13.41529655456543
+    },
+    {
+      "id": "e1de386a-04aa-40d3-890a-a50e1e1180b9",
+      "name": "Panorama-weinhandlung",
+      "category_primary": "liquor_store",
+      "category_hierarchy": [
+        "shopping",
+        "food_and_beverage_store",
+        "liquor_store"
+      ],
+      "confidence": 0.9895134127140045,
+      "operating_status": "open",
+      "brand": null,
+      "upstream_datasets": [
+        "Overture",
+        "BrightQuery"
+      ],
+      "lat": 52.547203063964844,
+      "lon": 13.416738510131836
+    },
+    {
+      "id": "12fae2a3-3313-48ac-98ed-678c970ee8e5",
+      "name": "Pépites Weinhandlung",
+      "category_primary": "liquor_store",
+      "category_hierarchy": [
+        "shopping",
+        "food_and_beverage_store",
+        "liquor_store"
+      ],
+      "confidence": 0.29925572872161865,
+      "operating_status": null,
+      "brand": null,
+      "upstream_datasets": [
+        "Overture",
+        "meta"
+      ],
+      "lat": 52.54721450805664,
+      "lon": 13.416719436645508
+    },
+    {
+      "id": "39db73e4-02e6-459e-93d2-736aef6bf623",
+      "name": "Krümel",
+      "category_primary": "coffee_shop",
+      "category_hierarchy": [
+        "food_and_drink",
+        "non_alcoholic_beverage_venue",
+        "coffee_shop"
+      ],
+      "confidence": 0.9984629251973303,
+      "operating_status": "open",
+      "brand": null,
+      "upstream_datasets": [
+        "Overture",
+        "BrightQuery"
+      ],
+      "lat": 52.54697036743164,
+      "lon": 13.417396545410156
+    },
+    {
+      "id": "2859af66-d967-4bb6-9cfe-0fef721e590b",
+      "name": "Café LUC",
+      "category_primary": "cafe",
+      "category_hierarchy": [
+        "food_and_drink",
+        "casual_eatery",
+        "cafe"
+      ],
+      "confidence": 0.9977908933162689,
+      "operating_status": null,
+      "brand": null,
+      "upstream_datasets": [
+        "Overture",
+        "meta"
+      ],
+      "lat": 52.54678726196289,
+      "lon": 13.417570114135742
+    },
+    {
+      "id": "f3d5bb17-9df7-45cf-a824-b82d6a4b65df",
+      "name": "Café Meersalz",
+      "category_primary": "cafe",
+      "category_hierarchy": [
+        "food_and_drink",
+        "casual_eatery",
+        "cafe"
+      ],
+      "confidence": 0.5,
+      "operating_status": "permanently_closed",
+      "brand": null,
+      "upstream_datasets": [
+        "Overture",
+        "BrightQuery"
+      ],
+      "lat": 52.546852111816406,
+      "lon": 13.417730331420898
+    },
+    {
+      "id": "b3380f78-502d-4553-8155-df592d3445a7",
+      "name": "Kaktus",
+      "category_primary": "internet_cafe",
+      "category_hierarchy": [
+        "food_and_drink",
+        "casual_eatery",
+        "cafe",
+        "internet_cafe"
+      ],
+      "confidence": 0.5,
+      "operating_status": "open",
+      "brand": null,
+      "upstream_datasets": [
+        "Overture",
+        "BrightQuery"
+      ],
+      "lat": 52.54686737060547,
+      "lon": 13.418339729309082
+    },
+    {
+      "id": "6b824ac8-83f2-4ab7-8c09-0ca058a54772",
+      "name": "Eckert Kiosk",
+      "category_primary": "convenience_store",
+      "category_hierarchy": [
+        "shopping",
+        "convenience_store"
+      ],
+      "confidence": 0.77,
+      "operating_status": null,
+      "brand": null,
+      "upstream_datasets": [
+        "Overture",
+        "Foursquare"
+      ],
+      "lat": 52.54901123046875,
+      "lon": 13.416545867919922
+    },
+    {
+      "id": "699adf83-24b8-4047-8324-6e408759a762",
+      "name": "Einladen",
+      "category_primary": "convenience_store",
+      "category_hierarchy": [
+        "shopping",
+        "convenience_store"
+      ],
+      "confidence": 0.5,
+      "operating_status": "open",
+      "brand": null,
+      "upstream_datasets": [
+        "Overture",
+        "BrightQuery"
+      ],
+      "lat": 52.549232482910156,
+      "lon": 13.416548728942871
+    },
+    {
+      "id": "52e301f6-bfe8-487f-86d3-8e6f6463f02c",
+      "name": "Inka-Markt",
+      "category_primary": "grocery_store",
+      "category_hierarchy": [
+        "shopping",
+        "food_and_beverage_store",
+        "grocery_store"
+      ],
+      "confidence": 0.9712601006031036,
+      "operating_status": null,
+      "brand": null,
+      "upstream_datasets": [
+        "Overture",
+        "meta"
+      ],
+      "lat": 52.549617767333984,
+      "lon": 13.417659759521484
+    },
+    {
+      "id": "5330436f-43d1-41b7-93e1-ce4c55e97b81",
+      "name": "Mühlenbäck",
+      "category_primary": "bakery",
+      "category_hierarchy": [
+        "food_and_drink",
+        "casual_eatery",
+        "bakery"
+      ],
+      "confidence": 0.9833346307277679,
+      "operating_status": null,
+      "brand": null,
+      "upstream_datasets": [
+        "Overture",
+        "meta"
+      ],
+      "lat": 52.549827575683594,
+      "lon": 13.416982650756836
+    },
+    {
+      "id": "7a32149c-289f-4438-8ed8-655895136ffd",
+      "name": "Cafe-backshop Mühlenbeck Bülent Kalkan",
+      "category_primary": "bakery",
+      "category_hierarchy": [
+        "food_and_drink",
+        "casual_eatery",
+        "bakery"
+      ],
+      "confidence": 0.5,
+      "operating_status": "open",
+      "brand": null,
+      "upstream_datasets": [
+        "Overture",
+        "BrightQuery"
+      ],
+      "lat": 52.54979705810547,
+      "lon": 13.41690444946289
+    },
+    {
+      "id": "e6da75d4-3ae7-4a52-947b-5707e732df33",
+      "name": "Maître vite",
+      "category_primary": "cafe",
+      "category_hierarchy": [
+        "food_and_drink",
+        "casual_eatery",
+        "cafe"
+      ],
+      "confidence": 0.77,
+      "operating_status": null,
+      "brand": null,
+      "upstream_datasets": [
+        "Overture",
+        "Foursquare"
+      ],
+      "lat": 52.54941940307617,
+      "lon": 13.415169715881348
+    },
+    {
+      "id": "c039fca0-3aca-473d-81d2-7f927893addd",
+      "name": "Denns BioMarkt",
+      "category_primary": "organic_grocery_store",
+      "category_hierarchy": [
+        "shopping",
+        "food_and_beverage_store",
+        "grocery_store",
+        "organic_grocery_store"
+      ],
+      "confidence": 0.9994083209991456,
+      "operating_status": null,
+      "brand": "BioMarkt Verbund",
+      "upstream_datasets": [
+        "Overture",
+        "meta"
+      ],
+      "lat": 52.54930877685547,
+      "lon": 13.415757179260254
+    },
+    {
+      "id": "0c5c1e7e-0eed-4e62-b19d-6502d9b01082",
+      "name": "Unternehmensgruppe Dr. Eckert",
+      "category_primary": "gas_station",
+      "category_hierarchy": [
+        "travel_and_transportation",
+        "fueling_station",
+        "gas_station"
+      ],
+      "confidence": 0.85,
+      "operating_status": null,
+      "brand": null,
+      "upstream_datasets": [
+        "Overture",
+        "Microsoft"
+      ],
+      "lat": 52.54963302612305,
+      "lon": 13.416362762451172
+    },
+    {
+      "id": "fa1419a7-fe6d-4f56-b198-6a5b75bbf6a9",
+      "name": "Tchibo Filiale",
+      "category_primary": "cafe",
+      "category_hierarchy": [
+        "food_and_drink",
+        "casual_eatery",
+        "cafe"
+      ],
+      "confidence": 0.85,
+      "operating_status": null,
+      "brand": null,
+      "upstream_datasets": [
+        "Overture",
+        "Microsoft"
+      ],
+      "lat": 52.54963302612305,
+      "lon": 13.416362762451172
+    },
+    {
+      "id": "bdab9704-c535-44ef-afd2-47ede315eafd",
+      "name": "coffee...and bananas",
+      "category_primary": "coffee_shop",
+      "category_hierarchy": [
+        "food_and_drink",
+        "non_alcoholic_beverage_venue",
+        "coffee_shop"
+      ],
+      "confidence": 0.9510246217250824,
+      "operating_status": null,
+      "brand": null,
+      "upstream_datasets": [
+        "Overture",
+        "meta"
+      ],
+      "lat": 52.54856872558594,
+      "lon": 13.416436195373535
+    },
+    {
+      "id": "8c4a8006-a75b-4f78-84d9-df180c51c7d4",
+      "name": "Party Shop Berlin",
+      "category_primary": "liquor_store",
+      "category_hierarchy": [
+        "shopping",
+        "food_and_beverage_store",
+        "liquor_store"
+      ],
+      "confidence": 0.9740346617884583,
+      "operating_status": "open",
+      "brand": null,
+      "upstream_datasets": [
+        "Overture",
+        "BrightQuery"
+      ],
+      "lat": 52.54877471923828,
+      "lon": 13.414095878601074
+    },
+    {
+      "id": "c01b1439-bed8-46b6-ab8b-6e672c049141",
+      "name": "Hunger & Durst",
+      "category_primary": "fast_food_restaurant",
+      "category_hierarchy": [
+        "food_and_drink",
+        "casual_eatery",
+        "fast_food_restaurant"
+      ],
+      "confidence": 0.5,
+      "operating_status": "open",
+      "brand": null,
+      "upstream_datasets": [
+        "Overture",
+        "BrightQuery"
+      ],
+      "lat": 52.54857635498047,
+      "lon": 13.4140625
+    },
+    {
+      "id": "ade90f5f-8d60-42a6-bd81-5623aba9b8d8",
+      "name": "Berlin Schönhauser Allee Arc",
+      "category_primary": "fast_food_restaurant",
+      "category_hierarchy": [
+        "food_and_drink",
+        "casual_eatery",
+        "fast_food_restaurant"
+      ],
+      "confidence": 0.8,
+      "operating_status": null,
+      "brand": "Nordsee",
+      "upstream_datasets": [
+        "Overture",
+        "AllThePlaces"
+      ],
+      "lat": 52.54869079589844,
+      "lon": 13.41376781463623
+    },
+    {
+      "id": "9e6b52f6-e8ad-4626-b562-093b0a8d7048",
+      "name": "Servicestore Db (s Schönhauser Allee)",
+      "category_primary": "convenience_store",
+      "category_hierarchy": [
+        "shopping",
+        "convenience_store"
+      ],
+      "confidence": 0.5,
+      "operating_status": "open",
+      "brand": null,
+      "upstream_datasets": [
+        "Overture",
+        "BrightQuery"
+      ],
+      "lat": 52.5491943359375,
+      "lon": 13.41409969329834
+    },
+    {
+      "id": "d72b3e52-af4b-43ec-84ee-5373d334bccd",
+      "name": "LAP coffee",
+      "category_primary": "coffee_shop",
+      "category_hierarchy": [
+        "food_and_drink",
+        "non_alcoholic_beverage_venue",
+        "coffee_shop"
+      ],
+      "confidence": 0.39022204279899597,
+      "operating_status": null,
+      "brand": null,
+      "upstream_datasets": [
+        "Overture",
+        "meta"
+      ],
+      "lat": 52.5493278503418,
+      "lon": 13.413676261901855
+    },
+    {
+      "id": "e0ad8bf1-b5c1-428b-83cc-ad9d1ab1ea3d",
+      "name": "Subway",
+      "category_primary": "sandwich_shop",
+      "category_hierarchy": [
+        "food_and_drink",
+        "casual_eatery",
+        "sandwich_shop"
+      ],
+      "confidence": 0.9997228277266026,
+      "operating_status": null,
+      "brand": "Subway",
+      "upstream_datasets": [
+        "Overture",
+        "meta"
+      ],
+      "lat": 52.549644470214844,
+      "lon": 13.414349555969238
+    },
+    {
+      "id": "08832389-69ef-4958-8de6-9b7bc420172c",
+      "name": "Starbucks",
+      "category_primary": "coffee_shop",
+      "category_hierarchy": [
+        "food_and_drink",
+        "non_alcoholic_beverage_venue",
+        "coffee_shop"
+      ],
+      "confidence": 0.8,
+      "operating_status": null,
+      "brand": "Starbucks",
+      "upstream_datasets": [
+        "Overture",
+        "AllThePlaces"
+      ],
+      "lat": 52.549503326416016,
+      "lon": 13.414220809936523
+    },
+    {
+      "id": "6c0795a7-32b5-4db6-bd37-77cc5aa0e050",
+      "name": "Burger King",
+      "category_primary": "fast_food_restaurant",
+      "category_hierarchy": [
+        "food_and_drink",
+        "casual_eatery",
+        "fast_food_restaurant"
+      ],
+      "confidence": 0.9992002952098846,
+      "operating_status": null,
+      "brand": "Burger King",
+      "upstream_datasets": [
+        "Overture",
+        "meta"
+      ],
+      "lat": 52.54924774169922,
+      "lon": 13.414037704467773
+    },
+    {
+      "id": "6be618cb-54a7-4d7b-8103-c0f4f7a3caaa",
+      "name": "ServiceStore DB",
+      "category_primary": "kiosk",
+      "category_hierarchy": [
+        "shopping",
+        "kiosk"
+      ],
+      "confidence": 0.9655,
+      "operating_status": null,
+      "brand": null,
+      "upstream_datasets": [
+        "Overture",
+        "Microsoft"
+      ],
+      "lat": 52.54936599731445,
+      "lon": 13.414994239807129
+    },
+    {
+      "id": "d4933870-0640-4426-8359-34ef752eabe7",
+      "name": "Kamps",
+      "category_primary": "bakery",
+      "category_hierarchy": [
+        "food_and_drink",
+        "casual_eatery",
+        "bakery"
+      ],
+      "confidence": 0.967331879734993,
+      "operating_status": null,
+      "brand": null,
+      "upstream_datasets": [
+        "Overture",
+        "meta"
+      ],
+      "lat": 52.549652099609375,
+      "lon": 13.414491653442383
+    },
+    {
+      "id": "9a3c1dc1-1f1d-49eb-8f89-a97ac63a05d4",
+      "name": "Junge Die Bäckerei",
+      "category_primary": "bakery",
+      "category_hierarchy": [
+        "food_and_drink",
+        "casual_eatery",
+        "bakery"
+      ],
+      "confidence": 0.9999601962685585,
+      "operating_status": null,
+      "brand": "Junge Die Bäckerei",
+      "upstream_datasets": [
+        "Overture",
+        "meta"
+      ],
+      "lat": 52.54966354370117,
+      "lon": 13.414712905883789
+    },
+    {
+      "id": "e1b29afc-552d-4b21-b028-0b57eddffb9f",
+      "name": "Hakiki",
+      "category_primary": "doner_kebab_restaurant",
+      "category_hierarchy": [
+        "food_and_drink",
+        "restaurant",
+        "middle_eastern_restaurant",
+        "turkish_restaurant",
+        "doner_kebab_restaurant"
+      ],
+      "confidence": 0.5,
+      "operating_status": "permanently_closed",
+      "brand": null,
+      "upstream_datasets": [
+        "Overture",
+        "BrightQuery"
+      ],
+      "lat": 52.55000686645508,
+      "lon": 13.414236068725586
+    },
+    {
+      "id": "3a9ed2c8-8686-44cf-b8a1-601d24046f83",
+      "name": "Francisco Deutschland GmbH",
+      "category_primary": "grocery_store",
+      "category_hierarchy": [
+        "shopping",
+        "food_and_beverage_store",
+        "grocery_store"
+      ],
+      "confidence": 0.77,
+      "operating_status": null,
+      "brand": null,
+      "upstream_datasets": [
+        "Overture",
+        "Foursquare"
+      ],
+      "lat": 52.54989242553711,
+      "lon": 13.414167404174805
+    },
+    {
+      "id": "e09cd576-2782-4635-9ee6-e286df3c14a9",
+      "name": "Ciao Bella",
+      "category_primary": "grocery_store",
+      "category_hierarchy": [
+        "shopping",
+        "food_and_beverage_store",
+        "grocery_store"
+      ],
+      "confidence": 0.85,
+      "operating_status": null,
+      "brand": null,
+      "upstream_datasets": [
+        "Overture",
+        "Microsoft"
+      ],
+      "lat": 52.5497932434082,
+      "lon": 13.414250373840332
+    },
+    {
+      "id": "bbf19468-47d7-4575-b94f-c891540c4bac",
+      "name": "Wrapublic",
+      "category_primary": "sandwich_shop",
+      "category_hierarchy": [
+        "food_and_drink",
+        "casual_eatery",
+        "sandwich_shop"
+      ],
+      "confidence": 0.77,
+      "operating_status": null,
+      "brand": null,
+      "upstream_datasets": [
+        "Overture",
+        "Foursquare"
+      ],
+      "lat": 52.549739837646484,
+      "lon": 13.414305686950684
+    },
+    {
+      "id": "b00d7738-2c13-40dc-b23d-f218004ffafd",
+      "name": "My Smart Break",
+      "category_primary": "coffee_shop",
+      "category_hierarchy": [
+        "food_and_drink",
+        "non_alcoholic_beverage_venue",
+        "coffee_shop"
+      ],
+      "confidence": 0.5,
+      "operating_status": "permanently_closed",
+      "brand": null,
+      "upstream_datasets": [
+        "Overture",
+        "BrightQuery"
+      ],
+      "lat": 52.54972839355469,
+      "lon": 13.41419506072998
+    },
+    {
+      "id": "e4a9c3a0-636b-4cbf-aa9b-67e46628d2e0",
+      "name": "EDEKA Schönhauser Allee",
+      "category_primary": "grocery_store",
+      "category_hierarchy": [
+        "shopping",
+        "food_and_beverage_store",
+        "grocery_store"
+      ],
+      "confidence": 0.9655,
+      "operating_status": null,
+      "brand": null,
+      "upstream_datasets": [
+        "Overture",
+        "Microsoft"
+      ],
+      "lat": 52.549835205078125,
+      "lon": 13.41397476196289
+    },
+    {
+      "id": "772c3edb-fb87-4e27-9dcf-aad81fc274a3",
+      "name": "REWE",
+      "category_primary": "grocery_store",
+      "category_hierarchy": [
+        "shopping",
+        "food_and_beverage_store",
+        "grocery_store"
+      ],
+      "confidence": 0.9849287095665932,
+      "operating_status": null,
+      "brand": null,
+      "upstream_datasets": [
+        "Overture",
+        "Microsoft"
+      ],
+      "lat": 52.549835205078125,
+      "lon": 13.41397476196289
+    },
+    {
+      "id": "fcfa81d2-32ec-41b2-b8c4-1d9c2d1196d8",
+      "name": "mel&koffie",
+      "category_primary": "bakery",
+      "category_hierarchy": [
+        "food_and_drink",
+        "casual_eatery",
+        "bakery"
+      ],
+      "confidence": 0.7850756645202637,
+      "operating_status": null,
+      "brand": null,
+      "upstream_datasets": [
+        "Overture",
+        "meta"
+      ],
+      "lat": 52.55036544799805,
+      "lon": 13.41423225402832
+    },
+    {
+      "id": "7a5232e8-8755-44e2-aa9f-6d25baf85a56",
+      "name": "Bilakiss",
+      "category_primary": "doner_kebab_restaurant",
+      "category_hierarchy": [
+        "food_and_drink",
+        "restaurant",
+        "middle_eastern_restaurant",
+        "turkish_restaurant",
+        "doner_kebab_restaurant"
+      ],
+      "confidence": 0.9941667708754539,
+      "operating_status": null,
+      "brand": null,
+      "upstream_datasets": [
+        "Overture",
+        "meta"
+      ],
+      "lat": 52.550559997558594,
+      "lon": 13.414372444152832
+    },
+    {
+      "id": "5523c0be-6909-4eef-be97-ab2af33f1c3e",
+      "name": "Aisa Mekong - Mini Markt",
+      "category_primary": "grocery_store",
+      "category_hierarchy": [
+        "shopping",
+        "food_and_beverage_store",
+        "grocery_store"
+      ],
+      "confidence": 0.9650458693504333,
+      "operating_status": null,
+      "brand": null,
+      "upstream_datasets": [
+        "Overture",
+        "meta"
+      ],
+      "lat": 52.55070114135742,
+      "lon": 13.41498851776123
+    },
+    {
+      "id": "3b6382c4-70f7-4048-8c51-60acc3ad79f4",
+      "name": "Shree Time Club",
+      "category_primary": "cafe",
+      "category_hierarchy": [
+        "food_and_drink",
+        "casual_eatery",
+        "cafe"
+      ],
+      "confidence": 0.5,
+      "operating_status": "open",
+      "brand": null,
+      "upstream_datasets": [
+        "Overture",
+        "BrightQuery"
+      ],
+      "lat": 52.550174713134766,
+      "lon": 13.415298461914062
+    },
+    {
+      "id": "db401d29-68b6-4123-9886-0afa9d90125f",
+      "name": "Istanbul-lokanta",
+      "category_primary": "fast_food_restaurant",
+      "category_hierarchy": [
+        "food_and_drink",
+        "casual_eatery",
+        "fast_food_restaurant"
+      ],
+      "confidence": 0.5,
+      "operating_status": "open",
+      "brand": null,
+      "upstream_datasets": [
+        "Overture",
+        "BrightQuery"
+      ],
+      "lat": 52.550174713134766,
+      "lon": 13.415298461914062
+    },
+    {
+      "id": "97c566b2-640f-4fd4-a55e-dabdd1bf16f2",
+      "name": "Kiosk 66",
+      "category_primary": "liquor_store",
+      "category_hierarchy": [
+        "shopping",
+        "food_and_beverage_store",
+        "liquor_store"
+      ],
+      "confidence": 0.5,
+      "operating_status": "open",
+      "brand": null,
+      "upstream_datasets": [
+        "Overture",
+        "BrightQuery"
+      ],
+      "lat": 52.55049133300781,
+      "lon": 13.415604591369629
+    },
+    {
+      "id": "884e5638-eba5-4851-9216-c1d7d643f974",
+      "name": "Weinhaus Berlin",
+      "category_primary": "beer_wine_spirits_store",
+      "category_hierarchy": [
+        "shopping",
+        "food_and_beverage_store",
+        "beer_wine_spirits_store"
+      ],
+      "confidence": 0.5,
+      "operating_status": "open",
+      "brand": null,
+      "upstream_datasets": [
+        "Overture",
+        "BrightQuery"
+      ],
+      "lat": 52.55049133300781,
+      "lon": 13.415604591369629
+    },
+    {
+      "id": "03b43e85-470c-4c44-beb4-532506b10f33",
+      "name": "Ilayda kebaphaus",
+      "category_primary": "doner_kebab_restaurant",
+      "category_hierarchy": [
+        "food_and_drink",
+        "restaurant",
+        "middle_eastern_restaurant",
+        "turkish_restaurant",
+        "doner_kebab_restaurant"
+      ],
+      "confidence": 0.9885886812210083,
+      "operating_status": null,
+      "brand": null,
+      "upstream_datasets": [
+        "Overture",
+        "meta"
+      ],
+      "lat": 52.551414489746094,
+      "lon": 13.413763999938965
+    },
+    {
+      "id": "47a33eee-920c-4f06-a5a8-285ae66d24f0",
+      "name": "Alnatura",
+      "category_primary": "grocery_store",
+      "category_hierarchy": [
+        "shopping",
+        "food_and_beverage_store",
+        "grocery_store"
+      ],
+      "confidence": 0.9999453156232834,
+      "operating_status": null,
+      "brand": "Alnatura",
+      "upstream_datasets": [
+        "Overture",
+        "meta"
+      ],
+      "lat": 52.55167007446289,
+      "lon": 13.413789749145508
+    },
+    {
+      "id": "2f085a68-2441-4163-9c60-6a7aafc7fbc8",
+      "name": "Sokołów",
+      "category_primary": "grocery_store",
+      "category_hierarchy": [
+        "shopping",
+        "food_and_beverage_store",
+        "grocery_store"
+      ],
+      "confidence": 0.5,
+      "operating_status": "open",
+      "brand": null,
+      "upstream_datasets": [
+        "Overture",
+        "BrightQuery"
+      ],
+      "lat": 52.551658630371094,
+      "lon": 13.41370677947998
+    },
+    {
+      "id": "cc64ba74-3e78-4255-b237-066bc8d85080",
+      "name": "Delicious Feinkost",
+      "category_primary": "grocery_store",
+      "category_hierarchy": [
+        "shopping",
+        "food_and_beverage_store",
+        "grocery_store"
+      ],
+      "confidence": 0.5,
+      "operating_status": "open",
+      "brand": null,
+      "upstream_datasets": [
+        "Overture",
+        "BrightQuery"
+      ],
+      "lat": 52.551658630371094,
+      "lon": 13.41370677947998
+    },
+    {
+      "id": "e5d20589-30be-42ba-8b51-201bb1a7181d",
+      "name": "Eiscafe",
+      "category_primary": "cafe",
+      "category_hierarchy": [
+        "food_and_drink",
+        "casual_eatery",
+        "cafe"
+      ],
+      "confidence": 0.5580201148986816,
+      "operating_status": null,
+      "brand": null,
+      "upstream_datasets": [
+        "Overture",
+        "meta"
+      ],
+      "lat": 52.55193328857422,
+      "lon": 13.41377067565918
+    },
+    {
+      "id": "b882aa9f-fb0d-442b-b0f3-80a8cb10173d",
+      "name": "مطبخ شغف - Passion",
+      "category_primary": "fast_food_restaurant",
+      "category_hierarchy": [
+        "food_and_drink",
+        "casual_eatery",
+        "fast_food_restaurant"
+      ],
+      "confidence": 0.734510600566864,
+      "operating_status": null,
+      "brand": null,
+      "upstream_datasets": [
+        "Overture",
+        "meta"
+      ],
+      "lat": 52.55192947387695,
+      "lon": 13.41377067565918
+    },
+    {
+      "id": "baee41d4-8f03-4efd-8311-162a24f2fc67",
+      "name": "Kaffee Nepko",
+      "category_primary": "cafe",
+      "category_hierarchy": [
+        "food_and_drink",
+        "casual_eatery",
+        "cafe"
+      ],
+      "confidence": 0.5,
+      "operating_status": "permanently_closed",
+      "brand": null,
+      "upstream_datasets": [
+        "Overture",
+        "BrightQuery"
+      ],
+      "lat": 52.55192565917969,
+      "lon": 13.413755416870117
+    },
+    {
+      "id": "71858397-d392-4249-b393-af84c1d8696a",
+      "name": "Café Schoko Döner's",
+      "category_primary": "cafe",
+      "category_hierarchy": [
+        "food_and_drink",
+        "casual_eatery",
+        "cafe"
+      ],
+      "confidence": 0.5,
+      "operating_status": "permanently_closed",
+      "brand": null,
+      "upstream_datasets": [
+        "Overture",
+        "BrightQuery"
+      ],
+      "lat": 52.55183029174805,
+      "lon": 13.414559364318848
+    },
+    {
+      "id": "f46231c5-67e2-471a-9ef2-8196d400376b",
+      "name": "Tony's Kiosk",
+      "category_primary": "convenience_store",
+      "category_hierarchy": [
+        "shopping",
+        "convenience_store"
+      ],
+      "confidence": 0.5,
+      "operating_status": "open",
+      "brand": null,
+      "upstream_datasets": [
+        "Overture",
+        "BrightQuery"
+      ],
+      "lat": 52.55183029174805,
+      "lon": 13.414559364318848
+    },
+    {
+      "id": "6e73f5f7-356a-42cc-a912-5d1c6699f2b6",
+      "name": "Getränke Casino Späti",
+      "category_primary": "convenience_store",
+      "category_hierarchy": [
+        "shopping",
+        "convenience_store"
+      ],
+      "confidence": 0.5,
+      "operating_status": "open",
+      "brand": null,
+      "upstream_datasets": [
+        "Overture",
+        "BrightQuery"
+      ],
+      "lat": 52.55183410644531,
+      "lon": 13.415005683898926
+    },
+    {
+      "id": "e397db29-f3c8-4511-818c-041d1163fd1b",
+      "name": "Bisquitte",
+      "category_primary": "bakery",
+      "category_hierarchy": [
+        "food_and_drink",
+        "casual_eatery",
+        "bakery"
+      ],
+      "confidence": 0.9516104459762573,
+      "operating_status": null,
+      "brand": null,
+      "upstream_datasets": [
+        "Overture",
+        "meta"
+      ],
+      "lat": 52.55215835571289,
+      "lon": 13.414565086364746
+    },
+    {
+      "id": "4ad4b35f-bfa3-439f-9d8f-f1e59e533e84",
+      "name": "Bäckerei Café Arrey",
+      "category_primary": "bakery",
+      "category_hierarchy": [
+        "food_and_drink",
+        "casual_eatery",
+        "bakery"
+      ],
+      "confidence": 0.5,
+      "operating_status": "permanently_closed",
+      "brand": null,
+      "upstream_datasets": [
+        "Overture",
+        "BrightQuery"
+      ],
+      "lat": 52.552581787109375,
+      "lon": 13.414708137512207
+    },
+    {
+      "id": "af753f1d-62e8-4408-af6a-55ae5cc2a9ce",
+      "name": "City Food Döner-burger-chicken",
+      "category_primary": "doner_kebab_restaurant",
+      "category_hierarchy": [
+        "food_and_drink",
+        "restaurant",
+        "middle_eastern_restaurant",
+        "turkish_restaurant",
+        "doner_kebab_restaurant"
+      ],
+      "confidence": 0.5,
+      "operating_status": "open",
+      "brand": null,
+      "upstream_datasets": [
+        "Overture",
+        "BrightQuery"
+      ],
+      "lat": 52.55278015136719,
+      "lon": 13.413921356201172
+    },
+    {
+      "id": "a67e4cc9-2609-4c2d-af76-81bd52129b76",
+      "name": "Internetcafe Day + Nightstore",
+      "category_primary": "internet_cafe",
+      "category_hierarchy": [
+        "food_and_drink",
+        "casual_eatery",
+        "cafe",
+        "internet_cafe"
+      ],
+      "confidence": 0.5,
+      "operating_status": "open",
+      "brand": null,
+      "upstream_datasets": [
+        "Overture",
+        "BrightQuery"
+      ],
+      "lat": 52.55278015136719,
+      "lon": 13.413921356201172
+    },
+    {
+      "id": "f457b42c-f503-4db3-9c58-757e30cf4bc6",
+      "name": "KK Lutherstadt W. SaS Erich-W",
+      "category_primary": "convenience_store",
+      "category_hierarchy": [
+        "shopping",
+        "convenience_store"
+      ],
+      "confidence": 0.8,
+      "operating_status": null,
+      "brand": "k kiosk",
+      "upstream_datasets": [
+        "Overture",
+        "AllThePlaces"
+      ],
+      "lat": 52.551963806152344,
+      "lon": 13.418119430541992
+    },
+    {
+      "id": "452c6024-d54d-4b74-9933-dfcc4fa0daa7",
+      "name": "Café Dreieck",
+      "category_primary": "cafe",
+      "category_hierarchy": [
+        "food_and_drink",
+        "casual_eatery",
+        "cafe"
+      ],
+      "confidence": 0.5,
+      "operating_status": "permanently_closed",
+      "brand": null,
+      "upstream_datasets": [
+        "Overture",
+        "BrightQuery"
+      ],
+      "lat": 52.551963806152344,
+      "lon": 13.418792724609375
+    },
+    {
+      "id": "b942e336-f9ee-42d5-8979-f911c38ec589",
+      "name": "Backshop Rialda",
+      "category_primary": "bakery",
+      "category_hierarchy": [
+        "food_and_drink",
+        "casual_eatery",
+        "bakery"
+      ],
+      "confidence": 0.9093218147754669,
+      "operating_status": null,
+      "brand": null,
+      "upstream_datasets": [
+        "Overture",
+        "meta"
+      ],
+      "lat": 52.55116653442383,
+      "lon": 13.418450355529785
+    },
+    {
+      "id": "d31f8e43-34b6-462c-81cb-35b55ad60580",
+      "name": "Saluti Da Berlino",
+      "category_primary": "cafe",
+      "category_hierarchy": [
+        "food_and_drink",
+        "casual_eatery",
+        "cafe"
+      ],
+      "confidence": 0.5,
+      "operating_status": "permanently_closed",
+      "brand": null,
+      "upstream_datasets": [
+        "Overture",
+        "BrightQuery"
+      ],
+      "lat": 52.55014419555664,
+      "lon": 13.417062759399414
+    },
+    {
+      "id": "b9a93006-fad5-41cc-8c65-0c67a970928c",
+      "name": "Café Schneiderei",
+      "category_primary": "cafe",
+      "category_hierarchy": [
+        "food_and_drink",
+        "casual_eatery",
+        "cafe"
+      ],
+      "confidence": 0.9911976456642151,
+      "operating_status": null,
+      "brand": null,
+      "upstream_datasets": [
+        "Overture",
+        "meta"
+      ],
+      "lat": 52.552146911621094,
+      "lon": 13.419317245483398
+    },
+    {
+      "id": "7a38c72e-dc7b-46e2-9fcb-0fcdece161c5",
+      "name": "REWE",
+      "category_primary": "grocery_store",
+      "category_hierarchy": [
+        "shopping",
+        "food_and_beverage_store",
+        "grocery_store"
+      ],
+      "confidence": 0.9999578594207764,
+      "operating_status": null,
+      "brand": "REWE",
+      "upstream_datasets": [
+        "Overture",
+        "meta"
+      ],
+      "lat": 52.54753494262695,
+      "lon": 13.419312477111816
+    },
+    {
+      "id": "62930d4c-a890-4e14-8024-3e2941cae770",
+      "name": "HOST Berlin",
+      "category_primary": "cafe",
+      "category_hierarchy": [
+        "food_and_drink",
+        "casual_eatery",
+        "cafe"
+      ],
+      "confidence": 0.8348475694656372,
+      "operating_status": null,
+      "brand": null,
+      "upstream_datasets": [
+        "Overture",
+        "meta"
+      ],
+      "lat": 52.54628372192383,
+      "lon": 13.419315338134766
+    },
+    {
+      "id": "54ef2cbb-68c7-4263-b822-b3fa5bc1b411",
+      "name": "Signore Batistin",
+      "category_primary": "delicatessen",
+      "category_hierarchy": [
+        "food_and_drink",
+        "casual_eatery",
+        "delicatessen"
+      ],
+      "confidence": 0.9949489507432133,
+      "operating_status": "open",
+      "brand": null,
+      "upstream_datasets": [
+        "Overture",
+        "BrightQuery"
+      ],
+      "lat": 52.546348571777344,
+      "lon": 13.419010162353516
+    },
+    {
+      "id": "ea33db4a-3d51-433c-85da-faab2df0d38e",
+      "name": "Hacker Bäckerei und Konditorei",
+      "category_primary": "bakery",
+      "category_hierarchy": [
+        "food_and_drink",
+        "casual_eatery",
+        "bakery"
+      ],
+      "confidence": 0.9936843812465668,
+      "operating_status": null,
+      "brand": null,
+      "upstream_datasets": [
+        "Overture",
+        "meta"
+      ],
+      "lat": 52.54644012451172,
+      "lon": 13.418744087219238
+    },
+    {
+      "id": "4600e0d7-0b71-48ae-ba3e-e6c03d68fef8",
+      "name": "Pasqualini Il Caffé",
+      "category_primary": "coffee_shop",
+      "category_hierarchy": [
+        "food_and_drink",
+        "non_alcoholic_beverage_venue",
+        "coffee_shop"
+      ],
+      "confidence": 0.5669759511947632,
+      "operating_status": null,
+      "brand": null,
+      "upstream_datasets": [
+        "Overture",
+        "meta"
+      ],
+      "lat": 52.546382904052734,
+      "lon": 13.41887378692627
+    },
+    {
+      "id": "1da925de-08dc-4f71-8e8e-020c8815b57b",
+      "name": "Café It's Love",
+      "category_primary": "coffee_shop",
+      "category_hierarchy": [
+        "food_and_drink",
+        "non_alcoholic_beverage_venue",
+        "coffee_shop"
+      ],
+      "confidence": 0.5,
+      "operating_status": "open",
+      "brand": null,
+      "upstream_datasets": [
+        "Overture",
+        "BrightQuery"
+      ],
+      "lat": 52.546600341796875,
+      "lon": 13.418633460998535
+    },
+    {
+      "id": "beb967f2-afe3-4d06-90b4-5bb27eda927f",
+      "name": "Pursuit of Coffee",
+      "category_primary": "coffee_shop",
+      "category_hierarchy": [
+        "food_and_drink",
+        "non_alcoholic_beverage_venue",
+        "coffee_shop"
+      ],
+      "confidence": 0.9979894691705704,
+      "operating_status": null,
+      "brand": null,
+      "upstream_datasets": [
+        "Overture",
+        "meta"
+      ],
+      "lat": 52.54665756225586,
+      "lon": 13.418505668640137
+    },
+    {
+      "id": "c21f3fa8-e6ad-4131-89c0-d60869b73aed",
+      "name": "FRIEDL Rösterei und Kekse",
+      "category_primary": "coffee_shop",
+      "category_hierarchy": [
+        "food_and_drink",
+        "non_alcoholic_beverage_venue",
+        "coffee_shop"
+      ],
+      "confidence": 0.9989297398924828,
+      "operating_status": null,
+      "brand": null,
+      "upstream_datasets": [
+        "Overture",
+        "meta"
+      ],
+      "lat": 52.54627227783203,
+      "lon": 13.418112754821777
+    },
+    {
+      "id": "e3a8f49b-c4a5-4ea5-9f26-6bafe1f39f99",
+      "name": "Pappelkiosk (papki)",
+      "category_primary": "convenience_store",
+      "category_hierarchy": [
+        "shopping",
+        "convenience_store"
+      ],
+      "confidence": 0.5,
+      "operating_status": "open",
+      "brand": null,
+      "upstream_datasets": [
+        "Overture",
+        "BrightQuery"
+      ],
+      "lat": 52.54596710205078,
+      "lon": 13.417961120605469
+    },
+    {
+      "id": "214242f7-6eba-452d-9eb2-44fdf7fa3382",
+      "name": "Pappelback",
+      "category_primary": "bakery",
+      "category_hierarchy": [
+        "food_and_drink",
+        "casual_eatery",
+        "bakery"
+      ],
+      "confidence": 0.77,
+      "operating_status": null,
+      "brand": null,
+      "upstream_datasets": [
+        "Overture",
+        "Foursquare"
+      ],
+      "lat": 52.54640197753906,
+      "lon": 13.417855262756348
+    },
+    {
+      "id": "c786f539-05d8-435c-8f8b-628ac817e0c2",
+      "name": "Marietta",
+      "category_primary": "cafe",
+      "category_hierarchy": [
+        "food_and_drink",
+        "casual_eatery",
+        "cafe"
+      ],
+      "confidence": 0.77,
+      "operating_status": null,
+      "brand": null,
+      "upstream_datasets": [
+        "Overture",
+        "Foursquare"
+      ],
+      "lat": 52.546630859375,
+      "lon": 13.417476654052734
+    },
+    {
+      "id": "fc5ef4a2-3bb6-4000-8805-dd6c8ac15c1b",
+      "name": "Friendship Coffee",
+      "category_primary": "coffee_shop",
+      "category_hierarchy": [
+        "food_and_drink",
+        "non_alcoholic_beverage_venue",
+        "coffee_shop"
+      ],
+      "confidence": 0.4256295447844676,
+      "operating_status": null,
+      "brand": null,
+      "upstream_datasets": [
+        "Overture",
+        "meta"
+      ],
+      "lat": 52.546119689941406,
+      "lon": 13.414870262145996
+    },
+    {
+      "id": "7a10b523-6ed6-452f-a042-891b02cac601",
+      "name": "Pizza Lala",
+      "category_primary": "cafe",
+      "category_hierarchy": [
+        "food_and_drink",
+        "casual_eatery",
+        "cafe"
+      ],
+      "confidence": 0.5,
+      "operating_status": "open",
+      "brand": null,
+      "upstream_datasets": [
+        "Overture",
+        "BrightQuery"
+      ],
+      "lat": 52.54596710205078,
+      "lon": 13.414762496948242
+    }
+  ]
+}

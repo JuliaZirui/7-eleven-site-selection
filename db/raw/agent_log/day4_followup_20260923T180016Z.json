@@ -1,0 +1,24 @@
+[
+  {
+    "area_id": "warschauer_strasse",
+    "gap_type": "missing_poi_hours",
+    "detail": "3 competitor POI(s) with no recorded opening_hours: KEBmeUP, mundis, Fatih Servet",
+    "tool": "flag_for_field_research",
+    "stop_reason": null,
+    "result": {
+      "status": "flagged",
+      "question": "Confirm opening hours on-site for: KEBmeUP, mundis, Fatih Servet (not recorded in OSM)."
+    }
+  },
+  {
+    "area_id": "schoenhauser_allee",
+    "gap_type": "missing_poi_hours",
+    "detail": "1 competitor POI(s) with no recorded opening_hours: Mate Mate Spätshop",
+    "tool": "flag_for_field_research",
+    "stop_reason": null,
+    "result": {
+      "status": "flagged",
+      "question": "Confirm opening hours on-site for: Mate Mate Spätshop (not recorded in OSM)."
+    }
+  }
+]
