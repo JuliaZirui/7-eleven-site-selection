@@ -68,7 +68,7 @@ The expectations are mine, and I also wrote the rule policies. Three things limi
 
 ## Field-question rubric (0–3)
 
-Graded for the flags listed under `graded` in the scenario file: S03 g1, S04 g1, S05 g1–g2, S10 g1, S12 g1, S13 g2–g3 (9 questions per run).
+Graded for the flags listed under `graded` in the scenario file: S03 g1, S04 g1, S05 g1–g2, S10 g1, S12 g1, S13 g2–g3 (8 questions per run; first published as 9, an arithmetic slip corrected on 2026-10-02 — no expectation changed).
 
 | Point | Awarded when the question… |
 | --- | --- |

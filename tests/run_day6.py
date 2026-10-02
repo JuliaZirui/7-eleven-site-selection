@@ -52,6 +52,7 @@ CATEGORIES: tuple[tuple[str, str, str], ...] = (
     ("multi_source_pois", "Multi-source POI coverage (supplementary)", "test_multi_source_pois"),
     ("agent_policy", "Agent executor & policies (v2)", "test_agent_policy"),
     ("llm_policy", "LLM policy, mocked client (v2)", "test_llm_policy"),
+    ("policy_scenarios", "Pre-registered policy scenarios (v2)", "test_policy_scenarios"),
 )
 
 

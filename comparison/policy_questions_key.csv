@@ -1,0 +1,17 @@
+item_id,policy,scenario,gap_id,repeat
+q001,impact_rule,S10,g1,0
+q002,rule,S10,g1,0
+q003,impact_rule,S03,g1,0
+q004,rule,S04,g1,0
+q005,impact_rule,S05,g2,0
+q006,rule,S13,g2,0
+q007,rule,S12,g1,0
+q008,impact_rule,S13,g3,0
+q009,impact_rule,S04,g1,0
+q010,rule,S05,g2,0
+q011,impact_rule,S13,g2,0
+q012,rule,S13,g3,0
+q013,rule,S03,g1,0
+q014,impact_rule,S05,g1,0
+q015,rule,S05,g1,0
+q016,impact_rule,S12,g1,0
