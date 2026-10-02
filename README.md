@@ -55,7 +55,7 @@ flowchart LR
 | Layer | Responsibility |
 | --- | --- |
 | **Program** (deterministic) | Cleaning, multi-source POI conflation, spatial calculations, opening-hours parsing (incl. overnight spans), scoring, stop conditions |
-| **Follow-up agent** (bounded) | Detects gaps that affect the conclusions (missing, stale or conflicting data), picks a refetch tool or flags the gap for field research, and stays within a call budget of 4 calls per run and 2 per site. It is triggered by data problems, never by a raw count such as "fewer than 8 shops". |
+| **Follow-up agent** (bounded) | Detects gaps that affect the conclusions (missing, stale or conflicting data), picks a refetch tool or flags the gap for field research, and stays within a call budget of 4 calls per run and 2 per site. It is triggered by data problems, never by a raw count such as "fewer than 8 shops". The decision step is a pluggable policy: a fixed rule (default), an impact-ordered rule, or Claude (`claude-opus-5-5`). Whatever the policy proposes passes a guard in plain code (allowed tool, budget, no retry of a failed source) before it runs. |
 
 **Data sources** (all open, no paid APIs): OpenStreetMap, Overture Maps and Foursquare OS Places (competitors, conflated across providers); Berlin LOR / MSS 2025 (residents); IHK Gewerbedaten (workplaces); Wikidata + Wikipedia pageviews + VBB GTFS (visitor draw); DB InfraGO station price classes (a check that the sites see comparable transit volumes).
 
@@ -78,19 +78,22 @@ The store concept: fresh food, coffee and convenience goods, 50–100 m², with 
 
 ## Validation
 
-- **128 automated tests, all passing, run by GitHub Actions on every push (Python 3.9 and 3.12).** They cover missing data, duplicate records, API failures (49 mocked failure paths) and overnight opening hours, plus scoring and report tests.
+- **153 automated tests, all passing, run by GitHub Actions on every push (Python 3.9 and 3.12).** They cover missing data, duplicate records, API failures (49 mocked failure paths) and overnight opening hours, plus scoring, report, agent-guard and LLM-policy tests (mocked client, plus one round trip through the real SDK with an intercepted transport).
 - **End-to-end reproducibility.** A rerun with the network blocked reproduces every score, the ranking and the Monte Carlo shares exactly. Compute takes about 1 second, with no LLM tokens and €0 marginal cost.
 - **Manual vs. tool benchmark** on one node ([comparison/manual_vs_tool.md](comparison/manual_vs_tool.md)):
   - Speed: 32 minutes by hand, about 1 second for the tool once the data is fetched.
   - Coverage: neither inventory was complete. The tool found about twice as many competitors, including several confirmed by three providers that the manual pass missed. The manual pass found 4 places that no open source listed, and got far better opening-hours coverage.
   - The most useful output was the list of disagreements, which became the field checklist. The comparison also exposed two tool defects (an unmerged cross-provider duplicate and Overture category errors); both are logged for v2.
+- **Follow-up policy comparison** ([comparison/policy_eval.md](comparison/policy_eval.md)). Does an LLM decide better than rules which data gaps to spend live calls on? 16 scenarios, with the expected decisions committed before any policy ran ([comparison/policy_scenarios.md](comparison/policy_scenarios.md)):
+  - Rule baseline: 10/16. Impact-ordered rule: 14/16. Both fail exactly the scenarios predicted from their code. The two they cannot pass are "do nothing" cases, where no live call is justified.
+  - LLM policy: implemented and tested against a mocked client; the paid evaluation run (5 repeats per scenario) is pending.
 
 ## Limitations
 
 - **Three sites, one per customer profile.** The tool answers "which of these sites first?", not "are visitor-led sites better than residential ones?". Answering the second question would need several sites per profile.
 - **Demand is proxied, not counted.** Visitor numbers are estimated from Wikipedia pageviews, calibrated on 37 attractions with published counts. Station footfall by time window is not published. Rent, storefront availability and supply chain are out of scope and listed as unscored.
 - **The store concept is hard-coded.** Competitor categories, peak windows and the 400 m radius encode a convenience-store format. The radius is a general industry convention, not a 7-Eleven standard. No 7-Eleven standard could be found in public sources.
-- **The follow-up agent is rule-based.** Tool selection is deterministic, with no LLM in the loop, so every step is auditable and costs nothing per run. Using an LLM where it adds value, such as extracting unstructured sources, is a v2 option.
+- **The LLM policy only decides follow-ups, never scores.** Scoring stays deterministic and reproducible; the rule policy remains the offline default. With three nodes there are few real budget decisions (today's data has none), so the policy comparison runs on constructed scenarios. The value grows with the planned citywide run.
 - **The manual benchmark is a single, non-blind data point.** One node, one analyst (who also built the tool), one pass.
 
 ## Next steps

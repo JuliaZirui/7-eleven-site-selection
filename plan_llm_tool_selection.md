@@ -1,6 +1,6 @@
 # Implementation Plan — LLM Follow-up Policy with Rule Baselines (v2, item 3)
 
-2026-10-01 · Status: proposed, not started · Recommended after [plan_llm_opening_hours.md](plan_llm_opening_hours.md). It is not technically blocked by that plan, but with more tools the choices become more interesting.
+2026-10-01 · Status (2026-10-02): phases 1–3 done; the paid LLM evaluation run and phase 4 are pending (see [comparison/policy_eval.md](comparison/policy_eval.md)). Deviations: scenarios state context and gaps directly instead of seeding a database per scenario; expectations score outcomes, with order checked only for live calls; the SDK runs on Python 3.9 (`anthropic` 0.125), so no Python upgrade was needed · Recommended after [plan_llm_opening_hours.md](plan_llm_opening_hours.md). It is not technically blocked by that plan, but with more tools the choices become more interesting.
 
 ## Goal
 
