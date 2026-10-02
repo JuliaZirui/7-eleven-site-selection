@@ -110,7 +110,9 @@ def evaluate(policy_name: str, scenarios: list[Scenario], repeats: int) -> Path:
             cost = f"  ${r['cost_usd']:.3f} {r['latency_s']:.1f}s" if r["cost_usd"] is not None else ""
             print(f"{policy_name:<12} {s.sid} #{rep}  {'agree' if r['agree'] else 'DISAGREE'}"
                   f"  live={r['live_calls']} rej={r['guard_rejections']}{cost}"
-                  + (f"  ({'; '.join(r['failures'])})" if r["failures"] else ""), flush=True)
+                  + (f"  ({'; '.join(r['failures'])})" if r["failures"] else "")
+                  + (f"\n    !! FELL BACK TO RULES -- not the model's decision: {r['policy_fallback'][:200]}"
+                     if r["policy_fallback"] else ""), flush=True)
     RUNS_DIR.mkdir(parents=True, exist_ok=True)
     path = RUNS_DIR / f"{policy_name}_{stamp}.json"
     path.write_text(json.dumps({"policy": policy_name, "stamp": stamp, "repeats": repeats,
