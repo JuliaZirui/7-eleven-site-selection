@@ -15,12 +15,14 @@ executor then finishes the run with RulePolicy and logs why.
 
 Needs the `anthropic` SDK (requirements-llm.txt) and credentials
 (ANTHROPIC_API_KEY or an `ant auth login` profile) -- only when a real
-client is used. Tests inject a fake client.
+client is used; with a key that is not scoped to a workspace, also set
+ANTHROPIC_WORKSPACE_ID. Tests inject a fake client.
 """
 
 from __future__ import annotations
 
 import json
+import os
 import time
 from typing import Any
 
@@ -128,7 +130,12 @@ class LlmPolicy:
         if client is None:
             import anthropic  # deferred: the offline pipeline does not need the SDK
 
-            client = anthropic.Anthropic()
+            # An account-level key (not scoped to a workspace) must name
+            # the workspace on every request; a workspace key needs nothing.
+            workspace = os.environ.get("ANTHROPIC_WORKSPACE_ID")
+            client = anthropic.Anthropic(
+                **({"default_headers": {"anthropic-workspace-id": workspace}} if workspace else {})
+            )
         self.client = client
         self.model = model
         self.effort = effort
