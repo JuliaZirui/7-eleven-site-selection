@@ -1,5 +1,7 @@
 # Transit-Node Site Screening — Berlin Case Study
 
+[![tests](https://github.com/JuliaZirui/7-eleven-site-selection/actions/workflows/tests.yml/badge.svg)](https://github.com/JuliaZirui/7-eleven-site-selection/actions/workflows/tests.yml)
+
 A desk-research tool for retail expansion teams and the consultants who advise them. Before money is spent on field visits, it ranks candidate sites from public data. For each ranking it shows how far the evidence supports it, whether it holds up under different weightings, and what has to be checked on site.
 
 > **Disclaimer.** This is a hypothetical case I set up myself. It does not represent an actual mandate from 7-Eleven or a market-entry plan by 7-Eleven. The tool ranks sites by *priority for on-site diligence*. It does not forecast revenue, and it does not decide where a store should open.
@@ -76,7 +78,7 @@ The store concept: fresh food, coffee and convenience goods, 50–100 m², with 
 
 ## Validation
 
-- **114 automated tests, all passing.** They cover missing data, duplicate records, API failures (49 mocked failure paths) and overnight opening hours, plus scoring and report tests.
+- **128 automated tests, all passing, run by GitHub Actions on every push (Python 3.9 and 3.12).** They cover missing data, duplicate records, API failures (49 mocked failure paths) and overnight opening hours, plus scoring and report tests.
 - **End-to-end reproducibility.** A rerun with the network blocked reproduces every score, the ranking and the Monte Carlo shares exactly. Compute takes about 1 second, with no LLM tokens and €0 marginal cost.
 - **Manual vs. tool benchmark** on one node ([comparison/manual_vs_tool.md](comparison/manual_vs_tool.md)):
   - Speed: 32 minutes by hand, about 1 second for the tool once the data is fetched.
@@ -106,8 +108,12 @@ The store concept: fresh food, coffee and convenience goods, 50–100 m², with 
 | [project_plan_v3.md](project_plan_v3.md) | Scope, architecture, 7-day plan |
 | `src/` | Ingestion clients, pipelines, conflation, scoring, follow-up agent, report generator |
 | `tests/` | Test suites and the test runner (`run_day6.py`) |
-| `reports/` | Generated site reports, score files and test logs |
+| `reports/` | Latest site report, score file and test log (earlier runs are kept in the database, not in the repo) |
+| `db/` | SQLite database, schema and raw source snapshots ([GTFS note](db/raw/vbb_gtfs/README.md)) |
+| `.github/workflows/` | CI: test suite + offline reproducibility check |
 | `comparison/` | Manual vs. tool benchmark |
+
+Requires Python 3.9+. Everything below runs offline from the committed database and snapshots:
 
 ```bash
 pip install -r requirements.txt
