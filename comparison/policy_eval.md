@@ -1,6 +1,6 @@
 # Follow-up policy evaluation
 
-Generated 2026-10-02 14:25 UTC by `python3 src/policy_eval.py`. Scenarios, expected decisions and the rubric were pre-registered in [policy_scenarios.md](policy_scenarios.md) before any policy ran. Live tools are simulated, so no data API was called.
+Generated 2026-10-02 15:00 UTC by `python3 src/policy_eval.py`. Scenarios, expected decisions and the rubric were pre-registered in [policy_scenarios.md](policy_scenarios.md) before any policy ran. Live tools are simulated, so no data API was called.
 
 Result files: `policy_eval_runs/rule_20261002T100636Z.json`, `policy_eval_runs/impact_rule_20261002T100636Z.json`, `policy_eval_runs/llm_20261002T141128Z.json`.
 
@@ -17,7 +17,6 @@ Result files: `policy_eval_runs/rule_20261002T100636Z.json`, `policy_eval_runs/i
 | Guard rejections per pass | 0.0 | 0.0 | 0.0 |
 | Runs handed to rules after an API failure | 0 | 0 | 0 |
 | Consistency of first decision | n/a (1 run) | n/a (1 run) | 100% |
-| Field-question score (0–3, blind) | not graded yet | not graded yet | not graded yet |
 | Cost per scenario run | $0 (no model) | $0 (no model) | $0.019 |
 | Latency per scenario run | < 0.01 s | < 0.01 s | 10.3 s |
 
@@ -46,4 +45,4 @@ Agreement with several runs per scenario counts the share of runs that agree, so
 
 ## Field questions
 
-56 graded questions exported to `policy_questions_blind.csv` (shuffled, no policy label; key in `policy_questions_key.csv`). Not graded yet.
+Not scored. The pre-registered blind grading was dropped because template questions are recognisable; see [policy_findings.md](policy_findings.md) for side-by-side examples. Every question is in the run files.

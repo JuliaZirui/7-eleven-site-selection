@@ -4,7 +4,7 @@ follow-up policies and write the comparison.
     python3 src/policy_eval.py --policies rule impact_rule
     python3 src/policy_eval.py --policies llm --repeats 5            # Claude API, costs money
     python3 src/policy_eval.py --policies llm --scenarios S01 S09 --repeats 1   # cost probe
-    python3 src/policy_eval.py --report-only [--grades comparison/policy_questions_graded.csv]
+    python3 src/policy_eval.py --report-only
 
 Every run uses a fresh in-memory database built from db/schema.sql and
 simulated live tools, so no data API is called and the real database
@@ -12,19 +12,15 @@ is never touched. Raw results go to comparison/policy_eval_runs/ (one
 file per policy and invocation); the report always uses the newest
 file per policy.
 
-Field questions are exported for blind grading: policy_questions_blind.csv
-has no policy label and a shuffled order; the key is in
-policy_questions_key.csv. Fill the `score` column (0-3, rubric in
-policy_scenarios.md), save as policy_questions_graded.csv, and rerun
-with --report-only --grades.
+Field questions are kept in the run files (`questions` per run). They
+are not scored: the pre-registered blind grading was dropped because
+template questions are recognisable (comparison/policy_findings.md).
 """
 
 from __future__ import annotations
 
 import argparse
-import csv
 import json
-import random
 import sqlite3
 import sys
 from collections import Counter
@@ -133,45 +129,9 @@ def _latest_results() -> dict[str, dict]:
     return latest
 
 
-def _load_grades(path: Path | None) -> dict[tuple[str, str, str, int], int]:
-    if not path or not path.exists():
-        return {}
-    key = {r["item_id"]: r for r in csv.DictReader((OUT_DIR / "policy_questions_key.csv").open())}
-    grades = {}
-    for row in csv.DictReader(path.open()):
-        if row.get("score", "").strip():
-            k = key[row["item_id"]]
-            grades[(k["policy"], k["scenario"], k["gap_id"], int(k["repeat"]))] = int(row["score"])
-    return grades
-
-
-def export_questions(results: dict[str, dict]) -> int:
-    items = []
-    for policy, data in results.items():
-        gap_text = {s.sid: {f"g{i + 1}": g.detail for i, g in enumerate(s.gaps)} for s in SCENARIOS}
-        for r in data["runs"]:
-            for gap_id, q in r["questions"].items():
-                items.append({"policy": policy, "scenario": r["scenario"], "gap_id": gap_id, "repeat": r["repeat"],
-                              "gap": gap_text[r["scenario"]][gap_id], "question": q or ""})
-    random.Random(20261002).shuffle(items)
-    with (OUT_DIR / "policy_questions_blind.csv").open("w", newline="") as f:
-        w = csv.writer(f)
-        w.writerow(["item_id", "scenario", "gap", "question", "score"])
-        for i, it in enumerate(items):
-            w.writerow([f"q{i + 1:03d}", it["scenario"], it["gap"], it["question"], ""])
-    with (OUT_DIR / "policy_questions_key.csv").open("w", newline="") as f:
-        w = csv.writer(f)
-        w.writerow(["item_id", "policy", "scenario", "gap_id", "repeat"])
-        for i, it in enumerate(items):
-            w.writerow([f"q{i + 1:03d}", it["policy"], it["scenario"], it["gap_id"], it["repeat"]])
-    return len(items)
-
-
-def write_report(grades_path: Path | None = None) -> Path:
+def write_report() -> Path:
     results = _latest_results()
     order = [p for p in ("rule", "impact_rule", "llm") if p in results]
-    n_questions = export_questions(results)
-    grades = _load_grades(grades_path)
     sids = [s.sid for s in SCENARIOS]
 
     def agg(policy):
@@ -183,7 +143,6 @@ def write_report(grades_path: Path | None = None) -> Path:
         main = [sid for sid in by_s if sid not in DO_NOTHING]
         consistency = {sid: Counter(tuple(r["first_action"]) for r in rs).most_common(1)[0][1] / len(rs)
                        for sid, rs in by_s.items()}
-        g = [v for (p, *_), v in grades.items() if p == policy]
         costs = [r["cost_usd"] for r in runs if r["cost_usd"] is not None]
         lat = [r["latency_s"] for r in runs if r["latency_s"] is not None]
         reps = results[policy]["repeats"]
@@ -198,7 +157,6 @@ def write_report(grades_path: Path | None = None) -> Path:
             "fallbacks": sum(1 for r in runs if r["policy_fallback"]),
             "runs": len(runs), "repeats": reps,
             "consistency": (sum(consistency.values()) / len(consistency)) if reps > 1 else None,
-            "question_mean": (sum(g) / len(g)) if g else None, "graded": len(g),
             "cost_per_run": (sum(costs) / len(costs)) if costs else None, "cost_total": sum(costs) if costs else None,
             "latency_per_run": (sum(lat) / len(lat)) if lat else None,
         }
@@ -234,7 +192,6 @@ def write_report(grades_path: Path | None = None) -> Path:
     row("Guard rejections per pass", lambda a: f"{a['rejections']:.1f}")
     row("Runs handed to rules after an API failure", lambda a: str(a["fallbacks"]))
     row("Consistency of first decision", lambda a: f"{a['consistency']:.0%}" if a["consistency"] is not None else "n/a (1 run)")
-    row("Field-question score (0–3, blind)", lambda a: f"{a['question_mean']:.2f} (n={a['graded']})" if a["question_mean"] is not None else "not graded yet")
     row("Cost per scenario run", lambda a: f"${a['cost_per_run']:.3f}" if a["cost_per_run"] is not None else "$0 (no model)")
     row("Latency per scenario run", lambda a: f"{a['latency_per_run']:.1f} s" if a["latency_per_run"] is not None else "< 0.01 s")
     L.append("")
@@ -260,8 +217,8 @@ def write_report(grades_path: Path | None = None) -> Path:
     L.append("")
     L.append("## Field questions")
     L.append("")
-    L.append(f"{n_questions} graded questions exported to `policy_questions_blind.csv` (shuffled, no policy label; "
-             "key in `policy_questions_key.csv`). " + (f"{len(grades)} graded so far." if grades else "Not graded yet."))
+    L.append("Not scored. The pre-registered blind grading was dropped because template questions are recognisable; "
+             "see [policy_findings.md](policy_findings.md) for side-by-side examples. Every question is in the run files.")
     path = OUT_DIR / "policy_eval.md"
     path.write_text("\n".join(L) + "\n")
     print(f"-> {path.relative_to(PROJECT_ROOT)}")
@@ -274,7 +231,6 @@ def main() -> None:
     ap.add_argument("--scenarios", nargs="+", help="subset, e.g. S01 S09 (default: all)")
     ap.add_argument("--repeats", type=int, help="runs per scenario (default 1 for rules, 5 for llm)")
     ap.add_argument("--report-only", action="store_true")
-    ap.add_argument("--grades", type=Path, help="graded copy of policy_questions_blind.csv")
     args = ap.parse_args()
 
     if not args.report_only:
@@ -282,7 +238,7 @@ def main() -> None:
         for p in args.policies:
             # Rule policies are deterministic; repeating them only checks that.
             evaluate(p, chosen, args.repeats or (5 if p == "llm" else 1))
-    write_report(args.grades)
+    write_report()
 
 
 if __name__ == "__main__":

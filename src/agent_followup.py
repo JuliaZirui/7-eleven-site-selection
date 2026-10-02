@@ -17,11 +17,12 @@ Per the plan, the trigger for a follow-up call is never a raw count
   - conflicting: the same external_ref reported with a different
                  category or opening_hours_raw across two snapshots
 
-Two live-API tools re-run the *existing* Day 2 ingestion for a single
-area (refetch_osm_pois wraps poi_pipeline.ingest_area; refetch_lor_
-population mirrors lor_pipeline's snapshot-writing, scoped to one
-node) -- no new data source, just a targeted, budget-aware re-fetch.
-A third tool, flag_for_field_research, makes no network call: it
+Three live-API tools re-run the *existing* ingestion for a single
+area (refetch_osm_pois wraps poi_pipeline.ingest_area and re-conflates;
+refetch_lor_population mirrors lor_pipeline's snapshot-writing, scoped
+to one node; refetch_ihk_gewerbedaten wraps ihk_pipeline.ingest_area)
+-- no new data source, just a targeted, budget-aware re-fetch.
+A fourth tool, flag_for_field_research, makes no network call: it
 writes a development_events row with a proposed field-research
 question, and is what the Agent falls back to once a gap can't be
 resolved by re-fetching (a conflict, or hours OSM has simply never
@@ -114,7 +115,7 @@ class GapTrigger:
 class CallBudget:
     """Tracks live-API follow-up calls against a total and a per-area cap.
 
-    Only the two refetch tools consume budget -- flag_for_field_research
+    Only the three refetch tools consume budget -- flag_for_field_research
     is a local DB write, not an external call, and is never rationed.
     """
 

@@ -1,11 +1,12 @@
-"""Day 6 runner: execute the four fixed test-case categories (plus the
-Day 5 supplementary suite), then an end-to-end reproducibility run,
-and log time / cost / output quality per category.
+"""Day 6 runner: execute the four fixed test-case categories plus the
+supplementary suites (scoring/report, multi-source POIs, and the v2
+agent-policy suites), then an end-to-end reproducibility run, and log
+time / cost / output quality per category.
 
   - Time: wall-clock per category (perf_counter).
   - Cost: real API calls (always 0 -- network is blocked in every test),
-    mocked API calls exercised, LLM tokens (0: no LLM in the pipeline
-    yet), EUR cost.
+    mocked API calls exercised, LLM tokens (0: the LLM policy is only
+    ever run against a fake client here), EUR cost.
   - Output quality: tests passed / failed / errored, with failure detail.
 
 End-to-end check: copy the real database to a temp dir, re-run the

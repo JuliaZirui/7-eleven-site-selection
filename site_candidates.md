@@ -2,6 +2,8 @@
 
 2026-09-23 · Candidate transit-node shortlist and business analysis scope. Store-model assumptions live separately in [store_hypothesis.md](store_hypothesis.md).
 
+> **How to read this file.** After the scope sections it is a dated working log (Day 2 → v5.2). Later sections supersede earlier ones and earlier text is not rewritten. For example, Day 5's three-pillar scoring was replaced in v3, v1's competitor counts in v2, and VBB GTFS, rejected on Day 4, was adopted in v2 for station lookups. Current figures: the last section and the [latest report](reports/site_report_run15_20261002T092116Z.md). The follow-up agent's v2 is the last section.
+
 ## Core Business Question
 
 Assume 7-Eleven plans to pilot a Berlin store emphasizing fresh food, beverages, and commuter convenience, anchored to a small number of high-traffic transit nodes. Among the three candidate transit nodes, which are worth prioritizing for on-the-ground site diligence? What do the public data support, and what still needs verification?
@@ -165,6 +167,8 @@ Tool selection is a fixed rule table, not an open-ended decision, matching "the 
 
 **Call budget**: a `CallBudget` caps live-tool calls at 4 total / 2 per area per run (only the refetch tools are rationed; flagging is unlimited, since it costs no external call). A gap whose tool is already exhausted, or whose tool was already invoked once this run for the same area, is flagged instead of re-called or double-charged — verified with a synthetic scratch-DB scenario (forced missing metric, forced 30-day-stale snapshots, forced conflicting observation, `max_calls_total=1`): the first eligible gap consumed the one call, every subsequent live-tool-eligible gap fell back to `flag_for_field_research` with `stop_reason="call budget exhausted"`, and a second gap mapping to an already-used tool reused its result instead of re-calling. `_tool_refetch_osm` was also verified directly against the live Overpass endpoint (new snapshot written successfully) outside of this scratch run.
 
+*Superseded in part (2026-10-02): the loop below is now one of three pluggable policies, and the default is an impact-ordered variant. See "Agent v2" at the end of this file.*
+
 **Day 4 result on the real database**: with all Day 2 snapshots fetched the same day (nothing stale yet) and no missing `area_metrics` rows, the only real gaps were the 4 competitor POIs with no OSM `opening_hours` tag (3 at Warschauer Straße — KEBmeUP, mundis, Fatih Servet; 1 at Schönhauser Allee — Mate Mate Spätshop). All four were flagged straight to field research (fresh snapshot, so no live call attempted) and are now in `development_events`, ready to feed Day 5/7's field-research checklist. The tool log is also written to `db/raw/agent_log/day4_followup_<timestamp>.json` for traceability, mirroring the raw-file-reference pattern used by the Day 2 pipelines.
 
 ## Day 4 (extra): IHK Gewerbedaten Ingestion
@@ -228,7 +232,7 @@ Two gaps surfaced while building the scoring, both fixed in [`src/metrics_pipeli
 
 ## Day 6: Fixed Test Cases
 
-`python3 tests/run_day6.py` runs all four fixed test-case categories from project_plan_v3.md, plus a supplementary suite for the Day 5 layer, then an end-to-end reproducibility check. It writes a time/cost/quality log to `reports/day6_test_log_<stamp>.md` and `.json`; the latest published log is [`reports/day6_test_log_20261002T092116Z.md`](reports/day6_test_log_20261002T092116Z.md). The tests use stdlib `unittest` (no new dependency). Every test builds its own throwaway SQLite database from `db/schema.sql` and redirects every raw-file/report path into a temp dir. A network guard makes any HTTP call a test didn't explicitly mock raise an error, so the real `db/site_selection.db` is never written (checksum identical before and after) and no test can pass by quietly hitting a live API.
+`python3 tests/run_day6.py` runs all four fixed test-case categories from project_plan_v3.md, plus a supplementary suite for the Day 5 layer, then an end-to-end reproducibility check. It writes a time/cost/quality log to `reports/day6_test_log_<stamp>.md` and `.json`; the latest published log is [`reports/day6_test_log_20261002T150159Z.md`](reports/day6_test_log_20261002T150159Z.md). The tests use stdlib `unittest` (no new dependency). Every test builds its own throwaway SQLite database from `db/schema.sql` and redirects every raw-file/report path into a temp dir. A network guard makes any HTTP call a test didn't explicitly mock raise an error, so the real `db/site_selection.db` is never written (checksum identical before and after) and no test can pass by quietly hitting a live API.
 
 | Category | File | What it pins down |
 | --- | --- | --- |
@@ -518,3 +522,14 @@ Brandenburger Tor is now first under every pillar weighting, every day-type weig
 | Schönhauser Allee | 541 | 541 | 14,439 / 11,706 | **23.7** |
 
 Warschauer Straße is no longer weekend-led: without Berghain's fame-inflated crowd, its weekend demand falls below its weekday demand, as at a typical station. Brandenburger Tor is first under every weighting, every day-type weighting (weekend only: 96.4 vs. 44.1), the visitor-conversion range (low: 71.7 vs. 54.9) and the worker range; 100% of random weightings. Remaining fame-converted venues without a known figure (other clubs, open-air landmarks such as the Brandenburger Tor itself) keep the conversion and its caveats.
+
+## Agent v2: Pluggable Follow-Up Policies (2026-10-02)
+
+The Day 4 loop was split into a deterministic executor ([`src/agent_policy.py`](src/agent_policy.py)) and a decision policy. The executor's guard is plain code: the gap must exist and still be open, the tool must be the rule's tool or a flag, the budget must allow a live call, and a failed source is not retried. Three policies were compared on 16 pre-registered scenarios:
+- the Day 4 rule (detection order);
+- an impact-ordered rule (top two nodes and the pillar driving their gap first);
+- Claude ([`src/agent_llm_policy.py`](src/agent_llm_policy.py)).
+
+The impact rule and the LLM tie on ordering, at 14/14 each. The LLM's edge is declining calls that cannot change the decision, and writing more specific field questions. The impact rule is now the default.
+
+Plan: [plan_llm_tool_selection.md](plan_llm_tool_selection.md). Pre-registration: [comparison/policy_scenarios.md](comparison/policy_scenarios.md). Results: [comparison/policy_eval.md](comparison/policy_eval.md). Decision and caveats: [comparison/policy_findings.md](comparison/policy_findings.md). On the real data, nothing changes: every current gap is flag-only.

@@ -2,6 +2,8 @@
 
 2026-09-22
 
+> **Status (2026-10-02).** This is the original v1 plan, kept for the record. v1 is complete; the work after it (multi-source competitors, demand in people per day, weekday/weekend scoring, CI, the follow-up policy comparison) is logged in [site_candidates.md](site_candidates.md) and summarized in the [README](README.md). Statuses below are updated; the scope text is not.
+
 Using a hypothetical 7-Eleven entry into Berlin as the case, this project builds a transit-node screening and site-diligence Agent prototype as a portfolio project.
 
 ## Store Hypothesis & Business Question
@@ -12,7 +14,7 @@ The store hypothesis (product/service assumptions, target customers, operating h
 
 The core business question, the final candidate transit nodes (with DB Preisklasse verification), the business analysis scope, and the data verification log live in [site_candidates.md](site_candidates.md).
 
-Coordinate anchors for the three nodes and the remaining Day 1 to-dos (search radius, `LocationInput.time_window` rework) are tracked in [site_candidates.md](site_candidates.md).
+Coordinate anchors for the three nodes and the Day 1 to-dos (search radius, `LocationInput.time_window` rework; both done) are in [site_candidates.md](site_candidates.md).
 
 ## Minimum Viable Scope (MVP)
 
@@ -30,12 +32,12 @@ Coordinate anchors for the three nodes and the remaining Day 1 to-dos (search ra
 
 ### Deferred (out of scope for v1, logged as next steps)
 
-- IHK or VBB data ingestion (add if v1 progress allows)
+- IHK or VBB data ingestion (add if v1 progress allows) — *both done later: IHK from Day 4, VBB GTFS for station lookups and transit supply*
 - Construction-competition and development information (qualitative notes only — not a structured Tool or a quantitative scoring input)
 - Vector database
 - Cloud deployment
 - Expanding beyond 3 candidate transit nodes
-- Full CI/CD automation and version management (time/cost logged, not deeply implemented)
+- Full CI/CD automation and version management (time/cost logged, not deeply implemented) — *CI added 2026-10-02: GitHub Actions runs the test suite and the reproducibility check on every push*
 
 Don't sacrifice the integrity of the fixed computation pipeline for the sake of richer data sources or features — this is where v1 is most likely to get derailed.
 
@@ -95,9 +97,9 @@ SQLite is sufficient; the priority is traceability, not a vector database.
 | Day 2 | Integrate the OSM Overpass API; write POI cleaning/dedup/classification logic; integrate LOR population data; write to source_snapshots and observations | Done |
 | Day 3 | Fixed computation layer: spatial calculations, opening-hours parsing (including overnight spans), write to area_metrics | Done |
 | Day 4 | Design Agent follow-up logic (information-gap triggers, call-budget validation); implement follow-up tools | Done |
-| Day 4 (if time allows) | IHK or VBB data ingestion | Done (IHK Gewerbedaten) |
+| Day 4 (if time allows) | IHK or VBB data ingestion | Done (IHK Gewerbedaten; VBB GTFS added later) |
 | Day 5 | Scoring layer: business-fit and evidence-quality scored separately; weight-sensitivity analysis; report template | Done |
 | Day 6 | Run all four test-case categories (missing data, duplicate records, API failure, overnight-spanning hours); log time/cost/output quality | Done |
 | Day 6 (if time allows) | Construction-competition info as qualitative supplement | Deferred |
-| Day 7 | Manual vs. tool-assisted workflow comparison; polish documentation and interview narrative | Comparison done (reduced scope, [comparison/manual_vs_tool.md](comparison/manual_vs_tool.md)); docs pending |
+| Day 7 | Manual vs. tool-assisted workflow comparison; polish documentation and interview narrative | Done (comparison at reduced scope, [comparison/manual_vs_tool.md](comparison/manual_vs_tool.md)) |
 | Day 7 (if time allows) | Cloud deployment | Deferred |

@@ -77,7 +77,7 @@ Figures from [analysis run #15](reports/site_report_run15_20261002T092116Z.md) (
 - **Brandenburger Tor is the diligence priority.** It ranks first under every weighting tested, across the interquartile range of the visitor estimate (at the low end it still leads 71.7 to 54.9), and across the verified range of on-site workers.
 - **Its lead rests on two things to verify first.**
   - **Competition.** OSM appears to under-map its competitors: 32 mapped against 66 IHK-registered food businesses. Its competition advantage may partly be a data artifact, so verifying the competitor count is the first item on its field checklist.
-  - **Demand.** About 6,600 of its workers are public-sector staff (Bundestag buildings, embassies, a federal ministry) estimated by hand, with a range of 5,100–8,200. The other two nodes' public employers have not been inventoried the same way.
+  - **Demand.** About 58% of its weekday demand is visitors, converted from Wikipedia pageviews; the ranking holds across the conversion's interquartile range, but only a footfall count settles it. About 6,600 of its workers are public-sector staff estimated by hand (range 5,100–8,200); the other two nodes' public employers have not been inventoried the same way.
 - **Schönhauser Allee is the clearest deprioritization.** Its evidence is the strongest of the three, and competition per head there is saturated.
 
 ## Validation
@@ -98,7 +98,7 @@ Figures from [analysis run #15](reports/site_report_run15_20261002T092116Z.md) (
 - **Three sites, one per customer profile.** The tool answers "which of these sites first?", not "are visitor-led sites better than residential ones?". Answering the second question would need several sites per profile.
 - **Demand is proxied, not counted.** Visitor numbers are estimated from Wikipedia pageviews, calibrated on 37 attractions with published counts. Station footfall by time window is not published. Rent, storefront availability and supply chain are out of scope and listed as unscored.
 - **The store concept is hard-coded.** Competitor categories, peak windows and the 400 m radius encode a convenience-store format. The radius is a general industry convention, not a 7-Eleven standard. No 7-Eleven standard could be found in public sources.
-- **The LLM policy only decides follow-ups, never scores.** Scoring stays deterministic and reproducible; the rule policy remains the offline default. With three nodes there are few real budget decisions (today's data has none), so the policy comparison runs on constructed scenarios. The value grows with the planned citywide run.
+- **The LLM policy only decides follow-ups, never scores.** Scoring stays deterministic and reproducible; the default follow-up policy is the impact-ordered rule, which needs no API. With three nodes there are few real budget decisions (today's data has none), so the policy comparison runs on constructed scenarios. The value grows with the planned citywide run.
 - **The manual benchmark is a single, non-blind data point.** One node, one analyst (who also built the tool), one pass.
 
 ## Next steps
@@ -106,6 +106,8 @@ Figures from [analysis run #15](reports/site_report_run15_20261002T092116Z.md) (
 1. **Citywide run.** Run the full pipeline end to end on all 139 reference stations; the pipeline already computes their core metrics.
 2. **Configurable store concept.** Move the competitor taxonomy, peak windows and weights into a config file, so other small-format retail concepts can reuse the same pipeline.
 3. **Data-quality fixes found by the benchmark.** Merge duplicates that appear under different names, and filter Overture category errors by confidence.
+4. **Hybrid follow-up.** Rules decide what to follow up; the LLM only writes the field question for each flag ([comparison/policy_findings.md](comparison/policy_findings.md)).
+5. **LLM opening-hours extraction** from competitors' own websites, behind a coverage go/no-go check ([plan_llm_opening_hours.md](plan_llm_opening_hours.md)).
 
 ## Repository map
 
@@ -113,13 +115,15 @@ Figures from [analysis run #15](reports/site_report_run15_20261002T092116Z.md) (
 | --- | --- |
 | [store_hypothesis.md](store_hypothesis.md) | Store concept and European benchmark chains |
 | [site_candidates.md](site_candidates.md) | Business question, node selection, data-verification log |
-| [project_plan_v3.md](project_plan_v3.md) | Scope, architecture, 7-day plan |
-| `src/` | Ingestion clients, pipelines, conflation, scoring, follow-up agent, report generator |
+| [project_plan_v3.md](project_plan_v3.md) | Original v1 scope, architecture, 7-day plan |
+| [plan_llm_tool_selection.md](plan_llm_tool_selection.md) | Plan for the LLM follow-up policy and its evaluation (done) |
+| [plan_llm_opening_hours.md](plan_llm_opening_hours.md) | Plan for LLM opening-hours extraction (not started) |
+| `src/` | Ingestion clients, pipelines, conflation, scoring, follow-up agent and policies, report generator, policy evaluation |
 | `tests/` | Test suites and the test runner (`run_day6.py`) |
 | `reports/` | Latest site report, score file and test log (earlier runs are kept in the database, not in the repo) |
 | `db/` | SQLite database, schema and raw source snapshots ([GTFS note](db/raw/vbb_gtfs/README.md)) |
 | `.github/workflows/` | CI: test suite + offline reproducibility check |
-| `comparison/` | Manual vs. tool benchmark |
+| `comparison/` | Manual vs. tool benchmark; follow-up policy scenarios, results and findings |
 
 Requires Python 3.9+. Everything below runs offline from the committed database and snapshots:
 
@@ -127,3 +131,5 @@ Requires Python 3.9+. Everything below runs offline from the committed database 
 pip install -r requirements.txt
 python3 tests/run_day6.py
 ```
+
+Optional, for the LLM follow-up policy (needs an Anthropic API key): `pip install -r requirements-llm.txt`.

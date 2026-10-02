@@ -1,6 +1,6 @@
 # Implementation Plan — LLM Opening-Hours Extraction (v2, item 1)
 
-2026-10-01 · Status: proposed, not started
+2026-10-01 · Status (2026-10-02): proposed, not started. The follow-up policy plan it mentions is done ([comparison/policy_findings.md](comparison/policy_findings.md)).
 
 ## Goal
 
@@ -154,12 +154,7 @@ All tests mock the network and the Anthropic client. The test log's "LLM tokens"
 
 ## Prerequisite: Python version
 
-The project runs on **Python 3.9.6**. The current `anthropic` SDK (1.x) requires Python ≥ 3.10. Options:
-
-1. **Recommended:** move the project to a Python 3.11+ virtualenv, and confirm the existing 128 tests still pass first.
-2. Pin an older 0.x SDK that still supports 3.9. This avoids the upgrade, but it has to be checked that `messages.parse` / `output_config` exist in that version.
-
-Pick one before Phase 1.
+Resolved (2026-10-02). `anthropic` 0.125, pinned in `requirements-llm.txt`, runs on the project's Python 3.9 and supports the parameters used by the LLM follow-up policy. CI tests it on 3.9 and 3.12. `messages.parse` is available in that version (checked 2026-10-02).
 
 ## Effort estimate
 
