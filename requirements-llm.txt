@@ -1,0 +1,3 @@
+# Only for the LLM follow-up policy (src/agent_llm_policy.py) and its SDK test.
+# The scoring pipeline and the rule policies do not need it.
+anthropic==0.125.0

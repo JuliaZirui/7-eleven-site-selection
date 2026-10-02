@@ -17,7 +17,7 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
           cache: pip
-      - run: pip install -r requirements.txt
+      - run: pip install -r requirements.txt -r requirements-llm.txt
       # Fixed test categories + offline end-to-end reproducibility check.
       # Exits non-zero on any failure or if scores differ from the recorded run.
       - run: python tests/run_day6.py
