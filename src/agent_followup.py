@@ -28,7 +28,7 @@ resolved by re-fetching (a conflict, or hours OSM has simply never
 recorded) or once the call budget is spent.
 
 Run directly to process all CANDIDATE_NODES:
-    python3 agent_followup.py [--policy rule|impact_rule|llm] [--weak-evidence]
+    python3 agent_followup.py [--policy impact_rule|rule|llm] [--weak-evidence]
 
 Since v2 the orchestration loop lives in agent_policy.py (one executor,
 pluggable policies); this module keeps detection, the tools and the
@@ -501,9 +501,10 @@ def _make_policy(name: str):
     raise ValueError(f"unknown policy {name!r}")
 
 
-def run(db_path: Path = DB_PATH, budget: CallBudget | None = None, policy: str = "rule",
+def run(db_path: Path = DB_PATH, budget: CallBudget | None = None, policy: str = "impact_rule",
         include_weak_evidence: bool = False) -> list[dict]:
-    """Defaults reproduce Day 4 exactly. The tool log keeps its Day 4
+    """Default policy is the impact rule (comparison/policy_findings.md);
+    policy="rule" reproduces Day 4 exactly. The tool log keeps its Day 4
     format (report.py reads it); run metadata -- policy, guard
     rejections, unhandled gaps, LLM transcript and cost -- goes to
     agent_log/runs/, out of report.py's way."""
@@ -547,7 +548,7 @@ if __name__ == "__main__":
     import argparse
 
     ap = argparse.ArgumentParser(description="Bounded follow-up agent")
-    ap.add_argument("--policy", choices=["rule", "impact_rule", "llm"], default="rule")
+    ap.add_argument("--policy", choices=["rule", "impact_rule", "llm"], default="impact_rule")
     ap.add_argument("--weak-evidence", action="store_true", help="also follow up WEAK_EVIDENCE gaps")
     args = ap.parse_args()
     run(policy=args.policy, include_weak_evidence=args.weak_evidence)

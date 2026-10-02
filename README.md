@@ -55,7 +55,7 @@ flowchart LR
 | Layer | Responsibility |
 | --- | --- |
 | **Program** (deterministic) | Cleaning, multi-source POI conflation, spatial calculations, opening-hours parsing (incl. overnight spans), scoring, stop conditions |
-| **Follow-up agent** (bounded) | Detects gaps that affect the conclusions (missing, stale or conflicting data), picks a refetch tool or flags the gap for field research, and stays within a call budget of 4 calls per run and 2 per site. It is triggered by data problems, never by a raw count such as "fewer than 8 shops". The decision step is a pluggable policy: a fixed rule (default), an impact-ordered rule, or Claude (`claude-opus-5-5`). Whatever the policy proposes passes a guard in plain code (allowed tool, budget, no retry of a failed source) before it runs. |
+| **Follow-up agent** (bounded) | Detects gaps that affect the conclusions (missing, stale or conflicting data), picks a refetch tool or flags the gap for field research, and stays within a call budget of 4 calls per run and 2 per site. It is triggered by data problems, never by a raw count such as "fewer than 8 shops". The decision step is a pluggable policy: an impact-ordered rule (default), the original fixed rule, or Claude (`claude-opus-5-5`). Whatever the policy proposes passes a guard in plain code (allowed tool, budget, no retry of a failed source) before it runs. |
 
 **Data sources** (all open, no paid APIs): OpenStreetMap, Overture Maps and Foursquare OS Places (competitors, conflated across providers); Berlin LOR / MSS 2025 (residents); IHK Gewerbedaten (workplaces); Wikidata + Wikipedia pageviews + VBB GTFS (visitor draw); DB InfraGO station price classes (a check that the sites see comparable transit volumes).
 
@@ -89,8 +89,9 @@ Figures from [analysis run #15](reports/site_report_run15_20261002T092116Z.md) (
   - Coverage: neither inventory was complete. The tool found about twice as many competitors, including several confirmed by three providers that the manual pass missed. The manual pass found 4 places that no open source listed, and got far better opening-hours coverage.
   - The most useful output was the list of disagreements, which became the field checklist. The comparison also exposed two tool defects (an unmerged cross-provider duplicate and Overture category errors); both are logged for v2.
 - **Follow-up policy comparison** ([comparison/policy_eval.md](comparison/policy_eval.md)). Does an LLM decide better than rules which data gaps to spend live calls on? 16 scenarios, with the expected decisions committed before any policy ran ([comparison/policy_scenarios.md](comparison/policy_scenarios.md)):
-  - Rule baseline: 10/16. Impact-ordered rule: 14/16. Both fail exactly the scenarios predicted from their code. The two they cannot pass are "do nothing" cases, where no live call is justified.
-  - LLM policy: implemented and tested against a mocked client; the paid evaluation run (5 repeats per scenario) is pending.
+  - Rule baseline: 10/16. Impact-ordered rule: 14/16. LLM: 16/16 in all 5 runs, no guard rejections, $0.019 per run ($1.50 for the whole evaluation).
+  - On ordering, the impact rule and the LLM tie (14/14). The LLM's measurable edge is declining calls that cannot change the decision (2 scenarios), plus much more specific field questions. The expected decisions and the LLM's prompt share an author, which limits how much the LLM's score can show.
+  - Decision ([comparison/policy_findings.md](comparison/policy_findings.md)): the impact rule becomes the default. The LLM stays optional, and its proposed role is writing field questions.
 
 ## Limitations
 
