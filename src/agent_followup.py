@@ -28,7 +28,11 @@ resolved by re-fetching (a conflict, or hours OSM has simply never
 recorded) or once the call budget is spent.
 
 Run directly to process all CANDIDATE_NODES:
-    python3 agent_followup.py
+    python3 agent_followup.py [--policy rule|impact_rule|llm] [--weak-evidence]
+
+Since v2 the orchestration loop lives in agent_policy.py (one executor,
+pluggable policies); this module keeps detection, the tools and the
+per-gap rule.
 """
 
 from __future__ import annotations
@@ -94,6 +98,9 @@ class GapType(str, Enum):
     MISSING_POI_HOURS = "missing_poi_hours"
     STALE_SNAPSHOT = "stale_snapshot"
     CONFLICTING_OBSERVATION = "conflicting_observation"
+    # Detected from the scoring output, not the raw tables -- see
+    # agent_policy.detect_weak_evidence(). detect_gaps() never emits it.
+    WEAK_EVIDENCE = "weak_evidence"
 
 
 @dataclass(frozen=True)
@@ -309,7 +316,18 @@ def select_tool(gap: GapTrigger) -> str:
         # Responsibilities table, "explaining discrepancies" is Agent
         # work, not something a re-fetch can settle.
         return TOOL_FLAG_FIELD_RESEARCH
+    if gap.gap_type == GapType.WEAK_EVIDENCE:
+        # Weak corroboration or under-mapping is a property of the open
+        # data itself; refetching the same source returns the same gap.
+        return TOOL_FLAG_FIELD_RESEARCH
     raise AssertionError(f"unhandled gap type: {gap.gap_type}")
+
+
+def allowed_tools(gap: GapTrigger) -> frozenset[str]:
+    """What any policy may do with this gap: the rule's tool, or flag it.
+    A policy chooses order, refetch-vs-flag and the question; it cannot
+    route a gap to a source the rule says can't resolve it."""
+    return frozenset({select_tool(gap), TOOL_FLAG_FIELD_RESEARCH})
 
 
 def _field_research_question(gap: GapTrigger) -> str:
@@ -324,6 +342,8 @@ def _field_research_question(gap: GapTrigger) -> str:
         return f"Re-verify before finalizing the comparison -- {gap.detail}."
     if gap.gap_type == GapType.CONFLICTING_OBSERVATION:
         return f"Verify current status on-site -- {gap.detail}"
+    if gap.gap_type == GapType.WEAK_EVIDENCE:
+        return f"Verify on-site before relying on the {gap.extra['pillar']} score -- {gap.detail}."
     raise AssertionError(f"unhandled gap type: {gap.gap_type}")
 
 
@@ -435,9 +455,10 @@ _TOOL_FUNCS = {
 }
 
 
-def _tool_flag_field_research(conn: sqlite3.Connection, node: LocationInput, gap: GapTrigger) -> dict:
+def _tool_flag_field_research(conn: sqlite3.Connection, node: LocationInput, gap: GapTrigger,
+                              question: str | None = None) -> dict:
     now = datetime.now(timezone.utc).isoformat()
-    question = _field_research_question(gap)
+    question = question or _field_research_question(gap)
     conn.execute(
         """
         INSERT INTO development_events
@@ -456,74 +477,65 @@ def _tool_flag_field_research(conn: sqlite3.Connection, node: LocationInput, gap
 
 
 def run_followups(conn: sqlite3.Connection, node: LocationInput, budget: CallBudget, now: datetime | None = None) -> list[dict]:
-    """Detect this area's gaps, select a tool per gap, validate the call
-    budget, invoke, and log. A live tool already called once for this
-    area+tool in this run is not called again for a second gap that
-    maps to the same tool (e.g. two missing metrics both wanting an
-    OSM refetch) -- one call resolves both, so only one is charged."""
-    now = now or datetime.now(timezone.utc)
-    gaps = detect_gaps(conn, node.area_id, now)
-    resolved_in_run: dict[str, dict] = {}
-    log: list[dict] = []
+    """Day 4 entry point, kept for its callers: one area, rule policy,
+    no weak-evidence gaps. The loop itself now lives in
+    agent_policy.run_agent(), shared by every policy. A live tool
+    already called once for this area in this run is reused, not
+    charged again; a source that failed is not retried."""
+    from agent_policy import RulePolicy, run_agent
 
-    for gap in gaps:
-        tool = select_tool(gap)
-        stop_reason = None
-
-        if tool in _LIVE_TOOLS:
-            if tool in resolved_in_run:
-                result = resolved_in_run[tool]
-                stop_reason = "reused result: this source was already refetched for this area in this run"
-            elif not budget.can_call(node.area_id):
-                stop_reason = "call budget exhausted -- flagged for field research instead"
-                tool = TOOL_FLAG_FIELD_RESEARCH
-                result = _tool_flag_field_research(conn, node, gap)
-            else:
-                budget.record_call(node.area_id)
-                result = _TOOL_FUNCS[tool](conn, node)
-                if result["status"] == "error":
-                    stop_reason = f"live tool call failed ({result['error']}) -- flagged for field research"
-                    result = {**result, "fallback": _tool_flag_field_research(conn, node, gap)}
-                    tool = f"{tool}+{TOOL_FLAG_FIELD_RESEARCH}"
-                else:
-                    resolved_in_run[tool] = result
-        else:
-            result = _tool_flag_field_research(conn, node, gap)
-
-        log.append(
-            {
-                "area_id": node.area_id,
-                "gap_type": gap.gap_type.value,
-                "detail": gap.detail,
-                "tool": tool,
-                "stop_reason": stop_reason,
-                "result": result,
-            }
-        )
-
-    return log
+    return run_agent(conn, [node], budget, RulePolicy(), now=now, include_weak_evidence=False)["log"]
 
 
-def run(db_path: Path = DB_PATH, budget: CallBudget | None = None) -> list[dict]:
+def _make_policy(name: str):
+    from agent_policy import ImpactRulePolicy, RulePolicy
+
+    if name == "rule":
+        return RulePolicy()
+    if name == "impact_rule":
+        return ImpactRulePolicy()
+    if name == "llm":
+        from agent_llm_policy import LlmPolicy
+
+        return LlmPolicy()
+    raise ValueError(f"unknown policy {name!r}")
+
+
+def run(db_path: Path = DB_PATH, budget: CallBudget | None = None, policy: str = "rule",
+        include_weak_evidence: bool = False) -> list[dict]:
+    """Defaults reproduce Day 4 exactly. The tool log keeps its Day 4
+    format (report.py reads it); run metadata -- policy, guard
+    rejections, unhandled gaps, LLM transcript and cost -- goes to
+    agent_log/runs/, out of report.py's way."""
+    from agent_policy import run_agent
+
     budget = budget or CallBudget()
     conn = sqlite3.connect(db_path)
     conn.execute("PRAGMA foreign_keys = ON;")
-    full_log: list[dict] = []
     try:
-        for node in CANDIDATE_NODES:
-            entries = run_followups(conn, node, budget)
-            for e in entries:
-                suffix = f" (stop: {e['stop_reason']})" if e["stop_reason"] else ""
-                print(f"[{e['area_id']}] {e['gap_type']} -> {e['tool']}{suffix}")
-            full_log.extend(entries)
-        if not full_log:
-            print("No information gaps detected -- nothing for the Agent to follow up on.")
+        out = run_agent(conn, list(CANDIDATE_NODES), budget, _make_policy(policy),
+                        include_weak_evidence=include_weak_evidence)
     finally:
         conn.close()
+    full_log = out["log"]
+    for e in full_log:
+        suffix = f" (stop: {e['stop_reason']})" if e["stop_reason"] else ""
+        print(f"[{e['area_id']}] {e['gap_type']} -> {e['tool']}{suffix}")
+    if not out["run"]["gaps"]:
+        print("No information gaps detected -- nothing for the Agent to follow up on.")
+    for r in out["run"]["guard_rejections"]:
+        print(f"  guard rejected step {r['step']}: {r['proposed']['tool']} on {r['proposed']['gap_id']} ({r['reason']})")
+    print(f"Finished: {out['run']['finish_reason']}" + (f"; fallback: {out['run']['policy_fallback']}" if out["run"]["policy_fallback"] else ""))
 
+    stamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
     AGENT_LOG_DIR.mkdir(parents=True, exist_ok=True)
-    log_path = AGENT_LOG_DIR / f"day4_followup_{datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%SZ')}.json"
+    log_path = AGENT_LOG_DIR / f"day4_followup_{stamp}.json"
     log_path.write_text(json.dumps(full_log, ensure_ascii=False, indent=2))
+    runs_dir = AGENT_LOG_DIR / "runs"
+    runs_dir.mkdir(parents=True, exist_ok=True)
+    (runs_dir / f"agent_run_{policy}_{stamp}.json").write_text(
+        json.dumps({**out["run"], "tool_log": log_path.name}, ensure_ascii=False, indent=2, default=str)
+    )
     print(
         f"Tool log written to {log_path.relative_to(PROJECT_ROOT)} "
         f"({budget.used_total}/{budget.max_calls_total} live calls used)"
@@ -532,4 +544,10 @@ def run(db_path: Path = DB_PATH, budget: CallBudget | None = None) -> list[dict]
 
 
 if __name__ == "__main__":
-    run()
+    import argparse
+
+    ap = argparse.ArgumentParser(description="Bounded follow-up agent")
+    ap.add_argument("--policy", choices=["rule", "impact_rule", "llm"], default="rule")
+    ap.add_argument("--weak-evidence", action="store_true", help="also follow up WEAK_EVIDENCE gaps")
+    args = ap.parse_args()
+    run(policy=args.policy, include_weak_evidence=args.weak_evidence)
