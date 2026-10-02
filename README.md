@@ -67,13 +67,17 @@ The store concept: fresh food, coffee and convenience goods, 50–100 m², with 
 
 | Node | Customer profile | Business fit | Evidence quality | Ranked #1 in random weightings |
 | --- | --- | --- | --- | --- |
-| Brandenburger Tor | Visitor-led, city centre | 100.0 | 75.4 (verify first) | 100% |
-| Warschauer Straße | Office + nightlife mix | 88.6 | 76.6 (verify first) | 0% |
-| Schönhauser Allee | Residential daily shopping | 17.3 | 90.4 (adequate) | 0% |
+| Brandenburger Tor | Visitor-led, city centre | 92.7 | 75.4 (verify first) | 100% |
+| Warschauer Straße | Office + nightlife mix | 63.6 | 76.6 (verify first) | 0% |
+| Schönhauser Allee | Residential daily shopping | 23.7 | 90.4 (adequate) | 0% |
+
+Figures from [analysis run #15](reports/site_report_run15_20261002T092116Z.md) (2026-10-02, `scoring_v6`).
 
 **Reading:**
-- **Brandenburger Tor is the diligence priority.** It ranks first under every weighting tested.
-- **Its lead depends on two things to verify first.** At the low end of the visitor estimate the gap to Warschauer Straße narrows to under 3 points. Its competitors also appear under-mapped in OSM: 32 mapped competitors against 66 IHK-registered food businesses. So its competition advantage may partly be a data artifact, and verifying the competitor count is the first item on its field checklist.
+- **Brandenburger Tor is the diligence priority.** It ranks first under every weighting tested, across the interquartile range of the visitor estimate (at the low end it still leads 71.7 to 54.9), and across the verified range of on-site workers.
+- **Its lead rests on two things to verify first.**
+  - **Competition.** OSM appears to under-map its competitors: 32 mapped against 66 IHK-registered food businesses. Its competition advantage may partly be a data artifact, so verifying the competitor count is the first item on its field checklist.
+  - **Demand.** About 6,600 of its workers are public-sector staff (Bundestag buildings, embassies, a federal ministry) estimated by hand, with a range of 5,100–8,200. The other two nodes' public employers have not been inventoried the same way.
 - **Schönhauser Allee is the clearest deprioritization.** Its evidence is the strongest of the three, and competition per head there is saturated.
 
 ## Validation
