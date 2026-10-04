@@ -185,6 +185,59 @@ class Conflation(unittest.TestCase):
         self.assertTrue(competitors[0]["payload"]["in_station"])
 
 
+
+class ConflationQualityRules(unittest.TestCase):
+    """conflation_v2: the defects the manual benchmark found (comparison/manual_vs_tool.md)."""
+
+    def _build(self, *records, quality_rules=True, corrections=None):
+        by_source: dict = {}
+        for r in records:
+            by_source.setdefault(r["source"], []).append(r)
+        return poi_conflation.build_competitor_set(NODE, by_source, None, quality_rules=quality_rules,
+                                                   corrections={} if corrections is None else corrections)
+
+    def test_near_duplicate_with_different_names_is_merged(self):
+        # Ha's Café (OSM) and Bäckerei Bich Ha (Overture), ~8m apart: names_match fails.
+        records = (_rec("osm_overpass", "node/1", "Ha's Café", category="bakery"),
+                   _rec("overture_places", "overture:h", "Bäckerei Bich Ha", lat=52.52007, category="bakery",
+                        upstream_datasets=["meta"], confidence=0.97))
+        self.assertFalse(poi_conflation.names_match("Ha's Café", "Bäckerei Bich Ha"))
+        competitors, stats = self._build(*records)
+        self.assertEqual(len(competitors), 1)
+        self.assertEqual(competitors[0]["external_ref"], "node/1")
+        self.assertEqual(len(stats["near_duplicates_merged"]), 1)
+        self.assertEqual(len(self._build(*records, quality_rules=False)[0]), 2)  # conflation_v1
+
+    def test_near_duplicate_needs_same_category_close_range_and_a_distinctive_word(self):
+        osm = _rec("osm_overpass", "node/1", "Ha's Café", category="bakery")
+        other_category = _rec("overture_places", "overture:a", "Bich Ha", lat=52.52007, category="cafe")
+        too_far = _rec("overture_places", "overture:b", "Bich Ha", lat=52.52030, category="bakery")  # ~33m
+        food_word_only = (_rec("osm_overpass", "node/2", "Manhattan Burger", category="fast_food"),
+                          _rec("overture_places", "overture:c", "Charlotten Burger", lat=52.52004, category="fast_food"))
+        self.assertEqual(len(self._build(osm, other_category)[0]), 2)
+        self.assertEqual(len(self._build(osm, too_far)[0]), 2)
+        self.assertEqual(len(self._build(*food_word_only)[0]), 2)
+
+    def test_restaurant_named_cafe_from_overture_is_excluded(self):
+        competitors, stats = self._build(
+            _rec("overture_places", "overture:m", "MAREDO Steakhouse Berlin Unter den Linden", category="cafe",
+                 upstream_datasets=["Microsoft"], confidence=0.85),
+            _rec("osm_overpass", "node/9", "Hotel-Bäckerei am Markt", category="bakery"),  # OSM category trusted
+        )
+        self.assertEqual([c["external_ref"] for c in competitors], ["node/9"])
+        self.assertEqual(stats["excluded"]["name_category_conflict"][0]["ref"], "overture:m")
+
+    def test_verified_correction_is_excluded_and_logged(self):
+        corrections = poi_conflation.load_verified_corrections()
+        ref = "overture:e99aea2b-c4e5-4e25-a80a-0f62d57d87e2"
+        self.assertIn(ref, corrections)  # Zollernhof, from the manual benchmark
+        competitors, stats = self._build(
+            _rec("overture_places", ref, "Zollernhof", upstream_datasets=["meta"], confidence=0.93),
+            corrections=corrections,
+        )
+        self.assertEqual(competitors, [])
+        self.assertEqual(stats["excluded"]["verified_correction"][0]["name"], "Zollernhof")
+
 class ConflatedSnapshotFeedsMetrics(PipelineTestCase):
     def _source_snapshot(self, source_name, records):
         snap = self.add_snapshot(source_name)

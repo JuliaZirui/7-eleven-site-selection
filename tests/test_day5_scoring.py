@@ -175,6 +175,33 @@ class Sensitivity(unittest.TestCase):
         self.assertEqual(scoring.sensitivity_analysis(res)["monte_carlo"], scoring.sensitivity_analysis(res)["monte_carlo"])
 
 
+    @staticmethod
+    def _structured(demand_score, comp_score, count):
+        crits = [{"key": c.key, "pillar": c.pillar, "day_type": c.day_type, "weight": c.weight,
+                  "score": demand_score if c.pillar == "demand" else comp_score,
+                  "count": None if c.pillar == "demand" else count}
+                 for c in scoring.BUSINESS_FIT_CRITERIA]
+        return {"criteria": crits}
+
+    def test_competition_structure_check_drops_the_demand_denominator(self):
+        # "busy" looks uncontested per head only because its demand is large;
+        # in absolute counts it is the more contested node.
+        res = {
+            "busy": self._structured(demand_score=90, comp_score=80, count=200),
+            "quiet": self._structured(demand_score=40, comp_score=30, count=0),
+        }
+        out = scoring.competition_structure_check(res, scoring.DEFAULT_WEIGHTS)
+        self.assertEqual(out["pillars"]["busy"]["competition"], 0.0)  # above every P90 anchor
+        self.assertEqual(out["pillars"]["quiet"]["competition"], 100.0)  # below every P10 anchor
+        self.assertEqual(out["pillars"]["busy"]["demand"], 90.0)  # demand untouched
+        self.assertEqual(out["rank"], ["quiet", "busy"])
+
+    def test_competition_structure_check_keeps_missing_counts_missing(self):
+        res = {"a": self._structured(demand_score=50, comp_score=50, count=None)}
+        out = scoring.competition_structure_check(res, scoring.DEFAULT_WEIGHTS)
+        self.assertIsNone(out["pillars"]["a"]["competition"])
+        self.assertEqual(out["fits"]["a"], 50.0)  # demand only, renormalized -- never scored as 0
+
 class DemandModel(unittest.TestCase):
     def test_size_class_to_headcount(self):
         self.assertEqual(demand_model.employees_estimate("0 Beschäftigte"), 0.0)

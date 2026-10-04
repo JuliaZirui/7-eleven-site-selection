@@ -41,6 +41,7 @@ from scoring import (
     _get,
     score_all,
     sensitivity_analysis,
+    competition_structure_check,
     day_type_check,
     visitor_conversion_check,
     worker_onsite_check,
@@ -514,6 +515,31 @@ def render(conn: sqlite3.Connection, run_id: int, run_at: datetime) -> tuple[str
         "headcounts before relying on the order."
     )
 
+    scheck = competition_structure_check(results, DEFAULT_WEIGHTS)
+    lines_s = ["| Competition measured as | Ranking | " + " | ".join(names[a] for a in order) + " |",
+               "| --- | --- | " + " | ".join("---" for _ in order) + " |",
+               "| competitors per 10,000 people (baseline) | " + " > ".join(names[a] for a in order) + " | "
+               + " | ".join(f"{_fmt(results[a]['pillars']['competition'])} → {_fmt(results[a]['business_fit'])} "
+                            f"({_pct(mc['top_share'][a])} #1)" for a in order) + " |",
+               "| competitors in the 400m circle (no demand denominator) | "
+               + " > ".join(names[a] for a in scheck["rank"]) + " | "
+               + " | ".join(f"{_fmt(scheck['pillars'][a]['competition'])} → {_fmt(scheck['fits'][a])} "
+                            f"({_pct(scheck['monte_carlo']['top_share'][a])} #1)" for a in order) + " |"]
+    abs_anchors = "; ".join(
+        f"{c.label.split(' competitors')[0]} {scheck['anchors'][c.key][0]:g} → {scheck['anchors'][c.key][1]:g}"
+        for c in BUSINESS_FIT_CRITERIA if c.key in scheck["anchors"])
+    same_s = scheck["rank"] == order and all(t == order[0] for t in scheck["scenario_tops"].values())
+    structure_check = "\n".join(lines_s) + "\n\n" + (
+        f"Cells: competition pillar → business fit (share of {mc['draws']:,} random weightings ranked #1). "
+        f"Absolute anchors, P90 → P10 of the same 139 stations' raw counts: {abs_anchors}.\n\n"
+    ) + (
+        "Same order, and the same #1 in every named scenario: the ranking is not an artifact of dividing "
+        "competition by demand."
+        if same_s else
+        "**The ranking changes when competition is not divided by demand** — part of the result comes from "
+        "demand entering the score twice; read the order as conditional on the per-head competition measure."
+    )
+
     flips = [o for o in sens["one_at_a_time"] if o["top_changed"]]
     if sens["top_rank_robust"]:
         sensitivity_reading = "the #1 position holds under every scenario, perturbation, and ≥80% of random weightings."
@@ -649,6 +675,7 @@ def render(conn: sqlite3.Connection, run_id: int, run_at: datetime) -> tuple[str
         visitor_check=visitor_check,
         worker_check=worker_check,
         day_check=day_check,
+        structure_check=structure_check,
         sensitivity_reading=sensitivity_reading,
         differentiation=differentiation,
         evidence_gaps=evidence_gaps,

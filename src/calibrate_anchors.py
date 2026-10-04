@@ -22,10 +22,14 @@ per-station distribution to db/raw/calibration/ and never touches
 site_selection.db. Run it only
 when the POI pipeline or taxonomy changes:
     python3 calibrate_anchors.py
+To re-run on the same stations and the same Overture release (so only a
+code change moves the anchors), with no network call at all:
+    python3 calibrate_anchors.py --stations-from <earlier competition_anchors_*.json>
 """
 
 from __future__ import annotations
 
+import argparse
 import json
 import math
 import statistics
@@ -40,7 +44,7 @@ from day_types import COMPETITION_WINDOWS, count_window_competitors
 from models import LocationInput
 from osm_client import HTTP_HEADERS, OVERPASS_URLS, OverpassError, fetch_overpass_pois
 from overture_client import fetch_overture_places
-from poi_conflation import build_competitor_set
+from poi_conflation import CONFLATION_METHOD_VERSION, build_competitor_set
 from poi_pipeline import _station_paths, clean_and_classify, normalize_overture
 from poi_taxonomy import DIRECT_FORMAT_CATEGORIES
 
@@ -57,6 +61,11 @@ SAME_STATION_M = 300
 MIN_EXPECTED_STATIONS = 50  # sanity floor: the Ringbahn area holds well over 100 S/U station nodes
 POLITE_DELAY_S = 1.0  # between per-station calls to a shared public mirror
 CACHE_DIR = OUT_DIR / "osm_cache"
+# Pinned so a re-calibration moves the anchors only through code changes,
+# not through a new monthly release. The ring extract is cached next to
+# the OSM cache (~3 MB).
+OVERTURE_RELEASE = "2026-09-23.1"
+OVERTURE_RING_CACHE = OUT_DIR / f"overture_ring_{OVERTURE_RELEASE}.json"
 
 
 
@@ -120,6 +129,19 @@ def station_osm(station: dict) -> dict:
     return raw
 
 
+def ring_overture() -> tuple[list[dict], dict]:
+    """The pinned release's in-scope places for the whole ring, cached."""
+    if OVERTURE_RING_CACHE.exists():
+        cached = json.loads(OVERTURE_RING_CACHE.read_text())
+        return cached["rows"], cached["meta"]
+    s, w, n, e = RING_BBOX
+    center_lat, center_lon = (s + n) / 2, (w + e) / 2
+    half_extent_m = max(haversine_m(center_lat, center_lon, n, center_lon), haversine_m(center_lat, center_lon, center_lat, e))
+    rows, meta = fetch_overture_places(center_lat, center_lon, int(half_extent_m) + 500, release=OVERTURE_RELEASE)
+    OVERTURE_RING_CACHE.write_text(json.dumps({"meta": meta, "rows": rows}, ensure_ascii=False, default=str))
+    return rows, meta
+
+
 def station_metrics(station: dict, osm_elements: list[dict], overture_records: list[dict]) -> dict:
     node = LocationInput(area_id=station["name"], name=station["name"], lat=station["lat"], lon=station["lon"],
                          radius_m=RADIUS_M)
@@ -136,7 +158,7 @@ def station_metrics(station: dict, osm_elements: list[dict], overture_records: l
         for r in overture_records
         if haversine_m(node.lat, node.lon, r["lat"], r["lon"]) <= RADIUS_M + 100
     ]
-    competitors, _ = build_competitor_set(
+    competitors, stats = build_competitor_set(
         node, {"osm_overpass": osm, "overture_places": overture}, _station_paths(osm_elements)
     )
     area_km2 = math.pi * (RADIUS_M / 1000.0) ** 2
@@ -154,6 +176,10 @@ def station_metrics(station: dict, osm_elements: list[dict], overture_records: l
         "nearest_competitor_m": min(distances) if distances else None,
         "nearest_direct_format_m": min(direct_distances) if direct_distances else None,
         **{f"{w.key}_competitor_count": count_window_competitors(competitors, w)[0] for w in COMPETITION_WINDOWS},
+        "quality_corrections": {
+            "near_duplicates_merged": [[r["name"] for r in m["records"]] for m in stats["near_duplicates_merged"]],
+            **{k: [x["name"] for x in v] for k, v in stats["excluded"].items()},
+        },
     }
 
 
@@ -162,15 +188,17 @@ def percentiles(values: list[float]) -> dict[str, float]:
     return {"p10": qs[1], "p25": qs[4], "p50": qs[9], "p75": qs[14], "p90": qs[17]}
 
 
-def run() -> dict:
+def run(stations_from: Path | None = None) -> dict:
     now = datetime.now(timezone.utc)
-    station_elements, osm_url = fetch_station_list()
-    stations = reference_stations(station_elements)
+    if stations_from is not None:
+        earlier = json.loads(stations_from.read_text())
+        stations = [{"name": r["station"], "lat": r["lat"], "lon": r["lon"]} for r in earlier["stations"]]
+        osm_url = earlier["osm_endpoint"]
+    else:
+        station_elements, osm_url = fetch_station_list()
+        stations = reference_stations(station_elements)
 
-    s, w, n, e = RING_BBOX
-    center_lat, center_lon = (s + n) / 2, (w + e) / 2
-    half_extent_m = max(haversine_m(center_lat, center_lon, n, center_lon), haversine_m(center_lat, center_lon, center_lat, e))
-    overture_rows, overture_meta = fetch_overture_places(center_lat, center_lon, int(half_extent_m) + 500)
+    overture_rows, overture_meta = ring_overture()
     overture_records, _ = normalize_overture(overture_rows)
 
     per_station, failed = [], []
@@ -195,6 +223,8 @@ def run() -> dict:
         "osm_endpoint": osm_url,
         "failed_stations": failed,
         "overture_release": overture_meta["release"],
+        "conflation_method": CONFLATION_METHOD_VERSION,
+        "stations_from": stations_from.name if stations_from else None,
         "n_stations": len(per_station),
         "percentiles": summary,
         "stations": per_station,
@@ -209,4 +239,6 @@ def run() -> dict:
 
 
 if __name__ == "__main__":
-    run()
+    parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
+    parser.add_argument("--stations-from", type=Path, help="reuse the station set of an earlier anchors file")
+    run(parser.parse_args().stations_from)

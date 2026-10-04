@@ -67,27 +67,29 @@ The store concept: fresh food, coffee and convenience goods, 50–100 m², with 
 
 | Node | Customer profile | Business fit | Evidence quality | Ranked #1 in random weightings |
 | --- | --- | --- | --- | --- |
-| Brandenburger Tor | Visitor-led, city centre | 92.7 | 75.4 (verify first) | 100% |
-| Warschauer Straße | Office + nightlife mix | 63.6 | 76.6 (verify first) | 0% |
+| Brandenburger Tor | Visitor-led, city centre | 92.9 | 73.9 (verify first) | 100% |
+| Warschauer Straße | Office + nightlife mix | 63.2 | 76.6 (verify first) | 0% |
 | Schönhauser Allee | Residential daily shopping | 23.7 | 90.4 (adequate) | 0% |
 
-Figures from [analysis run #15](reports/site_report_run15_20261002T092116Z.md) (2026-10-02, `scoring_v6`).
+Figures from [analysis run #17](reports/site_report_run17_20261003T153943Z.md) (2026-10-03, `scoring_v7`).
 
 **Reading:**
-- **Brandenburger Tor is the diligence priority.** It ranks first under every weighting tested, across the interquartile range of the visitor estimate (at the low end it still leads 71.7 to 54.9), and across the verified range of on-site workers.
+- **Brandenburger Tor is the diligence priority.** It ranks first under every weighting tested, across the interquartile range of the visitor estimate (at the low end it still leads 72.7 to 54.4), and across the verified range of on-site workers.
 - **Its lead rests on two things to verify first.**
-  - **Competition.** OSM appears to under-map its competitors: 32 mapped against 66 IHK-registered food businesses. Its competition advantage may partly be a data artifact, so verifying the competitor count is the first item on its field checklist.
+  - **Competition.** OSM appears to under-map its competitors: 29 mapped against 66 IHK-registered food businesses. Its competition advantage may partly be a data artifact, so verifying the competitor count is the first item on its field checklist.
   - **Demand.** About 58% of its weekday demand is visitors, converted from Wikipedia pageviews; the ranking holds across the conversion's interquartile range, but only a footfall count settles it. About 6,600 of its workers are public-sector staff estimated by hand (range 5,100–8,200); the other two nodes' public employers have not been inventoried the same way.
-- **Schönhauser Allee is the clearest deprioritization.** Its evidence is the strongest of the three, and competition per head there is saturated.
+- **Schönhauser Allee is lower priority in this screening round.** Under the current demand proxy and competition measures, it faces the highest relative competitive pressure of the three, and its evidence is the strongest. Its peak competitor counts are above the P90 of the 139 reference stations in every time window, with or without dividing by demand.
+- **The ranking does not depend on dividing competition by demand.** The baseline scores competitors per 10,000 people, so demand also enters the competition pillar. Re-scored with absolute competitor counts in the 400 m circle (anchored on the same 139 stations), the order is unchanged (87.3 / 54.0 / 23.7), and Brandenburger Tor still ranks first in 100% of random weightings.
 
 ## Validation
 
-- **153 automated tests, all passing, run by GitHub Actions on every push (Python 3.9 and 3.12).** They cover missing data, duplicate records, API failures (49 mocked failure paths) and overnight opening hours, plus scoring, report, agent-guard and LLM-policy tests (mocked client, plus one round trip through the real SDK with an intercepted transport).
+- **159 automated tests, all passing, run by GitHub Actions on every push (Python 3.9 and 3.12).** They cover missing data, duplicate records, API failures (49 mocked failure paths) and overnight opening hours, plus scoring, report, agent-guard and LLM-policy tests (mocked client, plus one round trip through the real SDK with an intercepted transport).
 - **End-to-end reproducibility.** A rerun with the network blocked reproduces every score, the ranking and the Monte Carlo shares exactly. Compute takes about 1 second, with no LLM tokens and €0 marginal cost.
 - **Manual vs. tool benchmark** on one node ([comparison/manual_vs_tool.md](comparison/manual_vs_tool.md)):
   - Speed: 32 minutes by hand, about 1 second for the tool once the data is fetched.
   - Coverage: neither inventory was complete. The tool found about twice as many competitors, including several confirmed by three providers that the manual pass missed. The manual pass found 4 places that no open source listed, and got far better opening-hours coverage.
-  - The most useful output was the list of disagreements, which became the field checklist. The comparison also exposed two tool defects (an unmerged cross-provider duplicate and Overture category errors); both are logged for v2.
+  - The most useful output was the list of disagreements, which became the field checklist.
+  - The comparison also exposed two tool defects: an unmerged cross-provider duplicate and two Overture category errors. Both are now fixed in the conflation step, two of the three records by general rules that also run on the 139 reference stations ([comparison/data_quality_fixes.md](comparison/data_quality_fixes.md)). Brandenburger Tor's morning-peak count falls from 16 to 13 and its fit moves from 92.7 to 92.9. The ranking and the 100% random-weighting share are unchanged; its evidence quality drops from 75.4 to 73.9, because the under-mapping signal gets stronger.
 - **Follow-up policy comparison** ([comparison/policy_eval.md](comparison/policy_eval.md)). Does an LLM decide better than rules which data gaps to spend live calls on? 16 scenarios, with the expected decisions committed before any policy ran ([comparison/policy_scenarios.md](comparison/policy_scenarios.md)):
   - Rule baseline: 10/16. Impact-ordered rule: 14/16. LLM: 16/16 in all 5 runs, no guard rejections, $0.019 per run ($1.50 for the whole evaluation).
   - On ordering, the impact rule and the LLM tie (14/14). The LLM's measurable edge is declining calls that cannot change the decision (2 scenarios), plus much more specific field questions. The expected decisions and the LLM's prompt share an author, which limits how much the LLM's score can show.
@@ -105,7 +107,7 @@ Figures from [analysis run #15](reports/site_report_run15_20261002T092116Z.md) (
 
 1. **Citywide run.** Run the full pipeline end to end on all 139 reference stations; the pipeline already computes their core metrics.
 2. **Configurable store concept.** Move the competitor taxonomy, peak windows and weights into a config file, so other small-format retail concepts can reuse the same pipeline.
-3. **Data-quality fixes found by the benchmark.** Merge duplicates that appear under different names, and filter Overture category errors by confidence.
+3. **A second manual benchmark** on Warschauer Straße or Schönhauser Allee, so hand-verified corrections are not limited to one node, plus a spot check of the 28 near-duplicate merges at reference stations.
 4. **Hybrid follow-up.** Rules decide what to follow up; the LLM only writes the field question for each flag ([comparison/policy_findings.md](comparison/policy_findings.md)).
 5. **LLM opening-hours extraction** from competitors' own websites, behind a coverage go/no-go check ([plan_llm_opening_hours.md](plan_llm_opening_hours.md)).
 
@@ -123,7 +125,7 @@ Figures from [analysis run #15](reports/site_report_run15_20261002T092116Z.md) (
 | `reports/` | Latest site report, score file and test log (earlier runs are kept in the database, not in the repo) |
 | `db/` | SQLite database, schema and raw source snapshots ([GTFS note](db/raw/vbb_gtfs/README.md)) |
 | `.github/workflows/` | CI: test suite + offline reproducibility check |
-| `comparison/` | Manual vs. tool benchmark; follow-up policy scenarios, results and findings |
+| `comparison/` | Manual vs. tool benchmark and the data-quality fixes it led to; follow-up policy scenarios, results and findings |
 
 Requires Python 3.9+. Everything below runs offline from the committed database and snapshots:
 

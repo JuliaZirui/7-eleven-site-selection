@@ -31,14 +31,14 @@ from __future__ import annotations
 import math
 import random
 import sqlite3
-from dataclasses import dataclass
+from dataclasses import dataclass, replace
 from datetime import date, datetime, timezone
 from typing import Callable
 
 from demand_model import latest_visitor_fit
 from metrics_pipeline import latest_area_snapshots, latest_snapshot_id
 
-SCORING_MODEL_VERSION = "scoring_v6"
+SCORING_MODEL_VERSION = "scoring_v7"
 
 WEEKDAY = "weekday_We"
 WEEKEND = "weekend_SaSu"
@@ -248,13 +248,16 @@ class Criterion:
 # reference distribution to 0 / 100 (or 100 / 0 where fewer is better),
 # so a score reads as "busier / less contested than roughly X% of
 # inner-city transit nodes".
+# scoring_v7: competition anchors re-run on the same 139 stations and the
+# same Overture release with conflation_v2 (near-duplicate merge, name /
+# category check, verified corrections); demand anchors unchanged.
 # scoring_v6 run: all 139 stations complete for all six criteria (OSM
 # cache 2026-09-28/10-01, Overture 2026-09-23.1, IHK with NACE divisions
 # fetched 2026-10-02, visitor fit visitor_fit_20261001T130205Z, pageviews
 # 2025-09..2026-09; known attendance -- published counts and
 # venue_attendance_verified.csv -- used instead of the fame conversion).
-COMPETITION_CALIBRATION_REF = "db/raw/calibration/competition_anchors_20261002T084101Z.json"
-DEMAND_CALIBRATION_REF = "db/raw/calibration/demand_anchors_20261002T092010Z.json"
+COMPETITION_CALIBRATION_REF = "db/raw/calibration/competition_anchors_20261003T153748Z.json"
+DEMAND_CALIBRATION_REF = "db/raw/calibration/demand_anchors_20261003T153754Z.json"
 _PEOPLE_RATIONALE = (
     "Residents: area-weighted MSS 2025 population of the 400m circle (both day types). Workers: IHK registrations "
     "whose nearest S/U station is this node, size classes at their geometric midpoint, large employers at their "
@@ -280,26 +283,26 @@ BUSINESS_FIT_CRITERIA: tuple[Criterion, ...] = (
     Criterion(
         "morning_peak_competition", "competition",
         "Weekday 7–9 competitors per 10,000 weekday people (bakery, café, supermarket, fuel shop)", "per 10k",
-        _single("morning_peak_competitor_count", WEEKDAY), worst=34, best=6.4,
+        _single("morning_peak_competitor_count", WEEKDAY), worst=33.4, best=5.9,
         rationale="Breakfast / coffee-to-go set a commuter passes 7-9. Shops whose OSM hours show them closed are "
-        "excluded; unknown hours count as open. Anchors: P90 / P10 of 139 inner-Berlin S/U stations (34.2 / 6.4).",
+        "excluded; unknown hours count as open. Anchors: P90 / P10 of 139 inner-Berlin S/U stations (33.4 / 5.9).",
         per_demand=True, weight=2.5, day_type="weekday",
     ),
     Criterion(
         "evening_peak_competition", "competition",
         "Weekday 16–19 competitors per 10,000 weekday people (späti, fast food, supermarket, fuel shop)", "per 10k",
-        _single("evening_peak_competitor_count", WEEKDAY), worst=35.5, best=5.7,
+        _single("evening_peak_competitor_count", WEEKDAY), worst=35.4, best=5.7,
         rationale="After-work top-up / snack set 16-19, same rules. Anchors: P90 / P10 of 139 inner-Berlin S/U "
-        "stations (35.5 / 5.7).",
+        "stations (35.4 / 5.7).",
         per_demand=True, weight=2.5, day_type="weekday",
     ),
     Criterion(
         "weekend_day_competition", "competition",
         "Weekend 10–19 competitors per 10,000 weekend people (bakery, café, supermarket, späti, fast food, fuel shop)",
-        "per 10k", _single("weekend_day_competitor_count", WEEKEND), worst=91.5, best=14.3,
+        "per 10k", _single("weekend_day_competitor_count", WEEKEND), worst=90.5, best=14.3,
         rationale="Average of Saturday and Sunday. Unknown-hours retail follows Berlin's Sunday law: supermarkets, "
         "spätis, beverage and chemist shops closed on Sunday unless inside a station; bakeries 7-16. "
-        "Anchors: P90 / P10 of 139 inner-Berlin S/U stations (91.5 / 14.3).",
+        "Anchors: P90 / P10 of 139 inner-Berlin S/U stations (90.5 / 14.3).",
         per_demand=True, weight=1.0, day_type="weekend",
     ),
     Criterion(
@@ -314,6 +317,18 @@ BUSINESS_FIT_CRITERIA: tuple[Criterion, ...] = (
 )
 
 PILLARS: tuple[str, ...] = ("demand", "competition")
+
+# Structural check: the same four competitor counts scored as they are
+# (competitors in the 400m circle), with no demand denominator. Anchors
+# are P90 / P10 of the raw counts at the same 139 reference stations
+# (COMPETITION_CALIBRATION_REF). Used only by
+# competition_structure_check(); the baseline score never reads them.
+ABSOLUTE_COMPETITION_ANCHORS: dict[str, tuple[float, float]] = {
+    "morning_peak_competition": (53.2, 8.0),
+    "evening_peak_competition": (57.2, 7.0),
+    "weekend_day_competition": (96.0, 12.3),
+    "weekend_night_competition": (35.6, 2.9),
+}
 
 # Demand dimensions in store_hypothesis.md that no v1 source measures.
 # Listed so the report states them as unscored, rather than letting an
@@ -666,6 +681,56 @@ def visitor_conversion_check(results: dict[str, dict], weights: dict[str, float]
     return out
 
 
+def _monte_carlo(pillars_by_area: dict[str, dict]) -> dict:
+    rng = random.Random(MONTE_CARLO_SEED)
+    first_counts = {a: 0 for a in pillars_by_area}
+    rank_sums = {a: 0 for a in pillars_by_area}
+    for _ in range(MONTE_CARLO_DRAWS):
+        w = _normalize_weights({p: rng.gammavariate(1.0, 1.0) for p in PILLARS})
+        r = rank(_fits(pillars_by_area, w))
+        first_counts[r[0]] += 1
+        for i, a in enumerate(r):
+            rank_sums[a] += i + 1
+    return {
+        "draws": MONTE_CARLO_DRAWS,
+        "seed": MONTE_CARLO_SEED,
+        "top_share": {a: n / MONTE_CARLO_DRAWS for a, n in first_counts.items()},
+        "mean_rank": {a: s / MONTE_CARLO_DRAWS for a, s in rank_sums.items()},
+    }
+
+
+def competition_structure_check(results: dict[str, dict], weights: dict[str, float] = DEFAULT_WEIGHTS) -> dict:
+    """Re-score with competition as absolute competitor counts in the
+    400m circle instead of competitors per 10,000 people. The baseline
+    divides by demand, so demand enters business_fit twice; this asks
+    whether the ranking is an artifact of that structure. Demand scores
+    are unchanged; random weightings use the same seed as the baseline."""
+    defs = {c.key: c for c in BUSINESS_FIT_CRITERIA}
+    pillars_by_area, criteria_by_area = {}, {}
+    for area_id, r in results.items():
+        crits = []
+        for c in r["criteria"]:
+            if c["key"] in ABSOLUTE_COMPETITION_ANCHORS:
+                worst, best = ABSOLUTE_COMPETITION_ANCHORS[c["key"]]
+                count = c.get("count")
+                score = None if count is None else replace(defs[c["key"]], worst=worst, best=best).normalize(count)
+                c = {**c, "raw_value": count, "score": score}
+            crits.append(c)
+        criteria_by_area[area_id] = crits
+        pillars_by_area[area_id] = pillar_scores(crits)
+    fits = _fits(pillars_by_area, weights)
+    scenario_tops = {name: rank(_fits(pillars_by_area, w))[0] for name, w in SCENARIO_WEIGHTS.items()}
+    return {
+        "anchors": ABSOLUTE_COMPETITION_ANCHORS,
+        "criteria": criteria_by_area,
+        "pillars": pillars_by_area,
+        "fits": fits,
+        "rank": rank(fits),
+        "scenario_tops": scenario_tops,
+        "monte_carlo": _monte_carlo(pillars_by_area),
+    }
+
+
 def sensitivity_analysis(results: dict[str, dict], base_weights: dict[str, float] = DEFAULT_WEIGHTS) -> dict:
     pillars_by_area = {a: r["pillars"] for a, r in results.items()}
     base_fits = _fits(pillars_by_area, base_weights)
@@ -688,21 +753,7 @@ def sensitivity_analysis(results: dict[str, dict], base_weights: dict[str, float
 
     # Uniform over the weight simplex (Dirichlet(1,1,1)): "if we had no
     # prior on the weights at all, how often does each node come out on top?"
-    rng = random.Random(MONTE_CARLO_SEED)
-    first_counts = {a: 0 for a in results}
-    rank_sums = {a: 0 for a in results}
-    for _ in range(MONTE_CARLO_DRAWS):
-        w = _normalize_weights({p: rng.gammavariate(1.0, 1.0) for p in PILLARS})
-        r = rank(_fits(pillars_by_area, w))
-        first_counts[r[0]] += 1
-        for i, a in enumerate(r):
-            rank_sums[a] += i + 1
-    monte_carlo = {
-        "draws": MONTE_CARLO_DRAWS,
-        "seed": MONTE_CARLO_SEED,
-        "top_share": {a: n / MONTE_CARLO_DRAWS for a, n in first_counts.items()},
-        "mean_rank": {a: s / MONTE_CARLO_DRAWS for a, s in rank_sums.items()},
-    }
+    monte_carlo = _monte_carlo(pillars_by_area)
 
     minmax_fits = _fits(_minmax_pillars(results), base_weights)
 

@@ -1,0 +1,2 @@
+external_ref,area_id,name,action,reason,evidence,found_by,reviewed_on
+overture:e99aea2b-c4e5-4e25-a80a-0f62d57d87e2,brandenburger_tor,Zollernhof,exclude,"Office building, not a café. Overture (via Meta) tags it cafe (confidence 0.93); no café at the address in OSM or Google Maps, and the name is the building's (Zollernhof, Unter den Linden 36, ZDF capital studio).","Manual benchmark pass, Google Maps; OSM has no café node at the point",comparison/manual_vs_tool.md (defect 2),2026-10-01
