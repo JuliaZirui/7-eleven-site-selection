@@ -21,8 +21,13 @@ jobs:
       # Fixed test categories + offline end-to-end reproducibility check.
       # Exits non-zero on any failure or if scores differ from the recorded run.
       - run: python tests/run_day6.py
+      # The documented quick start must keep working: offline demo + example input.
+      - run: python src/cli.py validate
+      - run: python src/cli.py demo
       - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: test-log-py${{ matrix.python-version }}
-          path: reports/day6_test_log_*
+          path: |
+            reports/day6_test_log_*
+            logs/

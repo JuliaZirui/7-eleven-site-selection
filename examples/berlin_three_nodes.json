@@ -1,0 +1,29 @@
+{
+  "description": "Input of the Berlin case study: three S/U-Bahn nodes with the same DB station price class (Preisklasse 4) and different customer profiles. Rationale per node: site_candidates.md. The store concept is read from store_hypothesis.md; competitor categories, peak windows and weights are set in code (README > Configuration).",
+  "sites": [
+    {
+      "area_id": "brandenburger_tor",
+      "name": "Brandenburger Tor",
+      "lat": 52.51653594770922,
+      "lon": 13.381516508773798,
+      "radius_m": 400,
+      "gtfs_stations": ["S+U Brandenburger Tor (Berlin)"]
+    },
+    {
+      "area_id": "warschauer_strasse",
+      "name": "Warschauer Straße",
+      "lat": 52.50533737805442,
+      "lon": 13.449070864605977,
+      "radius_m": 400,
+      "gtfs_stations": ["S+U Warschauer Str. (Berlin)", "S Warschauer Str. (Berlin)"]
+    },
+    {
+      "area_id": "schoenhauser_allee",
+      "name": "Schönhauser Allee",
+      "lat": 52.549317383699474,
+      "lon": 13.413628569194154,
+      "radius_m": 400,
+      "gtfs_stations": ["S+U Schönhauser Allee (Berlin)"]
+    }
+  ]
+}

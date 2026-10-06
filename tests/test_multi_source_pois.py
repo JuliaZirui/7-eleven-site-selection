@@ -11,6 +11,7 @@ from __future__ import annotations
 
 import json
 import unittest
+from unittest import mock
 from datetime import date
 
 from helpers import PipelineTestCase, make_node
@@ -237,6 +238,38 @@ class ConflationQualityRules(unittest.TestCase):
         )
         self.assertEqual(competitors, [])
         self.assertEqual(stats["excluded"]["verified_correction"][0]["name"], "Zollernhof")
+
+
+class HoursCoverageHelpers(unittest.TestCase):
+    """src/hours_coverage.py: the Phase 0 website check (plan_llm_opening_hours.md)."""
+
+    def test_follows_only_a_same_domain_hours_link(self):
+        import hours_coverage
+        html = ('<a href="https://other.de/oeffnungszeiten">Öffnungszeiten</a>'
+                '<a href="/menu">Menu</a><a href="/kontakt">Kontakt</a>')
+        self.assertEqual(hours_coverage.hours_link(html, "https://www.shop.de/"), "https://www.shop.de/kontakt")
+        self.assertIsNone(hours_coverage.hours_link('<a href="/menu">Menu</a>', "https://www.shop.de/"))
+
+    def test_jsonld_and_text_hours_signals(self):
+        import hours_coverage
+        jsonld = '<script type="application/ld+json">{"@type": "Bakery", "openingHours": "Mo-Fr 07:00-18:00"}</script>'
+        self.assertEqual(hours_coverage._hours_signals(jsonld), (True, False))
+        self.assertEqual(hours_coverage._hours_signals("<p>Öffnungszeiten: Mo–Fr 7:00 – 18:00 Uhr</p>"), (False, True))
+        self.assertEqual(hours_coverage._hours_signals("<p>Seit 1990, Tel. 030 12.34-56.78</p>"), (False, False))
+
+    def test_unreachable_robots_txt_means_not_fetched(self):
+        import httpx
+        import hours_coverage
+
+        def handler(request):
+            return httpx.Response(503 if request.url.path == "/robots.txt" else 200, text="<p>hi</p>",
+                                  headers={"content-type": "text/html"})
+
+        with mock.patch.object(hours_coverage, "POLITE_DELAY_S", 0), \
+                httpx.Client(transport=httpx.MockTransport(handler)) as client:
+            out = hours_coverage.check_url("shop.de", {}, client)
+        self.assertIsNone(out["robots_allowed"])
+        self.assertIsNone(out["status"])  # the page itself was never requested
 
 class ConflatedSnapshotFeedsMetrics(PipelineTestCase):
     def _source_snapshot(self, source_name, records):

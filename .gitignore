@@ -11,6 +11,8 @@ venv/
 db/raw/vbb_gtfs/vbb_gtfs_20260924.zip
 
 # Local-only material
+logs/
+out/
 notes/
 reports/archive/
 *.indd

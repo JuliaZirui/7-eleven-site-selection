@@ -232,7 +232,7 @@ Two gaps surfaced while building the scoring, both fixed in [`src/metrics_pipeli
 
 ## Day 6: Fixed Test Cases
 
-`python3 tests/run_day6.py` runs all four fixed test-case categories from project_plan_v3.md, plus a supplementary suite for the Day 5 layer, then an end-to-end reproducibility check. It writes a time/cost/quality log to `reports/day6_test_log_<stamp>.md` and `.json`; the latest published log is [`reports/day6_test_log_20261003T153943Z.md`](reports/day6_test_log_20261003T153943Z.md). The tests use stdlib `unittest` (no new dependency). Every test builds its own throwaway SQLite database from `db/schema.sql` and redirects every raw-file/report path into a temp dir. A network guard makes any HTTP call a test didn't explicitly mock raise an error, so the real `db/site_selection.db` is never written (checksum identical before and after) and no test can pass by quietly hitting a live API.
+`python3 tests/run_day6.py` runs all four fixed test-case categories from project_plan_v3.md, plus a supplementary suite for the Day 5 layer, then an end-to-end reproducibility check. It writes a time/cost/quality log to `reports/day6_test_log_<stamp>.md` and `.json`; the latest published log is [`reports/day6_test_log_20261004T081832Z.md`](reports/day6_test_log_20261004T081832Z.md). The tests use stdlib `unittest` (no new dependency). Every test builds its own throwaway SQLite database from `db/schema.sql` and redirects every raw-file/report path into a temp dir. A network guard makes any HTTP call a test didn't explicitly mock raise an error, so the real `db/site_selection.db` is never written (checksum identical before and after) and no test can pass by quietly hitting a live API.
 
 | Category | File | What it pins down |
 | --- | --- | --- |

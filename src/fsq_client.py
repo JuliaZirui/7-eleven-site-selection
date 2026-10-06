@@ -72,6 +72,7 @@ def ensure_berlin_extract(cache_dir: Path, token: str | None = None) -> tuple[Pa
     xmin, ymin, xmax, ymax = BERLIN_BBOX
     try:
         con = duckdb.connect()
+        con.execute("SET enable_progress_bar = false")
         con.execute("INSTALL httpfs; LOAD httpfs;")
         con.execute("CREATE SECRET fsq_hf (TYPE huggingface, TOKEN ?)", [token])
         con.execute(
@@ -104,6 +105,7 @@ def fetch_fsq_places(lat: float, lon: float, radius_m: int, cache_dir: Path) -> 
     dlon = radius_m / (111_320.0 * math.cos(math.radians(lat)))
     try:
         con = duckdb.connect()
+        con.execute("SET enable_progress_bar = false")
         cursor = con.execute(
             """
             SELECT fsq_place_id, name, latitude AS lat, longitude AS lon,

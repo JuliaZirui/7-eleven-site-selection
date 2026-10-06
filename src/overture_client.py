@@ -86,6 +86,7 @@ def fetch_overture_places(lat: float, lon: float, radius_m: int, release: str | 
     release, files = resolve_place_files(xmin, ymin, xmax, ymax, release)
     try:
         con = duckdb.connect()
+        con.execute("SET enable_progress_bar = false")
         con.execute("INSTALL httpfs; LOAD httpfs;")
         cursor = con.execute(
             """
