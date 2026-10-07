@@ -1,6 +1,6 @@
 # Implementation Plan — LLM Data-Plausibility Audit (v3)
 
-2026-10-07 · Status: not started. Pre-registration: [comparison/audit_answer_key.md](comparison/audit_answer_key.md) (committed together with this plan, before any audit code or prompt exists).
+2026-10-07 · Status: Phase 1 done ([comparison/audit_candidate_recall.md](comparison/audit_candidate_recall.md)); Phase 2 next. Pre-registration: [comparison/audit_answer_key.md](comparison/audit_answer_key.md) (committed together with this plan, before any audit code or prompt exists).
 
 ## Goal
 

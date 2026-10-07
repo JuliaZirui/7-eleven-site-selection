@@ -98,10 +98,12 @@ def _class_floor(employees_range: str | None) -> int | None:
         return None
 
 
-def load_onsite_verifications(path: Path = ONSITE_VERIFIED_CSV) -> dict[str, dict]:
+def load_onsite_verifications(path: Path = ONSITE_VERIFIED_CSV, corrections: bool = True) -> dict[str, dict]:
     """opendata_id -> {onsite_low, onsite_central, onsite_high, identified_as, ...}
-    from the hand-checked table (sources per row)."""
-    if not path.exists():
+    from the hand-checked table (sources per row). corrections=False
+    returns {}: every registration at its class midpoint, the state
+    before review (the data-plausibility audit runs on it)."""
+    if not corrections or not path.exists():
         return {}
     out = {}
     for row in csv.DictReader(path.open(encoding="utf-8")):
@@ -112,8 +114,9 @@ def load_onsite_verifications(path: Path = ONSITE_VERIFIED_CSV) -> dict[str, dic
     return out
 
 
-def load_unregistered_employers(path: Path = UNREGISTERED_CSV) -> list[dict]:
-    if not path.exists():
+def load_unregistered_employers(path: Path = UNREGISTERED_CSV, corrections: bool = True) -> list[dict]:
+    """Hand-added employers; [] with corrections=False (pre-review state)."""
+    if not corrections or not path.exists():
         return []
     rows = []
     for row in csv.DictReader(path.open(encoding="utf-8")):
@@ -219,13 +222,19 @@ def latest_visitor_fit(calibration_dir: Path = CALIBRATION_DIR) -> tuple[dict, P
     return json.loads(fits[-1].read_text()), fits[-1]
 
 
-def load_known_attendance(fit: dict | None = None, path: Path = VENUE_ATTENDANCE_CSV) -> dict[str, float]:
+def load_known_attendance(fit: dict | None = None, path: Path = VENUE_ATTENDANCE_CSV,
+                          corrections: bool = True) -> dict[str, float]:
     """German Wikipedia title -> known annual visitors: the published
     counts the visitor fit was trained on (fit["data"]) plus
     VENUE_ATTENDANCE_CSV (central values). A known figure always beats the
     fame conversion -- fame overstates visits wherever it outruns
-    capacity (clubs) and understates it for family attractions."""
+    capacity (clubs) and understates it for family attractions.
+
+    corrections=False returns {}: every venue from the fame conversion,
+    the published counts included (the pre-review state)."""
     known: dict[str, float] = {}
+    if not corrections:
+        return known
     for d in (fit or {}).get("data", []):
         title = (d.get("titles") or {}).get("dewiki")
         if title:

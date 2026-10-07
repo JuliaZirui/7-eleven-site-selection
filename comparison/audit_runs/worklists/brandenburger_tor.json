@@ -1,0 +1,1471 @@
+{
+ "generator": "audit_candidates_v2",
+ "area_id": "brandenburger_tor",
+ "name": "Brandenburger Tor",
+ "lat": 52.51653594770922,
+ "lon": 13.381516508773798,
+ "radius_m": 400,
+ "state": "corrections_off",
+ "provenance": {
+  "ihk_snapshot_id": 35,
+  "attraction_snapshot_id": 47,
+  "poi_source_snapshot_ids": {
+   "osm_overpass": 38,
+   "overture_places": 39
+  },
+  "conflation": "conflation_v1 (quality rules and verified corrections off)",
+  "osm_context": "db/raw/audit/osm_context/brandenburger_tor_20261007T091432Z.json",
+  "visitor_fit": "visitor_fit_20261001T130205Z.json"
+ },
+ "modules_skipped": [],
+ "counts": {
+  "concentration": 4,
+  "large_registration": 1,
+  "missing_entity": 17,
+  "poi_category": 4,
+  "poi_duplicate": 8
+ },
+ "candidates": [
+  {
+   "candidate_id": "concentration:ihk:17303106124",
+   "module": "concentration",
+   "segment": "workers",
+   "record_ref": "ihk:17303106124",
+   "record": {
+    "opendata_id": "17303106124",
+    "employees_range": "5000 - 7499 Beschäftigte",
+    "nace_id": "6419",
+    "nace_desc": "Kreditinstitute, ohne Spezialkreditinstitute",
+    "ihk_branch_desc": "Kreditinstitute des Genossenschaftssektors",
+    "branch_top_level_desc": "Erbringung von Finanzdienstleistungen",
+    "business_age": "27",
+    "business_type": "im Handelsregister eingetragen",
+    "planungsraum": "Wilhelmstraße",
+    "lat": 52.51576354,
+    "lon": 13.37897687
+   },
+   "value_people_per_day": 6123.3,
+   "segment_total": 8175.0,
+   "share_of_segment": 0.749,
+   "conversion": "IHK size class at its geometric midpoint, counted as on-site headcount"
+  },
+  {
+   "candidate_id": "concentration:wikidata:Q160700",
+   "module": "concentration",
+   "segment": "visitors",
+   "record_ref": "wikidata:Q160700",
+   "record": {
+    "qid": "Q160700",
+    "name": "Denkmal für die ermordeten Juden Europas",
+    "kind": "attraction",
+    "wikipedia_titles": {
+     "dewiki": "Denkmal für die ermordeten Juden Europas",
+     "enwiki": "Memorial to the Murdered Jews of Europe"
+    },
+    "distance_m": 266,
+    "gateway_share": 0.333,
+    "pageviews_12m": 220181
+   },
+   "value_people_per_day": 2060.7,
+   "segment_total": 18230.6,
+   "share_of_segment": 0.113,
+   "annual_visitors_from_pageviews": 2256488,
+   "conversion": "log10(visitors) = 1.011 + 1.000 * log10(12-month de+en pageviews), times the 1/k gateway share, / 365"
+  },
+  {
+   "candidate_id": "concentration:wikidata:Q82425",
+   "module": "concentration",
+   "segment": "visitors",
+   "record_ref": "wikidata:Q82425",
+   "record": {
+    "qid": "Q82425",
+    "name": "Brandenburger Tor",
+    "kind": "attraction",
+    "wikipedia_titles": {
+     "dewiki": "Brandenburger Tor",
+     "enwiki": "Brandenburg Gate"
+    },
+    "distance_m": 265,
+    "gateway_share": 0.5,
+    "pageviews_12m": 571870
+   },
+   "value_people_per_day": 8028.4,
+   "segment_total": 18230.6,
+   "share_of_segment": 0.44,
+   "annual_visitors_from_pageviews": 5860714,
+   "conversion": "log10(visitors) = 1.011 + 1.000 * log10(12-month de+en pageviews), times the 1/k gateway share, / 365"
+  },
+  {
+   "candidate_id": "concentration:wikidata:Q151897",
+   "module": "concentration",
+   "segment": "visitors",
+   "record_ref": "wikidata:Q151897",
+   "record": {
+    "qid": "Q151897",
+    "name": "Reichstagsgebäude",
+    "kind": "attraction",
+    "wikipedia_titles": {
+     "dewiki": "Reichstagsgebäude",
+     "enwiki": "Reichstag building"
+    },
+    "distance_m": 387,
+    "gateway_share": 0.5,
+    "pageviews_12m": 470553
+   },
+   "value_people_per_day": 6606.0,
+   "segment_total": 18230.6,
+   "share_of_segment": 0.362,
+   "annual_visitors_from_pageviews": 4822384,
+   "conversion": "log10(visitors) = 1.011 + 1.000 * log10(12-month de+en pageviews), times the 1/k gateway share, / 365"
+  },
+  {
+   "candidate_id": "large_registration:ihk:17303106124",
+   "module": "large_registration",
+   "record_ref": "ihk:17303106124",
+   "record": {
+    "opendata_id": "17303106124",
+    "employees_range": "5000 - 7499 Beschäftigte",
+    "nace_id": "6419",
+    "nace_desc": "Kreditinstitute, ohne Spezialkreditinstitute",
+    "ihk_branch_desc": "Kreditinstitute des Genossenschaftssektors",
+    "branch_top_level_desc": "Erbringung von Finanzdienstleistungen",
+    "business_age": "27",
+    "business_type": "im Handelsregister eingetragen",
+    "planungsraum": "Wilhelmstraße",
+    "lat": 52.51576354,
+    "lon": 13.37897687
+   },
+   "counted_as": 6123.3,
+   "counted_at_this_station": true,
+   "osm_names_within_40m": [
+    {
+     "osm_ref": "way/26047019",
+     "distance_m": 0.0,
+     "name": "Axica Convention Center",
+     "amenity": "conference_centre",
+     "building": "yes",
+     "building:levels": "10",
+     "address": "Pariser Platz 3"
+    },
+    {
+     "osm_ref": "node/2287986935",
+     "distance_m": 4.3,
+     "name": "DZ-Bank",
+     "operator": "DZ Bank AG Deutsche Zentral-Genossenschaftsbank, Frankfurt am Main",
+     "amenity": "bank",
+     "address": "Pariser Platz 3"
+    },
+    {
+     "osm_ref": "way/195257482",
+     "distance_m": 20.6,
+     "name": "Botschaft der Vereinigten Staaten von Amerika",
+     "office": "diplomatic",
+     "diplomatic": "embassy",
+     "building": "embassy",
+     "building:levels": "4",
+     "address": "Pariser Platz 2"
+    },
+    {
+     "osm_ref": "way/237816189",
+     "distance_m": 21.1,
+     "name": "Akademie der Künste",
+     "amenity": "arts_centre",
+     "building": "museum",
+     "building:levels": "4",
+     "address": "Pariser Platz 4"
+    },
+    {
+     "osm_ref": "way/281029390",
+     "distance_m": 28.2,
+     "operator": "Berliner Wasserbetriebe",
+     "address": null
+    }
+   ]
+  },
+  {
+   "candidate_id": "missing_entity:osm:node/6454349209",
+   "module": "missing_entity",
+   "record_ref": "osm:node/6454349209",
+   "record": {
+    "osm_ref": "node/6454349209",
+    "distance_m": 0.0,
+    "name": "Stiftung barrierefrei kommunizieren!",
+    "office": "association",
+    "operator": "Technische Jugendfreizeit- und Bildungsgesellschaft gGmbH",
+    "address": "Wilhelmstraße 52",
+    "lat": 52.513134,
+    "lon": 13.382773,
+    "tags": {
+     "addr:city": "Berlin",
+     "addr:country": "DE",
+     "addr:housenumber": "52",
+     "addr:postcode": "10117",
+     "addr:street": "Wilhelmstraße",
+     "addr:suburb": "Mitte",
+     "check_date": "2023-07-07",
+     "contact:email": "veranstaltungen@stiftung-barrierefrei-kommunizieren.de",
+     "contact:website": "https://www.stiftung-barrierefrei-kommunizieren.de/",
+     "name": "Stiftung barrierefrei kommunizieren!",
+     "office": "association",
+     "operator": "Technische Jugendfreizeit- und Bildungsgesellschaft gGmbH",
+     "wheelchair": "yes"
+    }
+   },
+   "footprint_m2": null,
+   "floor_area_m2": null,
+   "levels_tagged": false,
+   "reason_listed": "no IHK registration within 40 m",
+   "ihk_within_40m": {
+    "registrations": 0,
+    "headcount_at_midpoints": 0
+   },
+   "tagged_objects_inside": [],
+   "nearest_station": {
+    "name": "U Anton-Wilhelm-Amo-Str. (Berlin)",
+    "distance_m": 193
+   },
+   "nearest_ihk_m": 56.3
+  },
+  {
+   "candidate_id": "missing_entity:osm:node/11224509207",
+   "module": "missing_entity",
+   "record_ref": "osm:node/11224509207",
+   "record": {
+    "osm_ref": "node/11224509207",
+    "distance_m": 0.0,
+    "name": "Deutscher Bundestag - Verwaltung",
+    "government": "parliament",
+    "address": "Bunsenstraße 2",
+    "lat": 52.518894,
+    "lon": 13.382263,
+    "tags": {
+     "addr:city": "Berlin",
+     "addr:housenumber": "2",
+     "addr:postcode": "10117",
+     "addr:street": "Bunsenstraße",
+     "government": "parliament",
+     "name": "Deutscher Bundestag - Verwaltung"
+    }
+   },
+   "footprint_m2": null,
+   "floor_area_m2": null,
+   "levels_tagged": false,
+   "reason_listed": "no IHK registration within 40 m",
+   "ihk_within_40m": {
+    "registrations": 0,
+    "headcount_at_midpoints": 0
+   },
+   "tagged_objects_inside": [],
+   "nearest_station": {
+    "name": "S+U Brandenburger Tor (Berlin)",
+    "distance_m": 266
+   },
+   "nearest_ihk_m": 104.9
+  },
+  {
+   "candidate_id": "missing_entity:osm:node/11461792193",
+   "module": "missing_entity",
+   "record_ref": "osm:node/11461792193",
+   "record": {
+    "osm_ref": "node/11461792193",
+    "distance_m": 0.0,
+    "name": "Bundestag",
+    "office": "government",
+    "address": null,
+    "lat": 52.518235,
+    "lon": 13.385851,
+    "tags": {
+     "name": "Bundestag",
+     "office": "government"
+    }
+   },
+   "footprint_m2": null,
+   "floor_area_m2": null,
+   "levels_tagged": false,
+   "reason_listed": "no IHK registration within 40 m",
+   "ihk_within_40m": {
+    "registrations": 0,
+    "headcount_at_midpoints": 0
+   },
+   "tagged_objects_inside": [],
+   "nearest_station": {
+    "name": "U Unter den Linden (Berlin)",
+    "distance_m": 247
+   },
+   "nearest_ihk_m": 54.9
+  },
+  {
+   "candidate_id": "missing_entity:osm:node/12854275130",
+   "module": "missing_entity",
+   "record_ref": "osm:node/12854275130",
+   "record": {
+    "osm_ref": "node/12854275130",
+    "distance_m": 0.0,
+    "name": "Antidiskreminierungsstelle des Bundes",
+    "office": "government",
+    "address": null,
+    "lat": 52.51438,
+    "lon": 13.386082,
+    "tags": {
+     "name": "Antidiskreminierungsstelle des Bundes",
+     "office": "government",
+     "wheelchair": "yes"
+    }
+   },
+   "footprint_m2": null,
+   "floor_area_m2": null,
+   "levels_tagged": false,
+   "reason_listed": "no IHK registration within 40 m",
+   "ihk_within_40m": {
+    "registrations": 0,
+    "headcount_at_midpoints": 0
+   },
+   "tagged_objects_inside": [],
+   "nearest_station": {
+    "name": "U Unter den Linden (Berlin)",
+    "distance_m": 347
+   },
+   "nearest_ihk_m": 77.2
+  },
+  {
+   "candidate_id": "missing_entity:osm:node/14107662105",
+   "module": "missing_entity",
+   "record_ref": "osm:node/14107662105",
+   "record": {
+    "osm_ref": "node/14107662105",
+    "distance_m": 0.0,
+    "name": "Deutscher Bundestag – Abgeordnetenbüros",
+    "office": "government",
+    "operator": "Deutscher Bundestag",
+    "government": "parliament",
+    "address": "Dorotheenstraße 93",
+    "lat": 52.517987,
+    "lon": 13.382031,
+    "tags": {
+     "access": "private",
+     "addr:city": "Berlin",
+     "addr:country": "DE",
+     "addr:housenumber": "93",
+     "addr:postcode": "10117",
+     "addr:street": "Dorotheenstraße",
+     "addr:suburb": "Mitte",
+     "government": "parliament",
+     "name": "Deutscher Bundestag – Abgeordnetenbüros",
+     "office": "government",
+     "operator": "Deutscher Bundestag",
+     "operator:short": "BT",
+     "operator:wikidata": "Q154797",
+     "operator:wikipedia": "de:Deutscher Bundestag"
+    }
+   },
+   "footprint_m2": null,
+   "floor_area_m2": null,
+   "levels_tagged": false,
+   "reason_listed": "no IHK registration within 40 m",
+   "ihk_within_40m": {
+    "registrations": 0,
+    "headcount_at_midpoints": 0
+   },
+   "tagged_objects_inside": [],
+   "nearest_station": {
+    "name": "S+U Brandenburger Tor (Berlin)",
+    "distance_m": 164
+   },
+   "nearest_ihk_m": 108.2
+  },
+  {
+   "candidate_id": "missing_entity:osm:way/23160782",
+   "module": "missing_entity",
+   "record_ref": "osm:way/23160782",
+   "record": {
+    "osm_ref": "way/23160782",
+    "distance_m": 0.0,
+    "name": "Haus Sommer",
+    "office": "government",
+    "operator": "Deutscher Bundestag",
+    "government": "parliament",
+    "building": "apartments",
+    "address": "Dorotheenstraße 99",
+    "lat": 52.517732,
+    "lon": 13.379423,
+    "tags": {
+     "access": "private",
+     "addr:city": "Berlin",
+     "addr:country": "DE",
+     "addr:housenumber": "99",
+     "addr:postcode": "10117",
+     "addr:street": "Dorotheenstraße",
+     "building": "apartments",
+     "government": "parliament",
+     "heritage": "4",
+     "heritage:operator": "lda",
+     "heritage:website": "https://denkmaldatenbank.berlin.de/daobj.php?obj_dok_nr=09065036",
+     "lda:criteria": "Baudenkmal",
+     "name": "Haus Sommer",
+     "office": "government",
+     "operator": "Deutscher Bundestag",
+     "operator:short": "BT",
+     "operator:wikidata": "Q154797",
+     "ref:lda": "09065036",
+     "start_date": "1854..1857",
+     "toilets:wheelchair": "yes",
+     "wheelchair": "yes"
+    }
+   },
+   "footprint_m2": 641,
+   "floor_area_m2": 641,
+   "levels_tagged": false,
+   "reason_listed": "no IHK registration within 40 m",
+   "ihk_within_40m": {
+    "registrations": 0,
+    "headcount_at_midpoints": 0
+   },
+   "tagged_objects_inside": [],
+   "nearest_station": {
+    "name": "S+U Brandenburger Tor (Berlin)",
+    "distance_m": 218
+   },
+   "nearest_ihk_m": 64.1
+  },
+  {
+   "candidate_id": "missing_entity:osm:way/23160784",
+   "module": "missing_entity",
+   "record_ref": "osm:way/23160784",
+   "record": {
+    "osm_ref": "way/23160784",
+    "distance_m": 0.0,
+    "operator": "Deutscher Bundestag",
+    "building": "office",
+    "building:levels": "6",
+    "address": null,
+    "lat": 52.517691,
+    "lon": 13.377555,
+    "tags": {
+     "building": "office",
+     "building:levels": "6",
+     "heritage": "4",
+     "heritage:operator": "lda",
+     "heritage:website": "https://denkmaldatenbank.berlin.de/daobj.php?obj_dok_nr=09065039",
+     "lda:criteria": "Baudenkmal",
+     "loc_name": "VDI-Haus",
+     "operator": "Deutscher Bundestag",
+     "ref:lda": "09065039",
+     "start_date": "1911..1914"
+    }
+   },
+   "footprint_m2": 797,
+   "floor_area_m2": 4781,
+   "levels_tagged": true,
+   "reason_listed": "no IHK registration within 40 m",
+   "ihk_within_40m": {
+    "registrations": 0,
+    "headcount_at_midpoints": 0
+   },
+   "tagged_objects_inside": [],
+   "nearest_station": {
+    "name": "S+U Brandenburger Tor (Berlin)",
+    "distance_m": 324
+   },
+   "nearest_ihk_m": 53.9
+  },
+  {
+   "candidate_id": "missing_entity:osm:way/24044854",
+   "module": "missing_entity",
+   "record_ref": "osm:way/24044854",
+   "record": {
+    "osm_ref": "way/24044854",
+    "distance_m": 0.0,
+    "building": "embassy",
+    "building:levels": "5",
+    "address": null,
+    "lat": 52.516018,
+    "lon": 13.383762,
+    "tags": {
+     "building": "embassy",
+     "building:colour": "#fefef1",
+     "building:levels": "5",
+     "image": "https://upload.wikimedia.org/wikipedia/commons/9/9d/Berlin%252C_Mitte%252C_Unter_den_Linden_55-65%252C_Russische_Botschaft_02.jpg",
+     "roof:colour": "#c47e80",
+     "roof:shape": "hipped",
+     "start_date": "1951",
+     "wikidata": "Q131137065",
+     "wikimedia_commons": "Category:Russian Embassy, Berlin"
+    }
+   },
+   "footprint_m2": 5580,
+   "floor_area_m2": 27902,
+   "levels_tagged": true,
+   "reason_listed": "IHK headcount within 40 m below 1 per 100 m² of floor area",
+   "ihk_within_40m": {
+    "registrations": 4,
+    "headcount_at_midpoints": 54.8
+   },
+   "tagged_objects_inside": [
+    {
+     "osm_ref": "node/514864739",
+     "distance_m": 0.0,
+     "name": "Botschaft der Russischen Föderation",
+     "office": "diplomatic",
+     "diplomatic": "embassy",
+     "address": "Unter den Linden 63-65"
+    },
+    {
+     "osm_ref": "node/3347781734",
+     "distance_m": 0.0,
+     "name": "Konsularabteilung der Botschaft der Russischen Föderation",
+     "office": "diplomatic",
+     "operator": "Botschaft der Russischen Förderation",
+     "diplomatic": "consulate",
+     "address": "Behrenstraße 66"
+    }
+   ],
+   "nearest_station": {
+    "name": "S+U Brandenburger Tor (Berlin)",
+    "distance_m": 135
+   },
+   "nearest_ihk_m": 24.5
+  },
+  {
+   "candidate_id": "missing_entity:osm:way/24246523",
+   "module": "missing_entity",
+   "record_ref": "osm:way/24246523",
+   "record": {
+    "osm_ref": "way/24246523",
+    "distance_m": 0.0,
+    "office": "government",
+    "operator": "Deutscher Bundestag",
+    "government": "parliament",
+    "building": "government",
+    "building:levels": "5",
+    "address": "Wilhelmstraße 64",
+    "lat": 52.517361,
+    "lon": 13.380864,
+    "tags": {
+     "addr:city": "Berlin",
+     "addr:country": "DE",
+     "addr:housenumber": "64",
+     "addr:postcode": "10117",
+     "addr:street": "Wilhelmstraße",
+     "addr:suburb": "Mitte",
+     "building": "government",
+     "building:levels": "5",
+     "government": "parliament",
+     "office": "government",
+     "operator": "Deutscher Bundestag",
+     "operator:short": "BT",
+     "operator:wikidata": "Q154797",
+     "operator:wikipedia": "de:Deutscher Bundestag"
+    }
+   },
+   "footprint_m2": 702,
+   "floor_area_m2": 3508,
+   "levels_tagged": true,
+   "reason_listed": "no IHK registration within 40 m",
+   "ihk_within_40m": {
+    "registrations": 0,
+    "headcount_at_midpoints": 0
+   },
+   "tagged_objects_inside": [],
+   "nearest_station": {
+    "name": "S+U Brandenburger Tor (Berlin)",
+    "distance_m": 119
+   },
+   "nearest_ihk_m": 49.8
+  },
+  {
+   "candidate_id": "missing_entity:osm:way/24246741",
+   "module": "missing_entity",
+   "record_ref": "osm:way/24246741",
+   "record": {
+    "osm_ref": "way/24246741",
+    "distance_m": 0.0,
+    "name": "ARD-Hauptstadtstudio",
+    "operator": "Arbeitsgemeinschaft der öffentlich-rechtlichen Rundfunkanstalten der Bundesrepublik Deutschland",
+    "amenity": "studio",
+    "building": "office",
+    "building:levels": "6",
+    "address": "Wilhelmstraße 67a",
+    "lat": 52.518807,
+    "lon": 13.381117,
+    "tags": {
+     "addr:city": "Berlin",
+     "addr:country": "DE",
+     "addr:housenumber": "67a",
+     "addr:postcode": "10117",
+     "addr:street": "Wilhelmstraße",
+     "addr:suburb": "Mitte",
+     "amenity": "studio",
+     "building": "office",
+     "building:colour": "#dfb082",
+     "building:levels": "6",
+     "check_date": "2025-11-20",
+     "contact:email": "kontakt@ard-hauptstadtstudio.de",
+     "contact:fax": "+49 30 2288-1109",
+     "contact:phone": "+49 30 2288-0",
+     "contact:website": "http://www.ard-hauptstadtstudio.de/",
+     "name": "ARD-Hauptstadtstudio",
+     "name:de": "ARD-Hauptstadtstudio",
+     "name:ja": "ARD首都スタジオ",
+     "operator": "Arbeitsgemeinschaft der öffentlich-rechtlichen Rundfunkanstalten der Bundesrepublik Deutschland",
+     "operator:wikidata": "Q49653",
+     "operator:wikipedia": "de:ARD",
+     "roof:colour": "#8a8d7a",
+     "roof:levels": "0",
+     "roof:shape": "flat",
+     "start_date": "1999",
+     "studio": "television",
+     "wheelchair": "yes",
+     "wikidata": "Q296515",
+     "wikimedia_commons": "Category:ARD-Hauptstadtstudio",
+     "wikipedia": "de:ARD-Hauptstadtstudio"
+    }
+   },
+   "footprint_m2": 1996,
+   "floor_area_m2": 11975,
+   "levels_tagged": true,
+   "reason_listed": "IHK headcount within 40 m below 1 per 100 m² of floor area",
+   "ihk_within_40m": {
+    "registrations": 4,
+    "headcount_at_midpoints": 9.7
+   },
+   "tagged_objects_inside": [],
+   "nearest_station": {
+    "name": "S+U Brandenburger Tor (Berlin)",
+    "distance_m": 261
+   },
+   "nearest_ihk_m": 25.4
+  },
+  {
+   "candidate_id": "missing_entity:osm:way/26050740",
+   "module": "missing_entity",
+   "record_ref": "osm:way/26050740",
+   "record": {
+    "osm_ref": "way/26050740",
+    "distance_m": 0.0,
+    "name": "Deutscher Bundestag – Verwaltung",
+    "office": "government",
+    "operator": "Deutscher Bundestag",
+    "government": "parliament",
+    "building": "office",
+    "building:levels": "6",
+    "address": "Wilhelmstraße 65",
+    "lat": 52.517952,
+    "lon": 13.38094,
+    "tags": {
+     "addr:city": "Berlin",
+     "addr:country": "DE",
+     "addr:housenumber": "65",
+     "addr:postcode": "10117",
+     "addr:street": "Wilhelmstraße",
+     "building": "office",
+     "building:levels": "6",
+     "government": "parliament",
+     "name": "Deutscher Bundestag – Verwaltung",
+     "office": "government",
+     "operator": "Deutscher Bundestag",
+     "operator:short": "BT",
+     "operator:wikidata": "Q154797",
+     "operator:wikipedia": "de:Deutscher Bundestag",
+     "wheelchair": "yes"
+    }
+   },
+   "footprint_m2": 1662,
+   "floor_area_m2": 9971,
+   "levels_tagged": true,
+   "reason_listed": "IHK headcount within 40 m below 1 per 100 m² of floor area",
+   "ihk_within_40m": {
+    "registrations": 1,
+    "headcount_at_midpoints": 7.9
+   },
+   "tagged_objects_inside": [
+    {
+     "osm_ref": "node/14107662104",
+     "distance_m": 0.0,
+     "name": "Deutscher Bundestag – Büro für Presseakkreditierung",
+     "office": "government",
+     "operator": "Deutscher Bundestag",
+     "government": "parliament",
+     "address": "Wilhelmstraße 65"
+    }
+   ],
+   "nearest_station": {
+    "name": "S+U Brandenburger Tor (Berlin)",
+    "distance_m": 174
+   },
+   "nearest_ihk_m": 30.9
+  },
+  {
+   "candidate_id": "missing_entity:osm:way/26367514",
+   "module": "missing_entity",
+   "record_ref": "osm:way/26367514",
+   "record": {
+    "osm_ref": "way/26367514",
+    "distance_m": 0.0,
+    "name": "Deutscher Bundestag - Verwaltung",
+    "office": "government",
+    "operator": "Deutscher Bundestag",
+    "government": "parliament",
+    "building": "government",
+    "address": null,
+    "lat": 52.518631,
+    "lon": 13.382784,
+    "tags": {
+     "building": "government",
+     "check_date:opening_hours": "2026-08-06",
+     "government": "parliament",
+     "heritage": "4",
+     "heritage:operator": "lda",
+     "lda:criteria": "Baudenkmal",
+     "name": "Deutscher Bundestag - Verwaltung",
+     "office": "government",
+     "opening_hours:signed": "no",
+     "operator": "Deutscher Bundestag",
+     "operator:short": "BT",
+     "operator:wikidata": "Q154797",
+     "ref:lda": "09080403"
+    }
+   },
+   "footprint_m2": 702,
+   "floor_area_m2": 702,
+   "levels_tagged": false,
+   "reason_listed": "no IHK registration within 40 m",
+   "ihk_within_40m": {
+    "registrations": 0,
+    "headcount_at_midpoints": 0
+   },
+   "tagged_objects_inside": [],
+   "nearest_station": {
+    "name": "S+U Brandenburger Tor (Berlin)",
+    "distance_m": 243
+   },
+   "nearest_ihk_m": 64.1
+  },
+  {
+   "candidate_id": "missing_entity:osm:way/26443306",
+   "module": "missing_entity",
+   "record_ref": "osm:way/26443306",
+   "record": {
+    "osm_ref": "way/26443306",
+    "distance_m": 0.0,
+    "name": "Russische Handelsvertretung",
+    "building": "office",
+    "building:levels": "6",
+    "address": null,
+    "lat": 52.515957,
+    "lon": 13.385628,
+    "tags": {
+     "building": "office",
+     "building:levels": "6",
+     "name": "Russische Handelsvertretung",
+     "name:ru": "Торгпредство",
+     "roof:shape": "flat"
+    }
+   },
+   "footprint_m2": 1350,
+   "floor_area_m2": 8102,
+   "levels_tagged": true,
+   "reason_listed": "no IHK registration within 40 m",
+   "ihk_within_40m": {
+    "registrations": 0,
+    "headcount_at_midpoints": 0
+   },
+   "tagged_objects_inside": [],
+   "nearest_station": {
+    "name": "U Unter den Linden (Berlin)",
+    "distance_m": 248
+   },
+   "nearest_ihk_m": 50.6
+  },
+  {
+   "candidate_id": "missing_entity:osm:way/195071820",
+   "module": "missing_entity",
+   "record_ref": "osm:way/195071820",
+   "record": {
+    "osm_ref": "way/195071820",
+    "distance_m": 0.0,
+    "name": "Aeroflot-Büro",
+    "office": "company",
+    "building": "office",
+    "building:levels": "5",
+    "address": null,
+    "lat": 52.516436,
+    "lon": 13.38548,
+    "tags": {
+     "building": "office",
+     "building:levels": "5",
+     "name": "Aeroflot-Büro",
+     "name:ru": "представительство Аэрофлота",
+     "office": "company",
+     "roof:shape": "flat",
+     "website": "https://www.aeroflot.com/"
+    }
+   },
+   "footprint_m2": 444,
+   "floor_area_m2": 2219,
+   "levels_tagged": true,
+   "reason_listed": "no IHK registration within 40 m",
+   "ihk_within_40m": {
+    "registrations": 0,
+    "headcount_at_midpoints": 0
+   },
+   "tagged_objects_inside": [],
+   "nearest_station": {
+    "name": "U Unter den Linden (Berlin)",
+    "distance_m": 238
+   },
+   "nearest_ihk_m": 69.0
+  },
+  {
+   "candidate_id": "missing_entity:osm:way/312214133",
+   "module": "missing_entity",
+   "record_ref": "osm:way/312214133",
+   "record": {
+    "osm_ref": "way/312214133",
+    "distance_m": 0.0,
+    "name": "August-Boeckh-Haus",
+    "building": "university",
+    "building:levels": "6",
+    "address": null,
+    "lat": 52.518248,
+    "lon": 13.386512,
+    "tags": {
+     "addr:city": "Berlin",
+     "addr:country": "DE",
+     "building": "university",
+     "building:levels": "6",
+     "name": "August-Boeckh-Haus",
+     "roof:levels": "1",
+     "roof:shape": "flat"
+    }
+   },
+   "footprint_m2": 2629,
+   "floor_area_m2": 15773,
+   "levels_tagged": true,
+   "reason_listed": "IHK headcount within 40 m below 1 per 100 m² of floor area",
+   "ihk_within_40m": {
+    "registrations": 11,
+    "headcount_at_midpoints": 23.5
+   },
+   "tagged_objects_inside": [],
+   "nearest_station": {
+    "name": "U Unter den Linden (Berlin)",
+    "distance_m": 212
+   },
+   "nearest_ihk_m": 0.0
+  },
+  {
+   "candidate_id": "missing_entity:osm:way/327969432",
+   "module": "missing_entity",
+   "record_ref": "osm:way/327969432",
+   "record": {
+    "osm_ref": "way/327969432",
+    "distance_m": 0.0,
+    "building": "embassy",
+    "building:levels": "6",
+    "address": null,
+    "lat": 52.515551,
+    "lon": 13.385169,
+    "tags": {
+     "building": "embassy",
+     "building:levels": "6",
+     "roof:shape": "gabled"
+    }
+   },
+   "footprint_m2": 547,
+   "floor_area_m2": 3279,
+   "levels_tagged": true,
+   "reason_listed": "no IHK registration within 40 m",
+   "ihk_within_40m": {
+    "registrations": 0,
+    "headcount_at_midpoints": 0
+   },
+   "tagged_objects_inside": [],
+   "nearest_station": {
+    "name": "S+U Brandenburger Tor (Berlin)",
+    "distance_m": 243
+   },
+   "nearest_ihk_m": 63.7
+  },
+  {
+   "candidate_id": "missing_entity:osm:way/330965615",
+   "module": "missing_entity",
+   "record_ref": "osm:way/330965615",
+   "record": {
+    "osm_ref": "way/330965615",
+    "distance_m": 0.0,
+    "building": "civic",
+    "building:levels": "6",
+    "address": null,
+    "lat": 52.514522,
+    "lon": 13.383634,
+    "tags": {
+     "building": "civic",
+     "building:levels": "6"
+    }
+   },
+   "footprint_m2": 2895,
+   "floor_area_m2": 17367,
+   "levels_tagged": true,
+   "reason_listed": "IHK headcount within 40 m below 1 per 100 m² of floor area",
+   "ihk_within_40m": {
+    "registrations": 7,
+    "headcount_at_midpoints": 147.7
+   },
+   "tagged_objects_inside": [],
+   "nearest_station": {
+    "name": "S+U Brandenburger Tor (Berlin)",
+    "distance_m": 249
+   },
+   "nearest_ihk_m": 0.0
+  },
+  {
+   "candidate_id": "poi_category:overture:f3f4db6d-6e92-4b3c-a889-17716b57dca4",
+   "module": "poi_category",
+   "record_ref": "overture:f3f4db6d-6e92-4b3c-a889-17716b57dca4",
+   "record": {
+    "external_ref": "overture:f3f4db6d-6e92-4b3c-a889-17716b57dca4",
+    "name": "Sagar Restaurant, Cafe and Bar",
+    "category": "cafe",
+    "lat": 52.51632308959961,
+    "lon": 13.378220558166504,
+    "providers": [
+     "meta",
+     "overture"
+    ],
+    "members": [
+     {
+      "source": "overture_places",
+      "ref": "overture:f3f4db6d-6e92-4b3c-a889-17716b57dca4",
+      "name": "Sagar Restaurant, Cafe and Bar",
+      "category": "cafe"
+     }
+    ]
+   },
+   "non_food_words": [
+    "restaurant"
+   ],
+   "same_name_osm_objects_15m": [],
+   "osm_objects_15m": []
+  },
+  {
+   "candidate_id": "poi_category:overture:f823fc26-d04c-4558-9686-f9f24727a131",
+   "module": "poi_category",
+   "record_ref": "overture:f823fc26-d04c-4558-9686-f9f24727a131",
+   "record": {
+    "external_ref": "overture:f823fc26-d04c-4558-9686-f9f24727a131",
+    "name": "Adlon To Go Coffee Shop",
+    "category": "cafe",
+    "lat": 52.51625061035156,
+    "lon": 13.380300521850586,
+    "providers": [
+     "meta",
+     "overture"
+    ],
+    "members": [
+     {
+      "source": "overture_places",
+      "ref": "overture:f823fc26-d04c-4558-9686-f9f24727a131",
+      "name": "Adlon To Go Coffee Shop",
+      "category": "cafe"
+     }
+    ]
+   },
+   "non_food_words": [],
+   "same_name_osm_objects_15m": [
+    {
+     "osm_ref": "node/1317772550",
+     "distance_m": 11.5,
+     "name": "Hotel Adlon",
+     "amenity": "taxi",
+     "address": null,
+     "osm_category": null
+    }
+   ],
+   "osm_objects_15m": [
+    {
+     "osm_ref": "node/1317772550",
+     "distance_m": 11.5,
+     "name": "Hotel Adlon",
+     "amenity": "taxi",
+     "address": null
+    },
+    {
+     "osm_ref": "way/281029390",
+     "distance_m": 12.2,
+     "operator": "Berliner Wasserbetriebe",
+     "address": null
+    }
+   ]
+  },
+  {
+   "candidate_id": "poi_category:overture:311992c2-4d9a-425d-a613-c22c9838dfa2",
+   "module": "poi_category",
+   "record_ref": "overture:311992c2-4d9a-425d-a613-c22c9838dfa2",
+   "record": {
+    "external_ref": "overture:311992c2-4d9a-425d-a613-c22c9838dfa2",
+    "name": "MAREDO Steakhouse Berlin Unter den Linden",
+    "category": "cafe",
+    "lat": 52.517024993896484,
+    "lon": 13.386900901794434,
+    "providers": [
+     "microsoft",
+     "overture"
+    ],
+    "members": [
+     {
+      "source": "overture_places",
+      "ref": "overture:311992c2-4d9a-425d-a613-c22c9838dfa2",
+      "name": "MAREDO Steakhouse Berlin Unter den Linden",
+      "category": "cafe"
+     }
+    ]
+   },
+   "non_food_words": [
+    "steakhouse"
+   ],
+   "same_name_osm_objects_15m": [],
+   "osm_objects_15m": [
+    {
+     "osm_ref": "node/10880725041",
+     "distance_m": 11.9,
+     "operator": "Berliner Stadtreinigung",
+     "amenity": "waste_basket",
+     "address": null
+    },
+    {
+     "osm_ref": "way/26443912",
+     "distance_m": 14.2,
+     "name": "Zollernhof",
+     "building": "office",
+     "building:levels": "5",
+     "address": null
+    }
+   ]
+  },
+  {
+   "candidate_id": "poi_category:overture:e99aea2b-c4e5-4e25-a80a-0f62d57d87e2",
+   "module": "poi_category",
+   "record_ref": "overture:e99aea2b-c4e5-4e25-a80a-0f62d57d87e2",
+   "record": {
+    "external_ref": "overture:e99aea2b-c4e5-4e25-a80a-0f62d57d87e2",
+    "name": "Zollernhof",
+    "category": "cafe",
+    "lat": 52.517181396484375,
+    "lon": 13.387022018432617,
+    "providers": [
+     "meta",
+     "overture"
+    ],
+    "members": [
+     {
+      "source": "overture_places",
+      "ref": "overture:e99aea2b-c4e5-4e25-a80a-0f62d57d87e2",
+      "name": "Zollernhof",
+      "category": "cafe"
+     }
+    ]
+   },
+   "non_food_words": [],
+   "same_name_osm_objects_15m": [
+    {
+     "osm_ref": "way/26443912",
+     "distance_m": 0.0,
+     "name": "Zollernhof",
+     "building": "office",
+     "building:levels": "5",
+     "address": null,
+     "osm_category": null
+    }
+   ],
+   "osm_objects_15m": [
+    {
+     "osm_ref": "way/26443912",
+     "distance_m": 0.0,
+     "name": "Zollernhof",
+     "building": "office",
+     "building:levels": "5",
+     "address": null
+    },
+    {
+     "osm_ref": "node/437320468",
+     "distance_m": 7.8,
+     "name": "Segafredo",
+     "amenity": "cafe",
+     "address": "Unter den Linden 36-38"
+    },
+    {
+     "osm_ref": "node/10880725041",
+     "distance_m": 8.2,
+     "operator": "Berliner Stadtreinigung",
+     "amenity": "waste_basket",
+     "address": null
+    }
+   ]
+  },
+  {
+   "candidate_id": "poi_duplicate:node/437320468|overture:38312544-51df-47a5-9fa9-2379a20c19e6",
+   "module": "poi_duplicate",
+   "record_ref": "node/437320468|overture:38312544-51df-47a5-9fa9-2379a20c19e6",
+   "records": [
+    {
+     "external_ref": "node/437320468",
+     "name": "Segafredo",
+     "category": "cafe",
+     "lat": 52.5171785,
+     "lon": 13.3869064,
+     "providers": [
+      "openstreetmap"
+     ],
+     "members": [
+      {
+       "source": "osm_overpass",
+       "ref": "node/437320468",
+       "name": "Segafredo",
+       "category": "cafe"
+      }
+     ]
+    },
+    {
+     "external_ref": "overture:38312544-51df-47a5-9fa9-2379a20c19e6",
+     "name": "Midtown Coffeeshop",
+     "category": "cafe",
+     "lat": 52.51715850830078,
+     "lon": 13.386879920959473,
+     "providers": [
+      "brightquery",
+      "overture"
+     ],
+     "members": [
+      {
+       "source": "overture_places",
+       "ref": "overture:38312544-51df-47a5-9fa9-2379a20c19e6",
+       "name": "Midtown Coffeeshop",
+       "category": "cafe"
+      }
+     ]
+    }
+   ],
+   "distance_m": 2.9
+  },
+  {
+   "candidate_id": "poi_duplicate:node/437320468|overture:836605c3-9753-4b20-92de-f5942171e07c",
+   "module": "poi_duplicate",
+   "record_ref": "node/437320468|overture:836605c3-9753-4b20-92de-f5942171e07c",
+   "records": [
+    {
+     "external_ref": "node/437320468",
+     "name": "Segafredo",
+     "category": "cafe",
+     "lat": 52.5171785,
+     "lon": 13.3869064,
+     "providers": [
+      "openstreetmap"
+     ],
+     "members": [
+      {
+       "source": "osm_overpass",
+       "ref": "node/437320468",
+       "name": "Segafredo",
+       "category": "cafe"
+      }
+     ]
+    },
+    {
+     "external_ref": "overture:836605c3-9753-4b20-92de-f5942171e07c",
+     "name": "Espresso Eleganza",
+     "category": "cafe",
+     "lat": 52.51716232299805,
+     "lon": 13.3869047164917,
+     "providers": [
+      "meta",
+      "overture"
+     ],
+     "members": [
+      {
+       "source": "overture_places",
+       "ref": "overture:836605c3-9753-4b20-92de-f5942171e07c",
+       "name": "Espresso Eleganza",
+       "category": "cafe"
+      }
+     ]
+    }
+   ],
+   "distance_m": 1.8
+  },
+  {
+   "candidate_id": "poi_duplicate:node/437320468|overture:e99aea2b-c4e5-4e25-a80a-0f62d57d87e2",
+   "module": "poi_duplicate",
+   "record_ref": "node/437320468|overture:e99aea2b-c4e5-4e25-a80a-0f62d57d87e2",
+   "records": [
+    {
+     "external_ref": "node/437320468",
+     "name": "Segafredo",
+     "category": "cafe",
+     "lat": 52.5171785,
+     "lon": 13.3869064,
+     "providers": [
+      "openstreetmap"
+     ],
+     "members": [
+      {
+       "source": "osm_overpass",
+       "ref": "node/437320468",
+       "name": "Segafredo",
+       "category": "cafe"
+      }
+     ]
+    },
+    {
+     "external_ref": "overture:e99aea2b-c4e5-4e25-a80a-0f62d57d87e2",
+     "name": "Zollernhof",
+     "category": "cafe",
+     "lat": 52.517181396484375,
+     "lon": 13.387022018432617,
+     "providers": [
+      "meta",
+      "overture"
+     ],
+     "members": [
+      {
+       "source": "overture_places",
+       "ref": "overture:e99aea2b-c4e5-4e25-a80a-0f62d57d87e2",
+       "name": "Zollernhof",
+       "category": "cafe"
+      }
+     ]
+    }
+   ],
+   "distance_m": 7.8
+  },
+  {
+   "candidate_id": "poi_duplicate:node/5912146257|overture:5120cae2-6961-4b33-89ac-f53f02d99819",
+   "module": "poi_duplicate",
+   "record_ref": "node/5912146257|overture:5120cae2-6961-4b33-89ac-f53f02d99819",
+   "records": [
+    {
+     "external_ref": "node/5912146257",
+     "name": "Ha's Café",
+     "category": "bakery",
+     "lat": 52.5135302,
+     "lon": 13.3818181,
+     "providers": [
+      "openstreetmap"
+     ],
+     "members": [
+      {
+       "source": "osm_overpass",
+       "ref": "node/5912146257",
+       "name": "Ha's Café",
+       "category": "bakery"
+      }
+     ]
+    },
+    {
+     "external_ref": "overture:5120cae2-6961-4b33-89ac-f53f02d99819",
+     "name": "Bäckerei Bich Ha",
+     "category": "bakery",
+     "lat": 52.51360321044922,
+     "lon": 13.381805419921875,
+     "providers": [
+      "meta",
+      "overture"
+     ],
+     "members": [
+      {
+       "source": "overture_places",
+       "ref": "overture:5120cae2-6961-4b33-89ac-f53f02d99819",
+       "name": "Bäckerei Bich Ha",
+       "category": "bakery"
+      }
+     ]
+    }
+   ],
+   "distance_m": 8.2
+  },
+  {
+   "candidate_id": "poi_duplicate:overture:311992c2-4d9a-425d-a613-c22c9838dfa2|overture:38312544-51df-47a5-9fa9-2379a20c19e6",
+   "module": "poi_duplicate",
+   "record_ref": "overture:311992c2-4d9a-425d-a613-c22c9838dfa2|overture:38312544-51df-47a5-9fa9-2379a20c19e6",
+   "records": [
+    {
+     "external_ref": "overture:311992c2-4d9a-425d-a613-c22c9838dfa2",
+     "name": "MAREDO Steakhouse Berlin Unter den Linden",
+     "category": "cafe",
+     "lat": 52.517024993896484,
+     "lon": 13.386900901794434,
+     "providers": [
+      "microsoft",
+      "overture"
+     ],
+     "members": [
+      {
+       "source": "overture_places",
+       "ref": "overture:311992c2-4d9a-425d-a613-c22c9838dfa2",
+       "name": "MAREDO Steakhouse Berlin Unter den Linden",
+       "category": "cafe"
+      }
+     ]
+    },
+    {
+     "external_ref": "overture:38312544-51df-47a5-9fa9-2379a20c19e6",
+     "name": "Midtown Coffeeshop",
+     "category": "cafe",
+     "lat": 52.51715850830078,
+     "lon": 13.386879920959473,
+     "providers": [
+      "brightquery",
+      "overture"
+     ],
+     "members": [
+      {
+       "source": "overture_places",
+       "ref": "overture:38312544-51df-47a5-9fa9-2379a20c19e6",
+       "name": "Midtown Coffeeshop",
+       "category": "cafe"
+      }
+     ]
+    }
+   ],
+   "distance_m": 14.9
+  },
+  {
+   "candidate_id": "poi_duplicate:overture:38312544-51df-47a5-9fa9-2379a20c19e6|overture:836605c3-9753-4b20-92de-f5942171e07c",
+   "module": "poi_duplicate",
+   "record_ref": "overture:38312544-51df-47a5-9fa9-2379a20c19e6|overture:836605c3-9753-4b20-92de-f5942171e07c",
+   "records": [
+    {
+     "external_ref": "overture:38312544-51df-47a5-9fa9-2379a20c19e6",
+     "name": "Midtown Coffeeshop",
+     "category": "cafe",
+     "lat": 52.51715850830078,
+     "lon": 13.386879920959473,
+     "providers": [
+      "brightquery",
+      "overture"
+     ],
+     "members": [
+      {
+       "source": "overture_places",
+       "ref": "overture:38312544-51df-47a5-9fa9-2379a20c19e6",
+       "name": "Midtown Coffeeshop",
+       "category": "cafe"
+      }
+     ]
+    },
+    {
+     "external_ref": "overture:836605c3-9753-4b20-92de-f5942171e07c",
+     "name": "Espresso Eleganza",
+     "category": "cafe",
+     "lat": 52.51716232299805,
+     "lon": 13.3869047164917,
+     "providers": [
+      "meta",
+      "overture"
+     ],
+     "members": [
+      {
+       "source": "overture_places",
+       "ref": "overture:836605c3-9753-4b20-92de-f5942171e07c",
+       "name": "Espresso Eleganza",
+       "category": "cafe"
+      }
+     ]
+    }
+   ],
+   "distance_m": 1.7
+  },
+  {
+   "candidate_id": "poi_duplicate:overture:38312544-51df-47a5-9fa9-2379a20c19e6|overture:e99aea2b-c4e5-4e25-a80a-0f62d57d87e2",
+   "module": "poi_duplicate",
+   "record_ref": "overture:38312544-51df-47a5-9fa9-2379a20c19e6|overture:e99aea2b-c4e5-4e25-a80a-0f62d57d87e2",
+   "records": [
+    {
+     "external_ref": "overture:38312544-51df-47a5-9fa9-2379a20c19e6",
+     "name": "Midtown Coffeeshop",
+     "category": "cafe",
+     "lat": 52.51715850830078,
+     "lon": 13.386879920959473,
+     "providers": [
+      "brightquery",
+      "overture"
+     ],
+     "members": [
+      {
+       "source": "overture_places",
+       "ref": "overture:38312544-51df-47a5-9fa9-2379a20c19e6",
+       "name": "Midtown Coffeeshop",
+       "category": "cafe"
+      }
+     ]
+    },
+    {
+     "external_ref": "overture:e99aea2b-c4e5-4e25-a80a-0f62d57d87e2",
+     "name": "Zollernhof",
+     "category": "cafe",
+     "lat": 52.517181396484375,
+     "lon": 13.387022018432617,
+     "providers": [
+      "meta",
+      "overture"
+     ],
+     "members": [
+      {
+       "source": "overture_places",
+       "ref": "overture:e99aea2b-c4e5-4e25-a80a-0f62d57d87e2",
+       "name": "Zollernhof",
+       "category": "cafe"
+      }
+     ]
+    }
+   ],
+   "distance_m": 9.9
+  },
+  {
+   "candidate_id": "poi_duplicate:overture:836605c3-9753-4b20-92de-f5942171e07c|overture:e99aea2b-c4e5-4e25-a80a-0f62d57d87e2",
+   "module": "poi_duplicate",
+   "record_ref": "overture:836605c3-9753-4b20-92de-f5942171e07c|overture:e99aea2b-c4e5-4e25-a80a-0f62d57d87e2",
+   "records": [
+    {
+     "external_ref": "overture:836605c3-9753-4b20-92de-f5942171e07c",
+     "name": "Espresso Eleganza",
+     "category": "cafe",
+     "lat": 52.51716232299805,
+     "lon": 13.3869047164917,
+     "providers": [
+      "meta",
+      "overture"
+     ],
+     "members": [
+      {
+       "source": "overture_places",
+       "ref": "overture:836605c3-9753-4b20-92de-f5942171e07c",
+       "name": "Espresso Eleganza",
+       "category": "cafe"
+      }
+     ]
+    },
+    {
+     "external_ref": "overture:e99aea2b-c4e5-4e25-a80a-0f62d57d87e2",
+     "name": "Zollernhof",
+     "category": "cafe",
+     "lat": 52.517181396484375,
+     "lon": 13.387022018432617,
+     "providers": [
+      "meta",
+      "overture"
+     ],
+     "members": [
+      {
+       "source": "overture_places",
+       "ref": "overture:e99aea2b-c4e5-4e25-a80a-0f62d57d87e2",
+       "name": "Zollernhof",
+       "category": "cafe"
+      }
+     ]
+    }
+   ],
+   "distance_m": 8.2
+  }
+ ],
+ "set": "holdout"
+}

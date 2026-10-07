@@ -1,0 +1,678 @@
+{
+ "generator": "audit_candidates_v2",
+ "area_id": "Deutsche_Oper",
+ "name": "Deutsche Oper",
+ "lat": 52.511837,
+ "lon": 13.3105328,
+ "radius_m": 400,
+ "state": "corrections_off",
+ "provenance": {
+  "ihk": "db/raw/audit/ihk/Deutsche_Oper_20261007T091615Z.json",
+  "gtfs_station": "U Deutsche Oper (Berlin)",
+  "attractions": "db/raw/calibration/demand_cache (ring query, pageviews, sitelinks)",
+  "poi_sources": {
+   "osm_overpass": "db/raw/calibration/osm_cache",
+   "overture_places": "overture_ring 2026-09-23.1"
+  },
+  "conflation": "conflation_v1 (quality rules and verified corrections off)",
+  "osm_context": "db/raw/audit/osm_context/Deutsche_Oper_20261007T091805Z.json",
+  "visitor_fit": "visitor_fit_20261001T130205Z.json"
+ },
+ "modules_skipped": [],
+ "counts": {
+  "concentration": 1,
+  "large_registration": 0,
+  "missing_entity": 3,
+  "poi_category": 2,
+  "poi_duplicate": 9
+ },
+ "candidates": [
+  {
+   "candidate_id": "concentration:wikidata:Q637834",
+   "module": "concentration",
+   "segment": "visitors",
+   "record_ref": "wikidata:Q637834",
+   "record": {
+    "qid": "Q637834",
+    "name": "Deutsche Oper Berlin",
+    "kind": "theatre",
+    "wikipedia_titles": {
+     "dewiki": "Deutsche Oper Berlin",
+     "enwiki": "Deutsche Oper Berlin"
+    },
+    "distance_m": 78.89370812190619,
+    "gateway_share": 0.5,
+    "pageviews_12m": 33514
+   },
+   "value_people_per_day": 470.5,
+   "segment_total": 485.3,
+   "share_of_segment": 0.97,
+   "annual_visitors_from_pageviews": 343463,
+   "conversion": "log10(visitors) = 1.011 + 1.000 * log10(12-month de+en pageviews), times the 1/k gateway share, / 365"
+  },
+  {
+   "candidate_id": "missing_entity:osm:node/4306480695",
+   "module": "missing_entity",
+   "record_ref": "osm:node/4306480695",
+   "record": {
+    "osm_ref": "node/4306480695",
+    "distance_m": 0.0,
+    "name": "Barkow Leibinger",
+    "office": "architect",
+    "address": null,
+    "lat": 52.509705,
+    "lon": 13.310549,
+    "tags": {
+     "email": "info@barkowleibinger.com",
+     "fax": "+4930 315712 29",
+     "name": "Barkow Leibinger",
+     "office": "architect",
+     "phone": "+4930 315712 0",
+     "website": "https://barkowleibinger.com/"
+    }
+   },
+   "footprint_m2": null,
+   "floor_area_m2": null,
+   "levels_tagged": false,
+   "reason_listed": "no IHK registration within 40 m",
+   "ihk_within_40m": {
+    "registrations": 0,
+    "headcount_at_midpoints": 0
+   },
+   "tagged_objects_inside": [],
+   "nearest_station": {
+    "name": "U Deutsche Oper (Berlin)",
+    "distance_m": 248
+   },
+   "nearest_ihk_m": 50.8
+  },
+  {
+   "candidate_id": "missing_entity:osm:way/87644262",
+   "module": "missing_entity",
+   "record_ref": "osm:way/87644262",
+   "record": {
+    "osm_ref": "way/87644262",
+    "distance_m": 0.0,
+    "building": "public",
+    "address": null,
+    "lat": 52.514466,
+    "lon": 13.309542,
+    "tags": {
+     "building": "public"
+    }
+   },
+   "footprint_m2": 135,
+   "floor_area_m2": 135,
+   "levels_tagged": false,
+   "reason_listed": "no IHK registration within 40 m",
+   "ihk_within_40m": {
+    "registrations": 0,
+    "headcount_at_midpoints": 0
+   },
+   "tagged_objects_inside": [
+    {
+     "osm_ref": "node/10967611162",
+     "distance_m": 0.0,
+     "name": "Deutsche Lebens-Rettungs-Gesellschaft – Landersverband Berlin, Bezirk Charlottenburg-Wilmersdorf",
+     "office": "ngo",
+     "address": null
+    }
+   ],
+   "nearest_station": {
+    "name": "U Deutsche Oper (Berlin)",
+    "distance_m": 294
+   },
+   "nearest_ihk_m": 45.4
+  },
+  {
+   "candidate_id": "missing_entity:osm:way/88065712",
+   "module": "missing_entity",
+   "record_ref": "osm:way/88065712",
+   "record": {
+    "osm_ref": "way/88065712",
+    "distance_m": 0.0,
+    "building": "office",
+    "building:levels": "8",
+    "address": null,
+    "lat": 52.513052,
+    "lon": 13.31542,
+    "tags": {
+     "building": "office",
+     "building:levels": "8"
+    }
+   },
+   "footprint_m2": 2841,
+   "floor_area_m2": 22731,
+   "levels_tagged": true,
+   "reason_listed": "IHK headcount within 40 m below 1 per 100 m² of floor area",
+   "ihk_within_40m": {
+    "registrations": 30,
+    "headcount_at_midpoints": 32.2
+   },
+   "tagged_objects_inside": [],
+   "nearest_station": {
+    "name": "U Deutsche Oper (Berlin)",
+    "distance_m": 428
+   },
+   "nearest_ihk_m": 0.0
+  },
+  {
+   "candidate_id": "poi_category:overture:7410ba51-f5f2-441b-9267-6e1c651d066f",
+   "module": "poi_category",
+   "record_ref": "overture:7410ba51-f5f2-441b-9267-6e1c651d066f",
+   "record": {
+    "external_ref": "overture:7410ba51-f5f2-441b-9267-6e1c651d066f",
+    "name": "Rogacki",
+    "category": "other_fresh_food",
+    "lat": 52.512855529785156,
+    "lon": 13.30526065826416,
+    "providers": [
+     "brightquery",
+     "overture"
+    ],
+    "members": [
+     {
+      "source": "overture_places",
+      "ref": "overture:7410ba51-f5f2-441b-9267-6e1c651d066f",
+      "name": "Rogacki",
+      "category": "other_fresh_food"
+     }
+    ]
+   },
+   "non_food_words": [],
+   "same_name_osm_objects_15m": [
+    {
+     "osm_ref": "node/661092196",
+     "distance_m": 7.1,
+     "name": "Rogacki",
+     "address": "Wilmersdorfer Straße 145/146",
+     "osm_category": null
+    }
+   ],
+   "osm_objects_15m": [
+    {
+     "osm_ref": "way/999323942",
+     "distance_m": 0.0,
+     "building": "commercial",
+     "building:levels": "6",
+     "address": "Wilmersdorfer Straße 145-146"
+    },
+    {
+     "osm_ref": "node/661092196",
+     "distance_m": 7.1,
+     "name": "Rogacki",
+     "address": "Wilmersdorfer Straße 145/146"
+    },
+    {
+     "osm_ref": "node/4567579069",
+     "distance_m": 12.1,
+     "name": "Tay Par Burger",
+     "amenity": "restaurant",
+     "address": "Wilmersdorfer Straße 144"
+    }
+   ]
+  },
+  {
+   "candidate_id": "poi_category:overture:c73d1625-b886-484d-954a-e35219efc0ce",
+   "module": "poi_category",
+   "record_ref": "overture:c73d1625-b886-484d-954a-e35219efc0ce",
+   "record": {
+    "external_ref": "overture:c73d1625-b886-484d-954a-e35219efc0ce",
+    "name": "Galerie Café Naya",
+    "category": "cafe",
+    "lat": 52.510597229003906,
+    "lon": 13.315519332885742,
+    "providers": [
+     "meta",
+     "overture"
+    ],
+    "members": [
+     {
+      "source": "overture_places",
+      "ref": "overture:c73d1625-b886-484d-954a-e35219efc0ce",
+      "name": "Galerie Café Naya",
+      "category": "cafe"
+     }
+    ]
+   },
+   "non_food_words": [
+    "galerie"
+   ],
+   "same_name_osm_objects_15m": [],
+   "osm_objects_15m": [
+    {
+     "osm_ref": "node/1640471885",
+     "distance_m": 4.5,
+     "name": "ENDA GmbH & Co. KG",
+     "office": "it",
+     "address": "Schillerstraße 106"
+    },
+    {
+     "osm_ref": "way/45453223",
+     "distance_m": 8.6,
+     "building": "apartments",
+     "building:levels": "4",
+     "address": "Schillerstraße 107"
+    }
+   ]
+  },
+  {
+   "candidate_id": "poi_duplicate:node/1228195011|node/1228200532",
+   "module": "poi_duplicate",
+   "record_ref": "node/1228195011|node/1228200532",
+   "records": [
+    {
+     "external_ref": "node/1228195011",
+     "name": "Steinofen Pizza",
+     "category": "fast_food",
+     "lat": 52.512365,
+     "lon": 13.3048823,
+     "providers": [
+      "openstreetmap"
+     ],
+     "members": [
+      {
+       "source": "osm_overpass",
+       "ref": "node/1228195011",
+       "name": "Steinofen Pizza",
+       "category": "fast_food"
+      }
+     ]
+    },
+    {
+     "external_ref": "node/1228200532",
+     "name": "Falafel",
+     "category": "fast_food",
+     "lat": 52.5124436,
+     "lon": 13.3048644,
+     "providers": [
+      "openstreetmap"
+     ],
+     "members": [
+      {
+       "source": "osm_overpass",
+       "ref": "node/1228200532",
+       "name": "Falafel",
+       "category": "fast_food"
+      }
+     ]
+    }
+   ],
+   "distance_m": 8.8
+  },
+  {
+   "candidate_id": "poi_duplicate:node/1229435273|overture:c149455e-5e4a-42f7-a545-786584b0eb6c",
+   "module": "poi_duplicate",
+   "record_ref": "node/1229435273|overture:c149455e-5e4a-42f7-a545-786584b0eb6c",
+   "records": [
+    {
+     "external_ref": "node/1229435273",
+     "name": "Borsa",
+     "category": "spati_kiosk",
+     "lat": 52.5102675,
+     "lon": 13.3053735,
+     "providers": [
+      "openstreetmap"
+     ],
+     "members": [
+      {
+       "source": "osm_overpass",
+       "ref": "node/1229435273",
+       "name": "Borsa",
+       "category": "spati_kiosk"
+      }
+     ]
+    },
+    {
+     "external_ref": "overture:c149455e-5e4a-42f7-a545-786584b0eb6c",
+     "name": "SuperMarket MultiKulti",
+     "category": "spati_kiosk",
+     "lat": 52.51017379760742,
+     "lon": 13.30536937713623,
+     "providers": [
+      "meta",
+      "overture"
+     ],
+     "members": [
+      {
+       "source": "overture_places",
+       "ref": "overture:c149455e-5e4a-42f7-a545-786584b0eb6c",
+       "name": "SuperMarket MultiKulti",
+       "category": "spati_kiosk"
+      }
+     ]
+    }
+   ],
+   "distance_m": 10.4
+  },
+  {
+   "candidate_id": "poi_duplicate:node/3733553131|overture:7c490fd9-daab-460a-80e7-ca52525a262a",
+   "module": "poi_duplicate",
+   "record_ref": "node/3733553131|overture:7c490fd9-daab-460a-80e7-ca52525a262a",
+   "records": [
+    {
+     "external_ref": "node/3733553131",
+     "name": "Seelenglück",
+     "category": "cafe",
+     "lat": 52.5087455,
+     "lon": 13.3089371,
+     "providers": [
+      "openstreetmap"
+     ],
+     "members": [
+      {
+       "source": "osm_overpass",
+       "ref": "node/3733553131",
+       "name": "Seelenglück",
+       "category": "cafe"
+      }
+     ]
+    },
+    {
+     "external_ref": "overture:7c490fd9-daab-460a-80e7-ca52525a262a",
+     "name": "Caf� H�ftgold Berlin",
+     "category": "cafe",
+     "lat": 52.508705139160156,
+     "lon": 13.30907917022705,
+     "providers": [
+      "meta",
+      "overture"
+     ],
+     "members": [
+      {
+       "source": "overture_places",
+       "ref": "overture:7c490fd9-daab-460a-80e7-ca52525a262a",
+       "name": "Caf� H�ftgold Berlin",
+       "category": "cafe"
+      }
+     ]
+    }
+   ],
+   "distance_m": 10.6
+  },
+  {
+   "candidate_id": "poi_duplicate:node/3733553131|overture:e3b9c2ed-5f3e-4a40-a3f1-6cc12cc9f86b",
+   "module": "poi_duplicate",
+   "record_ref": "node/3733553131|overture:e3b9c2ed-5f3e-4a40-a3f1-6cc12cc9f86b",
+   "records": [
+    {
+     "external_ref": "node/3733553131",
+     "name": "Seelenglück",
+     "category": "cafe",
+     "lat": 52.5087455,
+     "lon": 13.3089371,
+     "providers": [
+      "openstreetmap"
+     ],
+     "members": [
+      {
+       "source": "osm_overpass",
+       "ref": "node/3733553131",
+       "name": "Seelenglück",
+       "category": "cafe"
+      }
+     ]
+    },
+    {
+     "external_ref": "overture:e3b9c2ed-5f3e-4a40-a3f1-6cc12cc9f86b",
+     "name": "Gelbgold",
+     "category": "cafe",
+     "lat": 52.50871658325195,
+     "lon": 13.309005737304688,
+     "providers": [
+      "brightquery",
+      "overture"
+     ],
+     "members": [
+      {
+       "source": "overture_places",
+       "ref": "overture:e3b9c2ed-5f3e-4a40-a3f1-6cc12cc9f86b",
+       "name": "Gelbgold",
+       "category": "cafe"
+      }
+     ]
+    }
+   ],
+   "distance_m": 5.6
+  },
+  {
+   "candidate_id": "poi_duplicate:node/4415604080|node/8039726234",
+   "module": "poi_duplicate",
+   "record_ref": "node/4415604080|node/8039726234",
+   "records": [
+    {
+     "external_ref": "node/4415604080",
+     "name": "Harry's Sliders",
+     "category": "fast_food",
+     "lat": 52.5108868,
+     "lon": 13.3055983,
+     "providers": [
+      "openstreetmap"
+     ],
+     "members": [
+      {
+       "source": "osm_overpass",
+       "ref": "node/4415604080",
+       "name": "Harry's Sliders",
+       "category": "fast_food"
+      }
+     ]
+    },
+    {
+     "external_ref": "node/8039726234",
+     "name": "Orient Bites",
+     "category": "fast_food",
+     "lat": 52.5109289,
+     "lon": 13.3055967,
+     "providers": [
+      "openstreetmap"
+     ],
+     "members": [
+      {
+       "source": "osm_overpass",
+       "ref": "node/8039726234",
+       "name": "Orient Bites",
+       "category": "fast_food"
+      }
+     ]
+    }
+   ],
+   "distance_m": 4.7
+  },
+  {
+   "candidate_id": "poi_duplicate:node/4551162390|node/661126952",
+   "module": "poi_duplicate",
+   "record_ref": "node/4551162390|node/661126952",
+   "records": [
+    {
+     "external_ref": "node/4551162390",
+     "name": "Safrani",
+     "category": "fast_food",
+     "lat": 52.5103568,
+     "lon": 13.305756,
+     "providers": [
+      "openstreetmap"
+     ],
+     "members": [
+      {
+       "source": "osm_overpass",
+       "ref": "node/4551162390",
+       "name": "Safrani",
+       "category": "fast_food"
+      }
+     ]
+    },
+    {
+     "external_ref": "node/661126952",
+     "name": "Yuppis",
+     "category": "fast_food",
+     "lat": 52.5102915,
+     "lon": 13.3057733,
+     "providers": [
+      "meta",
+      "openstreetmap",
+      "overture"
+     ],
+     "members": [
+      {
+       "source": "osm_overpass",
+       "ref": "node/661126952",
+       "name": "Yuppis",
+       "category": "fast_food"
+      },
+      {
+       "source": "overture_places",
+       "ref": "overture:d8400639-9620-4ace-b63d-cade8fa57f81",
+       "name": "Yuppis-Bistro",
+       "category": "cafe"
+      }
+     ]
+    }
+   ],
+   "distance_m": 7.4
+  },
+  {
+   "candidate_id": "poi_duplicate:node/4551162390|node/8039726235",
+   "module": "poi_duplicate",
+   "record_ref": "node/4551162390|node/8039726235",
+   "records": [
+    {
+     "external_ref": "node/4551162390",
+     "name": "Safrani",
+     "category": "fast_food",
+     "lat": 52.5103568,
+     "lon": 13.305756,
+     "providers": [
+      "openstreetmap"
+     ],
+     "members": [
+      {
+       "source": "osm_overpass",
+       "ref": "node/4551162390",
+       "name": "Safrani",
+       "category": "fast_food"
+      }
+     ]
+    },
+    {
+     "external_ref": "node/8039726235",
+     "name": "Wilma Döner",
+     "category": "fast_food",
+     "lat": 52.5104057,
+     "lon": 13.3057536,
+     "providers": [
+      "openstreetmap"
+     ],
+     "members": [
+      {
+       "source": "osm_overpass",
+       "ref": "node/8039726235",
+       "name": "Wilma Döner",
+       "category": "fast_food"
+      }
+     ]
+    }
+   ],
+   "distance_m": 5.4
+  },
+  {
+   "candidate_id": "poi_duplicate:node/661126952|node/8039726235",
+   "module": "poi_duplicate",
+   "record_ref": "node/661126952|node/8039726235",
+   "records": [
+    {
+     "external_ref": "node/661126952",
+     "name": "Yuppis",
+     "category": "fast_food",
+     "lat": 52.5102915,
+     "lon": 13.3057733,
+     "providers": [
+      "meta",
+      "openstreetmap",
+      "overture"
+     ],
+     "members": [
+      {
+       "source": "osm_overpass",
+       "ref": "node/661126952",
+       "name": "Yuppis",
+       "category": "fast_food"
+      },
+      {
+       "source": "overture_places",
+       "ref": "overture:d8400639-9620-4ace-b63d-cade8fa57f81",
+       "name": "Yuppis-Bistro",
+       "category": "cafe"
+      }
+     ]
+    },
+    {
+     "external_ref": "node/8039726235",
+     "name": "Wilma Döner",
+     "category": "fast_food",
+     "lat": 52.5104057,
+     "lon": 13.3057536,
+     "providers": [
+      "openstreetmap"
+     ],
+     "members": [
+      {
+       "source": "osm_overpass",
+       "ref": "node/8039726235",
+       "name": "Wilma Döner",
+       "category": "fast_food"
+      }
+     ]
+    }
+   ],
+   "distance_m": 12.8
+  },
+  {
+   "candidate_id": "poi_duplicate:overture:7c490fd9-daab-460a-80e7-ca52525a262a|overture:e3b9c2ed-5f3e-4a40-a3f1-6cc12cc9f86b",
+   "module": "poi_duplicate",
+   "record_ref": "overture:7c490fd9-daab-460a-80e7-ca52525a262a|overture:e3b9c2ed-5f3e-4a40-a3f1-6cc12cc9f86b",
+   "records": [
+    {
+     "external_ref": "overture:7c490fd9-daab-460a-80e7-ca52525a262a",
+     "name": "Caf� H�ftgold Berlin",
+     "category": "cafe",
+     "lat": 52.508705139160156,
+     "lon": 13.30907917022705,
+     "providers": [
+      "meta",
+      "overture"
+     ],
+     "members": [
+      {
+       "source": "overture_places",
+       "ref": "overture:7c490fd9-daab-460a-80e7-ca52525a262a",
+       "name": "Caf� H�ftgold Berlin",
+       "category": "cafe"
+      }
+     ]
+    },
+    {
+     "external_ref": "overture:e3b9c2ed-5f3e-4a40-a3f1-6cc12cc9f86b",
+     "name": "Gelbgold",
+     "category": "cafe",
+     "lat": 52.50871658325195,
+     "lon": 13.309005737304688,
+     "providers": [
+      "brightquery",
+      "overture"
+     ],
+     "members": [
+      {
+       "source": "overture_places",
+       "ref": "overture:e3b9c2ed-5f3e-4a40-a3f1-6cc12cc9f86b",
+       "name": "Gelbgold",
+       "category": "cafe"
+      }
+     ]
+    }
+   ],
+   "distance_m": 5.1
+  }
+ ],
+ "set": "generalisation"
+}

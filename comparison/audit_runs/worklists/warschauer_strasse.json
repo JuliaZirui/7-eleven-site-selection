@@ -1,0 +1,1773 @@
+{
+ "generator": "audit_candidates_v2",
+ "area_id": "warschauer_strasse",
+ "name": "Warschauer Straße",
+ "lat": 52.50533737805442,
+ "lon": 13.449070864605977,
+ "radius_m": 400,
+ "state": "corrections_off",
+ "provenance": {
+  "ihk_snapshot_id": 36,
+  "attraction_snapshot_id": 48,
+  "poi_source_snapshot_ids": {
+   "osm_overpass": 41,
+   "overture_places": 42
+  },
+  "conflation": "conflation_v1 (quality rules and verified corrections off)",
+  "osm_context": "db/raw/audit/osm_context/warschauer_strasse_20261007T091351Z.json",
+  "visitor_fit": "visitor_fit_20261001T130205Z.json"
+ },
+ "modules_skipped": [],
+ "counts": {
+  "concentration": 4,
+  "large_registration": 4,
+  "missing_entity": 9,
+  "poi_category": 1,
+  "poi_duplicate": 22
+ },
+ "candidates": [
+  {
+   "candidate_id": "concentration:ihk:1146940271134",
+   "module": "concentration",
+   "segment": "workers",
+   "record_ref": "ihk:1146940271134",
+   "record": {
+    "opendata_id": "1146940271134",
+    "employees_range": "2500 - 4999 Beschäftigte",
+    "nace_id": "4712",
+    "nace_desc": "Sonstiger Einzelhandel mit Waren verschiedener Art",
+    "ihk_branch_desc": "Einzelhandel mit Waren verschiedener Art, Hauptrichtung Nicht-Nahrungsmittel",
+    "branch_top_level_desc": "Einzelhandel",
+    "business_age": "7",
+    "business_type": "im Handelsregister eingetragen",
+    "planungsraum": "Wriezener Bahnhof",
+    "lat": 52.50427897,
+    "lon": 13.4443209
+   },
+   "value_people_per_day": 3535.2,
+   "segment_total": 15135.0,
+   "share_of_segment": 0.234,
+   "conversion": "IHK size class at its geometric midpoint, counted as on-site headcount"
+  },
+  {
+   "candidate_id": "concentration:ihk:1315585271284",
+   "module": "concentration",
+   "segment": "workers",
+   "record_ref": "ihk:1315585271284",
+   "record": {
+    "opendata_id": "1315585271284",
+    "employees_range": "2500 - 4999 Beschäftigte",
+    "nace_id": "4712",
+    "nace_desc": "Sonstiger Einzelhandel mit Waren verschiedener Art",
+    "ihk_branch_desc": "Einzelhandel mit Waren verschiedener Art, Hauptrichtung Nicht-Nahrungsmittel",
+    "branch_top_level_desc": "Einzelhandel",
+    "business_age": "3",
+    "business_type": "im Handelsregister eingetragen",
+    "planungsraum": "Wriezener Bahnhof",
+    "lat": 52.505277,
+    "lon": 13.44454531
+   },
+   "value_people_per_day": 3535.2,
+   "segment_total": 15135.0,
+   "share_of_segment": 0.234,
+   "conversion": "IHK size class at its geometric midpoint, counted as on-site headcount"
+  },
+  {
+   "candidate_id": "concentration:wikidata:Q136975",
+   "module": "concentration",
+   "segment": "visitors",
+   "record_ref": "wikidata:Q136975",
+   "record": {
+    "qid": "Q136975",
+    "name": "Berghain",
+    "kind": "nightclub",
+    "wikipedia_titles": {
+     "dewiki": "Berghain",
+     "enwiki": "Berghain"
+    },
+    "distance_m": 619,
+    "gateway_share": 0.333,
+    "pageviews_12m": 577599
+   },
+   "value_people_per_day": 5405.9,
+   "segment_total": 10884.2,
+   "share_of_segment": 0.497,
+   "annual_visitors_from_pageviews": 5919427,
+   "conversion": "log10(visitors) = 1.011 + 1.000 * log10(12-month de+en pageviews), times the 1/k gateway share, / 365"
+  },
+  {
+   "candidate_id": "concentration:wikidata:Q265463",
+   "module": "concentration",
+   "segment": "visitors",
+   "record_ref": "wikidata:Q265463",
+   "record": {
+    "qid": "Q265463",
+    "name": "Uber Arena",
+    "kind": "music_venue",
+    "wikipedia_titles": {
+     "dewiki": "Uber Arena",
+     "enwiki": "Uber Arena"
+    },
+    "distance_m": 298,
+    "gateway_share": 0.5,
+    "pageviews_12m": 164232
+   },
+   "value_people_per_day": 2305.6,
+   "segment_total": 10884.2,
+   "share_of_segment": 0.212,
+   "annual_visitors_from_pageviews": 1683104,
+   "conversion": "log10(visitors) = 1.011 + 1.000 * log10(12-month de+en pageviews), times the 1/k gateway share, / 365"
+  },
+  {
+   "candidate_id": "large_registration:ihk:1126051271504",
+   "module": "large_registration",
+   "record_ref": "ihk:1126051271504",
+   "record": {
+    "opendata_id": "1126051271504",
+    "employees_range": "500 - 999 Beschäftigte",
+    "nace_id": "6290",
+    "nace_desc": "Erbringung von sonstigen Dienstleistungen der Informationstechnologie",
+    "ihk_branch_desc": "Erbringung von sonstigen Dienstleistungen der Informationstechnologie",
+    "branch_top_level_desc": "Erbringung von Dienstleistungen der Informationstechnologie",
+    "business_age": "7",
+    "business_type": "im Handelsregister eingetragen",
+    "planungsraum": "Stralauer Kiez",
+    "lat": 52.50180038,
+    "lon": 13.44890636
+   },
+   "counted_as": 706.8,
+   "counted_at_this_station": true,
+   "osm_names_within_40m": [
+    {
+     "osm_ref": "way/24263626",
+     "distance_m": 0.0,
+     "name": "Osthafenspeicher",
+     "building": "office",
+     "building:levels": "6",
+     "address": null
+    },
+    {
+     "osm_ref": "node/13089219101",
+     "distance_m": 19.1,
+     "name": "TikTok Germany GmbH",
+     "office": "company",
+     "address": "Stralauer Allee 2"
+    },
+    {
+     "osm_ref": "node/2929590701",
+     "distance_m": 20.8,
+     "name": "Capitol Yard Golf Lounge",
+     "amenity": "events_venue",
+     "address": "Stralauer Allee 2B"
+    }
+   ]
+  },
+  {
+   "candidate_id": "large_registration:ihk:1146940271134",
+   "module": "large_registration",
+   "record_ref": "ihk:1146940271134",
+   "record": {
+    "opendata_id": "1146940271134",
+    "employees_range": "2500 - 4999 Beschäftigte",
+    "nace_id": "4712",
+    "nace_desc": "Sonstiger Einzelhandel mit Waren verschiedener Art",
+    "ihk_branch_desc": "Einzelhandel mit Waren verschiedener Art, Hauptrichtung Nicht-Nahrungsmittel",
+    "branch_top_level_desc": "Einzelhandel",
+    "business_age": "7",
+    "business_type": "im Handelsregister eingetragen",
+    "planungsraum": "Wriezener Bahnhof",
+    "lat": 52.50427897,
+    "lon": 13.4443209
+   },
+   "counted_as": 3535.2,
+   "counted_at_this_station": true,
+   "osm_names_within_40m": [
+    {
+     "osm_ref": "way/387038363",
+     "distance_m": 0.0,
+     "name": "Zalando SE",
+     "building": "commercial",
+     "building:levels": "7",
+     "address": "Tamara-Danz-Straße 3"
+    },
+    {
+     "osm_ref": "node/3170856249",
+     "distance_m": 1.4,
+     "name": "Zalando SE",
+     "office": "company",
+     "address": "Tamara-Danz-Straße 1"
+    },
+    {
+     "osm_ref": "node/6906860075",
+     "distance_m": 23.7,
+     "operator": "DHL",
+     "amenity": "parcel_locker",
+     "address": null
+    },
+    {
+     "osm_ref": "node/6793655352",
+     "distance_m": 26.9,
+     "operator": "Zalando",
+     "amenity": "bicycle_repair_station",
+     "address": null
+    },
+    {
+     "osm_ref": "way/387038362",
+     "distance_m": 28.9,
+     "name": "Zalando SE",
+     "building": "commercial",
+     "building:levels": "7",
+     "address": "Tamara-Danz-Straße 1"
+    },
+    {
+     "osm_ref": "node/9914312728",
+     "distance_m": 35.1,
+     "operator": "Berliner Stadtreinigung",
+     "amenity": "waste_basket",
+     "address": null
+    }
+   ]
+  },
+  {
+   "candidate_id": "large_registration:ihk:1315585271284",
+   "module": "large_registration",
+   "record_ref": "ihk:1315585271284",
+   "record": {
+    "opendata_id": "1315585271284",
+    "employees_range": "2500 - 4999 Beschäftigte",
+    "nace_id": "4712",
+    "nace_desc": "Sonstiger Einzelhandel mit Waren verschiedener Art",
+    "ihk_branch_desc": "Einzelhandel mit Waren verschiedener Art, Hauptrichtung Nicht-Nahrungsmittel",
+    "branch_top_level_desc": "Einzelhandel",
+    "business_age": "3",
+    "business_type": "im Handelsregister eingetragen",
+    "planungsraum": "Wriezener Bahnhof",
+    "lat": 52.505277,
+    "lon": 13.44454531
+   },
+   "counted_as": 3535.2,
+   "counted_at_this_station": true,
+   "osm_names_within_40m": [
+    {
+     "osm_ref": "way/934597750",
+     "distance_m": 0.0,
+     "name": "Stream Tower",
+     "building": "office",
+     "building:levels": "23",
+     "address": null
+    },
+    {
+     "osm_ref": "node/13286558304",
+     "distance_m": 0.6,
+     "operator": "Zalando SE",
+     "address": null
+    },
+    {
+     "osm_ref": "node/12874787448",
+     "distance_m": 16.4,
+     "operator": "EZE",
+     "amenity": "charging_station",
+     "address": null
+    },
+    {
+     "osm_ref": "node/9873983029",
+     "distance_m": 29.4,
+     "name": "Zalando",
+     "office": "company",
+     "address": null
+    }
+   ]
+  },
+  {
+   "candidate_id": "large_registration:ihk:146410147338",
+   "module": "large_registration",
+   "record_ref": "ihk:146410147338",
+   "record": {
+    "opendata_id": "146410147338",
+    "employees_range": "500 - 999 Beschäftigte",
+    "nace_id": "5320",
+    "nace_desc": "Sonstige Post-, Kurier- und Expressdienste",
+    "ihk_branch_desc": "Lieferdienste",
+    "branch_top_level_desc": "Post-, Kurier- und Expressdienste",
+    "business_age": "0",
+    "business_type": "im Handelsregister eingetragen",
+    "planungsraum": "Stralauer Kiez",
+    "lat": 52.50401104,
+    "lon": 13.449425
+   },
+   "counted_as": 706.8,
+   "counted_at_this_station": true,
+   "osm_names_within_40m": [
+    {
+     "osm_ref": "node/12156237425",
+     "distance_m": 3.8,
+     "name": "System Vertrieb Alexander",
+     "office": "it",
+     "address": "Rotherstraße 16"
+    },
+    {
+     "osm_ref": "node/2347814636",
+     "distance_m": 18.4,
+     "name": "Hiller",
+     "operator": "Dr. Hans-Peter Welke",
+     "shop": "interior_decoration",
+     "address": "Rotherstraße 16"
+    },
+    {
+     "osm_ref": "node/10201733109",
+     "distance_m": 20.8,
+     "name": "Steinecke",
+     "operator": "Meisterbäckerei Steinecke GmbH und Co. KG",
+     "shop": "bakery",
+     "address": "Rotherstraße 16-19"
+    }
+   ]
+  },
+  {
+   "candidate_id": "missing_entity:osm:node/2940792271",
+   "module": "missing_entity",
+   "record_ref": "osm:node/2940792271",
+   "record": {
+    "osm_ref": "node/2940792271",
+    "distance_m": 0.0,
+    "name": "Palfinger",
+    "office": "company",
+    "address": null,
+    "lat": 52.504785,
+    "lon": 13.452989,
+    "tags": {
+     "check_date": "2023-10-31",
+     "name": "Palfinger",
+     "office": "company"
+    }
+   },
+   "footprint_m2": null,
+   "floor_area_m2": null,
+   "levels_tagged": false,
+   "reason_listed": "no IHK registration within 40 m",
+   "ihk_within_40m": {
+    "registrations": 0,
+    "headcount_at_midpoints": 0
+   },
+   "tagged_objects_inside": [],
+   "nearest_station": {
+    "name": "S+U Warschauer Str. (Berlin)",
+    "distance_m": 281
+   },
+   "nearest_ihk_m": 48.0
+  },
+  {
+   "candidate_id": "missing_entity:osm:node/6498997645",
+   "module": "missing_entity",
+   "record_ref": "osm:node/6498997645",
+   "record": {
+    "osm_ref": "node/6498997645",
+    "distance_m": 0.0,
+    "name": "Noisy Musicworld",
+    "office": "company",
+    "address": "Revaler Straße 99",
+    "lat": 52.506672,
+    "lon": 13.453423,
+    "tags": {
+     "addr:city": "Berlin",
+     "addr:country": "DE",
+     "addr:housenumber": "99",
+     "addr:postcode": "10245",
+     "addr:street": "Revaler Straße",
+     "check_date": "2025-05-20",
+     "contact:website": "https://noisy-musicworld.com/",
+     "name": "Noisy Musicworld",
+     "office": "company",
+     "official_name": "noisy musicworld GmbH"
+    }
+   },
+   "footprint_m2": null,
+   "floor_area_m2": null,
+   "levels_tagged": false,
+   "reason_listed": "no IHK registration within 40 m",
+   "ihk_within_40m": {
+    "registrations": 0,
+    "headcount_at_midpoints": 0
+   },
+   "tagged_objects_inside": [],
+   "nearest_station": {
+    "name": "S+U Warschauer Str. (Berlin)",
+    "distance_m": 243
+   },
+   "nearest_ihk_m": 195.0
+  },
+  {
+   "candidate_id": "missing_entity:osm:way/23971091",
+   "module": "missing_entity",
+   "record_ref": "osm:way/23971091",
+   "record": {
+    "osm_ref": "way/23971091",
+    "distance_m": 0.0,
+    "name": "Stralauer One",
+    "building": "office",
+    "building:levels": "9",
+    "address": "Stralauer Allee 1",
+    "lat": 52.502109,
+    "lon": 13.447447,
+    "tags": {
+     "addr:city": "Berlin",
+     "addr:country": "DE",
+     "addr:housenumber": "1",
+     "addr:postcode": "10245",
+     "addr:street": "Stralauer Allee",
+     "addr:suburb": "Friedrichshain",
+     "building": "office",
+     "building:levels": "9",
+     "image": "https://photos.app.goo.gl/31R3FBfRKZfyEp899",
+     "name": "Stralauer One",
+     "roof:shape": "flat",
+     "website": "https://stralauer-one.com/"
+    }
+   },
+   "footprint_m2": 2482,
+   "floor_area_m2": 22335,
+   "levels_tagged": true,
+   "reason_listed": "IHK headcount within 40 m below 1 per 100 m² of floor area",
+   "ihk_within_40m": {
+    "registrations": 2,
+    "headcount_at_midpoints": 15.5
+   },
+   "tagged_objects_inside": [],
+   "nearest_station": {
+    "name": "U Schlesisches Tor (Berlin)",
+    "distance_m": 398
+   },
+   "nearest_ihk_m": 0.0
+  },
+  {
+   "candidate_id": "missing_entity:osm:way/24864847",
+   "module": "missing_entity",
+   "record_ref": "osm:way/24864847",
+   "record": {
+    "osm_ref": "way/24864847",
+    "distance_m": 0.0,
+    "building": "industrial",
+    "building:levels": "2",
+    "address": null,
+    "lat": 52.503306,
+    "lon": 13.447853,
+    "tags": {
+     "building": "industrial",
+     "building:levels": "2",
+     "building:use": "railway",
+     "roof:colour": "gray",
+     "roof:shape": "gabled"
+    }
+   },
+   "footprint_m2": 2764,
+   "floor_area_m2": 5527,
+   "levels_tagged": true,
+   "reason_listed": "IHK headcount within 40 m below 1 per 100 m² of floor area",
+   "ihk_within_40m": {
+    "registrations": 13,
+    "headcount_at_midpoints": 38.2
+   },
+   "tagged_objects_inside": [],
+   "nearest_station": {
+    "name": "S+U Warschauer Str. (Berlin)",
+    "distance_m": 287
+   },
+   "nearest_ihk_m": 0.0
+  },
+  {
+   "candidate_id": "missing_entity:osm:way/25007895",
+   "module": "missing_entity",
+   "record_ref": "osm:way/25007895",
+   "record": {
+    "osm_ref": "way/25007895",
+    "distance_m": 0.0,
+    "name": "Uber Arena",
+    "operator": "Anschutz Entertainment Operations GmbH",
+    "amenity": "music_venue",
+    "building": "arena",
+    "address": null,
+    "lat": 52.506312,
+    "lon": 13.443727,
+    "tags": {
+     "addr:city": "Berlin",
+     "addr:country": "DE",
+     "addr:housenumber": "1",
+     "addr:place": "Uber Platz",
+     "addr:postcode": "10243",
+     "addr:suburb": "Friedrichshain",
+     "amenity": "music_venue",
+     "building": "arena",
+     "building:colour": "white",
+     "check_date": "2026-07-23",
+     "contact:phone": "+49 30 2060708899",
+     "contact:website": "https://www.uber-arena.de/",
+     "height": "28",
+     "image": "https://photos.app.goo.gl/VhVxtCV1ZK6hpVYn9",
+     "leisure": "stadium",
+     "loc_name": "Arena am Ostbahnhof",
+     "loc_name:de": "Mehrzweckhalle am Ostbahnhof",
+     "name": "Uber Arena",
+     "old_name:-2015": "O2 World Berlin",
+     "old_name:2015--2024-03-21": "Mercedes-Benz Arena",
+     "operator": "Anschutz Entertainment Operations GmbH",
+     "roof:shape": "flat",
+     "toilets:wheelchair": "yes",
+     "wheelchair": "yes",
+     "wheelchair:description": "Vorbildlich in Sachen Barrierefreiheit und Betreuung von Rollstuhlfahrern bei Veranstaltungen",
+     "wikidata": "Q265463",
+     "wikipedia": "de:Uber Arena"
+    }
+   },
+   "footprint_m2": 17717,
+   "floor_area_m2": 17717,
+   "levels_tagged": false,
+   "reason_listed": "IHK headcount within 40 m below 1 per 100 m² of floor area",
+   "ihk_within_40m": {
+    "registrations": 1,
+    "headcount_at_midpoints": 0.0
+   },
+   "tagged_objects_inside": [],
+   "nearest_station": {
+    "name": "S+U Warschauer Str. (Berlin)",
+    "distance_m": 373
+   },
+   "nearest_ihk_m": 0.0
+  },
+  {
+   "candidate_id": "missing_entity:osm:way/52024059",
+   "module": "missing_entity",
+   "record_ref": "osm:way/52024059",
+   "record": {
+    "osm_ref": "way/52024059",
+    "distance_m": 0.0,
+    "building": "commercial",
+    "building:levels": "3",
+    "address": null,
+    "lat": 52.502619,
+    "lon": 13.448659,
+    "tags": {
+     "building": "commercial",
+     "building:levels": "3",
+     "disused": "yes",
+     "roof:levels": "0",
+     "roof:shape": "flat",
+     "website": "https://www.forty4.de/",
+     "wheelchair": "yes"
+    }
+   },
+   "footprint_m2": 2161,
+   "floor_area_m2": 6484,
+   "levels_tagged": true,
+   "reason_listed": "IHK headcount within 40 m below 1 per 100 m² of floor area",
+   "ihk_within_40m": {
+    "registrations": 3,
+    "headcount_at_midpoints": 45.1
+   },
+   "tagged_objects_inside": [],
+   "nearest_station": {
+    "name": "S+U Warschauer Str. (Berlin)",
+    "distance_m": 351
+   },
+   "nearest_ihk_m": 0.0
+  },
+  {
+   "candidate_id": "missing_entity:osm:way/293336181",
+   "module": "missing_entity",
+   "record_ref": "osm:way/293336181",
+   "record": {
+    "osm_ref": "way/293336181",
+    "distance_m": 0.0,
+    "building": "office",
+    "address": null,
+    "lat": 52.508316,
+    "lon": 13.446157,
+    "tags": {
+     "building": "office"
+    }
+   },
+   "footprint_m2": 25,
+   "floor_area_m2": 25,
+   "levels_tagged": false,
+   "reason_listed": "no IHK registration within 40 m",
+   "ihk_within_40m": {
+    "registrations": 0,
+    "headcount_at_midpoints": 0
+   },
+   "tagged_objects_inside": [],
+   "nearest_station": {
+    "name": "S+U Warschauer Str. (Berlin)",
+    "distance_m": 299
+   },
+   "nearest_ihk_m": 81.8
+  },
+  {
+   "candidate_id": "missing_entity:osm:way/296269692",
+   "module": "missing_entity",
+   "record_ref": "osm:way/296269692",
+   "record": {
+    "osm_ref": "way/296269692",
+    "distance_m": 0.0,
+    "office": "company",
+    "building": "yes",
+    "address": "Ehrenbergstraße 15",
+    "lat": 52.505277,
+    "lon": 13.452421,
+    "tags": {
+     "addr:city": "Berlin",
+     "addr:housenumber": "15",
+     "addr:postcode": "10245",
+     "addr:street": "Ehrenbergstraße",
+     "building": "yes",
+     "office": "company"
+    }
+   },
+   "footprint_m2": 1334,
+   "floor_area_m2": 1334,
+   "levels_tagged": false,
+   "reason_listed": "no IHK registration within 40 m",
+   "ihk_within_40m": {
+    "registrations": 0,
+    "headcount_at_midpoints": 0
+   },
+   "tagged_objects_inside": [],
+   "nearest_station": {
+    "name": "S+U Warschauer Str. (Berlin)",
+    "distance_m": 227
+   },
+   "nearest_ihk_m": 53.3
+  },
+  {
+   "candidate_id": "missing_entity:osm:way/1364133390",
+   "module": "missing_entity",
+   "record_ref": "osm:way/1364133390",
+   "record": {
+    "osm_ref": "way/1364133390",
+    "distance_m": 0.0,
+    "name": "EDGE East Side Tower",
+    "building": "commercial",
+    "building:levels": "36",
+    "address": "Tamara-Danz-Straße 13",
+    "lat": 52.506016,
+    "lon": 13.448558,
+    "tags": {
+     "addr:city": "Berlin",
+     "addr:housenumber": "13",
+     "addr:street": "Tamara-Danz-Straße",
+     "alt_name": "Amazon Tower",
+     "alt_name_1": "EDGE East Side Tower Berlin",
+     "alt_name_2": "EDGE East Side Berlin",
+     "building": "commercial",
+     "building:levels": "36",
+     "description:de": "Höchstes Gebäude Berlins (2025)",
+     "height": "142",
+     "image": "https://photos.app.goo.gl/WQDYMTd7ZG9C5X5G9",
+     "name": "EDGE East Side Tower",
+     "surveillance": "indoor",
+     "surveillance:type": "camera",
+     "wikidata": "Q66058331",
+     "wikimedia_commons": "Category:Edge East Side Tower",
+     "wikipedia": "de:Edge East Side Tower"
+    }
+   },
+   "footprint_m2": 2160,
+   "floor_area_m2": 77751,
+   "levels_tagged": true,
+   "reason_listed": "IHK headcount within 40 m below 1 per 100 m² of floor area",
+   "ihk_within_40m": {
+    "registrations": 24,
+    "headcount_at_midpoints": 484.8
+   },
+   "tagged_objects_inside": [],
+   "nearest_station": {
+    "name": "S+U Warschauer Str. (Berlin)",
+    "distance_m": 49
+   },
+   "nearest_ihk_m": 1.5
+  },
+  {
+   "candidate_id": "poi_category:overture:89823666-df64-4431-9319-3efbb86f0531",
+   "module": "poi_category",
+   "record_ref": "overture:89823666-df64-4431-9319-3efbb86f0531",
+   "record": {
+    "external_ref": "overture:89823666-df64-4431-9319-3efbb86f0531",
+    "name": "CI Berlin EKZ East Side Mall",
+    "category": "spati_kiosk",
+    "lat": 52.50615692138672,
+    "lon": 13.446059226989746,
+    "providers": [
+     "alltheplaces",
+     "overture"
+    ],
+    "members": [
+     {
+      "source": "overture_places",
+      "ref": "overture:89823666-df64-4431-9319-3efbb86f0531",
+      "name": "CI Berlin EKZ East Side Mall",
+      "category": "spati_kiosk"
+     }
+    ]
+   },
+   "non_food_words": [],
+   "same_name_osm_objects_15m": [
+    {
+     "osm_ref": "way/615700425",
+     "distance_m": 0.0,
+     "name": "East Side Mall",
+     "shop": "mall",
+     "building": "retail",
+     "building:levels": "5",
+     "address": "Tamara-Danz-Straße 11",
+     "osm_category": null
+    }
+   ],
+   "osm_objects_15m": [
+    {
+     "osm_ref": "way/615700425",
+     "distance_m": 0.0,
+     "name": "East Side Mall",
+     "shop": "mall",
+     "building": "retail",
+     "building:levels": "5",
+     "address": "Tamara-Danz-Straße 11"
+    },
+    {
+     "osm_ref": "way/739645083",
+     "distance_m": 5.7,
+     "name": "Postbank",
+     "address": null
+    },
+    {
+     "osm_ref": "way/739645084",
+     "distance_m": 5.7,
+     "name": "Mad Flavor Pop-Up",
+     "shop": "shoes",
+     "address": null
+    },
+    {
+     "osm_ref": "way/739645102",
+     "distance_m": 5.7,
+     "name": "MediaMarkt",
+     "shop": "electronics",
+     "address": "Tamara-Danz-Straße 11"
+    }
+   ]
+  },
+  {
+   "candidate_id": "poi_duplicate:node/10542894372|node/1181625839",
+   "module": "poi_duplicate",
+   "record_ref": "node/10542894372|node/1181625839",
+   "records": [
+    {
+     "external_ref": "node/10542894372",
+     "name": "Bistro Anh Yen",
+     "category": "fast_food",
+     "lat": 52.5037827,
+     "lon": 13.4473241,
+     "providers": [
+      "openstreetmap"
+     ],
+     "members": [
+      {
+       "source": "osm_overpass",
+       "ref": "node/10542894372",
+       "name": "Bistro Anh Yen",
+       "category": "fast_food"
+      }
+     ]
+    },
+    {
+     "external_ref": "node/1181625839",
+     "name": "Bistro Istanbul",
+     "category": "fast_food",
+     "lat": 52.5038496,
+     "lon": 13.4473758,
+     "providers": [
+      "openstreetmap"
+     ],
+     "members": [
+      {
+       "source": "osm_overpass",
+       "ref": "node/1181625839",
+       "name": "Bistro Istanbul",
+       "category": "fast_food"
+      }
+     ]
+    }
+   ],
+   "distance_m": 8.2
+  },
+  {
+   "candidate_id": "poi_duplicate:node/1181625794|node/12485958656",
+   "module": "poi_duplicate",
+   "record_ref": "node/1181625794|node/12485958656",
+   "records": [
+    {
+     "external_ref": "node/1181625794",
+     "name": "Urban Falafel",
+     "category": "fast_food",
+     "lat": 52.5035151,
+     "lon": 13.4471126,
+     "providers": [
+      "openstreetmap"
+     ],
+     "members": [
+      {
+       "source": "osm_overpass",
+       "ref": "node/1181625794",
+       "name": "Urban Falafel",
+       "category": "fast_food"
+      }
+     ]
+    },
+    {
+     "external_ref": "node/12485958656",
+     "name": "Teufel Curry",
+     "category": "fast_food",
+     "lat": 52.5034171,
+     "lon": 13.447036,
+     "providers": [
+      "openstreetmap"
+     ],
+     "members": [
+      {
+       "source": "osm_overpass",
+       "ref": "node/12485958656",
+       "name": "Teufel Curry",
+       "category": "fast_food"
+      }
+     ]
+    }
+   ],
+   "distance_m": 12.1
+  },
+  {
+   "candidate_id": "poi_duplicate:node/1181625794|node/3750152225",
+   "module": "poi_duplicate",
+   "record_ref": "node/1181625794|node/3750152225",
+   "records": [
+    {
+     "external_ref": "node/1181625794",
+     "name": "Urban Falafel",
+     "category": "fast_food",
+     "lat": 52.5035151,
+     "lon": 13.4471126,
+     "providers": [
+      "openstreetmap"
+     ],
+     "members": [
+      {
+       "source": "osm_overpass",
+       "ref": "node/1181625794",
+       "name": "Urban Falafel",
+       "category": "fast_food"
+      }
+     ]
+    },
+    {
+     "external_ref": "node/3750152225",
+     "name": "Bro Burger",
+     "category": "fast_food",
+     "lat": 52.5035878,
+     "lon": 13.4471713,
+     "providers": [
+      "openstreetmap"
+     ],
+     "members": [
+      {
+       "source": "osm_overpass",
+       "ref": "node/3750152225",
+       "name": "Bro Burger",
+       "category": "fast_food"
+      }
+     ]
+    }
+   ],
+   "distance_m": 9.0
+  },
+  {
+   "candidate_id": "poi_duplicate:node/1181625794|node/9806357742",
+   "module": "poi_duplicate",
+   "record_ref": "node/1181625794|node/9806357742",
+   "records": [
+    {
+     "external_ref": "node/1181625794",
+     "name": "Urban Falafel",
+     "category": "fast_food",
+     "lat": 52.5035151,
+     "lon": 13.4471126,
+     "providers": [
+      "openstreetmap"
+     ],
+     "members": [
+      {
+       "source": "osm_overpass",
+       "ref": "node/1181625794",
+       "name": "Urban Falafel",
+       "category": "fast_food"
+      }
+     ]
+    },
+    {
+     "external_ref": "node/9806357742",
+     "name": "Nepal Momo",
+     "category": "fast_food",
+     "lat": 52.5034698,
+     "lon": 13.4470719,
+     "providers": [
+      "meta",
+      "openstreetmap",
+      "overture"
+     ],
+     "members": [
+      {
+       "source": "osm_overpass",
+       "ref": "node/9806357742",
+       "name": "Nepal Momo",
+       "category": "fast_food"
+      },
+      {
+       "source": "overture_places",
+       "ref": "overture:abb92e25-ed44-46d1-a9f9-9f26f17c17ba",
+       "name": "Nepal Momo Berlin",
+       "category": "fast_food"
+      }
+     ]
+    }
+   ],
+   "distance_m": 5.7
+  },
+  {
+   "candidate_id": "poi_duplicate:node/1181625794|overture:8f905500-73ed-423c-b98f-580f436bd550",
+   "module": "poi_duplicate",
+   "record_ref": "node/1181625794|overture:8f905500-73ed-423c-b98f-580f436bd550",
+   "records": [
+    {
+     "external_ref": "node/1181625794",
+     "name": "Urban Falafel",
+     "category": "fast_food",
+     "lat": 52.5035151,
+     "lon": 13.4471126,
+     "providers": [
+      "openstreetmap"
+     ],
+     "members": [
+      {
+       "source": "osm_overpass",
+       "ref": "node/1181625794",
+       "name": "Urban Falafel",
+       "category": "fast_food"
+      }
+     ]
+    },
+    {
+     "external_ref": "overture:8f905500-73ed-423c-b98f-580f436bd550",
+     "name": "Curry Fritze",
+     "category": "fast_food",
+     "lat": 52.50360107421875,
+     "lon": 13.447017669677734,
+     "providers": [
+      "foursquare",
+      "overture"
+     ],
+     "members": [
+      {
+       "source": "overture_places",
+       "ref": "overture:8f905500-73ed-423c-b98f-580f436bd550",
+       "name": "Curry Fritze",
+       "category": "fast_food"
+      }
+     ]
+    }
+   ],
+   "distance_m": 11.5
+  },
+  {
+   "candidate_id": "poi_duplicate:node/1181625847|node/5660368721",
+   "module": "poi_duplicate",
+   "record_ref": "node/1181625847|node/5660368721",
+   "records": [
+    {
+     "external_ref": "node/1181625847",
+     "name": "Scheers Schnitzel",
+     "category": "fast_food",
+     "lat": 52.5028629,
+     "lon": 13.4472391,
+     "providers": [
+      "openstreetmap"
+     ],
+     "members": [
+      {
+       "source": "osm_overpass",
+       "ref": "node/1181625847",
+       "name": "Scheers Schnitzel",
+       "category": "fast_food"
+      }
+     ]
+    },
+    {
+     "external_ref": "node/5660368721",
+     "name": "mundis",
+     "category": "fast_food",
+     "lat": 52.5028967,
+     "lon": 13.4472699,
+     "providers": [
+      "openstreetmap"
+     ],
+     "members": [
+      {
+       "source": "osm_overpass",
+       "ref": "node/5660368721",
+       "name": "mundis",
+       "category": "fast_food"
+      }
+     ]
+    }
+   ],
+   "distance_m": 4.3
+  },
+  {
+   "candidate_id": "poi_duplicate:node/12485958656|node/9806357742",
+   "module": "poi_duplicate",
+   "record_ref": "node/12485958656|node/9806357742",
+   "records": [
+    {
+     "external_ref": "node/12485958656",
+     "name": "Teufel Curry",
+     "category": "fast_food",
+     "lat": 52.5034171,
+     "lon": 13.447036,
+     "providers": [
+      "openstreetmap"
+     ],
+     "members": [
+      {
+       "source": "osm_overpass",
+       "ref": "node/12485958656",
+       "name": "Teufel Curry",
+       "category": "fast_food"
+      }
+     ]
+    },
+    {
+     "external_ref": "node/9806357742",
+     "name": "Nepal Momo",
+     "category": "fast_food",
+     "lat": 52.5034698,
+     "lon": 13.4470719,
+     "providers": [
+      "meta",
+      "openstreetmap",
+      "overture"
+     ],
+     "members": [
+      {
+       "source": "osm_overpass",
+       "ref": "node/9806357742",
+       "name": "Nepal Momo",
+       "category": "fast_food"
+      },
+      {
+       "source": "overture_places",
+       "ref": "overture:abb92e25-ed44-46d1-a9f9-9f26f17c17ba",
+       "name": "Nepal Momo Berlin",
+       "category": "fast_food"
+      }
+     ]
+    }
+   ],
+   "distance_m": 6.3
+  },
+  {
+   "candidate_id": "poi_duplicate:node/13208886618|node/1469403177",
+   "module": "poi_duplicate",
+   "record_ref": "node/13208886618|node/1469403177",
+   "records": [
+    {
+     "external_ref": "node/13208886618",
+     "name": "Pizza City",
+     "category": "fast_food",
+     "lat": 52.5082394,
+     "lon": 13.4510827,
+     "providers": [
+      "openstreetmap"
+     ],
+     "members": [
+      {
+       "source": "osm_overpass",
+       "ref": "node/13208886618",
+       "name": "Pizza City",
+       "category": "fast_food"
+      }
+     ]
+    },
+    {
+     "external_ref": "node/1469403177",
+     "name": "Smack Burger",
+     "category": "fast_food",
+     "lat": 52.5081875,
+     "lon": 13.4510573,
+     "providers": [
+      "openstreetmap"
+     ],
+     "members": [
+      {
+       "source": "osm_overpass",
+       "ref": "node/1469403177",
+       "name": "Smack Burger",
+       "category": "fast_food"
+      }
+     ]
+    }
+   ],
+   "distance_m": 6.0
+  },
+  {
+   "candidate_id": "poi_duplicate:node/13208886618|node/5572048797",
+   "module": "poi_duplicate",
+   "record_ref": "node/13208886618|node/5572048797",
+   "records": [
+    {
+     "external_ref": "node/13208886618",
+     "name": "Pizza City",
+     "category": "fast_food",
+     "lat": 52.5082394,
+     "lon": 13.4510827,
+     "providers": [
+      "openstreetmap"
+     ],
+     "members": [
+      {
+       "source": "osm_overpass",
+       "ref": "node/13208886618",
+       "name": "Pizza City",
+       "category": "fast_food"
+      }
+     ]
+    },
+    {
+     "external_ref": "node/5572048797",
+     "name": "Loco Chicken",
+     "category": "fast_food",
+     "lat": 52.5083101,
+     "lon": 13.4511068,
+     "providers": [
+      "openstreetmap"
+     ],
+     "members": [
+      {
+       "source": "osm_overpass",
+       "ref": "node/5572048797",
+       "name": "Loco Chicken",
+       "category": "fast_food"
+      }
+     ]
+    }
+   ],
+   "distance_m": 8.0
+  },
+  {
+   "candidate_id": "poi_duplicate:node/13208886618|overture:28a6c998-189f-4333-96af-71f7e7ebb37d",
+   "module": "poi_duplicate",
+   "record_ref": "node/13208886618|overture:28a6c998-189f-4333-96af-71f7e7ebb37d",
+   "records": [
+    {
+     "external_ref": "node/13208886618",
+     "name": "Pizza City",
+     "category": "fast_food",
+     "lat": 52.5082394,
+     "lon": 13.4510827,
+     "providers": [
+      "openstreetmap"
+     ],
+     "members": [
+      {
+       "source": "osm_overpass",
+       "ref": "node/13208886618",
+       "name": "Pizza City",
+       "category": "fast_food"
+      }
+     ]
+    },
+    {
+     "external_ref": "overture:28a6c998-189f-4333-96af-71f7e7ebb37d",
+     "name": "Holi Cow",
+     "category": "fast_food",
+     "lat": 52.50823974609375,
+     "lon": 13.451175689697266,
+     "providers": [
+      "foursquare",
+      "overture"
+     ],
+     "members": [
+      {
+       "source": "overture_places",
+       "ref": "overture:28a6c998-189f-4333-96af-71f7e7ebb37d",
+       "name": "Holi Cow",
+       "category": "fast_food"
+      }
+     ]
+    }
+   ],
+   "distance_m": 6.3
+  },
+  {
+   "candidate_id": "poi_duplicate:node/1469403177|node/5572048797",
+   "module": "poi_duplicate",
+   "record_ref": "node/1469403177|node/5572048797",
+   "records": [
+    {
+     "external_ref": "node/1469403177",
+     "name": "Smack Burger",
+     "category": "fast_food",
+     "lat": 52.5081875,
+     "lon": 13.4510573,
+     "providers": [
+      "openstreetmap"
+     ],
+     "members": [
+      {
+       "source": "osm_overpass",
+       "ref": "node/1469403177",
+       "name": "Smack Burger",
+       "category": "fast_food"
+      }
+     ]
+    },
+    {
+     "external_ref": "node/5572048797",
+     "name": "Loco Chicken",
+     "category": "fast_food",
+     "lat": 52.5083101,
+     "lon": 13.4511068,
+     "providers": [
+      "openstreetmap"
+     ],
+     "members": [
+      {
+       "source": "osm_overpass",
+       "ref": "node/5572048797",
+       "name": "Loco Chicken",
+       "category": "fast_food"
+      }
+     ]
+    }
+   ],
+   "distance_m": 14.0
+  },
+  {
+   "candidate_id": "poi_duplicate:node/1469403177|overture:28a6c998-189f-4333-96af-71f7e7ebb37d",
+   "module": "poi_duplicate",
+   "record_ref": "node/1469403177|overture:28a6c998-189f-4333-96af-71f7e7ebb37d",
+   "records": [
+    {
+     "external_ref": "node/1469403177",
+     "name": "Smack Burger",
+     "category": "fast_food",
+     "lat": 52.5081875,
+     "lon": 13.4510573,
+     "providers": [
+      "openstreetmap"
+     ],
+     "members": [
+      {
+       "source": "osm_overpass",
+       "ref": "node/1469403177",
+       "name": "Smack Burger",
+       "category": "fast_food"
+      }
+     ]
+    },
+    {
+     "external_ref": "overture:28a6c998-189f-4333-96af-71f7e7ebb37d",
+     "name": "Holi Cow",
+     "category": "fast_food",
+     "lat": 52.50823974609375,
+     "lon": 13.451175689697266,
+     "providers": [
+      "foursquare",
+      "overture"
+     ],
+     "members": [
+      {
+       "source": "overture_places",
+       "ref": "overture:28a6c998-189f-4333-96af-71f7e7ebb37d",
+       "name": "Holi Cow",
+       "category": "fast_food"
+      }
+     ]
+    }
+   ],
+   "distance_m": 9.9
+  },
+  {
+   "candidate_id": "poi_duplicate:node/3750152225|node/9806357742",
+   "module": "poi_duplicate",
+   "record_ref": "node/3750152225|node/9806357742",
+   "records": [
+    {
+     "external_ref": "node/3750152225",
+     "name": "Bro Burger",
+     "category": "fast_food",
+     "lat": 52.5035878,
+     "lon": 13.4471713,
+     "providers": [
+      "openstreetmap"
+     ],
+     "members": [
+      {
+       "source": "osm_overpass",
+       "ref": "node/3750152225",
+       "name": "Bro Burger",
+       "category": "fast_food"
+      }
+     ]
+    },
+    {
+     "external_ref": "node/9806357742",
+     "name": "Nepal Momo",
+     "category": "fast_food",
+     "lat": 52.5034698,
+     "lon": 13.4470719,
+     "providers": [
+      "meta",
+      "openstreetmap",
+      "overture"
+     ],
+     "members": [
+      {
+       "source": "osm_overpass",
+       "ref": "node/9806357742",
+       "name": "Nepal Momo",
+       "category": "fast_food"
+      },
+      {
+       "source": "overture_places",
+       "ref": "overture:abb92e25-ed44-46d1-a9f9-9f26f17c17ba",
+       "name": "Nepal Momo Berlin",
+       "category": "fast_food"
+      }
+     ]
+    }
+   ],
+   "distance_m": 14.7
+  },
+  {
+   "candidate_id": "poi_duplicate:node/3750152225|overture:8f905500-73ed-423c-b98f-580f436bd550",
+   "module": "poi_duplicate",
+   "record_ref": "node/3750152225|overture:8f905500-73ed-423c-b98f-580f436bd550",
+   "records": [
+    {
+     "external_ref": "node/3750152225",
+     "name": "Bro Burger",
+     "category": "fast_food",
+     "lat": 52.5035878,
+     "lon": 13.4471713,
+     "providers": [
+      "openstreetmap"
+     ],
+     "members": [
+      {
+       "source": "osm_overpass",
+       "ref": "node/3750152225",
+       "name": "Bro Burger",
+       "category": "fast_food"
+      }
+     ]
+    },
+    {
+     "external_ref": "overture:8f905500-73ed-423c-b98f-580f436bd550",
+     "name": "Curry Fritze",
+     "category": "fast_food",
+     "lat": 52.50360107421875,
+     "lon": 13.447017669677734,
+     "providers": [
+      "foursquare",
+      "overture"
+     ],
+     "members": [
+      {
+       "source": "overture_places",
+       "ref": "overture:8f905500-73ed-423c-b98f-580f436bd550",
+       "name": "Curry Fritze",
+       "category": "fast_food"
+      }
+     ]
+    }
+   ],
+   "distance_m": 10.5
+  },
+  {
+   "candidate_id": "poi_duplicate:node/5572048797|overture:28a6c998-189f-4333-96af-71f7e7ebb37d",
+   "module": "poi_duplicate",
+   "record_ref": "node/5572048797|overture:28a6c998-189f-4333-96af-71f7e7ebb37d",
+   "records": [
+    {
+     "external_ref": "node/5572048797",
+     "name": "Loco Chicken",
+     "category": "fast_food",
+     "lat": 52.5083101,
+     "lon": 13.4511068,
+     "providers": [
+      "openstreetmap"
+     ],
+     "members": [
+      {
+       "source": "osm_overpass",
+       "ref": "node/5572048797",
+       "name": "Loco Chicken",
+       "category": "fast_food"
+      }
+     ]
+    },
+    {
+     "external_ref": "overture:28a6c998-189f-4333-96af-71f7e7ebb37d",
+     "name": "Holi Cow",
+     "category": "fast_food",
+     "lat": 52.50823974609375,
+     "lon": 13.451175689697266,
+     "providers": [
+      "foursquare",
+      "overture"
+     ],
+     "members": [
+      {
+       "source": "overture_places",
+       "ref": "overture:28a6c998-189f-4333-96af-71f7e7ebb37d",
+       "name": "Holi Cow",
+       "category": "fast_food"
+      }
+     ]
+    }
+   ],
+   "distance_m": 9.1
+  },
+  {
+   "candidate_id": "poi_duplicate:node/5572048797|way/123019468",
+   "module": "poi_duplicate",
+   "record_ref": "node/5572048797|way/123019468",
+   "records": [
+    {
+     "external_ref": "node/5572048797",
+     "name": "Loco Chicken",
+     "category": "fast_food",
+     "lat": 52.5083101,
+     "lon": 13.4511068,
+     "providers": [
+      "openstreetmap"
+     ],
+     "members": [
+      {
+       "source": "osm_overpass",
+       "ref": "node/5572048797",
+       "name": "Loco Chicken",
+       "category": "fast_food"
+      }
+     ]
+    },
+    {
+     "external_ref": "way/123019468",
+     "name": "Saray",
+     "category": "fast_food",
+     "lat": 52.5083726,
+     "lon": 13.4511677,
+     "providers": [
+      "openstreetmap"
+     ],
+     "members": [
+      {
+       "source": "osm_overpass",
+       "ref": "way/123019468",
+       "name": "Saray",
+       "category": "fast_food"
+      }
+     ]
+    }
+   ],
+   "distance_m": 8.1
+  },
+  {
+   "candidate_id": "poi_duplicate:node/6032523119|overture:e4c72dc5-867d-47a7-b70d-19189db7c63d",
+   "module": "poi_duplicate",
+   "record_ref": "node/6032523119|overture:e4c72dc5-867d-47a7-b70d-19189db7c63d",
+   "records": [
+    {
+     "external_ref": "node/6032523119",
+     "name": "Comebuy",
+     "category": "cafe",
+     "lat": 52.5060106,
+     "lon": 13.4455995,
+     "providers": [
+      "openstreetmap"
+     ],
+     "members": [
+      {
+       "source": "osm_overpass",
+       "ref": "node/6032523119",
+       "name": "Comebuy",
+       "category": "cafe"
+      }
+     ]
+    },
+    {
+     "external_ref": "overture:e4c72dc5-867d-47a7-b70d-19189db7c63d",
+     "name": "McCafé",
+     "category": "cafe",
+     "lat": 52.50597381591797,
+     "lon": 13.445509910583496,
+     "providers": [
+      "alltheplaces",
+      "overture"
+     ],
+     "members": [
+      {
+       "source": "overture_places",
+       "ref": "overture:e4c72dc5-867d-47a7-b70d-19189db7c63d",
+       "name": "McCafé",
+       "category": "cafe"
+      }
+     ]
+    }
+   ],
+   "distance_m": 7.3
+  },
+  {
+   "candidate_id": "poi_duplicate:overture:28a6c998-189f-4333-96af-71f7e7ebb37d|way/123019468",
+   "module": "poi_duplicate",
+   "record_ref": "overture:28a6c998-189f-4333-96af-71f7e7ebb37d|way/123019468",
+   "records": [
+    {
+     "external_ref": "overture:28a6c998-189f-4333-96af-71f7e7ebb37d",
+     "name": "Holi Cow",
+     "category": "fast_food",
+     "lat": 52.50823974609375,
+     "lon": 13.451175689697266,
+     "providers": [
+      "foursquare",
+      "overture"
+     ],
+     "members": [
+      {
+       "source": "overture_places",
+       "ref": "overture:28a6c998-189f-4333-96af-71f7e7ebb37d",
+       "name": "Holi Cow",
+       "category": "fast_food"
+      }
+     ]
+    },
+    {
+     "external_ref": "way/123019468",
+     "name": "Saray",
+     "category": "fast_food",
+     "lat": 52.5083726,
+     "lon": 13.4511677,
+     "providers": [
+      "openstreetmap"
+     ],
+     "members": [
+      {
+       "source": "osm_overpass",
+       "ref": "way/123019468",
+       "name": "Saray",
+       "category": "fast_food"
+      }
+     ]
+    }
+   ],
+   "distance_m": 14.8
+  },
+  {
+   "candidate_id": "poi_duplicate:overture:bf96fcad-141b-4fca-8e28-4493c5405cda|way/740025157",
+   "module": "poi_duplicate",
+   "record_ref": "overture:bf96fcad-141b-4fca-8e28-4493c5405cda|way/740025157",
+   "records": [
+    {
+     "external_ref": "overture:bf96fcad-141b-4fca-8e28-4493c5405cda",
+     "name": "Fresh Rolls",
+     "category": "fast_food",
+     "lat": 52.50619125366211,
+     "lon": 13.445590019226074,
+     "providers": [
+      "meta",
+      "overture"
+     ],
+     "members": [
+      {
+       "source": "overture_places",
+       "ref": "overture:bf96fcad-141b-4fca-8e28-4493c5405cda",
+       "name": "Fresh Rolls",
+       "category": "fast_food"
+      }
+     ]
+    },
+    {
+     "external_ref": "way/740025157",
+     "name": "Wrapublic",
+     "category": "fast_food",
+     "lat": 52.5061257,
+     "lon": 13.4457085,
+     "providers": [
+      "openstreetmap"
+     ],
+     "members": [
+      {
+       "source": "osm_overpass",
+       "ref": "way/740025157",
+       "name": "Wrapublic",
+       "category": "fast_food"
+      }
+     ]
+    }
+   ],
+   "distance_m": 10.8
+  },
+  {
+   "candidate_id": "poi_duplicate:way/1222432200|way/751650279",
+   "module": "poi_duplicate",
+   "record_ref": "way/1222432200|way/751650279",
+   "records": [
+    {
+     "external_ref": "way/1222432200",
+     "name": "Wat is' mit vegan?",
+     "category": "fast_food",
+     "lat": 52.5081988,
+     "lon": 13.4515081,
+     "providers": [
+      "openstreetmap"
+     ],
+     "members": [
+      {
+       "source": "osm_overpass",
+       "ref": "way/1222432200",
+       "name": "Wat is' mit vegan?",
+       "category": "fast_food"
+      }
+     ]
+    },
+    {
+     "external_ref": "way/751650279",
+     "name": "Waffel",
+     "category": "fast_food",
+     "lat": 52.5083054,
+     "lon": 13.4514731,
+     "providers": [
+      "meta",
+      "openstreetmap",
+      "overture"
+     ],
+     "members": [
+      {
+       "source": "osm_overpass",
+       "ref": "way/751650279",
+       "name": "Waffel",
+       "category": "fast_food"
+      },
+      {
+       "source": "overture_places",
+       "ref": "overture:a434a022-7556-454d-a51b-0d13800ddc1d",
+       "name": "Waffee",
+       "category": "cafe"
+      }
+     ]
+    }
+   ],
+   "distance_m": 12.1
+  },
+  {
+   "candidate_id": "poi_duplicate:way/1222432200|way/751650280",
+   "module": "poi_duplicate",
+   "record_ref": "way/1222432200|way/751650280",
+   "records": [
+    {
+     "external_ref": "way/1222432200",
+     "name": "Wat is' mit vegan?",
+     "category": "fast_food",
+     "lat": 52.5081988,
+     "lon": 13.4515081,
+     "providers": [
+      "openstreetmap"
+     ],
+     "members": [
+      {
+       "source": "osm_overpass",
+       "ref": "way/1222432200",
+       "name": "Wat is' mit vegan?",
+       "category": "fast_food"
+      }
+     ]
+    },
+    {
+     "external_ref": "way/751650280",
+     "name": "Dakwah",
+     "category": "fast_food",
+     "lat": 52.5082557,
+     "lon": 13.4515123,
+     "providers": [
+      "openstreetmap"
+     ],
+     "members": [
+      {
+       "source": "osm_overpass",
+       "ref": "way/751650280",
+       "name": "Dakwah",
+       "category": "fast_food"
+      }
+     ]
+    }
+   ],
+   "distance_m": 6.3
+  },
+  {
+   "candidate_id": "poi_duplicate:way/751650279|way/751650280",
+   "module": "poi_duplicate",
+   "record_ref": "way/751650279|way/751650280",
+   "records": [
+    {
+     "external_ref": "way/751650279",
+     "name": "Waffel",
+     "category": "fast_food",
+     "lat": 52.5083054,
+     "lon": 13.4514731,
+     "providers": [
+      "meta",
+      "openstreetmap",
+      "overture"
+     ],
+     "members": [
+      {
+       "source": "osm_overpass",
+       "ref": "way/751650279",
+       "name": "Waffel",
+       "category": "fast_food"
+      },
+      {
+       "source": "overture_places",
+       "ref": "overture:a434a022-7556-454d-a51b-0d13800ddc1d",
+       "name": "Waffee",
+       "category": "cafe"
+      }
+     ]
+    },
+    {
+     "external_ref": "way/751650280",
+     "name": "Dakwah",
+     "category": "fast_food",
+     "lat": 52.5082557,
+     "lon": 13.4515123,
+     "providers": [
+      "openstreetmap"
+     ],
+     "members": [
+      {
+       "source": "osm_overpass",
+       "ref": "way/751650280",
+       "name": "Dakwah",
+       "category": "fast_food"
+      }
+     ]
+    }
+   ],
+   "distance_m": 6.1
+  }
+ ],
+ "set": "development"
+}

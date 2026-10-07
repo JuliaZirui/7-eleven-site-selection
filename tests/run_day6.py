@@ -55,6 +55,8 @@ CATEGORIES: tuple[tuple[str, str, str], ...] = (
     ("llm_policy", "LLM policy, mocked client (v2)", "test_llm_policy"),
     ("policy_scenarios", "Pre-registered policy scenarios (v2)", "test_policy_scenarios"),
     ("cli", "Entry point, site input & offline demo", "test_cli"),
+    ("audit_candidates", "Data audit: corrections switch & candidates", "test_audit_candidates"),
+    ("audit_prompt", "Data audit: answer-key leakage guard", "test_audit_prompt"),
 )
 
 
