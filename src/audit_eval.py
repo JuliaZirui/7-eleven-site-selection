@@ -188,6 +188,30 @@ def candidate_recall(worklists: dict[str, dict], sets: tuple[str, ...] = ("devel
     return rows
 
 
+FLAGGED = ("suspicious", "implausible")
+
+
+def llm_recall(run: dict, worklist: dict) -> list[dict]:
+    """Plan metric: an item is caught when a finding on its record is at
+    least suspicious and has the item's issue type. Applied by running the
+    item's matcher on the worklist cut to the candidates so flagged, so
+    coverage rules (H2) and pairs (H6) count the same way as in Phase 1."""
+    node = run["node"]["area_id"]
+    rows = []
+    for item in answer_key_items():
+        if item["node"] != node:
+            continue
+        flagged = {f["candidate_id"] for f in run["findings"]
+                   if f["verdict"] in FLAGGED and f["issue_type"] == item["type"]}
+        cut = {**worklist, "candidates": [c for c in worklist["candidates"] if c["candidate_id"] in flagged]}
+        hits = item["match"](cut)
+        found = [f for f in run["findings"] if f["candidate_id"] in hits]
+        rows.append({"id": item["id"], "primary": item["primary"], "caught": bool(hits),
+                     "contaminated": item["id"] in CONTAMINATED, "findings": [
+                         {k: f[k] for k in ("candidate_id", "verdict", "issue_type", "proposed")} for f in found]})
+    return rows
+
+
 def load_worklists(directory: Path = WORKLIST_DIR) -> dict[str, dict]:
     return {p.stem: json.loads(p.read_text()) for p in sorted(directory.glob("*.json"))}
 
