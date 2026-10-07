@@ -9,7 +9,15 @@ Phase 1 measures *candidate recall*: how many answer-key items reach the
 worklist at all, before any LLM runs. An item missing here cannot be
 found by the auditor.
 
+Phase 3/4 measure the auditor's recall on the frozen prompt's runs, its
+consistency over 3 runs, value accuracy, and -- once the analyst has
+labelled every flag in comparison/audit_flag_labels.csv -- false alarms
+per node.
+
     python3 src/audit_eval.py candidates   # after audit_candidates.py
+    python3 src/audit_eval.py labels       # labelling sheet: holdout + control
+    python3 src/audit_eval.py labels --generalisation   # only after the manual scans
+    python3 src/audit_eval.py report       # comparison/audit_eval.md
 """
 
 from __future__ import annotations
@@ -27,6 +35,13 @@ ANSWER_KEY = PROJECT_ROOT / "comparison" / "audit_answer_key.md"
 WORKLIST_DIR = PROJECT_ROOT / "comparison" / "audit_runs" / "worklists"
 UNREGISTERED_CSV = PROJECT_ROOT / "db" / "raw" / "calibration" / "worker_onsite_unregistered.csv"
 CANDIDATE_RECALL_MD = PROJECT_ROOT / "comparison" / "audit_candidate_recall.md"
+RUN_DIR = PROJECT_ROOT / "db" / "raw" / "audit" / "runs"
+PROMPT_FREEZE_JSON = PROJECT_ROOT / "comparison" / "audit_prompt_freeze.json"
+LABELS_CSV = PROJECT_ROOT / "comparison" / "audit_flag_labels.csv"
+EVAL_MD = PROJECT_ROOT / "comparison" / "audit_eval.md"
+LABELS = ("true_issue", "false_alarm", "unclear")
+LABEL_COLUMNS = ("area_id", "candidate_id", "module", "name", "flagged_in_runs", "issue_types", "verdicts",
+                 "proposed", "reason", "sources", "answer_key_item", "label", "labeller", "note")
 
 AUDIT_SETS: dict[str, tuple[str, ...]] = {
     "development": ("warschauer_strasse",),
@@ -145,21 +160,21 @@ def answer_key_items() -> list[dict]:
     d4 = [(float(r["lat"]), float(r["lon"])) for r in _unregistered("warschauer_strasse")]
     h2 = [(float(r["lat"]), float(r["lon"])) for r in _unregistered("brandenburger_tor")]
     return [
-        {"id": "D1", "type": "fame_vs_attendance", "set": "development", "node": "warschauer_strasse", "primary": True,
+        {"id": "D1", "verified": (56_000, 240_000, "visitors_per_year"), "type": "fame_vs_attendance", "set": "development", "node": "warschauer_strasse", "primary": True,
          "match": _by_title("Berghain")},
-        {"id": "D2", "type": "company_wide_headcount", "set": "development", "node": "warschauer_strasse", "primary": True,
+        {"id": "D2", "verified": (100, 500, "persons_on_site"), "type": "company_wide_headcount", "set": "development", "node": "warschauer_strasse", "primary": True,
          "match": _by_ref("ihk:1126051271504")},
-        {"id": "D3", "type": "company_wide_headcount", "set": "development", "node": "warschauer_strasse", "primary": True,
+        {"id": "D3", "verified": (10, 150, "persons_on_site"), "type": "company_wide_headcount", "set": "development", "node": "warschauer_strasse", "primary": True,
          "match": _by_ref("ihk:146410147338")},
-        {"id": "D4", "type": "missing_entity", "set": "development", "node": "warschauer_strasse", "primary": True,
+        {"id": "D4", "verified": (2_500, 3_400, "persons_on_site"), "type": "missing_entity", "set": "development", "node": "warschauer_strasse", "primary": True,
          "match": _missing_near(d4, 100.0, 1)},
         {"id": "D5", "type": "company_wide_headcount", "set": "development", "node": "warschauer_strasse", "primary": False,
          "match": _by_ref("ihk:1146940271134", "ihk:1315585271284")},
-        {"id": "H1", "type": "company_wide_headcount", "set": "holdout", "node": "brandenburger_tor", "primary": True,
+        {"id": "H1", "verified": (300, 600, "persons_on_site"), "type": "company_wide_headcount", "set": "holdout", "node": "brandenburger_tor", "primary": True,
          "match": _by_ref("ihk:17303106124")},
         {"id": "H2", "type": "missing_entity", "set": "holdout", "node": "brandenburger_tor", "primary": True,
          "match": _missing_near(h2, 50.0, 3), "coverage": (h2, 50.0)},
-        {"id": "H3", "type": "fame_vs_attendance", "set": "holdout", "node": "brandenburger_tor", "primary": True,
+        {"id": "H3", "verified": (1_850_000, 1_850_000, "visitors_per_year"), "type": "fame_vs_attendance", "set": "holdout", "node": "brandenburger_tor", "primary": True,
          "match": _by_title("Reichstagsgebäude")},
         {"id": "H4", "type": "category_error", "set": "holdout", "node": "brandenburger_tor", "primary": True,
          "match": _by_ref("overture:311992c2-4d9a-425d-a613-c22c9838dfa2")},
@@ -210,6 +225,106 @@ def llm_recall(run: dict, worklist: dict) -> list[dict]:
                      "contaminated": item["id"] in CONTAMINATED, "findings": [
                          {k: f[k] for k in ("candidate_id", "verdict", "issue_type", "proposed")} for f in found]})
     return rows
+
+
+# --------------------------------------------------------------------------
+# Phase 3/4: the frozen prompt's runs
+# --------------------------------------------------------------------------
+
+
+def frozen_runs(area_id: str, run_dir: Path = RUN_DIR) -> list[dict]:
+    """Full runs of the frozen prompt on one node, oldest first."""
+    frozen = {e["prompt_sha256"] for e in json.loads(PROMPT_FREEZE_JSON.read_text())["frozen"]}
+    runs = []
+    for p in sorted(run_dir.glob("*.json")):
+        r = json.loads(p.read_text())
+        if (r["node"]["area_id"] == area_id and r["prompt_sha256"] in frozen
+                and r.get("limit_per_module") is None and r.get("modules_requested") is None):
+            runs.append({**r, "_file": str(p.relative_to(PROJECT_ROOT))})
+    return runs
+
+
+def _overlaps(proposed: dict | None, verified: tuple) -> bool | None:
+    if not proposed or proposed.get("unit") != verified[2]:
+        return None
+    return proposed["low"] <= verified[1] and proposed["high"] >= verified[0]
+
+
+def recall_over_runs(runs: list[dict], worklist: dict) -> list[dict]:
+    """Per answer-key item: caught in k of n runs. The key's rule is 2 of
+    3; a node with fewer runs (development: 1) needs all of them."""
+    need = 2 if len(runs) >= 3 else len(runs)
+    per_run = [{x["id"]: x for x in llm_recall(r, worklist)} for r in runs]
+    items = {i["id"]: i for i in answer_key_items()}
+    rows = []
+    for item_id in (per_run[0] if per_run else {}):
+        k = sum(pr[item_id]["caught"] for pr in per_run)
+        values = [_overlaps(f["proposed"], items[item_id]["verified"]) for pr in per_run
+                  for f in pr[item_id]["findings"]] if "verified" in items[item_id] else []
+        rows.append({"id": item_id, "primary": per_run[0][item_id]["primary"],
+                     "contaminated": per_run[0][item_id]["contaminated"], "caught_runs": k, "runs": len(runs),
+                     "caught": k >= need, "consistent": k == len(runs),
+                     "value_overlap": [v for v in values if v is not None]})
+    return rows
+
+
+def label_rows(area_ids: list[str]) -> list[dict]:
+    """One row per flagged candidate (union over the node's frozen runs)."""
+    key_hits = {}
+    worklists = load_worklists()
+    for item in answer_key_items():
+        wl = worklists.get(item["node"])
+        if wl:
+            for cid in item["match"](wl):
+                # Only where the module frames the record as the item's
+                # issue type: a miscategorised record inside a duplicate
+                # pair does not make the pair a duplicate.
+                if cid.split(":", 1)[0] in TYPE_MODULES[item["type"]]:
+                    key_hits.setdefault(cid, []).append(item["id"])
+    rows = []
+    for area in area_ids:
+        runs = frozen_runs(area)
+        flags: dict[str, list[dict]] = {}
+        for r in runs:
+            for f in r["findings"] + r["new_entities"]:
+                if f["verdict"] in FLAGGED:
+                    flags.setdefault(f["candidate_id"], []).append(f)
+        wl = worklists.get(area, {"candidates": []})
+        refs = {c["candidate_id"]: c for c in wl["candidates"]}
+        for cid, fs in sorted(flags.items()):
+            c = refs.get(cid, {})
+            rec = c.get("record") or {}
+            name = rec.get("name") or rec.get("ihk_branch_desc") or " / ".join(
+                x["name"] or "" for x in c.get("records", [])) or fs[0].get("name")
+            f0 = next((f for f in fs if f.get("proposed")), fs[0])
+            rows.append({
+                "area_id": area, "candidate_id": cid, "module": cid.split(":", 1)[0], "name": name,
+                "flagged_in_runs": f"{len(fs)}/{len(runs)}",
+                "issue_types": ",".join(sorted({f["issue_type"] for f in fs})),
+                "verdicts": ",".join(sorted({f["verdict"] for f in fs})),
+                "proposed": json.dumps(f0.get("proposed"), ensure_ascii=False) if f0.get("proposed") else "",
+                "reason": f0["reason"], "sources": " ".join(s["url"] for s in f0["sources"]),
+                "answer_key_item": ",".join(key_hits.get(cid, [])),
+                "label": "true_issue" if key_hits.get(cid) else "", "labeller": "answer_key" if key_hits.get(cid) else "",
+                "note": "",
+            })
+    return rows
+
+
+def write_labels(area_ids: list[str], path: Path = LABELS_CSV) -> int:
+    """Adds rows for flags not yet in the sheet; never overwrites a label."""
+    existing = []
+    if path.exists():
+        with path.open(encoding="utf-8") as f:
+            existing = list(csv.DictReader(f))
+    seen = {(r["area_id"], r["candidate_id"]) for r in existing}
+    new = [r for r in label_rows(area_ids) if (r["area_id"], r["candidate_id"]) not in seen]
+    rows = existing + new
+    with path.open("w", newline="", encoding="utf-8") as f:
+        w = csv.DictWriter(f, fieldnames=LABEL_COLUMNS)
+        w.writeheader()
+        w.writerows(rows)
+    return len(new)
 
 
 def load_worklists(directory: Path = WORKLIST_DIR) -> dict[str, dict]:
@@ -282,7 +397,13 @@ def write_candidate_recall(worklists: dict[str, dict], path: Path = CANDIDATE_RE
 
 
 if __name__ == "__main__":
-    if sys.argv[1:] == ["candidates"]:
+    args = sys.argv[1:]
+    if args == ["candidates"]:
         print(write_candidate_recall(load_worklists()))
+    elif args[:1] == ["labels"]:
+        nodes = list(AUDIT_SETS["holdout"]) + list(AUDIT_SETS["control"])
+        if "--generalisation" in args:
+            nodes += [n.replace(" ", "_") for n in AUDIT_SETS["generalisation"]]
+        print(f"{write_labels(nodes)} new rows -> {LABELS_CSV.relative_to(PROJECT_ROOT)}")
     else:
         print(__doc__)
