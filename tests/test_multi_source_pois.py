@@ -11,6 +11,7 @@ from __future__ import annotations
 
 import json
 import unittest
+from unittest import mock
 from datetime import date
 
 from helpers import PipelineTestCase, make_node
@@ -184,6 +185,91 @@ class Conflation(unittest.TestCase):
         )
         self.assertTrue(competitors[0]["payload"]["in_station"])
 
+
+
+class ConflationQualityRules(unittest.TestCase):
+    """conflation_v2: the defects the manual benchmark found (comparison/manual_vs_tool.md)."""
+
+    def _build(self, *records, quality_rules=True, corrections=None):
+        by_source: dict = {}
+        for r in records:
+            by_source.setdefault(r["source"], []).append(r)
+        return poi_conflation.build_competitor_set(NODE, by_source, None, quality_rules=quality_rules,
+                                                   corrections={} if corrections is None else corrections)
+
+    def test_near_duplicate_with_different_names_is_merged(self):
+        # Ha's Café (OSM) and Bäckerei Bich Ha (Overture), ~8m apart: names_match fails.
+        records = (_rec("osm_overpass", "node/1", "Ha's Café", category="bakery"),
+                   _rec("overture_places", "overture:h", "Bäckerei Bich Ha", lat=52.52007, category="bakery",
+                        upstream_datasets=["meta"], confidence=0.97))
+        self.assertFalse(poi_conflation.names_match("Ha's Café", "Bäckerei Bich Ha"))
+        competitors, stats = self._build(*records)
+        self.assertEqual(len(competitors), 1)
+        self.assertEqual(competitors[0]["external_ref"], "node/1")
+        self.assertEqual(len(stats["near_duplicates_merged"]), 1)
+        self.assertEqual(len(self._build(*records, quality_rules=False)[0]), 2)  # conflation_v1
+
+    def test_near_duplicate_needs_same_category_close_range_and_a_distinctive_word(self):
+        osm = _rec("osm_overpass", "node/1", "Ha's Café", category="bakery")
+        other_category = _rec("overture_places", "overture:a", "Bich Ha", lat=52.52007, category="cafe")
+        too_far = _rec("overture_places", "overture:b", "Bich Ha", lat=52.52030, category="bakery")  # ~33m
+        food_word_only = (_rec("osm_overpass", "node/2", "Manhattan Burger", category="fast_food"),
+                          _rec("overture_places", "overture:c", "Charlotten Burger", lat=52.52004, category="fast_food"))
+        self.assertEqual(len(self._build(osm, other_category)[0]), 2)
+        self.assertEqual(len(self._build(osm, too_far)[0]), 2)
+        self.assertEqual(len(self._build(*food_word_only)[0]), 2)
+
+    def test_restaurant_named_cafe_from_overture_is_excluded(self):
+        competitors, stats = self._build(
+            _rec("overture_places", "overture:m", "MAREDO Steakhouse Berlin Unter den Linden", category="cafe",
+                 upstream_datasets=["Microsoft"], confidence=0.85),
+            _rec("osm_overpass", "node/9", "Hotel-Bäckerei am Markt", category="bakery"),  # OSM category trusted
+        )
+        self.assertEqual([c["external_ref"] for c in competitors], ["node/9"])
+        self.assertEqual(stats["excluded"]["name_category_conflict"][0]["ref"], "overture:m")
+
+    def test_verified_correction_is_excluded_and_logged(self):
+        corrections = poi_conflation.load_verified_corrections()
+        ref = "overture:e99aea2b-c4e5-4e25-a80a-0f62d57d87e2"
+        self.assertIn(ref, corrections)  # Zollernhof, from the manual benchmark
+        competitors, stats = self._build(
+            _rec("overture_places", ref, "Zollernhof", upstream_datasets=["meta"], confidence=0.93),
+            corrections=corrections,
+        )
+        self.assertEqual(competitors, [])
+        self.assertEqual(stats["excluded"]["verified_correction"][0]["name"], "Zollernhof")
+
+
+class HoursCoverageHelpers(unittest.TestCase):
+    """src/hours_coverage.py: the Phase 0 website check (plan_llm_opening_hours.md)."""
+
+    def test_follows_only_a_same_domain_hours_link(self):
+        import hours_coverage
+        html = ('<a href="https://other.de/oeffnungszeiten">Öffnungszeiten</a>'
+                '<a href="/menu">Menu</a><a href="/kontakt">Kontakt</a>')
+        self.assertEqual(hours_coverage.hours_link(html, "https://www.shop.de/"), "https://www.shop.de/kontakt")
+        self.assertIsNone(hours_coverage.hours_link('<a href="/menu">Menu</a>', "https://www.shop.de/"))
+
+    def test_jsonld_and_text_hours_signals(self):
+        import hours_coverage
+        jsonld = '<script type="application/ld+json">{"@type": "Bakery", "openingHours": "Mo-Fr 07:00-18:00"}</script>'
+        self.assertEqual(hours_coverage._hours_signals(jsonld), (True, False))
+        self.assertEqual(hours_coverage._hours_signals("<p>Öffnungszeiten: Mo–Fr 7:00 – 18:00 Uhr</p>"), (False, True))
+        self.assertEqual(hours_coverage._hours_signals("<p>Seit 1990, Tel. 030 12.34-56.78</p>"), (False, False))
+
+    def test_unreachable_robots_txt_means_not_fetched(self):
+        import httpx
+        import hours_coverage
+
+        def handler(request):
+            return httpx.Response(503 if request.url.path == "/robots.txt" else 200, text="<p>hi</p>",
+                                  headers={"content-type": "text/html"})
+
+        with mock.patch.object(hours_coverage, "POLITE_DELAY_S", 0), \
+                httpx.Client(transport=httpx.MockTransport(handler)) as client:
+            out = hours_coverage.check_url("shop.de", {}, client)
+        self.assertIsNone(out["robots_allowed"])
+        self.assertIsNone(out["status"])  # the page itself was never requested
 
 class ConflatedSnapshotFeedsMetrics(PipelineTestCase):
     def _source_snapshot(self, source_name, records):

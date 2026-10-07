@@ -7,6 +7,8 @@ windows (dual-peak model) and the 400m search radius.
 from dataclasses import dataclass
 from enum import Enum
 
+from site_input import parse_sites, site_input_path
+
 
 class TimeWindowLabel(str, Enum):
     MORNING_PEAK = "morning_peak"
@@ -40,29 +42,19 @@ class LocationInput:
     time_windows: tuple[TimeWindow, ...] = DEFAULT_TIME_WINDOWS
 
 
-# Final candidate set — see site_candidates.md for the Preisklasse
-# verification and customer-profile rationale behind each node, and the
-# evidence-gap note behind the 400m radius.
-CANDIDATE_NODES: tuple[LocationInput, ...] = (
-    LocationInput(
-        area_id="brandenburger_tor",
-        name="Brandenburger Tor",
-        lat=52.51653594770922,
-        lon=13.381516508773798,
-        radius_m=400,
-    ),
-    LocationInput(
-        area_id="warschauer_strasse",
-        name="Warschauer Straße",
-        lat=52.50533737805442,
-        lon=13.449070864605977,
-        radius_m=400,
-    ),
-    LocationInput(
-        area_id="schoenhauser_allee",
-        name="Schönhauser Allee",
-        lat=52.549317383699474,
-        lon=13.413628569194154,
-        radius_m=400,
-    ),
-)
+# Candidate sites are input, not code: read from a JSON file (default:
+# the Berlin case study in examples/), or from the file named in the
+# SITE_INPUT environment variable -- see site_input.py. See
+# site_candidates.md for the Preisklasse verification and customer-
+# profile rationale behind the default nodes, and the evidence-gap note
+# behind the 400m radius.
+def _load_candidates() -> tuple[tuple[LocationInput, ...], dict[str, tuple[str, ...]]]:
+    sites = parse_sites(site_input_path())
+    nodes = tuple(LocationInput(area_id=x["area_id"], name=x["name"], lat=x["lat"], lon=x["lon"],
+                                radius_m=x["radius_m"]) for x in sites)
+    return nodes, {x["area_id"]: x["gtfs_stations"] for x in sites}
+
+
+# NODE_STATIONS: the node's own S/U station(s) in the VBB GTFS snapshot,
+# primary name first (attraction gateways, worker station assignment).
+CANDIDATE_NODES, NODE_STATIONS = _load_candidates()

@@ -45,11 +45,13 @@ def _get_json(url: str) -> dict:
     return response.json()
 
 
-def resolve_place_files(xmin: float, ymin: float, xmax: float, ymax: float) -> tuple[str, list[str]]:
+def resolve_place_files(xmin: float, ymin: float, xmax: float, ymax: float,
+                        release: str | None = None) -> tuple[str, list[str]]:
     """(release_id, parquet URLs whose bbox intersects the query bbox)
-    for the latest Overture release, read from its STAC catalog."""
+    for the given Overture release (default: the latest), read from its
+    STAC catalog."""
     try:
-        release = _get_json(STAC_ROOT)["latest"]
+        release = release or _get_json(STAC_ROOT)["latest"]
         collection_url = f"https://stac.overturemaps.org/{release}/places/place/collection.json"
         collection = _get_json(collection_url)
         item_urls = [link["href"] for link in collection["links"] if link.get("rel") == "item"]
@@ -70,7 +72,7 @@ def resolve_place_files(xmin: float, ymin: float, xmax: float, ymax: float) -> t
     return release, files
 
 
-def fetch_overture_places(lat: float, lon: float, radius_m: int) -> tuple[list[dict], dict]:
+def fetch_overture_places(lat: float, lon: float, radius_m: int, release: str | None = None) -> tuple[list[dict], dict]:
     """All in-scope-category Overture places in the bbox around (lat, lon).
 
     Returns (rows, meta). Rows are unfiltered by confidence/status and
@@ -81,9 +83,10 @@ def fetch_overture_places(lat: float, lon: float, radius_m: int) -> tuple[list[d
     import duckdb  # local import: only this source needs it
 
     xmin, ymin, xmax, ymax = _bbox(lat, lon, radius_m)
-    release, files = resolve_place_files(xmin, ymin, xmax, ymax)
+    release, files = resolve_place_files(xmin, ymin, xmax, ymax, release)
     try:
         con = duckdb.connect()
+        con.execute("SET enable_progress_bar = false")
         con.execute("INSTALL httpfs; LOAD httpfs;")
         cursor = con.execute(
             """

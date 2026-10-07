@@ -1,0 +1,4609 @@
+{
+  "stats": {
+    "source_records": 203,
+    "outside_radius": 13,
+    "competitors": 149,
+    "with_osm": 98,
+    "corroborated": 92,
+    "method": "conflation_v2",
+    "excluded": {
+      "name_category_conflict": [],
+      "verified_correction": []
+    },
+    "near_duplicates_merged": []
+  },
+  "competitors": [
+    {
+      "external_ref": "node/308626327",
+      "name": "Mühlenbäck",
+      "category": "bakery",
+      "lat": 52.5497834,
+      "lon": 13.4169793,
+      "opening_hours_raw": "Mo-Su 05:00-18:00",
+      "payload": {
+        "primary_source": "osm_overpass",
+        "sources": [
+          "osm_overpass",
+          "overture_places"
+        ],
+        "providers": [
+          "meta",
+          "openstreetmap",
+          "overture"
+        ],
+        "n_providers": 3,
+        "in_station": false,
+        "category_conflict": false,
+        "members": [
+          {
+            "source": "osm_overpass",
+            "ref": "node/308626327",
+            "name": "Mühlenbäck",
+            "category": "bakery"
+          },
+          {
+            "source": "overture_places",
+            "ref": "overture:5330436f-43d1-41b7-93e1-ce4c55e97b81",
+            "name": "Mühlenbäck",
+            "category": "bakery"
+          }
+        ]
+      }
+    },
+    {
+      "external_ref": "node/319181468",
+      "name": "Espresso House",
+      "category": "cafe",
+      "lat": 52.5498572,
+      "lon": 13.4132889,
+      "opening_hours_raw": "Mo-Fr 06:30-21:00; Sa-Su 07:30-21:00",
+      "payload": {
+        "primary_source": "osm_overpass",
+        "sources": [
+          "osm_overpass",
+          "overture_places"
+        ],
+        "providers": [
+          "meta",
+          "openstreetmap",
+          "overture"
+        ],
+        "n_providers": 3,
+        "in_station": true,
+        "category_conflict": false,
+        "members": [
+          {
+            "source": "osm_overpass",
+            "ref": "node/319181468",
+            "name": "Espresso House",
+            "category": "cafe"
+          },
+          {
+            "source": "overture_places",
+            "ref": "overture:ec74e963-034d-4372-9aa7-ae6a6c497954",
+            "name": "Espresso House",
+            "category": "cafe"
+          }
+        ]
+      }
+    },
+    {
+      "external_ref": "node/336608019",
+      "name": "Alnatura Super Natur Markt",
+      "category": "supermarket",
+      "lat": 52.5517136,
+      "lon": 13.4136956,
+      "opening_hours_raw": "Mo-Sa 08:00-21:00",
+      "payload": {
+        "primary_source": "osm_overpass",
+        "sources": [
+          "osm_overpass",
+          "overture_places"
+        ],
+        "providers": [
+          "meta",
+          "openstreetmap",
+          "overture"
+        ],
+        "n_providers": 3,
+        "in_station": false,
+        "category_conflict": false,
+        "members": [
+          {
+            "source": "osm_overpass",
+            "ref": "node/336608019",
+            "name": "Alnatura Super Natur Markt",
+            "category": "supermarket"
+          },
+          {
+            "source": "overture_places",
+            "ref": "overture:47a33eee-920c-4f06-a5a8-285ae66d24f0",
+            "name": "Alnatura",
+            "category": "supermarket"
+          }
+        ]
+      }
+    },
+    {
+      "external_ref": "node/370852065",
+      "name": "Le midi",
+      "category": "cafe",
+      "lat": 52.5470948,
+      "lon": 13.4153599,
+      "opening_hours_raw": "Th-Tu 10:00-17:00",
+      "payload": {
+        "primary_source": "osm_overpass",
+        "sources": [
+          "osm_overpass",
+          "overture_places"
+        ],
+        "providers": [
+          "meta",
+          "openstreetmap",
+          "overture"
+        ],
+        "n_providers": 3,
+        "in_station": false,
+        "category_conflict": false,
+        "members": [
+          {
+            "source": "osm_overpass",
+            "ref": "node/370852065",
+            "name": "Le midi",
+            "category": "cafe"
+          },
+          {
+            "source": "overture_places",
+            "ref": "overture:e33b196b-87b0-40fb-8622-c9d4426d63a0",
+            "name": "Le Midi",
+            "category": "cafe"
+          }
+        ]
+      }
+    },
+    {
+      "external_ref": "node/448913484",
+      "name": "Steinofen Pizza To-Go",
+      "category": "fast_food",
+      "lat": 52.5478264,
+      "lon": 13.4130663,
+      "opening_hours_raw": null,
+      "payload": {
+        "primary_source": "osm_overpass",
+        "sources": [
+          "osm_overpass"
+        ],
+        "providers": [
+          "openstreetmap"
+        ],
+        "n_providers": 1,
+        "in_station": false,
+        "category_conflict": false,
+        "members": [
+          {
+            "source": "osm_overpass",
+            "ref": "node/448913484",
+            "name": "Steinofen Pizza To-Go",
+            "category": "fast_food"
+          }
+        ]
+      }
+    },
+    {
+      "external_ref": "node/476810292",
+      "name": "Cafe Sgaminegg",
+      "category": "cafe",
+      "lat": 52.5504144,
+      "lon": 13.4104738,
+      "opening_hours_raw": "Tu-Fr 09:00-18:00; Sa 09:30-18:00",
+      "payload": {
+        "primary_source": "osm_overpass",
+        "sources": [
+          "osm_overpass",
+          "overture_places"
+        ],
+        "providers": [
+          "meta",
+          "openstreetmap",
+          "overture"
+        ],
+        "n_providers": 3,
+        "in_station": false,
+        "category_conflict": false,
+        "members": [
+          {
+            "source": "osm_overpass",
+            "ref": "node/476810292",
+            "name": "Cafe Sgaminegg",
+            "category": "cafe"
+          },
+          {
+            "source": "overture_places",
+            "ref": "overture:2a933f6e-2c8d-4fa3-a877-45aa2eabd05a",
+            "name": "Cafe Sgaminegg",
+            "category": "cafe"
+          }
+        ]
+      }
+    },
+    {
+      "external_ref": "node/485936333",
+      "name": "Alain Snack",
+      "category": "fast_food",
+      "lat": 52.5495698,
+      "lon": 13.4133325,
+      "opening_hours_raw": null,
+      "payload": {
+        "primary_source": "osm_overpass",
+        "sources": [
+          "osm_overpass",
+          "overture_places"
+        ],
+        "providers": [
+          "meta",
+          "openstreetmap",
+          "overture"
+        ],
+        "n_providers": 3,
+        "in_station": true,
+        "category_conflict": false,
+        "members": [
+          {
+            "source": "osm_overpass",
+            "ref": "node/485936333",
+            "name": "Alain Snack",
+            "category": "fast_food"
+          },
+          {
+            "source": "overture_places",
+            "ref": "overture:1694061b-36f4-432f-9a4f-530be910a07c",
+            "name": "Alain Snack",
+            "category": "fast_food"
+          }
+        ]
+      }
+    },
+    {
+      "external_ref": "node/560145209",
+      "name": "1001 Falafel",
+      "category": "fast_food",
+      "lat": 52.5469632,
+      "lon": 13.4174044,
+      "opening_hours_raw": "Mo-Sa 11:00-02:00; Su 11:00-00:00",
+      "payload": {
+        "primary_source": "osm_overpass",
+        "sources": [
+          "osm_overpass"
+        ],
+        "providers": [
+          "openstreetmap"
+        ],
+        "n_providers": 1,
+        "in_station": false,
+        "category_conflict": false,
+        "members": [
+          {
+            "source": "osm_overpass",
+            "ref": "node/560145209",
+            "name": "1001 Falafel",
+            "category": "fast_food"
+          }
+        ]
+      }
+    },
+    {
+      "external_ref": "node/560524658",
+      "name": "Asia Markt Frischekorb",
+      "category": "spati_kiosk",
+      "lat": 52.5472275,
+      "lon": 13.4157637,
+      "opening_hours_raw": "Mo-Sa 08:00-21:00",
+      "payload": {
+        "primary_source": "osm_overpass",
+        "sources": [
+          "osm_overpass"
+        ],
+        "providers": [
+          "openstreetmap"
+        ],
+        "n_providers": 1,
+        "in_station": false,
+        "category_conflict": false,
+        "members": [
+          {
+            "source": "osm_overpass",
+            "ref": "node/560524658",
+            "name": "Asia Markt Frischekorb",
+            "category": "spati_kiosk"
+          }
+        ]
+      }
+    },
+    {
+      "external_ref": "node/560526925",
+      "name": "Caffè Monelli",
+      "category": "cafe",
+      "lat": 52.5479554,
+      "lon": 13.4154754,
+      "opening_hours_raw": "Mo,We-Fr 08:00-18:00; Sa,Su 10:00-18:30",
+      "payload": {
+        "primary_source": "osm_overpass",
+        "sources": [
+          "osm_overpass",
+          "overture_places"
+        ],
+        "providers": [
+          "meta",
+          "openstreetmap",
+          "overture"
+        ],
+        "n_providers": 3,
+        "in_station": false,
+        "category_conflict": false,
+        "members": [
+          {
+            "source": "osm_overpass",
+            "ref": "node/560526925",
+            "name": "Caffè Monelli",
+            "category": "cafe"
+          },
+          {
+            "source": "overture_places",
+            "ref": "overture:2a243884-e607-40ec-886a-1698b288bb3c",
+            "name": "Caffè Monelli Berlin",
+            "category": "cafe"
+          }
+        ]
+      }
+    },
+    {
+      "external_ref": "node/567167721",
+      "name": "Pizza Star",
+      "category": "fast_food",
+      "lat": 52.5457879,
+      "lon": 13.4147288,
+      "opening_hours_raw": null,
+      "payload": {
+        "primary_source": "osm_overpass",
+        "sources": [
+          "osm_overpass"
+        ],
+        "providers": [
+          "openstreetmap"
+        ],
+        "n_providers": 1,
+        "in_station": false,
+        "category_conflict": false,
+        "members": [
+          {
+            "source": "osm_overpass",
+            "ref": "node/567167721",
+            "name": "Pizza Star",
+            "category": "fast_food"
+          }
+        ]
+      }
+    },
+    {
+      "external_ref": "node/697907411",
+      "name": "Spätkauf -Late Shopping",
+      "category": "spati_kiosk",
+      "lat": 52.5488264,
+      "lon": 13.4140802,
+      "opening_hours_raw": null,
+      "payload": {
+        "primary_source": "osm_overpass",
+        "sources": [
+          "osm_overpass"
+        ],
+        "providers": [
+          "openstreetmap"
+        ],
+        "n_providers": 1,
+        "in_station": true,
+        "category_conflict": false,
+        "members": [
+          {
+            "source": "osm_overpass",
+            "ref": "node/697907411",
+            "name": "Spätkauf -Late Shopping",
+            "category": "spati_kiosk"
+          }
+        ]
+      }
+    },
+    {
+      "external_ref": "node/792247198",
+      "name": "Bisquitte",
+      "category": "bakery",
+      "lat": 52.5521926,
+      "lon": 13.4146092,
+      "opening_hours_raw": "Mo-Su 06:00-20:00",
+      "payload": {
+        "primary_source": "osm_overpass",
+        "sources": [
+          "osm_overpass",
+          "overture_places"
+        ],
+        "providers": [
+          "meta",
+          "openstreetmap",
+          "overture"
+        ],
+        "n_providers": 3,
+        "in_station": false,
+        "category_conflict": false,
+        "members": [
+          {
+            "source": "osm_overpass",
+            "ref": "node/792247198",
+            "name": "Bisquitte",
+            "category": "bakery"
+          },
+          {
+            "source": "overture_places",
+            "ref": "overture:e397db29-f3c8-4511-818c-041d1163fd1b",
+            "name": "Bisquitte",
+            "category": "bakery"
+          }
+        ]
+      }
+    },
+    {
+      "external_ref": "node/847029086",
+      "name": "Kutzner & Kutzner",
+      "category": "supermarket",
+      "lat": 52.5463248,
+      "lon": 13.4134748,
+      "opening_hours_raw": "Mo-Sa 08:00-20:00",
+      "payload": {
+        "primary_source": "osm_overpass",
+        "sources": [
+          "osm_overpass"
+        ],
+        "providers": [
+          "openstreetmap"
+        ],
+        "n_providers": 1,
+        "in_station": false,
+        "category_conflict": false,
+        "members": [
+          {
+            "source": "osm_overpass",
+            "ref": "node/847029086",
+            "name": "Kutzner & Kutzner",
+            "category": "supermarket"
+          }
+        ]
+      }
+    },
+    {
+      "external_ref": "node/987950846",
+      "name": "Subway",
+      "category": "fast_food",
+      "lat": 52.5494566,
+      "lon": 13.4146805,
+      "opening_hours_raw": "Mo-Su,PH 10:00-21:00",
+      "payload": {
+        "primary_source": "osm_overpass",
+        "sources": [
+          "osm_overpass",
+          "overture_places"
+        ],
+        "providers": [
+          "meta",
+          "openstreetmap",
+          "overture"
+        ],
+        "n_providers": 3,
+        "in_station": true,
+        "category_conflict": false,
+        "members": [
+          {
+            "source": "osm_overpass",
+            "ref": "node/987950846",
+            "name": "Subway",
+            "category": "fast_food"
+          },
+          {
+            "source": "overture_places",
+            "ref": "overture:e0ad8bf1-b5c1-428b-83cc-ad9d1ab1ea3d",
+            "name": "Subway",
+            "category": "fast_food"
+          }
+        ]
+      }
+    },
+    {
+      "external_ref": "node/1112075595",
+      "name": "Ilayda",
+      "category": "fast_food",
+      "lat": 52.5514145,
+      "lon": 13.4136359,
+      "opening_hours_raw": "24/7",
+      "payload": {
+        "primary_source": "osm_overpass",
+        "sources": [
+          "osm_overpass",
+          "overture_places"
+        ],
+        "providers": [
+          "meta",
+          "openstreetmap",
+          "overture"
+        ],
+        "n_providers": 3,
+        "in_station": false,
+        "category_conflict": false,
+        "members": [
+          {
+            "source": "osm_overpass",
+            "ref": "node/1112075595",
+            "name": "Ilayda",
+            "category": "fast_food"
+          },
+          {
+            "source": "overture_places",
+            "ref": "overture:03b43e85-470c-4c44-beb4-532506b10f33",
+            "name": "Ilayda kebaphaus",
+            "category": "fast_food"
+          }
+        ]
+      }
+    },
+    {
+      "external_ref": "node/1120057650",
+      "name": "Netto Marken-Discount",
+      "category": "supermarket",
+      "lat": 52.5498396,
+      "lon": 13.414376,
+      "opening_hours_raw": "Mo-Sa 08:00-22:00",
+      "payload": {
+        "primary_source": "osm_overpass",
+        "sources": [
+          "osm_overpass"
+        ],
+        "providers": [
+          "openstreetmap"
+        ],
+        "n_providers": 1,
+        "in_station": true,
+        "category_conflict": false,
+        "members": [
+          {
+            "source": "osm_overpass",
+            "ref": "node/1120057650",
+            "name": "Netto Marken-Discount",
+            "category": "supermarket"
+          }
+        ]
+      }
+    },
+    {
+      "external_ref": "node/1142031151",
+      "name": "Zuccherino",
+      "category": "bakery",
+      "lat": 52.5472555,
+      "lon": 13.4098839,
+      "opening_hours_raw": "Mo-Su 06:00-20:00",
+      "payload": {
+        "primary_source": "osm_overpass",
+        "sources": [
+          "osm_overpass",
+          "overture_places"
+        ],
+        "providers": [
+          "meta",
+          "openstreetmap",
+          "overture"
+        ],
+        "n_providers": 3,
+        "in_station": false,
+        "category_conflict": true,
+        "members": [
+          {
+            "source": "osm_overpass",
+            "ref": "node/1142031151",
+            "name": "Zuccherino",
+            "category": "bakery"
+          },
+          {
+            "source": "overture_places",
+            "ref": "overture:1bdc540e-3307-4c23-9114-844144de8d78",
+            "name": "Zuccherino",
+            "category": "cafe"
+          }
+        ]
+      }
+    },
+    {
+      "external_ref": "node/1179601251",
+      "name": "coffee... and bananas",
+      "category": "cafe",
+      "lat": 52.548594,
+      "lon": 13.4163743,
+      "opening_hours_raw": "We-Fr 09:00-18:00; Sa,Su 10:00-18:00",
+      "payload": {
+        "primary_source": "osm_overpass",
+        "sources": [
+          "osm_overpass",
+          "overture_places"
+        ],
+        "providers": [
+          "meta",
+          "openstreetmap",
+          "overture"
+        ],
+        "n_providers": 3,
+        "in_station": true,
+        "category_conflict": false,
+        "members": [
+          {
+            "source": "osm_overpass",
+            "ref": "node/1179601251",
+            "name": "coffee... and bananas",
+            "category": "cafe"
+          },
+          {
+            "source": "overture_places",
+            "ref": "overture:bdab9704-c535-44ef-afd2-47ede315eafd",
+            "name": "coffee...and bananas",
+            "category": "cafe"
+          }
+        ]
+      }
+    },
+    {
+      "external_ref": "node/1241893971",
+      "name": "BioBackHaus",
+      "category": "bakery",
+      "lat": 52.5479857,
+      "lon": 13.4138617,
+      "opening_hours_raw": "Mo-Fr 07:00-19:00; Sa 07:00-18:00; Su 08:00-13:00",
+      "payload": {
+        "primary_source": "osm_overpass",
+        "sources": [
+          "osm_overpass",
+          "overture_places"
+        ],
+        "providers": [
+          "meta",
+          "openstreetmap",
+          "overture"
+        ],
+        "n_providers": 3,
+        "in_station": true,
+        "category_conflict": false,
+        "members": [
+          {
+            "source": "osm_overpass",
+            "ref": "node/1241893971",
+            "name": "BioBackHaus",
+            "category": "bakery"
+          },
+          {
+            "source": "overture_places",
+            "ref": "overture:c6622b82-092c-4cd8-8ded-b102035d8e81",
+            "name": "BioBackHaus",
+            "category": "bakery"
+          }
+        ]
+      }
+    },
+    {
+      "external_ref": "node/1252476612",
+      "name": "Lidl",
+      "category": "supermarket",
+      "lat": 52.5485122,
+      "lon": 13.4131107,
+      "opening_hours_raw": "Mo-Sa 07:00-22:00",
+      "payload": {
+        "primary_source": "osm_overpass",
+        "sources": [
+          "osm_overpass",
+          "overture_places"
+        ],
+        "providers": [
+          "alltheplaces",
+          "openstreetmap",
+          "overture"
+        ],
+        "n_providers": 3,
+        "in_station": true,
+        "category_conflict": false,
+        "members": [
+          {
+            "source": "osm_overpass",
+            "ref": "node/1252476612",
+            "name": "Lidl",
+            "category": "supermarket"
+          },
+          {
+            "source": "overture_places",
+            "ref": "overture:4877a7b4-b856-4331-b0f5-57e32635585b",
+            "name": "Lidl",
+            "category": "supermarket"
+          }
+        ]
+      }
+    },
+    {
+      "external_ref": "node/1308877495",
+      "name": "Rossmann",
+      "category": "chemist",
+      "lat": 52.5495417,
+      "lon": 13.4163139,
+      "opening_hours_raw": "Mo-Fr 08:30-21:00; Sa 08:30-21:00; PH off",
+      "payload": {
+        "primary_source": "osm_overpass",
+        "sources": [
+          "osm_overpass"
+        ],
+        "providers": [
+          "openstreetmap"
+        ],
+        "n_providers": 1,
+        "in_station": false,
+        "category_conflict": false,
+        "members": [
+          {
+            "source": "osm_overpass",
+            "ref": "node/1308877495",
+            "name": "Rossmann",
+            "category": "chemist"
+          }
+        ]
+      }
+    },
+    {
+      "external_ref": "node/1544182405",
+      "name": "Weingallerie",
+      "category": "beverages",
+      "lat": 52.5464996,
+      "lon": 13.4118848,
+      "opening_hours_raw": null,
+      "payload": {
+        "primary_source": "osm_overpass",
+        "sources": [
+          "osm_overpass"
+        ],
+        "providers": [
+          "openstreetmap"
+        ],
+        "n_providers": 1,
+        "in_station": false,
+        "category_conflict": false,
+        "members": [
+          {
+            "source": "osm_overpass",
+            "ref": "node/1544182405",
+            "name": "Weingallerie",
+            "category": "beverages"
+          }
+        ]
+      }
+    },
+    {
+      "external_ref": "node/1544191098",
+      "name": "miniladen",
+      "category": "supermarket",
+      "lat": 52.5488448,
+      "lon": 13.4092108,
+      "opening_hours_raw": "Mo-Fr 08:00-19:30; Sa 08:30-17:30",
+      "payload": {
+        "primary_source": "osm_overpass",
+        "sources": [
+          "osm_overpass"
+        ],
+        "providers": [
+          "openstreetmap"
+        ],
+        "n_providers": 1,
+        "in_station": false,
+        "category_conflict": false,
+        "members": [
+          {
+            "source": "osm_overpass",
+            "ref": "node/1544191098",
+            "name": "miniladen",
+            "category": "supermarket"
+          }
+        ]
+      }
+    },
+    {
+      "external_ref": "node/1544191099",
+      "name": "Kaffee 50QM",
+      "category": "cafe",
+      "lat": 52.5488241,
+      "lon": 13.4094243,
+      "opening_hours_raw": "Tu-Fr 09:00-18:00; Sa,Su 10:00-17:00",
+      "payload": {
+        "primary_source": "osm_overpass",
+        "sources": [
+          "osm_overpass"
+        ],
+        "providers": [
+          "openstreetmap"
+        ],
+        "n_providers": 1,
+        "in_station": false,
+        "category_conflict": false,
+        "members": [
+          {
+            "source": "osm_overpass",
+            "ref": "node/1544191099",
+            "name": "Kaffee 50QM",
+            "category": "cafe"
+          }
+        ]
+      }
+    },
+    {
+      "external_ref": "node/1585630534",
+      "name": "REWE",
+      "category": "supermarket",
+      "lat": 52.5493785,
+      "lon": 13.4161791,
+      "opening_hours_raw": "Mo-Sa 08:00-22:00",
+      "payload": {
+        "primary_source": "osm_overpass",
+        "sources": [
+          "osm_overpass"
+        ],
+        "providers": [
+          "openstreetmap"
+        ],
+        "n_providers": 1,
+        "in_station": true,
+        "category_conflict": false,
+        "members": [
+          {
+            "source": "osm_overpass",
+            "ref": "node/1585630534",
+            "name": "REWE",
+            "category": "supermarket"
+          }
+        ]
+      }
+    },
+    {
+      "external_ref": "node/1725272310",
+      "name": "Burger King",
+      "category": "fast_food",
+      "lat": 52.5491834,
+      "lon": 13.4140668,
+      "opening_hours_raw": "Mo-Sa 10:00-02:00, Su 11:00-02:00",
+      "payload": {
+        "primary_source": "osm_overpass",
+        "sources": [
+          "osm_overpass",
+          "overture_places"
+        ],
+        "providers": [
+          "meta",
+          "openstreetmap",
+          "overture"
+        ],
+        "n_providers": 3,
+        "in_station": true,
+        "category_conflict": false,
+        "members": [
+          {
+            "source": "osm_overpass",
+            "ref": "node/1725272310",
+            "name": "Burger King",
+            "category": "fast_food"
+          },
+          {
+            "source": "overture_places",
+            "ref": "overture:6c0795a7-32b5-4db6-bd37-77cc5aa0e050",
+            "name": "Burger King",
+            "category": "fast_food"
+          }
+        ]
+      }
+    },
+    {
+      "external_ref": "node/1730496048",
+      "name": null,
+      "category": "spati_kiosk",
+      "lat": 52.5505017,
+      "lon": 13.4133714,
+      "opening_hours_raw": "Mo-Sa 10:00-20:00",
+      "payload": {
+        "primary_source": "osm_overpass",
+        "sources": [
+          "osm_overpass"
+        ],
+        "providers": [
+          "openstreetmap"
+        ],
+        "n_providers": 1,
+        "in_station": false,
+        "category_conflict": false,
+        "members": [
+          {
+            "source": "osm_overpass",
+            "ref": "node/1730496048",
+            "name": null,
+            "category": "spati_kiosk"
+          }
+        ]
+      }
+    },
+    {
+      "external_ref": "node/1831972687",
+      "name": "Vervielfältigungsservice Breitfeld",
+      "category": "spati_kiosk",
+      "lat": 52.550518,
+      "lon": 13.418591,
+      "opening_hours_raw": "Mo-Fr 09:30-18:00",
+      "payload": {
+        "primary_source": "osm_overpass",
+        "sources": [
+          "osm_overpass"
+        ],
+        "providers": [
+          "openstreetmap"
+        ],
+        "n_providers": 1,
+        "in_station": false,
+        "category_conflict": false,
+        "members": [
+          {
+            "source": "osm_overpass",
+            "ref": "node/1831972687",
+            "name": "Vervielfältigungsservice Breitfeld",
+            "category": "spati_kiosk"
+          }
+        ]
+      }
+    },
+    {
+      "external_ref": "node/1920573783",
+      "name": "Hofpfisterei",
+      "category": "bakery",
+      "lat": 52.5489207,
+      "lon": 13.4132429,
+      "opening_hours_raw": "Mo-Fr 08:30-18:30; Sa 08:30-15:00",
+      "payload": {
+        "primary_source": "osm_overpass",
+        "sources": [
+          "osm_overpass",
+          "overture_places"
+        ],
+        "providers": [
+          "foursquare",
+          "openstreetmap",
+          "overture"
+        ],
+        "n_providers": 3,
+        "in_station": true,
+        "category_conflict": false,
+        "members": [
+          {
+            "source": "osm_overpass",
+            "ref": "node/1920573783",
+            "name": "Hofpfisterei",
+            "category": "bakery"
+          },
+          {
+            "source": "overture_places",
+            "ref": "overture:cf21ee12-7b26-4487-9e26-56a297500030",
+            "name": "Hofpfisterei",
+            "category": "bakery"
+          }
+        ]
+      }
+    },
+    {
+      "external_ref": "node/2270456607",
+      "name": "mel&koffie",
+      "category": "bakery",
+      "lat": 52.5504091,
+      "lon": 13.4143112,
+      "opening_hours_raw": "Mo-Fr 07:00-19:00; Sa 07:00-18:00; PH off",
+      "payload": {
+        "primary_source": "osm_overpass",
+        "sources": [
+          "osm_overpass",
+          "overture_places"
+        ],
+        "providers": [
+          "meta",
+          "openstreetmap",
+          "overture"
+        ],
+        "n_providers": 3,
+        "in_station": false,
+        "category_conflict": false,
+        "members": [
+          {
+            "source": "osm_overpass",
+            "ref": "node/2270456607",
+            "name": "mel&koffie",
+            "category": "bakery"
+          },
+          {
+            "source": "overture_places",
+            "ref": "overture:fcfa81d2-32ec-41b2-b8c4-1d9c2d1196d8",
+            "name": "mel&koffie",
+            "category": "bakery"
+          }
+        ]
+      }
+    },
+    {
+      "external_ref": "node/2420799063",
+      "name": "Clerk's Späti",
+      "category": "spati_kiosk",
+      "lat": 52.5521543,
+      "lon": 13.4119221,
+      "opening_hours_raw": null,
+      "payload": {
+        "primary_source": "osm_overpass",
+        "sources": [
+          "osm_overpass"
+        ],
+        "providers": [
+          "openstreetmap"
+        ],
+        "n_providers": 1,
+        "in_station": false,
+        "category_conflict": false,
+        "members": [
+          {
+            "source": "osm_overpass",
+            "ref": "node/2420799063",
+            "name": "Clerk's Späti",
+            "category": "spati_kiosk"
+          }
+        ]
+      }
+    },
+    {
+      "external_ref": "node/2509339464",
+      "name": "dm",
+      "category": "chemist",
+      "lat": 52.5508588,
+      "lon": 13.4135361,
+      "opening_hours_raw": "Mo-Sa 09:00-21:00",
+      "payload": {
+        "primary_source": "osm_overpass",
+        "sources": [
+          "osm_overpass"
+        ],
+        "providers": [
+          "openstreetmap"
+        ],
+        "n_providers": 1,
+        "in_station": false,
+        "category_conflict": false,
+        "members": [
+          {
+            "source": "osm_overpass",
+            "ref": "node/2509339464",
+            "name": "dm",
+            "category": "chemist"
+          }
+        ]
+      }
+    },
+    {
+      "external_ref": "node/2947954495",
+      "name": "Krümel",
+      "category": "cafe",
+      "lat": 52.546906,
+      "lon": 13.417571,
+      "opening_hours_raw": "Mo-Fr 08:00-18:00; Sa,Su 09:00-18:00",
+      "payload": {
+        "primary_source": "osm_overpass",
+        "sources": [
+          "osm_overpass",
+          "overture_places"
+        ],
+        "providers": [
+          "brightquery",
+          "openstreetmap",
+          "overture"
+        ],
+        "n_providers": 3,
+        "in_station": false,
+        "category_conflict": false,
+        "members": [
+          {
+            "source": "osm_overpass",
+            "ref": "node/2947954495",
+            "name": "Krümel",
+            "category": "cafe"
+          },
+          {
+            "source": "overture_places",
+            "ref": "overture:39db73e4-02e6-459e-93d2-736aef6bf623",
+            "name": "Krümel",
+            "category": "cafe"
+          }
+        ]
+      }
+    },
+    {
+      "external_ref": "node/3017979329",
+      "name": "Wiener Feinbäcker Heberer",
+      "category": "bakery",
+      "lat": 52.5494337,
+      "lon": 13.4148412,
+      "opening_hours_raw": "Mo-Fr 05:00-20:00, Sa-Su 07:00-18:00",
+      "payload": {
+        "primary_source": "osm_overpass",
+        "sources": [
+          "osm_overpass"
+        ],
+        "providers": [
+          "openstreetmap"
+        ],
+        "n_providers": 1,
+        "in_station": true,
+        "category_conflict": false,
+        "members": [
+          {
+            "source": "osm_overpass",
+            "ref": "node/3017979329",
+            "name": "Wiener Feinbäcker Heberer",
+            "category": "bakery"
+          }
+        ]
+      }
+    },
+    {
+      "external_ref": "node/3104033692",
+      "name": "Unser Café",
+      "category": "cafe",
+      "lat": 52.5500787,
+      "lon": 13.4082194,
+      "opening_hours_raw": "Mo-Su 07:00-19:00",
+      "payload": {
+        "primary_source": "osm_overpass",
+        "sources": [
+          "osm_overpass",
+          "overture_places"
+        ],
+        "providers": [
+          "meta",
+          "openstreetmap",
+          "overture"
+        ],
+        "n_providers": 3,
+        "in_station": false,
+        "category_conflict": false,
+        "members": [
+          {
+            "source": "osm_overpass",
+            "ref": "node/3104033692",
+            "name": "Unser Café",
+            "category": "cafe"
+          },
+          {
+            "source": "overture_places",
+            "ref": "overture:07ef02e1-1091-4eb4-9c35-76997a877df3",
+            "name": "Unser Café",
+            "category": "cafe"
+          }
+        ]
+      }
+    },
+    {
+      "external_ref": "node/3452053746",
+      "name": "Kamps",
+      "category": "bakery",
+      "lat": 52.5496492,
+      "lon": 13.414906,
+      "opening_hours_raw": "Mo-Sa 07:00-20:00",
+      "payload": {
+        "primary_source": "osm_overpass",
+        "sources": [
+          "osm_overpass",
+          "overture_places"
+        ],
+        "providers": [
+          "meta",
+          "openstreetmap",
+          "overture"
+        ],
+        "n_providers": 3,
+        "in_station": true,
+        "category_conflict": false,
+        "members": [
+          {
+            "source": "osm_overpass",
+            "ref": "node/3452053746",
+            "name": "Kamps",
+            "category": "bakery"
+          },
+          {
+            "source": "overture_places",
+            "ref": "overture:d4933870-0640-4426-8359-34ef752eabe7",
+            "name": "Kamps",
+            "category": "bakery"
+          }
+        ]
+      }
+    },
+    {
+      "external_ref": "node/3452115332",
+      "name": "Kasatschok Russische Spezialitäten",
+      "category": "spati_kiosk",
+      "lat": 52.5505164,
+      "lon": 13.4131676,
+      "opening_hours_raw": "Mo-Fr 10:00-19:00, Sa 10:00-17:00",
+      "payload": {
+        "primary_source": "osm_overpass",
+        "sources": [
+          "osm_overpass"
+        ],
+        "providers": [
+          "openstreetmap"
+        ],
+        "n_providers": 1,
+        "in_station": false,
+        "category_conflict": false,
+        "members": [
+          {
+            "source": "osm_overpass",
+            "ref": "node/3452115332",
+            "name": "Kasatschok Russische Spezialitäten",
+            "category": "spati_kiosk"
+          }
+        ]
+      }
+    },
+    {
+      "external_ref": "node/3452124072",
+      "name": "Ruby Heo",
+      "category": "cafe",
+      "lat": 52.550102,
+      "lon": 13.4142436,
+      "opening_hours_raw": "Mo-Su 11:00-20:00",
+      "payload": {
+        "primary_source": "osm_overpass",
+        "sources": [
+          "osm_overpass"
+        ],
+        "providers": [
+          "openstreetmap"
+        ],
+        "n_providers": 1,
+        "in_station": true,
+        "category_conflict": false,
+        "members": [
+          {
+            "source": "osm_overpass",
+            "ref": "node/3452124072",
+            "name": "Ruby Heo",
+            "category": "cafe"
+          }
+        ]
+      }
+    },
+    {
+      "external_ref": "node/3876470382",
+      "name": "Café Bom",
+      "category": "cafe",
+      "lat": 52.5489518,
+      "lon": 13.4111377,
+      "opening_hours_raw": "Mo-Fr 09:00-18:00; Sa 10:00-17:00",
+      "payload": {
+        "primary_source": "osm_overpass",
+        "sources": [
+          "osm_overpass"
+        ],
+        "providers": [
+          "openstreetmap"
+        ],
+        "n_providers": 1,
+        "in_station": false,
+        "category_conflict": false,
+        "members": [
+          {
+            "source": "osm_overpass",
+            "ref": "node/3876470382",
+            "name": "Café Bom",
+            "category": "cafe"
+          }
+        ]
+      }
+    },
+    {
+      "external_ref": "node/4109493994",
+      "name": "Stargarder Burger",
+      "category": "fast_food",
+      "lat": 52.5471326,
+      "lon": 13.4168964,
+      "opening_hours_raw": null,
+      "payload": {
+        "primary_source": "osm_overpass",
+        "sources": [
+          "osm_overpass"
+        ],
+        "providers": [
+          "openstreetmap"
+        ],
+        "n_providers": 1,
+        "in_station": false,
+        "category_conflict": false,
+        "members": [
+          {
+            "source": "osm_overpass",
+            "ref": "node/4109493994",
+            "name": "Stargarder Burger",
+            "category": "fast_food"
+          }
+        ]
+      }
+    },
+    {
+      "external_ref": "node/4157496899",
+      "name": "Bar Sigismondo",
+      "category": "cafe",
+      "lat": 52.5489243,
+      "lon": 13.4115196,
+      "opening_hours_raw": "Mo-Fr 08:30-16:30",
+      "payload": {
+        "primary_source": "osm_overpass",
+        "sources": [
+          "osm_overpass",
+          "overture_places"
+        ],
+        "providers": [
+          "brightquery",
+          "openstreetmap",
+          "overture"
+        ],
+        "n_providers": 3,
+        "in_station": false,
+        "category_conflict": false,
+        "members": [
+          {
+            "source": "osm_overpass",
+            "ref": "node/4157496899",
+            "name": "Bar Sigismondo",
+            "category": "cafe"
+          },
+          {
+            "source": "overture_places",
+            "ref": "overture:a7b274b9-1185-4d37-9176-1277dd53a790",
+            "name": "Bar Salumeria Sigismondo",
+            "category": "cafe"
+          }
+        ]
+      }
+    },
+    {
+      "external_ref": "node/4314333203",
+      "name": "Bio Company",
+      "category": "supermarket",
+      "lat": 52.5477143,
+      "lon": 13.4120467,
+      "opening_hours_raw": "Mo-Sa 08:00-21:00",
+      "payload": {
+        "primary_source": "osm_overpass",
+        "sources": [
+          "osm_overpass",
+          "overture_places"
+        ],
+        "providers": [
+          "microsoft",
+          "openstreetmap",
+          "overture"
+        ],
+        "n_providers": 3,
+        "in_station": false,
+        "category_conflict": false,
+        "members": [
+          {
+            "source": "osm_overpass",
+            "ref": "node/4314333203",
+            "name": "Bio Company",
+            "category": "supermarket"
+          },
+          {
+            "source": "overture_places",
+            "ref": "overture:d75f786a-bb03-4744-9547-430ff9ec8efb",
+            "name": "BIO COMPANY",
+            "category": "supermarket"
+          }
+        ]
+      }
+    },
+    {
+      "external_ref": "node/4314581206",
+      "name": "Budni",
+      "category": "chemist",
+      "lat": 52.5483757,
+      "lon": 13.4131483,
+      "opening_hours_raw": "Mo-Sa 08:00-21:00",
+      "payload": {
+        "primary_source": "osm_overpass",
+        "sources": [
+          "osm_overpass",
+          "overture_places"
+        ],
+        "providers": [
+          "microsoft",
+          "openstreetmap",
+          "overture"
+        ],
+        "n_providers": 3,
+        "in_station": true,
+        "category_conflict": true,
+        "members": [
+          {
+            "source": "osm_overpass",
+            "ref": "node/4314581206",
+            "name": "Budni",
+            "category": "chemist"
+          },
+          {
+            "source": "overture_places",
+            "ref": "overture:338a7971-082f-4757-ac79-b3296c714a0f",
+            "name": "budni",
+            "category": "supermarket"
+          }
+        ]
+      }
+    },
+    {
+      "external_ref": "node/4429093689",
+      "name": "Formidable",
+      "category": "fast_food",
+      "lat": 52.547053,
+      "lon": 13.412857,
+      "opening_hours_raw": "Mo-Th 11:00-21:00; Fr,Sa 11:00-22:00; Su 12:00-21:00",
+      "payload": {
+        "primary_source": "osm_overpass",
+        "sources": [
+          "osm_overpass",
+          "overture_places"
+        ],
+        "providers": [
+          "meta",
+          "openstreetmap",
+          "overture"
+        ],
+        "n_providers": 3,
+        "in_station": false,
+        "category_conflict": false,
+        "members": [
+          {
+            "source": "osm_overpass",
+            "ref": "node/4429093689",
+            "name": "Formidable",
+            "category": "fast_food"
+          },
+          {
+            "source": "overture_places",
+            "ref": "overture:ad2785a1-1400-4b21-922a-194a3681a3b0",
+            "name": "Formidable",
+            "category": "fast_food"
+          }
+        ]
+      }
+    },
+    {
+      "external_ref": "node/4437710891",
+      "name": "Sironi",
+      "category": "bakery",
+      "lat": 52.547572,
+      "lon": 13.4105138,
+      "opening_hours_raw": "Mo-Su 09:00-18:00",
+      "payload": {
+        "primary_source": "osm_overpass",
+        "sources": [
+          "osm_overpass"
+        ],
+        "providers": [
+          "openstreetmap"
+        ],
+        "n_providers": 1,
+        "in_station": false,
+        "category_conflict": false,
+        "members": [
+          {
+            "source": "osm_overpass",
+            "ref": "node/4437710891",
+            "name": "Sironi",
+            "category": "bakery"
+          }
+        ]
+      }
+    },
+    {
+      "external_ref": "node/4487529790",
+      "name": "Pension Palermo",
+      "category": "cafe",
+      "lat": 52.5501014,
+      "lon": 13.4172845,
+      "opening_hours_raw": null,
+      "payload": {
+        "primary_source": "osm_overpass",
+        "sources": [
+          "osm_overpass"
+        ],
+        "providers": [
+          "openstreetmap"
+        ],
+        "n_providers": 1,
+        "in_station": false,
+        "category_conflict": false,
+        "members": [
+          {
+            "source": "osm_overpass",
+            "ref": "node/4487529790",
+            "name": "Pension Palermo",
+            "category": "cafe"
+          }
+        ]
+      }
+    },
+    {
+      "external_ref": "node/4862470678",
+      "name": "Kuki's",
+      "category": "fast_food",
+      "lat": 52.5478477,
+      "lon": 13.4133786,
+      "opening_hours_raw": null,
+      "payload": {
+        "primary_source": "osm_overpass",
+        "sources": [
+          "osm_overpass"
+        ],
+        "providers": [
+          "openstreetmap"
+        ],
+        "n_providers": 1,
+        "in_station": true,
+        "category_conflict": false,
+        "members": [
+          {
+            "source": "osm_overpass",
+            "ref": "node/4862470678",
+            "name": "Kuki's",
+            "category": "fast_food"
+          }
+        ]
+      }
+    },
+    {
+      "external_ref": "node/4862470679",
+      "name": "Daddy's 100% Steak Kebap",
+      "category": "fast_food",
+      "lat": 52.5478411,
+      "lon": 13.4135033,
+      "opening_hours_raw": "Mo-Su 11:00-24:00",
+      "payload": {
+        "primary_source": "osm_overpass",
+        "sources": [
+          "osm_overpass"
+        ],
+        "providers": [
+          "openstreetmap"
+        ],
+        "n_providers": 1,
+        "in_station": true,
+        "category_conflict": false,
+        "members": [
+          {
+            "source": "osm_overpass",
+            "ref": "node/4862470679",
+            "name": "Daddy's 100% Steak Kebap",
+            "category": "fast_food"
+          }
+        ]
+      }
+    },
+    {
+      "external_ref": "node/4877987721",
+      "name": "Kaplan",
+      "category": "fast_food",
+      "lat": 52.5493267,
+      "lon": 13.4133333,
+      "opening_hours_raw": null,
+      "payload": {
+        "primary_source": "osm_overpass",
+        "sources": [
+          "osm_overpass",
+          "overture_places"
+        ],
+        "providers": [
+          "meta",
+          "openstreetmap",
+          "overture"
+        ],
+        "n_providers": 3,
+        "in_station": true,
+        "category_conflict": false,
+        "members": [
+          {
+            "source": "osm_overpass",
+            "ref": "node/4877987721",
+            "name": "Kaplan",
+            "category": "fast_food"
+          },
+          {
+            "source": "overture_places",
+            "ref": "overture:169fadf5-1112-4a24-ae00-676094cae0fe",
+            "name": "Kaplan Döner",
+            "category": "fast_food"
+          }
+        ]
+      }
+    },
+    {
+      "external_ref": "node/5018674948",
+      "name": "Wilhelm Burger",
+      "category": "fast_food",
+      "lat": 52.5471497,
+      "lon": 13.4108447,
+      "opening_hours_raw": null,
+      "payload": {
+        "primary_source": "osm_overpass",
+        "sources": [
+          "osm_overpass"
+        ],
+        "providers": [
+          "openstreetmap"
+        ],
+        "n_providers": 1,
+        "in_station": false,
+        "category_conflict": false,
+        "members": [
+          {
+            "source": "osm_overpass",
+            "ref": "node/5018674948",
+            "name": "Wilhelm Burger",
+            "category": "fast_food"
+          }
+        ]
+      }
+    },
+    {
+      "external_ref": "node/5324520345",
+      "name": "Steinecke",
+      "category": "bakery",
+      "lat": 52.5507211,
+      "lon": 13.4101449,
+      "opening_hours_raw": "Mo-Sa 07:00-20:00",
+      "payload": {
+        "primary_source": "osm_overpass",
+        "sources": [
+          "osm_overpass",
+          "overture_places"
+        ],
+        "providers": [
+          "meta",
+          "openstreetmap",
+          "overture"
+        ],
+        "n_providers": 3,
+        "in_station": false,
+        "category_conflict": false,
+        "members": [
+          {
+            "source": "osm_overpass",
+            "ref": "node/5324520345",
+            "name": "Steinecke",
+            "category": "bakery"
+          },
+          {
+            "source": "overture_places",
+            "ref": "overture:b3c5f3c3-ebed-43a7-a1db-a734be027cf1",
+            "name": "Brotmeisterei Steinecke",
+            "category": "bakery"
+          }
+        ]
+      }
+    },
+    {
+      "external_ref": "node/5337406379",
+      "name": "B.est of Shop",
+      "category": "spati_kiosk",
+      "lat": 52.5511074,
+      "lon": 13.4136221,
+      "opening_hours_raw": null,
+      "payload": {
+        "primary_source": "osm_overpass",
+        "sources": [
+          "osm_overpass"
+        ],
+        "providers": [
+          "openstreetmap"
+        ],
+        "n_providers": 1,
+        "in_station": false,
+        "category_conflict": false,
+        "members": [
+          {
+            "source": "osm_overpass",
+            "ref": "node/5337406379",
+            "name": "B.est of Shop",
+            "category": "spati_kiosk"
+          }
+        ]
+      }
+    },
+    {
+      "external_ref": "node/5345395907",
+      "name": "CTR Chicken",
+      "category": "fast_food",
+      "lat": 52.5489085,
+      "lon": 13.4140218,
+      "opening_hours_raw": null,
+      "payload": {
+        "primary_source": "osm_overpass",
+        "sources": [
+          "osm_overpass"
+        ],
+        "providers": [
+          "openstreetmap"
+        ],
+        "n_providers": 1,
+        "in_station": true,
+        "category_conflict": false,
+        "members": [
+          {
+            "source": "osm_overpass",
+            "ref": "node/5345395907",
+            "name": "CTR Chicken",
+            "category": "fast_food"
+          }
+        ]
+      }
+    },
+    {
+      "external_ref": "node/5351286162",
+      "name": "Tony's Kiosk",
+      "category": "spati_kiosk",
+      "lat": 52.5517974,
+      "lon": 13.414541,
+      "opening_hours_raw": "Mo-Th 10:00-02:00, Fr,Sa 10:00-03:00",
+      "payload": {
+        "primary_source": "osm_overpass",
+        "sources": [
+          "osm_overpass"
+        ],
+        "providers": [
+          "openstreetmap"
+        ],
+        "n_providers": 1,
+        "in_station": false,
+        "category_conflict": false,
+        "members": [
+          {
+            "source": "osm_overpass",
+            "ref": "node/5351286162",
+            "name": "Tony's Kiosk",
+            "category": "spati_kiosk"
+          }
+        ]
+      }
+    },
+    {
+      "external_ref": "node/5354951057",
+      "name": "Brocca Café",
+      "category": "cafe",
+      "lat": 52.5474929,
+      "lon": 13.4094453,
+      "opening_hours_raw": "Tu-Su 10:00-18:00",
+      "payload": {
+        "primary_source": "osm_overpass",
+        "sources": [
+          "osm_overpass",
+          "overture_places"
+        ],
+        "providers": [
+          "meta",
+          "openstreetmap",
+          "overture"
+        ],
+        "n_providers": 3,
+        "in_station": false,
+        "category_conflict": false,
+        "members": [
+          {
+            "source": "osm_overpass",
+            "ref": "node/5354951057",
+            "name": "Brocca Café",
+            "category": "cafe"
+          },
+          {
+            "source": "overture_places",
+            "ref": "overture:a8b9eeb0-ca4a-408a-b65c-5c1b69853810",
+            "name": "Brocca Café",
+            "category": "cafe"
+          }
+        ]
+      }
+    },
+    {
+      "external_ref": "node/5354951065",
+      "name": "Palmyra",
+      "category": "fast_food",
+      "lat": 52.5474551,
+      "lon": 13.4091771,
+      "opening_hours_raw": "Sa-Th 12:00-22:00",
+      "payload": {
+        "primary_source": "osm_overpass",
+        "sources": [
+          "osm_overpass"
+        ],
+        "providers": [
+          "openstreetmap"
+        ],
+        "n_providers": 1,
+        "in_station": false,
+        "category_conflict": false,
+        "members": [
+          {
+            "source": "osm_overpass",
+            "ref": "node/5354951065",
+            "name": "Palmyra",
+            "category": "fast_food"
+          }
+        ]
+      }
+    },
+    {
+      "external_ref": "node/5370108759",
+      "name": "BurgerVision",
+      "category": "fast_food",
+      "lat": 52.5476223,
+      "lon": 13.4109499,
+      "opening_hours_raw": "Mo-Fr 11:30-23:00; Sa-Su 12:00-23:00",
+      "payload": {
+        "primary_source": "osm_overpass",
+        "sources": [
+          "osm_overpass"
+        ],
+        "providers": [
+          "openstreetmap"
+        ],
+        "n_providers": 1,
+        "in_station": false,
+        "category_conflict": false,
+        "members": [
+          {
+            "source": "osm_overpass",
+            "ref": "node/5370108759",
+            "name": "BurgerVision",
+            "category": "fast_food"
+          }
+        ]
+      }
+    },
+    {
+      "external_ref": "node/5386152279",
+      "name": "dean&david",
+      "category": "fast_food",
+      "lat": 52.5498034,
+      "lon": 13.4141921,
+      "opening_hours_raw": "Mo-Fr 08:00-21:30; Sa 10:00-21:30; Su,PH 12:00-20:30",
+      "payload": {
+        "primary_source": "osm_overpass",
+        "sources": [
+          "osm_overpass"
+        ],
+        "providers": [
+          "openstreetmap"
+        ],
+        "n_providers": 1,
+        "in_station": true,
+        "category_conflict": false,
+        "members": [
+          {
+            "source": "osm_overpass",
+            "ref": "node/5386152279",
+            "name": "dean&david",
+            "category": "fast_food"
+          }
+        ]
+      }
+    },
+    {
+      "external_ref": "node/5650154055",
+      "name": "Zuckerstück",
+      "category": "cafe",
+      "lat": 52.5509686,
+      "lon": 13.4117623,
+      "opening_hours_raw": "Th-Su 09:00-16:00",
+      "payload": {
+        "primary_source": "osm_overpass",
+        "sources": [
+          "osm_overpass",
+          "overture_places"
+        ],
+        "providers": [
+          "meta",
+          "openstreetmap",
+          "overture"
+        ],
+        "n_providers": 3,
+        "in_station": false,
+        "category_conflict": false,
+        "members": [
+          {
+            "source": "osm_overpass",
+            "ref": "node/5650154055",
+            "name": "Zuckerstück",
+            "category": "cafe"
+          },
+          {
+            "source": "overture_places",
+            "ref": "overture:dc3280ca-cac7-4cac-b296-ea799e4ee2b1",
+            "name": "Zuckerstück",
+            "category": "cafe"
+          }
+        ]
+      }
+    },
+    {
+      "external_ref": "node/5978081406",
+      "name": "Konditorei Krautzig",
+      "category": "bakery",
+      "lat": 52.5471504,
+      "lon": 13.4128855,
+      "opening_hours_raw": "Mo-Fr 06:00-18:00; Sa 06:00-14:00",
+      "payload": {
+        "primary_source": "osm_overpass",
+        "sources": [
+          "osm_overpass",
+          "overture_places"
+        ],
+        "providers": [
+          "meta",
+          "openstreetmap",
+          "overture"
+        ],
+        "n_providers": 3,
+        "in_station": false,
+        "category_conflict": false,
+        "members": [
+          {
+            "source": "osm_overpass",
+            "ref": "node/5978081406",
+            "name": "Konditorei Krautzig",
+            "category": "bakery"
+          },
+          {
+            "source": "overture_places",
+            "ref": "overture:c5a7a1db-d07b-47d5-8b7d-71f5e8d12020",
+            "name": "Konditorei Krautzig",
+            "category": "bakery"
+          }
+        ]
+      }
+    },
+    {
+      "external_ref": "node/5998109885",
+      "name": "Asia-Markt",
+      "category": "spati_kiosk",
+      "lat": 52.5488599,
+      "lon": 13.4127221,
+      "opening_hours_raw": "Mo-Sa 10:00-20:00",
+      "payload": {
+        "primary_source": "osm_overpass",
+        "sources": [
+          "osm_overpass",
+          "overture_places"
+        ],
+        "providers": [
+          "meta",
+          "openstreetmap",
+          "overture"
+        ],
+        "n_providers": 3,
+        "in_station": false,
+        "category_conflict": true,
+        "members": [
+          {
+            "source": "osm_overpass",
+            "ref": "node/5998109885",
+            "name": "Asia-Markt",
+            "category": "spati_kiosk"
+          },
+          {
+            "source": "overture_places",
+            "ref": "overture:a106c9d0-631e-4d9c-bb89-c133c5471aa6",
+            "name": "Asia Markt",
+            "category": "supermarket"
+          }
+        ]
+      }
+    },
+    {
+      "external_ref": "node/6004806612",
+      "name": "Oil & Vinegar",
+      "category": "other_fresh_food",
+      "lat": 52.5498541,
+      "lon": 13.4149347,
+      "opening_hours_raw": "Mo-Sa 10:00-20:00",
+      "payload": {
+        "primary_source": "osm_overpass",
+        "sources": [
+          "osm_overpass"
+        ],
+        "providers": [
+          "openstreetmap"
+        ],
+        "n_providers": 1,
+        "in_station": false,
+        "category_conflict": false,
+        "members": [
+          {
+            "source": "osm_overpass",
+            "ref": "node/6004806612",
+            "name": "Oil & Vinegar",
+            "category": "other_fresh_food"
+          }
+        ]
+      }
+    },
+    {
+      "external_ref": "node/6212858187",
+      "name": "Internetcafe - Day & Nightstore",
+      "category": "spati_kiosk",
+      "lat": 52.5526351,
+      "lon": 13.4139062,
+      "opening_hours_raw": null,
+      "payload": {
+        "primary_source": "osm_overpass",
+        "sources": [
+          "osm_overpass"
+        ],
+        "providers": [
+          "openstreetmap"
+        ],
+        "n_providers": 1,
+        "in_station": false,
+        "category_conflict": false,
+        "members": [
+          {
+            "source": "osm_overpass",
+            "ref": "node/6212858187",
+            "name": "Internetcafe - Day & Nightstore",
+            "category": "spati_kiosk"
+          }
+        ]
+      }
+    },
+    {
+      "external_ref": "node/6258659482",
+      "name": "Denns BioMarkt",
+      "category": "supermarket",
+      "lat": 52.5492906,
+      "lon": 13.4157975,
+      "opening_hours_raw": "Mo-Sa 09:00-21:00",
+      "payload": {
+        "primary_source": "osm_overpass",
+        "sources": [
+          "osm_overpass",
+          "overture_places"
+        ],
+        "providers": [
+          "meta",
+          "openstreetmap",
+          "overture"
+        ],
+        "n_providers": 3,
+        "in_station": true,
+        "category_conflict": false,
+        "members": [
+          {
+            "source": "osm_overpass",
+            "ref": "node/6258659482",
+            "name": "Denns BioMarkt",
+            "category": "supermarket"
+          },
+          {
+            "source": "overture_places",
+            "ref": "overture:c039fca0-3aca-473d-81d2-7f927893addd",
+            "name": "Denns BioMarkt",
+            "category": "supermarket"
+          }
+        ]
+      }
+    },
+    {
+      "external_ref": "node/6282529804",
+      "name": "Solide",
+      "category": "cafe",
+      "lat": 52.5510599,
+      "lon": 13.4105748,
+      "opening_hours_raw": "We-Fr 15:00-00:00; Sa, Su 12:00-00:00",
+      "payload": {
+        "primary_source": "osm_overpass",
+        "sources": [
+          "osm_overpass",
+          "overture_places"
+        ],
+        "providers": [
+          "meta",
+          "openstreetmap",
+          "overture"
+        ],
+        "n_providers": 3,
+        "in_station": false,
+        "category_conflict": false,
+        "members": [
+          {
+            "source": "osm_overpass",
+            "ref": "node/6282529804",
+            "name": "Solide",
+            "category": "cafe"
+          },
+          {
+            "source": "overture_places",
+            "ref": "overture:59ba7133-5e0e-4e2c-9f6e-8101c1dd0372",
+            "name": "solide - Café & Bar",
+            "category": "cafe"
+          }
+        ]
+      }
+    },
+    {
+      "external_ref": "node/7236820670",
+      "name": "Miran",
+      "category": "spati_kiosk",
+      "lat": 52.5518607,
+      "lon": 13.4150116,
+      "opening_hours_raw": null,
+      "payload": {
+        "primary_source": "osm_overpass",
+        "sources": [
+          "osm_overpass"
+        ],
+        "providers": [
+          "openstreetmap"
+        ],
+        "n_providers": 1,
+        "in_station": false,
+        "category_conflict": false,
+        "members": [
+          {
+            "source": "osm_overpass",
+            "ref": "node/7236820670",
+            "name": "Miran",
+            "category": "spati_kiosk"
+          }
+        ]
+      }
+    },
+    {
+      "external_ref": "node/7237064965",
+      "name": "Giomecca",
+      "category": "bakery",
+      "lat": 52.5521181,
+      "lon": 13.4149103,
+      "opening_hours_raw": "Tu-Fr 10:30-19:00; Sa 10:30-18:00; Su 12:00-17:00",
+      "payload": {
+        "primary_source": "osm_overpass",
+        "sources": [
+          "osm_overpass"
+        ],
+        "providers": [
+          "openstreetmap"
+        ],
+        "n_providers": 1,
+        "in_station": false,
+        "category_conflict": false,
+        "members": [
+          {
+            "source": "osm_overpass",
+            "ref": "node/7237064965",
+            "name": "Giomecca",
+            "category": "bakery"
+          }
+        ]
+      }
+    },
+    {
+      "external_ref": "node/7237064969",
+      "name": "Asia Mekong",
+      "category": "spati_kiosk",
+      "lat": 52.5506605,
+      "lon": 13.4148913,
+      "opening_hours_raw": "Mo-Sa 10:00-21:30",
+      "payload": {
+        "primary_source": "osm_overpass",
+        "sources": [
+          "osm_overpass"
+        ],
+        "providers": [
+          "openstreetmap"
+        ],
+        "n_providers": 1,
+        "in_station": false,
+        "category_conflict": false,
+        "members": [
+          {
+            "source": "osm_overpass",
+            "ref": "node/7237064969",
+            "name": "Asia Mekong",
+            "category": "spati_kiosk"
+          }
+        ]
+      }
+    },
+    {
+      "external_ref": "node/7617687673",
+      "name": "Bamya",
+      "category": "other_fresh_food",
+      "lat": 52.5488469,
+      "lon": 13.4088098,
+      "opening_hours_raw": "Mo-Fr 08:30-19:30; Sa 08:30-17:30",
+      "payload": {
+        "primary_source": "osm_overpass",
+        "sources": [
+          "osm_overpass"
+        ],
+        "providers": [
+          "openstreetmap"
+        ],
+        "n_providers": 1,
+        "in_station": false,
+        "category_conflict": false,
+        "members": [
+          {
+            "source": "osm_overpass",
+            "ref": "node/7617687673",
+            "name": "Bamya",
+            "category": "other_fresh_food"
+          }
+        ]
+      }
+    },
+    {
+      "external_ref": "node/7765375760",
+      "name": "Happy Food",
+      "category": "fast_food",
+      "lat": 52.5526808,
+      "lon": 13.4139151,
+      "opening_hours_raw": null,
+      "payload": {
+        "primary_source": "osm_overpass",
+        "sources": [
+          "osm_overpass"
+        ],
+        "providers": [
+          "openstreetmap"
+        ],
+        "n_providers": 1,
+        "in_station": false,
+        "category_conflict": false,
+        "members": [
+          {
+            "source": "osm_overpass",
+            "ref": "node/7765375760",
+            "name": "Happy Food",
+            "category": "fast_food"
+          }
+        ]
+      }
+    },
+    {
+      "external_ref": "node/9436615201",
+      "name": null,
+      "category": "spati_kiosk",
+      "lat": 52.5494296,
+      "lon": 13.4146269,
+      "opening_hours_raw": null,
+      "payload": {
+        "primary_source": "osm_overpass",
+        "sources": [
+          "osm_overpass"
+        ],
+        "providers": [
+          "openstreetmap"
+        ],
+        "n_providers": 1,
+        "in_station": true,
+        "category_conflict": false,
+        "members": [
+          {
+            "source": "osm_overpass",
+            "ref": "node/9436615201",
+            "name": null,
+            "category": "spati_kiosk"
+          }
+        ]
+      }
+    },
+    {
+      "external_ref": "node/9770221480",
+      "name": "Nordsee",
+      "category": "fast_food",
+      "lat": 52.5498307,
+      "lon": 13.4146119,
+      "opening_hours_raw": null,
+      "payload": {
+        "primary_source": "osm_overpass",
+        "sources": [
+          "osm_overpass"
+        ],
+        "providers": [
+          "openstreetmap"
+        ],
+        "n_providers": 1,
+        "in_station": true,
+        "category_conflict": false,
+        "members": [
+          {
+            "source": "osm_overpass",
+            "ref": "node/9770221480",
+            "name": "Nordsee",
+            "category": "fast_food"
+          }
+        ]
+      }
+    },
+    {
+      "external_ref": "node/9793667517",
+      "name": "Büro",
+      "category": "cafe",
+      "lat": 52.5468857,
+      "lon": 13.417617,
+      "opening_hours_raw": "Mo-Fr 08:00-17:00; Sa,Su 09:00-18:00",
+      "payload": {
+        "primary_source": "osm_overpass",
+        "sources": [
+          "osm_overpass"
+        ],
+        "providers": [
+          "openstreetmap"
+        ],
+        "n_providers": 1,
+        "in_station": false,
+        "category_conflict": false,
+        "members": [
+          {
+            "source": "osm_overpass",
+            "ref": "node/9793667517",
+            "name": "Büro",
+            "category": "cafe"
+          }
+        ]
+      }
+    },
+    {
+      "external_ref": "node/10035647561",
+      "name": "Star Mini Market",
+      "category": "spati_kiosk",
+      "lat": 52.5474668,
+      "lon": 13.4140894,
+      "opening_hours_raw": "Mo-Th 09:00-01:00, Fr,Sa 09:00-04:00, Su 13:00-01:00",
+      "payload": {
+        "primary_source": "osm_overpass",
+        "sources": [
+          "osm_overpass"
+        ],
+        "providers": [
+          "openstreetmap"
+        ],
+        "n_providers": 1,
+        "in_station": false,
+        "category_conflict": false,
+        "members": [
+          {
+            "source": "osm_overpass",
+            "ref": "node/10035647561",
+            "name": "Star Mini Market",
+            "category": "spati_kiosk"
+          }
+        ]
+      }
+    },
+    {
+      "external_ref": "node/10035697094",
+      "name": "179 Coffee Bar",
+      "category": "cafe",
+      "lat": 52.5468381,
+      "lon": 13.4135675,
+      "opening_hours_raw": "Tu-Fr 09:30-19:00; Sa,Su 10:00-20:00; Mo off",
+      "payload": {
+        "primary_source": "osm_overpass",
+        "sources": [
+          "osm_overpass",
+          "overture_places"
+        ],
+        "providers": [
+          "meta",
+          "openstreetmap",
+          "overture"
+        ],
+        "n_providers": 3,
+        "in_station": false,
+        "category_conflict": false,
+        "members": [
+          {
+            "source": "osm_overpass",
+            "ref": "node/10035697094",
+            "name": "179 Coffee Bar",
+            "category": "cafe"
+          },
+          {
+            "source": "overture_places",
+            "ref": "overture:d8e1767d-637e-4c63-8b58-3033b8a94663",
+            "name": "179 Coffee Bar :)",
+            "category": "cafe"
+          }
+        ]
+      }
+    },
+    {
+      "external_ref": "node/10035799726",
+      "name": "Mate Mate Spätshop",
+      "category": "spati_kiosk",
+      "lat": 52.5457547,
+      "lon": 13.4132813,
+      "opening_hours_raw": null,
+      "payload": {
+        "primary_source": "osm_overpass",
+        "sources": [
+          "osm_overpass"
+        ],
+        "providers": [
+          "openstreetmap"
+        ],
+        "n_providers": 1,
+        "in_station": false,
+        "category_conflict": false,
+        "members": [
+          {
+            "source": "osm_overpass",
+            "ref": "node/10035799726",
+            "name": "Mate Mate Spätshop",
+            "category": "spati_kiosk"
+          }
+        ]
+      }
+    },
+    {
+      "external_ref": "node/10075119373",
+      "name": "Ali Baba Späti",
+      "category": "spati_kiosk",
+      "lat": 52.5461139,
+      "lon": 13.4125811,
+      "opening_hours_raw": null,
+      "payload": {
+        "primary_source": "osm_overpass",
+        "sources": [
+          "osm_overpass"
+        ],
+        "providers": [
+          "openstreetmap"
+        ],
+        "n_providers": 1,
+        "in_station": false,
+        "category_conflict": false,
+        "members": [
+          {
+            "source": "osm_overpass",
+            "ref": "node/10075119373",
+            "name": "Ali Baba Späti",
+            "category": "spati_kiosk"
+          }
+        ]
+      }
+    },
+    {
+      "external_ref": "node/10698856450",
+      "name": "Rialda",
+      "category": "bakery",
+      "lat": 52.5511264,
+      "lon": 13.4184986,
+      "opening_hours_raw": "Mo-Fr 06:00-23:30; Sa 07:30-23:30; Su 07:00-23:30",
+      "payload": {
+        "primary_source": "osm_overpass",
+        "sources": [
+          "osm_overpass",
+          "overture_places"
+        ],
+        "providers": [
+          "meta",
+          "openstreetmap",
+          "overture"
+        ],
+        "n_providers": 3,
+        "in_station": false,
+        "category_conflict": false,
+        "members": [
+          {
+            "source": "osm_overpass",
+            "ref": "node/10698856450",
+            "name": "Rialda",
+            "category": "bakery"
+          },
+          {
+            "source": "overture_places",
+            "ref": "overture:b942e336-f9ee-42d5-8979-f911c38ec589",
+            "name": "Backshop Rialda",
+            "category": "bakery"
+          }
+        ]
+      }
+    },
+    {
+      "external_ref": "node/11264494273",
+      "name": "Starbucks",
+      "category": "cafe",
+      "lat": 52.5496387,
+      "lon": 13.4142481,
+      "opening_hours_raw": null,
+      "payload": {
+        "primary_source": "osm_overpass",
+        "sources": [
+          "osm_overpass",
+          "overture_places"
+        ],
+        "providers": [
+          "alltheplaces",
+          "openstreetmap",
+          "overture"
+        ],
+        "n_providers": 3,
+        "in_station": true,
+        "category_conflict": false,
+        "members": [
+          {
+            "source": "osm_overpass",
+            "ref": "node/11264494273",
+            "name": "Starbucks",
+            "category": "cafe"
+          },
+          {
+            "source": "overture_places",
+            "ref": "overture:08832389-69ef-4958-8de6-9b7bc420172c",
+            "name": "Starbucks",
+            "category": "cafe"
+          }
+        ]
+      }
+    },
+    {
+      "external_ref": "node/11589887197",
+      "name": "LAP Coffee",
+      "category": "cafe",
+      "lat": 52.549382,
+      "lon": 13.4137007,
+      "opening_hours_raw": "Mo-Fr 07:00-16:30; Sa,Su 09:30-17:30",
+      "payload": {
+        "primary_source": "osm_overpass",
+        "sources": [
+          "osm_overpass"
+        ],
+        "providers": [
+          "openstreetmap"
+        ],
+        "n_providers": 1,
+        "in_station": true,
+        "category_conflict": false,
+        "members": [
+          {
+            "source": "osm_overpass",
+            "ref": "node/11589887197",
+            "name": "LAP Coffee",
+            "category": "cafe"
+          }
+        ]
+      }
+    },
+    {
+      "external_ref": "node/11669762542",
+      "name": "Dunkin'",
+      "category": "fast_food",
+      "lat": 52.5496568,
+      "lon": 13.4144967,
+      "opening_hours_raw": "Mo-Sa 08:00-20:00; Su off",
+      "payload": {
+        "primary_source": "osm_overpass",
+        "sources": [
+          "osm_overpass"
+        ],
+        "providers": [
+          "openstreetmap"
+        ],
+        "n_providers": 1,
+        "in_station": true,
+        "category_conflict": false,
+        "members": [
+          {
+            "source": "osm_overpass",
+            "ref": "node/11669762542",
+            "name": "Dunkin'",
+            "category": "fast_food"
+          }
+        ]
+      }
+    },
+    {
+      "external_ref": "node/12089127030",
+      "name": "Terese (transalpine Feinkost)",
+      "category": "other_fresh_food",
+      "lat": 52.5481421,
+      "lon": 13.4096235,
+      "opening_hours_raw": "Tu-Fr 12:00-19:00; Sa 11:00-17:00",
+      "payload": {
+        "primary_source": "osm_overpass",
+        "sources": [
+          "osm_overpass"
+        ],
+        "providers": [
+          "openstreetmap"
+        ],
+        "n_providers": 1,
+        "in_station": false,
+        "category_conflict": false,
+        "members": [
+          {
+            "source": "osm_overpass",
+            "ref": "node/12089127030",
+            "name": "Terese (transalpine Feinkost)",
+            "category": "other_fresh_food"
+          }
+        ]
+      }
+    },
+    {
+      "external_ref": "node/12137666407",
+      "name": "Späti Booth",
+      "category": "spati_kiosk",
+      "lat": 52.5516871,
+      "lon": 13.4136996,
+      "opening_hours_raw": null,
+      "payload": {
+        "primary_source": "osm_overpass",
+        "sources": [
+          "osm_overpass"
+        ],
+        "providers": [
+          "openstreetmap"
+        ],
+        "n_providers": 1,
+        "in_station": false,
+        "category_conflict": false,
+        "members": [
+          {
+            "source": "osm_overpass",
+            "ref": "node/12137666407",
+            "name": "Späti Booth",
+            "category": "spati_kiosk"
+          }
+        ]
+      }
+    },
+    {
+      "external_ref": "node/12309521701",
+      "name": "Wilhelms Burger",
+      "category": "fast_food",
+      "lat": 52.5473357,
+      "lon": 13.4109497,
+      "opening_hours_raw": "Su-Th 11:00-23:00; Fr,Sa 11:00-24:00",
+      "payload": {
+        "primary_source": "osm_overpass",
+        "sources": [
+          "osm_overpass"
+        ],
+        "providers": [
+          "openstreetmap"
+        ],
+        "n_providers": 1,
+        "in_station": false,
+        "category_conflict": false,
+        "members": [
+          {
+            "source": "osm_overpass",
+            "ref": "node/12309521701",
+            "name": "Wilhelms Burger",
+            "category": "fast_food"
+          }
+        ]
+      }
+    },
+    {
+      "external_ref": "node/12309529201",
+      "name": "Simply Great Whisky",
+      "category": "beverages",
+      "lat": 52.5474531,
+      "lon": 13.4121421,
+      "opening_hours_raw": "Mo 15:00-20:00; Tu-Fr 11:00-20:00; Sa 12:00-18:00",
+      "payload": {
+        "primary_source": "osm_overpass",
+        "sources": [
+          "osm_overpass",
+          "overture_places"
+        ],
+        "providers": [
+          "meta",
+          "openstreetmap",
+          "overture"
+        ],
+        "n_providers": 3,
+        "in_station": false,
+        "category_conflict": false,
+        "members": [
+          {
+            "source": "osm_overpass",
+            "ref": "node/12309529201",
+            "name": "Simply Great Whisky",
+            "category": "beverages"
+          },
+          {
+            "source": "overture_places",
+            "ref": "overture:a0e20113-15e4-4c24-9144-8fc8f7898135",
+            "name": "Simply Great Whisky",
+            "category": "beverages"
+          }
+        ]
+      }
+    },
+    {
+      "external_ref": "node/12309529401",
+      "name": "Spätkauf MiniMarkt",
+      "category": "spati_kiosk",
+      "lat": 52.5474804,
+      "lon": 13.4125645,
+      "opening_hours_raw": "Mo-Su 10:00-24:00",
+      "payload": {
+        "primary_source": "osm_overpass",
+        "sources": [
+          "osm_overpass"
+        ],
+        "providers": [
+          "openstreetmap"
+        ],
+        "n_providers": 1,
+        "in_station": false,
+        "category_conflict": false,
+        "members": [
+          {
+            "source": "osm_overpass",
+            "ref": "node/12309529401",
+            "name": "Spätkauf MiniMarkt",
+            "category": "spati_kiosk"
+          }
+        ]
+      }
+    },
+    {
+      "external_ref": "node/12585243601",
+      "name": "The Mood",
+      "category": "fast_food",
+      "lat": 52.5474892,
+      "lon": 13.4129573,
+      "opening_hours_raw": "Mo-Su 11:00-22:00",
+      "payload": {
+        "primary_source": "osm_overpass",
+        "sources": [
+          "osm_overpass"
+        ],
+        "providers": [
+          "openstreetmap"
+        ],
+        "n_providers": 1,
+        "in_station": false,
+        "category_conflict": false,
+        "members": [
+          {
+            "source": "osm_overpass",
+            "ref": "node/12585243601",
+            "name": "The Mood",
+            "category": "fast_food"
+          }
+        ]
+      }
+    },
+    {
+      "external_ref": "node/12650469114",
+      "name": "Saaky",
+      "category": "fast_food",
+      "lat": 52.5475883,
+      "lon": 13.4106807,
+      "opening_hours_raw": "Mo-Su 12:00-23:00",
+      "payload": {
+        "primary_source": "osm_overpass",
+        "sources": [
+          "osm_overpass"
+        ],
+        "providers": [
+          "openstreetmap"
+        ],
+        "n_providers": 1,
+        "in_station": false,
+        "category_conflict": false,
+        "members": [
+          {
+            "source": "osm_overpass",
+            "ref": "node/12650469114",
+            "name": "Saaky",
+            "category": "fast_food"
+          }
+        ]
+      }
+    },
+    {
+      "external_ref": "node/12741877924",
+      "name": "L'Epicerie",
+      "category": "spati_kiosk",
+      "lat": 52.5504954,
+      "lon": 13.4134875,
+      "opening_hours_raw": null,
+      "payload": {
+        "primary_source": "osm_overpass",
+        "sources": [
+          "osm_overpass"
+        ],
+        "providers": [
+          "openstreetmap"
+        ],
+        "n_providers": 1,
+        "in_station": false,
+        "category_conflict": false,
+        "members": [
+          {
+            "source": "osm_overpass",
+            "ref": "node/12741877924",
+            "name": "L'Epicerie",
+            "category": "spati_kiosk"
+          }
+        ]
+      }
+    },
+    {
+      "external_ref": "node/12766284044",
+      "name": "Inka Markt",
+      "category": "spati_kiosk",
+      "lat": 52.5496071,
+      "lon": 13.4175632,
+      "opening_hours_raw": null,
+      "payload": {
+        "primary_source": "osm_overpass",
+        "sources": [
+          "osm_overpass",
+          "overture_places"
+        ],
+        "providers": [
+          "meta",
+          "openstreetmap",
+          "overture"
+        ],
+        "n_providers": 3,
+        "in_station": false,
+        "category_conflict": true,
+        "members": [
+          {
+            "source": "osm_overpass",
+            "ref": "node/12766284044",
+            "name": "Inka Markt",
+            "category": "spati_kiosk"
+          },
+          {
+            "source": "overture_places",
+            "ref": "overture:52e301f6-bfe8-487f-86d3-8e6f6463f02c",
+            "name": "Inka-Markt",
+            "category": "supermarket"
+          }
+        ]
+      }
+    },
+    {
+      "external_ref": "node/12791985512",
+      "name": "Spätshop 19",
+      "category": "spati_kiosk",
+      "lat": 52.5471785,
+      "lon": 13.4091531,
+      "opening_hours_raw": "Mo-Su 16:00-03:00",
+      "payload": {
+        "primary_source": "osm_overpass",
+        "sources": [
+          "osm_overpass"
+        ],
+        "providers": [
+          "openstreetmap"
+        ],
+        "n_providers": 1,
+        "in_station": false,
+        "category_conflict": false,
+        "members": [
+          {
+            "source": "osm_overpass",
+            "ref": "node/12791985512",
+            "name": "Spätshop 19",
+            "category": "spati_kiosk"
+          }
+        ]
+      }
+    },
+    {
+      "external_ref": "node/13035540179",
+      "name": "Metis",
+      "category": "cafe",
+      "lat": 52.5472842,
+      "lon": 13.4104194,
+      "opening_hours_raw": "Mo 14:00-18:00; Tu 14:00-21:00; We 14:00-19:00; Th,Fr 12:00-20:00; Sa 10:00-18:00; Su,PH 11:00-18:00",
+      "payload": {
+        "primary_source": "osm_overpass",
+        "sources": [
+          "osm_overpass"
+        ],
+        "providers": [
+          "openstreetmap"
+        ],
+        "n_providers": 1,
+        "in_station": false,
+        "category_conflict": false,
+        "members": [
+          {
+            "source": "osm_overpass",
+            "ref": "node/13035540179",
+            "name": "Metis",
+            "category": "cafe"
+          }
+        ]
+      }
+    },
+    {
+      "external_ref": "node/13314110001",
+      "name": "Waffle Brothers",
+      "category": "fast_food",
+      "lat": 52.551134,
+      "lon": 13.4136208,
+      "opening_hours_raw": null,
+      "payload": {
+        "primary_source": "osm_overpass",
+        "sources": [
+          "osm_overpass"
+        ],
+        "providers": [
+          "openstreetmap"
+        ],
+        "n_providers": 1,
+        "in_station": false,
+        "category_conflict": false,
+        "members": [
+          {
+            "source": "osm_overpass",
+            "ref": "node/13314110001",
+            "name": "Waffle Brothers",
+            "category": "fast_food"
+          }
+        ]
+      }
+    },
+    {
+      "external_ref": "node/13607939863",
+      "name": "Junge",
+      "category": "bakery",
+      "lat": 52.5496436,
+      "lon": 13.4149675,
+      "opening_hours_raw": "Mo-Sa 08:00-20:00",
+      "payload": {
+        "primary_source": "osm_overpass",
+        "sources": [
+          "osm_overpass",
+          "overture_places"
+        ],
+        "providers": [
+          "meta",
+          "openstreetmap",
+          "overture"
+        ],
+        "n_providers": 3,
+        "in_station": true,
+        "category_conflict": false,
+        "members": [
+          {
+            "source": "osm_overpass",
+            "ref": "node/13607939863",
+            "name": "Junge",
+            "category": "bakery"
+          },
+          {
+            "source": "overture_places",
+            "ref": "overture:9a3c1dc1-1f1d-49eb-8f89-a97ac63a05d4",
+            "name": "Junge Die Bäckerei",
+            "category": "bakery"
+          }
+        ]
+      }
+    },
+    {
+      "external_ref": "node/14237900559",
+      "name": "REWE",
+      "category": "supermarket",
+      "lat": 52.5507493,
+      "lon": 13.4100133,
+      "opening_hours_raw": "Mo-Sa 07:00-23:30; PH off",
+      "payload": {
+        "primary_source": "osm_overpass",
+        "sources": [
+          "osm_overpass",
+          "overture_places"
+        ],
+        "providers": [
+          "meta",
+          "openstreetmap",
+          "overture"
+        ],
+        "n_providers": 3,
+        "in_station": false,
+        "category_conflict": false,
+        "members": [
+          {
+            "source": "osm_overpass",
+            "ref": "node/14237900559",
+            "name": "REWE",
+            "category": "supermarket"
+          },
+          {
+            "source": "overture_places",
+            "ref": "overture:300a1e37-14f1-4921-9c99-08bce94a1f41",
+            "name": "REWE",
+            "category": "supermarket"
+          }
+        ]
+      }
+    },
+    {
+      "external_ref": "way/465412571",
+      "name": "Guten Dag Korean Fried Chicken",
+      "category": "fast_food",
+      "lat": 52.5484374,
+      "lon": 13.4135382,
+      "opening_hours_raw": "Mo-Su 12:00-22:00",
+      "payload": {
+        "primary_source": "osm_overpass",
+        "sources": [
+          "osm_overpass",
+          "overture_places"
+        ],
+        "providers": [
+          "meta",
+          "openstreetmap",
+          "overture"
+        ],
+        "n_providers": 3,
+        "in_station": true,
+        "category_conflict": false,
+        "members": [
+          {
+            "source": "osm_overpass",
+            "ref": "way/465412571",
+            "name": "Guten Dag Korean Fried Chicken",
+            "category": "fast_food"
+          },
+          {
+            "source": "overture_places",
+            "ref": "overture:1e53818b-f270-4347-a98a-98db839fd7c9",
+            "name": "GutenDag",
+            "category": "fast_food"
+          }
+        ]
+      }
+    },
+    {
+      "external_ref": "way/553602940",
+      "name": "Bilakis",
+      "category": "fast_food",
+      "lat": 52.5505797,
+      "lon": 13.4144572,
+      "opening_hours_raw": "Mo-Sa 10:00-03:00, Su 12:00-01:00",
+      "payload": {
+        "primary_source": "osm_overpass",
+        "sources": [
+          "osm_overpass",
+          "overture_places"
+        ],
+        "providers": [
+          "meta",
+          "openstreetmap",
+          "overture"
+        ],
+        "n_providers": 3,
+        "in_station": false,
+        "category_conflict": false,
+        "members": [
+          {
+            "source": "osm_overpass",
+            "ref": "way/553602940",
+            "name": "Bilakis",
+            "category": "fast_food"
+          },
+          {
+            "source": "overture_places",
+            "ref": "overture:7a5232e8-8755-44e2-aa9f-6d25baf85a56",
+            "name": "Bilakiss",
+            "category": "fast_food"
+          }
+        ]
+      }
+    },
+    {
+      "external_ref": "overture:07280fe9-d71e-4d1a-bc79-d301de727475",
+      "name": "Joachim Rong Weingalerie",
+      "category": "beverages",
+      "lat": 52.54650115966797,
+      "lon": 13.411839485168457,
+      "opening_hours_raw": null,
+      "payload": {
+        "primary_source": "overture_places",
+        "sources": [
+          "overture_places"
+        ],
+        "providers": [
+          "meta",
+          "overture"
+        ],
+        "n_providers": 2,
+        "in_station": false,
+        "category_conflict": false,
+        "members": [
+          {
+            "source": "overture_places",
+            "ref": "overture:07280fe9-d71e-4d1a-bc79-d301de727475",
+            "name": "Joachim Rong Weingalerie",
+            "category": "beverages"
+          }
+        ]
+      }
+    },
+    {
+      "external_ref": "overture:030173c0-2f62-4b77-81b1-47af893cccd2",
+      "name": "Godshot Coffee Lab",
+      "category": "cafe",
+      "lat": 52.54652404785156,
+      "lon": 13.410799980163574,
+      "opening_hours_raw": null,
+      "payload": {
+        "primary_source": "overture_places",
+        "sources": [
+          "overture_places"
+        ],
+        "providers": [
+          "meta",
+          "overture"
+        ],
+        "n_providers": 2,
+        "in_station": false,
+        "category_conflict": false,
+        "members": [
+          {
+            "source": "overture_places",
+            "ref": "overture:030173c0-2f62-4b77-81b1-47af893cccd2",
+            "name": "Godshot Coffee Lab",
+            "category": "cafe"
+          }
+        ]
+      }
+    },
+    {
+      "external_ref": "overture:37d711d5-1acb-4600-894b-dbc662ca16f3",
+      "name": "Der Havelbäcker Schivelbeiner Str. Berlin",
+      "category": "bakery",
+      "lat": 52.5507698059082,
+      "lon": 13.409590721130371,
+      "opening_hours_raw": null,
+      "payload": {
+        "primary_source": "overture_places",
+        "sources": [
+          "overture_places"
+        ],
+        "providers": [
+          "meta",
+          "overture"
+        ],
+        "n_providers": 2,
+        "in_station": false,
+        "category_conflict": false,
+        "members": [
+          {
+            "source": "overture_places",
+            "ref": "overture:37d711d5-1acb-4600-894b-dbc662ca16f3",
+            "name": "Der Havelbäcker Schivelbeiner Str. Berlin",
+            "category": "bakery"
+          }
+        ]
+      }
+    },
+    {
+      "external_ref": "overture:0df6abd5-8f3a-44b0-80c7-476c12db8afc",
+      "name": "Sonnenreich wines at Arnimplatz",
+      "category": "beverages",
+      "lat": 52.551536560058594,
+      "lon": 13.410638809204102,
+      "opening_hours_raw": null,
+      "payload": {
+        "primary_source": "overture_places",
+        "sources": [
+          "overture_places"
+        ],
+        "providers": [
+          "meta",
+          "overture"
+        ],
+        "n_providers": 2,
+        "in_station": false,
+        "category_conflict": false,
+        "members": [
+          {
+            "source": "overture_places",
+            "ref": "overture:0df6abd5-8f3a-44b0-80c7-476c12db8afc",
+            "name": "Sonnenreich wines at Arnimplatz",
+            "category": "beverages"
+          }
+        ]
+      }
+    },
+    {
+      "external_ref": "overture:37e992be-5a88-473c-bedf-69c91ca3b014",
+      "name": "Veganz Berlin-Prenzlauer Berg",
+      "category": "supermarket",
+      "lat": 52.55096435546875,
+      "lon": 13.408605575561523,
+      "opening_hours_raw": null,
+      "payload": {
+        "primary_source": "overture_places",
+        "sources": [
+          "overture_places"
+        ],
+        "providers": [
+          "microsoft",
+          "overture"
+        ],
+        "n_providers": 2,
+        "in_station": false,
+        "category_conflict": false,
+        "members": [
+          {
+            "source": "overture_places",
+            "ref": "overture:37e992be-5a88-473c-bedf-69c91ca3b014",
+            "name": "Veganz Berlin-Prenzlauer Berg",
+            "category": "supermarket"
+          }
+        ]
+      }
+    },
+    {
+      "external_ref": "overture:3493aa64-a6fc-4ada-ab52-575fbc1c1e08",
+      "name": "Milchbart",
+      "category": "cafe",
+      "lat": 52.55242156982422,
+      "lon": 13.411850929260254,
+      "opening_hours_raw": null,
+      "payload": {
+        "primary_source": "overture_places",
+        "sources": [
+          "overture_places"
+        ],
+        "providers": [
+          "meta",
+          "overture"
+        ],
+        "n_providers": 2,
+        "in_station": false,
+        "category_conflict": false,
+        "members": [
+          {
+            "source": "overture_places",
+            "ref": "overture:3493aa64-a6fc-4ada-ab52-575fbc1c1e08",
+            "name": "Milchbart",
+            "category": "cafe"
+          }
+        ]
+      }
+    },
+    {
+      "external_ref": "overture:f85261b1-4487-4352-ac04-03279b9c806e",
+      "name": "Q62-Lounge",
+      "category": "cafe",
+      "lat": 52.551151275634766,
+      "lon": 13.41356086730957,
+      "opening_hours_raw": null,
+      "payload": {
+        "primary_source": "overture_places",
+        "sources": [
+          "overture_places"
+        ],
+        "providers": [
+          "meta",
+          "overture"
+        ],
+        "n_providers": 2,
+        "in_station": false,
+        "category_conflict": false,
+        "members": [
+          {
+            "source": "overture_places",
+            "ref": "overture:f85261b1-4487-4352-ac04-03279b9c806e",
+            "name": "Q62-Lounge",
+            "category": "cafe"
+          }
+        ]
+      }
+    },
+    {
+      "external_ref": "overture:d92bebd8-25ad-43f1-b72e-a7407392c34c",
+      "name": "Kamps",
+      "category": "bakery",
+      "lat": 52.55172348022461,
+      "lon": 13.412302017211914,
+      "opening_hours_raw": null,
+      "payload": {
+        "primary_source": "overture_places",
+        "sources": [
+          "overture_places"
+        ],
+        "providers": [
+          "alltheplaces",
+          "overture"
+        ],
+        "n_providers": 2,
+        "in_station": false,
+        "category_conflict": false,
+        "members": [
+          {
+            "source": "overture_places",
+            "ref": "overture:d92bebd8-25ad-43f1-b72e-a7407392c34c",
+            "name": "Kamps",
+            "category": "bakery"
+          }
+        ]
+      }
+    },
+    {
+      "external_ref": "overture:65d35ecf-cac2-4c11-9bf7-99e189ade256",
+      "name": "Le Petit Café",
+      "category": "bakery",
+      "lat": 52.550113677978516,
+      "lon": 13.413541793823242,
+      "opening_hours_raw": null,
+      "payload": {
+        "primary_source": "overture_places",
+        "sources": [
+          "overture_places"
+        ],
+        "providers": [
+          "meta",
+          "overture"
+        ],
+        "n_providers": 2,
+        "in_station": true,
+        "category_conflict": false,
+        "members": [
+          {
+            "source": "overture_places",
+            "ref": "overture:65d35ecf-cac2-4c11-9bf7-99e189ade256",
+            "name": "Le Petit Café",
+            "category": "bakery"
+          }
+        ]
+      }
+    },
+    {
+      "external_ref": "overture:4105630a-826f-4f52-b46a-c00ba8aa3eaa",
+      "name": "Balzac Coffee",
+      "category": "cafe",
+      "lat": 52.54978561401367,
+      "lon": 13.41337776184082,
+      "opening_hours_raw": null,
+      "payload": {
+        "primary_source": "overture_places",
+        "sources": [
+          "overture_places"
+        ],
+        "providers": [
+          "foursquare",
+          "overture"
+        ],
+        "n_providers": 2,
+        "in_station": true,
+        "category_conflict": false,
+        "members": [
+          {
+            "source": "overture_places",
+            "ref": "overture:4105630a-826f-4f52-b46a-c00ba8aa3eaa",
+            "name": "Balzac Coffee",
+            "category": "cafe"
+          }
+        ]
+      }
+    },
+    {
+      "external_ref": "overture:17c21656-5973-4a20-a979-eb7ad4cf5415",
+      "name": "Kettwurst!",
+      "category": "fast_food",
+      "lat": 52.54937744140625,
+      "lon": 13.413458824157715,
+      "opening_hours_raw": null,
+      "payload": {
+        "primary_source": "overture_places",
+        "sources": [
+          "overture_places"
+        ],
+        "providers": [
+          "meta",
+          "overture"
+        ],
+        "n_providers": 2,
+        "in_station": true,
+        "category_conflict": false,
+        "members": [
+          {
+            "source": "overture_places",
+            "ref": "overture:17c21656-5973-4a20-a979-eb7ad4cf5415",
+            "name": "Kettwurst!",
+            "category": "fast_food"
+          }
+        ]
+      }
+    },
+    {
+      "external_ref": "overture:e9de36b2-966c-4eed-8c83-efeab965453e",
+      "name": "K_eins",
+      "category": "beverages",
+      "lat": 52.54884338378906,
+      "lon": 13.413008689880371,
+      "opening_hours_raw": null,
+      "payload": {
+        "primary_source": "overture_places",
+        "sources": [
+          "overture_places"
+        ],
+        "providers": [
+          "brightquery",
+          "overture"
+        ],
+        "n_providers": 2,
+        "in_station": true,
+        "category_conflict": false,
+        "members": [
+          {
+            "source": "overture_places",
+            "ref": "overture:e9de36b2-966c-4eed-8c83-efeab965453e",
+            "name": "K_eins",
+            "category": "beverages"
+          }
+        ]
+      }
+    },
+    {
+      "external_ref": "overture:b5dec4cf-438e-4197-bbfe-40b6b0a5b565",
+      "name": "Wiener Feinbäcker (Arkadencenter / S-Bhf)",
+      "category": "bakery",
+      "lat": 52.548580169677734,
+      "lon": 13.413585662841797,
+      "opening_hours_raw": null,
+      "payload": {
+        "primary_source": "overture_places",
+        "sources": [
+          "overture_places"
+        ],
+        "providers": [
+          "alltheplaces",
+          "overture"
+        ],
+        "n_providers": 2,
+        "in_station": true,
+        "category_conflict": false,
+        "members": [
+          {
+            "source": "overture_places",
+            "ref": "overture:b5dec4cf-438e-4197-bbfe-40b6b0a5b565",
+            "name": "Wiener Feinbäcker (Arkadencenter / S-Bhf)",
+            "category": "bakery"
+          }
+        ]
+      }
+    },
+    {
+      "external_ref": "overture:13aa5a06-38ff-409d-8b65-1edcb8f1b7ef",
+      "name": "Back-Factory",
+      "category": "bakery",
+      "lat": 52.54872512817383,
+      "lon": 13.413287162780762,
+      "opening_hours_raw": null,
+      "payload": {
+        "primary_source": "overture_places",
+        "sources": [
+          "overture_places"
+        ],
+        "providers": [
+          "foursquare",
+          "overture"
+        ],
+        "n_providers": 2,
+        "in_station": true,
+        "category_conflict": false,
+        "members": [
+          {
+            "source": "overture_places",
+            "ref": "overture:13aa5a06-38ff-409d-8b65-1edcb8f1b7ef",
+            "name": "Back-Factory",
+            "category": "bakery"
+          }
+        ]
+      }
+    },
+    {
+      "external_ref": "overture:39b0b41a-b20b-4a29-81fa-96594d66935d",
+      "name": "Café Woyda",
+      "category": "cafe",
+      "lat": 52.5485725402832,
+      "lon": 13.412299156188965,
+      "opening_hours_raw": null,
+      "payload": {
+        "primary_source": "overture_places",
+        "sources": [
+          "overture_places"
+        ],
+        "providers": [
+          "foursquare",
+          "overture"
+        ],
+        "n_providers": 2,
+        "in_station": false,
+        "category_conflict": false,
+        "members": [
+          {
+            "source": "overture_places",
+            "ref": "overture:39b0b41a-b20b-4a29-81fa-96594d66935d",
+            "name": "Café Woyda",
+            "category": "cafe"
+          }
+        ]
+      }
+    },
+    {
+      "external_ref": "overture:cf7b8926-4f22-479e-8ead-3c5b72470b96",
+      "name": "Cafe Wunderlich",
+      "category": "cafe",
+      "lat": 52.548789978027344,
+      "lon": 13.4111967086792,
+      "opening_hours_raw": null,
+      "payload": {
+        "primary_source": "overture_places",
+        "sources": [
+          "overture_places"
+        ],
+        "providers": [
+          "foursquare",
+          "overture"
+        ],
+        "n_providers": 2,
+        "in_station": false,
+        "category_conflict": false,
+        "members": [
+          {
+            "source": "overture_places",
+            "ref": "overture:cf7b8926-4f22-479e-8ead-3c5b72470b96",
+            "name": "Cafe Wunderlich",
+            "category": "cafe"
+          }
+        ]
+      }
+    },
+    {
+      "external_ref": "overture:63af35ab-d8ac-4900-8184-c2375873099c",
+      "name": "Traumwein Berlin",
+      "category": "beverages",
+      "lat": 52.548954010009766,
+      "lon": 13.411500930786133,
+      "opening_hours_raw": null,
+      "payload": {
+        "primary_source": "overture_places",
+        "sources": [
+          "overture_places"
+        ],
+        "providers": [
+          "meta",
+          "overture"
+        ],
+        "n_providers": 2,
+        "in_station": false,
+        "category_conflict": false,
+        "members": [
+          {
+            "source": "overture_places",
+            "ref": "overture:63af35ab-d8ac-4900-8184-c2375873099c",
+            "name": "Traumwein Berlin",
+            "category": "beverages"
+          }
+        ]
+      }
+    },
+    {
+      "external_ref": "overture:d719de65-bed8-4e9f-a3d8-d576a7139514",
+      "name": "Portuguese Bakery",
+      "category": "bakery",
+      "lat": 52.550045013427734,
+      "lon": 13.408472061157227,
+      "opening_hours_raw": null,
+      "payload": {
+        "primary_source": "overture_places",
+        "sources": [
+          "overture_places"
+        ],
+        "providers": [
+          "meta",
+          "overture"
+        ],
+        "n_providers": 2,
+        "in_station": false,
+        "category_conflict": false,
+        "members": [
+          {
+            "source": "overture_places",
+            "ref": "overture:d719de65-bed8-4e9f-a3d8-d576a7139514",
+            "name": "Portuguese Bakery",
+            "category": "bakery"
+          }
+        ]
+      }
+    },
+    {
+      "external_ref": "overture:66f2af28-1aad-41db-9965-a0fc88a609a3",
+      "name": "Kohlenquelle",
+      "category": "cafe",
+      "lat": 52.54912567138672,
+      "lon": 13.408138275146484,
+      "opening_hours_raw": null,
+      "payload": {
+        "primary_source": "overture_places",
+        "sources": [
+          "overture_places"
+        ],
+        "providers": [
+          "meta",
+          "overture"
+        ],
+        "n_providers": 2,
+        "in_station": false,
+        "category_conflict": false,
+        "members": [
+          {
+            "source": "overture_places",
+            "ref": "overture:66f2af28-1aad-41db-9965-a0fc88a609a3",
+            "name": "Kohlenquelle",
+            "category": "cafe"
+          }
+        ]
+      }
+    },
+    {
+      "external_ref": "overture:92e7b760-279a-48bd-b092-7bd17f4cf5e9",
+      "name": "Cafe Rhino",
+      "category": "cafe",
+      "lat": 52.54839324951172,
+      "lon": 13.410185813903809,
+      "opening_hours_raw": null,
+      "payload": {
+        "primary_source": "overture_places",
+        "sources": [
+          "overture_places"
+        ],
+        "providers": [
+          "foursquare",
+          "overture"
+        ],
+        "n_providers": 2,
+        "in_station": false,
+        "category_conflict": false,
+        "members": [
+          {
+            "source": "overture_places",
+            "ref": "overture:92e7b760-279a-48bd-b092-7bd17f4cf5e9",
+            "name": "Cafe Rhino",
+            "category": "cafe"
+          }
+        ]
+      }
+    },
+    {
+      "external_ref": "overture:51087feb-ba3b-4379-9d17-7ee12d2700d4",
+      "name": "Glitzer Café ",
+      "category": "cafe",
+      "lat": 52.54768371582031,
+      "lon": 13.41002082824707,
+      "opening_hours_raw": null,
+      "payload": {
+        "primary_source": "overture_places",
+        "sources": [
+          "overture_places"
+        ],
+        "providers": [
+          "meta",
+          "overture"
+        ],
+        "n_providers": 2,
+        "in_station": false,
+        "category_conflict": false,
+        "members": [
+          {
+            "source": "overture_places",
+            "ref": "overture:51087feb-ba3b-4379-9d17-7ee12d2700d4",
+            "name": "Glitzer Café ",
+            "category": "cafe"
+          }
+        ]
+      }
+    },
+    {
+      "external_ref": "overture:d6430848-df73-4660-84f1-30513f631085",
+      "name": "Eetcafé Linda Carrell Berlin",
+      "category": "cafe",
+      "lat": 52.548091888427734,
+      "lon": 13.40983772277832,
+      "opening_hours_raw": null,
+      "payload": {
+        "primary_source": "overture_places",
+        "sources": [
+          "overture_places"
+        ],
+        "providers": [
+          "microsoft",
+          "overture"
+        ],
+        "n_providers": 2,
+        "in_station": false,
+        "category_conflict": false,
+        "members": [
+          {
+            "source": "overture_places",
+            "ref": "overture:d6430848-df73-4660-84f1-30513f631085",
+            "name": "Eetcafé Linda Carrell Berlin",
+            "category": "cafe"
+          }
+        ]
+      }
+    },
+    {
+      "external_ref": "overture:7f69665c-1d82-4e75-850b-65696fb89b8d",
+      "name": "YogaCafé - Mindful Life",
+      "category": "cafe",
+      "lat": 52.5475959777832,
+      "lon": 13.409470558166504,
+      "opening_hours_raw": null,
+      "payload": {
+        "primary_source": "overture_places",
+        "sources": [
+          "overture_places"
+        ],
+        "providers": [
+          "foursquare",
+          "overture"
+        ],
+        "n_providers": 2,
+        "in_station": false,
+        "category_conflict": false,
+        "members": [
+          {
+            "source": "overture_places",
+            "ref": "overture:7f69665c-1d82-4e75-850b-65696fb89b8d",
+            "name": "YogaCafé - Mindful Life",
+            "category": "cafe"
+          }
+        ]
+      }
+    },
+    {
+      "external_ref": "overture:9962148a-d066-4106-919b-4c02097210e7",
+      "name": "Lavazza",
+      "category": "cafe",
+      "lat": 52.54718017578125,
+      "lon": 13.409367561340332,
+      "opening_hours_raw": null,
+      "payload": {
+        "primary_source": "overture_places",
+        "sources": [
+          "overture_places"
+        ],
+        "providers": [
+          "foursquare",
+          "overture"
+        ],
+        "n_providers": 2,
+        "in_station": false,
+        "category_conflict": false,
+        "members": [
+          {
+            "source": "overture_places",
+            "ref": "overture:9962148a-d066-4106-919b-4c02097210e7",
+            "name": "Lavazza",
+            "category": "cafe"
+          }
+        ]
+      }
+    },
+    {
+      "external_ref": "overture:fff03c37-0370-4dcd-a2a0-e5a06e6ae6ed",
+      "name": "Nah und Gut Kurschus",
+      "category": "supermarket",
+      "lat": 52.54717254638672,
+      "lon": 13.409281730651855,
+      "opening_hours_raw": null,
+      "payload": {
+        "primary_source": "overture_places",
+        "sources": [
+          "overture_places"
+        ],
+        "providers": [
+          "microsoft",
+          "overture"
+        ],
+        "n_providers": 2,
+        "in_station": false,
+        "category_conflict": false,
+        "members": [
+          {
+            "source": "overture_places",
+            "ref": "overture:fff03c37-0370-4dcd-a2a0-e5a06e6ae6ed",
+            "name": "Nah und Gut Kurschus",
+            "category": "supermarket"
+          }
+        ]
+      }
+    },
+    {
+      "external_ref": "overture:1c3dbf98-e8a7-4c6b-b3ee-69a16e26951a",
+      "name": "ShuGa Café Patisserie Artisanale",
+      "category": "cafe",
+      "lat": 52.54747009277344,
+      "lon": 13.408960342407227,
+      "opening_hours_raw": null,
+      "payload": {
+        "primary_source": "overture_places",
+        "sources": [
+          "overture_places"
+        ],
+        "providers": [
+          "meta",
+          "overture"
+        ],
+        "n_providers": 2,
+        "in_station": false,
+        "category_conflict": false,
+        "members": [
+          {
+            "source": "overture_places",
+            "ref": "overture:1c3dbf98-e8a7-4c6b-b3ee-69a16e26951a",
+            "name": "ShuGa Café Patisserie Artisanale",
+            "category": "cafe"
+          }
+        ]
+      }
+    },
+    {
+      "external_ref": "overture:65842e4e-2673-4ab2-8c30-a827ef848ba7",
+      "name": "Balabait Eatery & Deli",
+      "category": "other_fresh_food",
+      "lat": 52.547428131103516,
+      "lon": 13.408818244934082,
+      "opening_hours_raw": null,
+      "payload": {
+        "primary_source": "overture_places",
+        "sources": [
+          "overture_places"
+        ],
+        "providers": [
+          "brightquery",
+          "overture"
+        ],
+        "n_providers": 2,
+        "in_station": false,
+        "category_conflict": false,
+        "members": [
+          {
+            "source": "overture_places",
+            "ref": "overture:65842e4e-2673-4ab2-8c30-a827ef848ba7",
+            "name": "Balabait Eatery & Deli",
+            "category": "other_fresh_food"
+          }
+        ]
+      }
+    },
+    {
+      "external_ref": "overture:30321e1d-4da7-4531-bca5-e4ca9b3c99fc",
+      "name": "Hala Hala",
+      "category": "supermarket",
+      "lat": 52.54747009277344,
+      "lon": 13.41152286529541,
+      "opening_hours_raw": null,
+      "payload": {
+        "primary_source": "overture_places",
+        "sources": [
+          "overture_places"
+        ],
+        "providers": [
+          "meta",
+          "overture"
+        ],
+        "n_providers": 2,
+        "in_station": false,
+        "category_conflict": false,
+        "members": [
+          {
+            "source": "overture_places",
+            "ref": "overture:30321e1d-4da7-4531-bca5-e4ca9b3c99fc",
+            "name": "Hala Hala",
+            "category": "supermarket"
+          }
+        ]
+      }
+    },
+    {
+      "external_ref": "overture:eaab4e02-0033-4111-9bc2-2d55f30b12fe",
+      "name": "McDonald's",
+      "category": "fast_food",
+      "lat": 52.54836654663086,
+      "lon": 13.413139343261719,
+      "opening_hours_raw": null,
+      "payload": {
+        "primary_source": "overture_places",
+        "sources": [
+          "overture_places"
+        ],
+        "providers": [
+          "meta",
+          "overture"
+        ],
+        "n_providers": 2,
+        "in_station": true,
+        "category_conflict": false,
+        "members": [
+          {
+            "source": "overture_places",
+            "ref": "overture:eaab4e02-0033-4111-9bc2-2d55f30b12fe",
+            "name": "McDonald's",
+            "category": "fast_food"
+          }
+        ]
+      }
+    },
+    {
+      "external_ref": "overture:468accee-7a9d-4fa6-8b68-bc3a65a0036c",
+      "name": "Hermes PaketShop",
+      "category": "spati_kiosk",
+      "lat": 52.54829025268555,
+      "lon": 13.413338661193848,
+      "opening_hours_raw": null,
+      "payload": {
+        "primary_source": "overture_places",
+        "sources": [
+          "overture_places"
+        ],
+        "providers": [
+          "microsoft",
+          "overture"
+        ],
+        "n_providers": 2,
+        "in_station": true,
+        "category_conflict": false,
+        "members": [
+          {
+            "source": "overture_places",
+            "ref": "overture:468accee-7a9d-4fa6-8b68-bc3a65a0036c",
+            "name": "Hermes PaketShop",
+            "category": "spati_kiosk"
+          }
+        ]
+      }
+    },
+    {
+      "external_ref": "overture:09cb2502-ba36-4e24-97a2-f0aacbc7e332",
+      "name": "St. Gaudy Café",
+      "category": "cafe",
+      "lat": 52.546783447265625,
+      "lon": 13.412493705749512,
+      "opening_hours_raw": null,
+      "payload": {
+        "primary_source": "overture_places",
+        "sources": [
+          "overture_places"
+        ],
+        "providers": [
+          "foursquare",
+          "overture"
+        ],
+        "n_providers": 2,
+        "in_station": false,
+        "category_conflict": false,
+        "members": [
+          {
+            "source": "overture_places",
+            "ref": "overture:09cb2502-ba36-4e24-97a2-f0aacbc7e332",
+            "name": "St. Gaudy Café",
+            "category": "cafe"
+          }
+        ]
+      }
+    },
+    {
+      "external_ref": "overture:a2ca30cf-e7e9-4307-afcc-febcf4d8797c",
+      "name": "Berliner Kaffeekontor",
+      "category": "cafe",
+      "lat": 52.54747009277344,
+      "lon": 13.414844512939453,
+      "opening_hours_raw": null,
+      "payload": {
+        "primary_source": "overture_places",
+        "sources": [
+          "overture_places"
+        ],
+        "providers": [
+          "meta",
+          "overture"
+        ],
+        "n_providers": 2,
+        "in_station": false,
+        "category_conflict": false,
+        "members": [
+          {
+            "source": "overture_places",
+            "ref": "overture:a2ca30cf-e7e9-4307-afcc-febcf4d8797c",
+            "name": "Berliner Kaffeekontor",
+            "category": "cafe"
+          }
+        ]
+      }
+    },
+    {
+      "external_ref": "overture:fc92ae81-c552-4a28-a722-eb6efa642c22",
+      "name": "Hermes PaketShop",
+      "category": "spati_kiosk",
+      "lat": 52.547401428222656,
+      "lon": 13.41409969329834,
+      "opening_hours_raw": null,
+      "payload": {
+        "primary_source": "overture_places",
+        "sources": [
+          "overture_places"
+        ],
+        "providers": [
+          "microsoft",
+          "overture"
+        ],
+        "n_providers": 2,
+        "in_station": false,
+        "category_conflict": false,
+        "members": [
+          {
+            "source": "overture_places",
+            "ref": "overture:fc92ae81-c552-4a28-a722-eb6efa642c22",
+            "name": "Hermes PaketShop",
+            "category": "spati_kiosk"
+          }
+        ]
+      }
+    },
+    {
+      "external_ref": "overture:44dc6872-1b5a-4788-a5b4-d4e784745e40",
+      "name": "Spreegold",
+      "category": "cafe",
+      "lat": 52.54780960083008,
+      "lon": 13.413814544677734,
+      "opening_hours_raw": null,
+      "payload": {
+        "primary_source": "overture_places",
+        "sources": [
+          "overture_places"
+        ],
+        "providers": [
+          "meta",
+          "overture"
+        ],
+        "n_providers": 2,
+        "in_station": false,
+        "category_conflict": false,
+        "members": [
+          {
+            "source": "overture_places",
+            "ref": "overture:44dc6872-1b5a-4788-a5b4-d4e784745e40",
+            "name": "Spreegold",
+            "category": "cafe"
+          }
+        ]
+      }
+    },
+    {
+      "external_ref": "overture:e1de386a-04aa-40d3-890a-a50e1e1180b9",
+      "name": "Panorama-weinhandlung",
+      "category": "beverages",
+      "lat": 52.547203063964844,
+      "lon": 13.416738510131836,
+      "opening_hours_raw": null,
+      "payload": {
+        "primary_source": "overture_places",
+        "sources": [
+          "overture_places"
+        ],
+        "providers": [
+          "brightquery",
+          "overture"
+        ],
+        "n_providers": 2,
+        "in_station": false,
+        "category_conflict": false,
+        "members": [
+          {
+            "source": "overture_places",
+            "ref": "overture:e1de386a-04aa-40d3-890a-a50e1e1180b9",
+            "name": "Panorama-weinhandlung",
+            "category": "beverages"
+          }
+        ]
+      }
+    },
+    {
+      "external_ref": "overture:2859af66-d967-4bb6-9cfe-0fef721e590b",
+      "name": "Café LUC",
+      "category": "cafe",
+      "lat": 52.54678726196289,
+      "lon": 13.417570114135742,
+      "opening_hours_raw": null,
+      "payload": {
+        "primary_source": "overture_places",
+        "sources": [
+          "overture_places"
+        ],
+        "providers": [
+          "meta",
+          "overture"
+        ],
+        "n_providers": 2,
+        "in_station": false,
+        "category_conflict": false,
+        "members": [
+          {
+            "source": "overture_places",
+            "ref": "overture:2859af66-d967-4bb6-9cfe-0fef721e590b",
+            "name": "Café LUC",
+            "category": "cafe"
+          }
+        ]
+      }
+    },
+    {
+      "external_ref": "overture:6b824ac8-83f2-4ab7-8c09-0ca058a54772",
+      "name": "Eckert Kiosk",
+      "category": "spati_kiosk",
+      "lat": 52.54901123046875,
+      "lon": 13.416545867919922,
+      "opening_hours_raw": null,
+      "payload": {
+        "primary_source": "overture_places",
+        "sources": [
+          "overture_places"
+        ],
+        "providers": [
+          "foursquare",
+          "overture"
+        ],
+        "n_providers": 2,
+        "in_station": true,
+        "category_conflict": false,
+        "members": [
+          {
+            "source": "overture_places",
+            "ref": "overture:6b824ac8-83f2-4ab7-8c09-0ca058a54772",
+            "name": "Eckert Kiosk",
+            "category": "spati_kiosk"
+          }
+        ]
+      }
+    },
+    {
+      "external_ref": "overture:e6da75d4-3ae7-4a52-947b-5707e732df33",
+      "name": "Maître vite",
+      "category": "cafe",
+      "lat": 52.54941940307617,
+      "lon": 13.415169715881348,
+      "opening_hours_raw": null,
+      "payload": {
+        "primary_source": "overture_places",
+        "sources": [
+          "overture_places"
+        ],
+        "providers": [
+          "foursquare",
+          "overture"
+        ],
+        "n_providers": 2,
+        "in_station": true,
+        "category_conflict": false,
+        "members": [
+          {
+            "source": "overture_places",
+            "ref": "overture:e6da75d4-3ae7-4a52-947b-5707e732df33",
+            "name": "Maître vite",
+            "category": "cafe"
+          }
+        ]
+      }
+    },
+    {
+      "external_ref": "overture:0c5c1e7e-0eed-4e62-b19d-6502d9b01082",
+      "name": "Unternehmensgruppe Dr. Eckert",
+      "category": "gas_station_convenience",
+      "lat": 52.54963302612305,
+      "lon": 13.416362762451172,
+      "opening_hours_raw": null,
+      "payload": {
+        "primary_source": "overture_places",
+        "sources": [
+          "overture_places"
+        ],
+        "providers": [
+          "microsoft",
+          "overture"
+        ],
+        "n_providers": 2,
+        "in_station": false,
+        "category_conflict": false,
+        "members": [
+          {
+            "source": "overture_places",
+            "ref": "overture:0c5c1e7e-0eed-4e62-b19d-6502d9b01082",
+            "name": "Unternehmensgruppe Dr. Eckert",
+            "category": "gas_station_convenience"
+          }
+        ]
+      }
+    },
+    {
+      "external_ref": "overture:fa1419a7-fe6d-4f56-b198-6a5b75bbf6a9",
+      "name": "Tchibo Filiale",
+      "category": "cafe",
+      "lat": 52.54963302612305,
+      "lon": 13.416362762451172,
+      "opening_hours_raw": null,
+      "payload": {
+        "primary_source": "overture_places",
+        "sources": [
+          "overture_places"
+        ],
+        "providers": [
+          "microsoft",
+          "overture"
+        ],
+        "n_providers": 2,
+        "in_station": false,
+        "category_conflict": false,
+        "members": [
+          {
+            "source": "overture_places",
+            "ref": "overture:fa1419a7-fe6d-4f56-b198-6a5b75bbf6a9",
+            "name": "Tchibo Filiale",
+            "category": "cafe"
+          }
+        ]
+      }
+    },
+    {
+      "external_ref": "overture:8c4a8006-a75b-4f78-84d9-df180c51c7d4",
+      "name": "Party Shop Berlin",
+      "category": "beverages",
+      "lat": 52.54877471923828,
+      "lon": 13.414095878601074,
+      "opening_hours_raw": null,
+      "payload": {
+        "primary_source": "overture_places",
+        "sources": [
+          "overture_places"
+        ],
+        "providers": [
+          "brightquery",
+          "overture"
+        ],
+        "n_providers": 2,
+        "in_station": true,
+        "category_conflict": false,
+        "members": [
+          {
+            "source": "overture_places",
+            "ref": "overture:8c4a8006-a75b-4f78-84d9-df180c51c7d4",
+            "name": "Party Shop Berlin",
+            "category": "beverages"
+          }
+        ]
+      }
+    },
+    {
+      "external_ref": "overture:ade90f5f-8d60-42a6-bd81-5623aba9b8d8",
+      "name": "Berlin Schönhauser Allee Arc",
+      "category": "fast_food",
+      "lat": 52.54869079589844,
+      "lon": 13.41376781463623,
+      "opening_hours_raw": null,
+      "payload": {
+        "primary_source": "overture_places",
+        "sources": [
+          "overture_places"
+        ],
+        "providers": [
+          "alltheplaces",
+          "overture"
+        ],
+        "n_providers": 2,
+        "in_station": true,
+        "category_conflict": false,
+        "members": [
+          {
+            "source": "overture_places",
+            "ref": "overture:ade90f5f-8d60-42a6-bd81-5623aba9b8d8",
+            "name": "Berlin Schönhauser Allee Arc",
+            "category": "fast_food"
+          }
+        ]
+      }
+    },
+    {
+      "external_ref": "overture:6be618cb-54a7-4d7b-8103-c0f4f7a3caaa",
+      "name": "ServiceStore DB",
+      "category": "spati_kiosk",
+      "lat": 52.54936599731445,
+      "lon": 13.414994239807129,
+      "opening_hours_raw": null,
+      "payload": {
+        "primary_source": "overture_places",
+        "sources": [
+          "overture_places"
+        ],
+        "providers": [
+          "microsoft",
+          "overture"
+        ],
+        "n_providers": 2,
+        "in_station": true,
+        "category_conflict": false,
+        "members": [
+          {
+            "source": "overture_places",
+            "ref": "overture:6be618cb-54a7-4d7b-8103-c0f4f7a3caaa",
+            "name": "ServiceStore DB",
+            "category": "spati_kiosk"
+          }
+        ]
+      }
+    },
+    {
+      "external_ref": "overture:3a9ed2c8-8686-44cf-b8a1-601d24046f83",
+      "name": "Francisco Deutschland GmbH",
+      "category": "supermarket",
+      "lat": 52.54989242553711,
+      "lon": 13.414167404174805,
+      "opening_hours_raw": null,
+      "payload": {
+        "primary_source": "overture_places",
+        "sources": [
+          "overture_places"
+        ],
+        "providers": [
+          "foursquare",
+          "overture"
+        ],
+        "n_providers": 2,
+        "in_station": true,
+        "category_conflict": false,
+        "members": [
+          {
+            "source": "overture_places",
+            "ref": "overture:3a9ed2c8-8686-44cf-b8a1-601d24046f83",
+            "name": "Francisco Deutschland GmbH",
+            "category": "supermarket"
+          }
+        ]
+      }
+    },
+    {
+      "external_ref": "overture:e09cd576-2782-4635-9ee6-e286df3c14a9",
+      "name": "Ciao Bella",
+      "category": "supermarket",
+      "lat": 52.5497932434082,
+      "lon": 13.414250373840332,
+      "opening_hours_raw": null,
+      "payload": {
+        "primary_source": "overture_places",
+        "sources": [
+          "overture_places"
+        ],
+        "providers": [
+          "microsoft",
+          "overture"
+        ],
+        "n_providers": 2,
+        "in_station": true,
+        "category_conflict": false,
+        "members": [
+          {
+            "source": "overture_places",
+            "ref": "overture:e09cd576-2782-4635-9ee6-e286df3c14a9",
+            "name": "Ciao Bella",
+            "category": "supermarket"
+          }
+        ]
+      }
+    },
+    {
+      "external_ref": "overture:bbf19468-47d7-4575-b94f-c891540c4bac",
+      "name": "Wrapublic",
+      "category": "fast_food",
+      "lat": 52.549739837646484,
+      "lon": 13.414305686950684,
+      "opening_hours_raw": null,
+      "payload": {
+        "primary_source": "overture_places",
+        "sources": [
+          "overture_places"
+        ],
+        "providers": [
+          "foursquare",
+          "overture"
+        ],
+        "n_providers": 2,
+        "in_station": true,
+        "category_conflict": false,
+        "members": [
+          {
+            "source": "overture_places",
+            "ref": "overture:bbf19468-47d7-4575-b94f-c891540c4bac",
+            "name": "Wrapublic",
+            "category": "fast_food"
+          }
+        ]
+      }
+    },
+    {
+      "external_ref": "overture:e4a9c3a0-636b-4cbf-aa9b-67e46628d2e0",
+      "name": "EDEKA Schönhauser Allee",
+      "category": "supermarket",
+      "lat": 52.549835205078125,
+      "lon": 13.41397476196289,
+      "opening_hours_raw": null,
+      "payload": {
+        "primary_source": "overture_places",
+        "sources": [
+          "overture_places"
+        ],
+        "providers": [
+          "microsoft",
+          "overture"
+        ],
+        "n_providers": 2,
+        "in_station": true,
+        "category_conflict": false,
+        "members": [
+          {
+            "source": "overture_places",
+            "ref": "overture:e4a9c3a0-636b-4cbf-aa9b-67e46628d2e0",
+            "name": "EDEKA Schönhauser Allee",
+            "category": "supermarket"
+          }
+        ]
+      }
+    },
+    {
+      "external_ref": "overture:772c3edb-fb87-4e27-9dcf-aad81fc274a3",
+      "name": "REWE",
+      "category": "supermarket",
+      "lat": 52.549835205078125,
+      "lon": 13.41397476196289,
+      "opening_hours_raw": null,
+      "payload": {
+        "primary_source": "overture_places",
+        "sources": [
+          "overture_places"
+        ],
+        "providers": [
+          "microsoft",
+          "overture"
+        ],
+        "n_providers": 2,
+        "in_station": true,
+        "category_conflict": false,
+        "members": [
+          {
+            "source": "overture_places",
+            "ref": "overture:772c3edb-fb87-4e27-9dcf-aad81fc274a3",
+            "name": "REWE",
+            "category": "supermarket"
+          }
+        ]
+      }
+    },
+    {
+      "external_ref": "overture:5523c0be-6909-4eef-be97-ab2af33f1c3e",
+      "name": "Aisa Mekong - Mini Markt",
+      "category": "supermarket",
+      "lat": 52.55070114135742,
+      "lon": 13.41498851776123,
+      "opening_hours_raw": null,
+      "payload": {
+        "primary_source": "overture_places",
+        "sources": [
+          "overture_places"
+        ],
+        "providers": [
+          "meta",
+          "overture"
+        ],
+        "n_providers": 2,
+        "in_station": false,
+        "category_conflict": false,
+        "members": [
+          {
+            "source": "overture_places",
+            "ref": "overture:5523c0be-6909-4eef-be97-ab2af33f1c3e",
+            "name": "Aisa Mekong - Mini Markt",
+            "category": "supermarket"
+          }
+        ]
+      }
+    },
+    {
+      "external_ref": "overture:b882aa9f-fb0d-442b-b0f3-80a8cb10173d",
+      "name": "مطبخ شغف - Passion",
+      "category": "fast_food",
+      "lat": 52.55192947387695,
+      "lon": 13.41377067565918,
+      "opening_hours_raw": null,
+      "payload": {
+        "primary_source": "overture_places",
+        "sources": [
+          "overture_places"
+        ],
+        "providers": [
+          "meta",
+          "overture"
+        ],
+        "n_providers": 2,
+        "in_station": false,
+        "category_conflict": false,
+        "members": [
+          {
+            "source": "overture_places",
+            "ref": "overture:b882aa9f-fb0d-442b-b0f3-80a8cb10173d",
+            "name": "مطبخ شغف - Passion",
+            "category": "fast_food"
+          }
+        ]
+      }
+    },
+    {
+      "external_ref": "overture:c786f539-05d8-435c-8f8b-628ac817e0c2",
+      "name": "Marietta",
+      "category": "cafe",
+      "lat": 52.546630859375,
+      "lon": 13.417476654052734,
+      "opening_hours_raw": null,
+      "payload": {
+        "primary_source": "overture_places",
+        "sources": [
+          "overture_places"
+        ],
+        "providers": [
+          "foursquare",
+          "overture"
+        ],
+        "n_providers": 2,
+        "in_station": false,
+        "category_conflict": false,
+        "members": [
+          {
+            "source": "overture_places",
+            "ref": "overture:c786f539-05d8-435c-8f8b-628ac817e0c2",
+            "name": "Marietta",
+            "category": "cafe"
+          }
+        ]
+      }
+    }
+  ]
+}

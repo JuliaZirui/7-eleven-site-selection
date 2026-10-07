@@ -2,7 +2,7 @@
 
 2026-09-23 · Candidate transit-node shortlist and business analysis scope. Store-model assumptions live separately in [store_hypothesis.md](store_hypothesis.md).
 
-> **How to read this file.** After the scope sections it is a dated working log (Day 2 → v5.2). Later sections supersede earlier ones and earlier text is not rewritten. For example, Day 5's three-pillar scoring was replaced in v3, v1's competitor counts in v2, and VBB GTFS, rejected on Day 4, was adopted in v2 for station lookups. Current figures: the last section and the [latest report](reports/site_report_run15_20261002T092116Z.md). The follow-up agent's v2 is the last section.
+> **How to read this file.** After the scope sections it is a dated working log (Day 2 → v5.2). Later sections supersede earlier ones and earlier text is not rewritten. For example, Day 5's three-pillar scoring was replaced in v3, v1's competitor counts in v2, and VBB GTFS, rejected on Day 4, was adopted in v2 for station lookups. Current figures: the last section and the [latest report](reports/site_report_run17_20261003T153943Z.md). The follow-up agent's v2 is the last section.
 
 ## Core Business Question
 
@@ -194,7 +194,7 @@ This corroborates two of the three customer-profile hypotheses reasonably direct
 
 ## Day 5: Scoring Layer, Sensitivity, Report
 
-[`src/scoring.py`](src/scoring.py) computes two scores per node and never adds them together: **business fit** (how well public data match the store hypothesis) and **evidence quality** (how far that fit number can be trusted). [`src/report.py`](src/report.py) renders [`templates/report_template.md`](templates/report_template.md), re-verifies every cited figure against `area_metrics` by `metric_id`, and writes an `analysis_runs` row (store hypothesis parsed from [store_hypothesis.md](store_hypothesis.md), area ids, snapshot ids, weights, `scoring_v1`, the Day 4 tool log, report path). First run: `analysis_runs #1` (24 Sep). Only the latest run's report is published: [`reports/site_report_run15_20261002T092116Z.md`](reports/site_report_run15_20261002T092116Z.md).
+[`src/scoring.py`](src/scoring.py) computes two scores per node and never adds them together: **business fit** (how well public data match the store hypothesis) and **evidence quality** (how far that fit number can be trusted). [`src/report.py`](src/report.py) renders [`templates/report_template.md`](templates/report_template.md), re-verifies every cited figure against `area_metrics` by `metric_id`, and writes an `analysis_runs` row (store hypothesis parsed from [store_hypothesis.md](store_hypothesis.md), area ids, snapshot ids, weights, `scoring_v1`, the Day 4 tool log, report path). First run: `analysis_runs #1` (24 Sep). Only the latest run's report is published: [`reports/site_report_run17_20261003T153943Z.md`](reports/site_report_run17_20261003T153943Z.md).
 
 ### New scoring inputs (added to the Day 3 metrics layer)
 
@@ -232,7 +232,7 @@ Two gaps surfaced while building the scoring, both fixed in [`src/metrics_pipeli
 
 ## Day 6: Fixed Test Cases
 
-`python3 tests/run_day6.py` runs all four fixed test-case categories from project_plan_v3.md, plus a supplementary suite for the Day 5 layer, then an end-to-end reproducibility check. It writes a time/cost/quality log to `reports/day6_test_log_<stamp>.md` and `.json`; the latest published log is [`reports/day6_test_log_20261002T150159Z.md`](reports/day6_test_log_20261002T150159Z.md). The tests use stdlib `unittest` (no new dependency). Every test builds its own throwaway SQLite database from `db/schema.sql` and redirects every raw-file/report path into a temp dir. A network guard makes any HTTP call a test didn't explicitly mock raise an error, so the real `db/site_selection.db` is never written (checksum identical before and after) and no test can pass by quietly hitting a live API.
+`python3 tests/run_day6.py` runs all four fixed test-case categories from project_plan_v3.md, plus a supplementary suite for the Day 5 layer, then an end-to-end reproducibility check. It writes a time/cost/quality log to `reports/day6_test_log_<stamp>.md` and `.json`; the latest published log is [`reports/day6_test_log_20261004T081832Z.md`](reports/day6_test_log_20261004T081832Z.md). The tests use stdlib `unittest` (no new dependency). Every test builds its own throwaway SQLite database from `db/schema.sql` and redirects every raw-file/report path into a temp dir. A network guard makes any HTTP call a test didn't explicitly mock raise an error, so the real `db/site_selection.db` is never written (checksum identical before and after) and no test can pass by quietly hitting a live API.
 
 | Category | File | What it pins down |
 | --- | --- | --- |
@@ -533,3 +533,14 @@ The Day 4 loop was split into a deterministic executor ([`src/agent_policy.py`](
 The impact rule and the LLM tie on ordering, at 14/14 each. The LLM's edge is declining calls that cannot change the decision, and writing more specific field questions. The impact rule is now the default.
 
 Plan: [plan_llm_tool_selection.md](plan_llm_tool_selection.md). Pre-registration: [comparison/policy_scenarios.md](comparison/policy_scenarios.md). Results: [comparison/policy_eval.md](comparison/policy_eval.md). Decision and caveats: [comparison/policy_findings.md](comparison/policy_findings.md). On the real data, nothing changes: every current gap is flag-only.
+
+## v6: Benchmark Defects Fixed, Competition-Structure Check (2026-10-03, scoring_v7, analysis_runs #16–17)
+
+- **Competition-structure check (run #16).** The competition criteria divide competitor counts by people per day, so demand enters business fit twice. The report now re-scores with absolute competitor counts in the 400m circle, anchored on the same 139 stations' raw counts. The order and the 100% random-weighting share are unchanged; Schönhauser Allee's counts sit above the city P90 in every window under either measure.
+- **conflation_v2 (run #17).** The three wrong records the manual benchmark found at Brandenburger Tor are now handled: a near-duplicate merge (Ha's Café / Bäckerei Bich Ha), a name/category check (MAREDO Steakhouse tagged café), and a sourced manual correction (Zollernhof, an office building). The two rules also run on the reference stations, which were recalibrated on the same stations and the same Overture release (now cached, so the recalibration is offline). Details and before/after: [comparison/data_quality_fixes.md](comparison/data_quality_fixes.md).
+
+| Node | Fit (run #16 → #17) | Evidence quality | Ranked #1 |
+| --- | --- | --- | --- |
+| Brandenburger Tor | 92.7 → **92.9** | 75.4 → 73.9 (verify first) | 100% |
+| Warschauer Straße | 63.6 → **63.2** | 76.6 (verify first) | 0% |
+| Schönhauser Allee | 23.7 → **23.7** | 90.4 (adequate) | 0% |

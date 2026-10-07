@@ -54,6 +54,7 @@ CATEGORIES: tuple[tuple[str, str, str], ...] = (
     ("agent_policy", "Agent executor & policies (v2)", "test_agent_policy"),
     ("llm_policy", "LLM policy, mocked client (v2)", "test_llm_policy"),
     ("policy_scenarios", "Pre-registered policy scenarios (v2)", "test_policy_scenarios"),
+    ("cli", "Entry point, site input & offline demo", "test_cli"),
 )
 
 

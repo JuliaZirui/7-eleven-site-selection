@@ -17,6 +17,21 @@ Matching rules (deterministic, Program work -- no LLM judgment):
     if an Overture row sits between them;
   - unnamed records are never merged (same rule as the OSM dedup).
 
+Data-quality rules (conflation_v2), from the defects the manual benchmark
+found (comparison/manual_vs_tool.md); every record they remove or merge
+is listed in the snapshot's stats, so each correction stays auditable:
+  - near-duplicate merge: two records from different sources within
+    NEAR_DUPLICATE_M, with the same category and a distinctive name
+    word in common ("Ha's Café" / "Bäckerei Bich Ha") are one shop,
+    even though the full names fail names_match;
+  - name/category conflict: a non-OSM record classified café or bakery
+    whose name says it is a restaurant or not a food shop at all
+    ("MAREDO Steakhouse" tagged coffee_shop) is dropped -- OSM's
+    category is trusted, the conflated providers' is not;
+  - verified corrections: records a person checked and found wrong
+    (POI_CORRECTIONS_CSV, one row per record with its evidence) are
+    dropped wherever they appear, candidate or reference station.
+
 Each output record keeps its provenance: every member record, and the
 set of independent upstream providers behind it. Overture is itself a
 conflation of Meta / Microsoft / Foursquare / AllThePlaces /
@@ -26,6 +41,7 @@ Overture-via-Foursquare and by FSQ OS Places is one provider, not two.
 
 from __future__ import annotations
 
+import csv
 import json
 import re
 import sqlite3
@@ -35,13 +51,14 @@ from pathlib import Path
 
 from geo import haversine_m
 from models import LocationInput
+from poi_taxonomy import POICategory
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 RAW_DIR = PROJECT_ROOT / "db" / "raw" / "conflated"
 
 SOURCE_ENTITY_TYPE = "poi_source"
 CONFLATED_SOURCE_NAME = "poi_conflated"
-CONFLATION_METHOD_VERSION = "conflation_v1"
+CONFLATION_METHOD_VERSION = "conflation_v2"
 
 # Priority when picking a cluster's primary record (name, category,
 # coordinates, opening hours): OSM carries hours and was the v1 source
@@ -56,6 +73,26 @@ REQUIRED_SOURCE = "osm_overpass"
 MATCH_DISTANCE_M = 60.0
 NAME_SIMILARITY_MIN = 0.8
 MIN_CONTAINMENT_LEN = 4
+
+# conflation_v2 data-quality rules (module docstring). 15m: Ha's Café and
+# Bäckerei Bich Ha sit 8m apart; two genuinely different same-category
+# shops sharing a name word closer than 15m are rare enough to accept.
+NEAR_DUPLICATE_M = 15.0
+MIN_SHARED_WORD_LEN = 2
+# Name words that contradict a café/bakery category: a full-service
+# restaurant or a non-food place. Kept short and unambiguous -- "grill",
+# "restaurant" or "bar" also name genuine snack and coffee places.
+NON_SHOP_NAME_WORDS = frozenset(
+    "steakhouse steakhaus ristorante trattoria osteria brasserie hotel hostel".split()
+)
+# Words that name a food type, not a business: neighbours sharing only
+# one of these ("Manhattan Burger" / "Charlotten Burger") are not merged.
+FOOD_TYPE_WORDS = frozenset(
+    """burger döner doner kebap kebab gemüse gemuse pizza chicken sushi back feinkost konditorei
+    patisserie spätshop tabak getränke asia supermarkt super market fresh food eatery original""".split()
+)
+NAME_CHECKED_CATEGORIES = frozenset({POICategory.CAFE.value, POICategory.BAKERY.value})
+POI_CORRECTIONS_CSV = PROJECT_ROOT / "db" / "raw" / "calibration" / "poi_corrections_verified.csv"
 
 CONFLATED_LICENSE = "Derived: ODbL (OSM) + Overture (CDLA-Permissive-2.0/ODbL) + Apache-2.0 (FSQ OS Places)"
 
@@ -101,6 +138,35 @@ def names_match(a: str | None, b: str | None) -> bool:
     if len(shorter) >= MIN_CONTAINMENT_LEN and shorter in longer:
         return True
     return SequenceMatcher(None, na, nb).ratio() >= NAME_SIMILARITY_MIN
+
+
+def _name_words(name: str | None) -> set[str]:
+    """Distinctive words of a name: generic words and 1-letter tokens out."""
+    return {w for w in re.findall(r"\w+", (name or "").lower())
+            if w not in GENERIC_NAME_WORDS and w not in FOOD_TYPE_WORDS and len(w) >= MIN_SHARED_WORD_LEN}
+
+
+def near_duplicate(a: dict, b: dict, distance_m: float) -> bool:
+    return (
+        distance_m <= NEAR_DUPLICATE_M
+        and a["source"] != b["source"]
+        and a["category"] == b["category"]
+        and bool(_name_words(a["name"]) & _name_words(b["name"]))
+    )
+
+
+def name_contradicts_category(record: dict) -> bool:
+    if record["source"] == "osm_overpass" or record["category"] not in NAME_CHECKED_CATEGORIES:
+        return False
+    return bool(set(re.findall(r"\w+", (record["name"] or "").lower())) & NON_SHOP_NAME_WORDS)
+
+
+def load_verified_corrections(path: Path = POI_CORRECTIONS_CSV) -> dict[str, dict]:
+    """external_ref -> correction row. Empty if the file is absent."""
+    if not path.exists():
+        return {}
+    with path.open(newline="") as f:
+        return {row["external_ref"]: row for row in csv.DictReader(f) if row["action"] == "exclude"}
 
 
 def providers_of(record: dict) -> set[str]:
@@ -167,8 +233,12 @@ def _station_paths_from_raw(raw_file_ref: str | None) -> list | None:
     return _station_paths(json.loads(path.read_text()).get("elements", []))
 
 
-def cluster_records(records: list[dict]) -> list[list[dict]]:
-    """Group source records into physical shops (see module docstring)."""
+def cluster_records(records: list[dict], quality_rules: bool = True,
+                    near_duplicate_log: list | None = None) -> list[list[dict]]:
+    """Group source records into physical shops (see module docstring).
+    quality_rules=False reproduces conflation_v1 (no near-duplicate merge).
+    Merges made only by the near-duplicate rule are appended to
+    near_duplicate_log as [record_a, record_b, distance_m]."""
     parent = list(range(len(records)))
     osm_count = [1 if r["source"] == "osm_overpass" else 0 for r in records]
 
@@ -185,15 +255,18 @@ def cluster_records(records: list[dict]) -> list[list[dict]]:
             if a["source"] == "osm_overpass" and b["source"] == "osm_overpass":
                 continue
             d = haversine_m(a["lat"], a["lon"], b["lat"], b["lon"])
-            if d <= MATCH_DISTANCE_M and names_match(a["name"], b["name"]):
-                pairs.append((d, i, j))
+            by_name = d <= MATCH_DISTANCE_M and names_match(a["name"], b["name"])
+            if by_name or (quality_rules and near_duplicate(a, b, d)):
+                pairs.append((d, i, j, by_name))
 
-    for _, i, j in sorted(pairs):
+    for d, i, j, by_name in sorted(pairs):
         ri, rj = find(i), find(j)
         if ri == rj or osm_count[ri] + osm_count[rj] > 1:
             continue
         parent[rj] = ri
         osm_count[ri] += osm_count[rj]
+        if not by_name and near_duplicate_log is not None:
+            near_duplicate_log.append([records[i], records[j], d])
 
     clusters: dict[int, list[dict]] = {}
     for i, rec in enumerate(records):
@@ -209,21 +282,41 @@ def _primary(cluster: list[dict]) -> dict:
 
 
 def build_competitor_set(
-    node: LocationInput, records_by_source: dict[str, list[dict]], station_paths: list | None
+    node: LocationInput, records_by_source: dict[str, list[dict]], station_paths: list | None,
+    quality_rules: bool = True, corrections: dict[str, dict] | None = None,
 ) -> tuple[list[dict], dict]:
-    """Pure function: per-source records -> conflated competitor records + stats."""
+    """Pure function: per-source records -> conflated competitor records + stats.
+    quality_rules=False reproduces conflation_v1; corrections defaults to
+    POI_CORRECTIONS_CSV when the rules are on."""
     from poi_pipeline import _in_station
 
+    if corrections is None:
+        corrections = load_verified_corrections() if quality_rules else {}
     in_radius, outside = [], 0
+    excluded = {"name_category_conflict": [], "verified_correction": []}
     for records in records_by_source.values():
         for rec in records:
-            if haversine_m(node.lat, node.lon, rec["lat"], rec["lon"]) <= node.radius_m:
-                in_radius.append(rec)
-            else:
+            if haversine_m(node.lat, node.lon, rec["lat"], rec["lon"]) > node.radius_m:
                 outside += 1
+            elif rec["ref"] in corrections:
+                excluded["verified_correction"].append(
+                    {"ref": rec["ref"], "name": rec["name"], "category": rec["category"],
+                     "reason": corrections[rec["ref"]]["reason"]})
+            elif quality_rules and name_contradicts_category(rec):
+                excluded["name_category_conflict"].append(
+                    {"ref": rec["ref"], "name": rec["name"], "category": rec["category"]})
+            else:
+                in_radius.append(rec)
 
     competitors = []
-    for cluster in cluster_records(in_radius):
+    merge_log: list = []
+    clusters = cluster_records(in_radius, quality_rules, merge_log)
+    near_duplicates = [
+        {"records": [{"source": r["source"], "ref": r["ref"], "name": r["name"]} for r in (a, b)],
+         "distance_m": round(d, 1)}
+        for a, b, d in merge_log
+    ]
+    for cluster in clusters:
         primary = _primary(cluster)
         osm_member = next((r for r in cluster if r["source"] == "osm_overpass"), None)
         providers = set().union(*(providers_of(r) for r in cluster))
@@ -261,6 +354,9 @@ def build_competitor_set(
         "competitors": len(competitors),
         "with_osm": sum(1 for c in competitors if "osm_overpass" in c["payload"]["sources"]),
         "corroborated": sum(1 for c in competitors if c["payload"]["n_providers"] >= 2),
+        "method": CONFLATION_METHOD_VERSION if quality_rules else "conflation_v1",
+        "excluded": excluded,
+        "near_duplicates_merged": near_duplicates,
     }
     return competitors, stats
 
@@ -327,3 +423,26 @@ def conflate_area(conn: sqlite3.Connection, node: LocationInput) -> dict:
         )
     conn.commit()
     return {"area_id": node.area_id, "snapshot_id": snapshot_id, "missing_sources": missing, **stats}
+
+
+def run(db_path: Path = PROJECT_ROOT / "db" / "site_selection.db") -> list[dict]:
+    """Re-conflate every candidate from its latest stored source snapshots
+    -- no network call. Used when the conflation rules change but the
+    source data have not: python3 poi_conflation.py"""
+    from models import CANDIDATE_NODES
+
+    conn = sqlite3.connect(db_path)
+    conn.execute("PRAGMA foreign_keys = ON;")
+    try:
+        results = [conflate_area(conn, node) for node in CANDIDATE_NODES]
+    finally:
+        conn.close()
+    for r in results:
+        print(f"[{r['area_id']}] conflated snapshot #{r['snapshot_id']}: {r['competitors']} competitors "
+              f"({r['method']}; {len(r['near_duplicates_merged'])} near-duplicates merged, "
+              f"{sum(len(v) for v in r['excluded'].values())} records excluded)")
+    return results
+
+
+if __name__ == "__main__":
+    run()

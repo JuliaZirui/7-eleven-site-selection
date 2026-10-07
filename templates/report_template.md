@@ -50,6 +50,10 @@ $mc_table
 
 **Method check** — re-scoring with min-max normalization across the three nodes instead of anchored scales gives: $minmax_rank.
 
+**Competition-structure check** — the baseline competition criteria divide each peak's competitor count by the node's people per day, so demand enters business fit twice: once as its own pillar and once as the competition denominator. Re-scored with competition as absolute competitor counts in the 400m circle (demand pillar unchanged):
+
+$structure_check
+
 **Visitor-conversion check** — visitors are the least certain demand segment (Wikipedia pageviews converted to visitors through a fit on Berlin attractions with published counts). Re-scored at the fit's interquartile range:
 
 $visitor_check

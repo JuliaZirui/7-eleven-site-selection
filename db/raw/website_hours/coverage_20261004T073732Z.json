@@ -1,0 +1,3383 @@
+{
+  "computed_at": "2026-10-04T07:37:32.573478+00:00",
+  "overture_release": "2026-09-23.1",
+  "user_agent": "berlin-site-selection-prototype/0.2 (research prototype; opening-hours coverage check, one page per shop)",
+  "go_threshold": 0.25,
+  "reachable_allowed_share": 0.3014705882352941,
+  "decision": "go",
+  "by_node": {
+    "brandenburger_tor": {
+      "has_url": 4,
+      "reachable_allowed": 2,
+      "jsonld_hours": 1,
+      "hours_text": 0,
+      "shared_domain": 0,
+      "n": 17
+    },
+    "warschauer_strasse": {
+      "has_url": 21,
+      "reachable_allowed": 11,
+      "jsonld_hours": 3,
+      "hours_text": 5,
+      "shared_domain": 3,
+      "n": 51
+    },
+    "schoenhauser_allee": {
+      "has_url": 37,
+      "reachable_allowed": 28,
+      "jsonld_hours": 1,
+      "hours_text": 2,
+      "shared_domain": 5,
+      "n": 68
+    }
+  },
+  "total": {
+    "has_url": 62,
+    "reachable_allowed": 41,
+    "jsonld_hours": 5,
+    "hours_text": 7,
+    "shared_domain": 8,
+    "n": 136
+  },
+  "urls_checked": 62,
+  "candidates": [
+    {
+      "area_id": "brandenburger_tor",
+      "name": "Wurst",
+      "category": "fast_food",
+      "conflated_snapshot": 50,
+      "members": [
+        {
+          "source": "osm_overpass",
+          "ref": "node/307642432"
+        }
+      ],
+      "urls": [],
+      "has_url": false,
+      "reachable_allowed": false,
+      "jsonld_hours": false,
+      "hours_text": false,
+      "shared_domain": false
+    },
+    {
+      "area_id": "brandenburger_tor",
+      "name": "Linden Grill",
+      "category": "spati_kiosk",
+      "conflated_snapshot": 50,
+      "members": [
+        {
+          "source": "osm_overpass",
+          "ref": "node/324227451"
+        }
+      ],
+      "urls": [],
+      "has_url": false,
+      "reachable_allowed": false,
+      "jsonld_hours": false,
+      "hours_text": false,
+      "shared_domain": false
+    },
+    {
+      "area_id": "brandenburger_tor",
+      "name": "Segafredo",
+      "category": "cafe",
+      "conflated_snapshot": 50,
+      "members": [
+        {
+          "source": "osm_overpass",
+          "ref": "node/437320468"
+        }
+      ],
+      "urls": [],
+      "has_url": false,
+      "reachable_allowed": false,
+      "jsonld_hours": false,
+      "hours_text": false,
+      "shared_domain": false
+    },
+    {
+      "area_id": "brandenburger_tor",
+      "name": "Curry and Burger",
+      "category": "fast_food",
+      "conflated_snapshot": 50,
+      "members": [
+        {
+          "source": "osm_overpass",
+          "ref": "node/4188093971"
+        }
+      ],
+      "urls": [],
+      "has_url": false,
+      "reachable_allowed": false,
+      "jsonld_hours": false,
+      "hours_text": false,
+      "shared_domain": false
+    },
+    {
+      "area_id": "brandenburger_tor",
+      "name": "Abia",
+      "category": "cafe",
+      "conflated_snapshot": 50,
+      "members": [
+        {
+          "source": "osm_overpass",
+          "ref": "node/4386329689"
+        }
+      ],
+      "urls": [],
+      "has_url": false,
+      "reachable_allowed": false,
+      "jsonld_hours": false,
+      "hours_text": false,
+      "shared_domain": false
+    },
+    {
+      "area_id": "brandenburger_tor",
+      "name": "Pavilion",
+      "category": "spati_kiosk",
+      "conflated_snapshot": 50,
+      "members": [
+        {
+          "source": "osm_overpass",
+          "ref": "node/5063750173"
+        }
+      ],
+      "urls": [],
+      "has_url": false,
+      "reachable_allowed": false,
+      "jsonld_hours": false,
+      "hours_text": false,
+      "shared_domain": false
+    },
+    {
+      "area_id": "brandenburger_tor",
+      "name": "Monument",
+      "category": "cafe",
+      "conflated_snapshot": 50,
+      "members": [
+        {
+          "source": "osm_overpass",
+          "ref": "node/5715768002"
+        }
+      ],
+      "urls": [],
+      "has_url": false,
+      "reachable_allowed": false,
+      "jsonld_hours": false,
+      "hours_text": false,
+      "shared_domain": false
+    },
+    {
+      "area_id": "brandenburger_tor",
+      "name": "Cafe Bar Italia",
+      "category": "cafe",
+      "conflated_snapshot": 50,
+      "members": [
+        {
+          "source": "osm_overpass",
+          "ref": "node/6832915881"
+        }
+      ],
+      "urls": [],
+      "has_url": false,
+      "reachable_allowed": false,
+      "jsonld_hours": false,
+      "hours_text": false,
+      "shared_domain": false
+    },
+    {
+      "area_id": "brandenburger_tor",
+      "name": "Panini Bar",
+      "category": "fast_food",
+      "conflated_snapshot": 50,
+      "members": [
+        {
+          "source": "osm_overpass",
+          "ref": "node/7137355961"
+        }
+      ],
+      "urls": [],
+      "has_url": false,
+      "reachable_allowed": false,
+      "jsonld_hours": false,
+      "hours_text": false,
+      "shared_domain": false
+    },
+    {
+      "area_id": "brandenburger_tor",
+      "name": "Burgerkette",
+      "category": "fast_food",
+      "conflated_snapshot": 50,
+      "members": [
+        {
+          "source": "osm_overpass",
+          "ref": "node/10885617116"
+        }
+      ],
+      "urls": [],
+      "has_url": false,
+      "reachable_allowed": false,
+      "jsonld_hours": false,
+      "hours_text": false,
+      "shared_domain": false
+    },
+    {
+      "area_id": "brandenburger_tor",
+      "name": "Gate Kebap",
+      "category": "fast_food",
+      "conflated_snapshot": 50,
+      "members": [
+        {
+          "source": "osm_overpass",
+          "ref": "node/13344272067"
+        }
+      ],
+      "urls": [],
+      "has_url": false,
+      "reachable_allowed": false,
+      "jsonld_hours": false,
+      "hours_text": false,
+      "shared_domain": false
+    },
+    {
+      "area_id": "brandenburger_tor",
+      "name": null,
+      "category": "spati_kiosk",
+      "conflated_snapshot": 50,
+      "members": [
+        {
+          "source": "osm_overpass",
+          "ref": "way/881527237"
+        }
+      ],
+      "urls": [],
+      "has_url": false,
+      "reachable_allowed": false,
+      "jsonld_hours": false,
+      "hours_text": false,
+      "shared_domain": false
+    },
+    {
+      "area_id": "brandenburger_tor",
+      "name": "Sagar Restaurant, Cafe and Bar",
+      "category": "cafe",
+      "conflated_snapshot": 50,
+      "members": [
+        {
+          "source": "overture_places",
+          "ref": "overture:f3f4db6d-6e92-4b3c-a889-17716b57dca4"
+        }
+      ],
+      "urls": [],
+      "has_url": false,
+      "reachable_allowed": false,
+      "jsonld_hours": false,
+      "hours_text": false,
+      "shared_domain": false
+    },
+    {
+      "area_id": "brandenburger_tor",
+      "name": "K-bap",
+      "category": "fast_food",
+      "conflated_snapshot": 50,
+      "members": [
+        {
+          "source": "overture_places",
+          "ref": "overture:da03fc18-3f88-497f-990f-70b00ed53927"
+        }
+      ],
+      "urls": [
+        "http://www.k-bap.de/"
+      ],
+      "has_url": true,
+      "reachable_allowed": true,
+      "jsonld_hours": false,
+      "hours_text": false,
+      "shared_domain": false
+    },
+    {
+      "area_id": "brandenburger_tor",
+      "name": "Adlon To Go Coffee Shop",
+      "category": "cafe",
+      "conflated_snapshot": 50,
+      "members": [
+        {
+          "source": "overture_places",
+          "ref": "overture:f823fc26-d04c-4558-9686-f9f24727a131"
+        }
+      ],
+      "urls": [
+        "https://www.kempinski.com/de/berlin/hotel-adlon/dining/adlon-to-go/"
+      ],
+      "has_url": true,
+      "reachable_allowed": true,
+      "jsonld_hours": true,
+      "hours_text": false,
+      "shared_domain": false
+    },
+    {
+      "area_id": "brandenburger_tor",
+      "name": "Espresso Eleganza",
+      "category": "cafe",
+      "conflated_snapshot": 50,
+      "members": [
+        {
+          "source": "overture_places",
+          "ref": "overture:836605c3-9753-4b20-92de-f5942171e07c"
+        }
+      ],
+      "urls": [
+        "http://Espressoeleganza.de/"
+      ],
+      "has_url": true,
+      "reachable_allowed": false,
+      "jsonld_hours": false,
+      "hours_text": false,
+      "shared_domain": false
+    },
+    {
+      "area_id": "brandenburger_tor",
+      "name": "Midtown Coffeeshop",
+      "category": "cafe",
+      "conflated_snapshot": 50,
+      "members": [
+        {
+          "source": "overture_places",
+          "ref": "overture:38312544-51df-47a5-9fa9-2379a20c19e6"
+        }
+      ],
+      "urls": [
+        "http://www.midtowncoffeeshops.de/"
+      ],
+      "has_url": true,
+      "reachable_allowed": false,
+      "jsonld_hours": false,
+      "hours_text": false,
+      "shared_domain": false
+    },
+    {
+      "area_id": "warschauer_strasse",
+      "name": "Skatehalle Berlin",
+      "category": "cafe",
+      "conflated_snapshot": 51,
+      "members": [
+        {
+          "source": "osm_overpass",
+          "ref": "node/975693680"
+        }
+      ],
+      "urls": [
+        "https://skatehalleberlin.com/"
+      ],
+      "has_url": true,
+      "reachable_allowed": true,
+      "jsonld_hours": false,
+      "hours_text": true,
+      "shared_domain": false
+    },
+    {
+      "area_id": "warschauer_strasse",
+      "name": "Urban Falafel",
+      "category": "fast_food",
+      "conflated_snapshot": 51,
+      "members": [
+        {
+          "source": "osm_overpass",
+          "ref": "node/1181625794"
+        }
+      ],
+      "urls": [
+        "http://www.nanofalafel.de"
+      ],
+      "has_url": true,
+      "reachable_allowed": false,
+      "jsonld_hours": false,
+      "hours_text": false,
+      "shared_domain": false
+    },
+    {
+      "area_id": "warschauer_strasse",
+      "name": "Bistro Istanbul",
+      "category": "fast_food",
+      "conflated_snapshot": 51,
+      "members": [
+        {
+          "source": "osm_overpass",
+          "ref": "node/1181625839"
+        }
+      ],
+      "urls": [],
+      "has_url": false,
+      "reachable_allowed": false,
+      "jsonld_hours": false,
+      "hours_text": false,
+      "shared_domain": false
+    },
+    {
+      "area_id": "warschauer_strasse",
+      "name": "Smack Burger",
+      "category": "fast_food",
+      "conflated_snapshot": 51,
+      "members": [
+        {
+          "source": "osm_overpass",
+          "ref": "node/1469403177"
+        }
+      ],
+      "urls": [],
+      "has_url": false,
+      "reachable_allowed": false,
+      "jsonld_hours": false,
+      "hours_text": false,
+      "shared_domain": false
+    },
+    {
+      "area_id": "warschauer_strasse",
+      "name": "KEBmeUP",
+      "category": "fast_food",
+      "conflated_snapshot": 51,
+      "members": [
+        {
+          "source": "osm_overpass",
+          "ref": "node/1925850423"
+        }
+      ],
+      "urls": [],
+      "has_url": false,
+      "reachable_allowed": false,
+      "jsonld_hours": false,
+      "hours_text": false,
+      "shared_domain": false
+    },
+    {
+      "area_id": "warschauer_strasse",
+      "name": "Bro Burger",
+      "category": "fast_food",
+      "conflated_snapshot": 51,
+      "members": [
+        {
+          "source": "osm_overpass",
+          "ref": "node/3750152225"
+        }
+      ],
+      "urls": [],
+      "has_url": false,
+      "reachable_allowed": false,
+      "jsonld_hours": false,
+      "hours_text": false,
+      "shared_domain": false
+    },
+    {
+      "area_id": "warschauer_strasse",
+      "name": "Spätkauf",
+      "category": "spati_kiosk",
+      "conflated_snapshot": 51,
+      "members": [
+        {
+          "source": "osm_overpass",
+          "ref": "node/3750154925"
+        }
+      ],
+      "urls": [],
+      "has_url": false,
+      "reachable_allowed": false,
+      "jsonld_hours": false,
+      "hours_text": false,
+      "shared_domain": false
+    },
+    {
+      "area_id": "warschauer_strasse",
+      "name": "Kiezbalkon",
+      "category": "spati_kiosk",
+      "conflated_snapshot": 51,
+      "members": [
+        {
+          "source": "osm_overpass",
+          "ref": "node/3907014576"
+        },
+        {
+          "source": "overture_places",
+          "ref": "overture:6de826ae-8863-4b80-865b-e99aa7a221de"
+        }
+      ],
+      "urls": [],
+      "has_url": false,
+      "reachable_allowed": false,
+      "jsonld_hours": false,
+      "hours_text": false,
+      "shared_domain": false
+    },
+    {
+      "area_id": "warschauer_strasse",
+      "name": "Kiosk",
+      "category": "spati_kiosk",
+      "conflated_snapshot": 51,
+      "members": [
+        {
+          "source": "osm_overpass",
+          "ref": "node/3912934957"
+        }
+      ],
+      "urls": [],
+      "has_url": false,
+      "reachable_allowed": false,
+      "jsonld_hours": false,
+      "hours_text": false,
+      "shared_domain": false
+    },
+    {
+      "area_id": "warschauer_strasse",
+      "name": "Loco Chicken",
+      "category": "fast_food",
+      "conflated_snapshot": 51,
+      "members": [
+        {
+          "source": "osm_overpass",
+          "ref": "node/5572048797"
+        }
+      ],
+      "urls": [],
+      "has_url": false,
+      "reachable_allowed": false,
+      "jsonld_hours": false,
+      "hours_text": false,
+      "shared_domain": false
+    },
+    {
+      "area_id": "warschauer_strasse",
+      "name": "mundis",
+      "category": "fast_food",
+      "conflated_snapshot": 51,
+      "members": [
+        {
+          "source": "osm_overpass",
+          "ref": "node/5660368721"
+        }
+      ],
+      "urls": [],
+      "has_url": false,
+      "reachable_allowed": false,
+      "jsonld_hours": false,
+      "hours_text": false,
+      "shared_domain": false
+    },
+    {
+      "area_id": "warschauer_strasse",
+      "name": "Rewe Deli am Markt",
+      "category": "fast_food",
+      "conflated_snapshot": 51,
+      "members": [
+        {
+          "source": "osm_overpass",
+          "ref": "node/6032523115"
+        }
+      ],
+      "urls": [],
+      "has_url": false,
+      "reachable_allowed": false,
+      "jsonld_hours": false,
+      "hours_text": false,
+      "shared_domain": false
+    },
+    {
+      "area_id": "warschauer_strasse",
+      "name": "Key‘s",
+      "category": "fast_food",
+      "conflated_snapshot": 51,
+      "members": [
+        {
+          "source": "osm_overpass",
+          "ref": "node/6032523123"
+        }
+      ],
+      "urls": [],
+      "has_url": false,
+      "reachable_allowed": false,
+      "jsonld_hours": false,
+      "hours_text": false,
+      "shared_domain": false
+    },
+    {
+      "area_id": "warschauer_strasse",
+      "name": "Cigo",
+      "category": "spati_kiosk",
+      "conflated_snapshot": 51,
+      "members": [
+        {
+          "source": "osm_overpass",
+          "ref": "node/6032523130"
+        }
+      ],
+      "urls": [],
+      "has_url": false,
+      "reachable_allowed": false,
+      "jsonld_hours": false,
+      "hours_text": false,
+      "shared_domain": false
+    },
+    {
+      "area_id": "warschauer_strasse",
+      "name": "Nepal Momo",
+      "category": "fast_food",
+      "conflated_snapshot": 51,
+      "members": [
+        {
+          "source": "osm_overpass",
+          "ref": "node/9806357742"
+        },
+        {
+          "source": "overture_places",
+          "ref": "overture:abb92e25-ed44-46d1-a9f9-9f26f17c17ba"
+        }
+      ],
+      "urls": [
+        "https://www.nepalese-momo-berlin.de/colofon"
+      ],
+      "has_url": true,
+      "reachable_allowed": false,
+      "jsonld_hours": false,
+      "hours_text": false,
+      "shared_domain": false
+    },
+    {
+      "area_id": "warschauer_strasse",
+      "name": "Bistro Anh Yen",
+      "category": "fast_food",
+      "conflated_snapshot": 51,
+      "members": [
+        {
+          "source": "osm_overpass",
+          "ref": "node/10542894372"
+        }
+      ],
+      "urls": [],
+      "has_url": false,
+      "reachable_allowed": false,
+      "jsonld_hours": false,
+      "hours_text": false,
+      "shared_domain": false
+    },
+    {
+      "area_id": "warschauer_strasse",
+      "name": "Teufel Curry",
+      "category": "fast_food",
+      "conflated_snapshot": 51,
+      "members": [
+        {
+          "source": "osm_overpass",
+          "ref": "node/12485958656"
+        }
+      ],
+      "urls": [],
+      "has_url": false,
+      "reachable_allowed": false,
+      "jsonld_hours": false,
+      "hours_text": false,
+      "shared_domain": false
+    },
+    {
+      "area_id": "warschauer_strasse",
+      "name": "SLICE",
+      "category": "fast_food",
+      "conflated_snapshot": 51,
+      "members": [
+        {
+          "source": "osm_overpass",
+          "ref": "node/13104031314"
+        }
+      ],
+      "urls": [],
+      "has_url": false,
+      "reachable_allowed": false,
+      "jsonld_hours": false,
+      "hours_text": false,
+      "shared_domain": false
+    },
+    {
+      "area_id": "warschauer_strasse",
+      "name": "Kumpir Club",
+      "category": "fast_food",
+      "conflated_snapshot": 51,
+      "members": [
+        {
+          "source": "osm_overpass",
+          "ref": "node/13206863367"
+        }
+      ],
+      "urls": [],
+      "has_url": false,
+      "reachable_allowed": false,
+      "jsonld_hours": false,
+      "hours_text": false,
+      "shared_domain": false
+    },
+    {
+      "area_id": "warschauer_strasse",
+      "name": "McDonald's",
+      "category": "fast_food",
+      "conflated_snapshot": 51,
+      "members": [
+        {
+          "source": "osm_overpass",
+          "ref": "node/13206866074"
+        }
+      ],
+      "urls": [],
+      "has_url": false,
+      "reachable_allowed": false,
+      "jsonld_hours": false,
+      "hours_text": false,
+      "shared_domain": false
+    },
+    {
+      "area_id": "warschauer_strasse",
+      "name": "Pizza City",
+      "category": "fast_food",
+      "conflated_snapshot": 51,
+      "members": [
+        {
+          "source": "osm_overpass",
+          "ref": "node/13208886618"
+        }
+      ],
+      "urls": [],
+      "has_url": false,
+      "reachable_allowed": false,
+      "jsonld_hours": false,
+      "hours_text": false,
+      "shared_domain": false
+    },
+    {
+      "area_id": "warschauer_strasse",
+      "name": "Späti Nightshop",
+      "category": "spati_kiosk",
+      "conflated_snapshot": 51,
+      "members": [
+        {
+          "source": "osm_overpass",
+          "ref": "node/13505977780"
+        }
+      ],
+      "urls": [],
+      "has_url": false,
+      "reachable_allowed": false,
+      "jsonld_hours": false,
+      "hours_text": false,
+      "shared_domain": false
+    },
+    {
+      "area_id": "warschauer_strasse",
+      "name": "Fatih Servet",
+      "category": "fast_food",
+      "conflated_snapshot": 51,
+      "members": [
+        {
+          "source": "osm_overpass",
+          "ref": "node/14202057119"
+        }
+      ],
+      "urls": [],
+      "has_url": false,
+      "reachable_allowed": false,
+      "jsonld_hours": false,
+      "hours_text": false,
+      "shared_domain": false
+    },
+    {
+      "area_id": "warschauer_strasse",
+      "name": "Saray",
+      "category": "fast_food",
+      "conflated_snapshot": 51,
+      "members": [
+        {
+          "source": "osm_overpass",
+          "ref": "way/123019468"
+        }
+      ],
+      "urls": [],
+      "has_url": false,
+      "reachable_allowed": false,
+      "jsonld_hours": false,
+      "hours_text": false,
+      "shared_domain": false
+    },
+    {
+      "area_id": "warschauer_strasse",
+      "name": "Starbucks",
+      "category": "cafe",
+      "conflated_snapshot": 51,
+      "members": [
+        {
+          "source": "osm_overpass",
+          "ref": "way/740025150"
+        },
+        {
+          "source": "overture_places",
+          "ref": "overture:f7e7b9df-ce86-4737-97da-60d0eca5f93c"
+        }
+      ],
+      "urls": [
+        "https://www.starbucks.de/?y_source=1_MTU0NTQxNzEtNTU5LWxvY2F0aW9uLndlYnNpdGU%3D"
+      ],
+      "has_url": true,
+      "reachable_allowed": true,
+      "jsonld_hours": false,
+      "hours_text": true,
+      "shared_domain": true
+    },
+    {
+      "area_id": "warschauer_strasse",
+      "name": "Wrapublic",
+      "category": "fast_food",
+      "conflated_snapshot": 51,
+      "members": [
+        {
+          "source": "osm_overpass",
+          "ref": "way/740025157"
+        }
+      ],
+      "urls": [],
+      "has_url": false,
+      "reachable_allowed": false,
+      "jsonld_hours": false,
+      "hours_text": false,
+      "shared_domain": false
+    },
+    {
+      "area_id": "warschauer_strasse",
+      "name": "Waffel",
+      "category": "fast_food",
+      "conflated_snapshot": 51,
+      "members": [
+        {
+          "source": "osm_overpass",
+          "ref": "way/751650279"
+        },
+        {
+          "source": "overture_places",
+          "ref": "overture:a434a022-7556-454d-a51b-0d13800ddc1d"
+        }
+      ],
+      "urls": [
+        "https://waffee-berlin.de/"
+      ],
+      "has_url": true,
+      "reachable_allowed": true,
+      "jsonld_hours": true,
+      "hours_text": true,
+      "shared_domain": false
+    },
+    {
+      "area_id": "warschauer_strasse",
+      "name": "Dakwah",
+      "category": "fast_food",
+      "conflated_snapshot": 51,
+      "members": [
+        {
+          "source": "osm_overpass",
+          "ref": "way/751650280"
+        }
+      ],
+      "urls": [],
+      "has_url": false,
+      "reachable_allowed": false,
+      "jsonld_hours": false,
+      "hours_text": false,
+      "shared_domain": false
+    },
+    {
+      "area_id": "warschauer_strasse",
+      "name": "Wat is' mit vegan?",
+      "category": "fast_food",
+      "conflated_snapshot": 51,
+      "members": [
+        {
+          "source": "osm_overpass",
+          "ref": "way/1222432200"
+        }
+      ],
+      "urls": [],
+      "has_url": false,
+      "reachable_allowed": false,
+      "jsonld_hours": false,
+      "hours_text": false,
+      "shared_domain": false
+    },
+    {
+      "area_id": "warschauer_strasse",
+      "name": "Curry-one",
+      "category": "fast_food",
+      "conflated_snapshot": 51,
+      "members": [
+        {
+          "source": "overture_places",
+          "ref": "overture:3b2652cb-e179-4eed-9797-e26394eb80e8"
+        }
+      ],
+      "urls": [],
+      "has_url": false,
+      "reachable_allowed": false,
+      "jsonld_hours": false,
+      "hours_text": false,
+      "shared_domain": false
+    },
+    {
+      "area_id": "warschauer_strasse",
+      "name": "Grandmamaswafflehouse",
+      "category": "cafe",
+      "conflated_snapshot": 51,
+      "members": [
+        {
+          "source": "overture_places",
+          "ref": "overture:590946a2-6e72-443c-98ee-cd81dde00269"
+        }
+      ],
+      "urls": [
+        "http://www.grandmamaswafflehouse.jimdo.com/"
+      ],
+      "has_url": true,
+      "reachable_allowed": false,
+      "jsonld_hours": false,
+      "hours_text": false,
+      "shared_domain": false
+    },
+    {
+      "area_id": "warschauer_strasse",
+      "name": "Eckart Saucen Feinkost",
+      "category": "supermarket",
+      "conflated_snapshot": 51,
+      "members": [
+        {
+          "source": "overture_places",
+          "ref": "overture:2476d709-e1a7-43a0-92fe-5d3a3a3b9add"
+        }
+      ],
+      "urls": [
+        "http://www.sossen-eckart.de"
+      ],
+      "has_url": true,
+      "reachable_allowed": true,
+      "jsonld_hours": true,
+      "hours_text": false,
+      "shared_domain": false
+    },
+    {
+      "area_id": "warschauer_strasse",
+      "name": "Bean Fifteen Espressobar",
+      "category": "cafe",
+      "conflated_snapshot": 51,
+      "members": [
+        {
+          "source": "overture_places",
+          "ref": "overture:6b651fc5-7b36-4e2a-8c7e-aecb609fd574"
+        }
+      ],
+      "urls": [
+        "https://beanfifteen.cafe/"
+      ],
+      "has_url": true,
+      "reachable_allowed": false,
+      "jsonld_hours": false,
+      "hours_text": false,
+      "shared_domain": false
+    },
+    {
+      "area_id": "warschauer_strasse",
+      "name": "Adagio830 Espresso",
+      "category": "cafe",
+      "conflated_snapshot": 51,
+      "members": [
+        {
+          "source": "overture_places",
+          "ref": "overture:14da5edc-bcc2-4520-a23e-97d48630894c"
+        }
+      ],
+      "urls": [
+        "http://www.bisaufsmesser.com/store"
+      ],
+      "has_url": true,
+      "reachable_allowed": true,
+      "jsonld_hours": false,
+      "hours_text": false,
+      "shared_domain": false
+    },
+    {
+      "area_id": "warschauer_strasse",
+      "name": "Holi Cow",
+      "category": "fast_food",
+      "conflated_snapshot": 51,
+      "members": [
+        {
+          "source": "overture_places",
+          "ref": "overture:28a6c998-189f-4333-96af-71f7e7ebb37d"
+        }
+      ],
+      "urls": [
+        "http://catering-events-berlin.de"
+      ],
+      "has_url": true,
+      "reachable_allowed": false,
+      "jsonld_hours": false,
+      "hours_text": false,
+      "shared_domain": false
+    },
+    {
+      "area_id": "warschauer_strasse",
+      "name": "Starbucks",
+      "category": "cafe",
+      "conflated_snapshot": 51,
+      "members": [
+        {
+          "source": "overture_places",
+          "ref": "overture:00ebbbef-1cdb-4ea9-9a98-80e3b744b5a4"
+        }
+      ],
+      "urls": [
+        "http://www.starbucks.de/"
+      ],
+      "has_url": true,
+      "reachable_allowed": true,
+      "jsonld_hours": false,
+      "hours_text": true,
+      "shared_domain": true
+    },
+    {
+      "area_id": "warschauer_strasse",
+      "name": "365 Coffee & Snacks",
+      "category": "cafe",
+      "conflated_snapshot": 51,
+      "members": [
+        {
+          "source": "overture_places",
+          "ref": "overture:8cc3bbf2-d173-4924-80f6-e7988e17f0ec"
+        }
+      ],
+      "urls": [
+        "http://www.365stores.de/mobile/standorte.html"
+      ],
+      "has_url": true,
+      "reachable_allowed": false,
+      "jsonld_hours": false,
+      "hours_text": false,
+      "shared_domain": false
+    },
+    {
+      "area_id": "warschauer_strasse",
+      "name": "HonigKrone Bäckerei & Café",
+      "category": "bakery",
+      "conflated_snapshot": 51,
+      "members": [
+        {
+          "source": "overture_places",
+          "ref": "overture:95ebef63-dfd9-4933-b547-7610f1f62de5"
+        }
+      ],
+      "urls": [
+        "https://honigkrone.de"
+      ],
+      "has_url": true,
+      "reachable_allowed": true,
+      "jsonld_hours": false,
+      "hours_text": true,
+      "shared_domain": false
+    },
+    {
+      "area_id": "warschauer_strasse",
+      "name": "Fresh Rolls",
+      "category": "fast_food",
+      "conflated_snapshot": 51,
+      "members": [
+        {
+          "source": "overture_places",
+          "ref": "overture:bf96fcad-141b-4fca-8e28-4493c5405cda"
+        }
+      ],
+      "urls": [],
+      "has_url": false,
+      "reachable_allowed": false,
+      "jsonld_hours": false,
+      "hours_text": false,
+      "shared_domain": false
+    },
+    {
+      "area_id": "warschauer_strasse",
+      "name": "CI Berlin EKZ East Side Mall",
+      "category": "spati_kiosk",
+      "conflated_snapshot": 51,
+      "members": [
+        {
+          "source": "overture_places",
+          "ref": "overture:89823666-df64-4431-9319-3efbb86f0531"
+        }
+      ],
+      "urls": [],
+      "has_url": false,
+      "reachable_allowed": false,
+      "jsonld_hours": false,
+      "hours_text": false,
+      "shared_domain": false
+    },
+    {
+      "area_id": "warschauer_strasse",
+      "name": "McCafé",
+      "category": "cafe",
+      "conflated_snapshot": 51,
+      "members": [
+        {
+          "source": "overture_places",
+          "ref": "overture:e4c72dc5-867d-47a7-b70d-19189db7c63d"
+        }
+      ],
+      "urls": [
+        "https://www.mcdonalds.com/de/de-de/restaurant-suche.html/l/berlin/tamara-danz-strasse-11/1867"
+      ],
+      "has_url": true,
+      "reachable_allowed": true,
+      "jsonld_hours": false,
+      "hours_text": false,
+      "shared_domain": false
+    },
+    {
+      "area_id": "warschauer_strasse",
+      "name": "Burgermeister",
+      "category": "fast_food",
+      "conflated_snapshot": 51,
+      "members": [
+        {
+          "source": "overture_places",
+          "ref": "overture:7a6e36e9-0913-454d-a03f-031c6e3d7b83"
+        }
+      ],
+      "urls": [],
+      "has_url": false,
+      "reachable_allowed": false,
+      "jsonld_hours": false,
+      "hours_text": false,
+      "shared_domain": false
+    },
+    {
+      "area_id": "warschauer_strasse",
+      "name": "Eat Berlin",
+      "category": "supermarket",
+      "conflated_snapshot": 51,
+      "members": [
+        {
+          "source": "overture_places",
+          "ref": "overture:53cd591d-e58b-4009-87e7-3290b29649ce"
+        }
+      ],
+      "urls": [
+        "https://www.eatberlinstore.de"
+      ],
+      "has_url": true,
+      "reachable_allowed": false,
+      "jsonld_hours": false,
+      "hours_text": false,
+      "shared_domain": false
+    },
+    {
+      "area_id": "warschauer_strasse",
+      "name": "SIRPLUS",
+      "category": "supermarket",
+      "conflated_snapshot": 51,
+      "members": [
+        {
+          "source": "overture_places",
+          "ref": "overture:c7cf51ed-6d99-4bf6-93ff-0de594fea210"
+        }
+      ],
+      "urls": [],
+      "has_url": false,
+      "reachable_allowed": false,
+      "jsonld_hours": false,
+      "hours_text": false,
+      "shared_domain": false
+    },
+    {
+      "area_id": "warschauer_strasse",
+      "name": "Yuzu Ramen",
+      "category": "fast_food",
+      "conflated_snapshot": 51,
+      "members": [
+        {
+          "source": "overture_places",
+          "ref": "overture:26eaef85-9c4f-48e1-a59e-3b946cb60ec0"
+        }
+      ],
+      "urls": [
+        "http://sonsofmana.de"
+      ],
+      "has_url": true,
+      "reachable_allowed": false,
+      "jsonld_hours": false,
+      "hours_text": false,
+      "shared_domain": false
+    },
+    {
+      "area_id": "warschauer_strasse",
+      "name": "Denns BioMarkt",
+      "category": "supermarket",
+      "conflated_snapshot": 51,
+      "members": [
+        {
+          "source": "overture_places",
+          "ref": "overture:a3bae0f6-f882-46fa-a873-c091f3629a09"
+        }
+      ],
+      "urls": [
+        "https://www.biomarkt.de/berlin-tamara-danz-str-11/marktseite/"
+      ],
+      "has_url": true,
+      "reachable_allowed": true,
+      "jsonld_hours": false,
+      "hours_text": false,
+      "shared_domain": false
+    },
+    {
+      "area_id": "warschauer_strasse",
+      "name": "Caffeinery",
+      "category": "cafe",
+      "conflated_snapshot": 51,
+      "members": [
+        {
+          "source": "overture_places",
+          "ref": "overture:60b5f849-2339-4e49-b0cf-fe97f2bef770"
+        }
+      ],
+      "urls": [],
+      "has_url": false,
+      "reachable_allowed": false,
+      "jsonld_hours": false,
+      "hours_text": false,
+      "shared_domain": false
+    },
+    {
+      "area_id": "warschauer_strasse",
+      "name": "Starbucks",
+      "category": "cafe",
+      "conflated_snapshot": 51,
+      "members": [
+        {
+          "source": "overture_places",
+          "ref": "overture:17ab4f7b-fad0-4e4b-bc51-3f07627076de"
+        }
+      ],
+      "urls": [
+        "https://www.starbucks.co.uk/store-locator/56750-290691/berlin,-east-side-mall"
+      ],
+      "has_url": true,
+      "reachable_allowed": false,
+      "jsonld_hours": false,
+      "hours_text": false,
+      "shared_domain": true
+    },
+    {
+      "area_id": "warschauer_strasse",
+      "name": "Curry Fritze",
+      "category": "fast_food",
+      "conflated_snapshot": 51,
+      "members": [
+        {
+          "source": "overture_places",
+          "ref": "overture:8f905500-73ed-423c-b98f-580f436bd550"
+        }
+      ],
+      "urls": [
+        "http://www.curryfritze.com"
+      ],
+      "has_url": true,
+      "reachable_allowed": true,
+      "jsonld_hours": true,
+      "hours_text": false,
+      "shared_domain": false
+    },
+    {
+      "area_id": "warschauer_strasse",
+      "name": "Steinecke",
+      "category": "bakery",
+      "conflated_snapshot": 51,
+      "members": [
+        {
+          "source": "overture_places",
+          "ref": "overture:bb0df7da-d1f3-45bd-b97e-13fe5c13e9c5"
+        }
+      ],
+      "urls": [
+        "https://steinecke.de/baeckereien/berin-rotherstr-16-19/"
+      ],
+      "has_url": true,
+      "reachable_allowed": false,
+      "jsonld_hours": false,
+      "hours_text": false,
+      "shared_domain": false
+    },
+    {
+      "area_id": "warschauer_strasse",
+      "name": "Morsh",
+      "category": "cafe",
+      "conflated_snapshot": 51,
+      "members": [
+        {
+          "source": "overture_places",
+          "ref": "overture:eecf38ff-679c-4940-a9fb-929ebc5c78a5"
+        }
+      ],
+      "urls": [
+        "http://www.morsh.me/"
+      ],
+      "has_url": true,
+      "reachable_allowed": true,
+      "jsonld_hours": false,
+      "hours_text": false,
+      "shared_domain": false
+    },
+    {
+      "area_id": "schoenhauser_allee",
+      "name": "Steinofen Pizza To-Go",
+      "category": "fast_food",
+      "conflated_snapshot": 52,
+      "members": [
+        {
+          "source": "osm_overpass",
+          "ref": "node/448913484"
+        }
+      ],
+      "urls": [],
+      "has_url": false,
+      "reachable_allowed": false,
+      "jsonld_hours": false,
+      "hours_text": false,
+      "shared_domain": false
+    },
+    {
+      "area_id": "schoenhauser_allee",
+      "name": "Alain Snack",
+      "category": "fast_food",
+      "conflated_snapshot": 52,
+      "members": [
+        {
+          "source": "osm_overpass",
+          "ref": "node/485936333"
+        },
+        {
+          "source": "overture_places",
+          "ref": "overture:1694061b-36f4-432f-9a4f-530be910a07c"
+        }
+      ],
+      "urls": [
+        "http://alainsnack1.placeweb.site"
+      ],
+      "has_url": true,
+      "reachable_allowed": false,
+      "jsonld_hours": false,
+      "hours_text": false,
+      "shared_domain": false
+    },
+    {
+      "area_id": "schoenhauser_allee",
+      "name": "Pizza Star",
+      "category": "fast_food",
+      "conflated_snapshot": 52,
+      "members": [
+        {
+          "source": "osm_overpass",
+          "ref": "node/567167721"
+        }
+      ],
+      "urls": [],
+      "has_url": false,
+      "reachable_allowed": false,
+      "jsonld_hours": false,
+      "hours_text": false,
+      "shared_domain": false
+    },
+    {
+      "area_id": "schoenhauser_allee",
+      "name": "Spätkauf -Late Shopping",
+      "category": "spati_kiosk",
+      "conflated_snapshot": 52,
+      "members": [
+        {
+          "source": "osm_overpass",
+          "ref": "node/697907411"
+        }
+      ],
+      "urls": [],
+      "has_url": false,
+      "reachable_allowed": false,
+      "jsonld_hours": false,
+      "hours_text": false,
+      "shared_domain": false
+    },
+    {
+      "area_id": "schoenhauser_allee",
+      "name": "Clerk's Späti",
+      "category": "spati_kiosk",
+      "conflated_snapshot": 52,
+      "members": [
+        {
+          "source": "osm_overpass",
+          "ref": "node/2420799063"
+        }
+      ],
+      "urls": [],
+      "has_url": false,
+      "reachable_allowed": false,
+      "jsonld_hours": false,
+      "hours_text": false,
+      "shared_domain": false
+    },
+    {
+      "area_id": "schoenhauser_allee",
+      "name": "Stargarder Burger",
+      "category": "fast_food",
+      "conflated_snapshot": 52,
+      "members": [
+        {
+          "source": "osm_overpass",
+          "ref": "node/4109493994"
+        }
+      ],
+      "urls": [],
+      "has_url": false,
+      "reachable_allowed": false,
+      "jsonld_hours": false,
+      "hours_text": false,
+      "shared_domain": false
+    },
+    {
+      "area_id": "schoenhauser_allee",
+      "name": "Pension Palermo",
+      "category": "cafe",
+      "conflated_snapshot": 52,
+      "members": [
+        {
+          "source": "osm_overpass",
+          "ref": "node/4487529790"
+        }
+      ],
+      "urls": [],
+      "has_url": false,
+      "reachable_allowed": false,
+      "jsonld_hours": false,
+      "hours_text": false,
+      "shared_domain": false
+    },
+    {
+      "area_id": "schoenhauser_allee",
+      "name": "Kuki's",
+      "category": "fast_food",
+      "conflated_snapshot": 52,
+      "members": [
+        {
+          "source": "osm_overpass",
+          "ref": "node/4862470678"
+        }
+      ],
+      "urls": [],
+      "has_url": false,
+      "reachable_allowed": false,
+      "jsonld_hours": false,
+      "hours_text": false,
+      "shared_domain": false
+    },
+    {
+      "area_id": "schoenhauser_allee",
+      "name": "Kaplan",
+      "category": "fast_food",
+      "conflated_snapshot": 52,
+      "members": [
+        {
+          "source": "osm_overpass",
+          "ref": "node/4877987721"
+        },
+        {
+          "source": "overture_places",
+          "ref": "overture:169fadf5-1112-4a24-ae00-676094cae0fe"
+        }
+      ],
+      "urls": [
+        "http://kap-lan.de/"
+      ],
+      "has_url": true,
+      "reachable_allowed": true,
+      "jsonld_hours": false,
+      "hours_text": false,
+      "shared_domain": false
+    },
+    {
+      "area_id": "schoenhauser_allee",
+      "name": "Wilhelm Burger",
+      "category": "fast_food",
+      "conflated_snapshot": 52,
+      "members": [
+        {
+          "source": "osm_overpass",
+          "ref": "node/5018674948"
+        }
+      ],
+      "urls": [],
+      "has_url": false,
+      "reachable_allowed": false,
+      "jsonld_hours": false,
+      "hours_text": false,
+      "shared_domain": false
+    },
+    {
+      "area_id": "schoenhauser_allee",
+      "name": "B.est of Shop",
+      "category": "spati_kiosk",
+      "conflated_snapshot": 52,
+      "members": [
+        {
+          "source": "osm_overpass",
+          "ref": "node/5337406379"
+        }
+      ],
+      "urls": [],
+      "has_url": false,
+      "reachable_allowed": false,
+      "jsonld_hours": false,
+      "hours_text": false,
+      "shared_domain": false
+    },
+    {
+      "area_id": "schoenhauser_allee",
+      "name": "CTR Chicken",
+      "category": "fast_food",
+      "conflated_snapshot": 52,
+      "members": [
+        {
+          "source": "osm_overpass",
+          "ref": "node/5345395907"
+        }
+      ],
+      "urls": [],
+      "has_url": false,
+      "reachable_allowed": false,
+      "jsonld_hours": false,
+      "hours_text": false,
+      "shared_domain": false
+    },
+    {
+      "area_id": "schoenhauser_allee",
+      "name": "Internetcafe - Day & Nightstore",
+      "category": "spati_kiosk",
+      "conflated_snapshot": 52,
+      "members": [
+        {
+          "source": "osm_overpass",
+          "ref": "node/6212858187"
+        }
+      ],
+      "urls": [],
+      "has_url": false,
+      "reachable_allowed": false,
+      "jsonld_hours": false,
+      "hours_text": false,
+      "shared_domain": false
+    },
+    {
+      "area_id": "schoenhauser_allee",
+      "name": "Miran",
+      "category": "spati_kiosk",
+      "conflated_snapshot": 52,
+      "members": [
+        {
+          "source": "osm_overpass",
+          "ref": "node/7236820670"
+        }
+      ],
+      "urls": [],
+      "has_url": false,
+      "reachable_allowed": false,
+      "jsonld_hours": false,
+      "hours_text": false,
+      "shared_domain": false
+    },
+    {
+      "area_id": "schoenhauser_allee",
+      "name": "Happy Food",
+      "category": "fast_food",
+      "conflated_snapshot": 52,
+      "members": [
+        {
+          "source": "osm_overpass",
+          "ref": "node/7765375760"
+        }
+      ],
+      "urls": [],
+      "has_url": false,
+      "reachable_allowed": false,
+      "jsonld_hours": false,
+      "hours_text": false,
+      "shared_domain": false
+    },
+    {
+      "area_id": "schoenhauser_allee",
+      "name": null,
+      "category": "spati_kiosk",
+      "conflated_snapshot": 52,
+      "members": [
+        {
+          "source": "osm_overpass",
+          "ref": "node/9436615201"
+        }
+      ],
+      "urls": [],
+      "has_url": false,
+      "reachable_allowed": false,
+      "jsonld_hours": false,
+      "hours_text": false,
+      "shared_domain": false
+    },
+    {
+      "area_id": "schoenhauser_allee",
+      "name": "Nordsee",
+      "category": "fast_food",
+      "conflated_snapshot": 52,
+      "members": [
+        {
+          "source": "osm_overpass",
+          "ref": "node/9770221480"
+        }
+      ],
+      "urls": [],
+      "has_url": false,
+      "reachable_allowed": false,
+      "jsonld_hours": false,
+      "hours_text": false,
+      "shared_domain": false
+    },
+    {
+      "area_id": "schoenhauser_allee",
+      "name": "Mate Mate Spätshop",
+      "category": "spati_kiosk",
+      "conflated_snapshot": 52,
+      "members": [
+        {
+          "source": "osm_overpass",
+          "ref": "node/10035799726"
+        }
+      ],
+      "urls": [],
+      "has_url": false,
+      "reachable_allowed": false,
+      "jsonld_hours": false,
+      "hours_text": false,
+      "shared_domain": false
+    },
+    {
+      "area_id": "schoenhauser_allee",
+      "name": "Ali Baba Späti",
+      "category": "spati_kiosk",
+      "conflated_snapshot": 52,
+      "members": [
+        {
+          "source": "osm_overpass",
+          "ref": "node/10075119373"
+        }
+      ],
+      "urls": [],
+      "has_url": false,
+      "reachable_allowed": false,
+      "jsonld_hours": false,
+      "hours_text": false,
+      "shared_domain": false
+    },
+    {
+      "area_id": "schoenhauser_allee",
+      "name": "Starbucks",
+      "category": "cafe",
+      "conflated_snapshot": 52,
+      "members": [
+        {
+          "source": "osm_overpass",
+          "ref": "node/11264494273"
+        },
+        {
+          "source": "overture_places",
+          "ref": "overture:08832389-69ef-4958-8de6-9b7bc420172c"
+        }
+      ],
+      "urls": [
+        "https://www.starbucks.co.uk/store-locator/80954-309375/berlin-schoenhauser-allee-arca"
+      ],
+      "has_url": true,
+      "reachable_allowed": true,
+      "jsonld_hours": false,
+      "hours_text": false,
+      "shared_domain": true
+    },
+    {
+      "area_id": "schoenhauser_allee",
+      "name": "Späti Booth",
+      "category": "spati_kiosk",
+      "conflated_snapshot": 52,
+      "members": [
+        {
+          "source": "osm_overpass",
+          "ref": "node/12137666407"
+        }
+      ],
+      "urls": [],
+      "has_url": false,
+      "reachable_allowed": false,
+      "jsonld_hours": false,
+      "hours_text": false,
+      "shared_domain": false
+    },
+    {
+      "area_id": "schoenhauser_allee",
+      "name": "L'Epicerie",
+      "category": "spati_kiosk",
+      "conflated_snapshot": 52,
+      "members": [
+        {
+          "source": "osm_overpass",
+          "ref": "node/12741877924"
+        }
+      ],
+      "urls": [],
+      "has_url": false,
+      "reachable_allowed": false,
+      "jsonld_hours": false,
+      "hours_text": false,
+      "shared_domain": false
+    },
+    {
+      "area_id": "schoenhauser_allee",
+      "name": "Inka Markt",
+      "category": "spati_kiosk",
+      "conflated_snapshot": 52,
+      "members": [
+        {
+          "source": "osm_overpass",
+          "ref": "node/12766284044"
+        },
+        {
+          "source": "overture_places",
+          "ref": "overture:52e301f6-bfe8-487f-86d3-8e6f6463f02c"
+        }
+      ],
+      "urls": [
+        "https://inkamarkt.sumupstore.com/"
+      ],
+      "has_url": true,
+      "reachable_allowed": true,
+      "jsonld_hours": false,
+      "hours_text": false,
+      "shared_domain": false
+    },
+    {
+      "area_id": "schoenhauser_allee",
+      "name": "Waffle Brothers",
+      "category": "fast_food",
+      "conflated_snapshot": 52,
+      "members": [
+        {
+          "source": "osm_overpass",
+          "ref": "node/13314110001"
+        }
+      ],
+      "urls": [],
+      "has_url": false,
+      "reachable_allowed": false,
+      "jsonld_hours": false,
+      "hours_text": false,
+      "shared_domain": false
+    },
+    {
+      "area_id": "schoenhauser_allee",
+      "name": "Godshot Coffee Lab",
+      "category": "cafe",
+      "conflated_snapshot": 52,
+      "members": [
+        {
+          "source": "overture_places",
+          "ref": "overture:030173c0-2f62-4b77-81b1-47af893cccd2"
+        }
+      ],
+      "urls": [
+        "http://www.godshot.de/"
+      ],
+      "has_url": true,
+      "reachable_allowed": true,
+      "jsonld_hours": false,
+      "hours_text": false,
+      "shared_domain": false
+    },
+    {
+      "area_id": "schoenhauser_allee",
+      "name": "Der Havelbäcker Schivelbeiner Str. Berlin",
+      "category": "bakery",
+      "conflated_snapshot": 52,
+      "members": [
+        {
+          "source": "overture_places",
+          "ref": "overture:37d711d5-1acb-4600-894b-dbc662ca16f3"
+        }
+      ],
+      "urls": [
+        "http://lila-world.com"
+      ],
+      "has_url": true,
+      "reachable_allowed": true,
+      "jsonld_hours": false,
+      "hours_text": false,
+      "shared_domain": false
+    },
+    {
+      "area_id": "schoenhauser_allee",
+      "name": "Veganz Berlin-Prenzlauer Berg",
+      "category": "supermarket",
+      "conflated_snapshot": 52,
+      "members": [
+        {
+          "source": "overture_places",
+          "ref": "overture:37e992be-5a88-473c-bedf-69c91ca3b014"
+        }
+      ],
+      "urls": [
+        "http://www.veganz.de/"
+      ],
+      "has_url": true,
+      "reachable_allowed": true,
+      "jsonld_hours": false,
+      "hours_text": false,
+      "shared_domain": false
+    },
+    {
+      "area_id": "schoenhauser_allee",
+      "name": "Milchbart",
+      "category": "cafe",
+      "conflated_snapshot": 52,
+      "members": [
+        {
+          "source": "overture_places",
+          "ref": "overture:3493aa64-a6fc-4ada-ab52-575fbc1c1e08"
+        }
+      ],
+      "urls": [],
+      "has_url": false,
+      "reachable_allowed": false,
+      "jsonld_hours": false,
+      "hours_text": false,
+      "shared_domain": false
+    },
+    {
+      "area_id": "schoenhauser_allee",
+      "name": "Q62-Lounge",
+      "category": "cafe",
+      "conflated_snapshot": 52,
+      "members": [
+        {
+          "source": "overture_places",
+          "ref": "overture:f85261b1-4487-4352-ac04-03279b9c806e"
+        }
+      ],
+      "urls": [],
+      "has_url": false,
+      "reachable_allowed": false,
+      "jsonld_hours": false,
+      "hours_text": false,
+      "shared_domain": false
+    },
+    {
+      "area_id": "schoenhauser_allee",
+      "name": "Kamps",
+      "category": "bakery",
+      "conflated_snapshot": 52,
+      "members": [
+        {
+          "source": "overture_places",
+          "ref": "overture:d92bebd8-25ad-43f1-b72e-a7407392c34c"
+        }
+      ],
+      "urls": [
+        "https://kamps.de/standort/kamps-baeckerei-mit-backstube-berlin-schoenhauser-allee-arcaden"
+      ],
+      "has_url": true,
+      "reachable_allowed": false,
+      "jsonld_hours": false,
+      "hours_text": false,
+      "shared_domain": false
+    },
+    {
+      "area_id": "schoenhauser_allee",
+      "name": "Le Petit Café",
+      "category": "bakery",
+      "conflated_snapshot": 52,
+      "members": [
+        {
+          "source": "overture_places",
+          "ref": "overture:65d35ecf-cac2-4c11-9bf7-99e189ade256"
+        }
+      ],
+      "urls": [],
+      "has_url": false,
+      "reachable_allowed": false,
+      "jsonld_hours": false,
+      "hours_text": false,
+      "shared_domain": false
+    },
+    {
+      "area_id": "schoenhauser_allee",
+      "name": "Balzac Coffee",
+      "category": "cafe",
+      "conflated_snapshot": 52,
+      "members": [
+        {
+          "source": "overture_places",
+          "ref": "overture:4105630a-826f-4f52-b46a-c00ba8aa3eaa"
+        }
+      ],
+      "urls": [
+        "http://www.balzaccoffee.com"
+      ],
+      "has_url": true,
+      "reachable_allowed": true,
+      "jsonld_hours": false,
+      "hours_text": false,
+      "shared_domain": false
+    },
+    {
+      "area_id": "schoenhauser_allee",
+      "name": "Kettwurst!",
+      "category": "fast_food",
+      "conflated_snapshot": 52,
+      "members": [
+        {
+          "source": "overture_places",
+          "ref": "overture:17c21656-5973-4a20-a979-eb7ad4cf5415"
+        }
+      ],
+      "urls": [],
+      "has_url": false,
+      "reachable_allowed": false,
+      "jsonld_hours": false,
+      "hours_text": false,
+      "shared_domain": false
+    },
+    {
+      "area_id": "schoenhauser_allee",
+      "name": "Wiener Feinbäcker (Arkadencenter / S-Bhf)",
+      "category": "bakery",
+      "conflated_snapshot": 52,
+      "members": [
+        {
+          "source": "overture_places",
+          "ref": "overture:b5dec4cf-438e-4197-bbfe-40b6b0a5b565"
+        }
+      ],
+      "urls": [],
+      "has_url": false,
+      "reachable_allowed": false,
+      "jsonld_hours": false,
+      "hours_text": false,
+      "shared_domain": false
+    },
+    {
+      "area_id": "schoenhauser_allee",
+      "name": "Back-Factory",
+      "category": "bakery",
+      "conflated_snapshot": 52,
+      "members": [
+        {
+          "source": "overture_places",
+          "ref": "overture:13aa5a06-38ff-409d-8b65-1edcb8f1b7ef"
+        }
+      ],
+      "urls": [
+        "http://www.back-factory.de"
+      ],
+      "has_url": true,
+      "reachable_allowed": true,
+      "jsonld_hours": false,
+      "hours_text": false,
+      "shared_domain": false
+    },
+    {
+      "area_id": "schoenhauser_allee",
+      "name": "Café Woyda",
+      "category": "cafe",
+      "conflated_snapshot": 52,
+      "members": [
+        {
+          "source": "overture_places",
+          "ref": "overture:39b0b41a-b20b-4a29-81fa-96594d66935d"
+        }
+      ],
+      "urls": [
+        "http://www.cafewoyda.de"
+      ],
+      "has_url": true,
+      "reachable_allowed": true,
+      "jsonld_hours": false,
+      "hours_text": false,
+      "shared_domain": false
+    },
+    {
+      "area_id": "schoenhauser_allee",
+      "name": "Cafe Wunderlich",
+      "category": "cafe",
+      "conflated_snapshot": 52,
+      "members": [
+        {
+          "source": "overture_places",
+          "ref": "overture:cf7b8926-4f22-479e-8ead-3c5b72470b96"
+        }
+      ],
+      "urls": [
+        "http://www.cafewunderlich.de"
+      ],
+      "has_url": true,
+      "reachable_allowed": false,
+      "jsonld_hours": false,
+      "hours_text": false,
+      "shared_domain": false
+    },
+    {
+      "area_id": "schoenhauser_allee",
+      "name": "Portuguese Bakery",
+      "category": "bakery",
+      "conflated_snapshot": 52,
+      "members": [
+        {
+          "source": "overture_places",
+          "ref": "overture:d719de65-bed8-4e9f-a3d8-d576a7139514"
+        }
+      ],
+      "urls": [],
+      "has_url": false,
+      "reachable_allowed": false,
+      "jsonld_hours": false,
+      "hours_text": false,
+      "shared_domain": false
+    },
+    {
+      "area_id": "schoenhauser_allee",
+      "name": "Kohlenquelle",
+      "category": "cafe",
+      "conflated_snapshot": 52,
+      "members": [
+        {
+          "source": "overture_places",
+          "ref": "overture:66f2af28-1aad-41db-9965-a0fc88a609a3"
+        }
+      ],
+      "urls": [
+        "http://kohlenquelle.de"
+      ],
+      "has_url": true,
+      "reachable_allowed": true,
+      "jsonld_hours": true,
+      "hours_text": false,
+      "shared_domain": false
+    },
+    {
+      "area_id": "schoenhauser_allee",
+      "name": "Cafe Rhino",
+      "category": "cafe",
+      "conflated_snapshot": 52,
+      "members": [
+        {
+          "source": "overture_places",
+          "ref": "overture:92e7b760-279a-48bd-b092-7bd17f4cf5e9"
+        }
+      ],
+      "urls": [
+        "http://cafe-rhino.de"
+      ],
+      "has_url": true,
+      "reachable_allowed": false,
+      "jsonld_hours": false,
+      "hours_text": false,
+      "shared_domain": false
+    },
+    {
+      "area_id": "schoenhauser_allee",
+      "name": "Glitzer Café ",
+      "category": "cafe",
+      "conflated_snapshot": 52,
+      "members": [
+        {
+          "source": "overture_places",
+          "ref": "overture:51087feb-ba3b-4379-9d17-7ee12d2700d4"
+        }
+      ],
+      "urls": [],
+      "has_url": false,
+      "reachable_allowed": false,
+      "jsonld_hours": false,
+      "hours_text": false,
+      "shared_domain": false
+    },
+    {
+      "area_id": "schoenhauser_allee",
+      "name": "Eetcafé Linda Carrell Berlin",
+      "category": "cafe",
+      "conflated_snapshot": 52,
+      "members": [
+        {
+          "source": "overture_places",
+          "ref": "overture:d6430848-df73-4660-84f1-30513f631085"
+        }
+      ],
+      "urls": [],
+      "has_url": false,
+      "reachable_allowed": false,
+      "jsonld_hours": false,
+      "hours_text": false,
+      "shared_domain": false
+    },
+    {
+      "area_id": "schoenhauser_allee",
+      "name": "YogaCafé - Mindful Life",
+      "category": "cafe",
+      "conflated_snapshot": 52,
+      "members": [
+        {
+          "source": "overture_places",
+          "ref": "overture:7f69665c-1d82-4e75-850b-65696fb89b8d"
+        }
+      ],
+      "urls": [
+        "https://yogacafe-berlin.com"
+      ],
+      "has_url": true,
+      "reachable_allowed": true,
+      "jsonld_hours": false,
+      "hours_text": false,
+      "shared_domain": false
+    },
+    {
+      "area_id": "schoenhauser_allee",
+      "name": "Lavazza",
+      "category": "cafe",
+      "conflated_snapshot": 52,
+      "members": [
+        {
+          "source": "overture_places",
+          "ref": "overture:9962148a-d066-4106-919b-4c02097210e7"
+        }
+      ],
+      "urls": [
+        "https://www.lavazza.com"
+      ],
+      "has_url": true,
+      "reachable_allowed": true,
+      "jsonld_hours": false,
+      "hours_text": false,
+      "shared_domain": false
+    },
+    {
+      "area_id": "schoenhauser_allee",
+      "name": "Nah und Gut Kurschus",
+      "category": "supermarket",
+      "conflated_snapshot": 52,
+      "members": [
+        {
+          "source": "overture_places",
+          "ref": "overture:fff03c37-0370-4dcd-a2a0-e5a06e6ae6ed"
+        }
+      ],
+      "urls": [],
+      "has_url": false,
+      "reachable_allowed": false,
+      "jsonld_hours": false,
+      "hours_text": false,
+      "shared_domain": false
+    },
+    {
+      "area_id": "schoenhauser_allee",
+      "name": "ShuGa Café Patisserie Artisanale",
+      "category": "cafe",
+      "conflated_snapshot": 52,
+      "members": [
+        {
+          "source": "overture_places",
+          "ref": "overture:1c3dbf98-e8a7-4c6b-b3ee-69a16e26951a"
+        }
+      ],
+      "urls": [
+        "http://www.shugaberlin.com/"
+      ],
+      "has_url": true,
+      "reachable_allowed": true,
+      "jsonld_hours": false,
+      "hours_text": false,
+      "shared_domain": false
+    },
+    {
+      "area_id": "schoenhauser_allee",
+      "name": "Hala Hala",
+      "category": "supermarket",
+      "conflated_snapshot": 52,
+      "members": [
+        {
+          "source": "overture_places",
+          "ref": "overture:30321e1d-4da7-4531-bca5-e4ca9b3c99fc"
+        }
+      ],
+      "urls": [
+        "https://hala-hala.de"
+      ],
+      "has_url": true,
+      "reachable_allowed": false,
+      "jsonld_hours": false,
+      "hours_text": false,
+      "shared_domain": false
+    },
+    {
+      "area_id": "schoenhauser_allee",
+      "name": "McDonald's",
+      "category": "fast_food",
+      "conflated_snapshot": 52,
+      "members": [
+        {
+          "source": "overture_places",
+          "ref": "overture:eaab4e02-0033-4111-9bc2-2d55f30b12fe"
+        }
+      ],
+      "urls": [
+        "http://www.mcdonalds.de"
+      ],
+      "has_url": true,
+      "reachable_allowed": true,
+      "jsonld_hours": false,
+      "hours_text": false,
+      "shared_domain": false
+    },
+    {
+      "area_id": "schoenhauser_allee",
+      "name": "Hermes PaketShop",
+      "category": "spati_kiosk",
+      "conflated_snapshot": 52,
+      "members": [
+        {
+          "source": "overture_places",
+          "ref": "overture:468accee-7a9d-4fa6-8b68-bc3a65a0036c"
+        }
+      ],
+      "urls": [
+        "https://paketshop.myhermes.de/int/hpsf.html?shopid=680234"
+      ],
+      "has_url": true,
+      "reachable_allowed": true,
+      "jsonld_hours": false,
+      "hours_text": false,
+      "shared_domain": true
+    },
+    {
+      "area_id": "schoenhauser_allee",
+      "name": "St. Gaudy Café",
+      "category": "cafe",
+      "conflated_snapshot": 52,
+      "members": [
+        {
+          "source": "overture_places",
+          "ref": "overture:09cb2502-ba36-4e24-97a2-f0aacbc7e332"
+        }
+      ],
+      "urls": [
+        "http://www.gaudycafe.com"
+      ],
+      "has_url": true,
+      "reachable_allowed": true,
+      "jsonld_hours": false,
+      "hours_text": false,
+      "shared_domain": false
+    },
+    {
+      "area_id": "schoenhauser_allee",
+      "name": "Berliner Kaffeekontor",
+      "category": "cafe",
+      "conflated_snapshot": 52,
+      "members": [
+        {
+          "source": "overture_places",
+          "ref": "overture:a2ca30cf-e7e9-4307-afcc-febcf4d8797c"
+        }
+      ],
+      "urls": [
+        "http://www.yellow-star-coffee.de/"
+      ],
+      "has_url": true,
+      "reachable_allowed": true,
+      "jsonld_hours": false,
+      "hours_text": false,
+      "shared_domain": false
+    },
+    {
+      "area_id": "schoenhauser_allee",
+      "name": "Hermes PaketShop",
+      "category": "spati_kiosk",
+      "conflated_snapshot": 52,
+      "members": [
+        {
+          "source": "overture_places",
+          "ref": "overture:fc92ae81-c552-4a28-a722-eb6efa642c22"
+        }
+      ],
+      "urls": [
+        "https://paketshop.myhermes.de/int/hpsf.html?shopid=639771"
+      ],
+      "has_url": true,
+      "reachable_allowed": true,
+      "jsonld_hours": false,
+      "hours_text": false,
+      "shared_domain": true
+    },
+    {
+      "area_id": "schoenhauser_allee",
+      "name": "Spreegold",
+      "category": "cafe",
+      "conflated_snapshot": 52,
+      "members": [
+        {
+          "source": "overture_places",
+          "ref": "overture:44dc6872-1b5a-4788-a5b4-d4e784745e40"
+        }
+      ],
+      "urls": [
+        "https://www.spreegold.com/"
+      ],
+      "has_url": true,
+      "reachable_allowed": true,
+      "jsonld_hours": false,
+      "hours_text": false,
+      "shared_domain": false
+    },
+    {
+      "area_id": "schoenhauser_allee",
+      "name": "Café LUC",
+      "category": "cafe",
+      "conflated_snapshot": 52,
+      "members": [
+        {
+          "source": "overture_places",
+          "ref": "overture:2859af66-d967-4bb6-9cfe-0fef721e590b"
+        }
+      ],
+      "urls": [
+        "http://lucberlin.de/"
+      ],
+      "has_url": true,
+      "reachable_allowed": true,
+      "jsonld_hours": false,
+      "hours_text": false,
+      "shared_domain": false
+    },
+    {
+      "area_id": "schoenhauser_allee",
+      "name": "Eckert Kiosk",
+      "category": "spati_kiosk",
+      "conflated_snapshot": 52,
+      "members": [
+        {
+          "source": "overture_places",
+          "ref": "overture:6b824ac8-83f2-4ab7-8c09-0ca058a54772"
+        }
+      ],
+      "urls": [
+        "https://www.ugde.com/die-unternehmensgruppe/marken/eckert"
+      ],
+      "has_url": true,
+      "reachable_allowed": true,
+      "jsonld_hours": false,
+      "hours_text": false,
+      "shared_domain": true
+    },
+    {
+      "area_id": "schoenhauser_allee",
+      "name": "Maître vite",
+      "category": "cafe",
+      "conflated_snapshot": 52,
+      "members": [
+        {
+          "source": "overture_places",
+          "ref": "overture:e6da75d4-3ae7-4a52-947b-5707e732df33"
+        }
+      ],
+      "urls": [
+        "http://www.maitrevite.de"
+      ],
+      "has_url": true,
+      "reachable_allowed": true,
+      "jsonld_hours": false,
+      "hours_text": false,
+      "shared_domain": false
+    },
+    {
+      "area_id": "schoenhauser_allee",
+      "name": "Unternehmensgruppe Dr. Eckert",
+      "category": "gas_station_convenience",
+      "conflated_snapshot": 52,
+      "members": [
+        {
+          "source": "overture_places",
+          "ref": "overture:0c5c1e7e-0eed-4e62-b19d-6502d9b01082"
+        }
+      ],
+      "urls": [
+        "http://www.ugde.com/"
+      ],
+      "has_url": true,
+      "reachable_allowed": true,
+      "jsonld_hours": false,
+      "hours_text": false,
+      "shared_domain": true
+    },
+    {
+      "area_id": "schoenhauser_allee",
+      "name": "Tchibo Filiale",
+      "category": "cafe",
+      "conflated_snapshot": 52,
+      "members": [
+        {
+          "source": "overture_places",
+          "ref": "overture:fa1419a7-fe6d-4f56-b198-6a5b75bbf6a9"
+        }
+      ],
+      "urls": [
+        "https://www.tchibo.de/service/storefinder/store/100008471"
+      ],
+      "has_url": true,
+      "reachable_allowed": false,
+      "jsonld_hours": false,
+      "hours_text": false,
+      "shared_domain": false
+    },
+    {
+      "area_id": "schoenhauser_allee",
+      "name": "Berlin Schönhauser Allee Arc",
+      "category": "fast_food",
+      "conflated_snapshot": 52,
+      "members": [
+        {
+          "source": "overture_places",
+          "ref": "overture:ade90f5f-8d60-42a6-bd81-5623aba9b8d8"
+        }
+      ],
+      "urls": [
+        "https://www.nordsee.com/de/filialen"
+      ],
+      "has_url": true,
+      "reachable_allowed": true,
+      "jsonld_hours": false,
+      "hours_text": false,
+      "shared_domain": false
+    },
+    {
+      "area_id": "schoenhauser_allee",
+      "name": "ServiceStore DB",
+      "category": "spati_kiosk",
+      "conflated_snapshot": 52,
+      "members": [
+        {
+          "source": "overture_places",
+          "ref": "overture:6be618cb-54a7-4d7b-8103-c0f4f7a3caaa"
+        }
+      ],
+      "urls": [
+        "https://www.servicestoredb.de/sst-de/Standortfinder#!/l/berlin/schonhauser-allee-75/4557168"
+      ],
+      "has_url": true,
+      "reachable_allowed": true,
+      "jsonld_hours": false,
+      "hours_text": false,
+      "shared_domain": false
+    },
+    {
+      "area_id": "schoenhauser_allee",
+      "name": "Francisco Deutschland GmbH",
+      "category": "supermarket",
+      "conflated_snapshot": 52,
+      "members": [
+        {
+          "source": "overture_places",
+          "ref": "overture:3a9ed2c8-8686-44cf-b8a1-601d24046f83"
+        }
+      ],
+      "urls": [
+        "http://www.mango.com"
+      ],
+      "has_url": true,
+      "reachable_allowed": false,
+      "jsonld_hours": false,
+      "hours_text": false,
+      "shared_domain": false
+    },
+    {
+      "area_id": "schoenhauser_allee",
+      "name": "Ciao Bella",
+      "category": "supermarket",
+      "conflated_snapshot": 52,
+      "members": [
+        {
+          "source": "overture_places",
+          "ref": "overture:e09cd576-2782-4635-9ee6-e286df3c14a9"
+        }
+      ],
+      "urls": [
+        "https://www.ciao-bella.de/restaurantsuche/#!/l/berlin/schonhauser-allee-80/4816372"
+      ],
+      "has_url": true,
+      "reachable_allowed": true,
+      "jsonld_hours": false,
+      "hours_text": true,
+      "shared_domain": false
+    },
+    {
+      "area_id": "schoenhauser_allee",
+      "name": "Wrapublic",
+      "category": "fast_food",
+      "conflated_snapshot": 52,
+      "members": [
+        {
+          "source": "overture_places",
+          "ref": "overture:bbf19468-47d7-4575-b94f-c891540c4bac"
+        }
+      ],
+      "urls": [
+        "https://www.wrapublic.de"
+      ],
+      "has_url": true,
+      "reachable_allowed": true,
+      "jsonld_hours": false,
+      "hours_text": true,
+      "shared_domain": false
+    },
+    {
+      "area_id": "schoenhauser_allee",
+      "name": "EDEKA Schönhauser Allee",
+      "category": "supermarket",
+      "conflated_snapshot": 52,
+      "members": [
+        {
+          "source": "overture_places",
+          "ref": "overture:e4a9c3a0-636b-4cbf-aa9b-67e46628d2e0"
+        }
+      ],
+      "urls": [
+        "https://www.edeka.de/eh/minden-hannover/edeka-sch%C3%B6nhauser-allee-sch%C3%B6nhauser-allee-80/index.jsp"
+      ],
+      "has_url": true,
+      "reachable_allowed": false,
+      "jsonld_hours": false,
+      "hours_text": false,
+      "shared_domain": false
+    },
+    {
+      "area_id": "schoenhauser_allee",
+      "name": "REWE",
+      "category": "supermarket",
+      "conflated_snapshot": 52,
+      "members": [
+        {
+          "source": "overture_places",
+          "ref": "overture:772c3edb-fb87-4e27-9dcf-aad81fc274a3"
+        }
+      ],
+      "urls": [
+        "https://www.rewe.de/marktseite/berlin/8547534/rewe-markt-schoenhauser-allee-80?ecid=seo_localseo_8547534_b_nn_nn_nn_nn_nn"
+      ],
+      "has_url": true,
+      "reachable_allowed": false,
+      "jsonld_hours": false,
+      "hours_text": false,
+      "shared_domain": false
+    },
+    {
+      "area_id": "schoenhauser_allee",
+      "name": "Aisa Mekong - Mini Markt",
+      "category": "supermarket",
+      "conflated_snapshot": 52,
+      "members": [
+        {
+          "source": "overture_places",
+          "ref": "overture:5523c0be-6909-4eef-be97-ab2af33f1c3e"
+        }
+      ],
+      "urls": [
+        "http://sites.google.com/site/asiamekongsupermarket/"
+      ],
+      "has_url": true,
+      "reachable_allowed": true,
+      "jsonld_hours": false,
+      "hours_text": false,
+      "shared_domain": false
+    },
+    {
+      "area_id": "schoenhauser_allee",
+      "name": "مطبخ شغف - Passion",
+      "category": "fast_food",
+      "conflated_snapshot": 52,
+      "members": [
+        {
+          "source": "overture_places",
+          "ref": "overture:b882aa9f-fb0d-442b-b0f3-80a8cb10173d"
+        }
+      ],
+      "urls": [],
+      "has_url": false,
+      "reachable_allowed": false,
+      "jsonld_hours": false,
+      "hours_text": false,
+      "shared_domain": false
+    },
+    {
+      "area_id": "schoenhauser_allee",
+      "name": "Marietta",
+      "category": "cafe",
+      "conflated_snapshot": 52,
+      "members": [
+        {
+          "source": "overture_places",
+          "ref": "overture:c786f539-05d8-435c-8f8b-628ac817e0c2"
+        }
+      ],
+      "urls": [],
+      "has_url": false,
+      "reachable_allowed": false,
+      "jsonld_hours": false,
+      "hours_text": false,
+      "shared_domain": false
+    }
+  ],
+  "url_checks": {
+    "http://www.k-bap.de/": {
+      "url": "http://www.k-bap.de/",
+      "robots_allowed": true,
+      "status": 200,
+      "html": true,
+      "followed_url": "http://www.k-bap.de/impressum.html",
+      "jsonld_hours": false,
+      "hours_text": false,
+      "hours_on": null,
+      "error": null,
+      "final_url": "http://www.k-bap.de/"
+    },
+    "https://www.kempinski.com/de/berlin/hotel-adlon/dining/adlon-to-go/": {
+      "url": "https://www.kempinski.com/de/berlin/hotel-adlon/dining/adlon-to-go/",
+      "robots_allowed": true,
+      "status": 200,
+      "html": true,
+      "followed_url": null,
+      "jsonld_hours": true,
+      "hours_text": false,
+      "hours_on": "homepage",
+      "error": null,
+      "final_url": "https://www.kempinski.com/de/hotel-adlon/restaurants-bars/adlon-to-go-coffee-shop"
+    },
+    "http://Espressoeleganza.de/": {
+      "url": "http://Espressoeleganza.de/",
+      "robots_allowed": true,
+      "status": 404,
+      "html": false,
+      "followed_url": null,
+      "jsonld_hours": false,
+      "hours_text": false,
+      "hours_on": null,
+      "error": null,
+      "final_url": "https://espressoeleganza.de/"
+    },
+    "http://www.midtowncoffeeshops.de/": {
+      "url": "http://www.midtowncoffeeshops.de/",
+      "robots_allowed": null,
+      "status": null,
+      "html": false,
+      "followed_url": null,
+      "jsonld_hours": false,
+      "hours_text": false,
+      "hours_on": null,
+      "error": "robots.txt unreachable"
+    },
+    "https://skatehalleberlin.com/": {
+      "url": "https://skatehalleberlin.com/",
+      "robots_allowed": true,
+      "status": 200,
+      "html": true,
+      "followed_url": null,
+      "jsonld_hours": false,
+      "hours_text": true,
+      "hours_on": "homepage",
+      "error": null,
+      "final_url": "https://skatehalleberlin.com/"
+    },
+    "http://www.nanofalafel.de": {
+      "url": "http://www.nanofalafel.de",
+      "robots_allowed": false,
+      "status": null,
+      "html": false,
+      "followed_url": null,
+      "jsonld_hours": false,
+      "hours_text": false,
+      "hours_on": null,
+      "error": "disallowed by robots.txt"
+    },
+    "https://www.nepalese-momo-berlin.de/colofon": {
+      "url": "https://www.nepalese-momo-berlin.de/colofon",
+      "robots_allowed": null,
+      "status": null,
+      "html": false,
+      "followed_url": null,
+      "jsonld_hours": false,
+      "hours_text": false,
+      "hours_on": null,
+      "error": "robots.txt unreachable"
+    },
+    "https://www.starbucks.de/?y_source=1_MTU0NTQxNzEtNTU5LWxvY2F0aW9uLndlYnNpdGU%3D": {
+      "url": "https://www.starbucks.de/?y_source=1_MTU0NTQxNzEtNTU5LWxvY2F0aW9uLndlYnNpdGU%3D",
+      "robots_allowed": true,
+      "status": 200,
+      "html": true,
+      "followed_url": null,
+      "jsonld_hours": false,
+      "hours_text": true,
+      "hours_on": "homepage",
+      "error": null,
+      "final_url": "https://www.starbucks.de/de/?y_source=1_MTU0NTQxNzEtNTU5LWxvY2F0aW9uLndlYnNpdGU%3D"
+    },
+    "https://waffee-berlin.de/": {
+      "url": "https://waffee-berlin.de/",
+      "robots_allowed": true,
+      "status": 200,
+      "html": true,
+      "followed_url": null,
+      "jsonld_hours": true,
+      "hours_text": true,
+      "hours_on": "homepage",
+      "error": null,
+      "final_url": "https://www.waffee-berlin.de/"
+    },
+    "http://www.grandmamaswafflehouse.jimdo.com/": {
+      "url": "http://www.grandmamaswafflehouse.jimdo.com/",
+      "robots_allowed": null,
+      "status": null,
+      "html": false,
+      "followed_url": null,
+      "jsonld_hours": false,
+      "hours_text": false,
+      "hours_on": null,
+      "error": "robots.txt unreachable"
+    },
+    "http://www.sossen-eckart.de": {
+      "url": "http://www.sossen-eckart.de",
+      "robots_allowed": true,
+      "status": 200,
+      "html": true,
+      "followed_url": null,
+      "jsonld_hours": true,
+      "hours_text": false,
+      "hours_on": "homepage",
+      "error": null,
+      "final_url": "https://sossen-eckart.de/"
+    },
+    "https://beanfifteen.cafe/": {
+      "url": "https://beanfifteen.cafe/",
+      "robots_allowed": null,
+      "status": null,
+      "html": false,
+      "followed_url": null,
+      "jsonld_hours": false,
+      "hours_text": false,
+      "hours_on": null,
+      "error": "robots.txt unreachable"
+    },
+    "http://www.bisaufsmesser.com/store": {
+      "url": "http://www.bisaufsmesser.com/store",
+      "robots_allowed": true,
+      "status": 200,
+      "html": true,
+      "followed_url": "https://bisaufsmesser.com/policies/legal-notice",
+      "jsonld_hours": false,
+      "hours_text": false,
+      "hours_on": null,
+      "error": null,
+      "final_url": "https://bisaufsmesser.com/"
+    },
+    "http://catering-events-berlin.de": {
+      "url": "http://catering-events-berlin.de",
+      "robots_allowed": null,
+      "status": null,
+      "html": false,
+      "followed_url": null,
+      "jsonld_hours": false,
+      "hours_text": false,
+      "hours_on": null,
+      "error": "robots.txt unreachable"
+    },
+    "http://www.starbucks.de/": {
+      "url": "http://www.starbucks.de/",
+      "robots_allowed": true,
+      "status": 200,
+      "html": true,
+      "followed_url": null,
+      "jsonld_hours": false,
+      "hours_text": true,
+      "hours_on": "homepage",
+      "error": null,
+      "final_url": "https://www.starbucks.de/de/"
+    },
+    "http://www.365stores.de/mobile/standorte.html": {
+      "url": "http://www.365stores.de/mobile/standorte.html",
+      "robots_allowed": null,
+      "status": null,
+      "html": false,
+      "followed_url": null,
+      "jsonld_hours": false,
+      "hours_text": false,
+      "hours_on": null,
+      "error": "robots.txt unreachable"
+    },
+    "https://honigkrone.de": {
+      "url": "https://honigkrone.de",
+      "robots_allowed": true,
+      "status": 200,
+      "html": true,
+      "followed_url": null,
+      "jsonld_hours": false,
+      "hours_text": true,
+      "hours_on": "homepage",
+      "error": null,
+      "final_url": "https://honigkrone.de"
+    },
+    "https://www.mcdonalds.com/de/de-de/restaurant-suche.html/l/berlin/tamara-danz-strasse-11/1867": {
+      "url": "https://www.mcdonalds.com/de/de-de/restaurant-suche.html/l/berlin/tamara-danz-strasse-11/1867",
+      "robots_allowed": true,
+      "status": 200,
+      "html": true,
+      "followed_url": "https://www.mcdonalds.com/de/de-de/kontakt.html",
+      "jsonld_hours": false,
+      "hours_text": false,
+      "hours_on": null,
+      "error": null,
+      "final_url": "https://www.mcdonalds.com/de/de-de/restaurant-suche.html/l/berlin/tamara-danz-strasse-11/1867"
+    },
+    "https://www.eatberlinstore.de": {
+      "url": "https://www.eatberlinstore.de",
+      "robots_allowed": null,
+      "status": null,
+      "html": false,
+      "followed_url": null,
+      "jsonld_hours": false,
+      "hours_text": false,
+      "hours_on": null,
+      "error": "robots.txt unreachable"
+    },
+    "http://sonsofmana.de": {
+      "url": "http://sonsofmana.de",
+      "robots_allowed": true,
+      "status": 500,
+      "html": false,
+      "followed_url": null,
+      "jsonld_hours": false,
+      "hours_text": false,
+      "hours_on": null,
+      "error": null,
+      "final_url": "http://sonsofmana.de"
+    },
+    "https://www.biomarkt.de/berlin-tamara-danz-str-11/marktseite/": {
+      "url": "https://www.biomarkt.de/berlin-tamara-danz-str-11/marktseite/",
+      "robots_allowed": true,
+      "status": 200,
+      "html": true,
+      "followed_url": null,
+      "jsonld_hours": false,
+      "hours_text": false,
+      "hours_on": null,
+      "error": null,
+      "final_url": "https://www.biomarkt.de/berlin-tamara-danz-str-11/marktseite/"
+    },
+    "https://www.starbucks.co.uk/store-locator/56750-290691/berlin,-east-side-mall": {
+      "url": "https://www.starbucks.co.uk/store-locator/56750-290691/berlin,-east-side-mall",
+      "robots_allowed": true,
+      "status": 403,
+      "html": false,
+      "followed_url": null,
+      "jsonld_hours": false,
+      "hours_text": false,
+      "hours_on": null,
+      "error": null,
+      "final_url": "https://www.starbucks.co.uk/store-locator/56750-290691/berlin,-east-side-mall"
+    },
+    "http://www.curryfritze.com": {
+      "url": "http://www.curryfritze.com",
+      "robots_allowed": true,
+      "status": 200,
+      "html": true,
+      "followed_url": null,
+      "jsonld_hours": true,
+      "hours_text": false,
+      "hours_on": "homepage",
+      "error": null,
+      "final_url": "https://curryfritze.com/"
+    },
+    "https://steinecke.de/baeckereien/berin-rotherstr-16-19/": {
+      "url": "https://steinecke.de/baeckereien/berin-rotherstr-16-19/",
+      "robots_allowed": true,
+      "status": 404,
+      "html": false,
+      "followed_url": null,
+      "jsonld_hours": false,
+      "hours_text": false,
+      "hours_on": null,
+      "error": null,
+      "final_url": "https://steinecke.de/baeckereien/berin-rotherstr-16-19/"
+    },
+    "http://www.morsh.me/": {
+      "url": "http://www.morsh.me/",
+      "robots_allowed": true,
+      "status": 200,
+      "html": true,
+      "followed_url": "https://www.morsh.me/contact",
+      "jsonld_hours": false,
+      "hours_text": false,
+      "hours_on": null,
+      "error": null,
+      "final_url": "https://www.morsh.me/"
+    },
+    "http://alainsnack1.placeweb.site": {
+      "url": "http://alainsnack1.placeweb.site",
+      "robots_allowed": true,
+      "status": null,
+      "html": false,
+      "followed_url": null,
+      "jsonld_hours": false,
+      "hours_text": false,
+      "hours_on": null,
+      "error": "ConnectError: [SSL: TLSV1_UNRECOGNIZED_NAME] tlsv1 unrecognized name (_ssl.c:1129)",
+      "final_url": "http://alainsnack1.placeweb.site"
+    },
+    "http://kap-lan.de/": {
+      "url": "http://kap-lan.de/",
+      "robots_allowed": true,
+      "status": 200,
+      "html": true,
+      "followed_url": "https://kaplangroup.de/kontakt/",
+      "jsonld_hours": false,
+      "hours_text": false,
+      "hours_on": null,
+      "error": null,
+      "final_url": "https://kaplangroup.de/"
+    },
+    "https://www.starbucks.co.uk/store-locator/80954-309375/berlin-schoenhauser-allee-arca": {
+      "url": "https://www.starbucks.co.uk/store-locator/80954-309375/berlin-schoenhauser-allee-arca",
+      "robots_allowed": true,
+      "status": 200,
+      "html": true,
+      "followed_url": "https://www.starbucks.co.uk/contact-us",
+      "jsonld_hours": false,
+      "hours_text": false,
+      "hours_on": null,
+      "error": null,
+      "final_url": "https://www.starbucks.co.uk/store-locator/80954-309375/berlin-schoenhauser-allee-arca"
+    },
+    "https://inkamarkt.sumupstore.com/": {
+      "url": "https://inkamarkt.sumupstore.com/",
+      "robots_allowed": true,
+      "status": 200,
+      "html": true,
+      "followed_url": null,
+      "jsonld_hours": false,
+      "hours_text": false,
+      "hours_on": null,
+      "error": null,
+      "final_url": "https://inkamarkt.sumupstore.com/"
+    },
+    "http://www.godshot.de/": {
+      "url": "http://www.godshot.de/",
+      "robots_allowed": true,
+      "status": 200,
+      "html": true,
+      "followed_url": "https://www.godshot.de/imprint",
+      "jsonld_hours": false,
+      "hours_text": false,
+      "hours_on": null,
+      "error": null,
+      "final_url": "https://www.godshot.de/"
+    },
+    "http://lila-world.com": {
+      "url": "http://lila-world.com",
+      "robots_allowed": true,
+      "status": 200,
+      "html": true,
+      "followed_url": null,
+      "jsonld_hours": false,
+      "hours_text": false,
+      "hours_on": null,
+      "error": null,
+      "final_url": "https://lila-world.com/"
+    },
+    "http://www.veganz.de/": {
+      "url": "http://www.veganz.de/",
+      "robots_allowed": true,
+      "status": 200,
+      "html": true,
+      "followed_url": "https://veganz.de/kontakt/produkt",
+      "jsonld_hours": false,
+      "hours_text": false,
+      "hours_on": null,
+      "error": null,
+      "final_url": "https://veganz.de/"
+    },
+    "https://kamps.de/standort/kamps-baeckerei-mit-backstube-berlin-schoenhauser-allee-arcaden": {
+      "url": "https://kamps.de/standort/kamps-baeckerei-mit-backstube-berlin-schoenhauser-allee-arcaden",
+      "robots_allowed": false,
+      "status": null,
+      "html": false,
+      "followed_url": null,
+      "jsonld_hours": false,
+      "hours_text": false,
+      "hours_on": null,
+      "error": "disallowed by robots.txt"
+    },
+    "http://www.balzaccoffee.com": {
+      "url": "http://www.balzaccoffee.com",
+      "robots_allowed": true,
+      "status": 200,
+      "html": true,
+      "followed_url": "https://de.espressohouse.com/kontaktiere-uns",
+      "jsonld_hours": false,
+      "hours_text": false,
+      "hours_on": null,
+      "error": null,
+      "final_url": "https://de.espressohouse.com/uber-balzac-coffee-und-espresso-house"
+    },
+    "http://www.back-factory.de": {
+      "url": "http://www.back-factory.de",
+      "robots_allowed": true,
+      "status": 200,
+      "html": true,
+      "followed_url": "https://www.back-factory.de/de/standorte/",
+      "jsonld_hours": false,
+      "hours_text": false,
+      "hours_on": null,
+      "error": null,
+      "final_url": "https://www.back-factory.de/de/"
+    },
+    "http://www.cafewoyda.de": {
+      "url": "http://www.cafewoyda.de",
+      "robots_allowed": true,
+      "status": 200,
+      "html": true,
+      "followed_url": null,
+      "jsonld_hours": false,
+      "hours_text": false,
+      "hours_on": null,
+      "error": null,
+      "final_url": "http://www.cafewoyda.de"
+    },
+    "http://www.cafewunderlich.de": {
+      "url": "http://www.cafewunderlich.de",
+      "robots_allowed": null,
+      "status": null,
+      "html": false,
+      "followed_url": null,
+      "jsonld_hours": false,
+      "hours_text": false,
+      "hours_on": null,
+      "error": "robots.txt unreachable"
+    },
+    "http://kohlenquelle.de": {
+      "url": "http://kohlenquelle.de",
+      "robots_allowed": true,
+      "status": 200,
+      "html": true,
+      "followed_url": null,
+      "jsonld_hours": true,
+      "hours_text": false,
+      "hours_on": "homepage",
+      "error": null,
+      "final_url": "https://www.kohlenquelle.de/"
+    },
+    "http://cafe-rhino.de": {
+      "url": "http://cafe-rhino.de",
+      "robots_allowed": null,
+      "status": null,
+      "html": false,
+      "followed_url": null,
+      "jsonld_hours": false,
+      "hours_text": false,
+      "hours_on": null,
+      "error": "robots.txt unreachable"
+    },
+    "https://yogacafe-berlin.com": {
+      "url": "https://yogacafe-berlin.com",
+      "robots_allowed": true,
+      "status": 200,
+      "html": true,
+      "followed_url": "https://mindfullife-berlin.com/impressum/",
+      "jsonld_hours": false,
+      "hours_text": false,
+      "hours_on": null,
+      "error": null,
+      "final_url": "https://mindfullife-berlin.com/"
+    },
+    "https://www.lavazza.com": {
+      "url": "https://www.lavazza.com",
+      "robots_allowed": true,
+      "status": 200,
+      "html": true,
+      "followed_url": "https://www.lavazza.com/en/contact-us",
+      "jsonld_hours": false,
+      "hours_text": false,
+      "hours_on": null,
+      "error": null,
+      "final_url": "https://www.lavazza.com/en"
+    },
+    "http://www.shugaberlin.com/": {
+      "url": "http://www.shugaberlin.com/",
+      "robots_allowed": true,
+      "status": 200,
+      "html": true,
+      "followed_url": "https://www.shugaberlin.com/contact",
+      "jsonld_hours": false,
+      "hours_text": false,
+      "hours_on": null,
+      "error": null,
+      "final_url": "https://www.shugaberlin.com/"
+    },
+    "https://hala-hala.de": {
+      "url": "https://hala-hala.de",
+      "robots_allowed": null,
+      "status": null,
+      "html": false,
+      "followed_url": null,
+      "jsonld_hours": false,
+      "hours_text": false,
+      "hours_on": null,
+      "error": "robots.txt unreachable"
+    },
+    "http://www.mcdonalds.de": {
+      "url": "http://www.mcdonalds.de",
+      "robots_allowed": true,
+      "status": 200,
+      "html": true,
+      "followed_url": "https://www.mcdonalds.com/de/de-de/kontakt.html",
+      "jsonld_hours": false,
+      "hours_text": false,
+      "hours_on": null,
+      "error": null,
+      "final_url": "https://www.mcdonalds.com/de/de-de.html"
+    },
+    "https://paketshop.myhermes.de/int/hpsf.html?shopid=680234": {
+      "url": "https://paketshop.myhermes.de/int/hpsf.html?shopid=680234",
+      "robots_allowed": true,
+      "status": 200,
+      "html": true,
+      "followed_url": null,
+      "jsonld_hours": false,
+      "hours_text": false,
+      "hours_on": null,
+      "error": null,
+      "final_url": "https://paketshop.myhermes.de/int/hpsf.html?shopid=680234"
+    },
+    "http://www.gaudycafe.com": {
+      "url": "http://www.gaudycafe.com",
+      "robots_allowed": true,
+      "status": 200,
+      "html": true,
+      "followed_url": "http://www.gaudycafe.com/contact",
+      "jsonld_hours": false,
+      "hours_text": false,
+      "hours_on": null,
+      "error": null,
+      "final_url": "http://www.gaudycafe.com"
+    },
+    "http://www.yellow-star-coffee.de/": {
+      "url": "http://www.yellow-star-coffee.de/",
+      "robots_allowed": true,
+      "status": 200,
+      "html": true,
+      "followed_url": "https://www.yellow-star-coffee.de/l/contact",
+      "jsonld_hours": false,
+      "hours_text": false,
+      "hours_on": null,
+      "error": null,
+      "final_url": "https://www.yellow-star-coffee.de/"
+    },
+    "https://paketshop.myhermes.de/int/hpsf.html?shopid=639771": {
+      "url": "https://paketshop.myhermes.de/int/hpsf.html?shopid=639771",
+      "robots_allowed": true,
+      "status": 200,
+      "html": true,
+      "followed_url": null,
+      "jsonld_hours": false,
+      "hours_text": false,
+      "hours_on": null,
+      "error": null,
+      "final_url": "https://paketshop.myhermes.de/int/hpsf.html?shopid=639771"
+    },
+    "https://www.spreegold.com/": {
+      "url": "https://www.spreegold.com/",
+      "robots_allowed": true,
+      "status": 200,
+      "html": true,
+      "followed_url": "https://www.spreegold.com/kontakt/",
+      "jsonld_hours": false,
+      "hours_text": false,
+      "hours_on": null,
+      "error": null,
+      "final_url": "https://www.spreegold.com/"
+    },
+    "http://lucberlin.de/": {
+      "url": "http://lucberlin.de/",
+      "robots_allowed": true,
+      "status": 200,
+      "html": true,
+      "followed_url": null,
+      "jsonld_hours": false,
+      "hours_text": false,
+      "hours_on": null,
+      "error": null,
+      "final_url": "http://lucberlin.de/"
+    },
+    "https://www.ugde.com/die-unternehmensgruppe/marken/eckert": {
+      "url": "https://www.ugde.com/die-unternehmensgruppe/marken/eckert",
+      "robots_allowed": true,
+      "status": 200,
+      "html": true,
+      "followed_url": "https://www.ugde.com/kontakt/",
+      "jsonld_hours": false,
+      "hours_text": false,
+      "hours_on": null,
+      "error": null,
+      "final_url": "https://www.ugde.com/marken/eckert/"
+    },
+    "http://www.maitrevite.de": {
+      "url": "http://www.maitrevite.de",
+      "robots_allowed": true,
+      "status": 200,
+      "html": true,
+      "followed_url": "https://www.maitrevite.com/shop_content.php?coID=4",
+      "jsonld_hours": false,
+      "hours_text": false,
+      "hours_on": null,
+      "error": null,
+      "final_url": "http://www.maitrevite.com/"
+    },
+    "http://www.ugde.com/": {
+      "url": "http://www.ugde.com/",
+      "robots_allowed": true,
+      "status": 200,
+      "html": true,
+      "followed_url": "https://www.ugde.com/kontakt/",
+      "jsonld_hours": false,
+      "hours_text": false,
+      "hours_on": null,
+      "error": null,
+      "final_url": "https://www.ugde.com/"
+    },
+    "https://www.tchibo.de/service/storefinder/store/100008471": {
+      "url": "https://www.tchibo.de/service/storefinder/store/100008471",
+      "robots_allowed": true,
+      "status": 404,
+      "html": false,
+      "followed_url": null,
+      "jsonld_hours": false,
+      "hours_text": false,
+      "hours_on": null,
+      "error": null,
+      "final_url": "https://www.tchibo.de/service/storefinder/store/100008471"
+    },
+    "https://www.nordsee.com/de/filialen": {
+      "url": "https://www.nordsee.com/de/filialen",
+      "robots_allowed": true,
+      "status": 200,
+      "html": true,
+      "followed_url": "https://www.nordsee.com/de/kontakt",
+      "jsonld_hours": false,
+      "hours_text": false,
+      "hours_on": null,
+      "error": null,
+      "final_url": "https://www.nordsee.com/de/filialen"
+    },
+    "https://www.servicestoredb.de/sst-de/Standortfinder#!/l/berlin/schonhauser-allee-75/4557168": {
+      "url": "https://www.servicestoredb.de/sst-de/Standortfinder#!/l/berlin/schonhauser-allee-75/4557168",
+      "robots_allowed": true,
+      "status": 200,
+      "html": true,
+      "followed_url": "https://www.deutschebahn.com/de/presse/kontakt-6868656",
+      "jsonld_hours": false,
+      "hours_text": false,
+      "hours_on": null,
+      "error": null,
+      "final_url": "https://www.deutschebahn.com/de/presse/pressestart_zentrales_uebersicht/Konzentration-aufs-Kerngeschaeft-Laeden-bleiben-DB-loest-Marke-ServiceStore-DB-auf-13334064#!/l/berlin/schonhauser-allee-75/4557168"
+    },
+    "http://www.mango.com": {
+      "url": "http://www.mango.com",
+      "robots_allowed": true,
+      "status": 429,
+      "html": false,
+      "followed_url": null,
+      "jsonld_hours": false,
+      "hours_text": false,
+      "hours_on": null,
+      "error": null,
+      "final_url": "https://shop.mango.com/"
+    },
+    "https://www.ciao-bella.de/restaurantsuche/#!/l/berlin/schonhauser-allee-80/4816372": {
+      "url": "https://www.ciao-bella.de/restaurantsuche/#!/l/berlin/schonhauser-allee-80/4816372",
+      "robots_allowed": true,
+      "status": 200,
+      "html": true,
+      "followed_url": null,
+      "jsonld_hours": false,
+      "hours_text": true,
+      "hours_on": "homepage",
+      "error": null,
+      "final_url": "https://www.ciaobella-ristoranti.com/restaurants/#!/l/berlin/schonhauser-allee-80/4816372"
+    },
+    "https://www.wrapublic.de": {
+      "url": "https://www.wrapublic.de",
+      "robots_allowed": true,
+      "status": 200,
+      "html": true,
+      "followed_url": "https://www.wrapublic.de/de/contact",
+      "jsonld_hours": false,
+      "hours_text": true,
+      "hours_on": "linked page",
+      "error": null,
+      "final_url": "https://www.wrapublic.de/de"
+    },
+    "https://www.edeka.de/eh/minden-hannover/edeka-sch%C3%B6nhauser-allee-sch%C3%B6nhauser-allee-80/index.jsp": {
+      "url": "https://www.edeka.de/eh/minden-hannover/edeka-sch%C3%B6nhauser-allee-sch%C3%B6nhauser-allee-80/index.jsp",
+      "robots_allowed": true,
+      "status": 403,
+      "html": false,
+      "followed_url": null,
+      "jsonld_hours": false,
+      "hours_text": false,
+      "hours_on": null,
+      "error": null,
+      "final_url": "https://www.edeka.de/eh/minden-hannover/edeka-sch%C3%B6nhauser-allee-sch%C3%B6nhauser-allee-80/index.jsp"
+    },
+    "https://www.rewe.de/marktseite/berlin/8547534/rewe-markt-schoenhauser-allee-80?ecid=seo_localseo_8547534_b_nn_nn_nn_nn_nn": {
+      "url": "https://www.rewe.de/marktseite/berlin/8547534/rewe-markt-schoenhauser-allee-80?ecid=seo_localseo_8547534_b_nn_nn_nn_nn_nn",
+      "robots_allowed": true,
+      "status": 403,
+      "html": false,
+      "followed_url": null,
+      "jsonld_hours": false,
+      "hours_text": false,
+      "hours_on": null,
+      "error": null,
+      "final_url": "https://www.rewe.de/marktseite/berlin/8547534/rewe-markt-schoenhauser-allee-80?ecid=seo_localseo_8547534_b_nn_nn_nn_nn_nn"
+    },
+    "http://sites.google.com/site/asiamekongsupermarket/": {
+      "url": "http://sites.google.com/site/asiamekongsupermarket/",
+      "robots_allowed": true,
+      "status": 200,
+      "html": true,
+      "followed_url": null,
+      "jsonld_hours": false,
+      "hours_text": false,
+      "hours_on": null,
+      "error": null,
+      "final_url": "https://accounts.google.com/v3/signin/identifier?continue=https://sites.google.com/site/asiamekongsupermarket/&followup=https://sites.google.com/site/asiamekongsupermarket/&osid=1&passive=1209600&service=wise&flowName=WebLiteSignIn&flowEntry=ServiceLogin&dsh=S-1239928044:1791099643771487"
+    }
+  }
+}

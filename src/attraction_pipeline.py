@@ -44,7 +44,7 @@ from attraction_client import (
 from demand_model import PAGEVIEW_WINDOW
 from geo import haversine_m
 from metrics_pipeline import _write_metric
-from models import CANDIDATE_NODES, LocationInput
+from models import CANDIDATE_NODES, NODE_STATIONS, LocationInput
 from poi_pipeline import OSM_LICENSE
 from transit_supply import GTFS_STOPS_ZIP, GTFS_ZIP, _rows
 
@@ -64,14 +64,10 @@ MAX_GATEWAY_DISTANCE_M = 1500
 # accurate to well under the 250m band).
 MAX_VERTICES = 400
 
-# GTFS parent-station name(s) of each node. VBB models the Warschauer
-# Straße tram stop at Revaler Str. as a separate "S Warschauer Str."
-# parent; it is the same interchange and is merged here.
-NODE_STATIONS: dict[str, tuple[str, ...]] = {
-    "brandenburger_tor": ("S+U Brandenburger Tor (Berlin)",),
-    "warschauer_strasse": ("S+U Warschauer Str. (Berlin)", "S Warschauer Str. (Berlin)"),
-    "schoenhauser_allee": ("S+U Schönhauser Allee (Berlin)",),
-}
+# GTFS parent-station name(s) of each node come with the site input
+# (models.NODE_STATIONS). VBB models the Warschauer Straße tram stop at
+# Revaler Str. as a separate "S Warschauer Str." parent; it is the same
+# interchange, so the input lists both and they are merged here.
 
 # Evening-programme venues and nightlife; everything else is daytime.
 NIGHT_KINDS = frozenset({
@@ -295,7 +291,8 @@ def run(db_path: Path = DB_PATH) -> list[dict]:
             try:
                 result = ingest_area(conn, node, stations)
             except AttractionPipelineError as exc:
-                print(f"SKIPPED {exc}")
+                print(f"SKIPPED: {exc}")
+                results.append({"area_id": node.area_id, "error": str(exc)})
                 continue
             print(result)
             results.append(result)
