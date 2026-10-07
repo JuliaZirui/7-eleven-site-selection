@@ -174,3 +174,17 @@ src/audit_candidates.py  SHA-256 1fdf42751930c09d4a744e14c5890d6b8f433c75041fecb
 
 Later changes to that file are allowed only to fix bugs. Each fix is logged here as a further amendment (what was wrong, the diff's effect on every worklist, the new SHA-256) before any LLM run uses the fixed version.
 
+
+## Amendment 3 (2026-10-07, before the first full development run and before any Phase 3 run)
+
+**What had run.** One trial on the development node only: 4 candidates (2 `concentration`, 2 `large_registration`), `claude-opus-5-5`, prompt `bd8a2050e135`, $0.489 at list prices (14 searches, 3 fetches; record `db/raw/audit/runs/warschauer_strasse_20261007T115724Z.json`). Roughly $0.12 per candidate, which put the full evaluation at $75–85. The analyst set a budget of $50 and decided the following changes.
+
+**Changes.**
+
+1. **Model:** `claude-sonnet-5-5` (list price $2 / $10 per MTok, cache reads $0.20) instead of the `agent_llm_policy.py` model constant (§3). Effort `medium`. The Opus trial is not used for any result; whether Sonnet is good enough is shown by the development runs and the holdout itself.
+2. **No web search for the POI modules.** `poi_category` and `poi_duplicate` candidates (issue types `category_error`, `duplicate`) are judged from the names, tags, categories, providers and distances in the worklist only; web search and fetch are not offered in those conversations. Consequence: H4–H6 test whether the auditor recognises the issue from the data alone, not after a lookup. Their findings carry no proposed number.
+3. **Development iterations:** at most **3 prompt versions**, each run **once** on the full development worklist. Each version is logged with its prompt SHA-256. The code refuses a fourth version and a second full run of the same version. Partial runs (`--limit`) remain possible for debugging and count towards the budget.
+4. **Batching:** at most 3 candidates per conversation, at most 10 searches and 4 fetches per conversation (the trial had 2 candidates and 7 searches; 6 candidates sharing 8 searches would have cut the searches per candidate to about a third).
+5. **Budget:** $50 in total for Phase 2 and Phase 3 at list prices, the Opus trial included. The code sums the cost of every run record and refuses a run whose cap does not fit into what is left.
+
+**Unchanged:** the node sets, the answer key, 3 runs each for the holdout, the control and the generalisation stations, the metrics and the decision thresholds.
