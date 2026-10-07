@@ -1,6 +1,6 @@
 # Data-Plausibility Audit — Answer Key and Pre-Registration
 
-2026-10-07 · For [plan_llm_data_audit.md](../plan_llm_data_audit.md). Written before any audit code, candidate rule or prompt exists. Commit hash of this file's first version: _fill in at commit_.
+2026-10-07 · For [plan_llm_data_audit.md](../plan_llm_data_audit.md). Written before any audit code, candidate rule or prompt exists. Commit hash of this file's first version: `ec70403` (branch `plan/llm-data-audit`).
 
 > **For whoever writes the audit prompt:** do not copy anything from this file into the prompt, few-shot examples or keyword lists. `tests/test_audit_prompt.py` reads the entity names and raw values below and fails if any of them appear there.
 
