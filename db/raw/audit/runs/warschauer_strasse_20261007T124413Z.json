@@ -1,0 +1,275 @@
+{
+ "audited_at": "2026-10-07T12:44:13.544333+00:00",
+ "node": {
+  "area_id": "warschauer_strasse",
+  "name": "Warschauer Straße",
+  "lat": 52.50533737805442,
+  "lon": 13.449070864605977,
+  "radius_m": 400
+ },
+ "set": "development",
+ "worklist_generator": "audit_candidates_v3",
+ "worklist_sha256": "14cd2bca8d6c62963b28fac152e1d0e45194f8902096797c4857dbc3be064cbb",
+ "modules": [
+  "large_registration"
+ ],
+ "modules_requested": [
+  "large_registration"
+ ],
+ "limit_per_module": 1,
+ "model": "claude-sonnet-5-5",
+ "effort": "medium",
+ "prompt_sha256": "f32facfbf6af91e7d02f1d3cc0b0479293242629ed8f2a1d0b9015c30a8bf1e3",
+ "max_usd": 0.5,
+ "cost_usd": 0.0664,
+ "usage": {
+  "input_tokens": 8,
+  "output_tokens": 1010,
+  "cache_creation_input_tokens": 16680,
+  "cache_read_input_tokens": 22712,
+  "web_search_requests": 1,
+  "web_fetch_requests": 0
+ },
+ "api_calls": 2,
+ "served_by_fallback": [],
+ "tool_errors": 0,
+ "candidates": 1,
+ "status_counts": {
+  "audited": 1
+ },
+ "status": {
+  "large_registration:ihk:1126051271504": "audited"
+ },
+ "findings": [
+  {
+   "candidate_id": "large_registration:ihk:1126051271504",
+   "verdict": "implausible",
+   "issue_type": "company_wide_headcount",
+   "reason": "Registration (IT services, age 7, Osthafenspeicher, TikTok Germany GmbH at Stralauer Allee 2, incorporated 2018) fits TikTok Germany. Company directories give ~143 staff in Germany, class 100-249, far below the 706.8 counted. Other TikTok entities may sit in the building.",
+   "proposed": {
+    "low": 100,
+    "central": 170,
+    "high": 300,
+    "unit": "persons_on_site"
+   },
+   "sources": [
+    {
+     "url": "https://www.wer-zu-wem.de/firma/tiktok.html",
+     "quote": "143 in Deutschland"
+    },
+    {
+     "url": "https://www.unternehmen24.info/Firmeninformationen/Deutschland/Firma/4565756",
+     "quote": "Mitarbeiter: · 100-249"
+    }
+   ],
+   "evidence_needed": "TikTok Germany's 2024 annual accounts (employee count) and the Osthafenspeicher floor area/tenants; check for other TikTok entities there.",
+   "module": "large_registration",
+   "guard_notes": []
+  }
+ ],
+ "new_entities": [],
+ "dropped": [],
+ "calls": [
+  {
+   "module": "large_registration",
+   "request_id": "req_011Cfntz2Y6t7gk1PA8eT4Zt",
+   "served_by": "claude-sonnet-5-5",
+   "stop_reason": "tool_use",
+   "usage": {
+    "input_tokens": 6,
+    "output_tokens": 869,
+    "cache_creation_input_tokens": 15870,
+    "cache_read_input_tokens": 6842,
+    "web_search_requests": 1,
+    "web_fetch_requests": 0
+   },
+   "cost_usd": 0.059745400000000004,
+   "latency_s": 20.09
+  },
+  {
+   "module": "large_registration",
+   "request_id": "req_011Cfnu1VbZE1XP4eiQooCm6",
+   "served_by": "claude-sonnet-5-5",
+   "stop_reason": "end_turn",
+   "usage": {
+    "input_tokens": 2,
+    "output_tokens": 141,
+    "cache_creation_input_tokens": 810,
+    "cache_read_input_tokens": 15870,
+    "web_search_requests": 0,
+    "web_fetch_requests": 0
+   },
+   "cost_usd": 0.006613,
+   "latency_s": 2.68
+  }
+ ],
+ "conversations": [
+  {
+   "module": "large_registration",
+   "candidate_ids": [
+    "large_registration:ihk:1126051271504"
+   ],
+   "turns": 2,
+   "retrieved_urls": [
+    "https://en.wikipedia.org/wiki/Frankfurter_Allee",
+    "https://firmeneintrag.creditreform.de/10245/8171176718/TIKTOK_GERMANY_GMBH",
+    "https://implisense.com/en/companies/tiktok-germany-gmbh-berlin-DEMK0GVS8G34",
+    "https://web2.cylex.de/firma-home/tiktok-germany-gmbh-14533112.html",
+    "https://www.companyhouse.de/en/TikTok-Germany-GmbH-Berlin",
+    "https://www.creditsafe.com/business-index/en-us/company/tiktok-germany-gmbh-de25673574",
+    "https://www.dnb.com/business-directory/company-profiles.tiktok_germany_gmbh.f5ff4c366fe26efb1efb1dbd94c0d3a0.html",
+    "https://www.lobbyregister.bundestag.de/suche/R001450",
+    "https://www.unternehmen24.info/Firmeninformationen/Deutschland/Firma/4565756",
+    "https://www.wer-zu-wem.de/firma/tiktok.html"
+   ],
+   "log": [],
+   "tool_errors": [],
+   "transcript": [
+    {
+     "role": "user",
+     "content": "Node: Warschauer Straße (lat 52.50534, lon 13.44907), circle radius 400 m.\nModule: large_registration. Figures are the pipeline's raw values, before any review.\n\nCandidates:\n<data>\n[\n {\n  \"candidate_id\": \"large_registration:ihk:1126051271504\",\n  \"module\": \"large_registration\",\n  \"record_ref\": \"ihk:1126051271504\",\n  \"record\": {\n   \"opendata_id\": \"1126051271504\",\n   \"employees_range\": \"500 - 999 Beschäftigte\",\n   \"nace_id\": \"6290\",\n   \"nace_desc\": \"Erbringung von sonstigen Dienstleistungen der Informationstechnologie\",\n   \"ihk_branch_desc\": \"Erbringung von sonstigen Dienstleistungen der Informationstechnologie\",\n   \"branch_top_level_desc\": \"Erbringung von Dienstleistungen der Informationstechnologie\",\n   \"business_age\": \"7\",\n   \"business_type\": \"im Handelsregister eingetragen\",\n   \"planungsraum\": \"Stralauer Kiez\",\n   \"lat\": 52.50180038,\n   \"lon\": 13.44890636\n  },\n  \"counted_as\": 706.8,\n  \"counted_at_this_station\": true,\n  \"osm_names_within_40m\": [\n   {\n    \"osm_ref\": \"way/24263626\",\n    \"distance_m\": 0.0,\n    \"name\": \"Osthafenspeicher\",\n    \"building\": \"office\",\n    \"building:levels\": \"6\",\n    \"address\": null\n   },\n   {\n    \"osm_ref\": \"node/13089219101\",\n    \"distance_m\": 19.1,\n    \"name\": \"TikTok Germany GmbH\",\n    \"office\": \"company\",\n    \"address\": \"Stralauer Allee 2\"\n   },\n   {\n    \"osm_ref\": \"node/2929590701\",\n    \"distance_m\": 20.8,\n    \"name\": \"Capitol Yard Golf Lounge\",\n    \"amenity\": \"events_venue\",\n    \"address\": \"Stralauer Allee 2B\"\n   }\n  ]\n }\n]\n</data>\n\nReport one finding for each of these candidate_ids: large_registration:ihk:1126051271504."
+    },
+    {
+     "role": "assistant",
+     "content": [
+      {
+       "id": "srvtoolu_01LSNqVqRQEHRTzdchUWdWBJ",
+       "input": {
+        "query": "TikTok Germany Berlin Stralauer Allee 2 Mitarbeiter Büro"
+       },
+       "name": "web_search",
+       "type": "server_tool_use"
+      },
+      {
+       "content": [
+        {
+         "encrypted_content": "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",
+         "page_age": "1163 days ago",
+         "title": "Registereintrag \"TikTok Germany GmbH\" - Lobbyregister beim Deutschen Bundestag",
+         "type": "web_search_result",
+         "url": "https://www.lobbyregister.bundestag.de/suche/R001450"
+        },
+        {
+         "encrypted_content": "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",
+         "title": "TikTok Germany GmbH",
+         "type": "web_search_result",
+         "url": "https://www.unternehmen24.info/Firmeninformationen/Deutschland/Firma/4565756"
+        },
+        {
+         "encrypted_content": "EvUICioIFBgCIiRkZWEyYzMxYi1jODU2LTQzYWQtYTQwNC1hOWE5MWI1MDc0ODQSDAY3IEvnPpX9Qu7z4BoMhngqzHlY4O1ZsyW6IjARlcYwEn7w2xhrOxLQ+cYFZxijBM8EcxvwFYjo/1TeVhT2OTNy/jlnXVFA3/3y+Hkq+AcRwYfUJ/3Dq/fjBk8kKrHeVs4wAl68ERkX9v/c9gHntc4/3PX/v0t985XhIRFXdeltUA6dodBIqeIy6YIqZf2Y/emakIPuTQQthl4RFeOLkpFEQ8uS1An4m783sEIGaJPbVbUj665lnQHqlvdCFZAjiKlLQ4LV2MviuJlT8OUAyRDNtTytQ3u0kdfyfwQ657xCQ/FMytn3xs5UtobAYFbo0GcRMJkgwrL1j6H1f5x/B1Ph2JDy2cPF6SP8E93rWdIG+a5b/pU7N6a/BvWVY1xV8GkcZOEFS1KwpH140B0amfyEZUCc11QVLIX6y4CMau01g/kGyDGwHjIJeIPFPAMLKXVXF3I7jjXgrSHNDCR2ekxq908xvbw6Dza3rfenz/7H+UMX5YEjrr7KniabDZYCB5akMvoUyeks4w0meZz4+Ng0vhWLFoFONU//zWsMMcnDsHAGjP9MTRji1sJuEOdgVw3CDiAVHKeo6pQJIFve68O7AryNUdK4LtLm8SDZZ/kPbAn26lTpT6uF3WriG8iOgZov6iSVylQ52EySXbwf2N/Crg2pMrjFRWJ4SUPl1TvjGteCL9sA0knQlE741IBafgUirj5GE7MP3TUGwVUjNmAdp0LAknYMmALUPGzl6DbENnhEi7l4OjByF6mqNrk0o5e6f0zk6Xmqh14AEmMMaD09FdRT7fHno9xFRKznfXiCP9UxuQVrs875H2PV+CdVdRPrjFj+SHHBH1aQ3TlEWTW/mP/d4D7PAtX55xgAKArdrstlzYbBaYhfhkeqYgboDxgjsYzaUTyKAQgD0ftNcscLDzECV74Ns6fpm+0YG2W+1jH8/TlsFScuuZZO9hto5Uq8R/NGu0O9Mlql7lujUnR11lOGkS18bsH5XchM+D1GGRgtQ7CnhYyyGelNXNcZhFYgdCLCibge8iqYcxjVmpGE3YPQD7lSjzz+eyTy2HQgWa18Sgd2GxOiOFI06XvsmSu+jgTwR89L78RtkAqxatW9O4T6ab/9kKEHaZ7tpW+TAi7BBZcQ+xU1HkMH6GazdI9cPCY75bgdH2C9zU5Us9u0Lo4/I5lTzr9tjMexlfpQwnlBEmjwh9ARzRAvXLlA/2DTACBSKbNckGU1+IZsayHZFBhyhzZ+8XgY4z3z13GxQhsMXA4SIny0oSuhHvqi8sKntap3GU40OYR77wegQ5jG7Ndi2Tpf55DrBrBPAZz/R2xnXwcwEybpsmrtESOqXQGYGWEt94Nw78pq1pON+oWRDG25Qr4kL5YiD0PtvNBuYHE2dACVKDhX960tDYVAZFwnoe4Zq6NehBWeaWCqw3Kk5NMz8x1CkzPjfq87UKHhkl5KqiA/ERgD",
+         "title": "TikTok Germany GmbH Company Profile",
+         "type": "web_search_result",
+         "url": "https://www.dnb.com/business-directory/company-profiles.tiktok_germany_gmbh.f5ff4c366fe26efb1efb1dbd94c0d3a0.html"
+        },
+        {
+         "encrypted_content": "EogLCioIFBgCIiRkZWEyYzMxYi1jODU2LTQzYWQtYTQwNC1hOWE5MWI1MDc0ODQSDAPVR+NakSZdsBkuPhoMf8h+EMfZGRQnU2FFIjCvfVmI3Z1/o66GVlkyheak57PxJT220A/0xFS2XNAqpIez7HEjEQmQWQB0PBK6z8Eqiwqiv2HzAGXnPkH3DYGLmK+Gyp8SJbN5wzjgJ5ZVPmTA3f0hus6UcXs2Ue3Hy8xJsIQr+2AnMavM/LQkkdBQvD6t3X45IjSP+18cxVgh9LTSHamcP6gVPIzxqPx2DlOsdUZ8t70abnU/Uf0yuFS0rNjcamMPbcPXoed6h7xvvDfL9Yy3jrOXoQLl/NzlsMajxyX1Th7tgUuCK+yUUOdqmn6ULo97BzeOI4Df1oxmoI0CpwjZ8gopE9twbLcZDVocC3T3YfW369ikrMrOrSkPKA74TwgSjaH/8y96JIBLl5qGE3SQqwVubcNBf8BUDQurrMIBGvZGwnaDzXrnz/FZAvrk9rHDVY80bj3F9QEJQqqc1tGyhNdVV3SEYiOOWPJJVnRHOZRgFM2Xph3ewErYxmVwuh8yDcJd55586U7rqY5RLXE8qGOoJC3usBAS/IdqEglJALTwomsUDHBKlZXWfcdUtYa7zlTNhI1U79IFsyC9dAHQehqlXdbxKm7Pc9euD4yLx/mPPkWmE++3WUgn4OokAY4VuUJh99HyfTYrXd2P0dDirB+jXJAivmPwh5B8VIsQM7pvVI1zE4yqTObn+ojvKdI8rxVEoQT53a0j65udnRmzoC+bsA1WqKJXsSFPh74kSvSZ7DkvOoXZKYBigbF2/1j4r45NBxhyfwSmIVIlwlUMM0H56WvOY72jkSqN/Cvzrwg+Ezeqibh2ax96CXHhTm+CSxagbww7oej5J/xc0+BjHUmbq1NddcD8LO2cke79CiBl0mIdrqMHwYZ5zD5pjrnVvI9RI3lstyQ1OaIVrqHGNKFbg4snSmN5IPzHVi1uFmlylUxhSGyrt6B5s8W9Xpk3cnuzzNtbNsm7jrLDNPcw8LIGR+8zBfA5uyOoPO5k2ivxZDT2yT1LdZNrFKF+Sq5AFXyGF9VxSu19SWCeq9sRzBHW5ldfuwQHJFtmpOsBrICA2FRPZLtzTBIEqrDbpZDWitd1P34iiz5yI6EQ7XJtEMvBEo+F4N7msDm8gyudEWLxhJsQ7D5e08NDrtDUZo4xB5x9IoSZuxA8s/5iguVVjpncEwrZl93fdvIb7Epijh+JduyuCbtlkSkPMqjwDybhNki6DXfyXVb5zzbDaxBwzGcQ2T3bLBBLu7SDWCoofh7bzvhZFc1qvqjCrfv7Hg+GK7aoDclHhhkFQuRrZcnHGb/CoPn7LxPyszy5zAHDn5Dc/xQBr5sIiJPgnnivGP/ikboiO2Zw+NGMk3U8rW1VjA/yfyKWWQyZmOkRAaLiYLXTInEEfnqNhztfHLEjEBdQ1RQDNAhrxCOYOFoKq90eODTJORyjMmd0Pjkz+0LhJvSN8ri1YtTBUtjpT5qX1FAFm+r6iePsMor1RBXlRFKKqd97ixp2CPQZcN0U4PmopzTAV3jqJriKgM213Wbm9Q+uZwD1ugFbsa8WyNXh/t8JOa6WEzK+h8nIkY1UTXLO2j72yK6hCv7/3rUs1my1CIvpGfIEzaer1pH9M0F+Hd5zrIpLn6SVWwrNSI8U/eCMbfbgAEo/NUoO8lU3QMmYr07ej43Psv/cCW6Hj52e5cyQvcvTx1jV7aYimfWZmTrrQZDMKQF2KBAJkQjtaKnyf1vBER/RPx/PyMUqGLq+PTN2zjJLJHPj03cfFf1MFqwPT7sF3zpkGa+mct2OCaJFqRG+TztMAXOuEggAQAGNrK5QHk4YlbjI3vXrGAM=",
+         "title": "View a Credit Report for Tiktok Germany GmbH",
+         "type": "web_search_result",
+         "url": "https://www.creditsafe.com/business-index/en-us/company/tiktok-germany-gmbh-de25673574"
+        },
+        {
+         "encrypted_content": "EoYLCioIFBgCIiRkZWEyYzMxYi1jODU2LTQzYWQtYTQwNC1hOWE5MWI1MDc0ODQSDMqSSRIRaMjh32MO9BoMxyM1PtUVte3catbGIjDARvoz7VXddNcfO2a0gJ45pHcAiIr9hzpi5WwOf7PNN1lzhxc90SjDE3FOOjcGkD8qiQrKTC1DHk6+sIvMuY/4A1CM9qhLeCGVLsV5gOL929oSwp6Fo91cddfhU75RVGkVzX5RSp2QQIodvvNI7/swL7NSTh1Qdk5wt8SEv065FL0M1dQ0oMRhEqp30mScKWWaAj0oj6l5UceqpquSuXoRdfMPCDTM1iUq+VgNCR0A0LjXRZkZDyipfUUhwoVpSseoNmyYX2+gYFrXtVzt/9O9gFL2jM3SYB1FkupiEt0TWPyY5p+b4XnG2c3xHmogbwvZbyFiCxS59IY7PeZSRjkhu+0m6kb3Wrr+HPmjfPOC4WKTBcdR+HSsgi/Fmgdq+FcHXVCQX7vM2ZuE2+5qCCzOFDKNGo0r77Dzt5fhEvUUj3d9RnsLcTcwlO308YpypenF0wEhllOD8Jae+dDp/XvXoJiee2K6Y59CLBq7aADeqSITfcntDA6u19QLUtj4AVPdK1jfhshmsoTpK/PV/L8HnPmVFPuqgxNaTg2UcYj+FPVexBGmSHh7q0On9dm83gOOK9nzw+/a2SMixSyAtCYpvR1Y/lyBVMHkx/uSdX5Wbl89aXyVpeA0v6+bjBcR7NHZ7Say2wM+2rlwgbUIREFq9ULMnPy2FaYGCbM3QUfjIoDTx6+u0anl+nQWo+dsIlpDmcV9Ai0/N0PwWBiSjQkBoljAy2ylnxWmcqr2qG5usIiGYZ7MtkzD9SWiDAupAUxhGAde6N8BQm5E2bbK2qiR1PFlBRAwaLPvmQLt5NMXXEY9+7NYBweVPyRHoS429RdHB1D6/PAMTZFkVOnLK23aUKjAOd0xuXICFn8/O03aA1Ypq2e8e2e0pAvgOYuJ78P58G4U8Q7nnynUgkMbyRlqwO3/Fr1CVHGshpU0OhlS1jPKrLDolUKaijEIEzwWjM5pe831dnOQgwyZ6t3zlP5aWzLCFJSjWvpbrHXa/vHWoK3AoYYWjgIg5FFo9gW7iQ2cmRteQrtG1HTVrqYzAGWE0PiceqbdA4QjRMmmMYoP6ZJFW1+a1us+fQs65bijanJJz519IpwTKNoskfZ7dtClm4Gbx6xNu+/wSQWbB9mPgxWp6wfEWk1A/vgcZvOB9jrQ3vzCgymbyvkOvNR7MBCIhuJlDwqzD9jte3rTRApIBXFlgxhaOTczOHXM735EnXXrcxs4NlWYlsekFfUE9HgdzUcormjjPMQ/hCgOXjUTNx8z6bpnkSmAtMc3bwc5E7Owf31uobDchkwygVeq6kzKCJpx164TQCHBb5WbPb6f0jH66FwG5L2CeHyWvz0BN1OrR45tkCVFmC2palWsmphxa1kJLB438j7ZENMmaofyk4tXa9106RgQiUwTyZeT9r+Hanhla6SdcoUPVYbqsPz6di/gwQRcGnwJKkMBW4FhfrXhIlcJDfSwzpFDRb34lWqKwQAn5tmlIWuCvJw3VB+U1fJgZ70Xxv90AV0Mv+Wa1NC41aHqCB1/lXmx3qp54gMKjibH4/Ja783Aj0WSi5lZbDm7/YaYaBHJ9ZwlJU7JCZhahQMGEA5mg6KRyo0vXGEzGsCFwjO8gu+LL8FYzWZJTnLzNqyKSd8KFf08kAI7sm9IoAgZO/feYlqTaRYh3vS9POd9vr7Zf8n9/T+B+30ZjgJvco69de/WW6FmyLoEdVTc5ug8VWgI7G0rs5LLB+zbUujZQocXv8cmzhb9R92Bgc4Qe6k0PWdoMDkPS65mxS2fUywRdUaGAymgRBgD",
+         "page_age": "392 days ago",
+         "title": "TikTok Germany GmbH",
+         "type": "web_search_result",
+         "url": "https://implisense.com/en/companies/tiktok-germany-gmbh-berlin-DEMK0GVS8G34"
+        },
+        {
+         "encrypted_content": "ErYHCioIFBgCIiRkZWEyYzMxYi1jODU2LTQzYWQtYTQwNC1hOWE5MWI1MDc0ODQSDLG+HTfpRD/sTrZpTRoMmVqjJ/cob9O4JSv7IjAR/jBPpCK9urKDBecJk7AQdjQNKEOqEqptMuzEhl4H9ikXmJwiLLh5QepHLq7ZUzwquQZW4Zokd2pbKUfcL72Z/RAAm9eFv/UTa6NOqAyBpnQDQXkZP07iWqzbkSuvJS7Ask3r7+M88KPd5vYAGUD6BnaxJMFCmzBlinxQjHVzDqZk4SjgM6Wn1Kc4wpQGkgJGHmg7vv0twSlrqaMRBQG4/ZyVHDi4H96tr2r3qxx/gW6kDOP+hp/EIKxJjUPP/d2NHxhHpaiFdGo0w6IgL/crlPppzX0bQvWMDza2YYllt+pK5SrpNHgo4ywSGuReKmmRraSisDxEsMQy/BB57IqSJbw+idhZpoKftzlfw/BNLKgAukaQU5/66U8fymD50J0rnmpSwIAwqCK/VgGaMK4rMlxFiQ2A4UtKNivKyeEBz7t27Q6VlcENIMoNS7iiGjTm8hnUn5xKXcaCThsOfZeLdcky3FyAJGpyOx0GHDJK3effN+RpczJV//CDgLJe+Xum7fz4GAiVUIh7s6cjvJ19B9qZsbooiFqtiEJ48PTF+osAh2f6NVSJDrckyP3N+RQWave3ZdwgaLVK1G/JUbdgKG28bvyQsea+6TBokY/wegK+hRD8YpXTT1IocWlWN+/rj0wmTUsaG4xmXWNP1uOL9Guy6i9GNVNMkFImgTq/y6FzUjpcprv18XJbbY7UCgWNZd98EpKoW7/rn2c9B89xIsohJorozTBMxYn0MFwHCC68YphbZPZ/H9TLHVU/JYmPwmWrqpF0cd/z7DGVyh/n7L3b40AWGikrWRnrr5IinDc1RScCi1iPVKeQLuc11B93mudlK0cb9TxYjzG8beiQYKIpwDSBVtycV2h8Ph82f4aj10ZhyVnMb99JBbGNgYgx1mCSPb3ifUnoyhbp5hzeIpk0DzCdIuVXY5xAGGjaQVwNzZAJJPecNAUJDabZiPEf8ina90mQIu5VJhcvaaD6VVuYob835/hNMh/VX02bjBqs1PQi5PHBE61uBiIs+PxWdp22D1gpeiLF0EZvGwKNaibQ4XoKlTK7+zefc9a+e9naqL/OEdIuSdz5C5G1fo2Dv1IvVTcnjVFkPW09VxNYBGpTejw9b2vr528wDO5WQbr2iIexA/bWXJ8BilJyO1Y8JHPFVAVxu7/y7AsYAw==",
+         "title": "TikTok Germany",
+         "type": "web_search_result",
+         "url": "https://www.wer-zu-wem.de/firma/tiktok.html"
+        },
+        {
+         "encrypted_content": "EscJCioIFBgCIiRkZWEyYzMxYi1jODU2LTQzYWQtYTQwNC1hOWE5MWI1MDc0ODQSDD4X8xlc13wxLg8qshoM2a8ZksygEj/Qgrm3IjAb9TKo9fyVjX7XCiRxr0HLE9CuVQ9Z3iVW2pB/12g+CLcfZLfBW//WoUmdsKtcbjgqygjO8wBMlvDl1/KGXNa4CWWMf+onr3Y/PtJfgbOx0kP4jGixmsTeHyP5BIESBAYVgtJu0mAmWqncEorfktdizveri0rkpIrzKsTzDqdFOdoMA6ipr0WAJYEEQOxvKOwBNbkNXGCOLLB3NWNz8RFk2hl7TVZ7+Cd4Q6zdivZt8W434b/TdCxqiZ41Em4i5O6QIex3lcnTGOjYMmZE41GDNB/f2H2q5nt71fFgk/xVvfEHyljp3atEiA/AmFxVhVwfEdLOv1BBu9sQpxM074LpONKyHUo8z92LWEPD70mOJjSR7VVOzX2ucu4XFToojlrBnsJY2eR075t5UJ5TGrqAkgk95PGjY/SmCCmIgnoZfFRoYQJNK8JYmKatVFc8rTLwsi/Rn/zHJfap4kdQgXyxZIKoo2G+ZDLZTvw2tcAhBUQ3oZ0RrC2NCl3SavsgGaT7uWmkBVFmzpelSVRoWzVhvclcXCASUJwchaddtswVC2xjxBx/jLNb4Lk0cIxetSciqPXdNG+syUpdfu+uCyHWLUyZQ1UZOB4K0ibcXOSB2C6phbfsOdnxhLmCWfKhPXhgOQgUxeQrlSqIIGnZHOGOv8wZJrPX6D8muk0dVLqHlE0rl8LlwpafsXJk1FAywKCGHM3rCaieRLUp9WHP6OXFfgD62Wb7XIUFr5yoFMAcNXfpdtrq1hu3IHbAk8Rp7T7Dk7gfTmtaFJ7PT12lZ8Bkd4SQrk9KKJcV32/2WQma9rNLFlzAflLX2YoUcMqThnT4LuujKPMqbpa/cQfuBhx4+Z4Dv2ebBtTF1OMCC42aQuEoYwuYwRPMomWNVZEb63r17We/PK0J4tcpx2bKUTEBZQEg8KjZ/9ZFxmptcHGkzT4hitlJHQawOm0G0ODv0BS2eMiizpWq+QGJ+hr3v3MkPQ/vvEWWuvj7nrtNBYtep6waCG3qz/lJY/MNxkLukoaO9zHz2LMdGAV+SzymMNVvVDl0Bk3Hr0QjsTDRwdXuE8j7Ep6B8lgUFqP/SPn0N/GaeVLBDpYRziDOgCKZr0nvbLfg4VoAXq8RCI+yhAUyK/itnlk4CrBio/yW90OwKBoUm/j1r8n11sIx6jQBQNlDvGCknW6wnIQe2s+QHwzxnMq20CF7H/aPJFB/9+PAj/o0vP4LU2wZx1cnZkd1Ns8UKQiMj9eSDf+juNboO5tDspPcC1eKxFMmTvlj1l9Ubm2lOP/w4XDlMCy1OIzeUMe+7SImjqVLdlOsuPrIKdYEaE65to00QKrzYkVDriVC6agn9tbVrmZMoN0fA3p0EoMuzT/HjqZjhgbnrFdWtuSUBfPelnriTi9QeIPPWQ0sREPL4d+FHegqr3ZSlYtKR6k1h1JRRgV1I50mg+nPWmxmIJPy3gE37R4whD4lhWh/SqGm+yRRveENHlSV+Ps4KnjeEJRmgkFMLZX+xhV3ufeSoY6X22bnAi99RsOq6ZYYAw==",
+         "page_age": "363 days ago",
+         "title": "TikTok Germany GmbH, Berlin",
+         "type": "web_search_result",
+         "url": "https://www.companyhouse.de/en/TikTok-Germany-GmbH-Berlin"
+        },
+        {
+         "encrypted_content": "Eo8ICioIFBgCIiRkZWEyYzMxYi1jODU2LTQzYWQtYTQwNC1hOWE5MWI1MDc0ODQSDAEXtq1Oadx4Iyd9uRoMo6Fa+adDf1uN/KNfIjBadL5MEF4QnUbbRYnCowdB1MPtkTwrzoU0XgeeJEzrfqwGzbO4mnj1TdAthR9nBVoqkgfYRsMFCoByx6H1Gxdx01uA2fbUkd6B1b9Ebcg+bx9xOk4zTIIlkjPPJaPjJ+XQVXl3KMJfar0tAZF4yV25C86ZqL4fJ0IqEDkPzKy3Yc8rk0XXtM4gxjQVLdFAheE+ZoPxtMqQDYW5P+tc68IW1ZxNKR+NqtNzFpPUjRAEFGeZI9HwWa4dNjDMedSyPMH9oGnxL7pBwowAZ1p+Z84fm76s3C8o+7w/jf/okAkGBNwrLPl34utxMO9qBiU16heAiUgkDd7XUA4I1VXKDzPVmg/igAcwAFfGDbzdlbP4NCpMPxhakBDP8ZM1W3DUCwcz4Hl83Qx206WzI0K6zy1IOnh2KXkPQSO5/u437Ywy4M1Hj+5lQPvu9v2/5VToQ3pBlvSsAICA6tylX9tB/8QOcQBN1PTkgKAjMOtyNoqENsqhf1sZGGqg11aDsbaSvaJrNnzqM1P8PcmpkWPflmG1OpqrbyCv4Br9gKQHjEVYTBFyvbMn2prEGKLaljddtuCHgk9nbeL5h3X6RRjoVFK3+I2lpZvK4quQr4azaeK4TT24zoxSROIuIck1NFVnz4y8xK4BrX+Jt5CUFgwfupjE9GKj2swblCi8JDPiPEKU9gvXJADbBTRmluzW2LBxL4/XAKtQd+NivPj+JhKusINp6sSXV7INOarJVq96JZ5UlL4IHHwyyAxUHOXnIyJhO+ZF7R26gj7BWqdEkbip3qTuIHgq2z3gU5vBF9b2Eg97bJPo8y6Fi9RxElL6z1AeWT0sBKmjuOsmBOVJ2Bcvp3D5aBjbUo4qxH4aTSHFlHa6yayqqeUqwKRwzb5YyjRNfjx6yqugR0eYLvtuPKp0hU62Jxbe0BXbYQ6Ph9d8snEruAHRGcn0M80KKSRNsGy49pNlXF0WmYnUNQQCdiK+k9RDZlRM+cQEBB58Uviu6lDTeu+Hqaz4EkJmSRxPKgs/KT21WzmvSuDqzUdgehg4JzwnyEDEQAUk9G+XGS1ufFib4PaO40FKbF/VEQ69NN3anpcWQOv8a+Ddju11VHB30NI2NRAzWzIpe+59UNSWUGYW2rmAYkWAjyZ0IRdR+sPHoBsBlEpj0bLvp0snmqBtC7lO90TN81f7eVYjBR01pXnvzocmkwt3xBlYoPk6fLmXh4FBOo3RkptHZwhuzUGGk6GHf5KLmC5R2vIRo2mMrTxlLEaH61z7WUXnCdCvcwM0vCU8v85cvBgD",
+         "title": "▷ TikTok Germany GmbH, Berlin",
+         "type": "web_search_result",
+         "url": "https://web2.cylex.de/firma-home/tiktok-germany-gmbh-14533112.html"
+        },
+        {
+         "encrypted_content": "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",
+         "title": "TikTok Germany GmbH, Berlin",
+         "type": "web_search_result",
+         "url": "https://firmeneintrag.creditreform.de/10245/8171176718/TIKTOK_GERMANY_GMBH"
+        },
+        {
+         "encrypted_content": "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",
+         "title": "Frankfurter Allee",
+         "type": "web_search_result",
+         "url": "https://en.wikipedia.org/wiki/Frankfurter_Allee"
+        }
+       ],
+       "tool_use_id": "srvtoolu_01LSNqVqRQEHRTzdchUWdWBJ",
+       "type": "web_search_tool_result",
+       "caller": {
+        "type": "direct"
+       }
+      },
+      {
+       "signature": "CAQS9AkKEAgSGAI4AUIIdGhpbmtpbmcSDF3LYgdFrwFXEFKQRBoML1pW47ZamWQmBuZVIjAOqGHSkaPOmJwKq39v2vBlhjbB5XwNCoKLGIAZ3aZIJ3Em1gmS6oqJiHjRmliSjEYqkQld5ojqfq99KeSe8yMDJA7xow77RFyIqI7hi/UMEJbU168sAQcPzCrzSDem5Isowu6OyllYKoADRZvWhG8eD4/D280AgohbLkkAeJHarjh0A/Aq3MpTySJq2/duhhZINmrtmj9IXcOhkYeeHAeCsT1uQR8Mfx7tXGlY1Sc/tUn+UhraICqe2au3YEExS44pf9fCNPiT5mhDzMvi24cVvkxQFcWQNxJvF4ZTA17ndq1/G7NfmCTAWFKbyP4bTvLpOlEdyzx7eX/TJ9eaVPddUR6L1p/y2tVl7TkIDDTkG3Rcqv6hAwFauKp8pcoN1zXhscBnbV/AwGN88dT81MCB077EeLKwm+mp0zVFSFQd/fIkhT+2T7z3DPCeU0fSd/Can0N/CNvU1Lc67Qkbz0iOrkVxUprdV/TP/mLgkXvWKUIZxB3d0ANaanz6THN85iXveRMpGIPbbuU2S6MHFNyTqEkHRNQznfmkNnHk3zzHBrB7jajpCKqJTXsq2/hwhqHdP/xNbTaOULtDjIrNlWqPKuZW0rhni39pR+b1QwKF5YEOPUCdp0TjTcOJQKcsI79fbDBozXEAOoJXBC6PfvCmfnlWnPSo1TbrDixg4C2X5pTxfBJabCh/CWHvhDE8gRAw8fuQ7V3jP+bSIcQXFm5DEai/VakOiJKBt0ba8IS0gZB+PBzxl4AQJXcOjibX6xC1gcI1aySAQcgs8KtK04JWjarmF+LQ/lgIzLvtyfwbN8VELRUrouyNK7ilh95kZCd0nR/fMQe/acLl9Bty23ypTtlCiMC3kBA/2yYDM5VItgi5nNZ6pyWR/jTDpK7pVqfolSKK25rvCChy50ins3265bayIo9x6SJrmNP8b2xDbxZh3Zk/4GZV6ZYDLQcm8CGc14hfnyJK7GSmn8fghKAHsNvCw6x7AXgpyk+vPmGba8EvgxP0HcduYXEyEBMCV5BcboFANke2BKE+oPNSz2ESd8Qf0eC+CWfwrZjIyGJSLwdrYwfVUg3eS5a4awIdi7sWBe+i0pp6LX1NzxIZdsXlC89MQpmmehwMhKYht19eT5bdN0rsR/ny/O/7LeQYIXwBSjOOcrLSOEgB4ZnZqO942sM0LhyVSV9/dB2WKnxsql3PbtxPCXsB45MGH0g+lQ784oT1ZNfjXmlag//E8H50iapv9GJ3SWI48WjWa9Z6Qew4i7NT6VPnzN099okX9DqvA/JZfyRiBU+405faGO8TeJXbW8IZr4GIv+/6kkt7VR5IALcaOuMxMqu3uyyG7PevMGvzPgupA+C850MNM/TgyIbA2iz32EFMzck+m/VOihxqkYtwf1Iq4GrvrLdyqEYsEgsYkqMpvGlMdH1/lNcdSFOyH9uOH7V0Yyf9jtT+sc05j3RB2a7+qiA2izWCRmi/jIzoxXp1W3jOKTaQ9vtvWOSEhHheQK6X0rF6KElmLoSNE0SrFbI7FQwwp702EcZWwKef5+1V7X4uJBBuiF35+/WedgebNhhGC6ECb6e+OOvUKYu941WCvafdrikTMXdwSaLw5KEVOy4pYDBHTn/1JrgP0RgB",
+       "thinking": "",
+       "type": "thinking"
+      },
+      {
+       "id": "toolu_01BVntYGdJjjxqEpGqXnmhZM",
+       "input": {
+        "candidate_id": "large_registration:ihk:1126051271504",
+        "verdict": "implausible",
+        "issue_type": "company_wide_headcount",
+        "reason": "Registration (IT services, age 7, Osthafenspeicher, TikTok Germany GmbH at Stralauer Allee 2, incorporated 2018) fits TikTok Germany. Company directories give ~143 staff in Germany, class 100-249, far below the 706.8 counted. Other TikTok entities may sit in the building.",
+        "proposed": {
+         "low": 100,
+         "central": 170,
+         "high": 300,
+         "unit": "persons_on_site"
+        },
+        "sources": [
+         {
+          "url": "https://www.wer-zu-wem.de/firma/tiktok.html",
+          "quote": "143 in Deutschland"
+         },
+         {
+          "url": "https://www.unternehmen24.info/Firmeninformationen/Deutschland/Firma/4565756",
+          "quote": "Mitarbeiter: · 100-249"
+         }
+        ],
+        "evidence_needed": "TikTok Germany's 2024 annual accounts (employee count) and the Osthafenspeicher floor area/tenants; check for other TikTok entities there."
+       },
+       "name": "report_finding",
+       "type": "tool_use",
+       "caller": {
+        "type": "direct"
+       }
+      }
+     ]
+    },
+    {
+     "role": "user",
+     "content": [
+      {
+       "type": "tool_result",
+       "tool_use_id": "toolu_01BVntYGdJjjxqEpGqXnmhZM",
+       "content": "Recorded."
+      }
+     ]
+    },
+    {
+     "role": "assistant",
+     "content": [
+      {
+       "text": "I've reported the one candidate as implausible. The registration looks like TikTok Germany GmbH, and the 706.8 workers counted is far above what directories give for it. Those sources list about 143 staff in Germany, or the 100–249 class. My range is 100–300 on site, with a central 170, and it rests on those directory figures, not on a TikTok source. A person should check the company's 2024 annual accounts and the building's tenants.",
+       "type": "text"
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

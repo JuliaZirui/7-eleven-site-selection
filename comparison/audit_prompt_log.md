@@ -7,7 +7,8 @@ Every prompt version tried on the development node (Warschauer Straße), with it
 | trial | `bd8a2050e135` | Opus 5.5 / medium | — (4 candidates only) | $0.489 | — | Before Amendment 3. Not used for any result |
 | v1 | `fdc651d566cd` | Sonnet 5.5 / medium | `db/raw/audit/runs/warschauer_strasse_20261007T121505Z.json` | $0.462 | 4 / 4 (D5 also flagged) | 26 of 40 candidates flagged |
 | v2 | `f75ac69f5933` | Sonnet 5.5 / medium | `db/raw/audit/runs/warschauer_strasse_20261007T122511Z.json` | $0.558 | 3 / 4: D2 missed (D5 flagged) | 13 of 40 flagged |
-| v3 | `85168ab831f7` | Sonnet 5.5 / medium | `db/raw/audit/runs/warschauer_strasse_20261007T123153Z.json` | $0.731 | 4 / 4 (D5 flagged) | 13 of 40 flagged. **Frozen** |
+| v3 | `85168ab831f7` | Sonnet 5.5 / medium | `db/raw/audit/runs/warschauer_strasse_20261007T123153Z.json` | $0.731 | 4 / 4 (D5 flagged) | 13 of 40 flagged. Frozen, then superseded by v4 (Amendment 4) |
+| v4 | `f32facfbf6af` | Sonnet 5.5 / medium | `db/raw/audit/runs/warschauer_strasse_20261007T125249Z.json` | $0.900 | 4 / 4 (D5 flagged) | 10 of 40 flagged, 0 tool errors. **Frozen** |
 
 ## v1 → v2
 
@@ -49,3 +50,9 @@ Decided before the v3 run: the version with the highest development recall on D1
 v3 run: 40 candidates, 32 API calls, 10 searches, **0 fetches** (the fetch instruction had no effect), 5 findings with a sourced number. D2 caught: the registrant's listing in a company directory gave a smaller size class, and with no source for the counted figure the size-class exception made it suspicious. D4 caught as suspicious but, unlike v2, without a proposed figure. Duplicate hedging stayed down (1 of 22 pairs suspicious).
 
 By the rule above: v1 and v3 tie on recall (4 / 4), v3 has fewer flagged candidates (13 vs 26) → **v3 (`85168ab831f7`) is frozen**, with model `claude-sonnet-5-5` and effort `medium`. Development spend: $1.75 for the three versions, $2.24 in total with the Opus trial.
+
+## v4 (Amendment 4: basic web tools, prompt text as v3)
+
+Smoke run first (1 candidate, $0.066, 0 tool errors), then the full run: 40 candidates, 32 API calls, 15 searches, 0 fetches, **0 server-tool errors** (v3: 4), 8 findings with a sourced number (v3: 5), 10 of 40 flagged (v3: 13), 1 new entity reported (a cultural and nightlife site 326 m from the node, no source). Proposed ranges on the development items now overlap the verified ranges for D1, D2 and D4.
+
+By the rule of Amendment 4 (4 / 4 recall and fewer tool errors than v3) → **v4 (`f32facfbf6af`) is frozen** and v3 is superseded. Development spend: $2.72 for v1–v4 including the smoke run; $3.21 in total with the Opus trial. Measured cost: about $0.023 per candidate.
