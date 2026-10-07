@@ -296,11 +296,27 @@ Floor area = footprint × `building:levels`; without a levels tag the footprint 
 
 ## Scan record (fill in)
 
-- Analyst:
-- Date and start time:
-- Minutes used (max 20):
-- Sources used:
+- Analyst: Zirui
+- Date and start time: 2026.10.07 20:10
+- Minutes used (max 20): 20
+- Sources used: google maps
 
 | # | Record (id / name) | Issue type | What is wrong, and the evidence | Estimated correct value |
 | --- | --- | --- | --- | --- |
-| 1 | | | | |
+| 1 | Backwerk | duplicate | | |
+| 1 | Steinecke's Heidebrot Backstube GmbH & Co | duplicate | | |
+| 1 | Berlin Charlottenburg | other | | |
+| 1 | Jacques' Wein-Depot | category_error | | |
+| 1 | Württemberger Weinhaus | category_error | | |
+| 1 | Bar Vostell | category_error | | |
+| 1 | CO Berlin | category_error | | |
+| 1 | Cafe Restaurant Wintergarten | category_error | | |
+| 1 | Café | other | | |
+| 1 | Cafe am Zoopalast GmbH | other | | |
+| 1 | Comebuy Tea | duplicate | | |
+| 1 | Salut | category_error | | |
+| 1 | Spreegold | category_error | | |
+| 1 | Starbucks Deutschland | duplicate | | |
+| 1 | Studioeins von radioeins im Bikini Berlin | category_error | | |
+| 1 | Tee Tea Thé Ronnefeldt im BIKINI BERLIN | category_error | | |
+| 1 | dm | category_error | | |

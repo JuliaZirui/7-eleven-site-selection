@@ -218,11 +218,31 @@ Floor area = footprint × `building:levels`; without a levels tag the footprint 
 
 ## Scan record (fill in)
 
-- Analyst:
-- Date and start time:
-- Minutes used (max 20):
-- Sources used:
+- Analyst: Zirui
+- Date and start time: 2026.10.07 20:40
+- Minutes used (max 20): 20
+- Sources used: google maps
 
 | # | Record (id / name) | Issue type | What is wrong, and the evidence | Estimated correct value |
 | --- | --- | --- | --- | --- |
-| 1 | | | | |
+| 1 | 121342207740 | duplicate | | |
+| 1 | 124996147538 | duplicate | | |
+| 1 | 124996927564 | duplicate | | |
+| 1 | 1258137071790 | duplicate | | |
+| 1 | 1258515071050 | duplicate | | |
+| 1 | 1258783271944 | duplicate | | |
+| 1 | 1249768271894 | duplicate | | |
+| 1 | 930480671602 | duplicate | | |
+| 1 | 99495127504 | duplicate | | |
+| 1 | Clärchens Ballhaus | category_error | | |
+| 1 | Baumgart & Braun | category_error | | |
+| 1 | Der Reblauser Weinladen | category_error | | |
+| 1 | Garlipp Weinhandlung | category_error | | |
+| 1 | Wine Damager | category_error | | |
+| 1 | Ambinoid Cbd Shop | category_error | | |
+| 1 | Berliner Schokoladen | other | | |
+| 1 | Café Cathrin | other | | |
+| 1 | Café Ribo | category_error | | |
+| 1 | OSTERIA-PIZZERIA Marina Blu | category_error | | |
+| 1 | soopoollim |category_error | | |
+| 1 | Yangguofu Malatang |category_error | | |

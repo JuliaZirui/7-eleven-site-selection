@@ -145,11 +145,18 @@ Floor area = footprint × `building:levels`; without a levels tag the footprint 
 
 ## Scan record (fill in)
 
-- Analyst:
-- Date and start time:
-- Minutes used (max 20):
-- Sources used:
+- Analyst: Zirui
+- Date and start time: 2026.10.07 21:02
+- Minutes used (max 20): 16
+- Sources used: google maps
 
 | # | Record (id / name) | Issue type | What is wrong, and the evidence | Estimated correct value |
 | --- | --- | --- | --- | --- |
-| 1 | | | | |
+| 1 | 3760115646 | duplicate | | |
+| 1 | Cafe Lisboa | category_error | | |
+| 1 | Pan Bistro | other | | |
+| 1 | Lindner | other | | |
+| 1 | Pesto-Dealer Berlin | category_error | | |
+| 1 | Rogacki | category_error | | |
+| 1 | Bianco Food | category_error | | |
+| 1 | Die Pilzkönigin | other | | |
