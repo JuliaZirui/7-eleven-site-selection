@@ -188,3 +188,16 @@ Later changes to that file are allowed only to fix bugs. Each fix is logged here
 5. **Budget:** $50 in total for Phase 2 and Phase 3 at list prices, the Opus trial included. The code sums the cost of every run record and refuses a run whose cap does not fit into what is left.
 
 **Unchanged:** the node sets, the answer key, 3 runs each for the holdout, the control and the generalisation stations, the metrics and the decision thresholds.
+
+## Amendment 4 (2026-10-07, after v3 was frozen, before any holdout, control or generalisation run)
+
+**What was found.** v3 (`85168ab831f7`) was frozen by the rule in [comparison/audit_prompt_log.md](comparison/audit_prompt_log.md). Reading the development transcripts afterwards showed a tool-interface defect, not a wording problem: with the dynamic-filtering search tool (`web_search_20260209`), the model sometimes wrapped the query in an extra `params` object and the server rejected the call (`invalid_tool_input`: 2 of 10 searches in v1, 4 of 14 in v3; the model did not retry, so D4 in v3 got no sourced figure), and the same tool lets the model filter results with its own code, which in v2 dropped the sentence with the headcount D2 needed. No `web_fetch` call was made in any development run; that is not a defect in itself when search results already carry a quotable sentence.
+
+**Changes.**
+
+1. The auditor uses the basic server tools `web_search_20250305` and `web_fetch_20250910` (no dynamic filtering): results reach the model unfiltered and there is one way to call each tool. The prompt text is unchanged; the tool definitions are part of the prompt hash, so the hash changes and the v3 freeze no longer applies to the code.
+2. **One extra development version, v4**, only for this tool change (the cap of Amendment 3 becomes 4, for this reason alone). v4 is run once on the full development worklist, after a 1-candidate smoke run that checks the request format (partial runs do not count as versions).
+3. **Decision rule, fixed before the v4 run:** v4 replaces v3 as the frozen version if its development recall on D1–D4 is 4 / 4 and it has fewer server-tool errors than v3 (4). Otherwise v3 stays frozen and the code goes back to the v3 tool definitions.
+4. Every run record counts server-tool errors (error results of web search and fetch), and the command prints them, so this defect is visible without reading transcripts.
+
+**Unchanged:** sets, answer key, runs per set, metrics, thresholds, budget ($50).
