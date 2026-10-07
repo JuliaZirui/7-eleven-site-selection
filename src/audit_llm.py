@@ -7,15 +7,20 @@ a review queue; scoring keeps reading only the reviewed correction tables.
 
 One API conversation per node and module (modules with many candidates
 are split into batches of MAX_CANDIDATES_PER_CALL). In each conversation
-the model searches as it needs and reports one finding per candidate
-through the report_finding tool; for missing_entity it may also report
-entities none of the candidates cover (report_new_entity).
+the model reports one finding per candidate through the report_finding
+tool; for missing_entity it may also report entities none of the
+candidates cover (report_new_entity). Web search and fetch are offered
+only for the modules whose figures need the outside world
+(WEB_MODULES); competitor category and duplicate candidates are judged
+from the worklist data alone (plan Amendment 3).
 
 Budget: web searches per conversation are capped by the tool's max_uses,
 and every run has a USD cap. The cap is checked before each API request;
 once it is reached the run stops and every candidate without a finding is
 marked not_audited. Cost = tokens at the model's list price + web searches
-at $10 per 1,000.
+at $10 per 1,000. All runs together may not exceed TOTAL_BUDGET_USD
+(summed from the run records), and the development node gets at most
+MAX_DEV_PROMPT_VERSIONS prompt versions, one full run each (Amendment 3).
 
 Prompt hygiene (§6): the prompt describes issue *types* only;
 tests/test_audit_prompt.py fails if it, FEW_SHOT_EXAMPLES or the non-food
@@ -28,8 +33,7 @@ Needs the `anthropic` SDK (requirements-llm.txt) and credentials
 (ANTHROPIC_API_KEY or an `ant auth login` profile). Tests inject a fake
 client.
 
-    python3 src/audit_llm.py --node warschauer_strasse --modules concentration \\
-        --limit 2 --max-usd 2
+    python3 src/audit_llm.py --node warschauer_strasse --max-usd 4
 """
 
 from __future__ import annotations
@@ -51,28 +55,36 @@ RUN_DIR = PROJECT_ROOT / "db" / "raw" / "audit" / "runs"
 REVIEW_QUEUE_CSV = PROJECT_ROOT / "comparison" / "audit_review_queue.csv"
 PROMPT_FREEZE_JSON = PROJECT_ROOT / "comparison" / "audit_prompt_freeze.json"
 
-AUDIT_MODEL = "claude-opus-5-5"
+AUDIT_MODEL = "claude-sonnet-5-5"
 AUDIT_EFFORT = "medium"
 MAX_TOKENS = 16000
 FALLBACK_BETA = "server-side-fallback-2026-07-01"
 WEB_SEARCH_TOOL = "web_search_20260209"
 WEB_FETCH_TOOL = "web_fetch_20260209"
 
-# Per conversation. Searches are the main variable cost besides tokens.
-WEB_SEARCH_MAX_USES = 8
+# Per conversation. Searches are the main variable cost besides tokens;
+# 3 candidates sharing 10 searches keeps about 3 per candidate, as in the
+# development trial.
+WEB_SEARCH_MAX_USES = 10
 WEB_FETCH_MAX_USES = 4
 WEB_FETCH_MAX_CONTENT_TOKENS = 8000
-MAX_CANDIDATES_PER_CALL = 6
+MAX_CANDIDATES_PER_CALL = 3
+# Modules whose figures need the outside world. The POI modules are
+# judged from names, tags, categories and distances only (Amendment 3).
+WEB_MODULES = frozenset({"concentration", "large_registration", "missing_entity"})
 # Model turns per conversation (tool results and pause_turn resumptions).
 MAX_TURNS = 12
 MAX_REMINDERS = 1
 MAX_NEW_ENTITIES = 5
 
-# USD, list prices. Tokens per million (cache write = 5-minute TTL);
-# a turn served by a fallback model is billed at that model's rates and
-# is flagged in the run record.
-PRICE_PER_MTOK = {"input": 4.00, "output": 20.00, "cache_write": 5.00, "cache_read": 0.20}
+# USD, list prices, claude-sonnet-5-5. Tokens per million (cache write =
+# 5-minute TTL); a turn served by a fallback model is billed at that
+# model's rates and is flagged in the run record.
+PRICE_PER_MTOK = {"input": 2.00, "output": 10.00, "cache_write": 2.50, "cache_read": 0.20}
 PRICE_PER_WEB_SEARCH = 10.00 / 1000
+# Phase 2 + Phase 3, every run record counted (Amendment 3).
+TOTAL_BUDGET_USD = 50.00
+MAX_DEV_PROMPT_VERSIONS = 3
 
 REASON_MAX_CHARS = 400
 EVIDENCE_MAX_CHARS = 200
@@ -102,9 +114,10 @@ How the pipeline gets its figures, and how each typically goes wrong:
 Verdicts: plausible (the figure is about right, within a factor of 2), suspicious (likely off by more than 2x, or unclear without a site visit), implausible (off by more than 2x, with evidence).
 
 Evidence rules:
-- Use web search. Prefer official or primary sources (the organisation's own pages, annual reports, planning documents, venue operators, reputable press).
+- Where web search is available, use it. Prefer official or primary sources (the organisation's own pages, annual reports, planning documents, venue operators, reputable press).
 - Report a proposed figure only when a source you retrieved in this conversation gives a number it rests on, and quote the sentence that gives it. Otherwise set proposed to null and say in evidence_needed what a person would check. A finding without a number is still useful.
 - proposed gives low, central and high for the record's figure (people on site on a weekday, or visitors per year or per day), not for the whole company.
+- Where web search is not available, judge from the names, tags, categories, providers and distances in the data, set proposed to null, and say in evidence_needed what a person would check.
 - Keep reason under 400 characters and evidence_needed under 200.
 
 Report exactly one finding per candidate_id you are given, by calling report_finding once for each; do not skip any. You may call several tools in one turn. When every candidate is reported, end your turn with one short sentence.
@@ -143,10 +156,12 @@ _PROPOSED = {
     "description": "Your estimate of the record's figure, or null when no retrieved source states a number.",
 }
 
-TOOLS: list[dict] = [
+WEB_TOOLS: list[dict] = [
     {"type": WEB_SEARCH_TOOL, "name": "web_search", "max_uses": WEB_SEARCH_MAX_USES},
     {"type": WEB_FETCH_TOOL, "name": "web_fetch", "max_uses": WEB_FETCH_MAX_USES,
      "max_content_tokens": WEB_FETCH_MAX_CONTENT_TOKENS},
+]
+REPORT_TOOLS: list[dict] = [
     {
         "name": TOOL_REPORT,
         "description": "Report the finding for one candidate. Call once per candidate_id.",
@@ -175,6 +190,11 @@ TOOLS: list[dict] = [
         }, ["name", "lat", "lon", "kind", "reason", "proposed", "sources"]),
     },
 ]
+TOOLS = WEB_TOOLS + REPORT_TOOLS
+
+
+def tools_for(module: str) -> list[dict]:
+    return TOOLS if module in WEB_MODULES else REPORT_TOOLS
 
 
 def prompt_sha256() -> str:
@@ -335,6 +355,7 @@ class Auditor:
             "worklist_sha256": hashlib.sha256(json.dumps(worklist, sort_keys=True, ensure_ascii=False)
                                               .encode("utf-8")).hexdigest(),
             "modules": sorted(by_module),
+            "modules_requested": modules,
             "limit_per_module": limit,
             "model": self.model, "effort": self.effort, "prompt_sha256": prompt_sha256(),
             "max_usd": self.max_usd,
@@ -437,7 +458,7 @@ class Auditor:
                 thinking={"type": "adaptive"},
                 output_config={"effort": self.effort},
                 system=[{"type": "text", "text": SYSTEM_PROMPT, "cache_control": {"type": "ephemeral"}}],
-                tools=TOOLS,
+                tools=tools_for(module),
                 tool_choice={"type": "auto"},
                 cache_control={"type": "ephemeral"},
                 messages=messages,
@@ -487,6 +508,8 @@ def _initial_message(node: dict, module: str, batch: list[dict], ask_new: bool) 
         f"Candidates:\n<data>\n{json.dumps(batch, ensure_ascii=False, indent=1)}\n</data>\n\n"
         f"Report one finding for each of these candidate_ids: {', '.join(ids)}."
     )
+    if module not in WEB_MODULES:
+        text += "\n\nWeb search is not available for this module: judge from the data above."
     return text + ("\n\n" + NEW_ENTITY_INSTRUCTION if ask_new else "")
 
 
@@ -532,6 +555,41 @@ def check_allowed(area_id: str, freeze_path: Path = PROMPT_FREEZE_JSON) -> None:
     if prompt_sha256() not in frozen_hashes(freeze_path):
         raise AuditError(f"{area_id} is not a development node and prompt {prompt_sha256()[:12]} is not frozen in "
                          f"{freeze_path.name}; freeze it in a commit before running holdout or control nodes")
+
+
+def run_records(run_dir: Path = RUN_DIR) -> list[dict]:
+    return [json.loads(p.read_text()) for p in sorted(run_dir.glob("*.json"))] if run_dir.exists() else []
+
+
+def total_spent(run_dir: Path = RUN_DIR) -> float:
+    return sum(r.get("cost_usd", 0.0) for r in run_records(run_dir))
+
+
+def is_full_dev_run(run: dict) -> bool:
+    return run["node"]["area_id"] in DEVELOPMENT_NODES and run.get("limit_per_module") is None \
+        and run.get("modules_requested") is None
+
+
+def check_budget(max_usd: float, run_dir: Path = RUN_DIR) -> float:
+    """The cap this run may use: max_usd, if it fits into what is left."""
+    left = TOTAL_BUDGET_USD - total_spent(run_dir)
+    if max_usd > left:
+        raise AuditError(f"run cap ${max_usd:.2f} does not fit into the ${left:.2f} left of the "
+                         f"${TOTAL_BUDGET_USD:.0f} budget")
+    return max_usd
+
+
+def check_dev_version(area_id: str, full_run: bool, run_dir: Path = RUN_DIR) -> None:
+    """At most MAX_DEV_PROMPT_VERSIONS prompt versions on the development
+    node, one full run each (Amendment 3)."""
+    if area_id not in DEVELOPMENT_NODES or not full_run:
+        return
+    done = [r["prompt_sha256"] for r in run_records(run_dir) if is_full_dev_run(r)]
+    h = prompt_sha256()
+    if h in done:
+        raise AuditError(f"prompt {h[:12]} already had its full development run")
+    if len(set(done)) >= MAX_DEV_PROMPT_VERSIONS:
+        raise AuditError(f"{MAX_DEV_PROMPT_VERSIONS} development prompt versions used; freeze one of them")
 
 
 QUEUE_COLUMNS = ("queue_id", "run_file", "area_id", "candidate_id", "module", "issue_type", "verdict", "record_ref",
@@ -605,8 +663,10 @@ def main(argv: list[str] | None = None) -> int:
     args = ap.parse_args(argv)
 
     check_allowed(args.node)
+    check_dev_version(args.node, full_run=args.modules is None and args.limit is None)
+    max_usd = check_budget(args.max_usd)
     worklist = json.loads((WORKLIST_DIR / f"{args.node}.json").read_text())
-    auditor = Auditor(effort=args.effort, max_usd=args.max_usd)
+    auditor = Auditor(effort=args.effort, max_usd=max_usd)
     run = auditor.audit(worklist, args.modules.split(",") if args.modules else None, args.limit)
     path = save_run(run, worklist, queue=None if args.no_queue else REVIEW_QUEUE_CSV)
     u = run["usage"]
@@ -617,6 +677,7 @@ def main(argv: list[str] | None = None) -> int:
           f"cache write {u['cache_creation_input_tokens']:,} / out {u['output_tokens']:,}; "
           f"{u['web_search_requests']} searches, {u['web_fetch_requests']} fetches")
     print(f"prompt {run['prompt_sha256'][:12]} -> {path.relative_to(PROJECT_ROOT)}")
+    print(f"budget: ${total_spent():.2f} of ${TOTAL_BUDGET_USD:.0f} spent")
     return 0
 
 

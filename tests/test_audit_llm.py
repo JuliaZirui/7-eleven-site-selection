@@ -125,18 +125,27 @@ class ConversationTest(unittest.TestCase):
         self.assertEqual([b["tool_use_id"] for b in follow_up["content"]], ["t1", "t2", "t3"])
         self.assertIn("Not recorded", follow_up["content"][2]["content"])
         self.assertEqual(run["usage"]["web_search_requests"], 2)
-        self.assertAlmostEqual(run["cost_usd"], (2 * 1000 * 4 + 2 * 200 * 20) / 1e6 + 2 * 0.01, places=6)
+        price = audit_llm.PRICE_PER_MTOK
+        self.assertAlmostEqual(run["cost_usd"], (2 * 1000 * price["input"] + 2 * 200 * price["output"]) / 1e6
+                               + 2 * audit_llm.PRICE_PER_WEB_SEARCH, places=6)
 
     def test_request_shape(self):
         client = FakeClient(_resp([_report("c:1")], stop="tool_use"), _resp([]))
         Auditor(client, max_usd=5).audit(_worklist(_cand("c:1")))
         req = client.requests[0]
-        self.assertEqual(req["model"], "claude-opus-5-5")
+        self.assertEqual(req["model"], "claude-sonnet-5-5")
         self.assertEqual(req["tool_choice"], {"type": "auto"})  # forced tool use is rejected on this model
         self.assertEqual({t.get("type", "custom") for t in req["tools"]},
                          {audit_llm.WEB_SEARCH_TOOL, audit_llm.WEB_FETCH_TOOL, "custom"})
         self.assertTrue(all(t["strict"] for t in req["tools"] if "input_schema" in t))
         self.assertIn("<data>", req["messages"][0]["content"])
+
+    def test_poi_modules_get_no_web_tools(self):
+        client = FakeClient(_resp([_report("p:1", issue="duplicate")], stop="tool_use"), _resp([]))
+        Auditor(client, max_usd=5).audit(_worklist(_cand("p:1", module="poi_duplicate")))
+        req = client.requests[0]
+        self.assertEqual({t["name"] for t in req["tools"]}, {audit_llm.TOOL_REPORT, audit_llm.TOOL_NEW_ENTITY})
+        self.assertIn("Web search is not available", req["messages"][0]["content"])
 
     def test_pause_turn_resumes_without_a_user_message(self):
         client = FakeClient(_resp([{"type": "server_tool_use", "id": "s", "name": "web_search"}], stop="pause_turn"),
@@ -152,11 +161,11 @@ class ConversationTest(unittest.TestCase):
         self.assertEqual(run["status"]["c:1"], "no_finding")
 
     def test_budget_cap_marks_the_rest_not_audited(self):
-        # First conversation costs $0.50 > cap $0.40; the second never starts.
+        # First conversation costs $0.25 (Sonnet list prices) > cap $0.20; the second never starts.
         big = _resp([_report("c:1")], stop="tool_use", inp=100_000, out=5_000)
         client = FakeClient(big)
         wl = _worklist(_cand("c:1"), _cand("x:2", module="concentration"))
-        run = Auditor(client, max_usd=0.40).audit(wl)
+        run = Auditor(client, max_usd=0.20).audit(wl)
         self.assertEqual(len(client.requests), 1)
         self.assertEqual(run["status"], {"c:1": "audited", "x:2": "not_audited"})
 
@@ -204,6 +213,32 @@ class FreezeAndQueueTest(unittest.TestCase):
             audit_llm.check_allowed("brandenburger_tor", freeze)
         freeze.write_text(json.dumps({"frozen": [{"prompt_sha256": audit_llm.prompt_sha256()}]}))
         audit_llm.check_allowed("brandenburger_tor", freeze)
+
+    def _record(self, name: str, **run) -> None:
+        (self.tmp / f"{name}.json").write_text(json.dumps(
+            {"node": {"area_id": "warschauer_strasse"}, "limit_per_module": None, "modules_requested": None,
+             "prompt_sha256": "v1", "cost_usd": 1.0, **run}))
+
+    def test_total_budget_is_summed_from_run_records(self):
+        self._record("a", cost_usd=30.0)
+        self._record("b", cost_usd=15.5)
+        self.assertEqual(audit_llm.check_budget(4.0, self.tmp), 4.0)
+        with self.assertRaises(audit_llm.AuditError):
+            audit_llm.check_budget(5.0, self.tmp)  # only $4.50 left of $50
+
+    def test_development_prompt_versions_capped_and_run_once(self):
+        current = audit_llm.prompt_sha256()
+        self._record("a", prompt_sha256="v1")
+        self._record("b", prompt_sha256="v2")
+        self._record("trial", prompt_sha256="v9", limit_per_module=2)  # partial runs do not count
+        audit_llm.check_dev_version("warschauer_strasse", True, self.tmp)  # third version: allowed
+        audit_llm.check_dev_version("warschauer_strasse", False, self.tmp)  # partial: always allowed
+        self._record("c", prompt_sha256="v3")
+        with self.assertRaises(audit_llm.AuditError):
+            audit_llm.check_dev_version("warschauer_strasse", True, self.tmp)  # fourth version
+        self._record("d", prompt_sha256=current)
+        with self.assertRaises(audit_llm.AuditError):
+            audit_llm.check_dev_version("warschauer_strasse", True, self.tmp)  # same version twice
 
     def test_queue_gets_non_plausible_findings(self):
         client = FakeClient(_resp([_search_result(),
