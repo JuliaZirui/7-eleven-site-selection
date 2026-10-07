@@ -8,7 +8,7 @@
 
 An item is in the key if, in the corrections-off state, a record carries a value that the manual review found to be **off by more than 2×**, or an entity worth ≥ 1,000 people/day is **absent**, or a competitor record is **not a competitor / a duplicate**. Items below 2× are listed as secondary and scored separately.
 
-All items were found by the analyst before this experiment (see [site_candidates.md](../site_candidates.md) v4.1–v5.2 and [manual_vs_tool.md](manual_vs_tool.md)). The POI items (H4–H6) are still uncorrected in the current data.
+All items were found by the analyst before this experiment (see [site_candidates.md](../site_candidates.md) v4.1–v5.2 and [manual_vs_tool.md](manual_vs_tool.md)). The POI items (H4–H6) are uncorrected on `main` but fixed on the unmerged branch `conflation-v2-data-quality-fixes` by rules written from these records; see Amendment 1 in the plan.
 
 ## Development set — Warschauer Straße (prompt may be tuned on these)
 

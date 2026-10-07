@@ -134,6 +134,14 @@ All runs on the corrections-off copy. Holdout, control and generalisation: 3 run
 | 4 | The analyst labels flags and does the generalisation scans | `comparison/audit_eval.md`, `comparison/audit_findings.md` with the decision |
 | 5 | Only if adopted: wire into the pipeline, report line, README | — |
 
+## Amendment 1 (2026-10-07, before any audit code)
+
+The plan above was written against `main` (run #15). The unmerged branch `conflation-v2-data-quality-fixes` (run #17, `scoring_v7`, `conflation_v2`) already fixes the three POI defects from the manual benchmark, with two general rules and a fourth correction table. Changes to this plan:
+
+- **Order.** Merge `conflation-v2-data-quality-fixes` into `main` first; branch the audit implementation from that `main`.
+- **Corrections-off switch also covers POI fixes:** `poi_conflation.cluster_records(..., quality_rules=False)` (near-duplicate merge and name/category check off) and skipping `load_verified_corrections()` (`poi_corrections_verified.csv`). `audit_apply.py` writes accepted POI proposals to that table.
+- **H4–H6 are now in-sample twice:** the general rules were written from exactly these records. Their recall result says whether the LLM matches rules that were tuned on the answer; it is reported separately from H1–H3, and the decision rule's "≥ 4 / 6" is unchanged.
+
 ## Limitations that travel with any result
 
 1. **The answer key is in-sample for the person.** The check types were designed by someone who already knew the issues. The dev/holdout split and the blocklist test limit how much of that leaks into the prompt; they do not remove it. The generalisation stations are the honest test.
