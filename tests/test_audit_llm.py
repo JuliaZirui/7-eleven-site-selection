@@ -101,6 +101,14 @@ class GuardTest(unittest.TestCase):
         f, _ = guard_new_entity({**base, "lat": 52.501, "lon": 13.4}, NODE, set())
         self.assertEqual(f["candidate_id"], "new_entity:Far")
 
+    def test_server_tool_errors_are_counted(self):
+        content = [{"type": "web_search_tool_result",
+                    "content": {"type": "web_search_tool_result_error", "error_code": "invalid_tool_input"}},
+                   _search_result()]
+        self.assertEqual(audit_llm.tool_errors(content), ["web_search_tool_result:invalid_tool_input"])
+        client = FakeClient(_resp(content + [_report("c:1")], stop="tool_use"), _resp([]))
+        self.assertEqual(Auditor(client, max_usd=5).audit(_worklist(_cand("c:1")))["tool_errors"], 1)
+
     def test_urls_come_only_from_server_tool_results(self):
         content = [_search_result(), {"type": "text", "text": "see https://not-retrieved.example"},
                    {"type": "web_fetch_tool_result", "content": {"type": "web_fetch_result", "url": URL + "/b/"}}]
@@ -228,15 +236,16 @@ class FreezeAndQueueTest(unittest.TestCase):
 
     def test_development_prompt_versions_capped_and_run_once(self):
         current = audit_llm.prompt_sha256()
-        self._record("a", prompt_sha256="v1")
-        self._record("b", prompt_sha256="v2")
+        cap = audit_llm.MAX_DEV_PROMPT_VERSIONS
+        for i in range(cap - 1):
+            self._record(f"v{i}", prompt_sha256=f"v{i}")
         self._record("trial", prompt_sha256="v9", limit_per_module=2)  # partial runs do not count
-        audit_llm.check_dev_version("warschauer_strasse", True, self.tmp)  # third version: allowed
+        audit_llm.check_dev_version("warschauer_strasse", True, self.tmp)  # last version: allowed
         audit_llm.check_dev_version("warschauer_strasse", False, self.tmp)  # partial: always allowed
-        self._record("c", prompt_sha256="v3")
+        self._record("last", prompt_sha256="vlast")
         with self.assertRaises(audit_llm.AuditError):
-            audit_llm.check_dev_version("warschauer_strasse", True, self.tmp)  # fourth version
-        self._record("d", prompt_sha256=current)
+            audit_llm.check_dev_version("warschauer_strasse", True, self.tmp)  # one version too many
+        self._record("again", prompt_sha256=current)
         with self.assertRaises(audit_llm.AuditError):
             audit_llm.check_dev_version("warschauer_strasse", True, self.tmp)  # same version twice
 

@@ -59,8 +59,12 @@ AUDIT_MODEL = "claude-sonnet-5-5"
 AUDIT_EFFORT = "medium"
 MAX_TOKENS = 16000
 FALLBACK_BETA = "server-side-fallback-2026-07-01"
-WEB_SEARCH_TOOL = "web_search_20260209"
-WEB_FETCH_TOOL = "web_fetch_20260209"
+# Basic variants, no dynamic filtering (Amendment 4): with
+# web_search_20260209 the model sometimes sent malformed calls
+# (invalid_tool_input) and filtered results with its own code, losing
+# the sentences it needed.
+WEB_SEARCH_TOOL = "web_search_20250305"
+WEB_FETCH_TOOL = "web_fetch_20250910"
 
 # Per conversation. Searches are the main variable cost besides tokens;
 # 3 candidates sharing 10 searches keeps about 3 per candidate, as in the
@@ -84,7 +88,8 @@ PRICE_PER_MTOK = {"input": 2.00, "output": 10.00, "cache_write": 2.50, "cache_re
 PRICE_PER_WEB_SEARCH = 10.00 / 1000
 # Phase 2 + Phase 3, every run record counted (Amendment 3).
 TOTAL_BUDGET_USD = 50.00
-MAX_DEV_PROMPT_VERSIONS = 3
+# 3 per Amendment 3, plus one for the tool change of Amendment 4.
+MAX_DEV_PROMPT_VERSIONS = 4
 
 REASON_MAX_CHARS = 400
 EVIDENCE_MAX_CHARS = 200
@@ -278,6 +283,19 @@ def _clip(text: Any, n: int) -> str:
     return text if len(text) <= n else text[: n - 1] + "…"
 
 
+def tool_errors(content: list) -> list[str]:
+    """Error codes of server-tool results in this response (a failed
+    search or fetch comes back as a result block, not as an exception)."""
+    out = []
+    for block in content:
+        if _get(block, "type") in ("web_search_tool_result", "web_fetch_tool_result"):
+            c = _get(block, "content")
+            code = _get(c, "error_code") if c is not None and not isinstance(c, list) else None
+            if code:
+                out.append(f"{_get(block, 'type')}:{code}")
+    return out
+
+
 def retrieved_urls(content: list) -> set[str]:
     """Every URL in this response's web search / fetch result blocks."""
     urls: set[str] = set()
@@ -363,6 +381,7 @@ class Auditor:
             "usage": usage,
             "api_calls": len(self.calls),
             "served_by_fallback": [c for c in self.calls if c["served_by"] != self.model],
+            "tool_errors": sum(len(c["tool_errors"]) for c in self.conversations),
             "candidates": len(status),
             "status_counts": {s: sum(1 for v in status.values() if v == s) for s in sorted(set(status.values()))},
             "status": status,
@@ -382,6 +401,7 @@ class Auditor:
         raw_findings: list[dict] = []
         raw_new: list[dict] = []
         log: list[str] = []
+        errors: list[str] = []
         reminders = turns = 0
         error = None
         while True:
@@ -400,6 +420,7 @@ class Auditor:
                 break
             messages.append({"role": "assistant", "content": response.content})
             urls |= retrieved_urls(response.content)
+            errors += tool_errors(response.content)
             client_uses = [b for b in response.content if _get(b, "type") == "tool_use"]
             for b in client_uses:
                 args = _get(b, "input") or {}
@@ -442,7 +463,7 @@ class Auditor:
         if any("budget reached" in m for m in log):
             status.update({cid: "not_audited" for cid in batch_ids - seen})
         self.conversations.append({"module": module, "candidate_ids": sorted(batch_ids), "turns": turns,
-                                   "retrieved_urls": sorted(urls), "log": log,
+                                   "retrieved_urls": sorted(urls), "log": log, "tool_errors": errors,
                                    "transcript": [{"role": m["role"], "content": _dump(m["content"])}
                                                   for m in messages]})
         return {"findings": findings, "new_entities": new_entities, "dropped": dropped, "status": status}
@@ -675,7 +696,8 @@ def main(argv: list[str] | None = None) -> int:
     print(f"cost ${run['cost_usd']:.3f} (cap ${args.max_usd:.2f}); {run['api_calls']} API calls; "
           f"tokens in {u['input_tokens']:,} / cache read {u['cache_read_input_tokens']:,} / "
           f"cache write {u['cache_creation_input_tokens']:,} / out {u['output_tokens']:,}; "
-          f"{u['web_search_requests']} searches, {u['web_fetch_requests']} fetches")
+          f"{u['web_search_requests']} searches, {u['web_fetch_requests']} fetches, "
+          f"{run['tool_errors']} server-tool errors")
     print(f"prompt {run['prompt_sha256'][:12]} -> {path.relative_to(PROJECT_ROOT)}")
     print(f"budget: ${total_spent():.2f} of ${TOTAL_BUDGET_USD:.0f} spent")
     return 0
