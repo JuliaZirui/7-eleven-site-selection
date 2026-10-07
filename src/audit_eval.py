@@ -379,6 +379,12 @@ def write_report(path: Path = EVAL_MD) -> str:
         if not runs:
             L.append(f"| {set_name} | {node} | 0 | — | pending | | | | |")
             continue
+        if set_name == "generalisation" and not any(r["area_id"] == node for r in labels):
+            # Protocol: the analyst scans these nodes by hand before seeing
+            # any of the auditor's output, counts included.
+            L.append(f"| {set_name} | {node} | {len(runs)} | ${sum(r['cost_usd'] for r in runs):.2f} | "
+                     "hidden until the manual scan is recorded | | | | |")
+            continue
         fa = false_alarms(runs, labels)
         fa_by_node[node] = fa
         pr = fa["per_run"]
