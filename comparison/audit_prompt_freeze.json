@@ -1,0 +1,13 @@
+{
+ "frozen": [
+  {
+   "prompt_sha256": "85168ab831f77ee71930960d5ce6c74aaa070391c908db4d915b89229a9600fb",
+   "version": "v3",
+   "frozen_on": "2026-10-07",
+   "model": "claude-sonnet-5-5",
+   "effort": "medium",
+   "selected_by": "highest development recall on D1-D4 (4/4, tied with v1), then fewer flagged development candidates (13 vs 26); rule recorded in comparison/audit_prompt_log.md before the v3 run",
+   "development_run": "db/raw/audit/runs/warschauer_strasse_20261007T123153Z.json"
+  }
+ ]
+}
