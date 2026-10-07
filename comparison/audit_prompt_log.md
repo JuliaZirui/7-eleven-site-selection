@@ -5,8 +5,9 @@ Every prompt version tried on the development node (Warschauer Straße), with it
 | Version | Prompt SHA-256 | Model / effort | Full development run | Cost | Development recall (D1–D4) | Notes |
 | --- | --- | --- | --- | --- | --- | --- |
 | trial | `bd8a2050e135` | Opus 5.5 / medium | — (4 candidates only) | $0.489 | — | Before Amendment 3. Not used for any result |
-| v1 | `fdc651d566cd` | Sonnet 5.5 / medium | `db/raw/audit/runs/warschauer_strasse_20261007T121505Z.json` | $0.462 | 4 / 4 (D5 also flagged) | See below |
-| v2 | `f75ac69f5933` | Sonnet 5.5 / medium | pending | | | |
+| v1 | `fdc651d566cd` | Sonnet 5.5 / medium | `db/raw/audit/runs/warschauer_strasse_20261007T121505Z.json` | $0.462 | 4 / 4 (D5 also flagged) | 26 of 40 candidates flagged |
+| v2 | `f75ac69f5933` | Sonnet 5.5 / medium | `db/raw/audit/runs/warschauer_strasse_20261007T122511Z.json` | $0.558 | 3 / 4: D2 missed (D5 flagged) | 13 of 40 flagged |
+| v3 | `85168ab831f7` | Sonnet 5.5 / medium | pending | | | Last version allowed |
 
 ## v1 → v2
 
@@ -25,3 +26,20 @@ v2 changes, all in the system prompt:
 - Search for each candidate before reporting it, where web search is available, unless the data alone settles it.
 - `fame_vs_attendance`: venues up to about 2 km are counted on purpose through the 1/k share; judge the figure, not the inclusion.
 - `duplicate`: closeness alone is not a reason to flag (food courts, malls, concourses); flag only when the data points to one business. The type is for competitor records only; double-counted workers are `company_wide_headcount`.
+
+## v2 → v3
+
+What the v2 run showed (40 candidates, 32 API calls, 14 searches, 0 fetches):
+
+- Hedging gone: 2 of 22 `poi_duplicate` pairs suspicious (v1: 12); 13 of 40 candidates flagged in total (v1: 26). 4 findings carry a sourced number (v1: 1).
+- **D2 missed.** The registrant was identified and searched for, but the search results, filtered by the model's own code, kept no headcount sentence; without evidence the model judged the counted figure "within 2x of a plausible on-site figure" and called it plausible. Under the v2 rule "nothing points either way → plausible" this is what the rule asks for, but for a size class the default is wrong: the class is the company's by construction (`demand_model.LARGE_REGISTRATION_MIN_EMPLOYEES`, the pipeline's own reason for checking these by hand).
+- No page was opened with web fetch in either run, so a figure missing from the filtered search results was never looked for on the page itself.
+
+v3 changes:
+
+- Exception to the verdict rule for registrations with a size class of 500 or more: plausible only if a source or the building's floor area supports roughly that many people at this address; otherwise suspicious. Disclosure: the person writing this rule had read the answer key, in which every large registration is overstated; the rule's reason is the pipeline's own design, but it is not blind to that.
+- If the search results do not give the figure, open the most relevant page with web fetch before deciding.
+
+## Which version is frozen
+
+Decided before the v3 run: the version with the highest development recall on D1–D4 is frozen; on a tie, the one with fewer flagged candidates (suspicious or implausible) on the development node, as a proxy for fewer false alarms. Its SHA-256 goes into `comparison/audit_prompt_freeze.json` in a commit of its own, before any holdout, control or generalisation run.
