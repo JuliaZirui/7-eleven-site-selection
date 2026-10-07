@@ -168,17 +168,17 @@ class CandidateModulesTest(unittest.TestCase):
         self.assertTrue(wl["modules_skipped"])
 
     def test_poi_category_by_name_word_and_by_same_name_osm_object(self):
-        comps = [_competitor("o:1", "Grill Steakhouse", "cafe", 0, 0),
-                 _competitor("o:2", "Lindenhof", "cafe", 100, 0),  # same-name office building in OSM
+        comps = [_competitor("o:1", "Hotel Morgenrot", "cafe", 0, 0),
+                 _competitor("o:2", "Nordflügel", "cafe", 100, 0),  # same-name office building in OSM
                  _competitor("o:3", "Kaffee Bar", "cafe", -100, 0),  # nothing wrong
-                 _competitor("n:4", "Lindenhof", "cafe", 0, 100, source="osm_overpass")]  # OSM's own record
-        osm = [_square(10, 100, 0, 12, building="office", name="Lindenhof"),
-               _square(11, 0, 100, 12, building="office", name="Lindenhof")]
+                 _competitor("n:4", "Nordflügel", "cafe", 0, 100, source="osm_overpass")]  # OSM's own record
+        osm = [_square(10, 100, 0, 12, building="office", name="Nordflügel"),
+               _square(11, 0, 100, 12, building="office", name="Nordflügel")]
         wl = ac.build_worklist(_ctx(competitors=comps, osm=osm), FIT)
         self.assertEqual(_ids(wl, "poi_category"), {"poi_category:o:1", "poi_category:o:2"})
 
     def test_non_food_words_match_whole_words_only(self):
-        wl = ac.build_worklist(_ctx(competitors=[_competitor("o:1", "Hofbäckerei", "bakery", 0, 0)]), FIT)
+        wl = ac.build_worklist(_ctx(competitors=[_competitor("o:1", "Kneipenbäckerei", "bakery", 0, 0)]), FIT)
         self.assertEqual(_ids(wl, "poi_category"), set())
 
     def test_poi_duplicate_same_category_within_15m(self):

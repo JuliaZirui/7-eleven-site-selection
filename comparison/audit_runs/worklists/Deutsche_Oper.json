@@ -1,5 +1,5 @@
 {
- "generator": "audit_candidates_v2",
+ "generator": "audit_candidates_v3",
  "area_id": "Deutsche_Oper",
  "name": "Deutsche Oper",
  "lat": 52.511837,
@@ -23,7 +23,7 @@
   "concentration": 1,
   "large_registration": 0,
   "missing_entity": 3,
-  "poi_category": 2,
+  "poi_category": 1,
   "poi_duplicate": 9
  },
  "candidates": [
@@ -209,50 +209,6 @@
      "name": "Tay Par Burger",
      "amenity": "restaurant",
      "address": "Wilmersdorfer Straße 144"
-    }
-   ]
-  },
-  {
-   "candidate_id": "poi_category:overture:c73d1625-b886-484d-954a-e35219efc0ce",
-   "module": "poi_category",
-   "record_ref": "overture:c73d1625-b886-484d-954a-e35219efc0ce",
-   "record": {
-    "external_ref": "overture:c73d1625-b886-484d-954a-e35219efc0ce",
-    "name": "Galerie Café Naya",
-    "category": "cafe",
-    "lat": 52.510597229003906,
-    "lon": 13.315519332885742,
-    "providers": [
-     "meta",
-     "overture"
-    ],
-    "members": [
-     {
-      "source": "overture_places",
-      "ref": "overture:c73d1625-b886-484d-954a-e35219efc0ce",
-      "name": "Galerie Café Naya",
-      "category": "cafe"
-     }
-    ]
-   },
-   "non_food_words": [
-    "galerie"
-   ],
-   "same_name_osm_objects_15m": [],
-   "osm_objects_15m": [
-    {
-     "osm_ref": "node/1640471885",
-     "distance_m": 4.5,
-     "name": "ENDA GmbH & Co. KG",
-     "office": "it",
-     "address": "Schillerstraße 106"
-    },
-    {
-     "osm_ref": "way/45453223",
-     "distance_m": 8.6,
-     "building": "apartments",
-     "building:levels": "4",
-     "address": "Schillerstraße 107"
     }
    ]
   },

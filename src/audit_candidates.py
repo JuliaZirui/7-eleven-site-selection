@@ -67,7 +67,7 @@ OSM_CONTEXT_DIR = AUDIT_RAW_DIR / "osm_context"
 IHK_DIR = AUDIT_RAW_DIR / "ihk"
 WORKLIST_DIR = PROJECT_ROOT / "comparison" / "audit_runs" / "worklists"
 
-GENERATOR_VERSION = "audit_candidates_v2"
+GENERATOR_VERSION = "audit_candidates_v3"
 
 # Thresholds from the plan (§2), set before any audit code existed.
 CONCENTRATION_SHARE = 0.25
@@ -95,16 +95,33 @@ OSM_CONTEXT_MARGIN_M = 50
 # At most this many OSM names attached to one registration, nearest first.
 MAX_NAME_HINTS = 12
 
-# Words that say a place is not a food shop, or is a full-service
-# restaurant rather than a café / snack counter. Matched as whole words,
-# case-insensitive. Generic by design: a reviewed list of types, never a
-# name of a place (tests/test_audit_prompt.py checks it against the
-# answer key). A hit makes a record a candidate, nothing more -- the
+# Words that say a place is not a food shop: the common German and English
+# words for the OSM tag values of sit-down hospitality, lodging and
+# offices, built from the tag definitions alone (Plan Amendment 2; not
+# from the answer key or site_candidates.md). Matched as whole words,
+# case-insensitive. A hit makes a record a candidate, nothing more -- the
 # auditor and then a person decide.
+#   amenity=restaurant  restaurant, gaststätte
+#   amenity=bar         cocktailbar, weinbar (bare "bar" left out: it also
+#                       names espresso and snack bars, which are in scope)
+#   amenity=pub         pub, kneipe
+#   amenity=biergarten  biergarten, beergarden
+#   tourism=hotel       hotel
+#   tourism=hostel      hostel
+#   office=*            office, büro; the values lawyer (kanzlei,
+#                       rechtsanwalt, rechtsanwälte), notary (notar),
+#                       insurance (versicherung, insurance), estate_agent
+#                       (immobilien), tax_advisor (steuerberater,
+#                       steuerberatung), architect (architekt, architekten),
+#                       government (ministerium, behörde), diplomatic
+#                       (botschaft, konsulat), coworking (coworking),
+#                       association (verein, verband)
+# tests/test_audit_prompt.py fails if any word names an answer-key entity.
 NON_FOOD_NAME_WORDS = frozenset(
-    """steakhouse steakhaus restaurant ristorante trattoria osteria brasserie hotel hostel
-    haus hof bank büro office tower center centre galerie kanzlei praxis botschaft
-    ministerium verwaltung apotheke friseur""".split()
+    """restaurant gaststätte cocktailbar weinbar pub kneipe biergarten beergarden hotel hostel
+    office büro kanzlei rechtsanwalt rechtsanwälte notar versicherung insurance immobilien
+    steuerberater steuerberatung architekt architekten ministerium behörde botschaft konsulat
+    coworking verein verband""".split()
 )
 
 # OSM tags marking a workplace that IHK may not register (public sector,

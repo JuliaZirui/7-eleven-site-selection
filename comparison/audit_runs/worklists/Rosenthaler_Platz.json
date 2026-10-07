@@ -1,5 +1,5 @@
 {
- "generator": "audit_candidates_v2",
+ "generator": "audit_candidates_v3",
  "area_id": "Rosenthaler_Platz",
  "name": "Rosenthaler Platz",
  "lat": 52.5298999,
@@ -23,7 +23,7 @@
   "concentration": 7,
   "large_registration": 8,
   "missing_entity": 4,
-  "poi_category": 5,
+  "poi_category": 3,
   "poi_duplicate": 15
  },
  "candidates": [
@@ -864,50 +864,6 @@
    ]
   },
   {
-   "candidate_id": "poi_category:overture:41bbc5d2-425e-42b4-a662-264ff695aee3",
-   "module": "poi_category",
-   "record_ref": "overture:41bbc5d2-425e-42b4-a662-264ff695aee3",
-   "record": {
-    "external_ref": "overture:41bbc5d2-425e-42b4-a662-264ff695aee3",
-    "name": "Good Bank",
-    "category": "fast_food",
-    "lat": 52.52784729003906,
-    "lon": 13.400434494018555,
-    "providers": [
-     "brightquery",
-     "overture"
-    ],
-    "members": [
-     {
-      "source": "overture_places",
-      "ref": "overture:41bbc5d2-425e-42b4-a662-264ff695aee3",
-      "name": "Good Bank",
-      "category": "fast_food"
-     }
-    ]
-   },
-   "non_food_words": [
-    "bank"
-   ],
-   "same_name_osm_objects_15m": [],
-   "osm_objects_15m": [
-    {
-     "osm_ref": "node/1927902445",
-     "distance_m": 7.0,
-     "name": "Roya Design",
-     "office": "company",
-     "address": "Joachimstraße 17a"
-    },
-    {
-     "osm_ref": "node/3902472802",
-     "distance_m": 10.9,
-     "name": "Symple Coffee Mitte",
-     "amenity": "cafe",
-     "address": "Auguststraße 50"
-    }
-   ]
-  },
-  {
    "candidate_id": "poi_category:overture:fe14e47e-a09d-42fb-ad32-4d7b42655706",
    "module": "poi_category",
    "record_ref": "overture:fe14e47e-a09d-42fb-ad32-4d7b42655706",
@@ -960,54 +916,6 @@
      "osm_ref": "way/281029146",
      "distance_m": 12.7,
      "operator": "Berliner Wasserbetriebe",
-     "address": null
-    }
-   ]
-  },
-  {
-   "candidate_id": "poi_category:overture:b7401bbe-72ac-4a8b-b137-b535ef999b4c",
-   "module": "poi_category",
-   "record_ref": "overture:b7401bbe-72ac-4a8b-b137-b535ef999b4c",
-   "record": {
-    "external_ref": "overture:b7401bbe-72ac-4a8b-b137-b535ef999b4c",
-    "name": "OSTERIA-PIZZERIA Marina Blu",
-    "category": "cafe",
-    "lat": 52.531246185302734,
-    "lon": 13.402517318725586,
-    "providers": [
-     "microsoft",
-     "overture"
-    ],
-    "members": [
-     {
-      "source": "overture_places",
-      "ref": "overture:b7401bbe-72ac-4a8b-b137-b535ef999b4c",
-      "name": "OSTERIA-PIZZERIA Marina Blu",
-      "category": "cafe"
-     }
-    ]
-   },
-   "non_food_words": [
-    "osteria"
-   ],
-   "same_name_osm_objects_15m": [],
-   "osm_objects_15m": [
-    {
-     "osm_ref": "node/9645610050",
-     "distance_m": 5.0,
-     "operator": "Berliner Verkehrsbetriebe",
-     "address": null
-    },
-    {
-     "osm_ref": "node/1663909322",
-     "distance_m": 5.5,
-     "operator": "Berliner Verkehrsbetriebe",
-     "address": null
-    },
-    {
-     "osm_ref": "way/104954713",
-     "distance_m": 14.0,
-     "name": "Volkspark am Weinberg",
      "address": null
     }
    ]

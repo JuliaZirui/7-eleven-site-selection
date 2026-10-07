@@ -1,5 +1,5 @@
 {
- "generator": "audit_candidates_v2",
+ "generator": "audit_candidates_v3",
  "area_id": "brandenburger_tor",
  "name": "Brandenburger Tor",
  "lat": 52.51653594770922,
@@ -22,7 +22,7 @@
   "concentration": 4,
   "large_registration": 1,
   "missing_entity": 17,
-  "poi_category": 4,
+  "poi_category": 3,
   "poi_duplicate": 8
  },
  "candidates": [
@@ -993,51 +993,6 @@
      "osm_ref": "way/281029390",
      "distance_m": 12.2,
      "operator": "Berliner Wasserbetriebe",
-     "address": null
-    }
-   ]
-  },
-  {
-   "candidate_id": "poi_category:overture:311992c2-4d9a-425d-a613-c22c9838dfa2",
-   "module": "poi_category",
-   "record_ref": "overture:311992c2-4d9a-425d-a613-c22c9838dfa2",
-   "record": {
-    "external_ref": "overture:311992c2-4d9a-425d-a613-c22c9838dfa2",
-    "name": "MAREDO Steakhouse Berlin Unter den Linden",
-    "category": "cafe",
-    "lat": 52.517024993896484,
-    "lon": 13.386900901794434,
-    "providers": [
-     "microsoft",
-     "overture"
-    ],
-    "members": [
-     {
-      "source": "overture_places",
-      "ref": "overture:311992c2-4d9a-425d-a613-c22c9838dfa2",
-      "name": "MAREDO Steakhouse Berlin Unter den Linden",
-      "category": "cafe"
-     }
-    ]
-   },
-   "non_food_words": [
-    "steakhouse"
-   ],
-   "same_name_osm_objects_15m": [],
-   "osm_objects_15m": [
-    {
-     "osm_ref": "node/10880725041",
-     "distance_m": 11.9,
-     "operator": "Berliner Stadtreinigung",
-     "amenity": "waste_basket",
-     "address": null
-    },
-    {
-     "osm_ref": "way/26443912",
-     "distance_m": 14.2,
-     "name": "Zollernhof",
-     "building": "office",
-     "building:levels": "5",
      "address": null
     }
    ]

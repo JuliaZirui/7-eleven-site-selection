@@ -4,40 +4,42 @@
 
 ## Answer-key items
 
-| ID | Set | Primary | Reaches worklist | Via |
-| --- | --- | --- | --- | --- |
-| D1 | development | yes | **yes** | `concentration:wikidata:Q136975` |
-| D2 | development | yes | **yes** | `large_registration:ihk:1126051271504` |
-| D3 | development | yes | **yes** | `large_registration:ihk:146410147338` |
-| D4 | development | yes | **yes** | `missing_entity:osm:way/1364133390` |
-| D5 | development | secondary | **yes** | `concentration:ihk:1146940271134`, `concentration:ihk:1315585271284`, `large_registration:ihk:1146940271134`, `large_registration:ihk:1315585271284` |
-| H1 | holdout | yes | **yes** | `concentration:ihk:17303106124`, `large_registration:ihk:17303106124` |
-| H2 | holdout | yes | **yes** | `missing_entity:osm:node/11224509207`, `missing_entity:osm:node/14107662105`, `missing_entity:osm:way/23160782`, `missing_entity:osm:way/24044854` …; 9/22 buildings within 50 m |
-| H3 | holdout | yes | **yes** | `concentration:wikidata:Q151897` |
-| H4 | holdout | yes | **yes** | `poi_category:overture:311992c2-4d9a-425d-a613-c22c9838dfa2`, `poi_duplicate:overture:311992c2-4d9a-425d-a613-c22c9838dfa2|overture:38312544-51df-47a5-9fa9-2379a20c19e6` |
-| H5 | holdout | yes | **yes** | `poi_category:overture:e99aea2b-c4e5-4e25-a80a-0f62d57d87e2`, `poi_duplicate:node/437320468|overture:e99aea2b-c4e5-4e25-a80a-0f62d57d87e2`, `poi_duplicate:overture:38312544-51df-47a5-9fa9-2379a20c19e6|overture:e99aea2b-c4e5-4e25-a80a-0f62d57d87e2`, `poi_duplicate:overture:836605c3-9753-4b20-92de-f5942171e07c|overture:e99aea2b-c4e5-4e25-a80a-0f62d57d87e2` |
-| H6 | holdout | yes | **yes** | `poi_duplicate:node/5912146257|overture:5120cae2-6961-4b33-89ac-f53f02d99819` |
+| ID | Set | Type | Primary | Reaches worklist | In a module of its type | Via |
+| --- | --- | --- | --- | --- | --- | --- |
+| D1 | development | fame_vs_attendance | yes | **yes** | yes | `concentration:wikidata:Q136975` |
+| D2 | development | company_wide_headcount | yes | **yes** | yes | `large_registration:ihk:1126051271504` |
+| D3 | development | company_wide_headcount | yes | **yes** | yes | `large_registration:ihk:146410147338` |
+| D4 | development | missing_entity | yes | **yes** | yes | `missing_entity:osm:way/1364133390` |
+| D5 | development | company_wide_headcount | secondary | **yes** | yes | `concentration:ihk:1146940271134`, `concentration:ihk:1315585271284`, `large_registration:ihk:1146940271134`, `large_registration:ihk:1315585271284` |
+| H1 | holdout | company_wide_headcount | yes | **yes** | yes | `concentration:ihk:17303106124`, `large_registration:ihk:17303106124` |
+| H2 | holdout | missing_entity | yes | **yes** | yes | `missing_entity:osm:node/11224509207`, `missing_entity:osm:node/14107662105`, `missing_entity:osm:way/23160782`, `missing_entity:osm:way/24044854` …; 9/22 buildings within 50 m |
+| H3 | holdout | fame_vs_attendance | yes | **yes** | yes | `concentration:wikidata:Q151897` |
+| H4 (contaminated) | holdout | category_error | yes | **yes** | **no** | `poi_duplicate:overture:311992c2-4d9a-425d-a613-c22c9838dfa2|overture:38312544-51df-47a5-9fa9-2379a20c19e6` |
+| H5 (contaminated) | holdout | category_error | yes | **yes** | yes | `poi_category:overture:e99aea2b-c4e5-4e25-a80a-0f62d57d87e2`, `poi_duplicate:node/437320468|overture:e99aea2b-c4e5-4e25-a80a-0f62d57d87e2`, `poi_duplicate:overture:38312544-51df-47a5-9fa9-2379a20c19e6|overture:e99aea2b-c4e5-4e25-a80a-0f62d57d87e2`, `poi_duplicate:overture:836605c3-9753-4b20-92de-f5942171e07c|overture:e99aea2b-c4e5-4e25-a80a-0f62d57d87e2` |
+| H6 | holdout | duplicate | yes | **yes** | yes | `poi_duplicate:node/5912146257|overture:5120cae2-6961-4b33-89ac-f53f02d99819` |
 
-- **development**: 4 / 4 primary items reach the worklist
-
-- **holdout**: 6 / 6 primary items reach the worklist
+- **development** (primary): 4 / 4 reach the worklist, 4 / 4 in a module of their type
+- **holdout, main evidence H1–H3**: 3 / 3 reach the worklist, 3 / 3 in a module of their type
+- holdout H6 (in-sample for conflation_v2, Amendment 1): 1 / 1 reach the worklist, 1 / 1 in a module of their type
+- holdout H4–H5 (**contaminated**, Amendment 2): 2 / 2 reach the worklist, 1 / 2 in a module of their type
 
 ## Rule log
 
 | Version | Change | Seen before the change | Effect |
 | --- | --- | --- | --- |
 | `audit_candidates_v1` | The plan's rules as written (§2) | — | Development 3 / 4: D4 missed. The building has 24 small IHK registrations within 40 m (485 people at class midpoints for 77,751 m² of floor area), so "no registration within 40 m" excludes it |
-| `audit_candidates_v2` | `missing_entity`: a building of ≥ 5,000 m² floor area also qualifies when the IHK headcount within 40 m is below 1 per 100 m² (offices hold 1 workplace per 15–25 m²); residential, parking and church buildings excluded from the size rule | Development worklist only. Holdout recall had not been computed; the whole answer key had been read while writing the plan | Development 4 / 4. Holdout measured once, on v2. Re-run with the v1 rule afterwards: H2 coverage unchanged (9 / 22 buildings), so the holdout result does not depend on the change |
+| `audit_candidates_v2` | `missing_entity`: a building of ≥ 5,000 m² floor area also qualifies when the IHK headcount within 40 m is below 1 per 100 m² (offices hold 1 workplace per 15–25 m²); residential, parking and church buildings excluded from the size rule | Development worklist only. Holdout recall had not been computed; the whole answer key had been read while writing the plan | Development 4 / 4. Holdout measured once, on v2: 6 / 6 (H2 9 / 22 buildings; H4 via the word "steakhouse"; H5 via a same-name OSM building). Re-run with the v1 rule afterwards: H2 coverage unchanged |
+| `audit_candidates_v3` | Non-food word list replaced by words derived from OSM tag values only (Amendment 2); the v2 list's examples came from answer items H4/H5 | **Holdout candidate recall on v2** (above) | H4 is no longer a `poi_category` candidate; its record reaches the worklist only inside a `poi_duplicate` pair. H5 unchanged. **Rules frozen from here** (Amendment 2): bug fixes only, each logged below |
 
-**Caveats.** H4 reaches the worklist through the non-food word "steakhouse", the same word the conflation_v2 rule uses (Amendment 1: in-sample twice). The thresholds in `audit_candidates.py` are the plan's; the person writing them had read the answer key, which the blocklist test (`tests/test_audit_prompt.py`) limits for the word list but cannot rule out for the rule design.
+**Caveats.** The thresholds in `audit_candidates.py` are the plan's; the person writing them had read the answer key, which the blocklist test (`tests/test_audit_prompt.py`) limits for the word list but cannot rule out for the rule design. H4 and H5 are contaminated (Amendment 2) and reported apart; H1–H3 are the holdout's main evidence.
 
 ## Worklist size per node
 
 | Set | Node | concentration | large_registration | missing_entity | poi_category | poi_duplicate | Total |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | development | Warschauer Straße | 4 | 4 | 9 | 1 | 22 | 40 |
-| holdout | Brandenburger Tor | 4 | 1 | 17 | 4 | 8 | 34 |
+| holdout | Brandenburger Tor | 4 | 1 | 17 | 3 | 8 | 33 |
 | control | Schönhauser Allee | 1 | 0 | 4 | 9 | 18 | 32 |
 | generalisation | Kurfürstendamm | 6 | 10 | 5 | 6 | 20 | 47 |
-| generalisation | Rosenthaler Platz | 7 | 8 | 4 | 5 | 15 | 39 |
-| generalisation | Deutsche Oper | 1 | 0 | 3 | 2 | 9 | 15 |
+| generalisation | Rosenthaler Platz | 7 | 8 | 4 | 3 | 15 | 37 |
+| generalisation | Deutsche Oper | 1 | 0 | 3 | 1 | 9 | 14 |
