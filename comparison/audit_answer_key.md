@@ -49,7 +49,7 @@ Protocol: 20-minute manual scan per station **before** reading the auditor's out
 
 ## Decision thresholds
 
-Proposed; edit here and commit **before** Phase 3 runs.
+**Confirmed by the analyst on 2026-10-07, unchanged from the proposal**, before any LLM audit run (Phase 2 has not started; no prompt exists).
 
 | Holdout recall (H1–H6) | False alarms per node (median of 3 runs) | Decision |
 | --- | --- | --- |

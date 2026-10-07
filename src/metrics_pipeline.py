@@ -79,6 +79,10 @@ CATCHMENT_POPULATION_METHOD_VERSION = "catchment_population_v1"
 BUSINESS_MIX_METHOD_VERSION = "ihk_business_mix_v1"
 PEAK_COMPETITION_METHOD_VERSION = "window_competitors_v2"
 VISITOR_METHOD_VERSION = "visitor_estimate_v3"
+# Appended to the method version of every worker / visitor figure computed
+# with the correction tables off (run(corrections=False), `--raw`), so a
+# pre-review figure can never pass for a reviewed one.
+CORRECTIONS_OFF_SUFFIX = ":corrections_off"
 # Day type (None = annual average day) -> visitor metric.
 VISITOR_METRICS: dict[str | None, str] = {
     None: "visitor_daily_estimate",
@@ -654,12 +658,14 @@ def _station_assigner(node: LocationInput):
     return uses_this_station
 
 
-def _compute_business_mix(conn: sqlite3.Connection, node: LocationInput) -> None:
+def _compute_business_mix(conn: sqlite3.Connection, node: LocationInput, corrections: bool = True) -> None:
     """IHK Gewerbedaten (Day 4 extra) -> daytime-workforce demand inputs.
     Size-class counts as before, plus (scoring_v5) people working here who
     commute through this node: size-class midpoints, large registrations
     replaced by their verified on-site headcount, and each registration
-    assigned to its nearest S/U station (_station_assigner)."""
+    assigned to its nearest S/U station (_station_assigner).
+    corrections=False: no verified headcounts, no hand-added employers."""
+    method_version = BUSINESS_MIX_METHOD_VERSION + ("" if corrections else CORRECTIONS_OFF_SUFFIX)
     rows = conn.execute(
         """
         SELECT snapshot_id, payload_json, lat, lon
@@ -695,7 +701,7 @@ def _compute_business_mix(conn: sqlite3.Connection, node: LocationInput) -> None
                 value=None,
                 unit=unit,
                 period_label="current",
-                method_version=BUSINESS_MIX_METHOD_VERSION,
+                method_version=method_version,
                 snapshot_ids=snapshot_ids,
                 missing_reason="no IHK Gewerbedaten observations for this area",
             )
@@ -715,10 +721,11 @@ def _compute_business_mix(conn: sqlite3.Connection, node: LocationInput) -> None
     # db/raw/calibration/worker_onsite_verified.csv). Unknown sizes are
     # counted separately, never imputed.
     unregistered = [
-        e for e in load_unregistered_employers()
+        e for e in load_unregistered_employers(corrections=corrections)
         if e["area_id"] == node.area_id and haversine_m(node.lat, node.lon, e["lat"], e["lon"]) <= node.radius_m
     ]
-    w = workers_onsite(payloads, load_onsite_verifications(), _station_assigner(node), unregistered)
+    w = workers_onsite(payloads, load_onsite_verifications(corrections=corrections), _station_assigner(node),
+                       unregistered)
 
     for metric_name, value, unit in (
         ("registered_business_count", float(total), "count"),
@@ -744,7 +751,7 @@ def _compute_business_mix(conn: sqlite3.Connection, node: LocationInput) -> None
             value=value,
             unit=unit,
             period_label="current",
-            method_version=BUSINESS_MIX_METHOD_VERSION,
+            method_version=method_version,
             snapshot_ids=snapshot_ids,
         )
 
@@ -761,12 +768,13 @@ def _latest_snapshot(conn: sqlite3.Connection, source_name: str) -> tuple[int, s
     return (row[0], row[1]) if row else None
 
 
-def _compute_visitors(conn: sqlite3.Connection, node: LocationInput) -> None:
+def _compute_visitors(conn: sqlite3.Connection, node: LocationInput, corrections: bool = True) -> None:
     """Visitors per day reached via this node's station: the latest
     attraction-gateway snapshot (pageviews and 1/k shares, written by
     attraction_pipeline.py) converted with the latest visitor fit
     (calibrate_visitors.py). No API call. The fit file is named in the
-    method version so every figure traces to the exact conversion used."""
+    method version so every figure traces to the exact conversion used.
+    corrections=False: no known attendance, every venue from pageviews."""
     snapshot_id = latest_snapshot_id(conn, node.area_id, "attraction")
     fit = latest_visitor_fit()
     if snapshot_id is None or fit is None:
@@ -794,7 +802,8 @@ def _compute_visitors(conn: sqlite3.Connection, node: LocationInput) -> None:
     for r in records:
         r["opening_hours_raw"] = tags_by_ref.get(r.get("osm_ref"), {}).get("opening_hours")
     period = f"pageviews {fit_data['pageview_window'][0]}..{fit_data['pageview_window'][1]} (end exclusive)"
-    known = load_known_attendance(fit_data)
+    known = load_known_attendance(fit_data, corrections=corrections)
+    suffix = "" if corrections else CORRECTIONS_OFF_SUFFIX
     for day_type, name in VISITOR_METRICS.items():
         from_known, from_pageviews, _ = visitors_split(records, fit_data, day_type, known)
         for metric_name, value in ((name, from_known + from_pageviews),
@@ -806,7 +815,7 @@ def _compute_visitors(conn: sqlite3.Connection, node: LocationInput) -> None:
                 value=value,
                 unit="persons_per_day",
                 period_label=period,
-                method_version=f"{VISITOR_METHOD_VERSION}:{fit_path.stem}",
+                method_version=f"{VISITOR_METHOD_VERSION}:{fit_path.stem}{suffix}",
                 snapshot_ids=[snapshot_id],
             )
 
@@ -1012,7 +1021,7 @@ def _compute_source_coverage(conn: sqlite3.Connection, node: LocationInput, pois
         )
 
 
-def compute_area(conn: sqlite3.Connection, node: LocationInput) -> dict:
+def compute_area(conn: sqlite3.Connection, node: LocationInput, corrections: bool = True) -> dict:
     pois = _load_pois(conn, node.area_id)
     population = _load_population(conn, node.area_id)
 
@@ -1022,9 +1031,9 @@ def compute_area(conn: sqlite3.Connection, node: LocationInput) -> dict:
     _compute_population(conn, node, pois, population)
     _compute_opening_hours(conn, node, pois)
     _compute_peak_competitors(conn, node, pois)
-    _compute_business_mix(conn, node)
+    _compute_business_mix(conn, node, corrections)
     _compute_catchment_population(conn, node, pois)
-    _compute_visitors(conn, node)
+    _compute_visitors(conn, node, corrections)
 
     return {
         "area_id": node.area_id,
@@ -1033,13 +1042,18 @@ def compute_area(conn: sqlite3.Connection, node: LocationInput) -> dict:
     }
 
 
-def run(db_path: Path = DB_PATH) -> list[dict]:
+def run(db_path: Path = DB_PATH, corrections: bool = True) -> list[dict]:
+    """corrections=False: the pre-review state (see run_raw); never on
+    the real database."""
+    if not corrections and Path(db_path).resolve() == DB_PATH.resolve():
+        raise ValueError("corrections=False writes pre-review figures; run it on a copy (run_raw), not on "
+                         f"{DB_PATH.name}")
     conn = sqlite3.connect(db_path)
     conn.execute("PRAGMA foreign_keys = ON;")
     results = []
     try:
         for node in CANDIDATE_NODES:
-            result = compute_area(conn, node)
+            result = compute_area(conn, node, corrections)
             print(
                 f"[{result['area_id']}] {result['competitor_count']} competitors, "
                 f"population={result['population']}"
@@ -1051,5 +1065,42 @@ def run(db_path: Path = DB_PATH) -> list[dict]:
     return results
 
 
+RAW_OUT_DIR = PROJECT_ROOT / "out" / "audit"
+
+
+def run_raw(out_dir: Path | None = None, source_db: Path = DB_PATH) -> Path:
+    """The pipeline's raw, pre-review state, on a copy of the database:
+    conflation without its quality rules and verified POI corrections
+    (conflation_v1), then the metrics with every correction table off --
+    registrations at their size-class midpoint, no hand-added employers,
+    every visitor figure from the fame conversion. The data-plausibility
+    audit (plan_llm_data_audit.md) is evaluated on this state. The source
+    database is only read. Returns the copy's path."""
+    import shutil
+
+    import poi_conflation
+
+    stamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
+    out_dir = Path(out_dir or RAW_OUT_DIR / f"raw_{stamp}")
+    out_dir.mkdir(parents=True, exist_ok=True)
+    db_copy = out_dir / "site_selection_raw.db"
+    shutil.copy(source_db, db_copy)
+    poi_conflation.run(db_copy, quality_rules=False, raw_dir=out_dir / "conflated")
+    run(db_copy, corrections=False)
+    print(f"Raw (corrections-off) state -> {db_copy}")
+    return db_copy
+
+
 if __name__ == "__main__":
-    run()
+    import argparse
+
+    ap = argparse.ArgumentParser(description="Compute area_metrics for every candidate site.")
+    ap.add_argument("--raw", action="store_true",
+                    help="pre-review state on a copy of the database (out/audit/raw_<stamp>/); "
+                         "db/site_selection.db is only read")
+    ap.add_argument("--out", type=Path, help="with --raw: directory for the copy")
+    args = ap.parse_args()
+    if args.raw:
+        run_raw(args.out)
+    else:
+        run()

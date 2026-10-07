@@ -1,6 +1,6 @@
 # Implementation Plan — LLM Data-Plausibility Audit (v3)
 
-2026-10-07 · Status: not started. Pre-registration: [comparison/audit_answer_key.md](comparison/audit_answer_key.md) (committed together with this plan, before any audit code or prompt exists).
+2026-10-07 · Status: Phase 1 done ([comparison/audit_candidate_recall.md](comparison/audit_candidate_recall.md)); candidate rules frozen (Amendment 2); Phase 2 next. Pre-registration: [comparison/audit_answer_key.md](comparison/audit_answer_key.md) (committed together with this plan, before any audit code or prompt exists).
 
 ## Goal
 
@@ -47,7 +47,7 @@ Code decides **what** gets audited, so the LLM's cost is bounded and every run s
 | `concentration` | Any single record contributing ≥ 25% of a node's worker or visitor segment, or ≥ 1,000 people/day | The record, the segment total, the conversion used |
 | `large_registration` | Every IHK registration with size-class floor ≥ 500 | Size class, NACE code and text, registration age, plus **OSM names within 40 m** (building `name`, `office`, `company`, `operator`, address tags). IHK data are anonymised, so this is the identification hint the analyst used by hand |
 | `missing_entity` | (a) OSM buildings in the circle tagged office / government / embassy / company, or with floor area ≥ 5,000 m², with no IHK registration within 40 m; (b) entities the LLM itself lists as "expected major employers or venues near this station" that code cannot match to any record within 100 m | Floor area (footprint × levels), tags, nearest station |
-| `poi_category` | Competitors whose provider category conflicts with OSM tags or name keywords at the same location, or whose name contains words from a non-food list (Steakhouse, Haus, Hof, Bank …; the list lives in code and is reviewed) | All provider categories, OSM tags within 15 m |
+| `poi_category` | Competitors whose provider category conflicts with OSM tags or name keywords at the same location, or whose name contains words from a non-food list (derived from OSM tag values only, see Amendment 2; the list lives in code and is reviewed) | All provider categories, OSM tags within 15 m |
 | `poi_duplicate` | Pairs of competitors in the same category within 15 m that conflation kept apart | Both records, distance, providers |
 
 Every candidate gets a stable `candidate_id` (module + record ref).
@@ -153,3 +153,24 @@ The plan above was written against `main` (run #15). The unmerged branch `confla
 ## Cost estimate
 
 Unknown until Phase 2 measures it. Order of magnitude: 5–20 candidates per node, a few searches each. The per-run USD cap in the guard is set after the first dev run, and the eval reports actual spend.
+
+## Amendment 2 (2026-10-07, after Phase 1, before any prompt exists)
+
+**What was seen.** During Phase 1 development on 2026-10-07, the holdout's candidate recall was computed and read (generator `audit_candidates_v2`): H1–H6 all reached the worklist, H2 with 9 of 22 buildings within 50 m, H4 through the non-food word "steakhouse", H5 through a same-name OSM building within 15 m. The `poi_category` row of §2 listed example words ("Steakhouse, Haus, Hof, Bank") that come from answer items H4/H5, and the v2 word list was built from them.
+
+**Changes.**
+
+- The examples are deleted from the `poi_category` row above.
+- The non-food word list is rebuilt from an independent source only: the common German and English words for the OSM tag values `amenity=restaurant/bar/pub/biergarten`, `tourism=hotel/hostel` and `office=*` (with its values lawyer, notary, insurance, estate_agent, tax_advisor, architect, government, diplomatic, coworking, association). The derivation is written next to the list in `src/audit_candidates.py`. Neither the answer key nor [site_candidates.md](site_candidates.md) was consulted for it. Result (`audit_candidates_v3`, commit `80ae22b`): H4 no longer reaches the worklist as a `poi_category` candidate, only inside a `poi_duplicate` pair; H5 is unchanged.
+- `tests/test_audit_prompt.py` now also blocks every word of ≥ 4 letters in the answer entities' names (whole-word match), across the system prompt, the few-shot examples and the non-food word list.
+
+**Reporting.** H4 and H5 are marked **contaminated**: their candidate recall and their LLM recall are reported apart from the other items. The decision thresholds are unchanged ("≥ 4 / 6" on H1–H6), but the findings must state that H1–H3 are the holdout's main evidence (H4–H6 are in-sample for the conflation_v2 rules per Amendment 1, and H4/H5 are additionally contaminated here).
+
+**Freeze.** From this commit the candidate rules are frozen at
+
+```text
+src/audit_candidates.py  SHA-256 1fdf42751930c09d4a744e14c5890d6b8f433c75041fecb5343548e30775eae9
+```
+
+Later changes to that file are allowed only to fix bugs. Each fix is logged here as a further amendment (what was wrong, the diff's effect on every worklist, the new SHA-256) before any LLM run uses the fixed version.
+

@@ -361,8 +361,11 @@ def build_competitor_set(
     return competitors, stats
 
 
-def conflate_area(conn: sqlite3.Connection, node: LocationInput) -> dict:
-    """Build and persist the conflated competitor snapshot for one area."""
+def conflate_area(conn: sqlite3.Connection, node: LocationInput, quality_rules: bool = True,
+                  raw_dir: Path | None = None) -> dict:
+    """Build and persist the conflated competitor snapshot for one area.
+    quality_rules=False: conflation_v1, no verified corrections (the
+    pre-review state; raw_dir then points outside db/raw/)."""
     now = datetime.now(timezone.utc)
     snapshots = {name: _latest_source_snapshot(conn, node.area_id, name) for name in SOURCE_PRIORITY}
     if snapshots[REQUIRED_SOURCE] is None:
@@ -372,15 +375,17 @@ def conflate_area(conn: sqlite3.Connection, node: LocationInput) -> dict:
         name: _load_records(conn, node.area_id, name, snap["snapshot_id"]) for name, snap in used.items()
     }
     station_paths = _station_paths_from_raw(used[REQUIRED_SOURCE]["raw_file_ref"])
-    competitors, stats = build_competitor_set(node, records_by_source, station_paths)
+    competitors, stats = build_competitor_set(node, records_by_source, station_paths, quality_rules)
+    method = stats["method"]
 
-    RAW_DIR.mkdir(parents=True, exist_ok=True)
-    raw_path = RAW_DIR / f"{node.area_id}_{now.strftime('%Y%m%dT%H%M%SZ')}.json"
+    raw_dir = raw_dir or RAW_DIR
+    raw_dir.mkdir(parents=True, exist_ok=True)
+    raw_path = raw_dir / f"{node.area_id}_{now.strftime('%Y%m%dT%H%M%SZ')}.json"
     raw_path.write_text(json.dumps({"stats": stats, "competitors": competitors}, ensure_ascii=False, indent=2))
 
     missing = [name for name in SOURCE_PRIORITY if name not in used]
     notes = (
-        f"method={CONFLATION_METHOD_VERSION}; radius_m={node.radius_m}; "
+        f"method={method}; radius_m={node.radius_m}; "
         f"source_snapshots={json.dumps({n: s['snapshot_id'] for n, s in used.items()})}; "
         f"source_as_of={json.dumps({n: s['data_as_of_date'] for n, s in used.items()})}; "
         f"missing_sources={json.dumps(missing)}; stats={json.dumps(stats)}"
@@ -396,7 +401,7 @@ def conflate_area(conn: sqlite3.Connection, node: LocationInput) -> dict:
             min(s["data_as_of_date"] for s in used.values()),
             now.isoformat(),
             CONFLATED_LICENSE,
-            str(raw_path.relative_to(PROJECT_ROOT)),
+            _ref(raw_path),
             notes,
         ),
     )
@@ -425,16 +430,27 @@ def conflate_area(conn: sqlite3.Connection, node: LocationInput) -> dict:
     return {"area_id": node.area_id, "snapshot_id": snapshot_id, "missing_sources": missing, **stats}
 
 
-def run(db_path: Path = PROJECT_ROOT / "db" / "site_selection.db") -> list[dict]:
+def _ref(path: Path) -> str:
+    """Raw-file reference as stored in source_snapshots: project-relative
+    when the file is inside the project."""
+    try:
+        return str(path.resolve().relative_to(PROJECT_ROOT))
+    except ValueError:
+        return str(path.resolve())
+
+
+def run(db_path: Path = PROJECT_ROOT / "db" / "site_selection.db", quality_rules: bool = True,
+        raw_dir: Path | None = None) -> list[dict]:
     """Re-conflate every candidate from its latest stored source snapshots
     -- no network call. Used when the conflation rules change but the
-    source data have not: python3 poi_conflation.py"""
+    source data have not: python3 poi_conflation.py
+    quality_rules=False is for a database copy only (metrics_pipeline.run_raw)."""
     from models import CANDIDATE_NODES
 
     conn = sqlite3.connect(db_path)
     conn.execute("PRAGMA foreign_keys = ON;")
     try:
-        results = [conflate_area(conn, node) for node in CANDIDATE_NODES]
+        results = [conflate_area(conn, node, quality_rules, raw_dir) for node in CANDIDATE_NODES]
     finally:
         conn.close()
     for r in results:

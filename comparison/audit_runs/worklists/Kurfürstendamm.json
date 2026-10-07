@@ -1,0 +1,2593 @@
+{
+ "generator": "audit_candidates_v3",
+ "area_id": "Kurfürstendamm",
+ "name": "Kurfürstendamm",
+ "lat": 52.5038223,
+ "lon": 13.3314365,
+ "radius_m": 400,
+ "state": "corrections_off",
+ "provenance": {
+  "ihk": "db/raw/audit/ihk/Kurfürstendamm_20261007T091507Z.json",
+  "gtfs_station": "U Kurfürstendamm (Berlin)",
+  "attractions": "db/raw/calibration/demand_cache (ring query, pageviews, sitelinks)",
+  "poi_sources": {
+   "osm_overpass": "db/raw/calibration/osm_cache",
+   "overture_places": "overture_ring 2026-09-23.1"
+  },
+  "conflation": "conflation_v1 (quality rules and verified corrections off)",
+  "osm_context": "db/raw/audit/osm_context/Kurfürstendamm_20261007T091535Z.json",
+  "visitor_fit": "visitor_fit_20261001T130205Z.json"
+ },
+ "modules_skipped": [],
+ "counts": {
+  "concentration": 6,
+  "large_registration": 10,
+  "missing_entity": 5,
+  "poi_category": 6,
+  "poi_duplicate": 20
+ },
+ "candidates": [
+  {
+   "candidate_id": "concentration:ihk:143995061980",
+   "module": "concentration",
+   "segment": "workers",
+   "record_ref": "ihk:143995061980",
+   "record": {
+    "opendata_id": "143995061980",
+    "employees_range": "1000 - 2499 Beschäftigte",
+    "nace_id": "7820",
+    "nace_desc": "Überlassung von Arbeitskräften und sonstige Personaldienstleistungen",
+    "ihk_branch_desc": "Befristete Überlassung von Arbeitskräften",
+    "branch_top_level_desc": "Vermittlung und Überlassung von Arbeitskräften",
+    "business_age": "33",
+    "business_type": "im Handelsregister eingetragen",
+    "planungsraum": "Breitscheidplatz",
+    "lat": 52.503171,
+    "lon": 13.32971497
+   },
+   "value_people_per_day": 1580.8,
+   "segment_total": 37618.1,
+   "share_of_segment": 0.042,
+   "conversion": "IHK size class at its geometric midpoint, counted as on-site headcount"
+  },
+  {
+   "candidate_id": "concentration:ihk:158484067802",
+   "module": "concentration",
+   "segment": "workers",
+   "record_ref": "ihk:158484067802",
+   "record": {
+    "opendata_id": "158484067802",
+    "employees_range": "5000 - 7499 Beschäftigte",
+    "nace_id": "6920",
+    "nace_desc": "Wirtschaftsprüfung und Steuerberatung, Buchführung",
+    "ihk_branch_desc": "Praxen von Wirtschaftsprüferinnen und -prüfern, vereidigten Buchprüferinnen und -prüfern, Wirtschaftsprüfungsgesellschaften und Buchprüfungsgesellschaften",
+    "branch_top_level_desc": "Rechts- und Steuerberatung, Wirtschaftsprüfung",
+    "business_age": "34",
+    "business_type": "im Handelsregister eingetragen",
+    "planungsraum": "Breitscheidplatz",
+    "lat": 52.50450129,
+    "lon": 13.32947915
+   },
+   "value_people_per_day": 6123.3,
+   "segment_total": 37618.1,
+   "share_of_segment": 0.163,
+   "conversion": "IHK size class at its geometric midpoint, counted as on-site headcount"
+  },
+  {
+   "candidate_id": "concentration:ihk:296792061168",
+   "module": "concentration",
+   "segment": "workers",
+   "record_ref": "ihk:296792061168",
+   "record": {
+    "opendata_id": "296792061168",
+    "employees_range": "2500 - 4999 Beschäftigte",
+    "nace_id": "7020",
+    "nace_desc": "Unternehmensberatung",
+    "ihk_branch_desc": "Unternehmensberatung",
+    "branch_top_level_desc": "Verwaltung und Führung von Unternehmen und Betrieben, Unternehmensberatung",
+    "business_age": "11",
+    "business_type": "im Handelsregister eingetragen",
+    "planungsraum": "Breitscheidplatz",
+    "lat": 52.50450129,
+    "lon": 13.32947915
+   },
+   "value_people_per_day": 3535.2,
+   "segment_total": 37618.1,
+   "share_of_segment": 0.094,
+   "conversion": "IHK size class at its geometric midpoint, counted as on-site headcount"
+  },
+  {
+   "candidate_id": "concentration:ihk:458814561258",
+   "module": "concentration",
+   "segment": "workers",
+   "record_ref": "ihk:458814561258",
+   "record": {
+    "opendata_id": "458814561258",
+    "employees_range": "2500 - 4999 Beschäftigte",
+    "nace_id": "5223",
+    "nace_desc": "Erbringung von sonstigen Dienstleistungen für die Luftfahrt",
+    "ihk_branch_desc": "Erbringung von sonstigen Dienstleistungen für die Luftfahrt a. n. g.",
+    "branch_top_level_desc": "Lagerei sowie Erbringung von sonstigen Dienstleistungen für den Verkehr",
+    "business_age": "73",
+    "business_type": "im Handelsregister eingetragen",
+    "planungsraum": "Breitscheidplatz",
+    "lat": 52.50295,
+    "lon": 13.32872308
+   },
+   "value_people_per_day": 3535.2,
+   "segment_total": 37618.1,
+   "share_of_segment": 0.094,
+   "conversion": "IHK size class at its geometric midpoint, counted as on-site headcount"
+  },
+  {
+   "candidate_id": "concentration:ihk:73037947598",
+   "module": "concentration",
+   "segment": "workers",
+   "record_ref": "ihk:73037947598",
+   "record": {
+    "opendata_id": "73037947598",
+    "employees_range": "1000 - 2499 Beschäftigte",
+    "nace_id": "6421",
+    "nace_desc": "Beteiligungsgesellschaften",
+    "ihk_branch_desc": "Beteiligungsgesellschaften",
+    "branch_top_level_desc": "Erbringung von Finanzdienstleistungen",
+    "business_age": "22",
+    "business_type": "im Handelsregister eingetragen",
+    "planungsraum": "Breitscheidplatz",
+    "lat": 52.50505411,
+    "lon": 13.3329709
+   },
+   "value_people_per_day": 1580.8,
+   "segment_total": 37618.1,
+   "share_of_segment": 0.042,
+   "conversion": "IHK size class at its geometric midpoint, counted as on-site headcount"
+  },
+  {
+   "candidate_id": "concentration:wikidata:Q153951",
+   "module": "concentration",
+   "segment": "visitors",
+   "record_ref": "wikidata:Q153951",
+   "record": {
+    "qid": "Q153951",
+    "name": "Kaiser-Wilhelm-Gedächtniskirche",
+    "kind": "place_of_worship",
+    "wikipedia_titles": {
+     "dewiki": "Kaiser-Wilhelm-Gedächtniskirche",
+     "enwiki": "Kaiser Wilhelm Memorial Church"
+    },
+    "distance_m": 219.03871377835452,
+    "gateway_share": 0.5,
+    "pageviews_12m": 152205
+   },
+   "value_people_per_day": 2136.8,
+   "segment_total": 3357.8,
+   "share_of_segment": 0.636,
+   "annual_visitors_from_pageviews": 1559848,
+   "conversion": "log10(visitors) = 1.011 + 1.000 * log10(12-month de+en pageviews), times the 1/k gateway share, / 365"
+  },
+  {
+   "candidate_id": "large_registration:ihk:11112084728",
+   "module": "large_registration",
+   "record_ref": "ihk:11112084728",
+   "record": {
+    "opendata_id": "11112084728",
+    "employees_range": "500 - 999 Beschäftigte",
+    "nace_id": "4771",
+    "nace_desc": "Einzelhandel mit Bekleidung",
+    "ihk_branch_desc": "Einzelhandel mit Bekleidung",
+    "branch_top_level_desc": "Einzelhandel",
+    "business_age": "7",
+    "business_type": "im Handelsregister eingetragen",
+    "planungsraum": "Breitscheidplatz",
+    "lat": 52.50599653,
+    "lon": 13.33180088
+   },
+   "counted_as": 706.8,
+   "counted_at_this_station": true,
+   "osm_names_within_40m": [
+    {
+     "osm_ref": "way/331263431",
+     "distance_m": 0.0,
+     "name": "Zoom",
+     "building": "commercial",
+     "building:levels": "3",
+     "address": null
+    },
+    {
+     "osm_ref": "node/9915367317",
+     "distance_m": 4.9,
+     "name": "Gamestate",
+     "address": null
+    },
+    {
+     "osm_ref": "node/5972225785",
+     "distance_m": 9.1,
+     "name": "Burgermeister",
+     "amenity": "fast_food",
+     "address": "Joachimsthaler Straße 3"
+    },
+    {
+     "osm_ref": "node/5864472479",
+     "distance_m": 12.7,
+     "name": "Zaddy's",
+     "amenity": "fast_food",
+     "address": "Joachimsthaler Straße 3"
+    },
+    {
+     "osm_ref": "node/6075277541",
+     "distance_m": 14.2,
+     "operator": "Euronet",
+     "amenity": "atm",
+     "address": null
+    },
+    {
+     "osm_ref": "node/9286392661",
+     "distance_m": 14.5,
+     "name": "Chutney",
+     "amenity": "fast_food",
+     "address": "Hardenbergstraße 26"
+    },
+    {
+     "osm_ref": "node/7629461508",
+     "distance_m": 15.4,
+     "name": "Dunkin'",
+     "amenity": "fast_food",
+     "address": null
+    },
+    {
+     "osm_ref": "node/13328273346",
+     "distance_m": 18.6,
+     "name": "Schnitzery",
+     "amenity": "fast_food",
+     "address": null
+    },
+    {
+     "osm_ref": "node/6075287704",
+     "distance_m": 20.0,
+     "name": "Twenty4Seven",
+     "shop": "kiosk",
+     "address": null
+    },
+    {
+     "osm_ref": "way/421816025",
+     "distance_m": 23.1,
+     "name": "BVG",
+     "shop": "ticket",
+     "address": null
+    },
+    {
+     "osm_ref": "node/2624893673",
+     "distance_m": 24.5,
+     "operator": "Berliner Sparkasse",
+     "amenity": "atm",
+     "address": null
+    },
+    {
+     "osm_ref": "way/96837216",
+     "distance_m": 25.2,
+     "name": "HIT Ullrich",
+     "operator": "HIT",
+     "shop": "supermarket",
+     "building": "viaduct",
+     "building:levels": "2",
+     "address": "Hardenbergstraße 25"
+    }
+   ]
+  },
+  {
+   "candidate_id": "large_registration:ihk:1136720471068",
+   "module": "large_registration",
+   "record_ref": "ihk:1136720471068",
+   "record": {
+    "opendata_id": "1136720471068",
+    "employees_range": "500 - 999 Beschäftigte",
+    "nace_id": "7820",
+    "nace_desc": "Überlassung von Arbeitskräften und sonstige Personaldienstleistungen",
+    "ihk_branch_desc": "Sonstige Überlassung von Arbeitskräften",
+    "branch_top_level_desc": "Vermittlung und Überlassung von Arbeitskräften",
+    "business_age": "38",
+    "business_type": "im Handelsregister eingetragen",
+    "planungsraum": "Breitscheidplatz",
+    "lat": 52.50441247,
+    "lon": 13.33289146
+   },
+   "counted_as": 706.8,
+   "counted_at_this_station": true,
+   "osm_names_within_40m": [
+    {
+     "osm_ref": "node/9238633917",
+     "distance_m": 1.1,
+     "name": "m&m's Berlin",
+     "shop": "gift",
+     "address": "Kurfürstendamm 13-15"
+    },
+    {
+     "osm_ref": "node/8225191379",
+     "distance_m": 20.4,
+     "name": "Hunkemöller",
+     "shop": "clothes",
+     "address": null
+    },
+    {
+     "osm_ref": "node/8237956605",
+     "distance_m": 24.5,
+     "name": "Aesthetify",
+     "amenity": "doctors",
+     "address": "Kurfürstendamm 12"
+    },
+    {
+     "osm_ref": "node/8933486269",
+     "distance_m": 34.8,
+     "name": "Mango",
+     "shop": "clothes",
+     "address": null
+    },
+    {
+     "osm_ref": "node/3678881041",
+     "distance_m": 35.2,
+     "name": "Satellite Office KUD15 Gloria Berlin",
+     "office": "coworking",
+     "operator": "Satellite Office",
+     "address": "Kurfürstendamm 15"
+    },
+    {
+     "osm_ref": "way/474901812",
+     "distance_m": 37.0,
+     "name": "Upper West",
+     "building": "commercial",
+     "building:levels": "33",
+     "address": null
+    },
+    {
+     "osm_ref": "node/8237956606",
+     "distance_m": 37.3,
+     "name": "Joseph Roth",
+     "address": null
+    }
+   ]
+  },
+  {
+   "candidate_id": "large_registration:ihk:143995061980",
+   "module": "large_registration",
+   "record_ref": "ihk:143995061980",
+   "record": {
+    "opendata_id": "143995061980",
+    "employees_range": "1000 - 2499 Beschäftigte",
+    "nace_id": "7820",
+    "nace_desc": "Überlassung von Arbeitskräften und sonstige Personaldienstleistungen",
+    "ihk_branch_desc": "Befristete Überlassung von Arbeitskräften",
+    "branch_top_level_desc": "Vermittlung und Überlassung von Arbeitskräften",
+    "business_age": "33",
+    "business_type": "im Handelsregister eingetragen",
+    "planungsraum": "Breitscheidplatz",
+    "lat": 52.503171,
+    "lon": 13.32971497
+   },
+   "counted_as": 1580.8,
+   "counted_at_this_station": true,
+   "osm_names_within_40m": [
+    {
+     "osm_ref": "node/3676000349",
+     "distance_m": 1.6,
+     "name": "Häagen-Dazs",
+     "amenity": "ice_cream",
+     "address": "Kurfürstendamm 224"
+    },
+    {
+     "osm_ref": "node/9507916333",
+     "distance_m": 7.4,
+     "name": "Starbucks",
+     "amenity": "cafe",
+     "address": null
+    },
+    {
+     "osm_ref": "node/3676001129",
+     "distance_m": 8.2,
+     "name": "Pylones",
+     "address": "Kurfürstendamm 225"
+    },
+    {
+     "osm_ref": "node/3989808407",
+     "distance_m": 15.7,
+     "name": "Sweets & Drinks",
+     "shop": "confectionery",
+     "address": null
+    },
+    {
+     "osm_ref": "node/549490078",
+     "distance_m": 17.6,
+     "name": "Hard Rock Cafe",
+     "amenity": "restaurant",
+     "address": "Kurfürstendamm 224"
+    },
+    {
+     "osm_ref": "node/3675973920",
+     "distance_m": 22.6,
+     "name": "Astor Film Lounge",
+     "amenity": "cinema",
+     "address": "Kurfürstendamm 225"
+    },
+    {
+     "osm_ref": "node/313818481",
+     "distance_m": 30.4,
+     "name": "Meineke / Ku-damm",
+     "amenity": "taxi",
+     "address": null
+    },
+    {
+     "osm_ref": "node/3676001114",
+     "distance_m": 35.3,
+     "name": "Alt-Berliner Biersalon",
+     "amenity": "restaurant",
+     "address": null
+    }
+   ]
+  },
+  {
+   "candidate_id": "large_registration:ihk:158484067802",
+   "module": "large_registration",
+   "record_ref": "ihk:158484067802",
+   "record": {
+    "opendata_id": "158484067802",
+    "employees_range": "5000 - 7499 Beschäftigte",
+    "nace_id": "6920",
+    "nace_desc": "Wirtschaftsprüfung und Steuerberatung, Buchführung",
+    "ihk_branch_desc": "Praxen von Wirtschaftsprüferinnen und -prüfern, vereidigten Buchprüferinnen und -prüfern, Wirtschaftsprüfungsgesellschaften und Buchprüfungsgesellschaften",
+    "branch_top_level_desc": "Rechts- und Steuerberatung, Wirtschaftsprüfung",
+    "business_age": "34",
+    "business_type": "im Handelsregister eingetragen",
+    "planungsraum": "Breitscheidplatz",
+    "lat": 52.50450129,
+    "lon": 13.32947915
+   },
+   "counted_as": 6123.3,
+   "counted_at_this_station": true,
+   "osm_names_within_40m": [
+    {
+     "osm_ref": "way/22986477",
+     "distance_m": 22.2,
+     "name": "Kranzler Eck Berlin",
+     "building": "commercial",
+     "building:levels": "16",
+     "address": null
+    },
+    {
+     "osm_ref": "node/6484331128",
+     "distance_m": 34.3,
+     "name": "Quadriga aus Buddy Bears",
+     "address": null
+    },
+    {
+     "osm_ref": "node/7798570845",
+     "distance_m": 35.3,
+     "name": "Tiefgarage Kranzler Eck",
+     "operator": "Contipark",
+     "amenity": "parking_entrance",
+     "address": null
+    },
+    {
+     "osm_ref": "node/2866327770",
+     "distance_m": 35.5,
+     "name": "Planet Labs Germany GmbH",
+     "office": "company",
+     "company": "aerospace",
+     "address": "Kurfürstendamm 22"
+    },
+    {
+     "osm_ref": "way/24865198",
+     "distance_m": 37.6,
+     "name": "Lindner Hotel Berlin Am Ku'damm",
+     "operator": "Hyatt Hotels Corporation",
+     "building": "yes",
+     "address": "Kurfürstendamm 24"
+    },
+    {
+     "osm_ref": "node/9946874012",
+     "distance_m": 38.8,
+     "name": "The Crazy Little Greek",
+     "amenity": "restaurant",
+     "address": null
+    },
+    {
+     "osm_ref": "node/1526725273",
+     "distance_m": 40.0,
+     "name": "Cisco Systems",
+     "office": "company",
+     "address": "Kurfürstendamm 22"
+    }
+   ]
+  },
+  {
+   "candidate_id": "large_registration:ihk:234912061648",
+   "module": "large_registration",
+   "record_ref": "ihk:234912061648",
+   "record": {
+    "opendata_id": "234912061648",
+    "employees_range": "500 - 999 Beschäftigte",
+    "nace_id": "6419",
+    "nace_desc": "Kreditinstitute, ohne Spezialkreditinstitute",
+    "ihk_branch_desc": "Realkreditinstitute",
+    "branch_top_level_desc": "Erbringung von Finanzdienstleistungen",
+    "business_age": "34",
+    "business_type": "im Handelsregister eingetragen",
+    "planungsraum": "Breitscheidplatz",
+    "lat": 52.50199035,
+    "lon": 13.33357722
+   },
+   "counted_as": 706.8,
+   "counted_at_this_station": true,
+   "osm_names_within_40m": [
+    {
+     "osm_ref": "node/3675739247",
+     "distance_m": 1.3,
+     "name": "C.Translations UG",
+     "office": "company",
+     "address": "Rankestraße 26"
+    },
+    {
+     "osm_ref": "node/3675739278",
+     "distance_m": 7.5,
+     "name": "Lamice Coiffeur",
+     "shop": "hairdresser",
+     "address": "Rankestraße 26"
+    },
+    {
+     "osm_ref": "node/4732220322",
+     "distance_m": 9.0,
+     "name": "Lady Su",
+     "shop": "clothes",
+     "address": "Augsburger Straße 35"
+    },
+    {
+     "osm_ref": "node/4732200125",
+     "distance_m": 29.0,
+     "name": "Backshop Philopatir",
+     "shop": "bakery",
+     "address": "Augsburger Straße 35"
+    },
+    {
+     "osm_ref": "node/4732222721",
+     "distance_m": 34.1,
+     "name": "Bar Centrale Novantesimominuto",
+     "amenity": "bar",
+     "address": "Augsburger Straße 33"
+    },
+    {
+     "osm_ref": "node/4732222821",
+     "distance_m": 36.8,
+     "name": "Style And Beauty Styling mit Köpfchen",
+     "shop": "hairdresser",
+     "address": "Augsburger Straße 33"
+    }
+   ]
+  },
+  {
+   "candidate_id": "large_registration:ihk:296792061168",
+   "module": "large_registration",
+   "record_ref": "ihk:296792061168",
+   "record": {
+    "opendata_id": "296792061168",
+    "employees_range": "2500 - 4999 Beschäftigte",
+    "nace_id": "7020",
+    "nace_desc": "Unternehmensberatung",
+    "ihk_branch_desc": "Unternehmensberatung",
+    "branch_top_level_desc": "Verwaltung und Führung von Unternehmen und Betrieben, Unternehmensberatung",
+    "business_age": "11",
+    "business_type": "im Handelsregister eingetragen",
+    "planungsraum": "Breitscheidplatz",
+    "lat": 52.50450129,
+    "lon": 13.32947915
+   },
+   "counted_as": 3535.2,
+   "counted_at_this_station": true,
+   "osm_names_within_40m": [
+    {
+     "osm_ref": "way/22986477",
+     "distance_m": 22.2,
+     "name": "Kranzler Eck Berlin",
+     "building": "commercial",
+     "building:levels": "16",
+     "address": null
+    },
+    {
+     "osm_ref": "node/6484331128",
+     "distance_m": 34.3,
+     "name": "Quadriga aus Buddy Bears",
+     "address": null
+    },
+    {
+     "osm_ref": "node/7798570845",
+     "distance_m": 35.3,
+     "name": "Tiefgarage Kranzler Eck",
+     "operator": "Contipark",
+     "amenity": "parking_entrance",
+     "address": null
+    },
+    {
+     "osm_ref": "node/2866327770",
+     "distance_m": 35.5,
+     "name": "Planet Labs Germany GmbH",
+     "office": "company",
+     "company": "aerospace",
+     "address": "Kurfürstendamm 22"
+    },
+    {
+     "osm_ref": "way/24865198",
+     "distance_m": 37.6,
+     "name": "Lindner Hotel Berlin Am Ku'damm",
+     "operator": "Hyatt Hotels Corporation",
+     "building": "yes",
+     "address": "Kurfürstendamm 24"
+    },
+    {
+     "osm_ref": "node/9946874012",
+     "distance_m": 38.8,
+     "name": "The Crazy Little Greek",
+     "amenity": "restaurant",
+     "address": null
+    },
+    {
+     "osm_ref": "node/1526725273",
+     "distance_m": 40.0,
+     "name": "Cisco Systems",
+     "office": "company",
+     "address": "Kurfürstendamm 22"
+    }
+   ]
+  },
+  {
+   "candidate_id": "large_registration:ihk:429590210860",
+   "module": "large_registration",
+   "record_ref": "ihk:429590210860",
+   "record": {
+    "opendata_id": "429590210860",
+    "employees_range": "500 - 999 Beschäftigte",
+    "nace_id": "5221",
+    "nace_desc": "Erbringung von sonstigen Dienstleistungen für den Landverkehr",
+    "ihk_branch_desc": "Betrieb von Parkhäusern und Parkplätzen",
+    "branch_top_level_desc": "Lagerei sowie Erbringung von sonstigen Dienstleistungen für den Verkehr",
+    "business_age": "58",
+    "business_type": "im Handelsregister eingetragen",
+    "planungsraum": "Breitscheidplatz",
+    "lat": 52.50134584,
+    "lon": 13.33220774
+   },
+   "counted_as": 706.8,
+   "counted_at_this_station": true,
+   "osm_names_within_40m": [
+    {
+     "osm_ref": "node/3563852623",
+     "distance_m": 7.5,
+     "name": "Contipark International",
+     "office": "company",
+     "address": "Rankestraße 13"
+    },
+    {
+     "osm_ref": "node/3354419272",
+     "distance_m": 19.3,
+     "name": "Enforcer Pülz GmbH",
+     "address": null
+    }
+   ]
+  },
+  {
+   "candidate_id": "large_registration:ihk:458814561258",
+   "module": "large_registration",
+   "record_ref": "ihk:458814561258",
+   "record": {
+    "opendata_id": "458814561258",
+    "employees_range": "2500 - 4999 Beschäftigte",
+    "nace_id": "5223",
+    "nace_desc": "Erbringung von sonstigen Dienstleistungen für die Luftfahrt",
+    "ihk_branch_desc": "Erbringung von sonstigen Dienstleistungen für die Luftfahrt a. n. g.",
+    "branch_top_level_desc": "Lagerei sowie Erbringung von sonstigen Dienstleistungen für den Verkehr",
+    "business_age": "73",
+    "business_type": "im Handelsregister eingetragen",
+    "planungsraum": "Breitscheidplatz",
+    "lat": 52.50295,
+    "lon": 13.32872308
+   },
+   "counted_as": 3535.2,
+   "counted_at_this_station": true,
+   "osm_names_within_40m": [
+    {
+     "osm_ref": "node/5676236972",
+     "distance_m": 10.8,
+     "name": "Shaping New Tomorrow",
+     "shop": "clothes",
+     "address": null
+    },
+    {
+     "osm_ref": "node/7182138966",
+     "distance_m": 17.2,
+     "name": "Rahel Hirsch",
+     "address": null
+    },
+    {
+     "osm_ref": "node/8143793507",
+     "distance_m": 18.4,
+     "name": "Christ",
+     "shop": "jewelry",
+     "address": null
+    },
+    {
+     "osm_ref": "node/7185001707",
+     "distance_m": 18.5,
+     "name": "Gedenktafel erstes Stadtbüro der Lufthansa",
+     "address": null
+    },
+    {
+     "osm_ref": "node/1882375091",
+     "distance_m": 18.8,
+     "name": "Marc O'Polo",
+     "shop": "clothes",
+     "address": "Kurfürstendamm 220"
+    },
+    {
+     "osm_ref": "way/48472698",
+     "distance_m": 23.8,
+     "building": "apartments",
+     "building:levels": "5",
+     "address": "Kurfürstendamm 219"
+    },
+    {
+     "osm_ref": "node/1188954472",
+     "distance_m": 28.9,
+     "name": "Michael Kors",
+     "shop": "clothes",
+     "address": "Kurfürstendamm 219"
+    },
+    {
+     "osm_ref": "node/11510619567",
+     "distance_m": 36.4,
+     "name": "Mode Look4You",
+     "shop": "clothes",
+     "address": null
+    },
+    {
+     "osm_ref": "way/48472688",
+     "distance_m": 37.8,
+     "building": "apartments",
+     "building:levels": "5",
+     "address": "Kurfürstendamm 218"
+    }
+   ]
+  },
+  {
+   "candidate_id": "large_registration:ihk:73037947598",
+   "module": "large_registration",
+   "record_ref": "ihk:73037947598",
+   "record": {
+    "opendata_id": "73037947598",
+    "employees_range": "1000 - 2499 Beschäftigte",
+    "nace_id": "6421",
+    "nace_desc": "Beteiligungsgesellschaften",
+    "ihk_branch_desc": "Beteiligungsgesellschaften",
+    "branch_top_level_desc": "Erbringung von Finanzdienstleistungen",
+    "business_age": "22",
+    "business_type": "im Handelsregister eingetragen",
+    "planungsraum": "Breitscheidplatz",
+    "lat": 52.50505411,
+    "lon": 13.3329709
+   },
+   "counted_as": 1580.8,
+   "counted_at_this_station": true,
+   "osm_names_within_40m": [
+    {
+     "osm_ref": "way/474901812",
+     "distance_m": 0.0,
+     "name": "Upper West",
+     "building": "commercial",
+     "building:levels": "33",
+     "address": null
+    },
+    {
+     "osm_ref": "node/4687610336",
+     "distance_m": 14.1,
+     "name": "Motel One",
+     "address": "Kantstraße 163-165"
+    },
+    {
+     "osm_ref": "node/8152072227",
+     "distance_m": 23.6,
+     "name": "CBRE Upper West Office",
+     "office": "company",
+     "address": "Kantstraße 164"
+    },
+    {
+     "osm_ref": "node/2758557636",
+     "distance_m": 30.6,
+     "operator": "Kabel Deutschland",
+     "address": null
+    },
+    {
+     "osm_ref": "way/315777905",
+     "distance_m": 34.9,
+     "name": "Zoofenster",
+     "operator": "Jones Lang LaSalle GmbH",
+     "building": "hotel",
+     "building:levels": "32",
+     "address": "Hardenbergstraße 27-28a"
+    }
+   ]
+  },
+  {
+   "candidate_id": "large_registration:ihk:797287871626",
+   "module": "large_registration",
+   "record_ref": "ihk:797287871626",
+   "record": {
+    "opendata_id": "797287871626",
+    "employees_range": "500 - 999 Beschäftigte",
+    "nace_id": "5510",
+    "nace_desc": "Hotels, Gasthöfe und Pensionen",
+    "ihk_branch_desc": "Hotels (ohne Hotels garnis)",
+    "branch_top_level_desc": "Beherbergung",
+    "business_age": "15",
+    "business_type": "im Handelsregister eingetragen",
+    "planungsraum": "Breitscheidplatz",
+    "lat": 52.50441247,
+    "lon": 13.33289145
+   },
+   "counted_as": 706.8,
+   "counted_at_this_station": true,
+   "osm_names_within_40m": [
+    {
+     "osm_ref": "node/9238633917",
+     "distance_m": 1.1,
+     "name": "m&m's Berlin",
+     "shop": "gift",
+     "address": "Kurfürstendamm 13-15"
+    },
+    {
+     "osm_ref": "node/8225191379",
+     "distance_m": 20.4,
+     "name": "Hunkemöller",
+     "shop": "clothes",
+     "address": null
+    },
+    {
+     "osm_ref": "node/8237956605",
+     "distance_m": 24.5,
+     "name": "Aesthetify",
+     "amenity": "doctors",
+     "address": "Kurfürstendamm 12"
+    },
+    {
+     "osm_ref": "node/8933486269",
+     "distance_m": 34.8,
+     "name": "Mango",
+     "shop": "clothes",
+     "address": null
+    },
+    {
+     "osm_ref": "node/3678881041",
+     "distance_m": 35.2,
+     "name": "Satellite Office KUD15 Gloria Berlin",
+     "office": "coworking",
+     "operator": "Satellite Office",
+     "address": "Kurfürstendamm 15"
+    },
+    {
+     "osm_ref": "way/474901812",
+     "distance_m": 37.0,
+     "name": "Upper West",
+     "building": "commercial",
+     "building:levels": "33",
+     "address": null
+    },
+    {
+     "osm_ref": "node/8237956606",
+     "distance_m": 37.3,
+     "name": "Joseph Roth",
+     "address": null
+    }
+   ]
+  },
+  {
+   "candidate_id": "missing_entity:osm:node/7624104303",
+   "module": "missing_entity",
+   "record_ref": "osm:node/7624104303",
+   "record": {
+    "osm_ref": "node/7624104303",
+    "distance_m": 0.0,
+    "name": "Industrie- und Handelskammer zu Berlin",
+    "office": "chamber",
+    "address": "Fasanenstraße 85",
+    "lat": 52.506897,
+    "lon": 13.328583,
+    "tags": {
+     "addr:city": "Berlin",
+     "addr:housenumber": "85",
+     "addr:postcode": "10623",
+     "addr:street": "Fasanenstraße",
+     "check_date": "2026-05-04",
+     "contact:facebook": "https://www.facebook.com/ihkberlin",
+     "contact:instagram": "https://www.instagram.com/ihkberlin",
+     "contact:linkedin": "https://www.linkedin.com/company/ihk-berlin/",
+     "contact:twitter": "https://www.twitter.com/ihkberlin",
+     "contact:xing": "https://www.xing.com/companies/ihkberlin",
+     "contact:youtube": "https://www.youtube.com/ihkberlin1",
+     "email": "service@berlin.ihk.de",
+     "moved": "1998",
+     "name": "Industrie- und Handelskammer zu Berlin",
+     "office": "chamber",
+     "old_name:1901-1924": "Berliner Handelskammer",
+     "phone": "+49 30 315100",
+     "short_name": "IHK Berlin",
+     "start_date": "1901-12-19",
+     "website": "https://www.ihk-berlin.de/",
+     "wheelchair": "yes",
+     "wikidata": "Q1653661",
+     "wikimedia_commons": "Category:IHK Berlin",
+     "wikipedia": "de:IHK Berlin"
+    }
+   },
+   "footprint_m2": null,
+   "floor_area_m2": null,
+   "levels_tagged": false,
+   "reason_listed": "no IHK registration within 40 m",
+   "ihk_within_40m": {
+    "registrations": 0,
+    "headcount_at_midpoints": 0
+   },
+   "tagged_objects_inside": [],
+   "nearest_station": {
+    "name": "S+U Zoologischer Garten Bhf (Berlin)",
+    "distance_m": 279
+   },
+   "nearest_ihk_m": 61.4
+  },
+  {
+   "candidate_id": "missing_entity:osm:way/32516584",
+   "module": "missing_entity",
+   "record_ref": "osm:way/32516584",
+   "record": {
+    "osm_ref": "way/32516584",
+    "distance_m": 0.0,
+    "building": "yes",
+    "building:levels": "18",
+    "address": null,
+    "lat": 52.502517,
+    "lon": 13.33187,
+    "tags": {
+     "building": "yes",
+     "building:levels": "18",
+     "layer": "1",
+     "roof:shape": "flat"
+    }
+   },
+   "footprint_m2": 3254,
+   "floor_area_m2": 58575,
+   "levels_tagged": true,
+   "reason_listed": "IHK headcount within 40 m below 1 per 100 m² of floor area",
+   "ihk_within_40m": {
+    "registrations": 193,
+    "headcount_at_midpoints": 332.6
+   },
+   "tagged_objects_inside": [],
+   "nearest_station": {
+    "name": "U Kurfürstendamm (Berlin)",
+    "distance_m": 142
+   },
+   "nearest_ihk_m": 0.0
+  },
+  {
+   "candidate_id": "missing_entity:osm:way/290078078",
+   "module": "missing_entity",
+   "record_ref": "osm:way/290078078",
+   "record": {
+    "osm_ref": "way/290078078",
+    "distance_m": 0.0,
+    "name": "aletto Hotel Kudamm",
+    "operator": "aletto Service & Marketing GmbH",
+    "building": "hotel",
+    "building:levels": "7",
+    "address": "Hardenbergstraße 21",
+    "lat": 52.50631,
+    "lon": 13.329879,
+    "tags": {
+     "addr:city": "Berlin",
+     "addr:country": "DE",
+     "addr:housenumber": "21",
+     "addr:postcode": "10623",
+     "addr:street": "Hardenbergstraße",
+     "addr:suburb": "Charlottenburg",
+     "building": "hotel",
+     "building:levels": "7",
+     "email": "kudamm@aletto.de",
+     "fax": "+4930 233214109",
+     "internet_access": "wlan",
+     "internet_access:fee": "no",
+     "name": "aletto Hotel Kudamm",
+     "operator": "aletto Service & Marketing GmbH",
+     "phone": "+4930 233214100",
+     "roof:shape": "flat",
+     "smoking": "outside",
+     "tourism": "hotel",
+     "website": "https://www.aletto.de",
+     "wheelchair": "yes"
+    }
+   },
+   "footprint_m2": 1273,
+   "floor_area_m2": 8913,
+   "levels_tagged": true,
+   "reason_listed": "IHK headcount within 40 m below 1 per 100 m² of floor area",
+   "ihk_within_40m": {
+    "registrations": 3,
+    "headcount_at_midpoints": 84.1
+   },
+   "tagged_objects_inside": [],
+   "nearest_station": {
+    "name": "S+U Zoologischer Garten Bhf (Berlin)",
+    "distance_m": 203
+   },
+   "nearest_ihk_m": 0.0
+  },
+  {
+   "candidate_id": "missing_entity:osm:way/364457341",
+   "module": "missing_entity",
+   "record_ref": "osm:way/364457341",
+   "record": {
+    "osm_ref": "way/364457341",
+    "distance_m": 0.0,
+    "name": "Bikini Berlin",
+    "shop": "mall",
+    "building": "mall",
+    "building:levels": "6",
+    "address": "Budapester Straße 38-50",
+    "lat": 52.505637,
+    "lon": 13.335957,
+    "tags": {
+     "addr:city": "Berlin",
+     "addr:housenumber": "38-50",
+     "addr:postcode": "10787",
+     "addr:street": "Budapester Straße",
+     "air_conditioning": "yes",
+     "building": "mall",
+     "building:levels": "6",
+     "check_date": "2026-01-19",
+     "email": "bikini@iph-gruppe.de",
+     "heritage": "yes",
+     "internet_access": "wlan",
+     "internet_access:fee": "customers",
+     "internet_access:operator:wikidata": "Q123478667",
+     "internet_access:password": "no",
+     "internet_access:ssid": "BIKINI BERLIN",
+     "loc_name": "Bikinihaus",
+     "name": "Bikini Berlin",
+     "opening_hours": "Mo-Sa 09:00-20:30",
+     "phone": "+49 30 55496430",
+     "shop": "mall",
+     "toilets": "yes",
+     "toilets:fee": "yes",
+     "toilets:wheelchair": "yes",
+     "website": "https://www.bikiniberlin.de/",
+     "wheelchair": "limited",
+     "wikidata": "Q860063",
+     "wikimedia_commons": "Category:Bikini-Haus",
+     "wikipedia": "de:Bikini-Haus"
+    }
+   },
+   "footprint_m2": 10654,
+   "floor_area_m2": 63921,
+   "levels_tagged": true,
+   "reason_listed": "IHK headcount within 40 m below 1 per 100 m² of floor area",
+   "ihk_within_40m": {
+    "registrations": 34,
+    "headcount_at_midpoints": 432.2
+   },
+   "tagged_objects_inside": [],
+   "nearest_station": {
+    "name": "S+U Zoologischer Garten Bhf (Berlin)",
+    "distance_m": 262
+   },
+   "nearest_ihk_m": 0.0
+  },
+  {
+   "candidate_id": "missing_entity:osm:way/447901512",
+   "module": "missing_entity",
+   "record_ref": "osm:way/447901512",
+   "record": {
+    "osm_ref": "way/447901512",
+    "distance_m": 0.0,
+    "name": "Hampton by Hilton Berlin City West",
+    "operator": "Hilton Hotels",
+    "building": "hotel",
+    "building:levels": "8",
+    "address": "Uhlandstraße 188-189",
+    "lat": 52.504925,
+    "lon": 13.326123,
+    "tags": {
+     "addr:city": "Berlin",
+     "addr:country": "DE",
+     "addr:housenumber": "188-189",
+     "addr:postcode": "10623",
+     "addr:street": "Uhlandstraße",
+     "alt_name": "Hampton Inn",
+     "brand": "Hampton",
+     "brand:wikidata": "Q5646230",
+     "brand:wikipedia": "en:Hampton by Hilton",
+     "building": "hotel",
+     "building:levels": "8",
+     "contact:email": "info@hamptonbyhilton-berlin.de",
+     "contact:facebook": "https://www.facebook.com/Hotel-Hampton-By-Hilton-147983651914585/",
+     "contact:instagram": "https://www.instagram.com/hamptonbyhiltonberlincitywest/",
+     "contact:phone": "+49 30 4050270",
+     "contact:website": "https://www.hilton.com/en/hotels/txlbchx-hampton-berlin-city-west/",
+     "internet_access": "wlan",
+     "internet_access:fee": "no",
+     "name": "Hampton by Hilton Berlin City West",
+     "official_name": "Hampton by Hilton",
+     "opening_hours": "24/7",
+     "operator": "Hilton Hotels",
+     "payment:mastercard": "yes",
+     "rooms": "214",
+     "smoking": "outside",
+     "stars": "3",
+     "tourism": "hotel",
+     "wheelchair": "yes",
+     "wikidata": "Q63828844"
+    }
+   },
+   "footprint_m2": 1194,
+   "floor_area_m2": 9549,
+   "levels_tagged": true,
+   "reason_listed": "IHK headcount within 40 m below 1 per 100 m² of floor area",
+   "ihk_within_40m": {
+    "registrations": 5,
+    "headcount_at_midpoints": 73.8
+   },
+   "tagged_objects_inside": [],
+   "nearest_station": {
+    "name": "U Uhlandstr. (Berlin)",
+    "distance_m": 243
+   },
+   "nearest_ihk_m": 0.0
+  },
+  {
+   "candidate_id": "poi_category:way/1174527226",
+   "module": "poi_category",
+   "record_ref": "way/1174527226",
+   "record": {
+    "external_ref": "way/1174527226",
+    "name": "Jim Block Restaurant",
+    "category": "fast_food",
+    "lat": 52.5059171,
+    "lon": 13.3344683,
+    "providers": [
+     "openstreetmap"
+    ],
+    "members": [
+     {
+      "source": "osm_overpass",
+      "ref": "way/1174527226",
+      "name": "Jim Block Restaurant",
+      "category": "fast_food"
+     }
+    ]
+   },
+   "non_food_words": [
+    "restaurant"
+   ],
+   "same_name_osm_objects_15m": [],
+   "osm_objects_15m": [
+    {
+     "osm_ref": "way/364457341",
+     "distance_m": 0.0,
+     "name": "Bikini Berlin",
+     "shop": "mall",
+     "building": "mall",
+     "building:levels": "6",
+     "address": "Budapester Straße 38-50"
+    },
+    {
+     "osm_ref": "way/1174000878",
+     "distance_m": 0.0,
+     "name": "BLOCK HOUSE",
+     "amenity": "restaurant",
+     "address": "Budapester Straße 42-50"
+    },
+    {
+     "osm_ref": "way/1174527226",
+     "distance_m": 0.0,
+     "name": "Jim Block Restaurant",
+     "operator": "Jim Block Restaurantbetriebe GmbH",
+     "amenity": "fast_food",
+     "address": "Budapester Straße 50"
+    },
+    {
+     "osm_ref": "way/23010077",
+     "distance_m": 5.8,
+     "name": "Zoo Palast",
+     "operator": "Premium Entertainment GmbH",
+     "amenity": "cinema",
+     "building": "cinema",
+     "address": "Hardenbergstraße 29a"
+    },
+    {
+     "osm_ref": "way/1174000882",
+     "distance_m": 7.9,
+     "name": "promobo",
+     "shop": "gift",
+     "address": null
+    }
+   ]
+  },
+  {
+   "candidate_id": "poi_category:overture:193373cb-9a22-4e8f-8a4f-8cb73a4da547",
+   "module": "poi_category",
+   "record_ref": "overture:193373cb-9a22-4e8f-8a4f-8cb73a4da547",
+   "record": {
+    "external_ref": "overture:193373cb-9a22-4e8f-8a4f-8cb73a4da547",
+    "name": "Cafe am Zoopalast GmbH",
+    "category": "cafe",
+    "lat": 52.505741119384766,
+    "lon": 13.334053993225098,
+    "providers": [
+     "meta",
+     "overture"
+    ],
+    "members": [
+     {
+      "source": "overture_places",
+      "ref": "overture:193373cb-9a22-4e8f-8a4f-8cb73a4da547",
+      "name": "Cafe am Zoopalast GmbH",
+      "category": "cafe"
+     }
+    ]
+   },
+   "non_food_words": [],
+   "same_name_osm_objects_15m": [
+    {
+     "osm_ref": "way/23010077",
+     "distance_m": 8.6,
+     "name": "Zoo Palast",
+     "operator": "Premium Entertainment GmbH",
+     "amenity": "cinema",
+     "building": "cinema",
+     "address": "Hardenbergstraße 29a",
+     "osm_category": null
+    }
+   ],
+   "osm_objects_15m": [
+    {
+     "osm_ref": "way/23010077",
+     "distance_m": 8.6,
+     "name": "Zoo Palast",
+     "operator": "Premium Entertainment GmbH",
+     "amenity": "cinema",
+     "building": "cinema",
+     "address": "Hardenbergstraße 29a"
+    },
+    {
+     "osm_ref": "node/3688980395",
+     "distance_m": 8.8,
+     "name": "ZooBa",
+     "amenity": "cafe",
+     "address": null
+    }
+   ]
+  },
+  {
+   "candidate_id": "poi_category:overture:80cf68af-70d3-4a8c-88c1-812097f79019",
+   "module": "poi_category",
+   "record_ref": "overture:80cf68af-70d3-4a8c-88c1-812097f79019",
+   "record": {
+    "external_ref": "overture:80cf68af-70d3-4a8c-88c1-812097f79019",
+    "name": "Tee Tea Thé Ronnefeldt im BIKINI BERLIN",
+    "category": "cafe",
+    "lat": 52.50566864013672,
+    "lon": 13.3349027633667,
+    "providers": [
+     "foursquare",
+     "overture"
+    ],
+    "members": [
+     {
+      "source": "overture_places",
+      "ref": "overture:80cf68af-70d3-4a8c-88c1-812097f79019",
+      "name": "Tee Tea Thé Ronnefeldt im BIKINI BERLIN",
+      "category": "cafe"
+     }
+    ]
+   },
+   "non_food_words": [],
+   "same_name_osm_objects_15m": [
+    {
+     "osm_ref": "way/364457341",
+     "distance_m": 0.0,
+     "name": "Bikini Berlin",
+     "shop": "mall",
+     "building": "mall",
+     "building:levels": "6",
+     "address": "Budapester Straße 38-50",
+     "osm_category": null
+    }
+   ],
+   "osm_objects_15m": [
+    {
+     "osm_ref": "way/364457341",
+     "distance_m": 0.0,
+     "name": "Bikini Berlin",
+     "shop": "mall",
+     "building": "mall",
+     "building:levels": "6",
+     "address": "Budapester Straße 38-50"
+    },
+    {
+     "osm_ref": "way/1174000877",
+     "distance_m": 2.6,
+     "name": "studioeins",
+     "amenity": "studio",
+     "address": null
+    },
+    {
+     "osm_ref": "way/1169660712",
+     "distance_m": 5.8,
+     "name": "Diamonds Factory",
+     "shop": "jewelry",
+     "address": null
+    },
+    {
+     "osm_ref": "way/1169660692",
+     "distance_m": 10.3,
+     "name": "CSR.Art",
+     "shop": "art",
+     "address": null
+    },
+    {
+     "osm_ref": "way/1169660690",
+     "distance_m": 11.4,
+     "name": "Auerbach",
+     "shop": "clothes",
+     "address": null
+    },
+    {
+     "osm_ref": "way/1174000882",
+     "distance_m": 14.5,
+     "name": "promobo",
+     "shop": "gift",
+     "address": null
+    }
+   ]
+  },
+  {
+   "candidate_id": "poi_category:overture:625ec8c6-517e-4058-a1fd-022f8343db43",
+   "module": "poi_category",
+   "record_ref": "overture:625ec8c6-517e-4058-a1fd-022f8343db43",
+   "record": {
+    "external_ref": "overture:625ec8c6-517e-4058-a1fd-022f8343db43",
+    "name": "Studioeins von radioeins im Bikini Berlin",
+    "category": "cafe",
+    "lat": 52.505496978759766,
+    "lon": 13.335222244262695,
+    "providers": [
+     "meta",
+     "overture"
+    ],
+    "members": [
+     {
+      "source": "overture_places",
+      "ref": "overture:625ec8c6-517e-4058-a1fd-022f8343db43",
+      "name": "Studioeins von radioeins im Bikini Berlin",
+      "category": "cafe"
+     }
+    ]
+   },
+   "non_food_words": [],
+   "same_name_osm_objects_15m": [
+    {
+     "osm_ref": "way/364457341",
+     "distance_m": 0.0,
+     "name": "Bikini Berlin",
+     "shop": "mall",
+     "building": "mall",
+     "building:levels": "6",
+     "address": "Budapester Straße 38-50",
+     "osm_category": null
+    }
+   ],
+   "osm_objects_15m": [
+    {
+     "osm_ref": "way/364457341",
+     "distance_m": 0.0,
+     "name": "Bikini Berlin",
+     "shop": "mall",
+     "building": "mall",
+     "building:levels": "6",
+     "address": "Budapester Straße 38-50"
+    },
+    {
+     "osm_ref": "way/1169660686",
+     "distance_m": 0.0,
+     "name": "Tara Base",
+     "amenity": "events_venue",
+     "address": null
+    },
+    {
+     "osm_ref": "way/1169660685",
+     "distance_m": 5.5,
+     "name": "Blutsgeschwister",
+     "shop": "clothes",
+     "address": null
+    },
+    {
+     "osm_ref": "way/1169660710",
+     "distance_m": 6.1,
+     "name": "Closed",
+     "shop": "clothes",
+     "address": null
+    },
+    {
+     "osm_ref": "way/1169660690",
+     "distance_m": 7.2,
+     "name": "Auerbach",
+     "shop": "clothes",
+     "address": null
+    }
+   ]
+  },
+  {
+   "candidate_id": "poi_category:overture:d2202226-ff98-415d-867b-bfaba625a5e7",
+   "module": "poi_category",
+   "record_ref": "overture:d2202226-ff98-415d-867b-bfaba625a5e7",
+   "record": {
+    "external_ref": "overture:d2202226-ff98-415d-867b-bfaba625a5e7",
+    "name": "Cafe Restaurant Wintergarten",
+    "category": "cafe",
+    "lat": 52.50307846069336,
+    "lon": 13.32734203338623,
+    "providers": [
+     "meta",
+     "overture"
+    ],
+    "members": [
+     {
+      "source": "overture_places",
+      "ref": "overture:d2202226-ff98-415d-867b-bfaba625a5e7",
+      "name": "Cafe Restaurant Wintergarten",
+      "category": "cafe"
+     }
+    ]
+   },
+   "non_food_words": [
+    "restaurant"
+   ],
+   "same_name_osm_objects_15m": [],
+   "osm_objects_15m": [
+    {
+     "osm_ref": "node/317190476",
+     "distance_m": 10.3,
+     "name": "Fasanenstr / Kurfürstendamm",
+     "amenity": "taxi",
+     "address": null
+    },
+    {
+     "osm_ref": "way/24865205",
+     "distance_m": 11.3,
+     "name": "Hotel Bristol Berlin",
+     "building": "hotel",
+     "address": "Kurfürstendamm 27"
+    },
+    {
+     "osm_ref": "node/254307080",
+     "distance_m": 14.6,
+     "name": "La Residenza",
+     "address": "Kurfürstendamm 27"
+    }
+   ]
+  },
+  {
+   "candidate_id": "poi_category:overture:946f9bbe-87c0-4136-b401-143674cc362a",
+   "module": "poi_category",
+   "record_ref": "overture:946f9bbe-87c0-4136-b401-143674cc362a",
+   "record": {
+    "external_ref": "overture:946f9bbe-87c0-4136-b401-143674cc362a",
+    "name": "Wiener Feinbäcker („Neues Kranzler-Eck“)",
+    "category": "bakery",
+    "lat": 52.50380325317383,
+    "lon": 13.330038070678711,
+    "providers": [
+     "alltheplaces",
+     "overture"
+    ],
+    "members": [
+     {
+      "source": "overture_places",
+      "ref": "overture:946f9bbe-87c0-4136-b401-143674cc362a",
+      "name": "Wiener Feinbäcker („Neues Kranzler-Eck“)",
+      "category": "bakery"
+     }
+    ]
+   },
+   "non_food_words": [],
+   "same_name_osm_objects_15m": [
+    {
+     "osm_ref": "way/22986477",
+     "distance_m": 11.9,
+     "name": "Kranzler Eck Berlin",
+     "building": "commercial",
+     "building:levels": "16",
+     "address": null,
+     "osm_category": null
+    }
+   ],
+   "osm_objects_15m": [
+    {
+     "osm_ref": "way/219869019",
+     "distance_m": 0.0,
+     "building": "commercial",
+     "building:levels": "6",
+     "address": "Kurfürstendamm 21"
+    },
+    {
+     "osm_ref": "node/5641791927",
+     "distance_m": 0.8,
+     "name": "Arket",
+     "operator": "H&M Group",
+     "shop": "clothes",
+     "address": "Kurfürstendamm 19-24"
+    },
+    {
+     "osm_ref": "node/7924890022",
+     "distance_m": 2.7,
+     "name": "Arket Café",
+     "amenity": "cafe",
+     "address": "Kurfürstendamm 19-24"
+    },
+    {
+     "osm_ref": "node/4012854129",
+     "distance_m": 7.5,
+     "name": "Berlin",
+     "shop": "gift",
+     "address": null
+    },
+    {
+     "osm_ref": "node/3042466050",
+     "distance_m": 9.8,
+     "name": "dean&david",
+     "amenity": "fast_food",
+     "address": "Kurfürstendamm 21"
+    },
+    {
+     "osm_ref": "node/4664171189",
+     "distance_m": 10.3,
+     "name": "Noblekey",
+     "shop": "car_parts",
+     "address": null
+    },
+    {
+     "osm_ref": "way/22986477",
+     "distance_m": 11.9,
+     "name": "Kranzler Eck Berlin",
+     "building": "commercial",
+     "building:levels": "16",
+     "address": null
+    }
+   ]
+  },
+  {
+   "candidate_id": "poi_duplicate:node/1041847871|node/2284912291",
+   "module": "poi_duplicate",
+   "record_ref": "node/1041847871|node/2284912291",
+   "records": [
+    {
+     "external_ref": "node/1041847871",
+     "name": "Cinnamood",
+     "category": "cafe",
+     "lat": 52.5039452,
+     "lon": 13.3305315,
+     "providers": [
+      "openstreetmap"
+     ],
+     "members": [
+      {
+       "source": "osm_overpass",
+       "ref": "node/1041847871",
+       "name": "Cinnamood",
+       "category": "cafe"
+      }
+     ]
+    },
+    {
+     "external_ref": "node/2284912291",
+     "name": "The Dawn",
+     "category": "cafe",
+     "lat": 52.5039547,
+     "lon": 13.3306362,
+     "providers": [
+      "openstreetmap"
+     ],
+     "members": [
+      {
+       "source": "osm_overpass",
+       "ref": "node/2284912291",
+       "name": "The Dawn",
+       "category": "cafe"
+      }
+     ]
+    }
+   ],
+   "distance_m": 7.2
+  },
+  {
+   "candidate_id": "poi_duplicate:node/11815606070|overture:2d4463c6-a868-4893-8e65-16d8b423f173",
+   "module": "poi_duplicate",
+   "record_ref": "node/11815606070|overture:2d4463c6-a868-4893-8e65-16d8b423f173",
+   "records": [
+    {
+     "external_ref": "node/11815606070",
+     "name": "Coffee Circle",
+     "category": "cafe",
+     "lat": 52.5023967,
+     "lon": 13.3293281,
+     "providers": [
+      "openstreetmap"
+     ],
+     "members": [
+      {
+       "source": "osm_overpass",
+       "ref": "node/11815606070",
+       "name": "Coffee Circle",
+       "category": "cafe"
+      }
+     ]
+    },
+    {
+     "external_ref": "overture:2d4463c6-a868-4893-8e65-16d8b423f173",
+     "name": "Enjoy.Berlin",
+     "category": "cafe",
+     "lat": 52.50235366821289,
+     "lon": 13.329379081726074,
+     "providers": [
+      "meta",
+      "overture"
+     ],
+     "members": [
+      {
+       "source": "overture_places",
+       "ref": "overture:2d4463c6-a868-4893-8e65-16d8b423f173",
+       "name": "Enjoy.Berlin",
+       "category": "cafe"
+      }
+     ]
+    }
+   ],
+   "distance_m": 5.9
+  },
+  {
+   "candidate_id": "poi_duplicate:node/12563785675|node/6848436877",
+   "module": "poi_duplicate",
+   "record_ref": "node/12563785675|node/6848436877",
+   "records": [
+    {
+     "external_ref": "node/12563785675",
+     "name": "The Barn",
+     "category": "cafe",
+     "lat": 52.5040095,
+     "lon": 13.3299337,
+     "providers": [
+      "openstreetmap",
+      "overture",
+      "pinmeto"
+     ],
+     "members": [
+      {
+       "source": "osm_overpass",
+       "ref": "node/12563785675",
+       "name": "The Barn",
+       "category": "cafe"
+      },
+      {
+       "source": "overture_places",
+       "ref": "overture:c3b7ee9a-fb07-4346-ad76-a72b1707798a",
+       "name": "THE BARN Coffee Roasters Berlin",
+       "category": "cafe"
+      }
+     ]
+    },
+    {
+     "external_ref": "node/6848436877",
+     "name": "Coffee & Greek Bakery",
+     "category": "cafe",
+     "lat": 52.5039266,
+     "lon": 13.3299169,
+     "providers": [
+      "openstreetmap"
+     ],
+     "members": [
+      {
+       "source": "osm_overpass",
+       "ref": "node/6848436877",
+       "name": "Coffee & Greek Bakery",
+       "category": "cafe"
+      }
+     ]
+    }
+   ],
+   "distance_m": 9.3
+  },
+  {
+   "candidate_id": "poi_duplicate:node/13328273346|node/5972225785",
+   "module": "poi_duplicate",
+   "record_ref": "node/13328273346|node/5972225785",
+   "records": [
+    {
+     "external_ref": "node/13328273346",
+     "name": "Schnitzery",
+     "category": "fast_food",
+     "lat": 52.5058337,
+     "lon": 13.3317327,
+     "providers": [
+      "openstreetmap"
+     ],
+     "members": [
+      {
+       "source": "osm_overpass",
+       "ref": "node/13328273346",
+       "name": "Schnitzery",
+       "category": "fast_food"
+      }
+     ]
+    },
+    {
+     "external_ref": "node/5972225785",
+     "name": "Burgermeister",
+     "category": "fast_food",
+     "lat": 52.5059146,
+     "lon": 13.3318102,
+     "providers": [
+      "openstreetmap"
+     ],
+     "members": [
+      {
+       "source": "osm_overpass",
+       "ref": "node/5972225785",
+       "name": "Burgermeister",
+       "category": "fast_food"
+      }
+     ]
+    }
+   ],
+   "distance_m": 10.4
+  },
+  {
+   "candidate_id": "poi_duplicate:node/1882589613|overture:ab5e02f4-062c-4461-bf48-d407cde77202",
+   "module": "poi_duplicate",
+   "record_ref": "node/1882589613|overture:ab5e02f4-062c-4461-bf48-d407cde77202",
+   "records": [
+    {
+     "external_ref": "node/1882589613",
+     "name": "OOH! Cookies",
+     "category": "cafe",
+     "lat": 52.503958,
+     "lon": 13.3333339,
+     "providers": [
+      "openstreetmap"
+     ],
+     "members": [
+      {
+       "source": "osm_overpass",
+       "ref": "node/1882589613",
+       "name": "OOH! Cookies",
+       "category": "cafe"
+      }
+     ]
+    },
+    {
+     "external_ref": "overture:ab5e02f4-062c-4461-bf48-d407cde77202",
+     "name": "Starbucks",
+     "category": "cafe",
+     "lat": 52.503929138183594,
+     "lon": 13.333195686340332,
+     "providers": [
+      "foursquare",
+      "overture"
+     ],
+     "members": [
+      {
+       "source": "overture_places",
+       "ref": "overture:ab5e02f4-062c-4461-bf48-d407cde77202",
+       "name": "Starbucks",
+       "category": "cafe"
+      }
+     ]
+    }
+   ],
+   "distance_m": 9.9
+  },
+  {
+   "candidate_id": "poi_duplicate:node/3354430613|overture:978c1ae3-cb75-4260-a57f-c55cd9da1305",
+   "module": "poi_duplicate",
+   "record_ref": "node/3354430613|overture:978c1ae3-cb75-4260-a57f-c55cd9da1305",
+   "records": [
+    {
+     "external_ref": "node/3354430613",
+     "name": "Croissants and more",
+     "category": "cafe",
+     "lat": 52.5031992,
+     "lon": 13.3348539,
+     "providers": [
+      "openstreetmap"
+     ],
+     "members": [
+      {
+       "source": "osm_overpass",
+       "ref": "node/3354430613",
+       "name": "Croissants and more",
+       "category": "cafe"
+      }
+     ]
+    },
+    {
+     "external_ref": "overture:978c1ae3-cb75-4260-a57f-c55cd9da1305",
+     "name": "Au Petit Delice",
+     "category": "cafe",
+     "lat": 52.503299713134766,
+     "lon": 13.334930419921875,
+     "providers": [
+      "meta",
+      "overture"
+     ],
+     "members": [
+      {
+       "source": "overture_places",
+       "ref": "overture:978c1ae3-cb75-4260-a57f-c55cd9da1305",
+       "name": "Au Petit Delice",
+       "category": "cafe"
+      }
+     ]
+    }
+   ],
+   "distance_m": 12.3
+  },
+  {
+   "candidate_id": "poi_duplicate:node/3688980395|overture:193373cb-9a22-4e8f-8a4f-8cb73a4da547",
+   "module": "poi_duplicate",
+   "record_ref": "node/3688980395|overture:193373cb-9a22-4e8f-8a4f-8cb73a4da547",
+   "records": [
+    {
+     "external_ref": "node/3688980395",
+     "name": "ZooBa",
+     "category": "cafe",
+     "lat": 52.5058089,
+     "lon": 13.3341209,
+     "providers": [
+      "meta",
+      "openstreetmap",
+      "overture"
+     ],
+     "members": [
+      {
+       "source": "osm_overpass",
+       "ref": "node/3688980395",
+       "name": "ZooBa",
+       "category": "cafe"
+      },
+      {
+       "source": "overture_places",
+       "ref": "overture:ab4ac397-1fdc-441b-8ffb-27e191be05d6",
+       "name": "ZooBa",
+       "category": "cafe"
+      }
+     ]
+    },
+    {
+     "external_ref": "overture:193373cb-9a22-4e8f-8a4f-8cb73a4da547",
+     "name": "Cafe am Zoopalast GmbH",
+     "category": "cafe",
+     "lat": 52.505741119384766,
+     "lon": 13.334053993225098,
+     "providers": [
+      "meta",
+      "overture"
+     ],
+     "members": [
+      {
+       "source": "overture_places",
+       "ref": "overture:193373cb-9a22-4e8f-8a4f-8cb73a4da547",
+       "name": "Cafe am Zoopalast GmbH",
+       "category": "cafe"
+      }
+     ]
+    }
+   ],
+   "distance_m": 8.8
+  },
+  {
+   "candidate_id": "poi_duplicate:node/5864472479|node/7629461508",
+   "module": "poi_duplicate",
+   "record_ref": "node/5864472479|node/7629461508",
+   "records": [
+    {
+     "external_ref": "node/5864472479",
+     "name": "Zaddy's",
+     "category": "fast_food",
+     "lat": 52.5060608,
+     "lon": 13.331956,
+     "providers": [
+      "meta",
+      "openstreetmap",
+      "overture"
+     ],
+     "members": [
+      {
+       "source": "osm_overpass",
+       "ref": "node/5864472479",
+       "name": "Zaddy's",
+       "category": "fast_food"
+      },
+      {
+       "source": "overture_places",
+       "ref": "overture:43585cc4-f866-450d-8767-e907992f10c3",
+       "name": "Zaddy's",
+       "category": "fast_food"
+      }
+     ]
+    },
+    {
+     "external_ref": "node/7629461508",
+     "name": "Dunkin'",
+     "category": "fast_food",
+     "lat": 52.506136,
+     "lon": 13.3317935,
+     "providers": [
+      "alltheplaces",
+      "brightquery",
+      "meta",
+      "openstreetmap",
+      "overture"
+     ],
+     "members": [
+      {
+       "source": "osm_overpass",
+       "ref": "node/7629461508",
+       "name": "Dunkin'",
+       "category": "fast_food"
+      },
+      {
+       "source": "overture_places",
+       "ref": "overture:b85f1b5c-c7cd-45ca-9d0d-bc58a695454f",
+       "name": "Dunkin' Donuts",
+       "category": "cafe"
+      },
+      {
+       "source": "overture_places",
+       "ref": "overture:a6f9eb9d-aa4e-4b74-8386-96938268cae9",
+       "name": "Zoom Berlin",
+       "category": "cafe"
+      },
+      {
+       "source": "overture_places",
+       "ref": "overture:dab11246-7f5b-4ddc-9f09-0abd641281a9",
+       "name": "Dunkin Berlin, Zoom",
+       "category": "fast_food"
+      }
+     ]
+    }
+   ],
+   "distance_m": 13.8
+  },
+  {
+   "candidate_id": "poi_duplicate:node/5864472479|node/9286392661",
+   "module": "poi_duplicate",
+   "record_ref": "node/5864472479|node/9286392661",
+   "records": [
+    {
+     "external_ref": "node/5864472479",
+     "name": "Zaddy's",
+     "category": "fast_food",
+     "lat": 52.5060608,
+     "lon": 13.331956,
+     "providers": [
+      "meta",
+      "openstreetmap",
+      "overture"
+     ],
+     "members": [
+      {
+       "source": "osm_overpass",
+       "ref": "node/5864472479",
+       "name": "Zaddy's",
+       "category": "fast_food"
+      },
+      {
+       "source": "overture_places",
+       "ref": "overture:43585cc4-f866-450d-8767-e907992f10c3",
+       "name": "Zaddy's",
+       "category": "fast_food"
+      }
+     ]
+    },
+    {
+     "external_ref": "node/9286392661",
+     "name": "Chutney",
+     "category": "fast_food",
+     "lat": 52.5061057,
+     "lon": 13.3319191,
+     "providers": [
+      "openstreetmap"
+     ],
+     "members": [
+      {
+       "source": "osm_overpass",
+       "ref": "node/9286392661",
+       "name": "Chutney",
+       "category": "fast_food"
+      }
+     ]
+    }
+   ],
+   "distance_m": 5.6
+  },
+  {
+   "candidate_id": "poi_duplicate:node/5864472479|overture:feb09d15-297e-4dba-8f86-3d666fdcdafe",
+   "module": "poi_duplicate",
+   "record_ref": "node/5864472479|overture:feb09d15-297e-4dba-8f86-3d666fdcdafe",
+   "records": [
+    {
+     "external_ref": "node/5864472479",
+     "name": "Zaddy's",
+     "category": "fast_food",
+     "lat": 52.5060608,
+     "lon": 13.331956,
+     "providers": [
+      "meta",
+      "openstreetmap",
+      "overture"
+     ],
+     "members": [
+      {
+       "source": "osm_overpass",
+       "ref": "node/5864472479",
+       "name": "Zaddy's",
+       "category": "fast_food"
+      },
+      {
+       "source": "overture_places",
+       "ref": "overture:43585cc4-f866-450d-8767-e907992f10c3",
+       "name": "Zaddy's",
+       "category": "fast_food"
+      }
+     ]
+    },
+    {
+     "external_ref": "overture:feb09d15-297e-4dba-8f86-3d666fdcdafe",
+     "name": "Le Crobag",
+     "category": "fast_food",
+     "lat": 52.50605010986328,
+     "lon": 13.331812858581543,
+     "providers": [
+      "microsoft",
+      "overture"
+     ],
+     "members": [
+      {
+       "source": "overture_places",
+       "ref": "overture:feb09d15-297e-4dba-8f86-3d666fdcdafe",
+       "name": "Le Crobag",
+       "category": "fast_food"
+      }
+     ]
+    }
+   ],
+   "distance_m": 9.8
+  },
+  {
+   "candidate_id": "poi_duplicate:node/6500853481|node/9037086310",
+   "module": "poi_duplicate",
+   "record_ref": "node/6500853481|node/9037086310",
+   "records": [
+    {
+     "external_ref": "node/6500853481",
+     "name": "Tudo",
+     "category": "cafe",
+     "lat": 52.5062544,
+     "lon": 13.3333169,
+     "providers": [
+      "openstreetmap"
+     ],
+     "members": [
+      {
+       "source": "osm_overpass",
+       "ref": "node/6500853481",
+       "name": "Tudo",
+       "category": "cafe"
+      }
+     ]
+    },
+    {
+     "external_ref": "node/9037086310",
+     "name": "Einstein Kaffee",
+     "category": "cafe",
+     "lat": 52.5061906,
+     "lon": 13.333231,
+     "providers": [
+      "meta",
+      "openstreetmap",
+      "overture"
+     ],
+     "members": [
+      {
+       "source": "osm_overpass",
+       "ref": "node/9037086310",
+       "name": "Einstein Kaffee",
+       "category": "cafe"
+      },
+      {
+       "source": "overture_places",
+       "ref": "overture:207d0b33-061a-4466-9f4c-10e768f97b09",
+       "name": "EINSTEIN KAFFEE ZOO - Berlin - Charlottenburg - Tiergarten",
+       "category": "cafe"
+      }
+     ]
+    }
+   ],
+   "distance_m": 9.2
+  },
+  {
+   "candidate_id": "poi_duplicate:node/7629461508|node/9286392661",
+   "module": "poi_duplicate",
+   "record_ref": "node/7629461508|node/9286392661",
+   "records": [
+    {
+     "external_ref": "node/7629461508",
+     "name": "Dunkin'",
+     "category": "fast_food",
+     "lat": 52.506136,
+     "lon": 13.3317935,
+     "providers": [
+      "alltheplaces",
+      "brightquery",
+      "meta",
+      "openstreetmap",
+      "overture"
+     ],
+     "members": [
+      {
+       "source": "osm_overpass",
+       "ref": "node/7629461508",
+       "name": "Dunkin'",
+       "category": "fast_food"
+      },
+      {
+       "source": "overture_places",
+       "ref": "overture:b85f1b5c-c7cd-45ca-9d0d-bc58a695454f",
+       "name": "Dunkin' Donuts",
+       "category": "cafe"
+      },
+      {
+       "source": "overture_places",
+       "ref": "overture:a6f9eb9d-aa4e-4b74-8386-96938268cae9",
+       "name": "Zoom Berlin",
+       "category": "cafe"
+      },
+      {
+       "source": "overture_places",
+       "ref": "overture:dab11246-7f5b-4ddc-9f09-0abd641281a9",
+       "name": "Dunkin Berlin, Zoom",
+       "category": "fast_food"
+      }
+     ]
+    },
+    {
+     "external_ref": "node/9286392661",
+     "name": "Chutney",
+     "category": "fast_food",
+     "lat": 52.5061057,
+     "lon": 13.3319191,
+     "providers": [
+      "openstreetmap"
+     ],
+     "members": [
+      {
+       "source": "osm_overpass",
+       "ref": "node/9286392661",
+       "name": "Chutney",
+       "category": "fast_food"
+      }
+     ]
+    }
+   ],
+   "distance_m": 9.1
+  },
+  {
+   "candidate_id": "poi_duplicate:node/7629461508|overture:feb09d15-297e-4dba-8f86-3d666fdcdafe",
+   "module": "poi_duplicate",
+   "record_ref": "node/7629461508|overture:feb09d15-297e-4dba-8f86-3d666fdcdafe",
+   "records": [
+    {
+     "external_ref": "node/7629461508",
+     "name": "Dunkin'",
+     "category": "fast_food",
+     "lat": 52.506136,
+     "lon": 13.3317935,
+     "providers": [
+      "alltheplaces",
+      "brightquery",
+      "meta",
+      "openstreetmap",
+      "overture"
+     ],
+     "members": [
+      {
+       "source": "osm_overpass",
+       "ref": "node/7629461508",
+       "name": "Dunkin'",
+       "category": "fast_food"
+      },
+      {
+       "source": "overture_places",
+       "ref": "overture:b85f1b5c-c7cd-45ca-9d0d-bc58a695454f",
+       "name": "Dunkin' Donuts",
+       "category": "cafe"
+      },
+      {
+       "source": "overture_places",
+       "ref": "overture:a6f9eb9d-aa4e-4b74-8386-96938268cae9",
+       "name": "Zoom Berlin",
+       "category": "cafe"
+      },
+      {
+       "source": "overture_places",
+       "ref": "overture:dab11246-7f5b-4ddc-9f09-0abd641281a9",
+       "name": "Dunkin Berlin, Zoom",
+       "category": "fast_food"
+      }
+     ]
+    },
+    {
+     "external_ref": "overture:feb09d15-297e-4dba-8f86-3d666fdcdafe",
+     "name": "Le Crobag",
+     "category": "fast_food",
+     "lat": 52.50605010986328,
+     "lon": 13.331812858581543,
+     "providers": [
+      "microsoft",
+      "overture"
+     ],
+     "members": [
+      {
+       "source": "overture_places",
+       "ref": "overture:feb09d15-297e-4dba-8f86-3d666fdcdafe",
+       "name": "Le Crobag",
+       "category": "fast_food"
+      }
+     ]
+    }
+   ],
+   "distance_m": 9.6
+  },
+  {
+   "candidate_id": "poi_duplicate:node/9286392661|overture:feb09d15-297e-4dba-8f86-3d666fdcdafe",
+   "module": "poi_duplicate",
+   "record_ref": "node/9286392661|overture:feb09d15-297e-4dba-8f86-3d666fdcdafe",
+   "records": [
+    {
+     "external_ref": "node/9286392661",
+     "name": "Chutney",
+     "category": "fast_food",
+     "lat": 52.5061057,
+     "lon": 13.3319191,
+     "providers": [
+      "openstreetmap"
+     ],
+     "members": [
+      {
+       "source": "osm_overpass",
+       "ref": "node/9286392661",
+       "name": "Chutney",
+       "category": "fast_food"
+      }
+     ]
+    },
+    {
+     "external_ref": "overture:feb09d15-297e-4dba-8f86-3d666fdcdafe",
+     "name": "Le Crobag",
+     "category": "fast_food",
+     "lat": 52.50605010986328,
+     "lon": 13.331812858581543,
+     "providers": [
+      "microsoft",
+      "overture"
+     ],
+     "members": [
+      {
+       "source": "overture_places",
+       "ref": "overture:feb09d15-297e-4dba-8f86-3d666fdcdafe",
+       "name": "Le Crobag",
+       "category": "fast_food"
+      }
+     ]
+    }
+   ],
+   "distance_m": 9.5
+  },
+  {
+   "candidate_id": "poi_duplicate:overture:05dae8d9-57fd-4364-8c0b-f2529db8cb63|way/1047617421",
+   "module": "poi_duplicate",
+   "record_ref": "overture:05dae8d9-57fd-4364-8c0b-f2529db8cb63|way/1047617421",
+   "records": [
+    {
+     "external_ref": "overture:05dae8d9-57fd-4364-8c0b-f2529db8cb63",
+     "name": "McCafé",
+     "category": "cafe",
+     "lat": 52.50701141357422,
+     "lon": 13.332540512084961,
+     "providers": [
+      "alltheplaces",
+      "overture"
+     ],
+     "members": [
+      {
+       "source": "overture_places",
+       "ref": "overture:05dae8d9-57fd-4364-8c0b-f2529db8cb63",
+       "name": "McCafé",
+       "category": "cafe"
+      }
+     ]
+    },
+    {
+     "external_ref": "way/1047617421",
+     "name": "Starbucks",
+     "category": "cafe",
+     "lat": 52.5070481,
+     "lon": 13.3325537,
+     "providers": [
+      "meta",
+      "openstreetmap",
+      "overture"
+     ],
+     "members": [
+      {
+       "source": "osm_overpass",
+       "ref": "way/1047617421",
+       "name": "Starbucks",
+       "category": "cafe"
+      },
+      {
+       "source": "overture_places",
+       "ref": "overture:a2b4916a-d04e-4954-b2e8-c7892899633f",
+       "name": "Starbucks",
+       "category": "cafe"
+      }
+     ]
+    }
+   ],
+   "distance_m": 4.2
+  },
+  {
+   "candidate_id": "poi_duplicate:overture:4037ea41-75d9-48d5-8f5f-dc6796f78265|overture:9b4c50f0-99d3-4616-8d3c-daeb378339c0",
+   "module": "poi_duplicate",
+   "record_ref": "overture:4037ea41-75d9-48d5-8f5f-dc6796f78265|overture:9b4c50f0-99d3-4616-8d3c-daeb378339c0",
+   "records": [
+    {
+     "external_ref": "overture:4037ea41-75d9-48d5-8f5f-dc6796f78265",
+     "name": "Café Kranzler",
+     "category": "cafe",
+     "lat": 52.504051208496094,
+     "lon": 13.330985069274902,
+     "providers": [
+      "brightquery",
+      "overture"
+     ],
+     "members": [
+      {
+       "source": "overture_places",
+       "ref": "overture:4037ea41-75d9-48d5-8f5f-dc6796f78265",
+       "name": "Café Kranzler",
+       "category": "cafe"
+      }
+     ]
+    },
+    {
+     "external_ref": "overture:9b4c50f0-99d3-4616-8d3c-daeb378339c0",
+     "name": "Café des Westens",
+     "category": "cafe",
+     "lat": 52.503997802734375,
+     "lon": 13.330999374389648,
+     "providers": [
+      "meta",
+      "overture"
+     ],
+     "members": [
+      {
+       "source": "overture_places",
+       "ref": "overture:9b4c50f0-99d3-4616-8d3c-daeb378339c0",
+       "name": "Café des Westens",
+       "category": "cafe"
+      }
+     ]
+    }
+   ],
+   "distance_m": 6.0
+  },
+  {
+   "candidate_id": "poi_duplicate:overture:80cf68af-70d3-4a8c-88c1-812097f79019|overture:9bb1f9d9-7e2e-4759-b927-647d8db3c761",
+   "module": "poi_duplicate",
+   "record_ref": "overture:80cf68af-70d3-4a8c-88c1-812097f79019|overture:9bb1f9d9-7e2e-4759-b927-647d8db3c761",
+   "records": [
+    {
+     "external_ref": "overture:80cf68af-70d3-4a8c-88c1-812097f79019",
+     "name": "Tee Tea Thé Ronnefeldt im BIKINI BERLIN",
+     "category": "cafe",
+     "lat": 52.50566864013672,
+     "lon": 13.3349027633667,
+     "providers": [
+      "foursquare",
+      "overture"
+     ],
+     "members": [
+      {
+       "source": "overture_places",
+       "ref": "overture:80cf68af-70d3-4a8c-88c1-812097f79019",
+       "name": "Tee Tea Thé Ronnefeldt im BIKINI BERLIN",
+       "category": "cafe"
+      }
+     ]
+    },
+    {
+     "external_ref": "overture:9bb1f9d9-7e2e-4759-b927-647d8db3c761",
+     "name": "Spreegold",
+     "category": "cafe",
+     "lat": 52.50560760498047,
+     "lon": 13.335028648376465,
+     "providers": [
+      "microsoft",
+      "overture"
+     ],
+     "members": [
+      {
+       "source": "overture_places",
+       "ref": "overture:9bb1f9d9-7e2e-4759-b927-647d8db3c761",
+       "name": "Spreegold",
+       "category": "cafe"
+      }
+     ]
+    }
+   ],
+   "distance_m": 10.9
+  },
+  {
+   "candidate_id": "poi_duplicate:way/157658317|way/420821908",
+   "module": "poi_duplicate",
+   "record_ref": "way/157658317|way/420821908",
+   "records": [
+    {
+     "external_ref": "way/157658317",
+     "name": "Minimarkt",
+     "category": "spati_kiosk",
+     "lat": 52.5064381,
+     "lon": 13.3326764,
+     "providers": [
+      "openstreetmap"
+     ],
+     "members": [
+      {
+       "source": "osm_overpass",
+       "ref": "way/157658317",
+       "name": "Minimarkt",
+       "category": "spati_kiosk"
+      }
+     ]
+    },
+    {
+     "external_ref": "way/420821908",
+     "name": "Kiosk",
+     "category": "spati_kiosk",
+     "lat": 52.5064919,
+     "lon": 13.3327707,
+     "providers": [
+      "openstreetmap"
+     ],
+     "members": [
+      {
+       "source": "osm_overpass",
+       "ref": "way/420821908",
+       "name": "Kiosk",
+       "category": "spati_kiosk"
+      }
+     ]
+    }
+   ],
+   "distance_m": 8.7
+  },
+  {
+   "candidate_id": "poi_duplicate:way/420821897|way/420821905",
+   "module": "poi_duplicate",
+   "record_ref": "way/420821897|way/420821905",
+   "records": [
+    {
+     "external_ref": "way/420821897",
+     "name": "China Box",
+     "category": "fast_food",
+     "lat": 52.5064537,
+     "lon": 13.3323154,
+     "providers": [
+      "openstreetmap"
+     ],
+     "members": [
+      {
+       "source": "osm_overpass",
+       "ref": "way/420821897",
+       "name": "China Box",
+       "category": "fast_food"
+      }
+     ]
+    },
+    {
+     "external_ref": "way/420821905",
+     "name": "Bistro Avci",
+     "category": "fast_food",
+     "lat": 52.5064163,
+     "lon": 13.3322872,
+     "providers": [
+      "openstreetmap"
+     ],
+     "members": [
+      {
+       "source": "osm_overpass",
+       "ref": "way/420821905",
+       "name": "Bistro Avci",
+       "category": "fast_food"
+      }
+     ]
+    }
+   ],
+   "distance_m": 4.6
+  },
+  {
+   "candidate_id": "poi_duplicate:way/420821897|way/96955603",
+   "module": "poi_duplicate",
+   "record_ref": "way/420821897|way/96955603",
+   "records": [
+    {
+     "external_ref": "way/420821897",
+     "name": "China Box",
+     "category": "fast_food",
+     "lat": 52.5064537,
+     "lon": 13.3323154,
+     "providers": [
+      "openstreetmap"
+     ],
+     "members": [
+      {
+       "source": "osm_overpass",
+       "ref": "way/420821897",
+       "name": "China Box",
+       "category": "fast_food"
+      }
+     ]
+    },
+    {
+     "external_ref": "way/96955603",
+     "name": "Curry 36",
+     "category": "fast_food",
+     "lat": 52.5065522,
+     "lon": 13.3324609,
+     "providers": [
+      "meta",
+      "openstreetmap",
+      "overture"
+     ],
+     "members": [
+      {
+       "source": "osm_overpass",
+       "ref": "way/96955603",
+       "name": "Curry 36",
+       "category": "fast_food"
+      },
+      {
+       "source": "overture_places",
+       "ref": "overture:3411251a-ff40-4637-8c1e-e1c32fb06eea",
+       "name": "Curry 36",
+       "category": "fast_food"
+      }
+     ]
+    }
+   ],
+   "distance_m": 14.7
+  }
+ ],
+ "set": "generalisation"
+}
