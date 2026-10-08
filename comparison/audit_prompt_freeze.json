@@ -1,0 +1,26 @@
+{
+ "frozen": [
+  {
+   "prompt_sha256": "f32facfbf6af91e7d02f1d3cc0b0479293242629ed8f2a1d0b9015c30a8bf1e3",
+   "version": "v4",
+   "frozen_on": "2026-10-07",
+   "model": "claude-sonnet-5-5",
+   "effort": "medium",
+   "selected_by": "Amendment 4 rule fixed before the v4 run: development recall 4/4 and fewer server-tool errors than v3 (0 vs 4)",
+   "development_run": "db/raw/audit/runs/warschauer_strasse_20261007T125249Z.json"
+  }
+ ],
+ "superseded": [
+  {
+   "prompt_sha256": "85168ab831f77ee71930960d5ce6c74aaa070391c908db4d915b89229a9600fb",
+   "version": "v3",
+   "frozen_on": "2026-10-07",
+   "model": "claude-sonnet-5-5",
+   "effort": "medium",
+   "selected_by": "highest development recall on D1-D4 (4/4, tied with v1), then fewer flagged development candidates (13 vs 26); rule recorded in comparison/audit_prompt_log.md before the v3 run",
+   "development_run": "db/raw/audit/runs/warschauer_strasse_20261007T123153Z.json",
+   "superseded_on": "2026-10-07",
+   "superseded_by": "v4 (Amendment 4)"
+  }
+ ]
+}

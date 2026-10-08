@@ -1,6 +1,6 @@
 # Implementation Plan — LLM Data-Plausibility Audit (v3)
 
-2026-10-07 · Status: Phase 1 done ([comparison/audit_candidate_recall.md](comparison/audit_candidate_recall.md)); candidate rules frozen (Amendment 2); Phase 2 next. Pre-registration: [comparison/audit_answer_key.md](comparison/audit_answer_key.md) (committed together with this plan, before any audit code or prompt exists).
+2026-10-07 · Status: Phases 1–4 done; decision **Adopt** by the pre-registered rule, both criteria at their thresholds ([comparison/audit_findings.md](comparison/audit_findings.md)). Phase 5 next.
 
 ## Goal
 
@@ -174,3 +174,30 @@ src/audit_candidates.py  SHA-256 1fdf42751930c09d4a744e14c5890d6b8f433c75041fecb
 
 Later changes to that file are allowed only to fix bugs. Each fix is logged here as a further amendment (what was wrong, the diff's effect on every worklist, the new SHA-256) before any LLM run uses the fixed version.
 
+
+## Amendment 3 (2026-10-07, before the first full development run and before any Phase 3 run)
+
+**What had run.** One trial on the development node only: 4 candidates (2 `concentration`, 2 `large_registration`), `claude-opus-5-5`, prompt `bd8a2050e135`, $0.489 at list prices (14 searches, 3 fetches; record `db/raw/audit/runs/warschauer_strasse_20261007T115724Z.json`). Roughly $0.12 per candidate, which put the full evaluation at $75–85. The analyst set a budget of $50 and decided the following changes.
+
+**Changes.**
+
+1. **Model:** `claude-sonnet-5-5` (list price $2 / $10 per MTok, cache reads $0.20) instead of the `agent_llm_policy.py` model constant (§3). Effort `medium`. The Opus trial is not used for any result; whether Sonnet is good enough is shown by the development runs and the holdout itself.
+2. **No web search for the POI modules.** `poi_category` and `poi_duplicate` candidates (issue types `category_error`, `duplicate`) are judged from the names, tags, categories, providers and distances in the worklist only; web search and fetch are not offered in those conversations. Consequence: H4–H6 test whether the auditor recognises the issue from the data alone, not after a lookup. Their findings carry no proposed number.
+3. **Development iterations:** at most **3 prompt versions**, each run **once** on the full development worklist. Each version is logged with its prompt SHA-256. The code refuses a fourth version and a second full run of the same version. Partial runs (`--limit`) remain possible for debugging and count towards the budget.
+4. **Batching:** at most 3 candidates per conversation, at most 10 searches and 4 fetches per conversation (the trial had 2 candidates and 7 searches; 6 candidates sharing 8 searches would have cut the searches per candidate to about a third).
+5. **Budget:** $50 in total for Phase 2 and Phase 3 at list prices, the Opus trial included. The code sums the cost of every run record and refuses a run whose cap does not fit into what is left.
+
+**Unchanged:** the node sets, the answer key, 3 runs each for the holdout, the control and the generalisation stations, the metrics and the decision thresholds.
+
+## Amendment 4 (2026-10-07, after v3 was frozen, before any holdout, control or generalisation run)
+
+**What was found.** v3 (`85168ab831f7`) was frozen by the rule in [comparison/audit_prompt_log.md](comparison/audit_prompt_log.md). Reading the development transcripts afterwards showed a tool-interface defect, not a wording problem: with the dynamic-filtering search tool (`web_search_20260209`), the model sometimes wrapped the query in an extra `params` object and the server rejected the call (`invalid_tool_input`: 2 of 10 searches in v1, 4 of 14 in v3; the model did not retry, so D4 in v3 got no sourced figure), and the same tool lets the model filter results with its own code, which in v2 dropped the sentence with the headcount D2 needed. No `web_fetch` call was made in any development run; that is not a defect in itself when search results already carry a quotable sentence.
+
+**Changes.**
+
+1. The auditor uses the basic server tools `web_search_20250305` and `web_fetch_20250910` (no dynamic filtering): results reach the model unfiltered and there is one way to call each tool. The prompt text is unchanged; the tool definitions are part of the prompt hash, so the hash changes and the v3 freeze no longer applies to the code.
+2. **One extra development version, v4**, only for this tool change (the cap of Amendment 3 becomes 4, for this reason alone). v4 is run once on the full development worklist, after a 1-candidate smoke run that checks the request format (partial runs do not count as versions).
+3. **Decision rule, fixed before the v4 run:** v4 replaces v3 as the frozen version if its development recall on D1–D4 is 4 / 4 and it has fewer server-tool errors than v3 (4). Otherwise v3 stays frozen and the code goes back to the v3 tool definitions.
+4. Every run record counts server-tool errors (error results of web search and fetch), and the command prints them, so this defect is visible without reading transcripts.
+
+**Unchanged:** sets, answer key, runs per set, metrics, thresholds, budget ($50).
