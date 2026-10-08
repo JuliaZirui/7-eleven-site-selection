@@ -202,6 +202,54 @@ class Sensitivity(unittest.TestCase):
         self.assertIsNone(out["pillars"]["a"]["competition"])
         self.assertEqual(out["fits"]["a"], 50.0)  # demand only, renormalized -- never scored as 0
 
+    @staticmethod
+    def _mapped(demand_score, count, people, relative):
+        """A node whose competition scores follow from count / people, with
+        a mapping-consistency entry (relative = its ratio / the best node's)."""
+        crits = []
+        for c in scoring.BUSINESS_FIT_CRITERIA:
+            if c.per_demand:
+                ratio = count / (people / scoring.PEOPLE_UNIT)
+                crits.append({"key": c.key, "pillar": c.pillar, "day_type": c.day_type, "weight": c.weight,
+                              "raw_value": ratio, "score": c.normalize(ratio), "count": count, "people": people})
+            else:
+                crits.append({"key": c.key, "pillar": c.pillar, "day_type": c.day_type, "weight": c.weight,
+                              "raw_value": people, "score": demand_score})
+        pillars = scoring.pillar_scores(crits)
+        return {"criteria": crits, "pillars": pillars,
+                "business_fit": scoring.business_fit(pillars, scoring.DEFAULT_WEIGHTS),
+                "mapping_consistency": {"relative": relative}}
+
+    def test_mapping_stress_scales_counts_by_the_mapping_gap(self):
+        res = {
+            "thin": self._mapped(demand_score=80, count=10, people=20_000, relative=0.5),
+            "full": self._mapped(demand_score=60, count=30, people=20_000, relative=1.0),
+        }
+        out = scoring.competitor_mapping_stress(res, scoring.DEFAULT_WEIGHTS)
+        self.assertEqual(out["factors"], {"thin": 2.0, "full": 1.0})
+        # The best-mapped node is untouched; the thin one is scored on 20 competitors, not 10.
+        self.assertAlmostEqual(out["fits"]["full"], res["full"]["business_fit"])
+        self.assertAlmostEqual(out["fits"]["thin"], self._mapped(80, 20, 20_000, 0.5)["business_fit"])
+        self.assertLess(out["fits"]["thin"], res["thin"]["business_fit"])
+        self.assertEqual(out["pillars"]["thin"]["demand"], 80.0)  # demand untouched
+        self.assertEqual(out["leader"], "thin")
+        self.assertGreater(out["leader_break_even_factor"], 1.0)
+
+    def test_mapping_stress_break_even_flips_the_leader(self):
+        res = {
+            "thin": self._mapped(demand_score=60, count=10, people=20_000, relative=0.5),
+            "full": self._mapped(demand_score=60, count=20, people=20_000, relative=1.0),
+        }
+        out = scoring.competitor_mapping_stress(res, scoring.DEFAULT_WEIGHTS)
+        # Equal demand: "thin" leads only while it reports fewer competitors than "full".
+        self.assertEqual(out["leader"], "thin")
+        self.assertAlmostEqual(out["leader_break_even_factor"], 2.0, places=3)
+        self.assertEqual(out["rank"][0], "full")  # at the implied factor of 2 it ties, broken by area_id
+
+    def test_mapping_stress_needs_mapping_consistency(self):
+        res = {"a": self._structured(demand_score=50, comp_score=50, count=10)}
+        self.assertIsNone(scoring.competitor_mapping_stress(res, scoring.DEFAULT_WEIGHTS))
+
 class DemandModel(unittest.TestCase):
     def test_size_class_to_headcount(self):
         self.assertEqual(demand_model.employees_estimate("0 Beschäftigte"), 0.0)

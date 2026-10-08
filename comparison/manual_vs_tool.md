@@ -1,5 +1,7 @@
 # Manual vs. Tool-Assisted Comparison — Brandenburger Tor
 
+> **Based on analysis run #5** (2026-10-01, `scoring_v4`, POI snapshot 27 with `conflation_v1`). The figures below were not re-run for later versions. The current report is run #19 (`scoring_v7`, `conflation_v2`); only the update note at the end reflects later changes.
+
 2026-10-01 · Day 7 · MVP item "A single comparison of manual vs. tool-assisted workflow — time spent, quality, cost" ([project_plan_v3.md](../project_plan_v3.md)). Manual input: [manual_protocol.md](manual_protocol.md). Tool input: POI snapshot 27 (`poi_conflated`, OSM + Overture, data as of 2026-09-23) and metrics from analysis run #5.
 
 ## Scope and limits
@@ -16,9 +18,9 @@
 | Setup + inventory + nearest competitor | 32 min net (2 + 28 + 2; step 1 ran 3 min over its 25-min cap) | ~1 s compute (metrics 0.98 s, scoring + report 0.04 s, from the Day 6 log) |
 | Data fetch | included above | ~5 min wall clock for all sources and all three nodes (snapshots 9–29, 2026-09-28 14:33–14:38) |
 | Marginal cost per run | analyst time | EUR 0.00 (no paid APIs, no LLM tokens in the fixed pipeline) |
-| Build cost | none | **_H_ hours over Days 1–6 (to fill in)** plus subscription/API spend _C_ |
+| Build cost | none | **≈ 4.5 hours** of Claude Code session activity, 22 Sep – 1 Oct 2026, up to run #5 (4.1–5.0 h, with an idle cutoff of 10–30 min between transcript events). Analyst time outside the sessions was not logged, so this is a lower bound. Spend: Claude Pro subscription; no LLM API runs on record before 2026-10-02. |
 
-Break-even, counting time only: the tool pays back after **H × 60 / 32 ≈ 1.9 × H** node-inventories, or **H × 60 / 90 ≈ 0.7 × H** full node passes using the protocol's expected 60–120 min. Example: a 40-hour build breaks even after ~75 competitor inventories or ~27 full passes. This ignores the tool's other value (reproducibility, the sensitivity analysis, 10,000-weighting robustness), which a manual pass does not produce at all.
+Break-even, counting time only: the tool pays back after **H × 60 / 32 ≈ 1.9 × H** node-inventories, or **H × 60 / 90 ≈ 0.7 × H** full node passes, using the protocol's expected 60–120 min. With H ≈ 4.5 h that is about 8–9 competitor inventories, or about 3 full passes. Because H is a lower bound, so is the break-even. This ignores the tool's other value (reproducibility, the sensitivity analysis, 10,000-weighting robustness), which a manual pass does not produce at all.
 
 ## Quality: competitor inventory
 

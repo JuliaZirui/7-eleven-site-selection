@@ -2,7 +2,7 @@
 
 [![tests](https://github.com/JuliaZirui/7-eleven-site-selection/actions/workflows/tests.yml/badge.svg)](https://github.com/JuliaZirui/7-eleven-site-selection/actions/workflows/tests.yml)
 
-A desk-research tool for retail expansion teams and the consultants who advise them. Before money is spent on field visits, it ranks candidate sites from public data. For each ranking it shows how far the evidence supports it, whether it holds up under different weightings, and what has to be checked on site.
+A desk-research tool for retail expansion teams and the consultants who advise them. Before money is spent on field visits, it ranks candidate sites from public data. For each ranking it shows how far the evidence supports it, whether it holds up when its least certain inputs are pushed to their plausible limits, and what has to be checked on site.
 
 > **Disclaimer.** This is a hypothetical case I set up myself. It does not represent an actual mandate from 7-Eleven or a market-entry plan by 7-Eleven. The tool ranks sites by *priority for on-site diligence*. It does not forecast revenue, and it does not decide where a store should open.
 
@@ -30,7 +30,7 @@ For each candidate site, a sourced report containing:
 | --- | --- |
 | **Business fit** (0–100) | How well does public data on demand and competition match the store concept? |
 | **Evidence quality** (0–100), scored separately | How far can that fit score be trusted? Measured by source corroboration, freshness, completeness and mapping consistency. The two scores are never added together. |
-| **Weight sensitivity** | Does the ranking survive named scenarios, ±50% weight shifts and 10,000 random weightings? Which conclusions are robust, and which depend on the client's strategic priorities? |
+| **Sensitivity analysis, inputs first** | Does the ranking survive its least certain inputs at their plausible limits: the visitor conversion, verified worker headcounts, competitor under-mapping, and how competition is measured? Weight checks (named scenarios, ±50% shifts, 10,000 random weightings) are reported too. With two pillars they can only reveal a trade-off between demand and competition (see *Why input sensitivity comes first*). |
 | **Differentiation hypotheses** | Rule-generated hypotheses to test, e.g. "morning peak under-supplied for its demand". These are hypotheses, not findings. |
 | **Evidence gaps and a field-research checklist** | What the data cannot settle, and exactly what to verify on site. |
 
@@ -58,34 +58,48 @@ flowchart LR
 | **Follow-up agent** (bounded) | Detects gaps that affect the conclusions (missing, stale or conflicting data), picks a refetch tool or flags the gap for field research, and stays within a call budget of 4 calls per run and 2 per site. It is triggered by data problems, never by a raw count such as "fewer than 8 shops". The decision step is a pluggable policy: an impact-ordered rule (default), the original fixed rule, or Claude (`claude-opus-5-5`). Whatever the policy proposes passes a guard in plain code (allowed tool, budget, no retry of a failed source) before it runs. |
 | **Data-plausibility audit** (LLM, review only) | Before scoring, deterministic rules list the raw records most likely to be wrong (a company's whole headcount filed at one address, a famous venue's visitors far beyond its capacity, a large workplace missing from the registry, a miscategorised or duplicate competitor). Claude (`claude-sonnet-5-5`, with web search) checks each one and cites its sources. It **never changes a number**: findings pass a guard in plain code and go to a review queue, and only rows a person accepts reach the correction tables that scoring reads. Skipped without API credentials; the report then marks the sites as unaudited. |
 
-**Data sources** (all open, no paid APIs): OpenStreetMap, Overture Maps and Foursquare OS Places (competitors, conflated across providers); Berlin LOR / MSS 2025 (residents); IHK Gewerbedaten (workplaces); Wikidata + Wikipedia pageviews + VBB GTFS (visitor draw); DB InfraGO station price classes (a check that the sites see comparable transit volumes).
+**Data sources** (all open, no paid APIs): OpenStreetMap and Overture Maps (competitors, conflated across providers); Berlin LOR / MSS 2025 (residents); IHK Gewerbedaten (workplaces); Wikidata + Wikipedia pageviews + VBB GTFS (visitor draw); DB InfraGO station price classes (a same-tier check, not footfall).
+
+Foursquare OS Places is **implemented but not connected**. The client, normalisation and conflation code exist (`src/fsq_client.py`, `poi_pipeline.py`) and run only when `HF_TOKEN` is set for the gated dataset. No Foursquare snapshot is in the database, and the 139-station anchors use OSM and Overture only. Foursquare listings still reach the competitor set indirectly, as one of Overture's upstream datasets.
 
 **Traceability:** SQLite, six tables. Snapshots are only ever appended, never overwritten. "Data as of" and "fetched on" are stored separately. Unknown values are flagged, never set to 0. Every number in the report cites the snapshot it came from.
 
 ## Case study: three Berlin transit nodes
 
-The store concept: fresh food, coffee and convenience goods, 50–100 m², with a morning (7–9) and an evening (16–19) commuter peak. The three candidates all have the **same DB station price class** (Preisklasse 4), so their transit volumes are comparable. They differ in customer mix:
+The store concept: fresh food, coffee and convenience goods, 50–100 m², with a morning (7–9) and an evening (16–19) commuter peak. The three candidates share the **same DB station price class** (Preisklasse 4, *Stationspreisliste 2026*). That is a station tier, not measured footfall:
 
-| Node | Customer profile | Business fit | Evidence quality | Ranked #1 in random weightings |
-| --- | --- | --- | --- | --- |
-| Brandenburger Tor | Visitor-led, city centre | 92.9 | 73.9 (verify first) | 100% |
-| Warschauer Straße | Office + nightlife mix | 63.2 | 76.6 (verify first) | 0% |
-| Schönhauser Allee | Residential daily shopping | 23.7 | 90.4 (adequate) | 0% |
+- DB InfraGO assigns the class from a points score with six elements: platform edges and maximum platform length (20% each), passengers and train stops (20% each), step-free access (5%) and service staff (15%).
+- Passengers are rail boardings and alightings on a weekday as reported by the train operators, in wide bands (10,000–49,999 is one band). They cover DB rail only, here the S-Bahn, not the U-Bahn.
+- 73 of Berlin's 133 DB stations are class 4, from Hackescher Markt to Ahrensfelde.
 
-Figures from [analysis run #17](reports/site_report_run17_20261003T153943Z.md) (2026-10-03, `scoring_v7`).
+The shared class rules out a node in a different tier: Zoologischer Garten (class 2) was replaced for that reason. It does not make the three nodes' volumes equal, and footfall by time window is not published (see Limitations). They differ in customer mix:
+
+| Node | Customer profile | Business fit | Fit, low visitor conversion | Fit, competitors scaled to best mapping rate | Evidence quality |
+| --- | --- | --- | --- | --- | --- |
+| Brandenburger Tor | Visitor-led, city centre | 92.9 | 72.7 | 81.7 (counts ×2.28) | 73.9 (verify first) |
+| Warschauer Straße | Office + nightlife mix | 63.2 | 54.4 | 47.8 (counts ×1.63) | 76.6 (verify first) |
+| Schönhauser Allee | Residential daily shopping | 23.7 | 22.7 | 23.7 (×1) | 90.4 (adequate) |
+
+Figures from [analysis run #19](reports/site_report_run19_20261008T132104Z.md) (2026-10-08, `scoring_v7`; scores unchanged since run #17).
 
 **Reading:**
-- **Brandenburger Tor is the diligence priority.** It ranks first under every weighting tested, across the interquartile range of the visitor estimate (at the low end it still leads 72.7 to 54.4), and across the verified range of on-site workers.
+- **Brandenburger Tor is the diligence priority.** It stays first when each uncertain input is moved to its plausible limit. Across the interquartile range of the visitor conversion, at the low end it still leads 72.7 to 54.4. It also stays first across the verified range of on-site workers, with competition counted in absolute numbers instead of per head, and with every node's competitor counts scaled up to the best-mapped node's rate.
 - **Its lead rests on two things to verify first.**
-  - **Competition.** OSM appears to under-map its competitors: 29 mapped against 66 IHK-registered food businesses. Its competition advantage may partly be a data artifact, so verifying the competitor count is the first item on its field checklist.
+  - **Competition.** OSM appears to under-map its competitors: 29 mapped against 66 IHK-registered food businesses (44%, against 100% at Schönhauser Allee). The stress test multiplies its competitor counts by 2.28 and Warschauer Straße's by 1.63. Brandenburger Tor's fit falls from 92.9 to 81.7, and it still leads 81.7 to 47.8. It would lose #1 only if its competitors were under-counted about 6×. The advantage is therefore not a mapping artifact at the measured gap, but it is smaller than the baseline shows. Verifying the competitor count is still the first item on its field checklist.
   - **Demand.** About 58% of its weekday demand is visitors, converted from Wikipedia pageviews; the ranking holds across the conversion's interquartile range, but only a footfall count settles it. About 6,600 of its workers are public-sector staff estimated by hand (range 5,100–8,200); the other two nodes' public employers have not been inventoried the same way.
 - **Schönhauser Allee is lower priority in this screening round.** Under the current demand proxy and competition measures, it faces the highest relative competitive pressure of the three, and its evidence is the strongest. Its peak competitor counts are above the P90 of the 139 reference stations in every time window, with or without dividing by demand.
-- **The ranking does not depend on dividing competition by demand.** The baseline scores competitors per 10,000 people, so demand also enters the competition pillar. Re-scored with absolute competitor counts in the 400 m circle (anchored on the same 139 stations), the order is unchanged (87.3 / 54.0 / 23.7), and Brandenburger Tor still ranks first in 100% of random weightings.
+- **The ranking does not depend on dividing competition by demand.** The baseline scores competitors per 10,000 people, so demand also enters the competition pillar. Re-scored with absolute competitor counts in the 400 m circle (anchored on the same 139 stations), the order is unchanged (87.3 / 54.0 / 23.7).
+
+### Why input sensitivity comes first
+
+Business fit has two pillars, demand and competition, so a weighting is a single number *w* (demand's share). Between any two nodes the fit difference is linear in *w*. The order can therefore change at most once between *w* = 0 and *w* = 1, and only if each node leads one pillar. A node that leads both pillars ranks first at every weighting. The 10,000 random weightings, the named scenarios and the ±50% shifts then all return the same answer, and that answer adds nothing to the pillar scores themselves. That is the case here: Brandenburger Tor leads both demand (87.6 vs 73.2 and 47.4) and competition (98.3 vs 53.3 and 0.0). "100% of random weightings" is a consequence of that, not separate evidence of robustness. Even when the pillars do trade off, the random-weighting share only says where the single crossover weight falls on a uniform prior.
+
+What can overturn this ranking is a wrong input, not a different weight. So the report leads with the checks that move inputs: the visitor conversion's interquartile range, the verified worker ranges, competitor counts scaled for under-mapping, and competition measured without the demand denominator. Weight checks remain in §4 of the report, for the case where a future node set does trade off between the pillars.
 
 ## Validation
 
-- **227 automated tests, all passing, run by GitHub Actions on every push (Python 3.9 and 3.12).** They cover missing data, duplicate records, API failures (49 mocked failure paths) and overnight opening hours, plus scoring, report, agent-guard and LLM-policy tests (mocked client, plus one round trip through the real SDK with an intercepted transport).
-- **End-to-end reproducibility.** A rerun with the network blocked reproduces every score, the ranking and the Monte Carlo shares exactly. Compute takes about 1 second, with no LLM tokens and €0 marginal cost.
+- **230 automated tests, all passing, run by GitHub Actions on every push (Python 3.9 and 3.12).** They cover missing data, duplicate records, API failures (49 mocked failure paths) and overnight opening hours, plus scoring, report, agent-guard and LLM-policy tests (mocked client, plus one round trip through the real SDK with an intercepted transport).
+- **End-to-end reproducibility.** A rerun with the network blocked reproduces every score, the ranking and the sensitivity results exactly. Compute takes about 1 second, with no LLM tokens and €0 marginal cost.
 - **Manual vs. tool benchmark** on one node ([comparison/manual_vs_tool.md](comparison/manual_vs_tool.md)):
   - Speed: 32 minutes by hand, about 1 second for the tool once the data is fetched.
   - Coverage: neither inventory was complete. The tool found about twice as many competitors, including several confirmed by three providers that the manual pass missed. The manual pass found 4 places that no open source listed, and got far better opening-hours coverage.
