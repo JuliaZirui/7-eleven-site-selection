@@ -80,7 +80,7 @@ The shared class rules out a node in a different tier: Zoologischer Garten (clas
 | Warschauer Straße | Office + nightlife mix | 69.1 | 59.5 | 52.4 (counts ×1.60) | 76.4 (verify first) |
 | Schönhauser Allee | Residential daily shopping | 23.7 | 22.7 | 23.7 (×1) | 90.0 (adequate) |
 
-Figures from [analysis run #22](reports/site_report_run22_20261008T151606Z.md) (2026-10-08, `scoring_v8`). Two changes since run #20:
+Figures from [analysis run #24](reports/site_report_run24_20261008T161828Z.md) (2026-10-08, `scoring_v8`; same scores as run #22, which differs only in two §5 report rules). Two changes since run #20:
 - **Competition is scored over the whole day** instead of in four time windows: the morning and evening baskets merged, open on a weekday or a weekend day, per 10,000 of that day type's people. Anchors were recalibrated on the same 139 stations (weekday P90 → P10: 67.7 → 12.2; weekend 90.9 → 14.4); the demand anchors reproduce exactly. Weekday competitors per 10,000 people: Brandenburger Tor 9.7, Warschauer Straße 27.6, Schönhauser Allee 85.9.
 - **The second audit review round is applied.** Records that are not competitors, closed or duplicated are excluded: 2 at Brandenburger Tor (29 → 27 competitors) and 9 at Schönhauser Allee (149 → 140). Two public employers missing from the IHK registry are added at Brandenburger Tor: the ARD-Hauptstadtstudio (~250) and the federal anti-discrimination agency (~35).
 
@@ -102,7 +102,7 @@ What can overturn this ranking is a wrong input, not a different weight. So the 
 
 ## Validation
 
-- **237 automated tests, all passing, run by GitHub Actions on every push (Python 3.9 and 3.12).** They cover missing data, duplicate records, API failures (49 mocked failure paths) and overnight opening hours, plus scoring, report, agent-guard and LLM-policy tests (mocked client, plus one round trip through the real SDK with an intercepted transport).
+- **239 automated tests, all passing, run by GitHub Actions on every push (Python 3.9 and 3.12).** They cover missing data, duplicate records, API failures (49 mocked failure paths) and overnight opening hours, plus scoring, report, agent-guard and LLM-policy tests (mocked client, plus one round trip through the real SDK with an intercepted transport).
 - **End-to-end reproducibility.** A rerun with the network blocked reproduces every score, the ranking and the sensitivity results exactly. Compute takes about 1 second, with no LLM tokens and €0 marginal cost.
 - **Manual vs. tool benchmark** on one node ([comparison/manual_vs_tool.md](comparison/manual_vs_tool.md)):
   - Speed: 32 minutes by hand, about 1 second for the tool once the data is fetched.

@@ -527,3 +527,55 @@ class ReportGuards(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class DifferentiationRules(unittest.TestCase):
+    """§5 rules on a synthetic node: report._pois is patched, so no database."""
+
+    NODE = make_node("n", 52.52, 13.40)
+
+    @staticmethod
+    def _m(value):
+        return {"metric_id": 1, "value": value, "is_missing": False, "missing_reason": None}
+
+    def _r(self, weekday, weekend):
+        """weekday / weekend: (residents, workers, visitors) people per day."""
+        metrics = {(name, "current"): self._m(v) for name, v in (
+            ("competitor_count_total", 20.0), ("competitor_count_fast_food", 2.0),
+            ("competitor_count_bakery", 2.0), ("competitor_count_cafe", 2.0))}
+        crits = []
+        for key, parts in (("daily_people", weekday), ("daily_people_weekend", weekend)):
+            crits.append({"key": key, "raw_value": float(sum(parts)),
+                          "breakdown": dict(zip(("residents", "workers", "visitors"), map(float, parts)))})
+        return {"metrics": metrics, "criteria": crits}
+
+    def _rules(self, r, pois=()):
+        with mock.patch.object(report, "_pois", return_value=list(pois)):
+            return report._differentiation(None, self.NODE, r)
+
+    def test_commuter_format_is_part_of_the_office_rule(self):
+        # Workers >= 40% and weekday >= 1.2x weekend: one office entry with the commuter sentence.
+        office = self._rules(self._r(weekday=(3_000, 14_000, 6_000), weekend=(3_000, 1_000, 6_000)))
+        hits = [h for h in office if "Office-commuter base" in h]
+        self.assertEqual(len(hits), 1)
+        self.assertIn("A commuter format", hits[0])
+        self.assertFalse(any("Weekday-led" in h for h in office))
+        # Office-led but flat across the week: no commuter sentence.
+        flat = self._rules(self._r(weekday=(3_000, 6_000, 1_000), weekend=(3_000, 5_000, 1_000)))
+        self.assertNotIn("A commuter format", next(h for h in flat if "Office-commuter base" in h))
+        # Weekday-heavy but visitor- or resident-led: never called a commuter format.
+        for weekday, weekend in (((1_300, 9_400, 14_200), (1_300, 700, 14_200)),
+                                 ((10_700, 3_200, 500), (10_700, 500, 500))):
+            rules = self._rules(self._r(weekday, weekend))
+            self.assertFalse(any("commuter format" in h.lower() for h in rules), weekday)
+
+    def test_24_7_competitors_near_the_anchor_are_one_entry(self):
+        near = [{"name": n, "category": "spati_kiosk", "lat": 52.5210, "lon": 13.4000 + i * 1e-4, "hours": "24/7"}
+                for i, n in enumerate(("25 h shop", "REWE To Go"))]
+        far = {"name": "Far", "category": "spati_kiosk", "lat": 52.53, "lon": 13.40, "hours": "24/7"}
+        hits = [h for h in self._rules(self._r((5_000, 5_000, 500), (5_000, 1_000, 500)), near + [far]) if "24/7" in h]
+        self.assertEqual(len(hits), 1)
+        self.assertIn("2 24/7 direct-format competitors", hits[0])
+        self.assertIn("25 h shop", hits[0])
+        self.assertIn("REWE To Go", hits[0])
+        self.assertNotIn("Far", hits[0])
