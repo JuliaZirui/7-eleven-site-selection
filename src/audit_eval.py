@@ -388,6 +388,11 @@ def write_report(path: Path = EVAL_MD) -> str:
         fa = false_alarms(runs, labels)
         fa_by_node[node] = fa
         pr = fa["per_run"]
+        if any(x["unlabelled"] for x in pr):
+            L.append(f"| {set_name} | {node} | {len(runs)} | ${sum(r['cost_usd'] for r in runs):.2f} | "
+                     f"{', '.join(str(x['flagged']) for x in pr)} | labelling pending | | | "
+                     f"{sum(x['unlabelled'] for x in pr)} |")
+            continue
         L.append(f"| {set_name} | {node} | {len(runs)} | ${sum(r['cost_usd'] for r in runs):.2f} | "
                  f"{', '.join(str(x['flagged']) for x in pr)} | {', '.join(str(x['false_alarm']) for x in pr)} | "
                  f"{fa['median_false_alarms']} | {', '.join(str(x['unclear']) for x in pr)} | "
@@ -416,6 +421,22 @@ def write_report(path: Path = EVAL_MD) -> str:
     if pending:
         L.append(f"Pending: runs or labels missing for {', '.join(pending)}. The false-alarm threshold applies per "
                  "node, so no decision is taken yet.")
+    elif hruns:
+        caught = sum(x["caught"] for x in rec)
+        worst = max(fa_by_node[n]["median_false_alarms"] for _, n in order[:2])
+        if caught >= 4 and worst <= 3:
+            verdict = "**Adopt**: the audit runs before scoring by default; flags go to the review queue and the report"
+        elif caught >= 2:
+            verdict = "**Keep as an optional assistant** (`--audit`), with what it misses reported"
+        else:
+            verdict = "**Drop**, and write up why"
+        L += [f"Pre-registered rule (answer key, unchanged by Amendments 2–4): holdout recall {caught} / {len(rec)} "
+              f"(threshold >= 4 / 6), false alarms per node, median of 3 runs: "
+              + ", ".join(f"{n} {fa_by_node[n]['median_false_alarms']}" for _, n in order[:2])
+              + " (threshold <= 3).", "", f"Outcome by the rule: {verdict}.", "",
+              f"Stated with it (Amendments 1–2): the main evidence H1–H3 gives {main} / 3; the 4 / 6 includes the "
+              "contaminated H5 and H6, which is in-sample for the conflation_v2 rules; the holdout has six items, "
+              "so one item moves the result across the threshold."]
     text = "\n".join(L) + "\n"
     path.write_text(text)
     return text
