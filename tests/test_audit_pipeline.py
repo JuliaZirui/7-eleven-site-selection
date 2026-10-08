@@ -179,6 +179,34 @@ class ApplyTest(unittest.TestCase):
         self.assertEqual(statuses[3], "accepted")
 
 
+class AnnotateTest(ApplyTest):
+    def test_hints_for_corrected_records_and_evaluation_labels(self):
+        with (self.cal / "poi_corrections_verified.csv").open("a") as f:
+            f.write("\nc,n,,exclude,known,,analyst,2026-10-01\n")
+        labels = self.root / "labels.csv"
+        labels.write_text("area_id;candidate_id;label\nn;poi_duplicate:a|b;false_alarm\n")
+        with self.queue.open() as f:
+            rows = list(csv.DictReader(f))
+        for r in rows:
+            r["review_status"], r["reviewer_note"] = "pending", ""
+        with self.queue.open("w", newline="") as f:
+            w = csv.DictWriter(f, fieldnames=QUEUE_COLUMNS)
+            w.writeheader()
+            w.writerows(rows)
+        self.assertEqual(audit_apply.annotate(self.queue, labels), 3)
+        with self.queue.open() as f:
+            notes = {r["candidate_id"]: r["reviewer_note"] for r in csv.DictReader(f)}
+        self.assertIn("already corrected in poi_corrections_verified.csv", notes["poi_category:c"])
+        self.assertEqual(notes["poi_duplicate:a|b"], "hint: evaluation label false_alarm")
+        self.assertEqual(notes["large_registration:ihk:7"], "")
+
+    def test_hints_never_reach_a_correction_table(self):
+        row = self._row("large_registration:ihk:7", "ihk:7", "company_wide_headcount", "persons_on_site", "accepted",
+                        note="hint: evaluation label true_issue; checked the annual report")
+        self.assertNotIn("hint", audit_apply._basis(row))
+        self.assertIn("checked the annual report", audit_apply._basis(row))
+
+
 class CliWiringTest(unittest.TestCase):
     def test_audit_runs_after_metrics_and_before_followup(self):
         keys = list(cli.STEP_KEYS)
