@@ -2,11 +2,13 @@
 
 2026-09-23 · Candidate transit-node shortlist and business analysis scope. Store-model assumptions live separately in [store_hypothesis.md](store_hypothesis.md).
 
-> **How to read this file.** After the scope sections it is a dated working log (Day 2 → v5.2). Later sections supersede earlier ones and earlier text is not rewritten. For example, Day 5's three-pillar scoring was replaced in v3, v1's competitor counts in v2, and VBB GTFS, rejected on Day 4, was adopted in v2 for station lookups. Current figures: the last section and the [latest report](reports/site_report_run17_20261003T153943Z.md). The follow-up agent's v2 is the last section.
+> **How to read this file.** After the scope sections it is a dated working log (Day 2 → v7). Later sections supersede earlier ones and earlier text is not rewritten. For example, Day 5's three-pillar scoring was replaced in v3, v1's competitor counts in v2, and VBB GTFS, rejected on Day 4, was adopted in v2 for station lookups. Current figures: the last section and the [latest report](reports/site_report_run26_20261008T181455Z.md). The follow-up agent's v2 is the "Agent v2" section.
+>
+> **How the conclusion evolved.** Early versions (Day 5 to v3) found no robust #1: Brandenburger Tor and Schönhauser Allee, later Warschauer Straße, were within a few fit points and swapped places under different weights. The order became clear in v4, when demand was measured in people per day (residents + workers + visitors) and competition per 10,000 of those people: Brandenburger Tor's few mapped competitors serve a large daily population, while Schönhauser Allee's many competitors serve a smaller one. Each later change (verified on-site headcounts, public-sector employers, Berghain's real attendance, conflation fixes, all-day competition) was a correction found by a check, not a weight change, and the report tests the inputs that carry the result: the visitor conversion, the worker ranges, competitor under-mapping, and both downsides together.
 
 ## Core Business Question
 
-Assume 7-Eleven plans to pilot a Berlin store emphasizing fresh food, beverages, and commuter convenience, anchored to a small number of high-traffic transit nodes. Among the three candidate transit nodes, which are worth prioritizing for on-the-ground site diligence? What do the public data support, and what still needs verification?
+Assume 7-Eleven plans to pilot a Berlin convenience store emphasizing fresh food, coffee and beverages, trading all day and anchored to a small number of high-traffic transit nodes. Among the three candidate transit nodes, which are worth prioritizing for on-the-ground site diligence? How strong is the competition at each, and how much business potential do the public data show? What do the public data support, and what still needs verification?
 
 ## Candidate Transit Nodes (final)
 
@@ -30,10 +32,10 @@ Radius rationale: no 7-Eleven-specific (Nordic or Japan HQ) catchment-radius fig
 
 ## Business Analysis Scope
 
-- **Demand**: convenience-consumption signals from residents, commuters, and tourists
+- **Demand**: people within walking distance — residents, people working nearby and visitors; no segment is preset as the core customer
 - **Competition**: Späti, supermarkets, gas-station convenience stores, and other formats offering fresh/ready-to-eat food
 - **Differentiation**: compare products/services, operating hours, and spatial distribution — not just a headcount of same-category stores
-- **Time**: dual-peak model — morning and evening commute peaks as the core evaluation windows, midday off-peak as a baseline, avoiding the preset assumption that evening is always optimal
+- **Time**: all-day trading, weekday and weekend scored separately. *Originally* a dual-peak model (morning and evening commute peaks as the core windows); dropped in v7 because no public source measures footfall by time window. The windows remain as unscored diagnostics
 - **Output**: area prioritization, differentiation hypotheses, evidence gaps, field-research checklist
 
 Low competition does not automatically mean market opportunity; a high store count can also signal both demand clustering and competitive pressure. Unverified items — rent, actual foot traffic, available storefronts, operating restrictions, and supply chain — must be explicitly listed in the report.
@@ -211,7 +213,7 @@ This corroborates two of the three customer-profile hypotheses reasonably direct
 
 ## Day 5: Scoring Layer, Sensitivity, Report
 
-[`src/scoring.py`](src/scoring.py) computes two scores per node and never adds them together: **business fit** (how well public data match the store hypothesis) and **evidence quality** (how far that fit number can be trusted). [`src/report.py`](src/report.py) renders [`templates/report_template.md`](templates/report_template.md), re-verifies every cited figure against `area_metrics` by `metric_id`, and writes an `analysis_runs` row (store hypothesis parsed from [store_hypothesis.md](store_hypothesis.md), area ids, snapshot ids, weights, `scoring_v1`, the Day 4 tool log, report path). First run: `analysis_runs #1` (24 Sep). Only the latest run's report is published: [`reports/site_report_run17_20261003T153943Z.md`](reports/site_report_run17_20261003T153943Z.md).
+[`src/scoring.py`](src/scoring.py) computes two scores per node and never adds them together: **business fit** (how well public data match the store hypothesis) and **evidence quality** (how far that fit number can be trusted). [`src/report.py`](src/report.py) renders [`templates/report_template.md`](templates/report_template.md), re-verifies every cited figure against `area_metrics` by `metric_id`, and writes an `analysis_runs` row (store hypothesis parsed from [store_hypothesis.md](store_hypothesis.md), area ids, snapshot ids, weights, `scoring_v1`, the Day 4 tool log, report path). First run: `analysis_runs #1` (24 Sep). Only the latest run's report is published: [`reports/site_report_run26_20261008T181455Z.md`](reports/site_report_run26_20261008T181455Z.md).
 
 ### New scoring inputs (added to the Day 3 metrics layer)
 
@@ -249,7 +251,7 @@ Two gaps surfaced while building the scoring, both fixed in [`src/metrics_pipeli
 
 ## Day 6: Fixed Test Cases
 
-`python3 tests/run_day6.py` runs all four fixed test-case categories from project_plan_v3.md, plus a supplementary suite for the Day 5 layer, then an end-to-end reproducibility check. It writes a time/cost/quality log to `reports/day6_test_log_<stamp>.md` and `.json`; the latest published log is [`reports/day6_test_log_20261004T081832Z.md`](reports/day6_test_log_20261004T081832Z.md). The tests use stdlib `unittest` (no new dependency). Every test builds its own throwaway SQLite database from `db/schema.sql` and redirects every raw-file/report path into a temp dir. A network guard makes any HTTP call a test didn't explicitly mock raise an error, so the real `db/site_selection.db` is never written (checksum identical before and after) and no test can pass by quietly hitting a live API.
+`python3 tests/run_day6.py` runs all four fixed test-case categories from project_plan_v3.md, plus a supplementary suite for the Day 5 layer, then an end-to-end reproducibility check. It writes a time/cost/quality log to `reports/day6_test_log_<stamp>.md` and `.json`; the first published log was `reports/day6_test_log_20261004T081832Z.md` (only the latest log is kept in `reports/`). The tests use stdlib `unittest` (no new dependency). Every test builds its own throwaway SQLite database from `db/schema.sql` and redirects every raw-file/report path into a temp dir. A network guard makes any HTTP call a test didn't explicitly mock raise an error, so the real `db/site_selection.db` is never written (checksum identical before and after) and no test can pass by quietly hitting a live API.
 
 | Category | File | What it pins down |
 | --- | --- | --- |
@@ -577,3 +579,5 @@ Plan: [plan_llm_tool_selection.md](plan_llm_tool_selection.md). Pre-registration
 The ranking holds across every input check: visitor conversion at P25 (73.6 / 59.5 / 22.7), verified worker ranges, absolute counts (87.6 / 60.4 / 23.7), and competitor counts scaled to the best mapping rate (82.4 / 49.9 / 23.7; Brandenburger Tor's break-even ×5.6).
 
 **Run #22 (same day, scoring_v8):** the second audit review round re-conflated and re-scored. Brandenburger Tor drops 29 → 27 competitors (24 in the all-day basket, 9.7 per 10,000 weekday people) and gains two public employers missing from the IHK registry (ARD-Hauptstadtstudio, Antidiskriminierungsstelle des Bundes). Schönhauser Allee drops 149 → 140 competitors (85.9 per 10,000). Fit: 94.2 / 69.1 / 23.7. Evidence quality: 72.9 / 76.4 / 90.0. The best mapping rate is now Schönhauser Allee's 94%, so the stress factors are ×2.30 and ×1.60. Ranking unchanged.
+
+**Runs #24–26 (same day, report only; scores unchanged).** The store concept drops its commuter positioning ([store_hypothesis.md](store_hypothesis.md)): an all-day convenience store for residents, workers and visitors, judged on competition and business potential. The report now leads with the input checks and adds a joint downside (visitors at the P25 conversion *and* competitor counts scaled for under-mapping): Brandenburger Tor 59.0, Warschauer Straße 43.3, Schönhauser Allee 22.7. Warschauer Straße would rank first there only with demand weighted above 86%. The §5 hypotheses and §7 footfall counts no longer refer to commute peaks.

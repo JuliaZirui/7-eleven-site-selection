@@ -1,5 +1,5 @@
 {
-  "description": "Input of the Berlin case study: three S/U-Bahn nodes with the same DB station price class (Preisklasse 4) and different customer profiles. Rationale per node: site_candidates.md. The store concept is read from store_hypothesis.md; competitor categories, peak windows and weights are set in code (README > Configuration).",
+  "description": "Input of the Berlin case study: three S/U-Bahn nodes with the same DB station price class (Preisklasse 4) and different customer profiles. Rationale per node: site_candidates.md. The store concept is read from store_hypothesis.md; competitor categories, diagnostic time windows and weights are set in code (src/poi_taxonomy.py, src/day_types.py, src/scoring.py).",
   "sites": [
     {
       "area_id": "brandenburger_tor",

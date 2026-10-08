@@ -74,9 +74,8 @@ class CompetitionWindow:
 
 
 # scoring_v8: competition is scored on the whole day only -- competitors of
-# the all-day basket open at any time on the representative day. The store
-# hypothesis's commute peaks (and the weekend windows) are not measured by
-# any public footfall source, so they are kept as unscored diagnostics:
+# the all-day basket open at any time on the representative day. The time
+# windows are not measured by any public footfall source, so they are kept as unscored diagnostics:
 # their counts are still computed, calibrated and reported (§5 hypotheses),
 # but no score reads them. Not 0-24 as a trading claim: a shop open at all
 # that day competes for the day's people.

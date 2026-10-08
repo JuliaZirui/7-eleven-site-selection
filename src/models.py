@@ -1,7 +1,7 @@
 """Core data structures for the site-selection pipeline.
 
-See ../site_candidates.md for the business rationale behind the time
-windows (dual-peak model) and the 400m search radius.
+See ../site_candidates.md for the business rationale behind the 400m
+search radius. The time windows are unscored diagnostics (store_hypothesis.md).
 """
 
 from dataclasses import dataclass
@@ -23,8 +23,8 @@ class TimeWindow:
     end_hour: int  # 0-23, local time, exclusive
 
 
-# Matches store_hypothesis.md's dual-peak model: morning/evening commute
-# peaks as the core evaluation windows, midday as the off-peak baseline.
+# Diagnostic time windows (unscored since scoring_v8; the store trades all
+# day and assumes no peak, see store_hypothesis.md). Labels kept from v1.
 DEFAULT_TIME_WINDOWS: tuple[TimeWindow, ...] = (
     TimeWindow(TimeWindowLabel.MORNING_PEAK, start_hour=7, end_hour=9),
     TimeWindow(TimeWindowLabel.EVENING_PEAK, start_hour=16, end_hour=19),

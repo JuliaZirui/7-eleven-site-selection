@@ -11,15 +11,15 @@ This is a self-constructed hypothetical client case. **It does not represent an 
 | Dimension | Assumption |
 | --- | --- |
 | Products & services | Fresh food (sandwiches, onigiri, prepared meals), tobacco/alcohol, coffee, daily emergency items (tissues, batteries, charging cables) |
-| Target customers | Office commuters, local young residents, and tourists — focused on a small number of high-traffic transit nodes |
-| Planned operating hours | All-day trading, weekday and weekend. **Working hypothesis, to verify on site:** trade concentrates in a morning commute peak (~7–9am) and an evening commute peak (~4–7pm). No public source measures footfall at these nodes by time window, so the peaks are not scored; they are tested by counting footfall once at 7–9 and once at 16–19 on a weekday (field checklist) |
+| Target customers | Everyone within walking distance of a high-traffic transit node: residents, people working nearby and visitors. No segment is preset as the core customer; the mix comes from the data at each node |
+| Planned operating hours | All-day trading, weekday and weekend. No time-of-day peak is assumed: no public source measures footfall at these nodes by time window, and the field checklist counts footfall in the morning, at midday and in the evening |
 | Store format | 50–100㎡, embedded in or immediately adjacent to a high-traffic transit node, not a gas-station-attached convenience store |
 
-## Why the dual peak is a hypothesis, not a scoring window
+## Why competition is scored over the whole day
 
-Until `scoring_v7`, competition was scored separately in each commute peak (7–9, 16–19) and in two weekend windows (10–19, 22–02). That treated the dual peak as known: a window's weight in the score assumed the store's trade really falls there. Nothing in the public data shows it does. DB InfraGO publishes weekday passenger bands per station, not passengers by hour, and no source covers the U-Bahn or the walk-in flow from offices, homes and sights.
+The first versions of this project positioned the store around a morning (7–9) and an evening (16–19) commute peak, and until `scoring_v7` competition was scored separately in those two windows and in two weekend windows (10–19, 22–02). That treated the store's trading hours as known. Nothing in the public data shows when trade falls at these nodes: DB InfraGO publishes weekday passenger bands per station, not passengers by hour, and no source covers the U-Bahn or the walk-in flow from offices, homes and sights. The project then dropped the commuter positioning: the question became how strong the competition is at each node and how much business potential the public data show for an all-day convenience store.
 
-Since `scoring_v8`, competition is scored over the whole day: competitors of the merged morning and evening basket (bakery, café, supermarket, späti, fast food, fuel-station shop) open on a weekday or on a weekend day, per 10,000 of that day type's people. The anchors are recalibrated on the same 139 reference stations. The peak and weekend windows are kept as unscored diagnostics: their competitor counts are listed in the report and drive the differentiation hypotheses, e.g. "16–19 thinly served". Two weekday footfall counts, at 7–9 and at 16–19, decide whether the dual peak holds at a node.
+Since `scoring_v8`, competition is scored over the whole day: competitors in the convenience basket (bakery, café, supermarket, späti, fast food, fuel-station shop) open on a weekday or on a weekend day, per 10,000 of that day type's people. The anchors are recalibrated on the same 139 reference stations. The four time windows are kept as unscored diagnostics: their competitor counts are listed in the report and drive differentiation hypotheses such as "weekday 16–19 thinly served".
 
 ## Benchmark Cases: Successful European Convenience Chains
 
