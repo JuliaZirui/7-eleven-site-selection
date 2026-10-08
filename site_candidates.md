@@ -83,6 +83,23 @@ Zoo is two tiers higher than the other two, so its magnitude isn't comparable �
 
 **A methodological caveat worth keeping**: Preisklasse measures "how important this station is to DB's long-distance/regional rail operations," not raw foot traffic or fame. For example, Brandenburger Tor is Berlin's most famous landmark with extremely high tourist density, but because no ICE/IC/regional trains stop there (only S-Bahn + U5), it's graded the same as an ordinary intra-city interchange station (Preisklasse 4). If the report cites Preisklasse to describe "transit-hub tier," this caveat needs to travel with it, or it will be misread as a foot-traffic comparison.
 
+**Re-verification (2026-10-08).** The caveat above names the right risk, but its description of the class is inaccurate. DB InfraGO's published assignment rules (Anlage 7.3.2.4.1.1 to the INB 2027, *Zuordnungssystematik Stationen*; stated for newly opened stations) score six elements:
+
+| Element | Weight | Bands |
+| --- | --- | --- |
+| Platform edges | 20% | 1 / 2 / 3–4 / 5–9 / 10–14 / 15+ |
+| Maximum platform length | 20% | up to 90 m … from 280 m |
+| Passengers: operator-reported max. weekday boardings and alightings | 20% | <50 / 50–299 / 300–999 / 1,000–9,999 / 10,000–49,999 / 50,000+ |
+| Train stops per day | 20% | ≤10 / 11–50 / 51–100 / 101–500 / 501–1,000 / 1,001+ |
+| Step-free access (lifts / escalators) | 5% | yes / no |
+| Service staff | 15% | yes / no |
+
+The weighted sum is mapped to seven classes (e.g. 50.01–60 = class 4). So the class does include rail passengers, but only as one fifth of the score, in bands that span a factor of 5, and only for DB rail (at these nodes the S-Bahn; U-Bahn passengers are not counted). Long-distance stops matter only indirectly, through platform length and stop counts.
+
+Re-checked in the *Stationspreisliste 2026* (valid from 01.01.2026): Brandenburger Tor 4, Warschauer Straße 4, Schönhauser Allee 4, Zoologischer Garten 2. Of the 133 Berlin stations in the list, 73 are class 4 (classes 1–6: 4 / 6 / 10 / 73 / 36 / 4), from Hackescher Markt and Jannowitzbrücke to Ahrensfelde and Frohnau.
+
+**Consequence:** "same Preisklasse" supports "same station tier, no node in a different league" (the reason Zoo was replaced). It does not support "comparable transit volumes". README and report now say so.
+
 ## Day 2 Data Sources & Evidence Gaps
 
 Pipelines: [`src/poi_pipeline.py`](src/poi_pipeline.py) (OSM competitor POIs) and [`src/lor_pipeline.py`](src/lor_pipeline.py) (LOR population). Taxonomy in [`src/poi_taxonomy.py`](src/poi_taxonomy.py), HTTP clients in [`src/osm_client.py`](src/osm_client.py) / [`src/lor_client.py`](src/lor_client.py).

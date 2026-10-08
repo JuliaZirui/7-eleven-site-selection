@@ -58,13 +58,21 @@ flowchart LR
 | **Follow-up agent** (bounded) | Detects gaps that affect the conclusions (missing, stale or conflicting data), picks a refetch tool or flags the gap for field research, and stays within a call budget of 4 calls per run and 2 per site. It is triggered by data problems, never by a raw count such as "fewer than 8 shops". The decision step is a pluggable policy: an impact-ordered rule (default), the original fixed rule, or Claude (`claude-opus-5-5`). Whatever the policy proposes passes a guard in plain code (allowed tool, budget, no retry of a failed source) before it runs. |
 | **Data-plausibility audit** (LLM, review only) | Before scoring, deterministic rules list the raw records most likely to be wrong (a company's whole headcount filed at one address, a famous venue's visitors far beyond its capacity, a large workplace missing from the registry, a miscategorised or duplicate competitor). Claude (`claude-sonnet-5-5`, with web search) checks each one and cites its sources. It **never changes a number**: findings pass a guard in plain code and go to a review queue, and only rows a person accepts reach the correction tables that scoring reads. Skipped without API credentials; the report then marks the sites as unaudited. |
 
-**Data sources** (all open, no paid APIs): OpenStreetMap, Overture Maps and Foursquare OS Places (competitors, conflated across providers); Berlin LOR / MSS 2025 (residents); IHK Gewerbedaten (workplaces); Wikidata + Wikipedia pageviews + VBB GTFS (visitor draw); DB InfraGO station price classes (a check that the sites see comparable transit volumes).
+**Data sources** (all open, no paid APIs): OpenStreetMap and Overture Maps (competitors, conflated across providers); Berlin LOR / MSS 2025 (residents); IHK Gewerbedaten (workplaces); Wikidata + Wikipedia pageviews + VBB GTFS (visitor draw); DB InfraGO station price classes (a same-tier check, not footfall).
+
+Foursquare OS Places is **implemented but not connected**. The client, normalisation and conflation code exist (`src/fsq_client.py`, `poi_pipeline.py`) and run only when `HF_TOKEN` is set for the gated dataset. No Foursquare snapshot is in the database, and the 139-station anchors use OSM and Overture only. Foursquare listings still reach the competitor set indirectly, as one of Overture's upstream datasets.
 
 **Traceability:** SQLite, six tables. Snapshots are only ever appended, never overwritten. "Data as of" and "fetched on" are stored separately. Unknown values are flagged, never set to 0. Every number in the report cites the snapshot it came from.
 
 ## Case study: three Berlin transit nodes
 
-The store concept: fresh food, coffee and convenience goods, 50–100 m², with a morning (7–9) and an evening (16–19) commuter peak. The three candidates all have the **same DB station price class** (Preisklasse 4), so their transit volumes are comparable. They differ in customer mix:
+The store concept: fresh food, coffee and convenience goods, 50–100 m², with a morning (7–9) and an evening (16–19) commuter peak. The three candidates share the **same DB station price class** (Preisklasse 4, *Stationspreisliste 2026*). That is a station tier, not measured footfall:
+
+- DB InfraGO assigns the class from a points score with six elements: platform edges and maximum platform length (20% each), passengers and train stops (20% each), step-free access (5%) and service staff (15%).
+- Passengers are rail boardings and alightings on a weekday as reported by the train operators, in wide bands (10,000–49,999 is one band). They cover DB rail only, here the S-Bahn, not the U-Bahn.
+- 73 of Berlin's 133 DB stations are class 4, from Hackescher Markt to Ahrensfelde.
+
+The shared class rules out a node in a different tier: Zoologischer Garten (class 2) was replaced for that reason. It does not make the three nodes' volumes equal, and footfall by time window is not published (see Limitations). They differ in customer mix:
 
 | Node | Customer profile | Business fit | Fit, low visitor conversion | Fit, competitors scaled to best mapping rate | Evidence quality |
 | --- | --- | --- | --- | --- | --- |
@@ -72,7 +80,7 @@ The store concept: fresh food, coffee and convenience goods, 50–100 m², with 
 | Warschauer Straße | Office + nightlife mix | 63.2 | 54.4 | 47.8 (counts ×1.63) | 76.6 (verify first) |
 | Schönhauser Allee | Residential daily shopping | 23.7 | 22.7 | 23.7 (×1) | 90.4 (adequate) |
 
-Figures from [analysis run #18](reports/site_report_run18_20261008T130435Z.md) (2026-10-08, `scoring_v7`; scores unchanged since run #17, the report adds the competitor-mapping stress test).
+Figures from [analysis run #19](reports/site_report_run19_20261008T132104Z.md) (2026-10-08, `scoring_v7`; scores unchanged since run #17).
 
 **Reading:**
 - **Brandenburger Tor is the diligence priority.** It stays first when each uncertain input is moved to its plausible limit. Across the interquartile range of the visitor conversion, at the low end it still leads 72.7 to 54.4. It also stays first across the verified range of on-site workers, with competition counted in absolute numbers instead of per head, and with every node's competitor counts scaled up to the best-mapped node's rate.
