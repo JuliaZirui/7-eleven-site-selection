@@ -130,7 +130,9 @@ def table_row(row: dict) -> tuple[Path, dict, str]:
         refs = [m.group(1)]
     if len(refs) != 1:
         raise ApplyError("category error on a pair: name the record in reviewer_note as exclude=<ref>")
-    return table, {"external_ref": refs[0], "area_id": row["area_id"], "name": "", "action": "exclude",
+    c = _worklist_record(row)
+    names = {m["ref"]: m["name"] for r in (c.get("records") or [c.get("record") or {}]) for m in r.get("members", [])}
+    return table, {"external_ref": refs[0], "area_id": row["area_id"], "name": names.get(refs[0], ""), "action": "exclude",
                    "reason": _basis(row), "evidence": _sources(row), "found_by": "audit_llm",
                    "reviewed_on": date.today().isoformat()}, refs[0]
 
@@ -187,9 +189,7 @@ def annotate(queue: Path = REVIEW_QUEUE_CSV, labels: Path | None = None) -> int:
         delim = ";" if text.split("\n", 1)[0].count(";") > text.split("\n", 1)[0].count(",") else ","
         known = {(r["area_id"], r["candidate_id"]): r["label"].strip()
                  for r in csv.DictReader(text.splitlines(), delimiter=delim)}
-    with queue.open(encoding="utf-8") as f:
-        rows = list(csv.DictReader(f))
-        columns = list(rows[0].keys()) if rows else []
+    rows, columns = read_queue(queue)
     changed = 0
     for row in rows:
         if row["review_status"] != "pending" or row["reviewer_note"].strip():
@@ -213,10 +213,17 @@ def annotate(queue: Path = REVIEW_QUEUE_CSV, labels: Path | None = None) -> int:
     return changed
 
 
+def read_queue(queue: Path = REVIEW_QUEUE_CSV) -> tuple[list[dict], list[str]]:
+    """The queue as a spreadsheet may have saved it: comma or semicolon,
+    with or without a BOM. Written back comma-separated."""
+    text = queue.read_text(encoding="utf-8-sig")
+    head = text.split("\n", 1)[0]
+    rows = list(csv.DictReader(text.splitlines(), delimiter=";" if head.count(";") > head.count(",") else ","))
+    return rows, (list(rows[0].keys()) if rows else [])
+
+
 def apply(write: bool = False, queue: Path = REVIEW_QUEUE_CSV) -> list[str]:
-    with queue.open(encoding="utf-8") as f:
-        rows = list(csv.DictReader(f))
-        columns = list(rows[0].keys()) if rows else []
+    rows, columns = read_queue(queue)
     report = []
     for row in rows:
         if row["review_status"] != "accepted":
