@@ -4,6 +4,8 @@ __pycache__/
 .venv/
 venv/
 .env
+# Editors save .env as .env.txt; keep every variant out of git.
+.env.*
 .pytest_cache/
 
 # Full VBB GTFS feed (~75MB), not committed. The stops-only extract
