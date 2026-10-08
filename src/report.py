@@ -25,6 +25,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 from string import Template
 
+import audit_pipeline
 from geo import haversine_m
 from metrics_pipeline import latest_snapshot_id
 from models import CANDIDATE_NODES, DEFAULT_TIME_WINDOWS
@@ -584,6 +585,7 @@ def render(conn: sqlite3.Connection, run_id: int, run_at: datetime) -> tuple[str
                 f"on-site headcount and are counted at their size-class midpoint — likely an overstatement "
                 f"(a registered seat can carry a whole company's headcount)."
             )
+        items.append(audit_pipeline.summary_line(a))
         anchor_share = _get(results[a]["metrics"], "anchor_plr_catchment_share", "current")
         if anchor_share and not anchor_share["is_missing"]:
             items.append(

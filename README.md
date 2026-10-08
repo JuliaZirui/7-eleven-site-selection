@@ -56,6 +56,7 @@ flowchart LR
 | --- | --- |
 | **Program** (deterministic) | Cleaning, multi-source POI conflation, spatial calculations, opening-hours parsing (incl. overnight spans), scoring, stop conditions |
 | **Follow-up agent** (bounded) | Detects gaps that affect the conclusions (missing, stale or conflicting data), picks a refetch tool or flags the gap for field research, and stays within a call budget of 4 calls per run and 2 per site. It is triggered by data problems, never by a raw count such as "fewer than 8 shops". The decision step is a pluggable policy: an impact-ordered rule (default), the original fixed rule, or Claude (`claude-opus-5-5`). Whatever the policy proposes passes a guard in plain code (allowed tool, budget, no retry of a failed source) before it runs. |
+| **Data-plausibility audit** (LLM, review only) | Before scoring, deterministic rules list the raw records most likely to be wrong (a company's whole headcount filed at one address, a famous venue's visitors far beyond its capacity, a large workplace missing from the registry, a miscategorised or duplicate competitor). Claude (`claude-sonnet-5-5`, with web search) checks each one and cites its sources. It **never changes a number**: findings pass a guard in plain code and go to a review queue, and only rows a person accepts reach the correction tables that scoring reads. Skipped without API credentials; the report then marks the sites as unaudited. |
 
 **Data sources** (all open, no paid APIs): OpenStreetMap, Overture Maps and Foursquare OS Places (competitors, conflated across providers); Berlin LOR / MSS 2025 (residents); IHK Gewerbedaten (workplaces); Wikidata + Wikipedia pageviews + VBB GTFS (visitor draw); DB InfraGO station price classes (a check that the sites see comparable transit volumes).
 
@@ -83,7 +84,7 @@ Figures from [analysis run #17](reports/site_report_run17_20261003T153943Z.md) (
 
 ## Validation
 
-- **159 automated tests, all passing, run by GitHub Actions on every push (Python 3.9 and 3.12).** They cover missing data, duplicate records, API failures (49 mocked failure paths) and overnight opening hours, plus scoring, report, agent-guard and LLM-policy tests (mocked client, plus one round trip through the real SDK with an intercepted transport).
+- **227 automated tests, all passing, run by GitHub Actions on every push (Python 3.9 and 3.12).** They cover missing data, duplicate records, API failures (49 mocked failure paths) and overnight opening hours, plus scoring, report, agent-guard and LLM-policy tests (mocked client, plus one round trip through the real SDK with an intercepted transport).
 - **End-to-end reproducibility.** A rerun with the network blocked reproduces every score, the ranking and the Monte Carlo shares exactly. Compute takes about 1 second, with no LLM tokens and €0 marginal cost.
 - **Manual vs. tool benchmark** on one node ([comparison/manual_vs_tool.md](comparison/manual_vs_tool.md)):
   - Speed: 32 minutes by hand, about 1 second for the tool once the data is fetched.
@@ -94,6 +95,10 @@ Figures from [analysis run #17](reports/site_report_run17_20261003T153943Z.md) (
   - Rule baseline: 10/16. Impact-ordered rule: 14/16. LLM: 16/16 in all 5 runs, no guard rejections, $0.019 per run ($1.50 for the whole evaluation).
   - On ordering, the impact rule and the LLM tie (14/14). The LLM's measurable edge is declining calls that cannot change the decision (2 scenarios), plus much more specific field questions. The expected decisions and the LLM's prompt share an author, which limits how much the LLM's score can show.
   - Decision ([comparison/policy_findings.md](comparison/policy_findings.md)): the impact rule becomes the default. The LLM stays optional, and its proposed role is writing field questions.
+- **Data-plausibility audit** ([comparison/audit_findings.md](comparison/audit_findings.md), plan: [plan_llm_data_audit.md](plan_llm_data_audit.md)). Can an LLM replace the manual "does this number make sense?" pass? Answer key, holdout, control and decision thresholds committed before any audit code; the prompt frozen before the holdout ran:
+  - Holdout: 4/6 known issues caught in at least 2 of 3 runs; false alarms per run 1 (holdout) and 3 (control). Both criteria sit exactly on the pre-registered thresholds, so the rule says adopt, narrowly. The main evidence (three items not shaped by earlier fixes) is 2/3.
+  - Three stations nobody had checked: the analyst confirmed 57 of 58 flags, 38 of them issues a 20-minute manual scan had missed. The scan found 46 issues; about 27 never reached the audit, because the candidate rules did not list them. The rules, not the LLM, are the bottleneck.
+  - $14.12 for the whole evaluation; about $1 per site per refresh.
 
 ## Limitations
 
@@ -101,6 +106,7 @@ Figures from [analysis run #17](reports/site_report_run17_20261003T153943Z.md) (
 - **Demand is proxied, not counted.** Visitor numbers are estimated from Wikipedia pageviews, calibrated on 37 attractions with published counts. Station footfall by time window is not published. Rent, storefront availability and supply chain are out of scope and listed as unscored.
 - **The store concept is hard-coded.** Competitor categories, peak windows and the 400 m radius encode a convenience-store format. The radius is a general industry convention, not a 7-Eleven standard. No 7-Eleven standard could be found in public sources.
 - **The LLM policy only decides follow-ups, never scores.** Scoring stays deterministic and reproducible; the default follow-up policy is the impact-ordered rule, which needs no API. With three nodes there are few real budget decisions (today's data has none), so the policy comparison runs on constructed scenarios. The value grows with the planned citywide run.
+- **The data audit sees only what its candidate rules list.** Most competitor problems a manual scan finds (restaurants listed as cafés, closed shops) never reach it. Its flags were labelled by one analyst who could see the auditor's reasons.
 - **The manual benchmark is a single, non-blind data point.** One node, one analyst (who also built the tool), one pass.
 
 ## Next steps
@@ -109,7 +115,8 @@ Figures from [analysis run #17](reports/site_report_run17_20261003T153943Z.md) (
 2. **Configurable store concept.** Move the competitor taxonomy, peak windows and weights into a config file, so other small-format retail concepts can reuse the same pipeline.
 3. **A second manual benchmark** on Warschauer Straße or Schönhauser Allee, so hand-verified corrections are not limited to one node, plus a spot check of the 28 near-duplicate merges at reference stations.
 4. **Hybrid follow-up.** Rules decide what to follow up; the LLM only writes the field question for each flag ([comparison/policy_findings.md](comparison/policy_findings.md)).
-5. **LLM opening-hours extraction** from competitors' own websites, behind a coverage go/no-go check ([plan_llm_opening_hours.md](plan_llm_opening_hours.md)).
+5. **Wider audit candidate rules** for competitor categories and closed shops, the measured gap of the data audit; any new rule needs a fresh holdout ([comparison/audit_findings.md](comparison/audit_findings.md)).
+6. **LLM opening-hours extraction** from competitors' own websites, behind a coverage go/no-go check ([plan_llm_opening_hours.md](plan_llm_opening_hours.md)).
 
 ## Repository map
 
@@ -119,13 +126,14 @@ Figures from [analysis run #17](reports/site_report_run17_20261003T153943Z.md) (
 | [site_candidates.md](site_candidates.md) | Business question, node selection, data-verification log |
 | [project_plan_v3.md](project_plan_v3.md) | Original v1 scope, architecture, 7-day plan |
 | [plan_llm_tool_selection.md](plan_llm_tool_selection.md) | Plan for the LLM follow-up policy and its evaluation (done) |
+| [plan_llm_data_audit.md](plan_llm_data_audit.md) | Plan for the LLM data-plausibility audit, its pre-registration and amendments (done; adopted) |
 | [plan_llm_opening_hours.md](plan_llm_opening_hours.md) | Plan for LLM opening-hours extraction (not started) |
 | `src/` | Ingestion clients, pipelines, conflation, scoring, follow-up agent and policies, report generator, policy evaluation |
 | `tests/` | Test suites and the test runner (`run_day6.py`) |
 | `reports/` | Latest site report, score file and test log (earlier runs are kept in the database, not in the repo) |
 | `db/` | SQLite database, schema and raw source snapshots ([GTFS note](db/raw/vbb_gtfs/README.md)) |
 | `.github/workflows/` | CI: test suite + offline reproducibility check |
-| `comparison/` | Manual vs. tool benchmark and the data-quality fixes it led to; follow-up policy scenarios, results and findings |
+| `comparison/` | Manual vs. tool benchmark and the data-quality fixes it led to; follow-up policy scenarios, results and findings; data-audit answer key, prompt log, labels, evaluation, findings, and the review queue |
 
 Requires Python 3.9+. Everything below runs offline from the committed database and snapshots:
 
@@ -134,4 +142,4 @@ pip install -r requirements.txt
 python3 tests/run_day6.py
 ```
 
-Optional, for the LLM follow-up policy (needs an Anthropic API key): `pip install -r requirements-llm.txt`.
+Optional, for the LLM follow-up policy and the data-plausibility audit (needs an Anthropic API key, in the shell or in a git-ignored `.env` as `ANTHROPIC_API_KEY=...`): `pip install -r requirements-llm.txt`. `refresh` then runs the audit before scoring (about $1 per site; `--no-audit` skips it). Review the flags in `comparison/audit_review_queue.csv` (set `review_status` to `accepted` or `rejected`, your name in `reviewer`), then write the accepted ones to the correction tables with `python3 src/audit_apply.py --write` (without `--write` it only shows what it would do).

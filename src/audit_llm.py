@@ -649,6 +649,7 @@ def queue_rows(run: dict, run_file: str, worklist: dict) -> list[dict]:
 
 
 def append_queue(rows: list[dict], path: Path = REVIEW_QUEUE_CSV) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
     new = not path.exists()
     with path.open("a", newline="", encoding="utf-8") as f:
         w = csv.DictWriter(f, fieldnames=QUEUE_COLUMNS)
