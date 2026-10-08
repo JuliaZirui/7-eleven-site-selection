@@ -69,6 +69,9 @@ STEPS: tuple[Step, ...] = (
     Step("attractions", "attraction_pipeline", "Overpass API; Wikidata; Wikimedia pageviews",
          "gateway-attraction snapshots (visitor demand)", False),
     Step("metrics", "metrics_pipeline", "offline", "area_metrics rows (counts, demand, opening-hours windows)", True),
+    Step("audit", "audit_pipeline",
+         "Claude API with web search (ANTHROPIC_API_KEY or .env; skipped without); Overpass once per new site",
+         "plausibility flags in the review queue (comparison/audit_review_queue.csv); changes no number", False),
     Step("followup", "agent_followup",
          "only for a live refetch the agent chooses (max 4 calls); Claude API with --policy llm",
          "tool log (db/raw/agent_log/); evidence gaps flagged for field research", False),
@@ -95,6 +98,9 @@ HINTS: tuple[tuple[str, str], ...] = (
      "Wikidata/Wikimedia unreachable. The previous attraction snapshot stays current."),
     (r"no OSM source snapshot", "This site has never been fetched: run `refresh` with network access first."),
     (r"no such table", "The database is not initialised: run `refresh` (it creates it) or check --db."),
+    (r"audit not run",
+     "Data-plausibility audit skipped: set ANTHROPIC_API_KEY (or put it in .env) to run it, or pass --no-audit. "
+     "The report marks the sites as unaudited; nothing else changes."),
     (r"ANTHROPIC|anthropic|API key|authentication",
      "Claude API unavailable: the LLM policy falls back to the impact rule. Set ANTHROPIC_API_KEY or use "
      "--policy impact_rule."),
@@ -433,6 +439,8 @@ def _call_step(step: Step, mod, db: Path, args) -> dict:
         return {}
     if step.key == "followup":
         return {"log": mod.run(db_path=db, policy=args.policy)}
+    if step.key == "audit":
+        return {"audit": mod.run(db_path=db, enabled=not getattr(args, "no_audit", False))}
     if step.key == "report":
         return {"report": str(mod.run(db))}
     return {"result": mod.run(db)}
@@ -545,6 +553,8 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--db", help="database path (default: db/site_selection.db; created if missing)")
     p.add_argument("--only", nargs="+", choices=STEP_KEYS, metavar="STEP",
                    help=f"run only these steps, in pipeline order ({', '.join(STEP_KEYS)})")
+    p.add_argument("--no-audit", action="store_true",
+                   help="skip the data-plausibility audit (otherwise it runs when Claude API credentials are set)")
     p.add_argument("--policy", choices=["impact_rule", "rule", "llm"], default="impact_rule",
                    help="follow-up policy (llm needs ANTHROPIC_API_KEY)")
     p.set_defaults(func=cmd_refresh)

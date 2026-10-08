@@ -58,6 +58,7 @@ CATEGORIES: tuple[tuple[str, str, str], ...] = (
     ("audit_candidates", "Data audit: corrections switch & candidates", "test_audit_candidates"),
     ("audit_prompt", "Data audit: answer-key leakage guard", "test_audit_prompt"),
     ("audit_llm", "Data audit: LLM auditor, mocked client", "test_audit_llm"),
+    ("audit_pipeline", "Data audit: pipeline step, report line, apply", "test_audit_pipeline"),
 )
 
 

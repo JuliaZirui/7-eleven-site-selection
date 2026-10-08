@@ -1,6 +1,6 @@
 # Implementation Plan — LLM Data-Plausibility Audit (v3)
 
-2026-10-07 · Status: Phases 1–4 done; decision **Adopt** by the pre-registered rule, both criteria at their thresholds ([comparison/audit_findings.md](comparison/audit_findings.md)). Phase 5 next.
+2026-10-07 · Status: done. Decision **Adopt** by the pre-registered rule, both criteria at their thresholds ([comparison/audit_findings.md](comparison/audit_findings.md)); Phase 5 wired the audit into `refresh` (step `audit`, skipped without credentials or with `--no-audit`), the report's §6 and `src/audit_apply.py`.
 
 ## Goal
 

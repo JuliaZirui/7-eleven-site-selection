@@ -86,6 +86,7 @@ class PipelineTestCase(unittest.TestCase):
 
     def _redirect_paths(self) -> None:
         import agent_followup
+        import audit_pipeline
         import ihk_pipeline
         import lor_pipeline
         import metrics_pipeline
@@ -101,6 +102,9 @@ class PipelineTestCase(unittest.TestCase):
                 "OVERTURE_RAW_DIR": raw / "overture", "FSQ_RAW_DIR": raw / "fsq", "FSQ_CACHE_DIR": raw / "fsq" / "cache",
             },
             poi_conflation: {"PROJECT_ROOT": self.root, "RAW_DIR": raw / "conflated"},
+            audit_pipeline: {"PROJECT_ROOT": self.root, "PIPELINE_RUN_DIR": raw / "audit" / "pipeline_runs",
+                             "PIPELINE_WORKLIST_DIR": raw / "audit" / "pipeline_worklists",
+                             "REVIEW_QUEUE_CSV": self.root / "comparison" / "audit_review_queue.csv"},
             ihk_pipeline: {"PROJECT_ROOT": self.root, "RAW_DIR": raw / "ihk", "DB_PATH": self.db_path},
             lor_pipeline: {"PROJECT_ROOT": self.root, "RAW_DIR": raw / "lor", "DB_PATH": self.db_path},
             metrics_pipeline: {"PROJECT_ROOT": self.root, "DB_PATH": self.db_path},
