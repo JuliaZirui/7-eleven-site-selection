@@ -561,3 +561,17 @@ Plan: [plan_llm_tool_selection.md](plan_llm_tool_selection.md). Pre-registration
 | Brandenburger Tor | 92.7 → **92.9** | 75.4 → 73.9 (verify first) | 100% |
 | Warschauer Straße | 63.6 → **63.2** | 76.6 (verify first) | 0% |
 | Schönhauser Allee | 23.7 → **23.7** | 90.4 (adequate) | 0% |
+
+## v7: Competition Scored All Day, Time Windows as Diagnostics (2026-10-08, scoring_v8, analysis_runs #21)
+
+- **Why.** scoring_v4–v7 scored competition separately in four time windows (weekday 7–9 and 16–19, weekend 10–19 and 22–02), with demand per day as the denominator. Weighting a window assumes the store's trade falls there, and no public source measures footfall by time window: DB InfraGO's passenger bands are per weekday and S-Bahn only. The dual peak in [store_hypothesis.md](store_hypothesis.md) was therefore an assumption built into the score.
+- **What changed.** Competition is now scored on two criteria: the merged morning and evening basket (bakery, café, supermarket, späti, fast food, fuel shop) open on a weekday or on a weekend day, per 10,000 people of that day type, weighted 5 : 2 like demand. A shop is excluded only if its OSM hours show it closed all day. Anchors were recalibrated offline on the same 139 stations and the same Overture release (`competition_anchors_20261008T150037Z.json`, `demand_anchors_20261008T150048Z.json`): weekday P90 → P10 = 67.7 → 12.2, weekend 90.9 → 14.4. The demand anchors reproduce exactly. Demand itself, the per-node people count by segment, is unchanged.
+- **Windows kept as diagnostics.** The four windows' counts are still computed and calibrated. The report lists them against the stations' P25–P75, and the §5 hypotheses now fire on those counts ("thinly served" at or below P25, "crowded" at or above P75) instead of on scores. The field checklist asks for a weekday footfall count at 7–9 and another at 16–19 at every node.
+
+| Node | Weekday competitors / 10k people | Fit (run #20 → #21) | Evidence quality | Ranked #1 |
+| --- | --- | --- | --- | --- |
+| Brandenburger Tor | 26 ÷ 2.46 = 10.6 | 92.9 → **93.7** | 73.9 (verify first) | 100% |
+| Warschauer Straße | 64 ÷ 2.32 = 27.6 | 64.2 → **69.1** | 75.4 (verify first) | 0% |
+| Schönhauser Allee | 132 ÷ 1.44 = 91.4 | 23.7 → **23.7** | 90.4 (adequate) | 0% |
+
+The ranking holds across every input check: visitor conversion at P25 (73.6 / 59.5 / 22.7), verified worker ranges, absolute counts (87.6 / 60.4 / 23.7), and competitor counts scaled to the best mapping rate (82.4 / 49.9 / 23.7; Brandenburger Tor's break-even ×5.6).

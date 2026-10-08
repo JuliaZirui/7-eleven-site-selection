@@ -77,7 +77,7 @@ HOURS_METHOD_VERSION = "opening_hours_v1"
 POPULATION_METHOD_VERSION = "population_v1"
 CATCHMENT_POPULATION_METHOD_VERSION = "catchment_population_v1"
 BUSINESS_MIX_METHOD_VERSION = "ihk_business_mix_v1"
-PEAK_COMPETITION_METHOD_VERSION = "window_competitors_v2"
+PEAK_COMPETITION_METHOD_VERSION = "window_competitors_v3"
 VISITOR_METHOD_VERSION = "visitor_estimate_v3"
 # Appended to the method version of every worker / visitor figure computed
 # with the correction tables off (run(corrections=False), `--raw`), so a
@@ -593,9 +593,10 @@ def count_peak_competitors(
 
 
 def _compute_peak_competitors(conn: sqlite3.Connection, node: LocationInput, pois: list[dict] | None) -> None:
-    """Competition-pillar inputs (scoring_v6): competitors serving each
-    window's basket -- weekday 7-9 and 16-19, weekend 10-19 and 22-02
-    (day_types.COMPETITION_WINDOWS). Weekend counts average Saturday and
+    """Competition-pillar inputs (scoring_v8): competitors of the all-day
+    basket open on a weekday and on a weekend day (scored), plus the
+    unscored diagnostic windows -- weekday 7-9 and 16-19, weekend 10-19
+    and 22-02 (day_types.COMPETITION_WINDOWS). Weekend counts average Saturday and
     Sunday and apply Berlin's Sunday trading law to competitors without
     known hours (day_types.poi_open)."""
     if pois is None:

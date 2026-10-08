@@ -230,7 +230,7 @@ class ReportRefusesUnverifiedFigures(PipelineTestCase):
         import scoring
         results = scoring.score_all(self.conn, [n.area_id for n in self.nodes])
         crits = {c["key"]: c for c in results[self.nodes[0].area_id]["criteria"]}
-        cited = crits["morning_peak_competition"]["metric_ids"][0]
+        cited = crits["weekday_competition"]["metric_ids"][0]
         self.conn.execute("UPDATE area_metrics SET metric_value = metric_value + 1 WHERE metric_id = ?", (cited,))
         with self.assertRaises(AssertionError):
             report.verify_citations(self.conn, results)

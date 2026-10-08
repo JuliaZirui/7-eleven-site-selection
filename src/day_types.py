@@ -1,4 +1,4 @@
-"""Weekday vs. weekend/holiday: one place for every day-type rule (scoring_v6).
+"""Weekday vs. weekend/holiday: one place for every day-type rule (scoring_v6+).
 
 Demand and competition are not the same on a Wednesday and a Saturday:
 commuters mostly stay home at the weekend, clubs such as Berghain open
@@ -41,6 +41,9 @@ PERIOD = {"weekday": "weekday_We", "weekend": "weekend_SaSu"}
 # Competition windows
 # ---------------------------------------------------------------------------
 
+# All-day basket (scoring_v8): the morning and evening sets merged --
+# bakery, café, supermarket, späti, fast food, fuel shop.
+ALL_DAY_CATEGORIES: tuple[str, ...] = tuple(dict.fromkeys(MORNING_PEAK_CATEGORIES + EVENING_PEAK_CATEGORIES))
 WEEKEND_DAY_CATEGORIES: tuple[str, ...] = (
     POICategory.BAKERY.value,
     POICategory.CAFE.value,
@@ -70,12 +73,25 @@ class CompetitionWindow:
     label: str
 
 
-COMPETITION_WINDOWS: tuple[CompetitionWindow, ...] = (
+# scoring_v8: competition is scored on the whole day only -- competitors of
+# the all-day basket open at any time on the representative day. The store
+# hypothesis's commute peaks (and the weekend windows) are not measured by
+# any public footfall source, so they are kept as unscored diagnostics:
+# their counts are still computed, calibrated and reported (§5 hypotheses),
+# but no score reads them. Not 0-24 as a trading claim: a shop open at all
+# that day competes for the day's people.
+SCORED_COMPETITION_WINDOWS: tuple[CompetitionWindow, ...] = (
+    CompetitionWindow("weekday_all_day", "weekday", 0, 24, ALL_DAY_CATEGORIES, "weekday, all day"),
+    CompetitionWindow("weekend_all_day", "weekend", 0, 24, ALL_DAY_CATEGORIES, "weekend, all day"),
+)
+DIAGNOSTIC_COMPETITION_WINDOWS: tuple[CompetitionWindow, ...] = (
     CompetitionWindow("morning_peak", "weekday", 7, 9, MORNING_PEAK_CATEGORIES, "weekday 7–9"),
     CompetitionWindow("evening_peak", "weekday", 16, 19, EVENING_PEAK_CATEGORIES, "weekday 16–19"),
     CompetitionWindow("weekend_day", "weekend", 10, 19, WEEKEND_DAY_CATEGORIES, "weekend 10–19"),
     CompetitionWindow("weekend_night", "weekend", 22, 2, WEEKEND_NIGHT_CATEGORIES, "weekend 22–02"),
 )
+# Every window whose count is computed (metrics, calibration).
+COMPETITION_WINDOWS: tuple[CompetitionWindow, ...] = SCORED_COMPETITION_WINDOWS + DIAGNOSTIC_COMPETITION_WINDOWS
 
 # Retail formats Berlin closes on Sundays and holidays unless the shop is
 # inside a station (or OSM records Sunday hours, which then decide).

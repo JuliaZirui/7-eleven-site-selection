@@ -26,6 +26,7 @@ from pathlib import Path
 from string import Template
 
 import audit_pipeline
+from day_types import DIAGNOSTIC_COMPETITION_WINDOWS, PERIOD
 from geo import haversine_m
 from metrics_pipeline import latest_snapshot_id
 from models import CANDIDATE_NODES, DEFAULT_TIME_WINDOWS
@@ -33,6 +34,7 @@ from poi_taxonomy import DIRECT_FORMAT_CATEGORIES as DIRECT_FORMATS
 from scoring import (
     BUSINESS_FIT_CRITERIA,
     DEFAULT_WEIGHTS,
+    DIAGNOSTIC_WINDOW_QUARTILES,
     EQ_ADEQUATE,
     PEOPLE_UNIT,
     PILLARS,
@@ -61,10 +63,9 @@ STORE_HYPOTHESIS_PATH = PROJECT_ROOT / "store_hypothesis.md"
 PRIORITY_TOP_SHARE = 0.20
 
 # Differentiation-rule thresholds.
-# Peak-competition criterion score (0-100) at or above which a peak is
-# called under-supplied for its demand, and at or below which saturated.
-PEAK_UNDERSUPPLIED_SCORE = 60
-PEAK_SATURATED_SCORE = 20
+# Time windows are unscored diagnostics (scoring_v8): a window's competitor
+# count at or below the 139 reference stations' P25 is called thinly served,
+# at or above their P75 crowded (scoring.DIAGNOSTIC_WINDOW_QUARTILES).
 # Format-mix rules need at least this many competitors to say anything.
 MIN_FORMAT_SAMPLE = 5
 # A demand segment holding at least this share of a node's people per
@@ -79,20 +80,20 @@ NEAR_DIRECT_COMPETITOR_M = 200  # roughly the walk from a station exit to the ne
 
 PILLAR_LABELS = {"demand": "Demand (people/day)", "competition": "Competition per 10k people"}
 
-# What each peak's competitor set holds and what to lead with, by peak.
-PEAK_RULES = {
-    "morning_peak_competition": ("7–9 peak", "bakeries, cafés, supermarkets and fuel shops",
-                                 "breakfast / coffee-to-go as the lead commuter offer",
-                                 "coffee and pastry alone won't differentiate; compete on speed and the fuller basket"),
-    "evening_peak_competition": ("16–19 peak", "spätis, fast food, supermarkets and fuel shops",
-                                 "ready meals and the after-work top-up basket",
-                                 "presence alone won't differentiate; compete on fresh / hot food range"),
-    "weekend_day_competition": ("weekend 10–19", "food formats open (Sunday law applied)",
-                                "the Sunday basket — a station shop may trade when most shops must close",
-                                "weekend daytime is crowded; differentiate on range, not opening"),
-    "weekend_night_competition": ("weekend 22–02", "spätis, fast food and fuel shops",
-                                  "late-night hours and an after-club / after-event range",
-                                  "the night is already served; compete on quality and speed"),
+# What each window's competitor set holds and what to lead with, by window.
+WINDOW_RULES = {
+    "morning_peak": ("7–9 peak", "bakeries, cafés, supermarkets and fuel shops",
+                     "breakfast / coffee-to-go as the lead commuter offer",
+                     "coffee and pastry alone won't differentiate; compete on speed and the fuller basket"),
+    "evening_peak": ("16–19 peak", "spätis, fast food, supermarkets and fuel shops",
+                     "ready meals and the after-work top-up basket",
+                     "presence alone won't differentiate; compete on fresh / hot food range"),
+    "weekend_day": ("weekend 10–19", "food formats (Sunday law applied)",
+                    "the Sunday basket — a station shop may trade when most shops must close",
+                    "weekend daytime is crowded; differentiate on range, not opening"),
+    "weekend_night": ("weekend 22–02", "spätis, fast food and fuel shops",
+                      "late-night hours and an after-club / after-event range",
+                      "the night is already served; compete on quality and speed"),
 }
 # Weekend people at least this multiple of weekday people = weekend-led node.
 WEEKEND_LED_RATIO = 1.2
@@ -194,6 +195,15 @@ def verify_citations(conn: sqlite3.Connection, results: dict[str, dict]) -> list
 # --------------------------------------------------------------------------
 
 
+def _window_counts(m: dict) -> dict[str, float | None]:
+    """Diagnostic window key -> competitors open in it; None where missing."""
+    out = {}
+    for w in DIAGNOSTIC_COMPETITION_WINDOWS:
+        row = _get(m, f"{w.key}_competitor_count", PERIOD[w.day_type])
+        out[w.key] = None if row is None or row["is_missing"] else row["value"]
+    return out
+
+
 def _differentiation(conn: sqlite3.Connection, node, r: dict) -> list[str]:
     m = r["metrics"]
     crit = {c["key"]: c for c in r["criteria"]}
@@ -205,18 +215,20 @@ def _differentiation(conn: sqlite3.Connection, node, r: dict) -> list[str]:
                 "no differentiation hypothesis can be drawn."]
     total = total_row["value"]
 
-    for key, (window, formats, lead, saturated) in PEAK_RULES.items():
-        c = crit[key]
-        if c["score"] is None:
+    counts = _window_counts(m)
+    for key, (window, formats, lead, saturated) in WINDOW_RULES.items():
+        count = counts.get(key)
+        if count is None:
             continue
-        per = "weekend day" if c["day_type"] == "weekend" else "weekday"
-        figures = (f"{c['count']:.0f} {formats} serve {window.replace(' peak', '')} for ~{c['people']:,.0f} people "
-                   f"per {per} ({c['raw_value']:.1f} per {PEOPLE_UNIT:,})")
-        if c["score"] >= PEAK_UNDERSUPPLIED_SCORE:
-            out.append(f"**{window[0].upper()}{window[1:]} under-supplied for its demand** — {figures}. Test {lead}.")
-        elif c["score"] <= PEAK_SATURATED_SCORE:
-            out.append(f"**{window[0].upper()}{window[1:]} saturated for its demand** — {figures}. "
-                       f"{saturated[0].upper()}{saturated[1:]}.")
+        lo, hi = DIAGNOSTIC_WINDOW_QUARTILES[key]
+        test = (f" Verify with the {window.replace(' peak', '')} footfall count (§7)." if key in ("morning_peak", "evening_peak")
+                else "")
+        figures = f"{count:g} {formats} open {window.replace(' peak', '')} (unscored; 139-station P25–P75: {lo:g}–{hi:g})"
+        if count <= lo:
+            out.append(f"**{window[0].upper()}{window[1:]} thinly served** — {figures}. Test {lead}, if the window's "
+                       f"footfall is there.{test}")
+        elif count >= hi:
+            out.append(f"**{window[0].upper()}{window[1:]} crowded** — {figures}. {saturated[0].upper()}{saturated[1:]}.{test}")
 
     for p in _pois(conn, node.area_id):
         if p["category"] in DIRECT_FORMATS and p["hours"] == "24/7":
@@ -425,6 +437,16 @@ def render(conn: sqlite3.Connection, run_id: int, run_at: datetime) -> tuple[str
     criteria_table += "\n\nCriterion rationale:\n\n" + "\n".join(
         f"- *{c.label}* — {c.rationale}" for c in BUSINESS_FIT_CRITERIA
     )
+
+    diag_lines = ["| Window | Formats | 139-station P25–P75 | " + " | ".join(names[a] for a in order) + " |",
+                  "| --- | --- | --- | " + " | ".join("---" for _ in order) + " |"]
+    window_counts = {a: _window_counts(results[a]["metrics"]) for a in order}
+    for w in DIAGNOSTIC_COMPETITION_WINDOWS:
+        lo, hi = DIAGNOSTIC_WINDOW_QUARTILES[w.key]
+        diag_lines.append(f"| {w.label} | {WINDOW_RULES[w.key][1]} | {lo:g}–{hi:g} | "
+                          + " | ".join(_fmt(window_counts[a][w.key], 0 if w.day_type == "weekday" else 1) for a in order)
+                          + " |")
+    diagnostic_table = "\n".join(diag_lines)
 
     # Evidence components
     comp_keys = sorted({k for a in order for k in results[a]["evidence_quality"]["components"]})
@@ -645,7 +667,9 @@ def render(conn: sqlite3.Connection, run_id: int, run_at: datetime) -> tuple[str
     fc = []
     for a in order:
         items = [
-            "Count footfall at the main station exits in both commute windows (weekday 7–9 and 16–19) and a Saturday midday baseline.",
+            "Count footfall at the main station exits once at 7–9 and once at 16–19 on a weekday. The dual-peak "
+            "hypothesis is not scored (no public footfall by time window); these two counts are what test it.",
+            "Add a Saturday midday count as the weekend baseline.",
             "Walk the 400m radius and reconcile the competitor list against OSM (new openings, closures, unmapped kiosks).",
         ]
         items += [e for e in gap_events.get(a, [])]
@@ -701,6 +725,7 @@ def render(conn: sqlite3.Connection, run_id: int, run_at: datetime) -> tuple[str
         ),
         baseline_weights=_weights_str(DEFAULT_WEIGHTS),
         criteria_table=criteria_table,
+        diagnostic_table=diagnostic_table,
         unscored_dimensions="\n".join(f"- {d}" for d in UNSCORED_DIMENSIONS),
         evidence_table=evidence_table,
         scenario_table="\n".join(sc_lines),
