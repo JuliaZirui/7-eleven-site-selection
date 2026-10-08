@@ -1,0 +1,1388 @@
+{
+ "audited_at": "2026-10-08T07:56:25.765713+00:00",
+ "node": {
+  "area_id": "Deutsche_Oper",
+  "name": "Deutsche Oper",
+  "lat": 52.511837,
+  "lon": 13.3105328,
+  "radius_m": 400
+ },
+ "set": "generalisation",
+ "worklist_generator": "audit_candidates_v3",
+ "worklist_sha256": "113367c61e32f0abeb0abc13177ec2d41818627cfae2679b715cad169c7df278",
+ "modules": [
+  "concentration",
+  "missing_entity",
+  "poi_category",
+  "poi_duplicate"
+ ],
+ "modules_requested": null,
+ "limit_per_module": null,
+ "model": "claude-sonnet-5-5",
+ "effort": "medium",
+ "prompt_sha256": "f32facfbf6af91e7d02f1d3cc0b0479293242629ed8f2a1d0b9015c30a8bf1e3",
+ "max_usd": 3.0,
+ "cost_usd": 0.251,
+ "usage": {
+  "input_tokens": 42,
+  "output_tokens": 7393,
+  "cache_creation_input_tokens": 42078,
+  "cache_read_input_tokens": 158840,
+  "web_search_requests": 4,
+  "web_fetch_requests": 1
+ },
+ "api_calls": 12,
+ "served_by_fallback": [],
+ "tool_errors": 0,
+ "candidates": 14,
+ "status_counts": {
+  "audited": 14
+ },
+ "status": {
+  "concentration:wikidata:Q637834": "audited",
+  "missing_entity:osm:way/88065712": "audited",
+  "missing_entity:osm:node/4306480695": "audited",
+  "missing_entity:osm:way/87644262": "audited",
+  "poi_category:overture:7410ba51-f5f2-441b-9267-6e1c651d066f": "audited",
+  "poi_duplicate:node/1228195011|node/1228200532": "audited",
+  "poi_duplicate:node/3733553131|overture:7c490fd9-daab-460a-80e7-ca52525a262a": "audited",
+  "poi_duplicate:node/1229435273|overture:c149455e-5e4a-42f7-a545-786584b0eb6c": "audited",
+  "poi_duplicate:node/3733553131|overture:e3b9c2ed-5f3e-4a40-a3f1-6cc12cc9f86b": "audited",
+  "poi_duplicate:node/4551162390|node/661126952": "audited",
+  "poi_duplicate:node/4415604080|node/8039726234": "audited",
+  "poi_duplicate:node/661126952|node/8039726235": "audited",
+  "poi_duplicate:overture:7c490fd9-daab-460a-80e7-ca52525a262a|overture:e3b9c2ed-5f3e-4a40-a3f1-6cc12cc9f86b": "audited",
+  "poi_duplicate:node/4551162390|node/8039726235": "audited"
+ },
+ "findings": [
+  {
+   "candidate_id": "concentration:wikidata:Q637834",
+   "verdict": "plausible",
+   "issue_type": "fame_vs_attendance",
+   "reason": "Pipeline gives 343k annual visitors before the 0.5 share. Published attendance is about 254k in 2024, so the fit is only about 1.35x high. After the 0.5 share the figure is roughly 127k–172k a year, or 350–470 a day. That is within 2x. It is a 1,859-seat house, so the scale fits.",
+   "proposed": {
+    "low": 110000,
+    "central": 127000,
+    "high": 172000,
+    "unit": "visitors_per_year"
+   },
+   "sources": [
+    {
+     "url": "https://berlinecho.de/meistbesuchtes-theater-berlin-besucherzahlen/",
+     "quote": "Die Deutsche Oper Berlin kam auf 254.270 Besucher und führte das Musiktheater-Feld an."
+    }
+   ],
+   "evidence_needed": "Check whether the 0.5 gateway share is right (other nearby stations, e.g. Bismarckstraße) and whether the 254k attendance includes events held elsewhere.",
+   "module": "concentration",
+   "guard_notes": []
+  },
+  {
+   "candidate_id": "missing_entity:osm:node/4306480695",
+   "verdict": "plausible",
+   "issue_type": "other",
+   "reason": "Barkow Leibinger architects, Schillerstr. 94, ~70-90 staff on 1,400 m². Nearest IHK registration is 50.8 m away, just outside the 40 m window, so it is probably the same firm already counted. Small workplace (<100), not a major missing employer.",
+   "proposed": {
+    "low": 50,
+    "central": 70,
+    "high": 90,
+    "unit": "persons_on_site"
+   },
+   "sources": [
+    {
+     "url": "https://www.jobcheck.com/job/junior-assistenz-der-geschaeftsfuehrung-mwd-bl-barkow-leibinger-partnerschaft-von-architekten-mbb-berlin/",
+     "quote": "Es beschäftigt heute ein Team aus rund 70 Mitarbeiter*innen an unserem Standort in Charlottenburg"
+    }
+   ],
+   "evidence_needed": "Check whether the IHK registration 50.8 m away is Barkow Leibinger (Schillerstr. 94) to avoid double counting.",
+   "module": "missing_entity",
+   "guard_notes": []
+  },
+  {
+   "candidate_id": "missing_entity:osm:way/87644262",
+   "verdict": "plausible",
+   "issue_type": "other",
+   "reason": "135 m² building tagged public, hosting a DLRG district office (ngo). At 15-25 m² per workplace that is at most ~5-9 people, mostly volunteers. Not a significant missing employer; absence from registry is immaterial.",
+   "proposed": null,
+   "sources": [],
+   "evidence_needed": "DLRG Bezirk Charlottenburg-Wilmersdorf staffing/opening hours; likely a handful of people at most.",
+   "module": "missing_entity",
+   "guard_notes": []
+  },
+  {
+   "candidate_id": "missing_entity:osm:way/88065712",
+   "verdict": "suspicious",
+   "issue_type": "missing_entity",
+   "reason": "8-level office building, 2,841 m² footprint (~22,700 m² gross implied) with only 32 registry heads in 30 registrations; at 15-25 m² per workplace that implies ~900-1,500 workers. Likely a public body (possibly Finanzamt Charlottenburg, Bismarckstr. 48, unverified) not in registry.",
+   "proposed": null,
+   "sources": [],
+   "evidence_needed": "Identify occupant (address near 52.5131,13.3154; Finanzamt Charlottenburg?) and its staff count; check real levels, since 8 may be overstated.",
+   "module": "missing_entity",
+   "guard_notes": []
+  },
+  {
+   "candidate_id": "poi_category:overture:7410ba51-f5f2-441b-9267-6e1c651d066f",
+   "verdict": "plausible",
+   "issue_type": "other",
+   "reason": "Rogacki at Wilmersdorfer Straße 145/146 is matched by an OSM node of the same name 7 m away. The category other_fresh_food (delicatessen with fish counter and smokehouse) fits, so I found no sign of a category error or duplicate. This is judged from the data only.",
+   "proposed": null,
+   "sources": [],
+   "evidence_needed": "Check the shop's official site or a map listing to confirm it is a food delicatessen with a fish counter, and whether it also has a sit-down restaurant section.",
+   "module": "poi_category",
+   "guard_notes": []
+  },
+  {
+   "candidate_id": "poi_duplicate:node/1228195011|node/1228200532",
+   "verdict": "plausible",
+   "issue_type": "duplicate",
+   "reason": "Two OSM nodes with different names (Steinofen Pizza, Falafel) and different cuisines about 9 m apart. This looks like two adjacent snack stands, not one business listed twice. Both come from the same provider.",
+   "proposed": null,
+   "sources": [],
+   "evidence_needed": "Street imagery or a site visit to check whether the two are separate stands.",
+   "module": "poi_duplicate",
+   "guard_notes": []
+  },
+  {
+   "candidate_id": "poi_duplicate:node/1229435273|overture:c149455e-5e4a-42f7-a545-786584b0eb6c",
+   "verdict": "suspicious",
+   "issue_type": "duplicate",
+   "reason": "An OSM node and an Overture record are about 10 m apart. Both carry the same Späti/kiosk category, and they come from different providers. A small shop that appears as \"Borsa\" in one source and \"SuperMarket MultiKulti\" in the other is likely one shop listed under two names. The names differ, so this is not certain.",
+   "proposed": null,
+   "sources": [],
+   "evidence_needed": "Check street imagery or the storefront signage at this address to see whether there is one shop or two, and what it is called.",
+   "module": "poi_duplicate",
+   "guard_notes": []
+  },
+  {
+   "candidate_id": "poi_duplicate:node/3733553131|overture:7c490fd9-daab-460a-80e7-ca52525a262a",
+   "verdict": "suspicious",
+   "issue_type": "duplicate",
+   "reason": "An OSM café and an Overture café are about 10 m apart and come from different providers. \"Seelenglück\" and \"Café Häftgold Berlin\" (the Overture name has a garbled encoding) may be one café under two names, for example a rename or an operator name. The names differ, so this is not confirmed.",
+   "proposed": null,
+   "sources": [],
+   "evidence_needed": "Check the current signage or the café's own page or map listing to see whether the two names belong to one café.",
+   "module": "poi_duplicate",
+   "guard_notes": []
+  },
+  {
+   "candidate_id": "poi_duplicate:node/3733553131|overture:e3b9c2ed-5f3e-4a40-a3f1-6cc12cc9f86b",
+   "verdict": "suspicious",
+   "issue_type": "duplicate",
+   "reason": "Two cafés about 5.6 m apart with different names (Seelenglück vs Gelbgold). Same category and almost the same position, so this could be one café that was renamed or listed under two names. Nothing in the data confirms it, since the names are unrelated.",
+   "proposed": null,
+   "sources": [],
+   "evidence_needed": "Check current street-level imagery or the venue's website to see whether Seelenglück was renamed Gelbgold or whether both operate at this address.",
+   "module": "poi_duplicate",
+   "guard_notes": []
+  },
+  {
+   "candidate_id": "poi_duplicate:node/4415604080|node/8039726234",
+   "verdict": "plausible",
+   "issue_type": "duplicate",
+   "reason": "Harry's Sliders and Orient Bites are different names and different cuisines, both OSM-only fast-food nodes about 5 m apart. This looks like adjacent stalls or units in a food cluster, not one business. Closeness alone is not enough to flag a duplicate.",
+   "proposed": null,
+   "sources": [],
+   "evidence_needed": "Check whether the two are separate units, for example on a map or in street imagery.",
+   "module": "poi_duplicate",
+   "guard_notes": []
+  },
+  {
+   "candidate_id": "poi_duplicate:node/4551162390|node/661126952",
+   "verdict": "plausible",
+   "issue_type": "duplicate",
+   "reason": "Safrani and Yuppis have different names, and the Yuppis record is already merged with its own Overture entry (Yuppis-Bistro). They sit about 7 m apart, which fits neighbouring shops. Nothing points to one business under two names.",
+   "proposed": null,
+   "sources": [],
+   "evidence_needed": "Check street imagery or the shops' websites to confirm they are separate businesses.",
+   "module": "poi_duplicate",
+   "guard_notes": []
+  },
+  {
+   "candidate_id": "poi_duplicate:node/4551162390|node/8039726235",
+   "verdict": "suspicious",
+   "issue_type": "duplicate",
+   "reason": "Safrani and Wilma Döner are 5 m apart, both OSM fast_food nodes. Different names could be two stalls in one block, or one döner shop with an old and a new name (the node IDs are years apart). Data alone doesn't settle it.",
+   "proposed": null,
+   "sources": [],
+   "evidence_needed": "Check street imagery or current listings for the address to see whether Safrani and Wilma Döner are one shop renamed or two separate shops.",
+   "module": "poi_duplicate",
+   "guard_notes": []
+  },
+  {
+   "candidate_id": "poi_duplicate:node/661126952|node/8039726235",
+   "verdict": "plausible",
+   "issue_type": "duplicate",
+   "reason": "Yuppis (Yuppis-Bistro) and Wilma Döner have different names, 12.8 m apart. Nothing in the data points to one business, and neighbouring takeaways are common.",
+   "proposed": null,
+   "sources": [],
+   "evidence_needed": "Check street imagery to confirm Yuppis and Wilma Döner are separate storefronts.",
+   "module": "poi_duplicate",
+   "guard_notes": []
+  },
+  {
+   "candidate_id": "poi_duplicate:overture:7c490fd9-daab-460a-80e7-ca52525a262a|overture:e3b9c2ed-5f3e-4a40-a3f1-6cc12cc9f86b",
+   "verdict": "suspicious",
+   "issue_type": "duplicate",
+   "reason": "\"Café Häftgold Berlin\" and \"Gelbgold\" are 5 m apart. Both are Overture cafés from different providers. \"Gelbgold\" is German for \"yellow gold\", and the names are similar, so one café under two names is likely. The name is also mis-encoded.",
+   "proposed": null,
+   "sources": [],
+   "evidence_needed": "Check the café's current name and address on the map or its website. Confirm whether Gelbgold and Häftgold are the same venue.",
+   "module": "poi_duplicate",
+   "guard_notes": []
+  }
+ ],
+ "new_entities": [],
+ "dropped": [],
+ "calls": [
+  {
+   "module": "concentration",
+   "request_id": "req_011CfpQnb8ZgjYS54GdsqsLW",
+   "served_by": "claude-sonnet-5-5",
+   "stop_reason": "tool_use",
+   "usage": {
+    "input_tokens": 6,
+    "output_tokens": 743,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 23440,
+    "web_search_requests": 1,
+    "web_fetch_requests": 0
+   },
+   "cost_usd": 0.02213,
+   "latency_s": 8.46
+  },
+  {
+   "module": "concentration",
+   "request_id": "req_011CfpQoDHhTjShoWQtowLAo",
+   "served_by": "claude-sonnet-5-5",
+   "stop_reason": "end_turn",
+   "usage": {
+    "input_tokens": 2,
+    "output_tokens": 96,
+    "cache_creation_input_tokens": 680,
+    "cache_read_input_tokens": 16857,
+    "web_search_requests": 0,
+    "web_fetch_requests": 0
+   },
+   "cost_usd": 0.0060354,
+   "latency_s": 1.81
+  },
+  {
+   "module": "missing_entity",
+   "request_id": "req_011CfpQoM1nrfqf9MrqmZGCL",
+   "served_by": "claude-sonnet-5-5",
+   "stop_reason": "tool_use",
+   "usage": {
+    "input_tokens": 8,
+    "output_tokens": 2879,
+    "cache_creation_input_tokens": 35795,
+    "cache_read_input_tokens": 40424,
+    "web_search_requests": 3,
+    "web_fetch_requests": 1
+   },
+   "cost_usd": 0.1563783,
+   "latency_s": 22.86
+  },
+  {
+   "module": "missing_entity",
+   "request_id": "req_011CfpQq2y922r6z6ESEjkti",
+   "served_by": "claude-sonnet-5-5",
+   "stop_reason": "end_turn",
+   "usage": {
+    "input_tokens": 2,
+    "output_tokens": 19,
+    "cache_creation_input_tokens": 1815,
+    "cache_read_input_tokens": 43417,
+    "web_search_requests": 0,
+    "web_fetch_requests": 0
+   },
+   "cost_usd": 0.0134149,
+   "latency_s": 1.4
+  },
+  {
+   "module": "poi_category",
+   "request_id": "req_011CfpQq8nt7cp6jvr4fGj1H",
+   "served_by": "claude-sonnet-5-5",
+   "stop_reason": "tool_use",
+   "usage": {
+    "input_tokens": 4,
+    "output_tokens": 372,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 3669,
+    "web_search_requests": 0,
+    "web_fetch_requests": 0
+   },
+   "cost_usd": 0.0044618,
+   "latency_s": 3.89
+  },
+  {
+   "module": "poi_category",
+   "request_id": "req_011CfpQqRQm6rmJzASodc9tC",
+   "served_by": "claude-sonnet-5-5",
+   "stop_reason": "end_turn",
+   "usage": {
+    "input_tokens": 2,
+    "output_tokens": 40,
+    "cache_creation_input_tokens": 384,
+    "cache_read_input_tokens": 3669,
+    "web_search_requests": 0,
+    "web_fetch_requests": 0
+   },
+   "cost_usd": 0.0020978000000000004,
+   "latency_s": 1.44
+  },
+  {
+   "module": "poi_duplicate",
+   "request_id": "req_011CfpQqXbLLCqydctHbCCkC",
+   "served_by": "claude-sonnet-5-5",
+   "stop_reason": "tool_use",
+   "usage": {
+    "input_tokens": 4,
+    "output_tokens": 1043,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 4533,
+    "web_search_requests": 0,
+    "web_fetch_requests": 0
+   },
+   "cost_usd": 0.0113446,
+   "latency_s": 9.21
+  },
+  {
+   "module": "poi_duplicate",
+   "request_id": "req_011CfpQrCww3ShqU2AcFgND3",
+   "served_by": "claude-sonnet-5-5",
+   "stop_reason": "end_turn",
+   "usage": {
+    "input_tokens": 2,
+    "output_tokens": 11,
+    "cache_creation_input_tokens": 1144,
+    "cache_read_input_tokens": 4533,
+    "web_search_requests": 0,
+    "web_fetch_requests": 0
+   },
+   "cost_usd": 0.0038806,
+   "latency_s": 1.23
+  },
+  {
+   "module": "poi_duplicate",
+   "request_id": "req_011CfpQrJCD2fDG667apUn8o",
+   "served_by": "claude-sonnet-5-5",
+   "stop_reason": "tool_use",
+   "usage": {
+    "input_tokens": 4,
+    "output_tokens": 1016,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 4512,
+    "web_search_requests": 0,
+    "web_fetch_requests": 0
+   },
+   "cost_usd": 0.0110704,
+   "latency_s": 6.76
+  },
+  {
+   "module": "poi_duplicate",
+   "request_id": "req_011CfpQro7FVUSH4mNsNDfrB",
+   "served_by": "claude-sonnet-5-5",
+   "stop_reason": "end_turn",
+   "usage": {
+    "input_tokens": 2,
+    "output_tokens": 61,
+    "cache_creation_input_tokens": 1117,
+    "cache_read_input_tokens": 4512,
+    "web_search_requests": 0,
+    "web_fetch_requests": 0
+   },
+   "cost_usd": 0.0043089,
+   "latency_s": 1.74
+  },
+  {
+   "module": "poi_duplicate",
+   "request_id": "req_011CfpQrvZjJjWCc4wW8GdXn",
+   "served_by": "claude-sonnet-5-5",
+   "stop_reason": "tool_use",
+   "usage": {
+    "input_tokens": 4,
+    "output_tokens": 1042,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 4637,
+    "web_search_requests": 0,
+    "web_fetch_requests": 0
+   },
+   "cost_usd": 0.0113554,
+   "latency_s": 9.03
+  },
+  {
+   "module": "poi_duplicate",
+   "request_id": "req_011CfpQsbGPg4gxRkV5Lh9gf",
+   "served_by": "claude-sonnet-5-5",
+   "stop_reason": "end_turn",
+   "usage": {
+    "input_tokens": 2,
+    "output_tokens": 71,
+    "cache_creation_input_tokens": 1143,
+    "cache_read_input_tokens": 4637,
+    "web_search_requests": 0,
+    "web_fetch_requests": 0
+   },
+   "cost_usd": 0.004498899999999999,
+   "latency_s": 1.82
+  }
+ ],
+ "conversations": [
+  {
+   "module": "concentration",
+   "candidate_ids": [
+    "concentration:wikidata:Q637834"
+   ],
+   "turns": 2,
+   "retrieved_urls": [
+    "https://berlinecho.de/meistbesuchtes-theater-berlin-besucherzahlen",
+    "https://en.wikipedia.org/wiki/Haus_der_Berliner_Festspiele",
+    "https://kulturmarken.de/anbieter/deutschland/berlin/deutsche-oper-berlin",
+    "https://statistik-berlin-brandenburg.de/kommunalstatistik/kultur-berlin",
+    "https://www.concerti.de/spielstaetten/deutsche-oper",
+    "https://www.musik-heute.de/12023/deutsche-oper-berlin-steigert-besucherzahlen",
+    "https://www.musik-heute.de/26488/deutsche-oper-berlin-mit-steigenden-besucherzahlen",
+    "https://www.tagesspiegel.de/berlin/trotz-teils-hoher-auslastung-bei-opern-und-theather-berlin-subventioniert-platze-mit-oft-hunderten-euro-13497448.html",
+    "https://www.tagesspiegel.de/kultur/deutsche-oper-und-be-mit-besucheranstieg-6336493.html",
+    "https://www.tagesspiegel.de/kultur/und-es-war-gut-6900445.html"
+   ],
+   "log": [],
+   "tool_errors": [],
+   "transcript": [
+    {
+     "role": "user",
+     "content": "Node: Deutsche Oper (lat 52.51184, lon 13.31053), circle radius 400 m.\nModule: concentration. Figures are the pipeline's raw values, before any review.\n\nCandidates:\n<data>\n[\n {\n  \"candidate_id\": \"concentration:wikidata:Q637834\",\n  \"module\": \"concentration\",\n  \"segment\": \"visitors\",\n  \"record_ref\": \"wikidata:Q637834\",\n  \"record\": {\n   \"qid\": \"Q637834\",\n   \"name\": \"Deutsche Oper Berlin\",\n   \"kind\": \"theatre\",\n   \"wikipedia_titles\": {\n    \"dewiki\": \"Deutsche Oper Berlin\",\n    \"enwiki\": \"Deutsche Oper Berlin\"\n   },\n   \"distance_m\": 78.89370812190619,\n   \"gateway_share\": 0.5,\n   \"pageviews_12m\": 33514\n  },\n  \"value_people_per_day\": 470.5,\n  \"segment_total\": 485.3,\n  \"share_of_segment\": 0.97,\n  \"annual_visitors_from_pageviews\": 343463,\n  \"conversion\": \"log10(visitors) = 1.011 + 1.000 * log10(12-month de+en pageviews), times the 1/k gateway share, / 365\"\n }\n]\n</data>\n\nReport one finding for each of these candidate_ids: concentration:wikidata:Q637834."
+    },
+    {
+     "role": "assistant",
+     "content": [
+      {
+       "id": "srvtoolu_01Uc6UsW3WX4YUedXgiZYQM9",
+       "input": {
+        "query": "Deutsche Oper Berlin Besucherzahlen pro Spielzeit Auslastung Plätze"
+       },
+       "name": "web_search",
+       "type": "server_tool_use"
+      },
+      {
+       "content": [
+        {
+         "encrypted_content": "EqoJCioIFBgCIiRkZWEyYzMxYi1jODU2LTQzYWQtYTQwNC1hOWE5MWI1MDc0ODQSDGWrFe/HXuKcSJcrsBoM9lbBteQapmuTts70IjBMqMgdrgODUTMQrh/SJJHlU/VijU3B7R7HVUiVQf0EB3fQtCY/X5CBt/E1CblISRQqrQiQ5G0bFkhYuUfbjWSHm8umbbrhM96DTxpgX9wYnmcCS+gTv/mtKZ7wptm1i1zQ/thmyJuM4G58GrjMRK+VAZzJFT1HMoaKtN0QKyDkoaRtadKs+ACadvuIr4BGIVmarrmiPYqK+DYwufmvfoPomNazOWOnhhULzbBtf7E8BDRIknmqwKGLmge14UP4Bj7/8ehldFQ/aQSQaoPRMSJI7UDSDjnHuQGQieggP9aK33ke3f1MOStNwpMrzec9Pm/yP7NPO4PvA7dd6r3T7o4ULxBrIGOkm99i9/rSq9swAgxN+zmmYw2ygMtUuaV5thL0BaromIR5YJj5C7w61O1LNTooU5MuZ1gWvrmmVnlFq6gDnyi2TbBORAMWjF+CMcY1a/8KyU48tya/PcTJHwHXC2o96zi9Ooz/N3V2CAXcnb5ECQ/xpV+qToMVAUZZYonvM0+p0ldUXTb4AmgTd1mtwOZvaM1zmRoX81cZ7jitFF/rx7Ubisjiatqm7eS+TR6GSrQrIYN3NYXLfnxfA92PymELs45FMcEWosMJh693bBD1KPrY5sPiX8SXxvx0EE36HV7IT8XIifJsWSAVFipddlYKoiTsJ1y/I95DKLsVx3125hJKq/SGzzjLacSePAOPBttLA7O9IE7wosFXXcUBQ8p4MjPfqmTfJgFNB6lxsF1qVt7hJieD3helf9Ey7h5YYC6nW5/BSBhRaBdwR8P/QEul18FeKGL3P3c5FAPngkpwu0Zs9V1PAKoIad8H6EprLXPf0Ch7/RqK3wYFMaYQ631P+/6Z+IoR9QpDSvWujA+kblnphnuX+llABSAdNUyiYKlBs7AvBKzVQqiYWuhSO7L9yVTicEIhm1arop5ZnnKeQ5LKJZbADEqqxhxyeObA2T0JyV2qNSioACRmmIk84m7w5LsTeINB1VaAZXF/Ycj1eLN9S34LAQB7QNUPkJxwW8E0y+6YYlcnWOTw55p5Ultm7vGALL42dR3YmLPbRjBAU8BSXxXjOuN0NjKw7OeTwzflF70MIpeNZBRDYPEuIx6GLEeHPsJpJePvZcq3nxWSnDQ53kgw1xIwMChjf9YtyFGPFxr2MNgNxvUGxb4Imw36srPPD3U1YfQrvUeERDx8Mh3zqjFC2czMlvPv2YccRmfG/2eqdrMwoWTJQ1UPx757yGusLW8wNcbhbUvRxThSMY9RchnDpVaNml4ewiPCsKdgsGzuYk15AEuHkagEiqb/PDEpUoqc5bSq2Vm3V2fApMlWH+h9DQUUSkw7qU3Qxuc3/JslYrf+IAJLo6a80WWRYEGjk6lt2WbA7Wb02iofy/NEchGNajfnjMKEc8UaI/pXlQTaeWe8d4WnlBJc+o0exBeqBdl2bRFKZyjOm5YdDoFG1UI7CY3NOnG4li7XB+foEg317ncGVDPZGbFSGAM=",
+         "page_age": "814 days ago",
+         "title": "Deutsche Oper Berlin mit steigenden Besucherzahlen",
+         "type": "web_search_result",
+         "url": "https://www.musik-heute.de/26488/deutsche-oper-berlin-mit-steigenden-besucherzahlen/"
+        },
+        {
+         "encrypted_content": "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",
+         "page_age": "548 days ago",
+         "title": "Trotz teils hoher Auslastung bei Opern und Theater: Berlin subventioniert Plätze mit oft hunderten Euro",
+         "type": "web_search_result",
+         "url": "https://www.tagesspiegel.de/berlin/trotz-teils-hoher-auslastung-bei-opern-und-theather-berlin-subventioniert-platze-mit-oft-hunderten-euro-13497448.html"
+        },
+        {
+         "encrypted_content": "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",
+         "title": "Deutsche Oper Berlin",
+         "type": "web_search_result",
+         "url": "https://kulturmarken.de/anbieter/deutschland/berlin/deutsche-oper-berlin"
+        },
+        {
+         "encrypted_content": "EqAJCioIFBgCIiRkZWEyYzMxYi1jODU2LTQzYWQtYTQwNC1hOWE5MWI1MDc0ODQSDEmBuwljWhqW+lWcHBoMRLmIRtxdAHc7yClnIjDLqaU674lyPC6awG4GlKi7+gKAHhWC2Wu+7pEDaqCArtrR7xBj1K4fCRwmY6DOyD4qowjfNfDLEUZ31BMOIJf6UNJWlLJkhgocziHiA4s4kFcdM/JE7mdoPDGlhzzX6kLd0IHVSM2JfCIx1THyZVaewlNJehVjbtMGp7SL7WosqwDRt0K6fZlVY0iXupgIxAzzS2I2VBuXKDW5EVSyuPIF/qoiKy5ICzCvGwc6P5T40TxhnZ4KZH9KvH8B3XFJ5DlfyLg4YyiGFJP36VKyyXYKY/UJRirmRHz2soAw/1a1ITVO7j+yyS06hKgi3cOfs8iYGgeyG18NFDkXbzl3r//QikSQFABS3euwYVqn+c+f2VmqPgB1s7RN6Ecf2lHfBrRELexZ+wUK8rbs/kTEGxm9N2gGJXawAvK8mNnkhzjRtgLVeILEbFMtaP4Lk10xVSIBjUwKZvIZsCadA/Lxuq6wv8nmL+29n0pDUJMTHHvOSkAMKcjEyifh9w87Qb50ZThkY7kWgUjro7ASh0sIr6x7l9+NJD8rSkn0uMVP1dZZtgU796zJAxTM6hGP88r9NIWDpYnOsIcaEXHKSK+wvKD4Vk//Nb+o03uhUm8k+WpJUuYnxTe4dR1UyO6jnTmEfj7APcVjlOQO7DPTxi6q4V92A40/Ei4tH943JA54MikJ74B48zjaQPTEnke53b0U3PSA2zQl4lHwphd7aanWasw70iQQyG2F2bzaqttXyRfI3LOljLj09taTlVc8DBF3Dq/EyF9U+Lezk17wpeb+kYNkl4PEBmmqDUXlKuIv+u7JNBMB2hnI4VqFVBifa8UAy9sd+9YgPizXj5thbhjqXIG59dS71IX7P594VmUzu0yOR5dpuPKbl8gPGry1PvSS1vCmLYJnAYvRkevstHocxC9XCR7tzXx2ltE7CE/vIS8qvLKfgyfor441axf6yBxMlCvs5oN2rowmgF3dv7lbMCz/9mWUTpcV79UovyxAKXRM+eKm2h4dw95yU/V5phsXXOJm1mr9a8PSoiwKd1TT5C1ACnbyT56v8xQmVrR0JokneZw7SKdjK4YklDThKcmE39Rnad7c/r6a13OwLm2Va2c/S/YIWoBnS+eRefX8hzVNMQXUunVqTkrLWDkqPitdTaaSkfNp5BJ2eQc4Du7OUOwhXMpsPRIB2bIiAmbavoEVXlVNAhM8dqqmWzs9lnTps1etYmSF7rFHeO+9apjZ3nu3Fua/wbm8cYRYKnslXfl+VSGMDqxs9vQ8bEYx1fuSrC9DPJndWwmoYqTEEcdzBSPCwu2TaNdrBz0jYVD4aY+cvZCot10UOm+Xu+ECejyB7ZTJdYJi8Qzmu0ZUJBoTKUhCUQj5OUbvWRL8R4WpPCZ5AG8OkC7amBi77RQ2UfzbaAjMjpeyPKesArKN+HKIQ/7aMtCEXpdmvQZJJTdG6uBfEJfiRfOFLK4xxQ3U3UsuWdQyaZEFCdUYAw==",
+         "page_age": "1535 days ago",
+         "title": "Kultur: Deutsche Oper und BE mit Besucheranstieg",
+         "type": "web_search_result",
+         "url": "https://www.tagesspiegel.de/kultur/deutsche-oper-und-be-mit-besucheranstieg-6336493.html"
+        },
+        {
+         "encrypted_content": "ErkICioIFBgCIiRkZWEyYzMxYi1jODU2LTQzYWQtYTQwNC1hOWE5MWI1MDc0ODQSDEFlb0+adBt+/fdeehoMgUZssg1vELBgASu1IjBscLDYhkwNu9eBRiD4fAFDsB93HVJzExlhPuz1t+qtRtmsLaWb3DcTYBcnWUeC1Z4qvAek0xJo7PmIYbEN3vZqFyTzc5KQyBeRy1Gx3x/9uYd2A0Bnl0W8tjO0OWqqTv49o4dY20ehqoMEUCSEn0os98VSAegjMKIBCxXa7vkjcy2CTO4hoRJCUpNFn+n/VAjst40m8CJdzbuG8kl3LjSt1g1iGUoGS/3/EQIAdMXLWKoo4yPgYDloDt2XVhF+TinYLL5/6mCmDOkpt1dQReiDaDhul+aL3mgSPURmLGNHL7CVeJTkPZv7NPypZ6KVsP5FN1KfwpD8KAMezEZtg/rLecW+9GBKU7Cnd/bE8Q19/oDc4iJ+CjrM79+T1zgyDm5z6tSJquTXlUAWm9gQcs+L8JGPfa6NiwsBdgmpvokXv2TIp0wqLl9mpFASm3ZV4tNKP1sCt2nEH3zQFWpIghEz5jTwfubfjw4SMjAp7CmnEDW0bfb5XKgs0KamICMh6OGTTWskWKCqj5oCdDHITdeuLoXhDx9zyUt0XTqu3OBffBiXp+II3hzipgl1V1S30B6jK112ssWAb+5a0Wou6hAbDNoXW1rkYT5WXRUvol1QJz+dMD46ksdzfOpn/c+tJHN/HhNb46Gv2mD8iEoPb2e7iiuTZogqthYg0j/sp5/qNUjYmUAfcKEO6HOLZmwKmgUhk0J8qPFlfbzIGwc0JroskwkiDmwa8bPTRC+DRHMM0LVy6gXVNlMJxrXHEYVSf218EHkc75lUXp/X8UUDg9aSfaL/nd0d3kosoFjbYQWwF1lkQ8rhs1/nr3rUsP3s1YGAqlR4CtKz/iN9oaCRQDbcv60Qq2oWkLH+AQyy+olZVl9Q9PQlITDl8p1DFOTt9+k+8QGnj8MlyYL9WK823CmTRIHwr2u48TeadzDs2IgFA/0fQ408MzdVZPRRjNsOH7ppQtW4v66bYMgp4P6/mfz+UkvsuvKoRLbKwaiIxUqSKLaBWPdzFfrU+zGYMznokXsUPdOPrHaeCczvgfkhGrwG8Xm7a4lTFYvV9256P1XG2QJuScAU8VnDkJlLJjJSCMdlAkHQ5BFfoworeZsS7VnuN17DzzUvp9be6RJT3174vNz4m0RLWaNetWscPl/sOda+GuUgaMNYGniOba28U+FNtDewkTes21PnAe73rrIwEzCFz45o5uq+zB8hCga/3xeNsQnTPWqKSAaIdfvoEQZKoyYqdeD3YijEHPNAm+YeEjcsSeaF4jPsTSspzEpHiGJe4+aggGbz2vSA65FUTDxN/11nfETbbcRfOCK19X39H24s5QPyXG0BMv4stFw5uRgD",
+         "page_age": "3931 days ago",
+         "title": "Deutsche Oper Berlin steigert Besucherzahlen",
+         "type": "web_search_result",
+         "url": "https://www.musik-heute.de/12023/deutsche-oper-berlin-steigert-besucherzahlen/"
+        },
+        {
+         "encrypted_content": "ErEHCioIFBgCIiRkZWEyYzMxYi1jODU2LTQzYWQtYTQwNC1hOWE5MWI1MDc0ODQSDE6nSd9A6/Zdx5ESFhoMUANtXQzaYcyrDCzyIjAVsz10nIBEcZvilTktsxZwvKn8jDUkNm1qBkvKdRjUA43FxDZuZH6jygnAzg5rNgwqtAbYsVtVJeztYPjg01BAZkZtTmZBrwMYUKA9q5giByG8Mivd2MrI6UA6Bvmc0aCwpUs59h2BtsDThrIvrJjH15Nm9oVfG+fbvzhDxAsn3wtWVCiMdgnH29YgL4kPe+XO/W9XdFuIGezLyrwP4kzTNo05+MIYFQ86ukdXDh8KzZSzn38bUOUm4EbdPWrAxVQc4QiPpOP4XbDlDeJEyNrj3uh4P9DLscdsERYjvnSlMFHuEAu8NzXX9+So+1XXRw+poe0yL65nCCUtR3sFdZw2ntSvxGKkctPWexvR0idzz1zN/dLk1B7InnTlrt2Vk5PfZ3wWs8qb9bCUJLIIviiUPY4Kfrla3TbDOPyxVUP97Mh7eF+ncLVMwFt7OggqvSsmhvGH68RfZLnjMvDZIqQsy+m1ZH8NRbzk+2ZCH5cxjAIh1YdOFbHTGMMW9eZJ8wlPLVWIvlYjVAgBsLjXrWEPpt0TYLPkamYivoOsXgko65kQODCTApmJuXHi3DYQ6d9Y+1u8gxnbQrtkQrKIwIuzUbSe2gHgr0+k80nPte289MnjwUfbkh83S7zwOfEhdhAmEJlLd+J84SYdcH8E5oISPWS0dhV8377E0SFcyrat+4my87IRgAxIk8i9yiHMWoa2NdPYltcvovVCfq41iAoKFsZ3gNBulLooCPB6w5k6udhCO+gyUqQ2ANUfGC514wCDp0dWrIHV5sN2q2wGQPfRPgdTuqouWS7UXu26kTQeCKnBZMMwt34F0x9xY74QpX5AkpY8LRwA4tIBXTa4JT7HRBku1OVkKm7uJMR/8RIHSj3I07m2VH9lhgdIn40clfA8UXv3eTQWzZ2POpOl1C4Yms3B071nzEvOjBf0m7hCjTPgudLhwC2yffBk1B/dPNpfoyUCgtTudEQR7sU4mY6zm4ektWKYF/Ovt9xlsdMr8GGJkJR3ruW6X48GRGF8wkfdct8sv3Dvh+TEB5xJeAsbRwDkHeFWXZ6SbY7ZzmPBZcAHvirIYmhqafl8bMZaX+ZymKVhJdYuurfjUVqbIw0Ce6mMCc3ZahPaoV3mNsNxnN3z4K/sD0JNUzTKXwldIjhxt+zefkFPGAM=",
+         "page_age": "2248 days ago",
+         "title": "Deutsche Oper Berlin: Spielplan, Opernkritiken & News - 2026/27",
+         "type": "web_search_result",
+         "url": "https://www.concerti.de/spielstaetten/deutsche-oper/"
+        },
+        {
+         "encrypted_content": "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",
+         "title": "Berliner Kulturdaten",
+         "type": "web_search_result",
+         "url": "https://statistik-berlin-brandenburg.de/kommunalstatistik/kultur-berlin"
+        },
+        {
+         "encrypted_content": "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",
+         "page_age": "4300 days ago",
+         "title": "Höhere Auslastung der Opern: Und es war gut",
+         "type": "web_search_result",
+         "url": "https://www.tagesspiegel.de/kultur/und-es-war-gut-6900445.html"
+        },
+        {
+         "encrypted_content": "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",
+         "title": "Haus der Berliner Festspiele",
+         "type": "web_search_result",
+         "url": "https://en.wikipedia.org/wiki/Haus_der_Berliner_Festspiele"
+        },
+        {
+         "encrypted_content": "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",
+         "page_age": "185 days ago",
+         "title": "Meistbesuchtes Theater Berlin: Diese Bühnen brechen Rekorde",
+         "type": "web_search_result",
+         "url": "https://berlinecho.de/meistbesuchtes-theater-berlin-besucherzahlen/"
+        }
+       ],
+       "tool_use_id": "srvtoolu_01Uc6UsW3WX4YUedXgiZYQM9",
+       "type": "web_search_tool_result",
+       "caller": {
+        "type": "direct"
+       }
+      },
+      {
+       "signature": "CAQSkAcKEAgSGAI4AUIIdGhpbmtpbmcSDCUjW1UlmTt1RLlXDBoMkq6s0THhm3djLay8IjAard4F6aaDsj1Fpjv+YMohIytxs1AjjUWE7cIVc4b8jBmO48R9AoVYMXuSPdbKJD4qrQZ1SyE28OVdgfx6Mx8J0evEUOAs5J1gkxOuJrGsYl+0MMnAD24CBn0HP72AxX49IKOxRFeck34kB2v74x9M2p7RHzL2I0cxHr0zyEE3la8xa8eNLEfgBcl3+ZydQVs2qqdyiPiRG/HZL54QCKEFpfW8syvlDBvUK4qHDYmSa5HkatNU1DZrLuArNgIVi1+6AdAMWOtVI1I07MAUFsrEV8lmWwHkSws+fupv3DN0lU8H8zs0uNoqccp1GviwNw/7kL/0w/iQf5oS46rQbsLZRzh0J+n+3dqf4E4glwxhvszY1bC00Rd9eXtHq4AV3yCpYvnedbuurLaGt5GeMtDQzLmmoGmsTPT8hK0sbZQMoRiYMJOcrSPvQnEkF0REzi21n9rhHEZbU3G9+5cLT7QDXk5/2coAFoMpBykzk2DzZT6sIcoFjTnsUXqURoUxB/UAB9PVIXcVA4jn/8qJVGPEDvaQ9achdSzVom3pBzku/olgwnH08SEGC48I9KJVbgiGvOYWEoY1I1o5nGwf+Zeq6++h5X1SzBngqzMTp54TD7ubqjxvgxNh4GbsMhykeIT5L0U/KEq4bTCpWIJJPKXzqxd5AQGZuTa+UecS+sjHPw6f3nwCJHdH4K8WIb3+PMRmrtyoWwQ8m00yNFlu7Tpc96M40OUXuQ1PiZuJccKqLGBXYwXS2IWqJOHIJah3SezQfnp3c1g2/2J92ktRAIsiul8Yis6PH3Okhrs/zbBphJz/zvznvaTvMeirvC0ObaL0WcmUuEsXSZjunoUs+8b4sa1/wqmYu6BT4cMN9uGemIuL1igAtJX75035NPAjp6hOWnz5j5aZyTz2ORiQesTUbM5qJIMj0ly3yk2N68PZFhpC+p+MysXCzmP2c9l89YIpBO+HuNNt9mrUwOfTyno7Hbi5KH7vaE+3Ka1w3zOKV+MD/nGre5W0FxUIIs0uneDfYO5EYMuNP719w0VCWuwsC6d878eIvaDpGCHKCKRN9TI+w4da1HStjh4TjDmHQroBlCGFchKCs7DXkS8VGtI/D6V8cfYbUxLG/ru+VMSdXjVDrrqMSI58Sq4CXyINON0YAQ==",
+       "thinking": "",
+       "type": "thinking"
+      },
+      {
+       "id": "toolu_01CRifFFwj3SLgHbKfHV1Jny",
+       "input": {
+        "candidate_id": "concentration:wikidata:Q637834",
+        "verdict": "plausible",
+        "issue_type": "fame_vs_attendance",
+        "reason": "Pipeline gives 343k annual visitors before the 0.5 share. Published attendance is about 254k in 2024, so the fit is only about 1.35x high. After the 0.5 share the figure is roughly 127k–172k a year, or 350–470 a day. That is within 2x. It is a 1,859-seat house, so the scale fits.",
+        "proposed": {
+         "low": 110000,
+         "central": 127000,
+         "high": 172000,
+         "unit": "visitors_per_year"
+        },
+        "sources": [
+         {
+          "url": "https://berlinecho.de/meistbesuchtes-theater-berlin-besucherzahlen/",
+          "quote": "Die Deutsche Oper Berlin kam auf 254.270 Besucher und führte das Musiktheater-Feld an."
+         }
+        ],
+        "evidence_needed": "Check whether the 0.5 gateway share is right (other nearby stations, e.g. Bismarckstraße) and whether the 254k attendance includes events held elsewhere."
+       },
+       "name": "report_finding",
+       "type": "tool_use",
+       "caller": {
+        "type": "direct"
+       }
+      }
+     ]
+    },
+    {
+     "role": "user",
+     "content": [
+      {
+       "type": "tool_result",
+       "tool_use_id": "toolu_01CRifFFwj3SLgHbKfHV1Jny",
+       "content": "Recorded."
+      }
+     ]
+    },
+    {
+     "role": "assistant",
+     "content": [
+      {
+       "text": "I reported the one candidate, Deutsche Oper Berlin, as plausible. The pipeline's pre-share figure is about 1.35 times the published 2024 attendance of roughly 254,000. After the 0.5 station share, the estimate is within a factor of 2 of the published figure.",
+       "type": "text"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "module": "missing_entity",
+   "candidate_ids": [
+    "missing_entity:osm:node/4306480695",
+    "missing_entity:osm:way/87644262",
+    "missing_entity:osm:way/88065712"
+   ],
+   "turns": 2,
+   "retrieved_urls": [
+    "https://barkowleibinger.com/de/architektur/b-l-schillerstrasse-berlin-germany",
+    "https://baukobox.de/en/experts/37-barkow-leibinger-gesellschaft-von-architekten-mbh",
+    "https://de.wikipedia.org/wiki/Amtsgericht_Charlottenburg",
+    "https://en.wikipedia.org/wiki/Bismarckstra%C3%9Fe_(Berlin_U-Bahn)",
+    "https://en.wikipedia.org/wiki/Estrel_Tower",
+    "https://erich-mendelsohn-preis.com/de/architekten/barkow-leibinger-architekten-gmbh",
+    "https://fragdenstaat.de/behoerde/3785/amtsgericht-charlottenburg",
+    "https://fragdenstaat.de/behoerde/3839/finanzamt-charlottenburg",
+    "https://service.berlin.de/standorte/en",
+    "https://web2.cylex.de/firma-home/amtsgericht-charlottenburg-5510217.html",
+    "https://wundertax.de/finanzamt/1113_charlottenburg",
+    "https://www.baunetz-architekten.de/barkow-leibinger/31165",
+    "https://www.berlin.de/ba-charlottenburg-wilmersdorf/ueber-den-bezirk/bauwerke/gebaeude-und-anlagen/verwaltungs-und-gerichtsgebaeude",
+    "https://www.berlin.de/ba-charlottenburg-wilmersdorf/ueber-den-bezirk/bauwerke/gebaeude-und-anlagen/verwaltungs-und-gerichtsgebaeude/artikel.1348486.php",
+    "https://www.berlin.de/gerichte/amtsgericht-charlottenburg/das-gericht",
+    "https://www.berlinstadtservice.de/aemter-und_behoerden_berlin/finanzamt/Finanzamt_Charlottenburg.html",
+    "https://www.expertenfinder.de/finanzamt/details/1113.html",
+    "https://www.firma.de/finanzamt/838b6e-finanzamt-charlottenburg",
+    "https://www.german-architects.com/de/barkow-leibinger",
+    "https://www.hilfelotse-berlin.de/detail/amtsgericht-charlottenburg",
+    "https://www.indeed.com/cmp/Barkow-Leibinger",
+    "https://www.jobcheck.com/job/junior-assistenz-der-geschaeftsfuehrung-mwd-bl-barkow-leibinger-partnerschaft-von-architekten-mbb-berlin",
+    "https://www.lto.de/gerichte/aktuelle-urteile-und-adresse/amtsgericht-berlin-charlottenburg",
+    "https://www.smartsteuer.de/online/finanzamt/charlottenburg",
+    "https://www.steuergo.de/finanzamt/1113/charlottenburg_1113",
+    "https://www.steuerklassen.com/finanzaemter/finanzamt-charlottenburg",
+    "https://www.steuertipps.de/finanzamt/charlottenburg",
+    "https://www.wer-zu-wem.de/firma/barkow-leibinger.html",
+    "https://www.zoominfo.com/pic/barkow-leibinger/25187332"
+   ],
+   "log": [],
+   "tool_errors": [],
+   "transcript": [
+    {
+     "role": "user",
+     "content": "Node: Deutsche Oper (lat 52.51184, lon 13.31053), circle radius 400 m.\nModule: missing_entity. Figures are the pipeline's raw values, before any review.\n\nCandidates:\n<data>\n[\n {\n  \"candidate_id\": \"missing_entity:osm:node/4306480695\",\n  \"module\": \"missing_entity\",\n  \"record_ref\": \"osm:node/4306480695\",\n  \"record\": {\n   \"osm_ref\": \"node/4306480695\",\n   \"distance_m\": 0.0,\n   \"name\": \"Barkow Leibinger\",\n   \"office\": \"architect\",\n   \"address\": null,\n   \"lat\": 52.509705,\n   \"lon\": 13.310549,\n   \"tags\": {\n    \"email\": \"info@barkowleibinger.com\",\n    \"fax\": \"+4930 315712 29\",\n    \"name\": \"Barkow Leibinger\",\n    \"office\": \"architect\",\n    \"phone\": \"+4930 315712 0\",\n    \"website\": \"https://barkowleibinger.com/\"\n   }\n  },\n  \"footprint_m2\": null,\n  \"floor_area_m2\": null,\n  \"levels_tagged\": false,\n  \"reason_listed\": \"no IHK registration within 40 m\",\n  \"ihk_within_40m\": {\n   \"registrations\": 0,\n   \"headcount_at_midpoints\": 0\n  },\n  \"tagged_objects_inside\": [],\n  \"nearest_station\": {\n   \"name\": \"U Deutsche Oper (Berlin)\",\n   \"distance_m\": 248\n  },\n  \"nearest_ihk_m\": 50.8\n },\n {\n  \"candidate_id\": \"missing_entity:osm:way/87644262\",\n  \"module\": \"missing_entity\",\n  \"record_ref\": \"osm:way/87644262\",\n  \"record\": {\n   \"osm_ref\": \"way/87644262\",\n   \"distance_m\": 0.0,\n   \"building\": \"public\",\n   \"address\": null,\n   \"lat\": 52.514466,\n   \"lon\": 13.309542,\n   \"tags\": {\n    \"building\": \"public\"\n   }\n  },\n  \"footprint_m2\": 135,\n  \"floor_area_m2\": 135,\n  \"levels_tagged\": false,\n  \"reason_listed\": \"no IHK registration within 40 m\",\n  \"ihk_within_40m\": {\n   \"registrations\": 0,\n   \"headcount_at_midpoints\": 0\n  },\n  \"tagged_objects_inside\": [\n   {\n    \"osm_ref\": \"node/10967611162\",\n    \"distance_m\": 0.0,\n    \"name\": \"Deutsche Lebens-Rettungs-Gesellschaft – Landersverband Berlin, Bezirk Charlottenburg-Wilmersdorf\",\n    \"office\": \"ngo\",\n    \"address\": null\n   }\n  ],\n  \"nearest_station\": {\n   \"name\": \"U Deutsche Oper (Berlin)\",\n   \"distance_m\": 294\n  },\n  \"nearest_ihk_m\": 45.4\n },\n {\n  \"candidate_id\": \"missing_entity:osm:way/88065712\",\n  \"module\": \"missing_entity\",\n  \"record_ref\": \"osm:way/88065712\",\n  \"record\": {\n   \"osm_ref\": \"way/88065712\",\n   \"distance_m\": 0.0,\n   \"building\": \"office\",\n   \"building:levels\": \"8\",\n   \"address\": null,\n   \"lat\": 52.513052,\n   \"lon\": 13.31542,\n   \"tags\": {\n    \"building\": \"office\",\n    \"building:levels\": \"8\"\n   }\n  },\n  \"footprint_m2\": 2841,\n  \"floor_area_m2\": 22731,\n  \"levels_tagged\": true,\n  \"reason_listed\": \"IHK headcount within 40 m below 1 per 100 m² of floor area\",\n  \"ihk_within_40m\": {\n   \"registrations\": 30,\n   \"headcount_at_midpoints\": 32.2\n  },\n  \"tagged_objects_inside\": [],\n  \"nearest_station\": {\n   \"name\": \"U Deutsche Oper (Berlin)\",\n   \"distance_m\": 428\n  },\n  \"nearest_ihk_m\": 0.0\n }\n]\n</data>\n\nReport one finding for each of these candidate_ids: missing_entity:osm:node/4306480695, missing_entity:osm:way/87644262, missing_entity:osm:way/88065712.\n\nAlso: if you know of a major employer or venue (roughly 500 or more people on a typical day) whose location is inside this circle and that none of the candidates covers, report it with report_new_entity (at most 5), with its coordinates. Do not report places outside the circle."
+    },
+    {
+     "role": "assistant",
+     "content": [
+      {
+       "signature": "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",
+       "thinking": "",
+       "type": "thinking"
+      },
+      {
+       "id": "srvtoolu_01M4UPB86FGiqT7CnQK6xgDy",
+       "input": {
+        "query": "Barkow Leibinger Berlin Mitarbeiter Schillerstraße"
+       },
+       "name": "web_search",
+       "type": "server_tool_use"
+      },
+      {
+       "id": "srvtoolu_01RsHG4Tf2BJNKVf62rondW4",
+       "input": {
+        "query": "Bürogebäude Bismarckstraße Berlin Charlottenburg Amtsgericht Behörde Bezirksamt Zentrale Bismarckstraße 2026"
+       },
+       "name": "web_search",
+       "type": "server_tool_use"
+      },
+      {
+       "content": [
+        {
+         "encrypted_content": "ErAICioIFBgCIiRkZWEyYzMxYi1jODU2LTQzYWQtYTQwNC1hOWE5MWI1MDc0ODQSDD9lzFbjc6KUMrmqxxoMh+SHsJiP+HEItX+HIjCGj1fMyJiOQkUl2vVHnI6zlgbXoI0TL5hfIHiFHtlelpronIOzO3Abn+HRA5ghz6MqswdwYh+OK/BVZWXL6bGQlUlqwysgRUUKPrcf67XaazMgWtEe+tyl/PZP93Xdw+dp9At27H9dsUrc/bCKbXiX+Ze7DfYpudGbY+8iqwJyQeK6qoONfwfKPbE1DfnGLYKjDSL3NvhcdZuARImE76sgUdzOwjnKCJFkwa3mqwLYHI6d56T/m0VKHiiHHZlAxLNjQ4c9yDK9WG9z6+YfbF09R11GgyHpcPyeSfjgK04kMJfk2TKnWWB3tjlrlMCXFzVeM2R4Cod72K8eQP6z63SWb6OLrcgD5s6rvRvOTExGjUojXftnMp5f6UIc3PDFkUaLIKiW4x0+JsgIMY7hwaiEDw7Szakh7Cpws3KOPcEadZXV3eDhCYdcl9YtwM2LkQUT/vBdb4CMKRZm1/Xxm2rgHAI8nIKpdgq1HduYvIPvVRo12sPAKjjGViZH4zZSu/0Wd3KRWc/g1kHtb/gBs7/xmdAaxZ/xiBibRVtjMlPI4IioR/X3TLDHX3ZQqBPVoMgnCPBh0O8xfYgggoooWaRcWQBNu3kUgBNkFgk6nd22pCP3PunYS99qvLJq705FAGpnT8GYpjCNGVvZU12r9nPczwYbFgj7YScmNr0Byexkamnx/pQgKYvNxvE5DSngDV+127zRnK3qBtnjBCAYR5IVcfacjgZIiHe3fFqg0xk0GhCJt1lsDqUzJt7hF4jy5MJUsiZEqr8kKvOJGGcUCaoWto0dKTnIebQa7PBEYp5ht4rKj+yaE1LYvvx0qkf4uIjXXr8sXocnrE39OKFHehPvfJ0jIrDo7tZC2SrhXXNFicKkiAiGvlb3c0Ujb2f0H9iMS9J7B4nyMME94a3pBSkRs5HEEB1bWxYqU/fgcn9Nj47FD9ylzQ34BjUSuym4vByVrONvhEzI1c8unWp45wyaDDSOzu/vaKq4rh+OZhRJdlA7/F2IzdjT6A5eA/u0IMY69sfyzImgrS+xeC4G827gbYklX1naFQDTfR97p1LV9q+MQH16cG/7f+hIXV+dkxaVs7YG+gp6YRL/OnINzN9XwXclK2+5bzsflxyMgvDOXufdsVVQfwkn89shra8oU5nQ4vvqM5SxyCLBuk77TCbSudMCiU2VkQAJlycDgEpLONdW8UX3PgOrhCA4P5N2yacvFTp8kUgwWI4hoJH5JPqZ1xKveObGXPXfA19K+8+WFazfx8PxKDYy62Vjf43OruG/E8QeF0pkk4jFPALMykkRQkEK2hosfM2eAf8k7JdqBetR/4vl2xgD",
+         "title": "Barkow Leibinger Careers and Employment",
+         "type": "web_search_result",
+         "url": "https://www.indeed.com/cmp/Barkow-Leibinger"
+        },
+        {
+         "encrypted_content": "EuwICioIFBgCIiRkZWEyYzMxYi1jODU2LTQzYWQtYTQwNC1hOWE5MWI1MDc0ODQSDHvVCrkgik6FnC/drBoMFpTQML0Y8qRAOkTeIjA68tUQUuM2p0fjEZjE/jZjmhxSAKCEpeEGgrLB7jwzrgH/V93NAgOv/250ywwO2HIq7wc42iccIo2VgN60si1VqhkHz/xhMsufzXI0EuDgC/gaoSynXs6mY/VViVPH9AY36/ATgFd0quXoFxyL3l225qartUclQAqlDLtzJLDUaQUYvqMNYClS0avY9Mr2XplwtNypJk7J1obsvCXGmbMrdchSa2Qsiu7oN9tYOvpH7artat9fLIvBmm7nwTfxsoXcRFXE4elSgZU+QFKDVk1M5WVWX6IixvatWSazwioQBOq+n1DGxecVu4FTHXWT+KsiTkjGUDTtl78hqlEmTNHFCG2C4DA33r0A90Y+Qpa1nCeFItzEpn4qVLnX6UhBRz+AaAN0fc9pssGVmDwlVs2i1qNEgSTF+rFozJY4N81ht7uo5opGjT40t8yFmTY6BtA5744svWEI7QUh5Cpum3Hf6kOvOHC5IXGor0BvYS0FrpMFebogj3+iV/4V3Bo51CHK9iK18Z5y/HP5Y0hKKZAW9QOTgkhnP19z0xnXTeK6WZMRVxM/043w9164Wz04P2nyVaM+HUZVyIBirA+S2bAb1dOVvl/9iAi0NIT8baPmzOEmBPMiYUYZBNHAWf0dmdL6jnvlHoxV5FDajJDSobmxp6vp0+uVvYwCAiSaTvSwGme1Mu/jvnre5C50bHkn/6VkHEOB0lpwJcSckXMvEEoZeynJRExhXGn8BECySrfmN56b9E6pMcs+mY2GxD683Bc2lfH295GKrbONmKDGkjF1Dw0HR8ITnfabFaBPu2uGI8epNNYmZGfbGuVi4GUde4goNyhky6Bzghk0zX8DIXms5wTDQzn0J7lbhNq03FsCxMisrZy69o4W7f76il/m24x/HGiU9YBlEmGfN2UuedswQkKhTcWGm8bFFsxVUH8BbG2mosbFh32ljMpKt1i+rkuZ7ei/6dSS9iqbV3aklxq5YyA26sFn+UrRou3ZYfG0lzk1GjY0PsGgP9r2WT9XLwofBOrv9RyCJygPY7kQqQtHUPokuqV5RLBfb4yC08MtNnanZ9f9bcJcC5hAHh+kLmLJemKXARfSo0z/xk8sYMkWLV754tmBfJcLMXQoe6ku9eRZhAY5RR4yiZ+X2Rt1ZjUZ5LASAGeUWo2FSepcbfMgRlyjw1ovsvWY/E413XLDNCVVTLYt8VCU8ojC6Hm15jOYKKjl3ztYGISmtUoEU0Uo6Hij5w8W1cXDdHYxK1dHJNR0C3AhKLan3WU2ZNAQ3gboPAvR/dzM3+I9VGhMTfa0YcdoA1M0DeswLs3WwaJkmpWwR+aBFwlRTWssBfZGu2nFvoOrIzdmuefNqh+leBmhhvck1RonIqbQFVHOeEeYiPqPKPydr9B4u1cu6oxy4wO77BgD",
+         "title": "Barkow Leibinger, Berlin / Architekten - BauNetz Architekten Profil",
+         "type": "web_search_result",
+         "url": "https://www.baunetz-architekten.de/barkow-leibinger/31165"
+        },
+        {
+         "encrypted_content": "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",
+         "title": "Barkow Leibinger: Employee Directory",
+         "type": "web_search_result",
+         "url": "https://www.zoominfo.com/pic/barkow-leibinger/25187332"
+        },
+        {
+         "encrypted_content": "EscICioIFBgCIiRkZWEyYzMxYi1jODU2LTQzYWQtYTQwNC1hOWE5MWI1MDc0ODQSDIej1LbD4NchOueeAhoM/nkSeSrc5qa5gsKQIjAUT3CChwzp5Xc3dfrEWabeSnkyierVE2fdZc5HQ0AGL0KlMnaSufBLqPnqSir0kEEqygcJXJ5P86Zdcnea5gdLLM3igJ0AbydzycPaVkS1FqH2RJhtXnY6THyK40yQ9OXX7rkBxVwSS24hBfhtvgUzZ6b8Tw1ysXuZNQYldrojN1XzrCeBBE3p5c13MePCHDP5c7kPiytS8qQbpCWkCrgqsCOKTuVyTSVu+naK4GqjJTbhaNfAjMvkRTw3BNKgULMcSxfLc8bA4N8+N4eBPHpHblSNcIKVdzKFf4ilosCenCFnmWIifR2EeXv8AoFg3RYZ0bQ+WwOrU1H08egxNf8VIlmDewpuz9VPI01Q/fazA+sgLpcV+5OIMxLPqPwG8P5mKiJ4FDYIRSQvNyASKOvSxNkOGLEMhtrmgbk4wi5lDgrJwfqRgCeJ/eYYMLb+JbIOtEL0DmGe36kPFOICEV1XHc01Pc7/h1jBXENwXD2ZYFg+ip54KxO+DUALGw+W/pfYkAQ8MPTIUe3H7ZojPJtj4FY24Z/kHc394gGYN7g1ne8BKC9zf0wJ9CZisLSZ5CO+o3BTKsmaM3lSvl8Pb1+JxaI79180zGFXuT7xZq225zMdmosbUhUxFCHVW+8C+NFJFje66lHgTkQGg4NW5/3WxWoegpEGwuQ8A31U5Jri4nBsDqakCRTt8VgI29smqbfzSH6wb0cWfHgXebWTk9xYq9JBf8889FHkhtkVHYaUkmxElOlHwi2msg1TbJg//P50i0hxi0clLKi1SRQUcwzqVfI0AY9PuJTkgrzYNWiN7k2HueE6brpxCPK/jFWq/K37VnRPqG1qY8zQEMuWb7UQW2O++FLhY71ZhQpug0VqNPnft/3iZ4m0aK5YdG8oD+jme03ikCzQKNeQH9E3Nd9Tk4oMqoy8iwDo/WzNZ/+mHug8BaEQveNIsyquTXx5Dr4Zb63LAvlKUJU0blEUH7omibbkzAPiCaZm4MX5shDL4effTM/UQAB4U0xp9hU8e8EmhqP/VXaYCv9R9WSmv3EZ25WFq4+Yr2dnK01ClKE6v6ZP6008fs6oxi9iY60Sake0WgeDIn1GwTsBGT7suIHGOrYAZhMQ8fnBZrpwL6rhVLyymnH2PfEWXgMaYTwN6utnsHWaYq90ut26ivF6sMdhb3X/SieuNadaj7zhcpSQV7F8rweA3fMB6WTGjNyBAUgvAgLmkewCadmj11WWopnQVAJ2NhGRRcY75txP/DbuJH5moSwoZoE7raZBUPkErNMiwcUeFfmruuTvt1LDaTaTPf4/CXDk/kSCPrCQJkmSRkvj0ByUnwOzsalYjpjo9Mdd3xWJAWyMYBXMEZflGAM=",
+         "title": "Architecture office Barkow Leibinger Gesellschaft von Architekten mbH from Berlin",
+         "type": "web_search_result",
+         "url": "https://baukobox.de/en/experts/37-barkow-leibinger-gesellschaft-von-architekten-mbh"
+        },
+        {
+         "encrypted_content": "EvEFCioIFBgCIiRkZWEyYzMxYi1jODU2LTQzYWQtYTQwNC1hOWE5MWI1MDc0ODQSDMZv/sp3cGmpffjuAhoMGL6ffy3qQX8hvM99IjA9lc9mjEVR3R/BMefag1jBzmwI2UHf29F6U0AXaHJGnmnNeYNuVuZ83iEMbYwCIA4q9ASOmqHGg0uulS7GGZ4ttMdjQDVPTYjhuq9ChuE47sI0cb9Hs27NalTAPxBpEBtafNbJg/AmNG2UPCikdRCf5NEXYrfF1eBqz1GF0qPtkoWUs+Sxd6zsIr4ShjzyyfYVHgXg9FL/umrrjJ5fQwtoh475D+v1BRwtsdAtZtRDryiNHF9iGRjnBSSggM/BrCFTj38SWMRS1+D08OtQxVcmoP3MovBOL/dsWrqPwyOv/9wI+ELalKzJXGOaT0QOsuMynS5+DnKlNM/Ncy4cmfS8P9z9Zq7QPuOsuZEr5k5WfJaLFYLsAjj3+7WvJJOB4R4gT9v0XSyZkJ6aXuk29f5ekl7d6hBj+paVf4B4BccPvl1Pp8ptL39AWjNKOlwHiqhPLlwgcp0D5KVPw0G610ohMeJZeeJZrtF4W4YG/3p5Hpbmd5fgkSBL/4ub5OWxYpdGbCDXElqaF/+TeVc5qREkiRi6CCgfOK754TMKojWwO59YSVvl6sJ0U/TS2XoSLyZqXDsUF4TMrYVnByrg6nVcS708bOoA2S4yVGXIO+P/pXTrAwewUQw2fGcapFAaKVlUgMG/8/GDDr4lSzvoPDJNcv11/tELA/ELro7fdpRO60gpAtQTl3ryRDShsE1CCymHWw2q3x8Odnjn9h9NPdEBbK7ZwOoizyS5PjY69qY0mgs9HuFUmMmFd1e1Wt/W8rMClEPWmKRY3kZmWr//0v4Rr3Q75O7+uDa3TkrHBFAzH6lRYWEW0s5FGUDBG4Qd6LUXX2Lbo+yEd4OEL0iEHDA0HYPSGrb4/169zM3h6BP8JGKFiaqeCWYgUVnUbUl5Gpr2XpSEy7o4GAM=",
+         "title": "B-L Schillerstrasse",
+         "type": "web_search_result",
+         "url": "https://barkowleibinger.com/de/architektur/b-l-schillerstrasse-berlin-germany"
+        },
+        {
+         "encrypted_content": "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",
+         "title": "Barkow Leibinger - Berlin, Deutschland - Architekten -",
+         "type": "web_search_result",
+         "url": "https://www.german-architects.com/de/barkow-leibinger"
+        },
+        {
+         "encrypted_content": "Eq8HCioIFBgCIiRkZWEyYzMxYi1jODU2LTQzYWQtYTQwNC1hOWE5MWI1MDc0ODQSDAJNbVV//KSxjlB3mhoMgn5TWfMM6SujLGPeIjCDKQfvPfDJLfB9e4fl/xItBWD4OFKbggVwyBmd71fX6pKdNzIvSenZYmilwATOPN4qsgZD6S6HzujM/Cuitncba98gVfUWvVMTD3eE1WPDGH1jrHRi9oAptBPg9cIW/HgErQ9k7QBxLn1ztQUcmaHcGidA2SNqm3ZgsCyHV0fDCPJpKg0bv2CU94EI38QO4aQ3koukhhHNffDY/M/jOPJp/Ftne21i31h5NiRKggGNctbhe9z9K65s6c2PUMnU/tkb1Z0RSw6CuD4lhjG6YiIxtwTY5VCQgGqZJCcW8tKhiS1vOTgXfNBuu2CBUp8ibuR9W3c1/rmMEM/nNE9m0OeO7lVzuFUCXJWKwB4v/+yRLTuJFifiXBf0b3s9/Rjh1NY4qcjiiSk8l342e7Jish4akBYYbw8eoO9W+iIaeuQuVJDp2IOkyOWfUhjbfReAyaDjHLaUn/cK/XVJ7m06LD+xgHAcfqcEv864qbS1PwRJU73KtDlvjhc1tiAv33ZhPbJsO5UnfPXVtGEiuDNAYCv0FhVSxygslypTd29iRZ/rv+UwdnJttrPCFfJymaEvjr/LMTvQBGJl/slouFbJdYeBOXTQa24+bdqZBlJMQl2urCJ6nxGfj4DR8UcUKnFPDV2+iAO/mtxaSxNwsBaXSXzxENBn/NcJXlnswqCYfn3mHjTEuUYyU589LUN2Yg1dnc49gJTbPxEpieF8gsjOT1svebiyxUv7QjXUZ59Wgzwz1xQE1oe+TRWe76AO79ZvCC6/d6raRIp20wLXNyb1Y7EN79z+rHUAwhKX0KTT6e0isSHwO3T0InEA62TEoDlz+A7bwngoP4KLJFzGEmbYZ3pJCEyfER82+Fb7zyrun2D2fabt59+yHdKlIyAUzMbdxGKDP5nGU/ag99UbI3w8lan0bSgJMFH8z6BLlgjG5gGq6drx7JY6uHHvv34zBa6QjKuWQj5TlQZW8pvWqtIjnWAHE9tWjWvwr877Okk1uKJnGmI5YY/PUvo/QZpJwllJjjRV/4D5hgCm9sQuts7qn69GtJDaJTVdujVd3u/ZrdyyyM7yEkau8VQjiBmDPFCfl+d1OayUOKrttM5fdIFJzhZ6fRspUQ6SJAEMMoZZUyMwbTslXjfPz9Vgn61kruDJ6389ywz9VRgD",
+         "title": "Barkow Leibinger",
+         "type": "web_search_result",
+         "url": "https://www.wer-zu-wem.de/firma/barkow-leibinger.html"
+        },
+        {
+         "encrypted_content": "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",
+         "page_age": "2437 days ago",
+         "title": "Barkow Leibinger Architekten GmbH",
+         "type": "web_search_result",
+         "url": "https://erich-mendelsohn-preis.com/de/architekten/barkow-leibinger-architekten-gmbh"
+        },
+        {
+         "encrypted_content": "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",
+         "page_age": "981 days ago",
+         "title": "Junior - Assistenz der Geschäftsführung (m/w/d) in Berlin bei B-L Barkow Leibinger Partnerschaft von Architekten mbB - Job & Bewerbung - JobCheck",
+         "type": "web_search_result",
+         "url": "https://www.jobcheck.com/job/junior-assistenz-der-geschaeftsfuehrung-mwd-bl-barkow-leibinger-partnerschaft-von-architekten-mbb-berlin/"
+        },
+        {
+         "encrypted_content": "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",
+         "title": "Estrel Tower",
+         "type": "web_search_result",
+         "url": "https://en.wikipedia.org/wiki/Estrel_Tower"
+        }
+       ],
+       "tool_use_id": "srvtoolu_01M4UPB86FGiqT7CnQK6xgDy",
+       "type": "web_search_tool_result",
+       "caller": {
+        "type": "direct"
+       }
+      },
+      {
+       "content": [
+        {
+         "encrypted_content": "EuEHCioIFBgCIiRkZWEyYzMxYi1jODU2LTQzYWQtYTQwNC1hOWE5MWI1MDc0ODQSDDXQuXCbLMjLL4+QERoM/2kI2FP9dOWY07d3IjDQbGEuTI06/4HVgkfvHfsIFx+h5nYgOFlRXVAcWFlKdEoNmQedAYUjr6Q8d/C8vdoq5AZdHxSaFtgU9if1UyoxVYafvT9GZ7GvEr6bTixyI9Aie3tBAFloWI2ScYxwqsUitUq9j589twkpxY+6vzyCgmzAefAarkvCBX9H+QkiSZEwVzl6j6ZNdLa214lJIgQu/2qh+zccO8MXaLCcKEaw3Iv/Cs/a+N6MVevunSGv5FSOXOituo+RgLbpYwSeEDqTGH3vOYV4Sgdi9+qJOeehS4QJuzFfSU5thqgSjNnrG468W5+htTwQ9pimsi8Mr0gNdaXsshtK3ioGiBxrzUQ8OmlELVysG/NPBNwL01976oWE2NtAxLoGXQ4OAwXpfIMb40rNYtSp5DFVCLb9HuSpx6aBUvSQ/K3ICJYip/N02tSGGWyQAkn2aRJ6EzKiXHKQ9XwxHuiCkPZKZhZsUmO6tf5sKNR3QCnFof08X22AfiDeWJ+aS3kiFAdBcXowGBHrQRI9mKMgFQlVwXm8I/5NJa/pjEKmZxBhdWf5ruboe+/8kyTwswOpVyAjSolmLLshd8qtV/wWiOXWgj3O5MqEr36yxEyKpuC/C0yEhVZplNiG2ip5Ng1shBvaN6WJzrNTuelArqyFRLyh9qpSZzVVl41pkV7YNhwKq+F7yLMLGDcwEErVY2j2wMrzDrBRrA6RVmrErlzJdllBUL3CEVe0j+500WxnJuU22hP5wua5mKEWkDq2F+WP5nLGpSlk7Y9ssPtAsij3K9k6PSFJ8A332KQltanNDnOPr522Grn/RYKnC/jkMj50wq285MUhWGB5FrF6yIkgAu19QYyFSA/D4F8rS08bg7Z43YhFsrBOc2Jm3qGWNjHB0SpyHjXRcJhaOss0pPfsotH0vBsjey7NOCA4IYS+PPf6ZcNKztrZG3/nvFIEHv9SjSRqvpXTXAi/yTs+evjz0SXJYgv1B/u0hzBsIX6yFQj5Ob/7NPzbxoqLpjtnq77mwIwdR071hMLFKMkEzRoMDwUQrLZ8HA/oXaCl5tCIOqCnTo9J5JmFHXQSs6VstMM4zUCpbTaNe+utvUZZVlxLUpReGjCIjcpNBAt3AuGOPrZVirW3CTcBgjK1Dac2XZXRcdkIBnl7S5iL1lg6VljeRExGfCvgIrJ5UhItMKw2ZprXFpVJsTnSt5qcifmijWADwXO7DCEBhpcYzsvC9/bqGAM=",
+         "title": "Amtsgericht Charlottenburg - Berlin.de",
+         "type": "web_search_result",
+         "url": "https://www.berlin.de/gerichte/amtsgericht-charlottenburg/das-gericht/"
+        },
+        {
+         "encrypted_content": "EqQHCioIFBgCIiRkZWEyYzMxYi1jODU2LTQzYWQtYTQwNC1hOWE5MWI1MDc0ODQSDBT2MwfJiM5iXHPTPBoMN42+wfPoHYw6J7RQIjD+5w7hySv/zXI3uRWeTsgV9alE1VDou0Aqm8GhliL3GB2v1k8MEtCiOGF4/93fCQ4qpwZ9h0bK7LVXZ0a8y/cqIBJh4XLZ7Cuw0LQHx+pIvIXbaX/ou9ytk7PaH7adNSlwlcKpEwd1lD2Neh+yMKNoLubFcYMu8M7P54Zu+xiYtf5fYX1mDougD7xR/EmS6L9oVL8ONFhvXs6zs/8GlcPdd5Ilz7vE/4O//h1D1Bh4YVinK9Mv9J61CkpAxCRvEm5dGBsEI+muWbY0vbBjrsT+IrAhYfkRKJHakJiomiyELeGH91sEEU5ZsZsee8A0uvJynLEIys6Rl4KLosy3+8HWk8J2wZ7y1LGRcgWrLkDAnPKSSCG61bEvVG6/qpJjmpdYO83hvcZUsG01kunlrK8N+ybFLpy34zG3rQrFQBUXNIAuHxQFZTOarzx/8PyTksj0kPk/ymwHOO5g8b5u0A8rTlxbBEII5EjNaAn9jmEUrrdkKzqO1Oc7R7LuJwtG6fqZn4cRxeMYm0PAYr9+eO8GlwX/yEcZt0TQB38r8sOvHKkia9KXyWGOxbSO7ANvAHR3OwgzwEYRwNv55kIVoAKt0kQY7GhTk2VlEI0Jb/OQHKVBEcNYN5SP4G2UaLYvEcT1gwb4EJpJj3D+N6nEn9ZCI/ZyaECwJl9OniltE5+RFa+bpfJDUiZSXJfKmQK3oGt32/7ZF4Yjd/Nm1Tj3oywN7yWn5Ujjfq4giHPPOqnOuj0C5Nulrfagr2qS1dEH5Hw6MJOtoSqkBXMR9haLnIAL7CiZoj+Q+3GsY60Mv+pmfNMQHU7lif6CHtCYOCl1NQ+0ggmIUux3hPL+Kqi+4hayh1ud5BXVHSKIKX+4jKQn8kua/otFmqS3eGy91fM/tM08Ci7d3K9bdUW3rtMDmyEy2/e8YdHzXwUPIKbuarpglJoUoj3cToakqi/T6QEDk+OXJmI/Nqc+zbeipBHOgjeKk7qxm04kodyc443Z92pvMeHUmVkpWdZvQXWikJDcdGBHt39Q5qnhUGE03U+GwkVR4XACdjyj9L2Dh4P2pWJqed10SlXRbrJ5+7eaAPerVtDR2r+6gXw9TT2T2JHOOnP8IjkZ9Eu15/KK96Q6Wteen5louCwRvhPZ66QYAw==",
+         "title": "Amtsgericht Charlottenburg - FragDenStaat - FragDenStaat",
+         "type": "web_search_result",
+         "url": "https://fragdenstaat.de/behoerde/3785/amtsgericht-charlottenburg/"
+        },
+        {
+         "encrypted_content": "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",
+         "page_age": "6543 days ago",
+         "title": "Amtsgericht Charlottenburg",
+         "type": "web_search_result",
+         "url": "https://de.wikipedia.org/wiki/Amtsgericht_Charlottenburg"
+        },
+        {
+         "encrypted_content": "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",
+         "title": "Amtsgericht Charlottenburg",
+         "type": "web_search_result",
+         "url": "https://www.hilfelotse-berlin.de/detail/amtsgericht-charlottenburg"
+        },
+        {
+         "encrypted_content": "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",
+         "title": "Amtsgericht Berlin-Charlottenburg - Seite 1 - Adresse und aktuelle Urteile",
+         "type": "web_search_result",
+         "url": "https://www.lto.de/gerichte/aktuelle-urteile-und-adresse/amtsgericht-berlin-charlottenburg"
+        },
+        {
+         "encrypted_content": "Er4HCioIFBgCIiRkZWEyYzMxYi1jODU2LTQzYWQtYTQwNC1hOWE5MWI1MDc0ODQSDEiARMB7lNrLArUQXBoMryyIGLD6Qhs2dSTRIjALTLbnO8ihuO1PpY5oFA1SgfXfGVftp80FvRBWGi1zzGuRs4azDSuaxyGlZBFCYVkqwQYXd+EaMHttG7mxE3RNcCvO3P4B4OcrL+Ukmjrls2mt9MLfNEYv5q4cxpHnrXw6Bd6FuREkeWmuwuIWQ6a/a0VPQODzsfeByrYsYSDjjqFupyufkeWMAornGsp5hqf+eleRyk/7Lnxw2fx8XlFjyAtCxoACl0pNY+nnSeAVfZGD3c4DQU3Zu3PTk4inOCCIVkUhir3C2fg2I7vbonemhvAIbO+O9alumbgOHaQetSx4EkbbwNLR1y6ArlLLTxFJfcySgFjj3o9hFSjwXLJahBIQ2yZh59j1QR1ffKMKqfX7XeJEBKrH2Md/F1ZTzRRo0BFFyr4ZDtk+6CLAc3/NQcZ9K1CJQOFJY69zlq0Haj4tuJu18/yjkGd0/SJjmD0jZtcuuFCoKnddTMeHDz52YyUPxaffCFGMTqggkL7sqVUnM+uKUMg1ZWjlS5dLk1JU6c4yQOv8rg4K0j7v+SddlAwZjcObDO2bal29CVcKOiiPntbPujrSJu4ubS0XaFDguJG38HcsuXpB11BJu3dYgu/Y5vKfg+yR5QJ/qImBQA7PmPg7mdB+Hf0VYBWKu6CAH0PlbVV/2HNMhaK6AWaeJeI3HqgsUtRLYORznKImgbIlv5CXq9yFU2T9819XWWD3jix6Ad9BWZGMmQ7Ug1QBxZ8Ixl8oU1qqzzRgpZNpFsy/NlpKdmc8YpHmoLc3x8/tVgw5cdbYprY0tvQ1wfCK5D4UCg5Z/VSeC5569W2chtEKWBeIysN4ifFY39s8+OAO77f8ENAB3odXywPh3Y1hn/1HD23dqzzuO1UB193RSVu/h808wvvE5fN8dib9mNoSYj0PMi0DmDH7vyBx/EpX7e6cuxRnjetsO7FyfRx7F4zVfEfGvFG7Q1sVRAjmboShueNfS3f07cIDamaOsUNDd+tbmaYjW2NJ/mlk0Bpu6bqmYIBq5Nr4ooWWT1UQUPGz94rv+TQLSNhewN5BS5uUGWo2idk/0I8vxhhI14FHR4yhjDNWB40AdjxkWI9fgXF+DtHtiwlJ8/cKxtGibTwEv+FJ/q6Wy4Np3nxtCmNdzIUKMaCgJsT+vJVjOEau8cGpYOPe7PvS5kBBnnHSpT8W+9k0qRgD",
+         "title": "Verwaltungs- und Gerichtsgebäude - Berlin.de",
+         "type": "web_search_result",
+         "url": "https://www.berlin.de/ba-charlottenburg-wilmersdorf/ueber-den-bezirk/bauwerke/gebaeude-und-anlagen/verwaltungs-und-gerichtsgebaeude/"
+        },
+        {
+         "encrypted_content": "EusECioIFBgCIiRkZWEyYzMxYi1jODU2LTQzYWQtYTQwNC1hOWE5MWI1MDc0ODQSDBTNbDWdbQTxHt67rRoMsT+ht9DzE3w41OxrIjDpbJrdmc9Y1Jr0huC+tQdfBJq5JbfZJ+wDfjqBijxj0vpCnSd2LkB2ZK1YdJ1YjcAq7gM33Datx4TFfvbbPFg7Z2Xh5UbBMrW9w9U/njytjp0/nMgZC6FQBcpqw7ZpgCw/ZJqF6FhJzBNnAMcu4NumnJU015dEp10LYSCTlk+hSISz9zBMwl0dCKG+8QJIyjkNmtNwQeu3wnRZkZZxtsDyc3ixavZ1Hs9vbBx2b2F17H6b0wVv/NZt7ovj6Lm5rxKjAIyg79cnT4zPL8k2Nl+2GsJPB2GZYV9YjxbVH+p8AozVzrnDr3qYcp6TWBLLTHC0yUZYPKgW/DedZpRbzL4O5r2D7+duW7LL+8LWQeovLS+xtfv1FgJgYQ2oR/a+GclAhqmOU0MSrFzHaQlevwBOwsynZ9CZVD9ww+I5IR+VbTgq54HpSAYzD8M4t4EKStXQ+CPJgSn9UU5lqJp9lQV62UsUH8/VJbPXZtzKgkJdf7OlMNBHD0p9VHrwWFm090gGYZXc8xP5x82Az5ui7n5+YYcuiqpi6F0p0ljVx2EqlrgFAWrpNCUZ5mhxx1ZBTSlwbPj4NGQNGtXi0N+XaTbXZqns9pgCUYYmAapE3H/OeSnllPcdLGaLDJ01wpnwIdm+a5BH0fxBZf8vx3hgleXDQKRP3ctG9O4XartikHwCpi+biG11aHbTxrwXUUOu3TBlKHW1BdKx4tRhlfa4P/cRARgD",
+         "title": "Locations organized by authorities - Service Berlin - Berlin.de",
+         "type": "web_search_result",
+         "url": "https://service.berlin.de/standorte/en/"
+        },
+        {
+         "encrypted_content": "EqQHCioIFBgCIiRkZWEyYzMxYi1jODU2LTQzYWQtYTQwNC1hOWE5MWI1MDc0ODQSDNbfgrmQlnUcf8R6ARoM1u8PALFL0i9MS9dCIjBiQ1Ra2Xg21xvrk2z+EKi01j7mK3m51va22nrIEklsGoAuiOGFjnUAwLrUz/W9rzEqpwYO6CKFNo/JN4aw7ABhkFxWlDKYnaEY6c0tplcsgOCO6KaNv5t2oS8hI4DfglC4fyJnQYUXHj4vT7GVf+RN/dPWer/Gc662qQzgkio/j7BBWyLZn4fLFvLYQ2WR5FyNzDnPg5+M/aCsZ0Whw+ykxaPPTce8fW+OwpNy+R30XQN4VCyew9cGC0WgYdgHyKSqjhFOG/uQCKh71HGHIHsYUxnNo7mOGk4kpaIHXCVycsO4Zvn3aQM3hTqwYyzBDaeLoP1Zgg6pu3zkjTkanUFoyH8QKuqT4p4OEC/G27xgcYXdLvgWpLRUuzreYOydtDEU//SzhIeG9MU8k0RgDvwdBEHdPl/jQz4OC8/QiZv7iNvFZYk2qsDLiM041BJwKqi+wADlNVlE26CZfZ6Qu9bLPuGZAo8/LwjoQZgLhsks55idoDTbnq3DmEp3oYdRcKE/AhJvl6L6zj/vgl0/S3nz7MaJPVwfVcCciiolO6UM9bq15TYbh54FFH1mn2t8nYynTSag+a/BNO+tvbG4xY0MTefrrxaCFFKeDdVgPO61VGn6pBbSrPoocWQObkA75/hkZSETMyE40owzBMa57nukitkCdH2LOHuXFKH0GmWUk+w9qQq8lEkxOu4t6KwPmIlrZRw99glkgeTaG3n1BuM/d2ovxbECqApWDf0noCsFBAzqjV64NV5wxRVsuk/NvnKp3V4oScluCITUkJVIjAbM9KTkHefrB080ZDj4+8nBGHOd5PwY5SXDx/k9VpiiLEjWIV4N4i2a62oDiqyO+mcrbixozbvoI4mvC9O0jmZ93v/hS6Jo5Zjnppb1D1s4mUe5fRAw87eso9DRdl18wGtz88Z2UTjInTS+8gdgLLdeQHvr8bTm4l1wPvnRCmb4acKA4ILyLJpT5Gtr16QLGIHkXm+dIfR4gRHDgXKVQdJLZAjODmqmRymdMA8sJCXEJFHSc+dQRKH3ZNj4u1fd6xkmSN6LjdSfhu0coK9qZ9X16iZwdpNytGA1ImI5kit+LHUWQkrToVlKjcf6BqBjkdRynMQlTYGTNARHl/CV6ix75iNydDdGcSp8m+EYAw==",
+         "title": "Finanzamt Charlottenburg - Berlin. ...",
+         "type": "web_search_result",
+         "url": "https://www.berlin.de/ba-charlottenburg-wilmersdorf/ueber-den-bezirk/bauwerke/gebaeude-und-anlagen/verwaltungs-und-gerichtsgebaeude/artikel.1348486.php"
+        },
+        {
+         "encrypted_content": "EpAICioIFBgCIiRkZWEyYzMxYi1jODU2LTQzYWQtYTQwNC1hOWE5MWI1MDc0ODQSDPSGyATrmBwGbS3K3hoMYH/+idkcMyEj5as/IjC/L3WR1dnUQO644oo7QdFS1oJSftNpFiDd1E/YZgXvQrk4SA4sNqlx9XtLa4aFq1IqkweG5RxOKHN8YNOl3bX+QhwLk/wyYuVgbI/K2jP/RdFWAFDwAUn5U6yvmHY+fw2+7T5Kh4piLtDd7guHWvfelhdC0Wob5VAkLl+py66W5Th6gGi7NCRSDTjFpaZ3A2bQwrxFNeOqZX5MIT/ufQ2CL/sMmI/Rf5bmR8jOpOVuBzky2nn9oZUuCqkaPhEvXOu6H7j02ZchKoKniGdC/oCca+I5JEUIaItFy91knK/sjyrPL7PtPqGDagZ+zwbM3ryELHqoCSg26xHX20Xf80ovHhjIjvNa2cp1GZKUJAPrp+8tr21HZN5btU0lvuKctm6LC/ZOD7dvyUF7N3nvCUoAqOI6TMEfDx2YFn3zc1RbtBaStQHwncvVDTZA+0IOJNZXNAtHrKPAjX5eUIFlKbCxw7srp4QMCmrimcTdgNExOhdJdh4m/xMwfs2P1Sg99JQ4pJqAA5qvi3VxZhUQJFgZ0U3SdlbJBUn4OOkxhLov9R2Cb1JtCXk2NvC5MxUUfXQiP6vY/oAbrvWxjZinqD2DKo84KfbhqcAj2ai6IqGf6Ue3hMnzezdYXtP4ft9cTJyv4qAUbtQi51FJRakFs8YH7HXT3DN+AhSDFIZ6hdZbsTaKREzgrk1yabSCz97yKW6W2i8xtzXvHprEBkwpEnCiq5l/x0+EO+Cg1WN1VHc75HVTsxbVHspuvUVRHp26s9uQRuenI6plCB0XsjHh/URbRJeFdEqoH07mEUUZwIofljqIYFAO0/cru+NUuQgLa+9ngrY0EnEla0qGgAWSHJ89qaBYZD4ShajvdFfwcOqR2hgqyBiDYoutc2l4e7h2r0J2kAN5+36+oUd5DazLlL5PSTZI5BVpfa8j7Dt2XEeHtXeul9jdMS9sqrMCHPMOb+eTX/m8fuEagidbSl6WQHsBCza/vNVOBY7jGMBmxn33Ji9IJ4tLx7j1UUjBWDhq320tr1LXSbyUkIErRdTI0I1VSNRC2ydbK1T7laOzHL4NVl9XLeHwO6/IKw8i4W48BBC/pZV5JUZt9KoTbIy6bM3ewprUzSmF9lRDcHwyUxHhHzWnTNTJcrBeL056X35+s+V2GGOs5GWLamWcTaNytuN/loalg6yyhWPnW6pVH3V6WelhUqA9kI1HUUjxlV9QyWJ21KOb5dZj8TPAS8ZQngh2quYpzFhpFNGZS1oE1eMPf4UZAwKF4rPiU9wmmnjK4+Hkp7wBGuAYAw==",
+         "page_age": "226 days ago",
+         "title": "▷ Amtsgericht Charlottenburg, Berlin - Öffnungszeiten",
+         "type": "web_search_result",
+         "url": "https://web2.cylex.de/firma-home/amtsgericht-charlottenburg-5510217.html"
+        },
+        {
+         "encrypted_content": "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",
+         "title": "Bismarckstra%C3%9Fe (Berlin U-Bahn)",
+         "type": "web_search_result",
+         "url": "https://en.wikipedia.org/wiki/Bismarckstra%C3%9Fe_(Berlin_U-Bahn)"
+        }
+       ],
+       "tool_use_id": "srvtoolu_01RsHG4Tf2BJNKVf62rondW4",
+       "type": "web_search_tool_result",
+       "caller": {
+        "type": "direct"
+       }
+      },
+      {
+       "signature": "CAQSqAoKEAgSGAI4AUIIdGhpbmtpbmcSDDLS9NTwZtLN1HMocRoMkwkoPMb7DbWjyg5QIjDxQCQylesw0qtpU+GFocMflGStDtm4pIDi47k606eIgptCJV+gm2vMaME2jdx4SsQqxQn02CgdznZh4O4bjHIps4ZvgdoQY2J7A8NvKbPfc+CkjbAZN61SRHz3npdF7nZFzyUheofXQalozol8ZptgKRj41eRl5Mn3SZKeIsIGp5pG00Q1yOaPkjnGCw1137wWcvufuGVct8pvj1UaF7UyMQbiTcBIYdnWxiC6C/Wd3amCc0Oo3TrR31K6+qOFemsbI6cavsgfiSLx49MqV20lWHzHPcWbzed1ODUJ0ojGkAU3MTrOxhjnX2uy/LRYvaIzglUgB/pdgZo9oM9gfU7SIYZtV3xcrTwSeBc+rZjFqZ/ns8g0v61YJcw0FvE11jGzJI3cWJY0M9IBoHJ49vedQ6XePEGAde7TXN80wV1dd66zXLLB+H+LbkMgPAZ/qDShK2lW2CFQBXwC1uzsUYRzQCNjSV2CJLxhKTgTik/xANQe4U1Qytv+CQB5L1veAwghDB1/cSWR1beJNeYsVR/GEgi71VSZzePVQ4n9qC7etvSS2p00QKhdjK+flZ6iFgt2FrUl6QOnfGW/TY9YAY0Vw+/Se8AcTwhRjPLDrWXNI4bVU+FRSE6ahg6cKhkZe7r5/86m53ci+r2XnASPVkD1Qh7tol6Skf9S1AVgYUDzx7amucUzI2Fdlw7jObjM0+Z5QTdsRs3aBmBEetaBMlHO5vzijMSCpACsIA9tLkPNIH25AH2QvKdZdC44K1POK9vR/1QcQwd/+1SibxYjvjGK6LgwVPT0jc0+nV8D9hoIJWuf4sQg9nrG0lfn/czspn/JzrUEO9M4WgPFGYZBd16gMG+gbNZApxQAOlNLtXnwRA+fIuMLAwAzC7CdvXi57ifFdW8qlB8MisWPbmQ4jKJMlYMU1fHGViJlLmdOJjKtFjQuisHjW+XGW4OPpLlnnvAqJwwIxqBaIIpc/nA/mFd96Z2rIoZj6zzbBAYK8w8WrIbFii1u46xeek/dvnkk4zcCFqnsS17s7vrgZm3Fn38gLINvW648i3tj2avUVfQsIVyjDZaq8KWq02K689K03hnNnRi8dP99YM79VGEArsP5wkvfkWYXI7PY8cAqrnICRo2ezVEqoU1aOP6f9JTrNcqcdKLB5ydojgoTe2lVa+MdGYbNXjxSCP6ozOJlDMRTzQ09B6Aix7WmI2f+nwOLdr/O09MpB1an82Wj2oCNi8S+iL/TTm+TlRaGweEKpyNeRe0PWQ79Y1aFl52OrWWX5ALpz58aGGqktxyQvQX+0vH2S2WR7+UL4uWflvZY79Yh1zmEZ8FvvR7QxgwCieAlpY3j9W+3k4QCjLA9NtXksYqftGnLwkpsUjP63iucJh5v+Z7yodAeWB0wCJRZ9rLNCb+DN7lO1Ac4ffTXfS4PpYWpTF1UN9OX6J7qX105kOl7HAXVBYNBU8hIn+zghOylKzWHpgpQLtEJm68Bz0lpzjj8IKP7gOkWoN9J0zIfOA1FJzmBtu17e9KQEMTYwhrKbENQqNDQjSzjIAm1uBTDHqeVqQWvIT95YhBs1eayFtu4/qMvWH0pLSPU20V1+wU1Qvn0nPO1ok3p7B0nWoRlZ1QHZXB3B9ojdaLd3EJNqXjSznjS/ieBbJNziThT2TXkHprKoq4307FnBoq0ipKpvNvX4pluyx3vQ0QYAQ==",
+       "thinking": "",
+       "type": "thinking"
+      },
+      {
+       "id": "srvtoolu_01Ld7BBwEFnK8Xxzbh53Qj2K",
+       "input": {
+        "url": "https://www.berlin.de/ba-charlottenburg-wilmersdorf/ueber-den-bezirk/bauwerke/gebaeude-und-anlagen/verwaltungs-und-gerichtsgebaeude/artikel.1348486.php"
+       },
+       "name": "web_fetch",
+       "type": "server_tool_use"
+      },
+      {
+       "id": "srvtoolu_0174S6zJdivCXE1ZgTew4jkR",
+       "input": {
+        "query": "Finanzamt Charlottenburg Bismarckstraße 48 Beschäftigte Mitarbeiter"
+       },
+       "name": "web_search",
+       "type": "server_tool_use"
+      },
+      {
+       "content": {
+        "content": {
+         "source": {
+          "data": "---\ncanonical: https://www.berlin.de/ba-charlottenburg-wilmersdorf/ueber-den-bezirk/bauwerke/gebaeude-und-anlagen/verwaltungs-und-gerichtsgebaeude/artikel.1348486.php\nmeta-dcterms.date: 2026-04-15\nmeta-dcterms.title: Finanzamt Charlottenburg\nmeta-generator: imperia9/14/21/22/69/92513/1127798/92561/1348486\nmeta-keywords: ii1348486\nmeta-msapplication-TileColor: #2b5797\nmeta-msapplication-config: //www.berlin.de/favicon/browserconfig.xml\nmeta-og:image: http://www.berlin.de/i9f/r1/images/favicon/Berlin_de_FB_Social.png\nmeta-og:image:secure_url: https://www.berlin.de/i9f/r1/images/favicon/Berlin_de_FB_Social.png\nmeta-theme-color: #ffffff\nmeta-viewport: width=device-width, initial-scale=1.0\ntitle: Finanzamt Charlottenburg - Berlin.de\n---\n\n[![Berlin.de zur Startseite](https://www.berlin.de/i9f/r1/images/logo_berlin_m_srgb.svg)](https://www.berlin.de \"Berlin.de Startseite\")\n\n[![weitere Informationen](https://www.berlin.de/imgscale4/sitelogo/ba-charlottenburg-wilmersdorf/_assets/wappen/fittosize_50_75_481b9c8268a03605b77b34ecb8807291_wappen-mit-krone-reinzeichnung-png.png)](https://www.berlin.de/ba-charlottenburg-wilmersdorf/ \"weitere Informationen\")\n\n[BezirksamtCharlottenburg-Wilmersdorf](https://www.berlin.de/ba-charlottenburg-wilmersdorf/ \"Startseite von &quot;Bezirksamt Charlottenburg-Wilmersdorf&quot;\")  \n\nInformationen und Links zur Barrierefreiheit öffnen Barrierefrei\n\nBarrierefreiheit\n\nSchließen: Barrierefreiheit\n\n- [DGS](https://www.berlin.de/ba-charlottenburg-wilmersdorf/dgs/)\n- [Deutsch in leichter Sprache](https://www.berlin.de/ba-charlottenburg-wilmersdorf/de-plain/)\n\nWie barrierefrei ist diese Webseite?\n[Erklärung zur Barrierefreiheit](https://www.berlin.de/ba-charlottenburg-wilmersdorf/barrierefreiheitserklaerung.938197.php)\n\nHaben Sie Anmerkungen oder Fragen zur Barrierefreiheit dieser Webseite?\n[Kontakt zur Ansprechperson](https://www.berlin.de/ba-charlottenburg-wilmersdorf/barrierefreiheitserklaerung.938197.php#contactbfe)\n\nWo gibt es zusätzliche Informationen zur Barrierefreiheit im Land Berlin?\n[Landesbeauftragte für digitale Barrierefreiheit](https://www.berlin.de/ba-charlottenburg-wilmersdorf/barrierefreiheitserklaerung.938197.php#contactbfelb)\n\nSuche\n\nSuche\n\nSuche auf der Internetseite\n\nSuchen\n\nMenü\n\nHauptnavigation\n\n- [Aktuelles](https://www.berlin.de/ba-charlottenburg-wilmersdorf/aktuelles/)\n  * [Presse­mitteilungen](https://www.berlin.de/ba-charlottenburg-wilmersdorf/aktuelles/pressemitteilungen/)\n    + [2026](https://www.berlin.de/ba-charlottenburg-wilmersdorf/aktuelles/pressemitteilungen/2026/)\n    + [2025](https://www.berlin.de/ba-charlottenburg-wilmersdorf/aktuelles/pressemitteilungen/2025/)\n    + [2024](https://www.berlin.de/ba-charlottenburg-wilmersdorf/aktuelles/pressemitteilungen/2024/)\n    + [2023](https://www.berlin.de/ba-charlottenburg-wilmersdorf/aktuelles/pressemitteilungen/2023/)\n    + [2022](https://www.berlin.de/ba-charlottenburg-wilmersdorf/aktuelles/pressemitteilungen/2022/)\n    + [2021](https://www.berlin.de/ba-charlottenburg-wilmersdorf/aktuelles/pressemitteilungen/2021/)\n    + [2020](https://www.berlin.de/ba-charlottenburg-wilmersdorf/aktuelles/pressemitteilungen/2020/)\n    + [2019](https://www.berlin.de/ba-charlottenburg-wilmersdorf/aktuelles/pressemitteilungen/2019/)\n  * [City West Blog](https://www.berlin.de/ba-charlottenburg-wilmersdorf/aktuelles/city-west-blog/)\n    + [2026](https://www.berlin.de/ba-charlottenburg-wilmersdorf/aktuelles/city-west-blog/2026/)\n    + [2025](https://www.berlin.de/ba-charlottenburg-wilmersdorf/aktuelles/city-west-blog/2025/)\n    + [2024](https://www.berlin.de/ba-charlottenburg-wilmersdorf/aktuelles/city-west-blog/2024/)\n    + [2023](https://www.berlin.de/ba-charlottenburg-wilmersdorf/aktuelles/city-west-blog/2023/)\n    + [2022](https://www.berlin.de/ba-charlottenburg-wilmersdorf/aktuelles/city-west-blog/2022/)\n    + [2021](https://www.berlin.de/ba-charlottenburg-wilmersdorf/aktuelles/city-west-blog/2021/)\n  * [Veranstaltungen](https://www.berlin.de/land/kalender/?c=4)\n  * [Thema des Monats](https://www.berlin.de/ba-charlottenburg-wilmersdorf/aktuelles/thema-des-monats/)\n    + [6. Wahlperiode](https://www.berlin.de/ba-charlottenburg-wilmersdorf/aktuelles/thema-des-monats/6-wahlperiode/artikel.1145468.php)\n    + [5. Wahlperiode](https://www.berlin.de/ba-charlottenburg-wilmersdorf/aktuelles/thema-des-monats/5-wahlperiode/artikel.1025340.php)\n    + [4. Wahlperiode](https://www.berlin.de/ba-charlottenburg-wilmersdorf/aktuelles/thema-des-monats/4-wahlperiode/artikel.1025328.php)\n    + [3. Wahlperiode](https://www.berlin.de/ba-charlottenburg-wilmersdorf/aktuelles/thema-des-monats/3-wahlperiode/artikel.1024954.php)\n    + [2. Wahlperiode](https://www.berlin.de/ba-charlottenburg-wilmersdorf/aktuelles/thema-des-monats/2-wahlperiode/artikel.1024855.php)\n- [Service](https://www.berlin.de/ba-charlottenburg-wilmersdorf/service/)\n  * [Katastrophen- und Zivilschutz](https://www.berlin.de/ba-charlottenburg-wilmersdorf/service/katastrophen-schutz/artikel.1402313.php)\n  * [Ämter und Einrichtungen A-Z](https://www.berlin.de/ba-charlottenburg-wilmersdorf/service/aemter-und-einrichtungen-a-z/)\n  * [Dienst­leistungen](https://www.berlin.de/ba-charlottenburg-wilmersdorf/service/dienstleistungen/dienstleistungsdatenbank/service.201489.php)\n  * [Formulare](https://www.berlin.de/ba-charlottenburg-wilmersdorf/service/formulare/)\n  * [Ehrenamt](https://www.berlin.de/ba-charlottenburg-wilmersdorf/service/ehrenamt/)\n    + [FreiwilligenAgentur](https://www.berlin.de/ba-charlottenburg-wilmersdorf/service/ehrenamt/artikel.209480.php)\n    + [Ehrenamtsbörse](https://www.berlin.de/ba-charlottenburg-wilmersdorf/service/ehrenamt/ehrenamtsboerse/)\n    + [Einsatzsuche](https://www.berlin.de/ba-charlottenburg-wilmersdorf/service/ehrenamt/formular.209545.php)\n    + [Ehrenamtskarte](https://www.berlin.de/ba-charlottenburg-wilmersdorf/service/ehrenamt/artikel.209543.php)\n    + [Ehrenamtspreis](https://www.berlin.de/ba-charlottenburg-wilmersdorf/service/ehrenamt/ehrenamtspreis/artikel.273586.php)\n    + [Schüler/innen und Ehrenamt](https://www.berlin.de/ba-charlottenburg-wilmersdorf/verwaltung/aemter/jugendamt/jugendliche/freiwilligen-initiative-fisch/)\n    + [Geflüchtete](https://www.berlin.de/ba-charlottenburg-wilmersdorf/service/ehrenamt/gefluechtete/artikel.546884.php)\n    + [Freiwilligenpass](https://www.berlin.de/ba-charlottenburg-wilmersdorf/service/ehrenamt/artikel.209541.php)\n    + [Veranstaltungen und Aktuelles](https://www.berlin.de/ba-charlottenburg-wilmersdorf/service/ehrenamt/artikel.209542.php)\n    + [Ehrenamt und Presse](https://www.berlin.de/ba-charlottenburg-wilmersdorf/service/ehrenamt/artikel.209546.php)\n    + [Danke](https://www.berlin.de/ba-charlottenburg-wilmersdorf/service/ehrenamt/dasbezirksamtsagtdanke-209539.php)\n    + [Weitere Links](https://www.berlin.de/ba-charlottenburg-wilmersdorf/service/ehrenamt/weitere-links/)\n  * [Publikationen](https://www.berlin.de/ba-charlottenburg-wilmersdorf/service/publikationen/)\n- [Politik](https://www.berlin.de/ba-charlottenburg-wilmersdorf/politik/)\n  * [Bezirksamt](https://www.berlin.de/ba-charlottenburg-wilmersdorf/politik/bezirksamt/)\n    + [Abteilung Finanzen, Personal und Wirtschafts­förderung](https://www.berlin.de/ba-charlottenburg-wilmersdorf/politik/bezirksamt/abteilung-finanzen-personal-und-wirtschaftsfoerderung/)\n    + [Abteilung Bürgerdienste und Soziales](https://www.berlin.de/ba-charlottenburg-wilmersdorf/politik/bezirksamt/abteilung-buergerdienste-und-soziales/)\n    + [Abteilung Jugend und Gesundheit](https://www.berlin.de/ba-charlottenburg-wilmersdorf/politik/bezirksamt/abteilung-jugend-und-gesundheit/)\n    + [Abteilung Ordnung, Umwelt, Straßen und Grünflächen](https://www.berlin.de/ba-charlottenburg-wilmersdorf/politik/bezirksamt/abteilung-ordnung-umwelt-strassen-und-gruenflaechen/)\n    + [Abteilung Schule, Sport, Weiterbildung und Kultur](https://www.berlin.de/ba-charlottenburg-wilmersdorf/politik/bezirksamt/abteilung-schule-sport-weiterbildung-und-kultur/)\n    + [Abteilung Stadtentwicklung, Liegenschaften und IT](https://www.berlin.de/ba-charlottenburg-wilmersdorf/politik/bezirksamt/abteilung-stadtentwicklung-liegenschaften-und-it/)\n    + [Beschlüsse](https://www.berlin.de/ba-charlottenburg-wilmersdorf/politik/bezirksamt/beschluesse/)\n      - [6. Wahlperiode](https://www.berlin.de/ba-charlottenburg-wilmersdorf/politik/bezirksamt/beschluesse/6-wahlperiode/)\n        * [2026](https://www.berlin.de/ba-charlottenburg-wilmersdorf/politik/bezirksamt/beschluesse/6-wahlperiode/2026/)\n        * [2024](https://www.berlin.de/ba-charlottenburg-wilmersdorf/politik/bezirksamt/beschluesse/6-wahlperiode/2024/)\n        * [2023](https://www.berlin.de/ba-charlottenburg-wilmersdorf/politik/bezirksamt/beschluesse/6-wahlperiode/2023/)\n        * [2022](https://www.berlin.de/ba-charlottenburg-wilmersdorf/politik/bezirksamt/beschluesse/6-wahlperiode/2022/)\n      - [5. Wahlperiode](https://www.berlin.de/ba-charlottenburg-wilmersdorf/politik/bezirksamt/beschluesse/5-wahlperiode/)\n        * [2021](https://www.berlin.de/ba-charlottenburg-wilmersdorf/politik/bezirksamt/beschluesse/5-wahlperiode/2021/)\n        * [2020](https://www.berlin.de/ba-charlottenburg-wilmersdorf/politik/bezirksamt/beschluesse/5-wahlperiode/2020/)\n        * [2017](https://www.berlin.de/ba-charlottenburg-wilmersdorf/politik/bezirksamt/beschluesse/5-wahlperiode/2017/)\n        * [2016](https://www.berlin.de/ba-charlottenburg-wilmersdorf/politik/bezirksamt/beschluesse/5-wahlperiode/2016/)\n      - [4. Wahlperiode](https://www.berlin.de/ba-charlottenburg-wilmersdorf/politik/bezirksamt/beschluesse/4-wahlperiode/)\n        * [2016](https://www.berlin.de/ba-charlottenburg-wilmersdorf/politik/bezirksamt/beschluesse/4-wahlperiode/2016/)\n        * [2015](https://www.berlin.de/ba-charlottenburg-wilmersdorf/politik/bezirksamt/beschluesse/4-wahlperiode/2015/)\n        * [2014](https://www.berlin.de/ba-charlottenburg-wilmersdorf/politik/bezirksamt/beschluesse/4-wahlperiode/2014/)\n        * [2013](https://www.berlin.de/ba-charlottenburg-wilmersdorf/politik/bezirksamt/beschluesse/4-wahlperiode/2013/)\n    + [ehemalige Bezirksamts­mitglieder](https://www.berlin.de/ba-charlottenburg-wilmersdorf/politik/bezirksamt/ehemalige-bezirksamtsmitglieder/)\n  * [Bezirks­verordneten­versammlung](https://www.berlin.de/ba-charlottenburg-wilmersdorf/politik/bezirksverordnetenversammlung/)\n    + [Infor­mations­system](https://bvv-charlottenburg-wilmersdorf.berlin.de/pi-r/pa021_r.asp)\n      - [Bezirks­verordnete](https://bvv-charlottenburg-wilmersdorf.berlin.de/pi-r/pa021_r.asp)\n      - [Fraktionen](https://bvv-charlottenburg-wilmersdorf.berlin.de/pi-r/fr010_r.asp?T1=Fraktionen&FR=Fraktion)\n      - [Ausschüsse](https://bvv-charlottenburg-wilmersdorf.berlin.de/pi-r/au010_r.asp?T1=Aussch%FCsse&AU=Ausschuss)\n      - [Sitzungs­kalender](https://bvv-charlottenburg-wilmersdorf.berlin.de/pi-r/si010_r.asp)\n      - [Sitzungen suchen](https://bvv-charlottenburg-wilmersdorf.berlin.de/pi-r/si018_r.asp)\n      - [Drucksachen - aktuell](https://bvv-charlottenburg-wilmersdorf.berlin.de/pi-r/vo036_r.asp)\n      - [Drucksachen - gesamt](https://bvv-charlottenburg-wilmersdorf.berlin.de/pi-r/vo040_r.asp)\n      - [Drucksachen - nach Gremium](https://bvv-charlottenburg-wilmersdorf.berlin.de/pi-r/vo034_r.asp)\n      - [Recherche](https://bvv-charlottenburg-wilmersdorf.berlin.de/pi-r/yw040_r.asp)\n      - [Schriftliche Anfragen](https://bvv-charlottenburg-wilmersdorf.berlin.de/pi-r/ka040_r.asp)\n    + [Vorstand und BVV-Büro](https://www.berlin.de/ba-charlottenburg-wilmersdorf/politik/bezirksverordnetenversammlung/vorstand-und-bvv-buero/)\n    + [Wahlergebnisse und Sitzverteilung](https://www.berlin.de/ba-charlottenburg-wilmersdorf/politik/bezirksverordnetenversammlung/wahlergebnisse-und-sitzverteilung/artikel.1145960.php)\n    + [Eingaben und Beschwerden](https://www.berlin.de/ba-charlottenburg-wilmersdorf/politik/bezirksverordnetenversammlung/eingaben-und-beschwerden/artikel.222945.php)\n    + [Einwohnerfragen](https://www.berlin.de/ba-charlottenburg-wilmersdorf/politik/bezirksverordnetenversammlung/einwohnerfragen/formular.189903.php)\n    + [Einwohner-versammlung](https://www.berlin.de/ba-charlottenburg-wilmersdorf/aktuelles/buergerbeteiligung/einwohner-versammlung/)\n    + [Wissenswertes](https://www.berlin.de/ba-charlottenburg-wilmersdorf/politik/bezirksverordnetenversammlung/wissenswertes/)\n      - [Aufgaben](https://www.berlin.de/ba-charlottenburg-wilmersdorf/politik/bezirksverordnetenversammlung/wissenswertes/aufgaben/)\n      - [Wahlergebnisse und Sitzverteilung](https://www.berlin.de/ba-charlottenburg-wilmersdorf/politik/bezirksverordnetenversammlung/wissenswertes/wahlergebnisse-und-sitzverteilung/)\n      - [Fraktions­zuschuss](https://www.berlin.de/ba-charlottenburg-wilmersdorf/politik/bezirksverordnetenversammlung/wissenswertes/fraktionszuschuss/)\n      - [Bürger­beteiligung](https://www.berlin.de/ba-charlottenburg-wilmersdorf/politik/bezirksverordnetenversammlung/wissenswertes/buergerbeteiligung/)\n      - [Rechtliche Grundlagen](https://www.berlin.de/ba-charlottenburg-wilmersdorf/politik/bezirksverordnetenversammlung/wissenswertes/rechtliche-grundlagen/)\n    + [Geschichte](https://www.berlin.de/ba-charlottenburg-wilmersdorf/politik/bezirksverordnetenversammlung/geschichte/artikel.944173.php)\n      - [Stadtverordnetenversammlung (1884-1920)](https://www.berlin.de/ba-charlottenburg-wilmersdorf/politik/bezirksverordnetenversammlung/geschichte/stadtverordnetenversammlung-1884-1920/artikel.1030682.php)\n      - [BVV Charlottenburg (1946-2000)](https://www.berlin.de/ba-charlottenburg-wilmersdorf/politik/bezirksverordnetenversammlung/geschichte/bvv-charlottenburg-1946-2000/artikel.947243.php)\n      - [BVV Wilmersdorf (1946-2000)](https://www.berlin.de/ba-charlottenburg-wilmersdorf/politik/bezirksverordnetenversammlung/geschichte/bvv-wilmersdorf-1946-2000/artikel.1009987.php)\n    + [Gedenktafel­kommission](https://www.berlin.de/ba-charlottenburg-wilmersdorf/politik/bezirksverordnetenversammlung/gedenktafelkommission/)\n  * [Gremien](https://www.berlin.de/ba-charlottenburg-wilmersdorf/politik/gremien/)\n    + [Behinderten­beirat](https://www.berlin.de/ba-charlottenburg-wilmersdorf/verwaltung/beauftragte/behinderung/artikel.186938.php)\n    + [Bezirkseltern­ausschus der Kitas](https://www.berlin.de/ba-charlottenburg-wilmersdorf/politik/gremien/bezirkselternausschus-der-kitas/)\n    + [Denkmalbeirat](https://www.berlin.de/ba-charlottenburg-wilmersdorf/politik/gremien/denkmalbeirat/)\n    + [Gedenktafel­kommission](https://www.berlin.de/ba-charlottenburg-wilmersdorf/politik/bezirksverordnetenversammlung/gedenktafelkommission/)\n    + [Inter­religiöser Dialog](https://www.berlin.de/ba-charlottenburg-wilmersdorf/verwaltung/beauftragte/integration/veranstaltungen/artikel.663449.php)\n    + [Kinder- und Jugendparlament](https://www.berlin.de/ba-charlottenburg-wilmersdorf/politik/gremien/kinder-und-jugendparlament/)\n      - [Organisation](https://www.berlin.de/ba-charlottenburg-wilmersdorf/politik/gremien/kinder-und-jugendparlament/#a)\n      - [Aufgaben](https://www.berlin.de/ba-charlottenburg-wilmersdorf/politik/gremien/kinder-und-jugendparlament/#b)\n      - [Erfolge](https://www.berlin.de/ba-charlottenburg-wilmersdorf/politik/gremien/kinder-und-jugendparlament/#c)\n      - [Wahlperioden](https://www.berlin.de/ba-charlottenburg-wilmersdorf/politik/gremien/kinder-und-jugendparlament/#d)\n    + [Kleingarten­beirat](https://www.berlin.de/ba-charlottenburg-wilmersdorf/politik/gremien/kleingartenbeirat/)\n    + [Mobilitätsrat](https://www.berlin.de/ba-charlottenburg-wilmersdorf/politik/gremien/mobilitaetsrat/artikel.1274148.php)\n    + [Kulturbeirat](https://www.berlin.de/ba-charlottenburg-wilmersdorf/verwaltung/kultur/kulturfoerderung/kulturbeirat/)\n    + [Lenkungsgruppe Stadtteil­management](https://www.berlin.de/ba-charlottenburg-wilmersdorf/verwaltung/aemter/stadtentwicklungsamt/stadtplanung/stadtteilmanagement/artikel.196401.php)\n    + [Migrations­beirat](https://www.berlin.de/ba-charlottenburg-wilmersdorf/verwaltung/beauftragte/integration/migrationsbeirat/artikel.712902.php)\n    + [Psychosoziale Arbeits­gemeinschaft](https://www.berlin.de/ba-charlottenburg-wilmersdorf/verwaltung/service-und-organisationseinheiten/qualitaetsentwicklung-planung-und-koordination-des-oeffentlichen-gesundheitsdienstes/psychiatriekoordination/artikel.419585.php)\n    + [Schulgremien](https://www.berlin.de/ba-charlottenburg-wilmersdorf/verwaltung/aemter/schul-und-sportamt/schulamt/schulische-gremien/)\n      - [Bezirksschul­beirat (BSB)](https://www.berlin.de/ba-charlottenburg-wilmersdorf/politik/gremien/schulgremien/bezirksschulbeirat-bsb/)\n        * [2021](https://www.berlin.de/ba-charlottenburg-wilmersdorf/politik/gremien/schulgremien/bezirksschulbeirat-bsb/2021/)\n    + [Senioren­vertretung](https://www.berlin.de/ba-charlottenburg-wilmersdorf/politik/gremien/seniorenvertretung/)\n      - [Archiv](https://www.berlin.de/ba-charlottenburg-wilmersdorf/politik/gremien/seniorenvertretung/archiv/)\n      - [Vor Ort](https://www.berlin.de/ba-charlottenburg-wilmersdorf/politik/gremien/seniorenvertretung/vor-ort/)\n    + [Spielplatz­kommission](https://www.berlin.de/ba-charlottenburg-wilmersdorf/politik/gremien/spielplatzkommission/)\n  * [Bürger­beteiligung](https://www.berlin.de/ba-charlottenburg-wilmersdorf/politik/buergerbeteiligung/)\n    + [Einwohner-versammlung](https://www.berlin.de/ba-charlottenburg-wilmersdorf/politik/buergerbeteiligung/einwohner-versammlung/)\n    + [Büro für Bürger:innenbeteiligung](https://www.berlin.de/ba-charlottenburg-wilmersdorf/politik/buergerbeteiligung/buero-fuer-buerger-innenbeteiligung/artikel.1272072.php)\n    + [Aktuelle Projekte](https://www.berlin.de/ba-charlottenburg-wilmersdorf/politik/buergerbeteiligung/aktuelle-projekte/)\n      - [Umbenennung Wissmannstraße](https://www.berlin.de/ba-charlottenburg-wilmersdorf/politik/buergerbeteiligung/aktuelle-projekte/umbenennung-wissmannstrasse/)\n- [Verwaltung](https://www.berlin.de/ba-charlottenburg-wilmersdorf/verwaltung/)\n  * [Ämter](https://www.berlin.de/ba-charlottenburg-wilmersdorf/verwaltung/aemter/)\n    + [Bürgerdienste](https://www.berlin.de/ba-charlottenburg-wilmersdorf/verwaltung/aemter/amt-fuer-buergerdienste/)\n      - [Bürgerämter](https://www.berlin.de/ba-charlottenburg-wilmersdorf/verwaltung/aemter/buergerdienste/buergeraemter/)\n        * [Wilmersdorfer Straße](https://www.berlin.de/ba-charlottenburg-wilmersdorf/verwaltung/aemter/buergerdienste/buergeraemter/wilmersdorfer-strasse/)\n        * [Hohenzollern­damm](https://www.berlin.de/ba-charlottenburg-wilmersdorf/verwaltung/aemter/buergerdienste/buergeraemter/hohenzollerndamm/)\n        * [Heerstraße](https://www.berlin.de/ba-charlottenburg-wilmersdorf/verwaltung/aemter/buergerdienste/buergeraemter/heerstrasse/)\n        * [Außenstelle Halemweg](https://www.berlin.de/ba-charlottenburg-wilmersdorf/verwaltung/aemter/buergerdienste/buergeraemter/aussenstelle-halemweg/)\n        * [Mobiles Bürgeramt in der Stadtteilbibliothek Halemweg](https://www.berlin.de/ba-charlottenburg-wilmersdorf/verwaltung/aemter/buergerdienste/buergeraemter/mobiles-buergeramt-in-der-stadtteilbibliothek-halemweg/)\n        * [Dienst­leistungen der Bürgerämter](https://www.berlin.de/ba-charlottenburg-wilmersdorf/verwaltung/aemter/buergerdienste/buergeraemter/dienstleistungen-der-buergeraemter/service.189212.php)\n      - [Ein­bürger­ungen, Staats­angehörig­keits­angelegen­heiten](https://www.berlin.de/ba-charlottenburg-wilmersdorf/verwaltung/aemter/buergerdienste/einbuergerungen-staatsangehoerigkeitsangelegenheiten/)\n      - [Schiedsamt](https://www.berlin.de/ba-charlottenburg-wilmersdorf/verwaltung/aemter/buergerdienste/schiedsamt/)\n        * [Schiedspersonen](https://www.berlin.de/ba-charlottenburg-wilmersdorf/verwaltung/aemter/buergerdienste/schiedsamt/schiedspersonen/)\n      - [Standesamt](https://www.berlin.de/ba-charlottenburg-wilmersdorf/verwaltung/aemter/buergerdienste/standesamt/)\n        * [Ehe­schließungen und Lebens­partnerschaften](https://www.berlin.de/ba-charlottenburg-wilmersdorf/verwaltung/aemter/amt-fuer-buergerdienste/standesamt/eheschliessungen-und-lebenspartnerschaften/artikel.178092.php)\n        * [Eheregister](https://www.berlin.de/ba-charlottenburg-wilmersdorf/verwaltung/aemter/amt-fuer-buergerdienste/standesamt/eheregister/artikel.178216.php)\n        * [Geburten­register](https://www.berlin.de/ba-charlottenburg-wilmersdorf/verwaltung/aemter/amt-fuer-buergerdienste/standesamt/geburtenregister/artikel.178126.php)\n        * [Sterberegister](https://www.berlin.de/ba-char",
+          "media_type": "text/plain",
+          "type": "text"
+         },
+         "title": "Finanzamt Charlottenburg - Berlin.de",
+         "type": "document"
+        },
+        "retrieved_at": "2026-10-08T07:55:37.036388",
+        "type": "web_fetch_result",
+        "url": "https://www.berlin.de/ba-charlottenburg-wilmersdorf/ueber-den-bezirk/bauwerke/gebaeude-und-anlagen/verwaltungs-und-gerichtsgebaeude/artikel.1348486.php"
+       },
+       "tool_use_id": "srvtoolu_01Ld7BBwEFnK8Xxzbh53Qj2K",
+       "type": "web_fetch_tool_result",
+       "caller": {
+        "type": "direct"
+       }
+      },
+      {
+       "content": [
+        {
+         "encrypted_content": "EpsHCioIFBgCIiRkZWEyYzMxYi1jODU2LTQzYWQtYTQwNC1hOWE5MWI1MDc0ODQSDHWICAcDKzwS26Y4TBoMOWYzPV77edrTzZH5IjCm+pSfFXlatfXSxwh1aEsYG5P5nd66hoik0NsxaB80pDuRCtjgVBhp89lKbBwhfXEqngao7JSI/w9maEKNfoL36czcG5pKSrUBSTlPN0PoncZyVI9c93XMs+Q5VdvXuppGiS+VjP+1cFKzOMmOrBv7Flc7ESlI/bqcTkROOCm46a0mRgAMSyTgczEDNCnoY8KNWMfHZT4PbcU7y6BxfbiWxCuzVSPK49PpMFy9LDsO0flEI0rjonVgCSDysAMbzuOns+1P6sA6sIqUerIoVnz7dIqT+LCMGlgGVfVCi5FJGLmd/x3xgJwddJ+dHZ+Go1/Igk3Px7UAkpMgVUNrgw6RODguocM6b/A9MbrZY7/M9t5TKE7cJ24/2N2ClK5lhE6uvnkrtvK9SOcabMdE5DWFKxU3HieAbxGYVCkIZE0JmCExgiI+xFPdauInuMmLI2ECkXaaBg0BcdhqYW9j1HLsnWboAGwbUQNArqpjCesvAnd7b+bxy/tM3USgXESDq9XGopjyd0rkQ6+r+W91Alq7aTtEaE9HryAJpgZZkqeb0Y1SFuiy7/RUw1i/jBbKvGSXd9gjaoPNFGVhFmX1CS79Ml7w20/czv540ps9O+10MI8TE6m4Ikp7SPmCsXg0EyDkroyydTvYVBWdIQESl7zdLMs+YG+DWYQNLVed+FKMfktWB8zCeoz0j62rLlLGj8C9PPivBu8TkDSwvip+ROwA7pe9G5i2vHTc1uycAlQJkb94BDA32qfmyHhMsSdsEPgseNKeTS+iH/RHXIKmHDpitjFdCiBVA+xncW8CYlLYXHDQuW7cRIKCDoANrW1Drs0YnmWLjfnCth8JGnDBaAdHq/jDZ7kkAmpperx0FFMA0D6Ta12ha4C6ffuXuCC1h9Bu0ujpVzeWxZeA0rMCGdCm1i91LDKN+2vEhh+64M0KP4OI4CSezUOtz9ZsxVDQ/gEeDAhlKLlStRDh5XrfBqQMWp/4LRbyDvUUCBXybjq9LX4JUTWO1Xgy5RT4WjN0GLqrW35a5PixEQ2+YwuBrO1lprMssqapHncL9U+4cMPvud/TGQLWTgcbxHIQQqLTeRpIODZ5pOLzkjE/F+5bvq0dKgOI1r/zkL4IVjC0l6Yb74EYAw==",
+         "page_age": "30 days ago",
+         "title": "Finanzamt Charlottenburg: Öffnungszeiten & Kontakt",
+         "type": "web_search_result",
+         "url": "https://www.smartsteuer.de/online/finanzamt/charlottenburg/"
+        },
+        {
+         "encrypted_content": "EtYDCioIFBgCIiRkZWEyYzMxYi1jODU2LTQzYWQtYTQwNC1hOWE5MWI1MDc0ODQSDGtjxEvxxpQBXOutShoMJQmQXhOPlkK+U+ekIjC00U38wg0Q+bv4dm7oqfXbhJ+7awJa9zXbahpLpzYHnIQ4jwCxbT2OOiLA7LdFnBcq2QI0GGayPkhmkDu+74nGwtcVgPzIgGDY+OnSXiW4d54EZC6w/qcE2RaLQjWr31mIb6uXLYNyNwD6UK4EM9GPZjmVfakY2LxxXPgURv5ywQK3cqSjaVIWWQMzAQWmfVVt+zpfQf10EHJTT1+3QBkWFaJKH4kwy8l+/2PzHAVOYRy1thxH/2fhtoKH5GVYVIaXd/8bnPmQINgoZLOliiQ2C/tWM0ZmenaSFBlNbxvYc84Uc1w5cW03Lm+Y/Cj2He+UT8NBT8FAuBDy1IrFYvL0njMl3t8628sIbOPouiyeeEN4bTzY2fjYNgRHBvB3KKFmFUPaZr7r1bp8iCy6hwTl3iMLrtLySrFK0jYJnYMj71301FXRK7pf2DyP1wnfKJWpF66JuOtploc6BgGe8RSWd6uI4ESMzEyv83bMdeTGUPM1OYz9fh4jaSAEvWPueaAzYdUIFGvr/EX1iVEYAw==",
+         "title": "Finanzamt Charlottenburg - Kontaktdaten, Öffnungszeiten und Bewertungen",
+         "type": "web_search_result",
+         "url": "https://www.steuergo.de/finanzamt/1113/charlottenburg_1113"
+        },
+        {
+         "encrypted_content": "EpMECioIFBgCIiRkZWEyYzMxYi1jODU2LTQzYWQtYTQwNC1hOWE5MWI1MDc0ODQSDJHMsG0SmzwMnAQexBoM/JZ7rulYriuaF2GfIjBi06knD9htgV19yHPq/NqWL6HgY7mOFPa86N/tLkbqFjgPpAx3gGrAlDbGd80Ka9gqlgO/FKr35y7jns+iTfK/tAzHDXnwgVKC0On5r17dZV45+aID/Aiudz3ZipyKCY6pQ6CGN/js2nDNoTh72Pj8Dtgnl/WtlNtWOVbzVEgDw25W2W4FnglAxyiD8cMnkdqLkclvcJMMczB49s2K/Q/W3aURYSnSUKdU/w/0rm9xwtjf2I99C1NnJR+nnDi6MIgrNbNDp38FwV6wV3QNBFVwpHv0q5kDeaPHeKEYAPIQEy41kQbX6yGwzwa3NOq2j8Bwzfog+J5iZHRePLODAqzRPuP08zd8tiM1LiLWfOAXsQ1QlB1VhyOz/WBSVBVt2qL+mwcEUGeDP6Uv+zBTX0PKwCmC2btGHvNVA3gQDSJpYFIL9e8+TFAnrl9/4yGGvwG1gT6rkJEClaa0k+6WzagsTw0gNPnN47NUlEgMopNgj4ssNqGTAvhqw0yHmRe9GXf/6vCF/jBstZqDF4k3nspDIylifKh/ijQ/WQC49Y2zqbss1nuWi7Mby6rUZitSv5O8kQ3+QuUcrbWUK8sUB0bfsQK4yrm0CJFZGAM=",
+         "title": "Finanzamt Berlin - Charlottenburg - Formulare, Öffnungszeiten und mehr",
+         "type": "web_search_result",
+         "url": "https://www.steuertipps.de/finanzamt/charlottenburg"
+        },
+        {
+         "encrypted_content": "EtcDCioIFBgCIiRkZWEyYzMxYi1jODU2LTQzYWQtYTQwNC1hOWE5MWI1MDc0ODQSDFG3FbYxwpVReyNVMBoMe5vLi8PlLLcqYKVjIjDn3bfw39f0Av2f0j4xju9niMjDjtszc01rCtyZqCIWa0K6izWBV8zaa8CKy185F8sq2gKTaPwm3rMDYHQ0JnaoGxuwBMXx6vSb3z2g3zpayU4mS8s1uTY0fkehvUF/gIUXtQlM7AZyQU5YBpHNZw0ApsO7BhXjv8AQw3oWcuZaK4hM22YtKmjVEDBzw9cnxYk9qfwJs9avdXOHAL8OwZLxHG5HaR/EvWYimxFi/lYxPt9B5zGwTv1VPZan8K8KNzD7ZG+KNVgJFxjIkZDq9sutOMMkCTma9DZmY0ZrOxwcHvsB4vq51AgXfYEwn9wR5rjDdJFKh/eDayVRPba6ZT2kbXsM5MuG3u55c9C1h3IOup24u93Aa1ioGosxLEq/X/HU6eeZ2kfNM6ZCIacoXy9LvprjuL4WnismKL9AfiVa5grS5DeObhqMUrt79GJ+HhpenefS4iYzm4r3pzjjZKRmM4/LxoKGWIcYExsA6LJHCVEltFPJBb/qbmniniDcAbynMdmFz7t3EBXuJwu6GAM=",
+         "title": "Finanzamt Charlottenburg - Berlin",
+         "type": "web_search_result",
+         "url": "https://wundertax.de/finanzamt/1113_charlottenburg/"
+        },
+        {
+         "encrypted_content": "EoMGCioIFBgCIiRkZWEyYzMxYi1jODU2LTQzYWQtYTQwNC1hOWE5MWI1MDc0ODQSDLmLdEsendFmJgYFbxoMNtQBp1N8dSeS2CkPIjBItT30EDOdhwz2GgWxViKIUhrvuCEjPoqDWjP6BhGBC64mKoPZkiJud7NRZ/tD9zoqhgUrZ0yHX+yKtZQjzAn2Ka6i/C/uvhK2/aXbaoHVGQQUCc825ceHObZXYkrpCcDaiKZfXfAbfbKomaCauGgrF3heGbe5YVO5V6e+9+h3B38uQIqs+vCpKlbIFI0pteZOEyZMA7IhkCQMgp73H81BnBJIfMOMAvlr6bADbjsg3dL8ir5uMNb4YvpXRBVnHyTlzyCB3Lixkik9XebAhn/psJUUA04eb8rdyTPagmXReATyu50rNTfaZ7u8yP2GcgwoB9X51E+sjx9H4PIap9V+/X7C8HpGSPFYzou7xq+pM1Xp/lsCDqH/IOPwyewrub8GfqP6qzqqtvgGk/yui2YAi4smMZljZVogc43mO/3GmS0RBnyW/DtyawoKvcN1WuZ21+GPplKIvZCGvJci+/TKO18Mpb4bVyLu/4dvSuzci2//LH6h9lOoX7VUniOzWJq9YIEJeSPfIpAmQQ4FCmybB2tiurPggeevcy8Yse964Trzgb5ZoUIStGh6RlZx95FBN/7DLHRA7A9iB7Vdi/mkhtyUWi70EDWQ6B38mthPhwjdOa3Ktt5q1TZN9NaXiskUcm+5n3TfUcdzGopDiRXWR11vSCahdvvBn6Wb7xxJ2+QMqnO872IA6FdpBP02UWglrKNHtvBTO9kG5IuFiK7dUDKfHOWRNU11cBxrNaYFQP2di7JGyzUpwOMGSAu+bH1qbAtDezX3Qbe2KB2jOzd8zHR/1+cN3O96OUPjMT10UOlobbacAAJd79R++wIIH3YxX6AwGSemxPxGkueGZgcmpplc6VA/KYKUgh/ua6tuCCW/x62a+FMnR3jQ5LvfOzWhNYzwkk2hXZRu1VzKGrjd4gIrJe+frwWiGAM=",
+         "title": "Finanzamt Charlottenburg - FragDenStaat - FragDenStaat",
+         "type": "web_search_result",
+         "url": "https://fragdenstaat.de/behoerde/3839/finanzamt-charlottenburg/"
+        },
+        {
+         "encrypted_content": "EtoFCioIFBgCIiRkZWEyYzMxYi1jODU2LTQzYWQtYTQwNC1hOWE5MWI1MDc0ODQSDOOQ3RuFAXik2JvVRxoM7S0vfQQwQMIM9nUrIjDivQFzluSBVZFk3geO+L7DeS8R1cUYtpgVwi9VG0DFBbhQXkXg2F2MSvt8qdt6Nn4q3QTux8iO5Y1Z08NATJy/1p8EBRF2JGv21oCdp/TJrgjpyaC8XWxq2N9CDdEkEYjOann3VfemsX1QsaAG3BlapbN5w9mKXidy11fH/PviKT7rrglOefFn/8nMsZqPCW4CEwBnlc1PTtTeYxt29CyVgvAlQ+OVFkaPARNAWxkQxES12Tqi5bXJY7K1T/824ArMRpnhlLps0zevz2Cxsxv51vgN1jMrCuZxG2Xdswqlr0J+lR6SCx49bQw0VblNfWJoCLeJZQU0Z3BJnfzSlSJzvRKrU8C+oN5TwcYOLVEut1DubT7SPm+s+SkKVkDZuwv7ucFpfo9dVfN5imypIYF69dx6wP2DLoK/18WNavBhngACJG7zkkkmkl5CB0D+jvCZUI1P8EGrLDcUb/8r/TxiIrb/a0EW3qTop5DL7JgTyHeE6EnFQ5Wr9cWyUxrRhj22tE8r3p6sTdlk5fUGHF15akCwrW8IlLgU0+Yalufm8m3jpXxSLMLCy0EfsugsfEclcrzlE80RgYWtFgZmDg/pk2c0UPIWsOnd+YGt0iRaVR+Hegx7HSz+5gpLnzLaUL6BidIksDvrHcegkUb+dqPsDTW74t5ce+zEO+gh52e3P6rYafK2gNxXjxXcciEB3GmKKgYhQEUK9jMqeIiPAckwr8sB84DwH+18xFXFEez7cVrUCCoaacqBYtIfcnb857J45iNlgO1CbeZVzJH6BnAVmeB/gCHGNMZ34XvQi1yyT1N31gfC54wwVzoJGnWXwfgdzCX4H1VKjQLrOEcWqhc//WEXyk45QrctyaQwzBd0lRgD",
+         "title": "Finanzamt Charlottenburg",
+         "type": "web_search_result",
+         "url": "https://www.firma.de/finanzamt/838b6e-finanzamt-charlottenburg/"
+        },
+        {
+         "encrypted_content": "EsULCioIFBgCIiRkZWEyYzMxYi1jODU2LTQzYWQtYTQwNC1hOWE5MWI1MDc0ODQSDIzTTQHo8ePD36MZjBoMXXh0B1F/D6C1eir7IjD5lJS93p2haibrIRDZDqBaIitGY+OoP42LlLzQ+LgLlpYr8Wogqmcc95A0CBMjlg4qyAouqAF0wvL6lvzUK1t6yYi7hpHL+das06jxXn/4o1CtXEyB7M/UlQeJGvJql2uxVaJEVWRv6FfGCXMdqb9j7x7KcXebwikDHBLcZKhCPJQPLUh7NQfantp+qqLb/ExnECcawAcqRyTWsSigeDlLpjqH9VEoIsIxTY1l7l930cXzaJiqAQTw7Nh16jMwCiT3YG3ZyKkLLPVNfosUfxAM4H2q5IdSMhmR9iR/lIkxqyfLR+rohozWjo4rLkdUDAxGWziXBGO6P99P8QsRlSEntenJxw2sML6nuEgNnfbTXZE7g3P9v7kRUNhMCzF2F1ZFd5NS6fa3LmGIhmEuuBk1MvI5iCQh2gXEPTcsFR/mOCxtTVNLGLGcjdSz2bnZ3RWboWPljRYfC3YvRf+x/KB1RwHPlUnPthAhtvRS9tghDI5Pvd/wzcbS1hSIxJDe9qn4j17ZzE97o+rYNosQMCF79G7zLVAkl3s60pr8ECVR6IsrMc6wmnN2NGDOJ0oT6ER/XVVw3RU6MIAABObnvpWl84r6U4YTj6vVpKV/YynTtyCCPlIrTJclxM6j/RAOYGQuyd1EDyiYYuIoW0Gyh1H1ia7SnGg0BOxVRm9pdANFuEFlG+teE6iWqNO/Kb2U5aWkYU4x7z9vwXz5X23L6FNerKrTIq5R9UFwlSpPqjWMurqA0pPG7HI9KwekOn07PfCte1UOwF1HacdSrijagdG89u+6WBBi93YzzeAU4nBvPe5QORxOAFMWDs7VUfSKdgVLDKBTJtJ0h4mOc8AJuwbT1QQMnceWjvBIfrqwCSKrURjPQJ7e47tONHoNcKZkIm1fqFqdNYAZWMAgsDQyTL5j7Vo9hwOYqfaowXTjf4ufGtWV8kZ2WTb54p4IUfAFhd9fxqz+1MhDZH+bA62Ww+y7OxZ0XHzCD6+6QmNE950cm5fXa08qw1WuRu2dQzlUVuUwx3HCTEyrfeVPYAR6w07GEE1MHNhKwKKX4LFIf3nV6ljrPBImgTOkfbDwXwpJLFGn9YZLxMdAXmUM1fa/Ep1zwtX7uyZEnH7c8hXsYIgRFuXd6ZAZ0K5mHptQGGSSgkvIe4zDWJmtYA+LRaTTgftNkx+3861zCtgtulFvx3moapQPjMn/rk3BnZ+XJTdsgRylOppht7/QFGtGTfN+7+vqvu3If+2vBCC1FQQC6tZ2v1RAJpeGY1S+4OOcN6ZG15SOsOmjIabvvBfK91rR7HYV9cnxJuwuT5AxeCl25Xr3KEg3ZLorr/QZhJl8BeXIS8Ry2zrUZbDQwFu0sVpjfARKHh2GWjPj1vS3L7TOjX9E59vXN7Z3qAiTgPbQeqj4lVeDJBsnUoD2MwTwOSIye7uVFYQZcpvemCJq46RYRGjLGG58w44NxrkD8QZ+/DsU9rEoEhE7fG/nJPw4FKm6wQ/uojbMa7RCi0UxaQzQie6lLwbJQixQUge7966tm8m483WWfCYy6V1HbnjURkk9lAuSy8vYSaNHXINNyREr8mR2Kn7FUdno71LJQoMB6kXIF4ByyjA/xxb6rJx+WUrkr/WY1cKFWEbEeA/vdNCoJX6o9DkTZsuLhWAcgKBiuZaMOysCBlKTcFXi0Qzq9fO1Xcvy+c1Y2MzsEgUIxZ+Yg4UFfPL/YDXl3KTvLV0pm6C4+6n6vJA6n1knHd1ueUQJ65pGP+AAXgzyEeM9nrTXHsOIqS0QLCuTxYaeI2NjrUfUpBwqYsYPD0ziRa203IB1W+khbKzuzln0zxux36+m7F98v4BMJe2orelq2YEwQ1g7fO3kY0h7iZJXINXLaBgD",
+         "title": "Finanzamt Charlottenburg in Berlin - Berlinstadtservice",
+         "type": "web_search_result",
+         "url": "https://www.berlinstadtservice.de/aemter-und_behoerden_berlin/finanzamt/Finanzamt_Charlottenburg.html"
+        },
+        {
+         "encrypted_content": "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",
+         "page_age": "1986 days ago",
+         "title": "Finanzamt Charlottenburg: Öffnungszeiten und Kontakt",
+         "type": "web_search_result",
+         "url": "https://www.steuerklassen.com/finanzaemter/finanzamt-charlottenburg/"
+        },
+        {
+         "encrypted_content": "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",
+         "title": "Bismarckstra%C3%9Fe (Berlin U-Bahn)",
+         "type": "web_search_result",
+         "url": "https://en.wikipedia.org/wiki/Bismarckstra%C3%9Fe_(Berlin_U-Bahn)"
+        },
+        {
+         "encrypted_content": "Er8DCioIFBgCIiRkZWEyYzMxYi1jODU2LTQzYWQtYTQwNC1hOWE5MWI1MDc0ODQSDEdUnHNbh9PAjdKvDhoM3Rh32SP5sn1j0W0QIjADKqmzX5GCEQG/Jo3S+auU/Ruwe5wgXs4gz0YnDSRV66PYrk0/zzsDhU42ylpb8CsqwgKlk8RQTv3ZVTnyQN4qCEUA7yKzKXkIujuEW/SswJRuFh7dj6bfCfs2bug+jm3I7KEke0PhdM9daWu6SdeN4LnuzPcKhyLzy3KYZQunqeUQ3lCEOxaAREbLLvshtgLa1RBu7eGSc0/+wUlrDsskSVElALaGdfuuPEm6mhbOxGAMXsPFIXaPz7NHD0EvRX1IFiOJwaYrii8LpjGWoz675jerJ9+YYGED3StAsrszGFOmOgdOrJHXRBIc2dkKGD3YsYjuo8X8vYih6jDaDJfl6kUQnNTCHpbzYZf99vl5EljhV1Uqg65rh6+PhnDGTAfhEhhlwS0Ief6bC4CFkvXSpQBKblqDbIdSf7//TATY+LkM12tzXCl51itJaNg7D//X7y2kRB0wX7X14gRLvJ7mqbb3JMseG1kBeAcJ8JTswYfkifIbGAM=",
+         "title": "Finanzamt Charlottenburg",
+         "type": "web_search_result",
+         "url": "https://www.expertenfinder.de/finanzamt/details/1113.html"
+        }
+       ],
+       "tool_use_id": "srvtoolu_0174S6zJdivCXE1ZgTew4jkR",
+       "type": "web_search_tool_result",
+       "caller": {
+        "type": "direct"
+       }
+      },
+      {
+       "signature": "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",
+       "thinking": "",
+       "type": "thinking"
+      },
+      {
+       "id": "toolu_018VJbc3zXXaorftg2CE8z7o",
+       "input": {
+        "candidate_id": "missing_entity:osm:node/4306480695",
+        "verdict": "plausible",
+        "issue_type": "other",
+        "reason": "Barkow Leibinger architects, Schillerstr. 94, ~70-90 staff on 1,400 m². Nearest IHK registration is 50.8 m away, just outside the 40 m window, so it is probably the same firm already counted. Small workplace (<100), not a major missing employer.",
+        "proposed": {
+         "low": 50,
+         "central": 70,
+         "high": 90,
+         "unit": "persons_on_site"
+        },
+        "sources": [
+         {
+          "url": "https://www.jobcheck.com/job/junior-assistenz-der-geschaeftsfuehrung-mwd-bl-barkow-leibinger-partnerschaft-von-architekten-mbb-berlin/",
+          "quote": "Es beschäftigt heute ein Team aus rund 70 Mitarbeiter*innen an unserem Standort in Charlottenburg"
+         }
+        ],
+        "evidence_needed": "Check whether the IHK registration 50.8 m away is Barkow Leibinger (Schillerstr. 94) to avoid double counting."
+       },
+       "name": "report_finding",
+       "type": "tool_use",
+       "caller": {
+        "type": "direct"
+       }
+      },
+      {
+       "id": "toolu_01Btroc5NXp2hcbhwreEhs4m",
+       "input": {
+        "candidate_id": "missing_entity:osm:way/87644262",
+        "verdict": "plausible",
+        "issue_type": "other",
+        "reason": "135 m² building tagged public, hosting a DLRG district office (ngo). At 15-25 m² per workplace that is at most ~5-9 people, mostly volunteers. Not a significant missing employer; absence from registry is immaterial.",
+        "proposed": null,
+        "sources": [],
+        "evidence_needed": "DLRG Bezirk Charlottenburg-Wilmersdorf staffing/opening hours; likely a handful of people at most."
+       },
+       "name": "report_finding",
+       "type": "tool_use",
+       "caller": {
+        "type": "direct"
+       }
+      },
+      {
+       "id": "toolu_01WAzcx3XqLshkBhAePTgyg3",
+       "input": {
+        "candidate_id": "missing_entity:osm:way/88065712",
+        "verdict": "suspicious",
+        "issue_type": "missing_entity",
+        "reason": "8-level office building, 2,841 m² footprint (~22,700 m² gross implied) with only 32 registry heads in 30 registrations; at 15-25 m² per workplace that implies ~900-1,500 workers. Likely a public body (possibly Finanzamt Charlottenburg, Bismarckstr. 48, unverified) not in registry.",
+        "proposed": null,
+        "sources": [],
+        "evidence_needed": "Identify occupant (address near 52.5131,13.3154; Finanzamt Charlottenburg?) and its staff count; check real levels, since 8 may be overstated."
+       },
+       "name": "report_finding",
+       "type": "tool_use",
+       "caller": {
+        "type": "direct"
+       }
+      }
+     ]
+    },
+    {
+     "role": "user",
+     "content": [
+      {
+       "type": "tool_result",
+       "tool_use_id": "toolu_018VJbc3zXXaorftg2CE8z7o",
+       "content": "Recorded."
+      },
+      {
+       "type": "tool_result",
+       "tool_use_id": "toolu_01Btroc5NXp2hcbhwreEhs4m",
+       "content": "Recorded."
+      },
+      {
+       "type": "tool_result",
+       "tool_use_id": "toolu_01WAzcx3XqLshkBhAePTgyg3",
+       "content": "Recorded."
+      }
+     ]
+    },
+    {
+     "role": "assistant",
+     "content": [
+      {
+       "text": "All three candidates are reported, and I added no new entities.",
+       "type": "text"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "module": "poi_category",
+   "candidate_ids": [
+    "poi_category:overture:7410ba51-f5f2-441b-9267-6e1c651d066f"
+   ],
+   "turns": 2,
+   "retrieved_urls": [],
+   "log": [],
+   "tool_errors": [],
+   "transcript": [
+    {
+     "role": "user",
+     "content": "Node: Deutsche Oper (lat 52.51184, lon 13.31053), circle radius 400 m.\nModule: poi_category. Figures are the pipeline's raw values, before any review.\n\nCandidates:\n<data>\n[\n {\n  \"candidate_id\": \"poi_category:overture:7410ba51-f5f2-441b-9267-6e1c651d066f\",\n  \"module\": \"poi_category\",\n  \"record_ref\": \"overture:7410ba51-f5f2-441b-9267-6e1c651d066f\",\n  \"record\": {\n   \"external_ref\": \"overture:7410ba51-f5f2-441b-9267-6e1c651d066f\",\n   \"name\": \"Rogacki\",\n   \"category\": \"other_fresh_food\",\n   \"lat\": 52.512855529785156,\n   \"lon\": 13.30526065826416,\n   \"providers\": [\n    \"brightquery\",\n    \"overture\"\n   ],\n   \"members\": [\n    {\n     \"source\": \"overture_places\",\n     \"ref\": \"overture:7410ba51-f5f2-441b-9267-6e1c651d066f\",\n     \"name\": \"Rogacki\",\n     \"category\": \"other_fresh_food\"\n    }\n   ]\n  },\n  \"non_food_words\": [],\n  \"same_name_osm_objects_15m\": [\n   {\n    \"osm_ref\": \"node/661092196\",\n    \"distance_m\": 7.1,\n    \"name\": \"Rogacki\",\n    \"address\": \"Wilmersdorfer Straße 145/146\",\n    \"osm_category\": null\n   }\n  ],\n  \"osm_objects_15m\": [\n   {\n    \"osm_ref\": \"way/999323942\",\n    \"distance_m\": 0.0,\n    \"building\": \"commercial\",\n    \"building:levels\": \"6\",\n    \"address\": \"Wilmersdorfer Straße 145-146\"\n   },\n   {\n    \"osm_ref\": \"node/661092196\",\n    \"distance_m\": 7.1,\n    \"name\": \"Rogacki\",\n    \"address\": \"Wilmersdorfer Straße 145/146\"\n   },\n   {\n    \"osm_ref\": \"node/4567579069\",\n    \"distance_m\": 12.1,\n    \"name\": \"Tay Par Burger\",\n    \"amenity\": \"restaurant\",\n    \"address\": \"Wilmersdorfer Straße 144\"\n   }\n  ]\n }\n]\n</data>\n\nReport one finding for each of these candidate_ids: poi_category:overture:7410ba51-f5f2-441b-9267-6e1c651d066f.\n\nWeb search is not available for this module: judge from the data above."
+    },
+    {
+     "role": "assistant",
+     "content": [
+      {
+       "id": "toolu_01TNW5hDXX7bwujWeo1dkvL3",
+       "input": {
+        "candidate_id": "poi_category:overture:7410ba51-f5f2-441b-9267-6e1c651d066f",
+        "verdict": "plausible",
+        "issue_type": "other",
+        "reason": "Rogacki at Wilmersdorfer Straße 145/146 is matched by an OSM node of the same name 7 m away. The category other_fresh_food (delicatessen with fish counter and smokehouse) fits, so I found no sign of a category error or duplicate. This is judged from the data only.",
+        "proposed": null,
+        "sources": [],
+        "evidence_needed": "Check the shop's official site or a map listing to confirm it is a food delicatessen with a fish counter, and whether it also has a sit-down restaurant section."
+       },
+       "name": "report_finding",
+       "type": "tool_use",
+       "caller": {
+        "type": "direct"
+       }
+      }
+     ]
+    },
+    {
+     "role": "user",
+     "content": [
+      {
+       "type": "tool_result",
+       "tool_use_id": "toolu_01TNW5hDXX7bwujWeo1dkvL3",
+       "content": "Recorded."
+      }
+     ]
+    },
+    {
+     "role": "assistant",
+     "content": [
+      {
+       "text": "I reported the single candidate, Rogacki, as plausible, based on the data alone because web search wasn't available for this module.",
+       "type": "text"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "module": "poi_duplicate",
+   "candidate_ids": [
+    "poi_duplicate:node/1228195011|node/1228200532",
+    "poi_duplicate:node/1229435273|overture:c149455e-5e4a-42f7-a545-786584b0eb6c",
+    "poi_duplicate:node/3733553131|overture:7c490fd9-daab-460a-80e7-ca52525a262a"
+   ],
+   "turns": 2,
+   "retrieved_urls": [],
+   "log": [],
+   "tool_errors": [],
+   "transcript": [
+    {
+     "role": "user",
+     "content": "Node: Deutsche Oper (lat 52.51184, lon 13.31053), circle radius 400 m.\nModule: poi_duplicate. Figures are the pipeline's raw values, before any review.\n\nCandidates:\n<data>\n[\n {\n  \"candidate_id\": \"poi_duplicate:node/1228195011|node/1228200532\",\n  \"module\": \"poi_duplicate\",\n  \"record_ref\": \"node/1228195011|node/1228200532\",\n  \"records\": [\n   {\n    \"external_ref\": \"node/1228195011\",\n    \"name\": \"Steinofen Pizza\",\n    \"category\": \"fast_food\",\n    \"lat\": 52.512365,\n    \"lon\": 13.3048823,\n    \"providers\": [\n     \"openstreetmap\"\n    ],\n    \"members\": [\n     {\n      \"source\": \"osm_overpass\",\n      \"ref\": \"node/1228195011\",\n      \"name\": \"Steinofen Pizza\",\n      \"category\": \"fast_food\"\n     }\n    ]\n   },\n   {\n    \"external_ref\": \"node/1228200532\",\n    \"name\": \"Falafel\",\n    \"category\": \"fast_food\",\n    \"lat\": 52.5124436,\n    \"lon\": 13.3048644,\n    \"providers\": [\n     \"openstreetmap\"\n    ],\n    \"members\": [\n     {\n      \"source\": \"osm_overpass\",\n      \"ref\": \"node/1228200532\",\n      \"name\": \"Falafel\",\n      \"category\": \"fast_food\"\n     }\n    ]\n   }\n  ],\n  \"distance_m\": 8.8\n },\n {\n  \"candidate_id\": \"poi_duplicate:node/1229435273|overture:c149455e-5e4a-42f7-a545-786584b0eb6c\",\n  \"module\": \"poi_duplicate\",\n  \"record_ref\": \"node/1229435273|overture:c149455e-5e4a-42f7-a545-786584b0eb6c\",\n  \"records\": [\n   {\n    \"external_ref\": \"node/1229435273\",\n    \"name\": \"Borsa\",\n    \"category\": \"spati_kiosk\",\n    \"lat\": 52.5102675,\n    \"lon\": 13.3053735,\n    \"providers\": [\n     \"openstreetmap\"\n    ],\n    \"members\": [\n     {\n      \"source\": \"osm_overpass\",\n      \"ref\": \"node/1229435273\",\n      \"name\": \"Borsa\",\n      \"category\": \"spati_kiosk\"\n     }\n    ]\n   },\n   {\n    \"external_ref\": \"overture:c149455e-5e4a-42f7-a545-786584b0eb6c\",\n    \"name\": \"SuperMarket MultiKulti\",\n    \"category\": \"spati_kiosk\",\n    \"lat\": 52.51017379760742,\n    \"lon\": 13.30536937713623,\n    \"providers\": [\n     \"meta\",\n     \"overture\"\n    ],\n    \"members\": [\n     {\n      \"source\": \"overture_places\",\n      \"ref\": \"overture:c149455e-5e4a-42f7-a545-786584b0eb6c\",\n      \"name\": \"SuperMarket MultiKulti\",\n      \"category\": \"spati_kiosk\"\n     }\n    ]\n   }\n  ],\n  \"distance_m\": 10.4\n },\n {\n  \"candidate_id\": \"poi_duplicate:node/3733553131|overture:7c490fd9-daab-460a-80e7-ca52525a262a\",\n  \"module\": \"poi_duplicate\",\n  \"record_ref\": \"node/3733553131|overture:7c490fd9-daab-460a-80e7-ca52525a262a\",\n  \"records\": [\n   {\n    \"external_ref\": \"node/3733553131\",\n    \"name\": \"Seelenglück\",\n    \"category\": \"cafe\",\n    \"lat\": 52.5087455,\n    \"lon\": 13.3089371,\n    \"providers\": [\n     \"openstreetmap\"\n    ],\n    \"members\": [\n     {\n      \"source\": \"osm_overpass\",\n      \"ref\": \"node/3733553131\",\n      \"name\": \"Seelenglück\",\n      \"category\": \"cafe\"\n     }\n    ]\n   },\n   {\n    \"external_ref\": \"overture:7c490fd9-daab-460a-80e7-ca52525a262a\",\n    \"name\": \"Caf� H�ftgold Berlin\",\n    \"category\": \"cafe\",\n    \"lat\": 52.508705139160156,\n    \"lon\": 13.30907917022705,\n    \"providers\": [\n     \"meta\",\n     \"overture\"\n    ],\n    \"members\": [\n     {\n      \"source\": \"overture_places\",\n      \"ref\": \"overture:7c490fd9-daab-460a-80e7-ca52525a262a\",\n      \"name\": \"Caf� H�ftgold Berlin\",\n      \"category\": \"cafe\"\n     }\n    ]\n   }\n  ],\n  \"distance_m\": 10.6\n }\n]\n</data>\n\nReport one finding for each of these candidate_ids: poi_duplicate:node/1228195011|node/1228200532, poi_duplicate:node/1229435273|overture:c149455e-5e4a-42f7-a545-786584b0eb6c, poi_duplicate:node/3733553131|overture:7c490fd9-daab-460a-80e7-ca52525a262a.\n\nWeb search is not available for this module: judge from the data above."
+    },
+    {
+     "role": "assistant",
+     "content": [
+      {
+       "id": "toolu_01KcR56FKYjohBQz9tqT2NWV",
+       "input": {
+        "candidate_id": "poi_duplicate:node/1228195011|node/1228200532",
+        "verdict": "plausible",
+        "issue_type": "duplicate",
+        "reason": "Two OSM nodes with different names (Steinofen Pizza, Falafel) and different cuisines about 9 m apart. This looks like two adjacent snack stands, not one business listed twice. Both come from the same provider.",
+        "proposed": null,
+        "sources": [],
+        "evidence_needed": "Street imagery or a site visit to check whether the two are separate stands."
+       },
+       "name": "report_finding",
+       "type": "tool_use",
+       "caller": {
+        "type": "direct"
+       }
+      },
+      {
+       "id": "toolu_01Cfu6Tzjn2YmsnaoChkFEby",
+       "input": {
+        "candidate_id": "poi_duplicate:node/1229435273|overture:c149455e-5e4a-42f7-a545-786584b0eb6c",
+        "verdict": "suspicious",
+        "issue_type": "duplicate",
+        "reason": "An OSM node and an Overture record are about 10 m apart. Both carry the same Späti/kiosk category, and they come from different providers. A small shop that appears as \"Borsa\" in one source and \"SuperMarket MultiKulti\" in the other is likely one shop listed under two names. The names differ, so this is not certain.",
+        "proposed": null,
+        "sources": [],
+        "evidence_needed": "Check street imagery or the storefront signage at this address to see whether there is one shop or two, and what it is called."
+       },
+       "name": "report_finding",
+       "type": "tool_use",
+       "caller": {
+        "type": "direct"
+       }
+      },
+      {
+       "id": "toolu_01DTnqFSmD2zxAbYwCEF2DS6",
+       "input": {
+        "candidate_id": "poi_duplicate:node/3733553131|overture:7c490fd9-daab-460a-80e7-ca52525a262a",
+        "verdict": "suspicious",
+        "issue_type": "duplicate",
+        "reason": "An OSM café and an Overture café are about 10 m apart and come from different providers. \"Seelenglück\" and \"Café Häftgold Berlin\" (the Overture name has a garbled encoding) may be one café under two names, for example a rename or an operator name. The names differ, so this is not confirmed.",
+        "proposed": null,
+        "sources": [],
+        "evidence_needed": "Check the current signage or the café's own page or map listing to see whether the two names belong to one café."
+       },
+       "name": "report_finding",
+       "type": "tool_use",
+       "caller": {
+        "type": "direct"
+       }
+      }
+     ]
+    },
+    {
+     "role": "user",
+     "content": [
+      {
+       "type": "tool_result",
+       "tool_use_id": "toolu_01KcR56FKYjohBQz9tqT2NWV",
+       "content": "Recorded."
+      },
+      {
+       "type": "tool_result",
+       "tool_use_id": "toolu_01Cfu6Tzjn2YmsnaoChkFEby",
+       "content": "Recorded."
+      },
+      {
+       "type": "tool_result",
+       "tool_use_id": "toolu_01DTnqFSmD2zxAbYwCEF2DS6",
+       "content": "Recorded."
+      }
+     ]
+    },
+    {
+     "role": "assistant",
+     "content": [
+      {
+       "text": "All three candidates are reported.",
+       "type": "text"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "module": "poi_duplicate",
+   "candidate_ids": [
+    "poi_duplicate:node/3733553131|overture:e3b9c2ed-5f3e-4a40-a3f1-6cc12cc9f86b",
+    "poi_duplicate:node/4415604080|node/8039726234",
+    "poi_duplicate:node/4551162390|node/661126952"
+   ],
+   "turns": 2,
+   "retrieved_urls": [],
+   "log": [],
+   "tool_errors": [],
+   "transcript": [
+    {
+     "role": "user",
+     "content": "Node: Deutsche Oper (lat 52.51184, lon 13.31053), circle radius 400 m.\nModule: poi_duplicate. Figures are the pipeline's raw values, before any review.\n\nCandidates:\n<data>\n[\n {\n  \"candidate_id\": \"poi_duplicate:node/3733553131|overture:e3b9c2ed-5f3e-4a40-a3f1-6cc12cc9f86b\",\n  \"module\": \"poi_duplicate\",\n  \"record_ref\": \"node/3733553131|overture:e3b9c2ed-5f3e-4a40-a3f1-6cc12cc9f86b\",\n  \"records\": [\n   {\n    \"external_ref\": \"node/3733553131\",\n    \"name\": \"Seelenglück\",\n    \"category\": \"cafe\",\n    \"lat\": 52.5087455,\n    \"lon\": 13.3089371,\n    \"providers\": [\n     \"openstreetmap\"\n    ],\n    \"members\": [\n     {\n      \"source\": \"osm_overpass\",\n      \"ref\": \"node/3733553131\",\n      \"name\": \"Seelenglück\",\n      \"category\": \"cafe\"\n     }\n    ]\n   },\n   {\n    \"external_ref\": \"overture:e3b9c2ed-5f3e-4a40-a3f1-6cc12cc9f86b\",\n    \"name\": \"Gelbgold\",\n    \"category\": \"cafe\",\n    \"lat\": 52.50871658325195,\n    \"lon\": 13.309005737304688,\n    \"providers\": [\n     \"brightquery\",\n     \"overture\"\n    ],\n    \"members\": [\n     {\n      \"source\": \"overture_places\",\n      \"ref\": \"overture:e3b9c2ed-5f3e-4a40-a3f1-6cc12cc9f86b\",\n      \"name\": \"Gelbgold\",\n      \"category\": \"cafe\"\n     }\n    ]\n   }\n  ],\n  \"distance_m\": 5.6\n },\n {\n  \"candidate_id\": \"poi_duplicate:node/4415604080|node/8039726234\",\n  \"module\": \"poi_duplicate\",\n  \"record_ref\": \"node/4415604080|node/8039726234\",\n  \"records\": [\n   {\n    \"external_ref\": \"node/4415604080\",\n    \"name\": \"Harry's Sliders\",\n    \"category\": \"fast_food\",\n    \"lat\": 52.5108868,\n    \"lon\": 13.3055983,\n    \"providers\": [\n     \"openstreetmap\"\n    ],\n    \"members\": [\n     {\n      \"source\": \"osm_overpass\",\n      \"ref\": \"node/4415604080\",\n      \"name\": \"Harry's Sliders\",\n      \"category\": \"fast_food\"\n     }\n    ]\n   },\n   {\n    \"external_ref\": \"node/8039726234\",\n    \"name\": \"Orient Bites\",\n    \"category\": \"fast_food\",\n    \"lat\": 52.5109289,\n    \"lon\": 13.3055967,\n    \"providers\": [\n     \"openstreetmap\"\n    ],\n    \"members\": [\n     {\n      \"source\": \"osm_overpass\",\n      \"ref\": \"node/8039726234\",\n      \"name\": \"Orient Bites\",\n      \"category\": \"fast_food\"\n     }\n    ]\n   }\n  ],\n  \"distance_m\": 4.7\n },\n {\n  \"candidate_id\": \"poi_duplicate:node/4551162390|node/661126952\",\n  \"module\": \"poi_duplicate\",\n  \"record_ref\": \"node/4551162390|node/661126952\",\n  \"records\": [\n   {\n    \"external_ref\": \"node/4551162390\",\n    \"name\": \"Safrani\",\n    \"category\": \"fast_food\",\n    \"lat\": 52.5103568,\n    \"lon\": 13.305756,\n    \"providers\": [\n     \"openstreetmap\"\n    ],\n    \"members\": [\n     {\n      \"source\": \"osm_overpass\",\n      \"ref\": \"node/4551162390\",\n      \"name\": \"Safrani\",\n      \"category\": \"fast_food\"\n     }\n    ]\n   },\n   {\n    \"external_ref\": \"node/661126952\",\n    \"name\": \"Yuppis\",\n    \"category\": \"fast_food\",\n    \"lat\": 52.5102915,\n    \"lon\": 13.3057733,\n    \"providers\": [\n     \"meta\",\n     \"openstreetmap\",\n     \"overture\"\n    ],\n    \"members\": [\n     {\n      \"source\": \"osm_overpass\",\n      \"ref\": \"node/661126952\",\n      \"name\": \"Yuppis\",\n      \"category\": \"fast_food\"\n     },\n     {\n      \"source\": \"overture_places\",\n      \"ref\": \"overture:d8400639-9620-4ace-b63d-cade8fa57f81\",\n      \"name\": \"Yuppis-Bistro\",\n      \"category\": \"cafe\"\n     }\n    ]\n   }\n  ],\n  \"distance_m\": 7.4\n }\n]\n</data>\n\nReport one finding for each of these candidate_ids: poi_duplicate:node/3733553131|overture:e3b9c2ed-5f3e-4a40-a3f1-6cc12cc9f86b, poi_duplicate:node/4415604080|node/8039726234, poi_duplicate:node/4551162390|node/661126952.\n\nWeb search is not available for this module: judge from the data above."
+    },
+    {
+     "role": "assistant",
+     "content": [
+      {
+       "id": "toolu_01FXdo3KQzrc1T3RgzwAE299",
+       "input": {
+        "candidate_id": "poi_duplicate:node/3733553131|overture:e3b9c2ed-5f3e-4a40-a3f1-6cc12cc9f86b",
+        "verdict": "suspicious",
+        "issue_type": "duplicate",
+        "reason": "Two cafés about 5.6 m apart with different names (Seelenglück vs Gelbgold). Same category and almost the same position, so this could be one café that was renamed or listed under two names. Nothing in the data confirms it, since the names are unrelated.",
+        "proposed": null,
+        "sources": [],
+        "evidence_needed": "Check current street-level imagery or the venue's website to see whether Seelenglück was renamed Gelbgold or whether both operate at this address."
+       },
+       "name": "report_finding",
+       "type": "tool_use",
+       "caller": {
+        "type": "direct"
+       }
+      },
+      {
+       "id": "toolu_014fypfSenacaSKYAyMWPvMG",
+       "input": {
+        "candidate_id": "poi_duplicate:node/4415604080|node/8039726234",
+        "verdict": "plausible",
+        "issue_type": "duplicate",
+        "reason": "Harry's Sliders and Orient Bites are different names and different cuisines, both OSM-only fast-food nodes about 5 m apart. This looks like adjacent stalls or units in a food cluster, not one business. Closeness alone is not enough to flag a duplicate.",
+        "proposed": null,
+        "sources": [],
+        "evidence_needed": "Check whether the two are separate units, for example on a map or in street imagery."
+       },
+       "name": "report_finding",
+       "type": "tool_use",
+       "caller": {
+        "type": "direct"
+       }
+      },
+      {
+       "id": "toolu_018M3y3bwMWwmZf5HxBWUd5a",
+       "input": {
+        "candidate_id": "poi_duplicate:node/4551162390|node/661126952",
+        "verdict": "plausible",
+        "issue_type": "duplicate",
+        "reason": "Safrani and Yuppis have different names, and the Yuppis record is already merged with its own Overture entry (Yuppis-Bistro). They sit about 7 m apart, which fits neighbouring shops. Nothing points to one business under two names.",
+        "proposed": null,
+        "sources": [],
+        "evidence_needed": "Check street imagery or the shops' websites to confirm they are separate businesses."
+       },
+       "name": "report_finding",
+       "type": "tool_use",
+       "caller": {
+        "type": "direct"
+       }
+      }
+     ]
+    },
+    {
+     "role": "user",
+     "content": [
+      {
+       "type": "tool_result",
+       "tool_use_id": "toolu_01FXdo3KQzrc1T3RgzwAE299",
+       "content": "Recorded."
+      },
+      {
+       "type": "tool_result",
+       "tool_use_id": "toolu_014fypfSenacaSKYAyMWPvMG",
+       "content": "Recorded."
+      },
+      {
+       "type": "tool_result",
+       "tool_use_id": "toolu_018M3y3bwMWwmZf5HxBWUd5a",
+       "content": "Recorded."
+      }
+     ]
+    },
+    {
+     "role": "assistant",
+     "content": [
+      {
+       "text": "I reported all three candidates: the Seelenglück/Gelbgold pair as suspicious, and the other two pairs as plausible. I had no web search, so every proposed figure is null.",
+       "type": "text"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "module": "poi_duplicate",
+   "candidate_ids": [
+    "poi_duplicate:node/4551162390|node/8039726235",
+    "poi_duplicate:node/661126952|node/8039726235",
+    "poi_duplicate:overture:7c490fd9-daab-460a-80e7-ca52525a262a|overture:e3b9c2ed-5f3e-4a40-a3f1-6cc12cc9f86b"
+   ],
+   "turns": 2,
+   "retrieved_urls": [],
+   "log": [],
+   "tool_errors": [],
+   "transcript": [
+    {
+     "role": "user",
+     "content": "Node: Deutsche Oper (lat 52.51184, lon 13.31053), circle radius 400 m.\nModule: poi_duplicate. Figures are the pipeline's raw values, before any review.\n\nCandidates:\n<data>\n[\n {\n  \"candidate_id\": \"poi_duplicate:node/4551162390|node/8039726235\",\n  \"module\": \"poi_duplicate\",\n  \"record_ref\": \"node/4551162390|node/8039726235\",\n  \"records\": [\n   {\n    \"external_ref\": \"node/4551162390\",\n    \"name\": \"Safrani\",\n    \"category\": \"fast_food\",\n    \"lat\": 52.5103568,\n    \"lon\": 13.305756,\n    \"providers\": [\n     \"openstreetmap\"\n    ],\n    \"members\": [\n     {\n      \"source\": \"osm_overpass\",\n      \"ref\": \"node/4551162390\",\n      \"name\": \"Safrani\",\n      \"category\": \"fast_food\"\n     }\n    ]\n   },\n   {\n    \"external_ref\": \"node/8039726235\",\n    \"name\": \"Wilma Döner\",\n    \"category\": \"fast_food\",\n    \"lat\": 52.5104057,\n    \"lon\": 13.3057536,\n    \"providers\": [\n     \"openstreetmap\"\n    ],\n    \"members\": [\n     {\n      \"source\": \"osm_overpass\",\n      \"ref\": \"node/8039726235\",\n      \"name\": \"Wilma Döner\",\n      \"category\": \"fast_food\"\n     }\n    ]\n   }\n  ],\n  \"distance_m\": 5.4\n },\n {\n  \"candidate_id\": \"poi_duplicate:node/661126952|node/8039726235\",\n  \"module\": \"poi_duplicate\",\n  \"record_ref\": \"node/661126952|node/8039726235\",\n  \"records\": [\n   {\n    \"external_ref\": \"node/661126952\",\n    \"name\": \"Yuppis\",\n    \"category\": \"fast_food\",\n    \"lat\": 52.5102915,\n    \"lon\": 13.3057733,\n    \"providers\": [\n     \"meta\",\n     \"openstreetmap\",\n     \"overture\"\n    ],\n    \"members\": [\n     {\n      \"source\": \"osm_overpass\",\n      \"ref\": \"node/661126952\",\n      \"name\": \"Yuppis\",\n      \"category\": \"fast_food\"\n     },\n     {\n      \"source\": \"overture_places\",\n      \"ref\": \"overture:d8400639-9620-4ace-b63d-cade8fa57f81\",\n      \"name\": \"Yuppis-Bistro\",\n      \"category\": \"cafe\"\n     }\n    ]\n   },\n   {\n    \"external_ref\": \"node/8039726235\",\n    \"name\": \"Wilma Döner\",\n    \"category\": \"fast_food\",\n    \"lat\": 52.5104057,\n    \"lon\": 13.3057536,\n    \"providers\": [\n     \"openstreetmap\"\n    ],\n    \"members\": [\n     {\n      \"source\": \"osm_overpass\",\n      \"ref\": \"node/8039726235\",\n      \"name\": \"Wilma Döner\",\n      \"category\": \"fast_food\"\n     }\n    ]\n   }\n  ],\n  \"distance_m\": 12.8\n },\n {\n  \"candidate_id\": \"poi_duplicate:overture:7c490fd9-daab-460a-80e7-ca52525a262a|overture:e3b9c2ed-5f3e-4a40-a3f1-6cc12cc9f86b\",\n  \"module\": \"poi_duplicate\",\n  \"record_ref\": \"overture:7c490fd9-daab-460a-80e7-ca52525a262a|overture:e3b9c2ed-5f3e-4a40-a3f1-6cc12cc9f86b\",\n  \"records\": [\n   {\n    \"external_ref\": \"overture:7c490fd9-daab-460a-80e7-ca52525a262a\",\n    \"name\": \"Caf� H�ftgold Berlin\",\n    \"category\": \"cafe\",\n    \"lat\": 52.508705139160156,\n    \"lon\": 13.30907917022705,\n    \"providers\": [\n     \"meta\",\n     \"overture\"\n    ],\n    \"members\": [\n     {\n      \"source\": \"overture_places\",\n      \"ref\": \"overture:7c490fd9-daab-460a-80e7-ca52525a262a\",\n      \"name\": \"Caf� H�ftgold Berlin\",\n      \"category\": \"cafe\"\n     }\n    ]\n   },\n   {\n    \"external_ref\": \"overture:e3b9c2ed-5f3e-4a40-a3f1-6cc12cc9f86b\",\n    \"name\": \"Gelbgold\",\n    \"category\": \"cafe\",\n    \"lat\": 52.50871658325195,\n    \"lon\": 13.309005737304688,\n    \"providers\": [\n     \"brightquery\",\n     \"overture\"\n    ],\n    \"members\": [\n     {\n      \"source\": \"overture_places\",\n      \"ref\": \"overture:e3b9c2ed-5f3e-4a40-a3f1-6cc12cc9f86b\",\n      \"name\": \"Gelbgold\",\n      \"category\": \"cafe\"\n     }\n    ]\n   }\n  ],\n  \"distance_m\": 5.1\n }\n]\n</data>\n\nReport one finding for each of these candidate_ids: poi_duplicate:node/4551162390|node/8039726235, poi_duplicate:node/661126952|node/8039726235, poi_duplicate:overture:7c490fd9-daab-460a-80e7-ca52525a262a|overture:e3b9c2ed-5f3e-4a40-a3f1-6cc12cc9f86b.\n\nWeb search is not available for this module: judge from the data above."
+    },
+    {
+     "role": "assistant",
+     "content": [
+      {
+       "id": "toolu_01EZqyoxCGVSCVPNTQJhi59J",
+       "input": {
+        "candidate_id": "poi_duplicate:node/4551162390|node/8039726235",
+        "verdict": "suspicious",
+        "issue_type": "duplicate",
+        "reason": "Safrani and Wilma Döner are 5 m apart, both OSM fast_food nodes. Different names could be two stalls in one block, or one döner shop with an old and a new name (the node IDs are years apart). Data alone doesn't settle it.",
+        "proposed": null,
+        "sources": [],
+        "evidence_needed": "Check street imagery or current listings for the address to see whether Safrani and Wilma Döner are one shop renamed or two separate shops."
+       },
+       "name": "report_finding",
+       "type": "tool_use",
+       "caller": {
+        "type": "direct"
+       }
+      },
+      {
+       "id": "toolu_01UFMxQFvsmPh32gysc6ZGhR",
+       "input": {
+        "candidate_id": "poi_duplicate:node/661126952|node/8039726235",
+        "verdict": "plausible",
+        "issue_type": "duplicate",
+        "reason": "Yuppis (Yuppis-Bistro) and Wilma Döner have different names, 12.8 m apart. Nothing in the data points to one business, and neighbouring takeaways are common.",
+        "proposed": null,
+        "sources": [],
+        "evidence_needed": "Check street imagery to confirm Yuppis and Wilma Döner are separate storefronts."
+       },
+       "name": "report_finding",
+       "type": "tool_use",
+       "caller": {
+        "type": "direct"
+       }
+      },
+      {
+       "id": "toolu_019S1p81FxQcsx9UkC2ZDhdA",
+       "input": {
+        "candidate_id": "poi_duplicate:overture:7c490fd9-daab-460a-80e7-ca52525a262a|overture:e3b9c2ed-5f3e-4a40-a3f1-6cc12cc9f86b",
+        "verdict": "suspicious",
+        "issue_type": "duplicate",
+        "reason": "\"Café Häftgold Berlin\" and \"Gelbgold\" are 5 m apart. Both are Overture cafés from different providers. \"Gelbgold\" is German for \"yellow gold\", and the names are similar, so one café under two names is likely. The name is also mis-encoded.",
+        "proposed": null,
+        "sources": [],
+        "evidence_needed": "Check the café's current name and address on the map or its website. Confirm whether Gelbgold and Häftgold are the same venue."
+       },
+       "name": "report_finding",
+       "type": "tool_use",
+       "caller": {
+        "type": "direct"
+       }
+      }
+     ]
+    },
+    {
+     "role": "user",
+     "content": [
+      {
+       "type": "tool_result",
+       "tool_use_id": "toolu_01EZqyoxCGVSCVPNTQJhi59J",
+       "content": "Recorded."
+      },
+      {
+       "type": "tool_result",
+       "tool_use_id": "toolu_01UFMxQFvsmPh32gysc6ZGhR",
+       "content": "Recorded."
+      },
+      {
+       "type": "tool_result",
+       "tool_use_id": "toolu_019S1p81FxQcsx9UkC2ZDhdA",
+       "content": "Recorded."
+      }
+     ]
+    },
+    {
+     "role": "assistant",
+     "content": [
+      {
+       "text": "All three candidates are reported. Two are suspicious as possible duplicates (Safrani/Wilma Döner and Häftgold/Gelbgold), and Yuppis/Wilma Döner is plausible.",
+       "type": "text"
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}
