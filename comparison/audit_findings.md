@@ -1,6 +1,6 @@
 # Data-Plausibility Audit — Findings and Decision
 
-2026-10-08 · Experiment of [plan_llm_data_audit.md](../plan_llm_data_audit.md) (Amendments 1–4). Numbers: [audit_eval.md](audit_eval.md) (generated), [audit_candidate_recall.md](audit_candidate_recall.md), [audit_prompt_log.md](audit_prompt_log.md); labels: [audit_flag_labels.csv](audit_flag_labels.csv); manual scans: [audit_manual_scans/](audit_manual_scans/).
+2026-10-08 · Experiment of [plan_llm_data_audit.md](../plan_llm_data_audit.md) (Amendments 1–4). Numbers: [audit_eval.md](audit_eval.md) (generated), the evaluation runs' review rows: [audit_eval_queue.csv](audit_eval_queue.csv) (kept as recorded; the live queue `audit_review_queue.csv` holds pipeline runs only), [audit_candidate_recall.md](audit_candidate_recall.md), [audit_prompt_log.md](audit_prompt_log.md); labels: [audit_flag_labels.csv](audit_flag_labels.csv); manual scans: [audit_manual_scans/](audit_manual_scans/).
 
 ## Decision
 
