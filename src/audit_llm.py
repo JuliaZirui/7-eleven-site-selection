@@ -691,6 +691,21 @@ def save_run(run: dict, worklist: dict, run_dir: Path = RUN_DIR, queue: Path | N
     return path
 
 
+def load_dotenv(path: Path = PROJECT_ROOT / ".env") -> None:
+    """KEY=value lines from the project's .env (git-ignored) into the
+    environment, without overriding variables already set. Only the
+    command line uses it; values are never printed."""
+    if not path.exists():
+        return
+    for line in path.read_text(encoding="utf-8").splitlines():
+        line = line.strip()
+        if not line or line.startswith("#") or "=" not in line:
+            continue
+        key, value = line.split("=", 1)
+        key = key.removeprefix("export ").strip()
+        os.environ.setdefault(key, value.strip().strip('"').strip("'"))
+
+
 def main(argv: list[str] | None = None) -> int:
     import argparse
 
@@ -702,6 +717,7 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--effort", default=AUDIT_EFFORT, choices=["low", "medium", "high", "xhigh", "max"])
     ap.add_argument("--no-queue", action="store_true", help="do not append findings to the review queue")
     args = ap.parse_args(argv)
+    load_dotenv()
 
     check_allowed(args.node)
     check_dev_version(args.node, full_run=args.modules is None and args.limit is None)

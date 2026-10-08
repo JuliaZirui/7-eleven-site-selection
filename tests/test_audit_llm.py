@@ -249,6 +249,17 @@ class FreezeAndQueueTest(unittest.TestCase):
         with self.assertRaises(audit_llm.AuditError):
             audit_llm.check_dev_version("warschauer_strasse", True, self.tmp)  # same version twice
 
+    def test_dotenv_fills_only_unset_variables(self):
+        import os
+        from unittest import mock
+        env = self.tmp / ".env"
+        env.write_text("# comment\nAUDIT_TEST_A='from file'\nexport AUDIT_TEST_B=b\n")
+        with mock.patch.dict(os.environ, {"AUDIT_TEST_B": "already set"}, clear=False):
+            audit_llm.load_dotenv(env)
+            self.assertEqual(os.environ["AUDIT_TEST_A"], "from file")
+            self.assertEqual(os.environ["AUDIT_TEST_B"], "already set")
+            os.environ.pop("AUDIT_TEST_A")
+
     def test_runs_in_the_same_second_get_separate_files(self):
         wl = _worklist(_cand("c:1"))
         run = Auditor(FakeClient(_resp([])), max_usd=5).audit(wl)
