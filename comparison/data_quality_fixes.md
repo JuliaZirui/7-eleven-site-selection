@@ -1,6 +1,6 @@
 # Data-Quality Fixes from the Manual Benchmark
 
-2026-10-03 · `conflation_v2`, `scoring_v7`, [analysis run #17](../reports/site_report_run17_20261003T153943Z.md). Follows up the defects found in [manual_vs_tool.md](manual_vs_tool.md).
+2026-10-03 · `conflation_v2`, `scoring_v7`, analysis run #17 (kept in the database; current figures: the [latest report](../reports/site_report_run26_20261008T181455Z.md)). Follows up the defects found in [manual_vs_tool.md](manual_vs_tool.md).
 
 ## What was found and how it is handled
 

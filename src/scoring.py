@@ -249,11 +249,11 @@ class Criterion:
 # inner-city transit nodes".
 # scoring_v8: competition is scored per day type over the whole day -- the
 # all-day basket (morning + evening sets merged) open on a weekday / weekend
-# day, per 10,000 of that day type's people. The commute peaks and weekend
+# day, per 10,000 of that day type's people. The weekday and weekend time
 # windows moved to unscored diagnostics: no public source measures footfall
-# by time window, so scoring them assumed the dual-peak hypothesis instead
-# of testing it. Anchors re-run on the same 139 stations, same Overture
-# release and caches (no network); demand anchors reproduce unchanged.
+# by time window, so scoring them assumed when the store's trade falls.
+# Anchors re-run on the same 139 stations, same Overture release and
+# caches (no network); demand anchors reproduce unchanged.
 # scoring_v7: competition anchors re-run with conflation_v2 (near-duplicate
 # merge, name / category check, verified corrections).
 # scoring_v6 run: all 139 stations complete (OSM cache 2026-09-28/10-01,
@@ -788,6 +788,53 @@ def competitor_mapping_stress(results: dict[str, dict], weights: dict[str, float
         "leader": leader,
         "leader_break_even_factor": break_even,
         "break_even_search_max": 20.0,
+    }
+
+
+def demand_weight_crossover(pa: dict[str, float | None], pb: dict[str, float | None]) -> float | None:
+    """Demand weight w (competition 1 - w) at which two nodes' fits are
+    equal. With two pillars the fit difference is linear in w, so there is
+    at most one such point; None if one node leads both pillars (or ties
+    one) and the order is the same at every weighting."""
+    if any(p.get(k) is None for p in (pa, pb) for k in PILLARS):
+        return None
+    dd = pa["demand"] - pb["demand"]
+    dc = pa["competition"] - pb["competition"]
+    if dd * dc >= 0:
+        return None
+    return dc / (dc - dd)
+
+
+def joint_downside_check(results: dict[str, dict], weights: dict[str, float] = DEFAULT_WEIGHTS) -> dict | None:
+    """All of the least certain inputs at their downside at once: visitors
+    at the P25 of the visitors-per-pageview fit AND every node's competitor
+    counts scaled to the best node's mapping rate. The one-at-a-time checks
+    move one input each; this asks whether the ranking survives them
+    together. Also gives the demand weight at which the #1 and #2 would
+    swap there (None: the #1 leads both pillars). None without a visitor
+    fit or mapping data."""
+    loaded = latest_visitor_fit()
+    consistency = {a: r.get("mapping_consistency") for a, r in results.items()}
+    if loaded is None or not any(consistency.values()):
+        return None
+    fit, _ = loaded
+    k = fit["visitors_per_pageview_p25"] / fit["visitors_per_pageview"]
+    factors = {a: (1.0 / c["relative"] if c and c["relative"] else 1.0) for a, c in consistency.items()}
+    pillars_by_area = {}
+    for area_id, r in results.items():
+        crits = _criterion_results(r["metrics"], visitor_factor=k)
+        pillars_by_area[area_id] = _scaled_competition_pillars({**r, "criteria": crits}, factors[area_id])
+    fits = _fits(pillars_by_area, weights)
+    order = rank(fits)
+    crossover = (demand_weight_crossover(pillars_by_area[order[0]], pillars_by_area[order[1]])
+                 if len(order) > 1 else None)
+    return {
+        "visitors_per_pageview": fit["visitors_per_pageview_p25"],
+        "factors": factors,
+        "pillars": pillars_by_area,
+        "fits": fits,
+        "rank": order,
+        "crossover_demand_weight": crossover,
     }
 
 

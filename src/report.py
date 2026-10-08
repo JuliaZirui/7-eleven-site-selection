@@ -47,6 +47,8 @@ from scoring import (
     competition_structure_check,
     competitor_mapping_stress,
     day_type_check,
+    demand_weight_crossover,
+    joint_downside_check,
     visitor_conversion_check,
     worker_onsite_check,
 )
@@ -82,11 +84,11 @@ PILLAR_LABELS = {"demand": "Demand (people/day)", "competition": "Competition pe
 
 # What each window's competitor set holds and what to lead with, by window.
 WINDOW_RULES = {
-    "morning_peak": ("7–9 peak", "bakeries, cafés, supermarkets and fuel shops",
-                     "breakfast / coffee-to-go as the lead commuter offer",
+    "morning_peak": ("weekday 7–9", "bakeries, cafés, supermarkets and fuel shops",
+                     "breakfast / coffee-to-go as a morning offer",
                      "coffee and pastry alone won't differentiate; compete on speed and the fuller basket"),
-    "evening_peak": ("16–19 peak", "spätis, fast food, supermarkets and fuel shops",
-                     "ready meals and the after-work top-up basket",
+    "evening_peak": ("weekday 16–19", "spätis, fast food, supermarkets and fuel shops",
+                     "ready meals and the evening top-up basket",
                      "presence alone won't differentiate; compete on fresh / hot food range"),
     "weekend_day": ("weekend 10–19", "food formats (Sunday law applied)",
                     "the Sunday basket — a station shop may trade when most shops must close",
@@ -96,8 +98,8 @@ WINDOW_RULES = {
                       "the night is already served; compete on quality and speed"),
 }
 # Weekend people at least this multiple of weekday people = weekend-led node;
-# the reverse marks an office-commuter node (workers >= SEGMENT_LEAD_SHARE) as
-# a commuter format. The ratio alone is not used for that: workers thin out at
+# the reverse marks an office-led node (workers >= SEGMENT_LEAD_SHARE) as
+# weekday-led. The ratio alone is not used for that: workers thin out at
 # every node at the weekend, so it would fire almost everywhere.
 WEEKEND_LED_RATIO = 1.2
 
@@ -224,9 +226,8 @@ def _differentiation(conn: sqlite3.Connection, node, r: dict) -> list[str]:
         if count is None:
             continue
         lo, hi = DIAGNOSTIC_WINDOW_QUARTILES[key]
-        test = (f" Verify with the {window.replace(' peak', '')} footfall count (§7)." if key in ("morning_peak", "evening_peak")
-                else "")
-        figures = f"{count:g} {formats} open {window.replace(' peak', '')} (unscored; 139-station P25–P75: {lo:g}–{hi:g})"
+        test = " Verify with the weekday footfall counts (§7)." if key in ("morning_peak", "evening_peak") else ""
+        figures = f"{count:g} {formats} open {window} (unscored; 139-station P25–P75: {lo:g}–{hi:g})"
         if count <= lo:
             out.append(f"**{window[0].upper()}{window[1:]} thinly served** — {figures}. Test {lead}, if the window's "
                        f"footfall is there.{test}")
@@ -270,20 +271,20 @@ def _differentiation(conn: sqlite3.Connection, node, r: dict) -> list[str]:
             out.append(
                 f"**Visitor-led catchment** — ~{seg['visitors']:,.0f} of ~{people['raw_value']:,.0f} people/day "
                 f"({shares['visitors']:.0%}) are estimated visitors. Test grab-and-go water, snacks and "
-                f"souvenir-adjacent impulse lines; visitor flow builds after 9–10, not at the commuter peak."
+                f"souvenir-adjacent impulse lines; visitor flow builds after 9–10, so early-morning trade here rests on workers."
             )
         if shares.get("workers", 0) >= SEGMENT_LEAD_SHARE:
-            text = (f"**Office-commuter base** — ~{seg['workers']:,.0f} people work within 400m ({shares['workers']:.0%} "
+            text = (f"**Office-worker base** — ~{seg['workers']:,.0f} people work within 400m ({shares['workers']:.0%} "
                     f"of people/day; {_pct(office_share)} of registrations office-type). Test a weekday lunch meal-deal range.")
             weekend = crit["daily_people_weekend"]["raw_value"]
             if weekend and people["raw_value"] / weekend >= WEEKEND_LED_RATIO:
-                text += (f" A commuter format: ~{people['raw_value']:,.0f} people on a weekday vs. ~{weekend:,.0f} on a "
+                text += (f" Weekday-heavy: ~{people['raw_value']:,.0f} people on a weekday vs. ~{weekend:,.0f} on a "
                          f"weekend day ({people['raw_value'] / weekend:.1f}×), so weekend trade will be thin.")
             out.append(text)
         if shares.get("residents", 0) >= SEGMENT_LEAD_SHARE:
             out.append(
                 f"**Residential catchment** — ~{seg['residents']:,.0f} residents within 400m ({shares['residents']:.0%} "
-                f"of people/day). Daily top-up basket and weekend trade matter here, not only commuter peaks."
+                f"of people/day). Daily top-up basket and weekend trade matter here."
             )
     wd, we = crit["daily_people"], crit["daily_people_weekend"]
     if wd["raw_value"] and we["raw_value"]:
@@ -293,7 +294,7 @@ def _differentiation(conn: sqlite3.Connection, node, r: dict) -> list[str]:
             out.append(
                 f"**Weekend-led demand** — ~{we['raw_value']:,.0f} people on a weekend day vs. ~{wd['raw_value']:,.0f} on a "
                 f"weekday ({ratio:.1f}×), driven by visitors ({_fmt(vis, 0)} per weekend day). Staff and stock for "
-                f"Friday–Sunday; the weekday commuter base alone understates this node."
+                f"Friday–Sunday; the weekday figure alone understates this node."
             )
     night = _get(m, "night_venue_draw_index")
     if night and not night["is_missing"] and night["value"] >= NIGHT_DRAW_NOTABLE:
@@ -355,7 +356,7 @@ def _priority_call(area_id: str, r: dict, sens: dict) -> str:
         return "Prioritize for field diligence"
     if contender:
         return "Prioritize — verify evidence first"
-    return "Lower priority (control node)"
+    return "Lower priority"
 
 
 def render(conn: sqlite3.Connection, run_id: int, run_at: datetime) -> tuple[str, dict]:
@@ -370,43 +371,15 @@ def render(conn: sqlite3.Connection, run_id: int, run_at: datetime) -> tuple[str
     under_mapped = _under_mapping_flags(results)
 
     # §2 summary
+    joint = joint_downside_check(results, DEFAULT_WEIGHTS)
     summary_rows = []
     for a in order:
         r = results[a]
         eq = r["evidence_quality"]
         summary_rows.append(
-            f"| {names[a]} | {_fmt(r['business_fit'])} | {_fmt(eq['score'])} ({eq['tier']}) | "
-            f"{_pct(mc['top_share'][a])} | {_priority_call(a, r, sens)} |"
+            f"| {names[a]} | {_fmt(r['business_fit'])} | {_fmt(joint['fits'][a]) if joint else 'n/a'} | "
+            f"{_fmt(eq['score'])} ({eq['tier']}) | {_priority_call(a, r, sens)} |"
         )
-
-    contenders = [a for a in order if mc["top_share"][a] >= PRIORITY_TOP_SHARE]
-    never_top = [a for a in order if mc["top_share"][a] == 0]
-    data_flips = []
-    vflip = visitor_conversion_check(results, DEFAULT_WEIGHTS)
-    if vflip and any(vflip[l]["rank"][0] != order[0] for l in ("low", "high")):
-        data_flips.append("the visitor-conversion range")
-    wflip = worker_onsite_check(results, DEFAULT_WEIGHTS)
-    if any(wflip[l]["rank"][0] != order[0] for l in ("low", "high")):
-        data_flips.append("the verified worker range")
-    if sens["top_rank_robust"] and data_flips:
-        headline = (
-            f"**{names[order[0]]}** ranks first under every weighting tested, but not across "
-            f"{' or '.join(data_flips)}: at the low end, {names[order[1]]} is first. The order rests on the demand "
-            f"estimate more than on the weights — measured footfall would settle it."
-        )
-    elif sens["top_rank_robust"]:
-        headline = f"**{names[order[0]]}** ranks first under every weighting tested and is the clear diligence priority."
-    else:
-        headline = (
-            f"**No single winner survives the sensitivity analysis.** "
-            f"{' and '.join(names[a] for a in contenders)} trade places depending on whether demand or competition "
-            f"is weighted more heavily — this is a strategic choice for the client, not something the data settle. "
-        )
-        if never_top:
-            headline += (
-                f"{' and '.join(names[a] for a in never_top)} ranks first in none of the "
-                f"{mc['draws']:,} random weightings and is the clearest deprioritization."
-            )
 
     # §3 criteria
     header = "| Pillar | Criterion | Scale (0 → 100) | " + " | ".join(names[a] for a in order) + " |"
@@ -603,25 +576,85 @@ def render(conn: sqlite3.Connection, run_id: int, run_at: datetime) -> tuple[str
             "result may be a mapping artifact; verify the competitor counts on-site before relying on the order. "
         ) + be_text
 
-    flips = [o for o in sens["one_at_a_time"] if o["top_changed"]]
-    if sens["top_rank_robust"]:
-        sensitivity_reading = "the #1 position holds under every scenario, perturbation, and ≥80% of random weightings."
+    # Joint downside: the least certain inputs at their downside together.
+    if joint is None:
+        joint_check = "No visitor fit or mapping data on record — check not run."
     else:
-        parts = []
-        if flips:
-            parts.append(
-                "#1 flips under "
-                + ", ".join(f"{PILLAR_LABELS[o['pillar']].lower()} ×{o['factor']}" for o in flips)
-            )
-        scen_tops = sorted({names[s["rank"][0]] for s in sens["scenarios"]})
-        parts.append(f"named scenarios put {' or '.join(scen_tops)} first")
-        parts.append(f"the baseline fit spread across all three nodes is {_fmt(sens['fit_spread'])} points")
-        sensitivity_reading = (
-            "; ".join(parts)
-            + ". The ranking between the contenders turns on how absolute demand is weighed against "
-            "competition per unit of that demand. Present both, with the weight that decides between them, "
-            "rather than a single #1."
+        lines_j = ["| Inputs | Ranking | " + " | ".join(names[a] for a in order) + " |",
+                   "| --- | --- | " + " | ".join("---" for _ in order) + " |",
+                   "| baseline | " + " > ".join(names[a] for a in order) + " | "
+                   + " | ".join(f"{_fmt(results[a]['pillars']['demand'])} / {_fmt(results[a]['pillars']['competition'])} → "
+                                f"{_fmt(results[a]['business_fit'])}" for a in order) + " |",
+                   f"| visitors at {joint['visitors_per_pageview']:.1f} per pageview + competitor counts scaled | "
+                   + " > ".join(names[a] for a in joint["rank"]) + " | "
+                   + " | ".join(f"{_fmt(joint['pillars'][a]['demand'])} / {_fmt(joint['pillars'][a]['competition'])} → "
+                                f"{_fmt(joint['fits'][a])}" for a in order) + " |"]
+        j1, j2 = joint["rank"][0], joint["rank"][1]
+        xw = joint["crossover_demand_weight"]
+        if xw is None:
+            weight_text = (f"{names[j1]} leads both pillars there, so no weighting changes the #1.")
+        elif xw > DEFAULT_WEIGHTS["demand"]:
+            weight_text = (f"There {names[j2]} leads on demand, so the pillars trade off: {names[j2]} would rank first "
+                           f"only with demand weighted above {xw:.0%}.")
+        else:
+            weight_text = (f"There {names[j2]} leads on competition, so the pillars trade off: {names[j2]} would rank "
+                           f"first only with demand weighted below {xw:.0%}.")
+        joint_check = "\n".join(lines_j) + "\n\n" + (
+            "Cells: demand pillar / competition pillar → business fit. "
+        ) + (
+            f"The ranking holds with both downsides at once ({names[j1]} {_fmt(joint['fits'][j1])} vs. "
+            f"{names[j2]} {_fmt(joint['fits'][j2])}). " if joint["rank"][0] == order[0] else
+            f"**The #1 changes with both downsides at once** ({names[j1]} {_fmt(joint['fits'][j1])} vs. "
+            f"{names[order[0]]} {_fmt(joint['fits'][order[0]])}): the baseline order rests on the visitor estimate and "
+            f"the competitor counts together. "
+        ) + weight_text
+
+    # Which input checks move the #1? These lead §2 and §4: with two pillars
+    # a wrong input can overturn the ranking, a different weight only where
+    # the pillars trade off.
+    input_flips = []
+    if vcheck and any(vcheck[l]["rank"][0] != order[0] for l in ("low", "high")):
+        input_flips.append("the visitor-conversion range")
+    if any(wcheck[l]["rank"][0] != order[0] for l in ("low", "high")):
+        input_flips.append("the verified worker range")
+    if stress and stress["rank"][0] != order[0]:
+        input_flips.append("competitor counts scaled for under-mapping")
+    if scheck["rank"][0] != order[0]:
+        input_flips.append("competition counted without the demand denominator")
+    if joint and joint["rank"][0] != order[0]:
+        input_flips.append("the joint downside")
+
+    base_xw = demand_weight_crossover(results[order[0]]["pillars"], results[order[1]]["pillars"]) if len(order) > 1 else None
+    if base_xw is None:
+        weight_reading = (f"{names[order[0]]} leads both pillars at baseline, so it ranks first at every weighting; the "
+                          f"weight checks follow from the pillar scores and add no separate evidence.")
+    else:
+        weight_reading = (f"{names[order[0]]} and {names[order[1]]} each lead one pillar, so their order flips at a demand "
+                          f"weight of {base_xw:.0%}; the weight checks show where that falls.")
+
+    if not input_flips and sens["top_rank_robust"]:
+        headline = (
+            f"**{names[order[0]]}** stays first at every input check — the visitor conversion's interquartile range, "
+            f"the verified worker ranges, competitor counts scaled for under-mapping, competition counted without the "
+            f"demand denominator — and with the visitor and competitor downsides together"
+            + (f" ({_fmt(joint['fits'][order[0]])} vs. {_fmt(joint['fits'][joint['rank'][1]])})" if joint else "")
+            + ". It is the diligence priority; what its lead rests on is listed in §6 and checked first in §7."
         )
+        sensitivity_reading = (f"the #1 position holds at every input check and at the joint downside. {weight_reading}")
+    elif input_flips:
+        headline = (
+            f"**{names[order[0]]}** ranks first at baseline, but not under {', '.join(input_flips)}. The order rests on "
+            f"inputs that only field work can settle (footfall counts, an on-site competitor walk); treat it as provisional."
+        )
+        sensitivity_reading = (f"the #1 position changes under {', '.join(input_flips)}. {weight_reading}")
+    else:
+        contenders = [a for a in order if mc["top_share"][a] >= PRIORITY_TOP_SHARE]
+        headline = (
+            f"**No single winner survives the weight checks.** "
+            f"{' and '.join(names[a] for a in contenders)} trade places depending on whether demand or competition "
+            f"is weighted more heavily — a strategic choice for the client, not something the data settle."
+        )
+        sensitivity_reading = (f"every input check keeps the baseline order, but the weights do not. {weight_reading}")
 
     # §5 differentiation
     diff_parts = []
@@ -672,9 +705,9 @@ def render(conn: sqlite3.Connection, run_id: int, run_at: datetime) -> tuple[str
     fc = []
     for a in order:
         items = [
-            "Count footfall at the main station exits once at 7–9 and once at 16–19 on a weekday. The dual-peak "
-            "hypothesis is not scored (no public footfall by time window); these two counts are what test it.",
-            "Add a Saturday midday count as the weekend baseline.",
+            "Count footfall at the main station exits on a weekday morning (7–9), midday and evening (16–19). Demand "
+            "is estimated, not counted: these counts check the people-per-day estimate and show when trade falls.",
+            "Add a Saturday midday count for the weekend estimate.",
             "Walk the 400m radius and reconcile the competitor list against OSM (new openings, closures, unmapped kiosks).",
         ]
         items += [e for e in gap_events.get(a, [])]
@@ -744,6 +777,7 @@ def render(conn: sqlite3.Connection, run_id: int, run_at: datetime) -> tuple[str
         day_check=day_check,
         structure_check=structure_check,
         mapping_stress=mapping_stress,
+        joint_check=joint_check,
         sensitivity_reading=sensitivity_reading,
         differentiation=differentiation,
         evidence_gaps=evidence_gaps,

@@ -509,6 +509,18 @@ class FreshnessIsStableOverShortSpans(PipelineTestCase):
         self.assertEqual(late[node.area_id]["evidence_quality"]["components"]["freshness"]["value"], 0.0)
 
 
+class DemandWeightCrossover(unittest.TestCase):
+    def test_leader_of_both_pillars_has_no_crossover(self):
+        self.assertIsNone(scoring.demand_weight_crossover({"demand": 80, "competition": 90},
+                                                          {"demand": 60, "competition": 30}))
+
+    def test_trade_off_crosses_once(self):
+        # A: 54.8 / 63.3, B: 60.8 / 25.7 -> equal at w = 37.6 / 43.6.
+        w = scoring.demand_weight_crossover({"demand": 54.8, "competition": 63.3},
+                                            {"demand": 60.8, "competition": 25.7})
+        self.assertAlmostEqual(w, 37.6 / 43.6)
+
+
 class ReportGuards(unittest.TestCase):
     def test_template_placeholders_all_supplied(self):
         # substitute() raises KeyError on any placeholder the renderer forgot.
@@ -553,21 +565,21 @@ class DifferentiationRules(unittest.TestCase):
         with mock.patch.object(report, "_pois", return_value=list(pois)):
             return report._differentiation(None, self.NODE, r)
 
-    def test_commuter_format_is_part_of_the_office_rule(self):
-        # Workers >= 40% and weekday >= 1.2x weekend: one office entry with the commuter sentence.
+    def test_weekday_heavy_is_part_of_the_office_rule(self):
+        # Workers >= 40% and weekday >= 1.2x weekend: one office entry with the weekday-heavy sentence.
         office = self._rules(self._r(weekday=(3_000, 14_000, 6_000), weekend=(3_000, 1_000, 6_000)))
-        hits = [h for h in office if "Office-commuter base" in h]
+        hits = [h for h in office if "Office-worker base" in h]
         self.assertEqual(len(hits), 1)
-        self.assertIn("A commuter format", hits[0])
+        self.assertIn("Weekday-heavy", hits[0])
         self.assertFalse(any("Weekday-led" in h for h in office))
-        # Office-led but flat across the week: no commuter sentence.
+        # Office-led but flat across the week: no weekday-heavy sentence.
         flat = self._rules(self._r(weekday=(3_000, 6_000, 1_000), weekend=(3_000, 5_000, 1_000)))
-        self.assertNotIn("A commuter format", next(h for h in flat if "Office-commuter base" in h))
-        # Weekday-heavy but visitor- or resident-led: never called a commuter format.
+        self.assertNotIn("Weekday-heavy", next(h for h in flat if "Office-worker base" in h))
+        # Weekday-heavy but visitor- or resident-led: never called weekday-heavy.
         for weekday, weekend in (((1_300, 9_400, 14_200), (1_300, 700, 14_200)),
                                  ((10_700, 3_200, 500), (10_700, 500, 500))):
             rules = self._rules(self._r(weekday, weekend))
-            self.assertFalse(any("commuter format" in h.lower() for h in rules), weekday)
+            self.assertFalse(any("weekday-heavy" in h.lower() for h in rules), weekday)
 
     def test_24_7_competitors_near_the_anchor_are_one_entry(self):
         near = [{"name": n, "category": "spati_kiosk", "lat": 52.5210, "lon": 13.4000 + i * 1e-4, "hours": "24/7"}
