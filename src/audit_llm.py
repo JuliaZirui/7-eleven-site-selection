@@ -657,10 +657,30 @@ def append_queue(rows: list[dict], path: Path = REVIEW_QUEUE_CSV) -> None:
         w.writerows(rows)
 
 
+def reached_api(run: dict) -> bool:
+    """False when no request got through (e.g. no credentials): such a
+    run is not a run of the audit and must not be counted as one."""
+    return run["api_calls"] > 0
+
+
+def preflight(client: Any, model: str = AUDIT_MODEL) -> None:
+    """One free request (model lookup) before any work, so missing or bad
+    credentials stop the command instead of producing an empty run."""
+    try:
+        client.models.retrieve(model)
+    except Exception as exc:
+        raise AuditError(f"API not usable ({type(exc).__name__}: {exc}). Set ANTHROPIC_API_KEY in this shell "
+                         "and run again; nothing was written.") from exc
+
+
 def save_run(run: dict, worklist: dict, run_dir: Path = RUN_DIR, queue: Path | None = REVIEW_QUEUE_CSV) -> Path:
     run_dir.mkdir(parents=True, exist_ok=True)
     stamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
     path = run_dir / f"{run['node']['area_id']}_{stamp}.json"
+    n = 1
+    while path.exists():  # two runs in the same second must not overwrite each other
+        n += 1
+        path = run_dir / f"{run['node']['area_id']}_{stamp}_{n}.json"
     path.write_text(json.dumps(run, ensure_ascii=False, indent=1))
     try:
         ref = str(path.relative_to(PROJECT_ROOT))
@@ -688,7 +708,16 @@ def main(argv: list[str] | None = None) -> int:
     max_usd = check_budget(args.max_usd)
     worklist = json.loads((WORKLIST_DIR / f"{args.node}.json").read_text())
     auditor = Auditor(effort=args.effort, max_usd=max_usd)
+    try:
+        preflight(auditor.client, auditor.model)
+    except AuditError as exc:
+        print(exc)
+        return 2
     run = auditor.audit(worklist, args.modules.split(",") if args.modules else None, args.limit)
+    if not reached_api(run):
+        failed = save_run(run, worklist, run_dir=RUN_DIR.parent / "failed_runs", queue=None)
+        print(f"No API request got through; record kept apart in {failed.relative_to(PROJECT_ROOT)}, not counted.")
+        return 2
     path = save_run(run, worklist, queue=None if args.no_queue else REVIEW_QUEUE_CSV)
     u = run["usage"]
     print(f"{run['node']['name']}: {run['candidates']} candidates {run['status_counts']}; "

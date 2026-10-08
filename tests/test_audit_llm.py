@@ -249,6 +249,25 @@ class FreezeAndQueueTest(unittest.TestCase):
         with self.assertRaises(audit_llm.AuditError):
             audit_llm.check_dev_version("warschauer_strasse", True, self.tmp)  # same version twice
 
+    def test_runs_in_the_same_second_get_separate_files(self):
+        wl = _worklist(_cand("c:1"))
+        run = Auditor(FakeClient(_resp([])), max_usd=5).audit(wl)
+        a = audit_llm.save_run(run, wl, run_dir=self.tmp / "runs", queue=None)
+        b = audit_llm.save_run(run, wl, run_dir=self.tmp / "runs", queue=None)
+        self.assertNotEqual(a, b)
+        self.assertEqual(len(list((self.tmp / "runs").glob("*.json"))), 2)
+
+    def test_no_credentials_stop_before_any_run(self):
+        class NoAuth:
+            class models:
+                @staticmethod
+                def retrieve(model):
+                    raise TypeError("Could not resolve authentication method")
+        with self.assertRaises(audit_llm.AuditError):
+            audit_llm.preflight(NoAuth())
+        run = Auditor(FakeClient(RuntimeError("no auth")), max_usd=5).audit(_worklist(_cand("c:1")))
+        self.assertFalse(audit_llm.reached_api(run))
+
     def test_queue_gets_non_plausible_findings(self):
         client = FakeClient(_resp([_search_result(),
                                    _report("c:1", "t1", proposed=PROPOSED, sources=[{"url": URL, "quote": "q"}]),
