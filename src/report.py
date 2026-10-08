@@ -95,7 +95,10 @@ WINDOW_RULES = {
                       "late-night hours and an after-club / after-event range",
                       "the night is already served; compete on quality and speed"),
 }
-# Weekend people at least this multiple of weekday people = weekend-led node.
+# Weekend people at least this multiple of weekday people = weekend-led node;
+# the reverse marks an office-commuter node (workers >= SEGMENT_LEAD_SHARE) as
+# a commuter format. The ratio alone is not used for that: workers thin out at
+# every node at the weekend, so it would fire almost everywhere.
 WEEKEND_LED_RATIO = 1.2
 
 
@@ -230,14 +233,18 @@ def _differentiation(conn: sqlite3.Connection, node, r: dict) -> list[str]:
         elif count >= hi:
             out.append(f"**{window[0].upper()}{window[1:]} crowded** — {figures}. {saturated[0].upper()}{saturated[1:]}.{test}")
 
-    for p in _pois(conn, node.area_id):
-        if p["category"] in DIRECT_FORMATS and p["hours"] == "24/7":
-            d = haversine_m(node.lat, node.lon, p["lat"], p["lon"])
-            if d <= NEAR_DIRECT_COMPETITOR_M:
-                out.append(
-                    f"**24/7 direct-format competitor near the anchor** — {p['name']} ({p['category']}) is {d:.0f}m "
-                    f"away and never closes. Differentiate on fresh-food quality and speed, not availability."
-                )
+    always_open = sorted(
+        (haversine_m(node.lat, node.lon, p["lat"], p["lon"]), p["name"] or "unnamed", p["category"])
+        for p in _pois(conn, node.area_id)
+        if p["category"] in DIRECT_FORMATS and p["hours"] == "24/7"
+    )
+    always_open = [x for x in always_open if x[0] <= NEAR_DIRECT_COMPETITOR_M]
+    if always_open:
+        listed = "; ".join(f"{name} ({category}, {d:.0f}m)" for d, name, category in always_open)
+        head = ("24/7 direct-format competitor near the anchor" if len(always_open) == 1
+                else f"{len(always_open)} 24/7 direct-format competitors near the anchor")
+        out.append(f"**{head}** — {listed}: within {NEAR_DIRECT_COMPETITOR_M}m and never closed. Differentiate on "
+                   f"fresh-food quality and speed, not availability.")
 
     fast_food = _get(m, "competitor_count_fast_food", "current")["value"]
     breakfast = _get(m, "competitor_count_bakery", "current")["value"] + _get(m, "competitor_count_cafe", "current")["value"]
@@ -266,10 +273,13 @@ def _differentiation(conn: sqlite3.Connection, node, r: dict) -> list[str]:
                 f"souvenir-adjacent impulse lines; visitor flow builds after 9–10, not at the commuter peak."
             )
         if shares.get("workers", 0) >= SEGMENT_LEAD_SHARE:
-            out.append(
-                f"**Office-commuter base** — ~{seg['workers']:,.0f} people work within 400m ({shares['workers']:.0%} "
-                f"of people/day; {_pct(office_share)} of registrations office-type). Test a weekday lunch meal-deal range."
-            )
+            text = (f"**Office-commuter base** — ~{seg['workers']:,.0f} people work within 400m ({shares['workers']:.0%} "
+                    f"of people/day; {_pct(office_share)} of registrations office-type). Test a weekday lunch meal-deal range.")
+            weekend = crit["daily_people_weekend"]["raw_value"]
+            if weekend and people["raw_value"] / weekend >= WEEKEND_LED_RATIO:
+                text += (f" A commuter format: ~{people['raw_value']:,.0f} people on a weekday vs. ~{weekend:,.0f} on a "
+                         f"weekend day ({people['raw_value'] / weekend:.1f}×), so weekend trade will be thin.")
+            out.append(text)
         if shares.get("residents", 0) >= SEGMENT_LEAD_SHARE:
             out.append(
                 f"**Residential catchment** — ~{seg['residents']:,.0f} residents within 400m ({shares['residents']:.0%} "
@@ -284,11 +294,6 @@ def _differentiation(conn: sqlite3.Connection, node, r: dict) -> list[str]:
                 f"**Weekend-led demand** — ~{we['raw_value']:,.0f} people on a weekend day vs. ~{wd['raw_value']:,.0f} on a "
                 f"weekday ({ratio:.1f}×), driven by visitors ({_fmt(vis, 0)} per weekend day). Staff and stock for "
                 f"Friday–Sunday; the weekday commuter base alone understates this node."
-            )
-        elif ratio <= 1 / WEEKEND_LED_RATIO:
-            out.append(
-                f"**Weekday-led demand** — ~{wd['raw_value']:,.0f} people on a weekday vs. ~{we['raw_value']:,.0f} on a "
-                f"weekend day ({1 / ratio:.1f}×). A commuter format; weekend trade will be thin."
             )
     night = _get(m, "night_venue_draw_index")
     if night and not night["is_missing"] and night["value"] >= NIGHT_DRAW_NOTABLE:
