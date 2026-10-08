@@ -43,6 +43,7 @@ from scoring import (
     score_all,
     sensitivity_analysis,
     competition_structure_check,
+    competitor_mapping_stress,
     day_type_check,
     visitor_conversion_check,
     worker_onsite_check,
@@ -541,6 +542,40 @@ def render(conn: sqlite3.Connection, run_id: int, run_at: datetime) -> tuple[str
         "demand entering the score twice; read the order as conditional on the per-head competition measure."
     )
 
+    stress = competitor_mapping_stress(results, DEFAULT_WEIGHTS)
+    if stress is None:
+        mapping_stress = "No IHK Gastronomie registrations on record — stress test not run."
+    else:
+        lines_m = ["| Competitor counts | Ranking | " + " | ".join(names[a] for a in order) + " |",
+                   "| --- | --- | " + " | ".join("---" for _ in order) + " |",
+                   "| as mapped (baseline) | " + " > ".join(names[a] for a in order) + " | "
+                   + " | ".join(f"×1 → {_fmt(results[a]['pillars']['competition'])} → {_fmt(results[a]['business_fit'])} "
+                                f"({_pct(mc['top_share'][a])} #1)" for a in order) + " |",
+                   "| scaled to the best node's mapping rate | " + " > ".join(names[a] for a in stress["rank"]) + " | "
+                   + " | ".join(f"×{stress['factors'][a]:.2f} → {_fmt(stress['pillars'][a]['competition'])} → "
+                                f"{_fmt(stress['fits'][a])} ({_pct(stress['monte_carlo']['top_share'][a])} #1)"
+                                for a in order) + " |"]
+        leader, be = stress["leader"], stress["leader_break_even_factor"]
+        if be is None:
+            be_text = (f"{names[leader]} keeps #1 even with its counts ×{stress['break_even_search_max']:g} "
+                       f"(the others at their scaled level).")
+        else:
+            be_text = (f"{names[leader]} would lose #1 only if its competitor counts were under-stated by ×{be:.1f} "
+                       f"or more (the others at their scaled level), against ×{stress['factors'][leader]:.2f} implied "
+                       f"by the mapping rates.")
+        same_m = stress["rank"] == order and all(t == order[0] for t in stress["scenario_tops"].values())
+        mapping_stress = "\n".join(lines_m) + "\n\n" + (
+            "Cells: scaling factor → competition pillar → business fit (share of "
+            f"{mc['draws']:,} random weightings ranked #1). The factor is a stress scenario, not a "
+            "correction: IHK Gastronomie also holds restaurants and bars outside the competitor taxonomy (so the ratio "
+            "is not a coverage rate), and the best node is not known to be fully mapped either.\n\n"
+        ) + (
+            "Same order, and the same #1 in every named scenario: the ranking survives the under-mapping signal. "
+            if same_m else
+            "**The ranking changes when competitor counts are scaled to the best node's mapping rate** — part of the "
+            "result may be a mapping artifact; verify the competitor counts on-site before relying on the order. "
+        ) + be_text
+
     flips = [o for o in sens["one_at_a_time"] if o["top_changed"]]
     if sens["top_rank_robust"]:
         sensitivity_reading = "the #1 position holds under every scenario, perturbation, and ≥80% of random weightings."
@@ -678,6 +713,7 @@ def render(conn: sqlite3.Connection, run_id: int, run_at: datetime) -> tuple[str
         worker_check=worker_check,
         day_check=day_check,
         structure_check=structure_check,
+        mapping_stress=mapping_stress,
         sensitivity_reading=sensitivity_reading,
         differentiation=differentiation,
         evidence_gaps=evidence_gaps,

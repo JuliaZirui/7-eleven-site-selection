@@ -1,0 +1,1446 @@
+{
+  "results": {
+    "brandenburger_tor": {
+      "area_id": "brandenburger_tor",
+      "criteria": [
+        {
+          "key": "daily_people",
+          "pillar": "demand",
+          "day_type": "weekday",
+          "label": "People per weekday in the catchment (residents + workers + visitors)",
+          "unit": "persons/day",
+          "raw_value": 24556.20981570392,
+          "score": 82.64861817001868,
+          "weight": 5.0,
+          "metric_ids": [
+            2224,
+            2212,
+            2229
+          ],
+          "missing_reason": null,
+          "breakdown": {
+            "residents": 1253.845933230495,
+            "workers": 9130.718221248357,
+            "visitors": 14171.64566122507
+          }
+        },
+        {
+          "key": "daily_people_weekend",
+          "pillar": "demand",
+          "day_type": "weekend",
+          "label": "People per weekend/holiday day in the catchment",
+          "unit": "persons/day",
+          "raw_value": 16144.9910494682,
+          "score": 100.0,
+          "weight": 2.0,
+          "metric_ids": [
+            2224,
+            2219,
+            2231
+          ],
+          "missing_reason": null,
+          "breakdown": {
+            "residents": 1253.845933230495,
+            "workers": 719.499455012636,
+            "visitors": 14171.64566122507
+          }
+        },
+        {
+          "key": "morning_peak_competition",
+          "pillar": "competition",
+          "day_type": "weekday",
+          "label": "Weekday 7–9 competitors per 10,000 weekday people (bakery, café, supermarket, fuel shop)",
+          "unit": "per 10k",
+          "raw_value": 5.293976593931194,
+          "score": 100.0,
+          "weight": 2.5,
+          "metric_ids": [
+            2201,
+            2224,
+            2212,
+            2229
+          ],
+          "missing_reason": null,
+          "count": 13.0,
+          "people": 24556.20981570392
+        },
+        {
+          "key": "evening_peak_competition",
+          "pillar": "competition",
+          "day_type": "weekday",
+          "label": "Weekday 16–19 competitors per 10,000 weekday people (späti, fast food, supermarket, fuel shop)",
+          "unit": "per 10k",
+          "raw_value": 4.8867476251672555,
+          "score": 100.0,
+          "weight": 2.5,
+          "metric_ids": [
+            2203,
+            2224,
+            2212,
+            2229
+          ],
+          "missing_reason": null,
+          "count": 12.0,
+          "people": 24556.20981570392
+        },
+        {
+          "key": "weekend_day_competition",
+          "pillar": "competition",
+          "day_type": "weekend",
+          "label": "Weekend 10–19 competitors per 10,000 weekend people (bakery, café, supermarket, späti, fast food, fuel shop)",
+          "unit": "per 10k",
+          "raw_value": 15.174985185765715,
+          "score": 98.85172547799775,
+          "weight": 1.0,
+          "metric_ids": [
+            2205,
+            2224,
+            2219,
+            2231
+          ],
+          "missing_reason": null,
+          "count": 24.5,
+          "people": 16144.9910494682
+        },
+        {
+          "key": "weekend_night_competition",
+          "pillar": "competition",
+          "day_type": "weekend",
+          "label": "Weekend 22–02 competitors per 10,000 weekend people (späti, fast food, fuel shop)",
+          "unit": "per 10k",
+          "raw_value": 6.503565079613878,
+          "score": 89.07794516504043,
+          "weight": 1.0,
+          "metric_ids": [
+            2207,
+            2224,
+            2219,
+            2231
+          ],
+          "missing_reason": null,
+          "count": 10.5,
+          "people": 16144.9910494682
+        }
+      ],
+      "pillars": {
+        "demand": 87.60615583572762,
+        "competition": 98.27566723471975
+      },
+      "business_fit": 92.94091153522368,
+      "evidence_quality": {
+        "score": 73.9158829676071,
+        "tier": "verify first",
+        "components": {
+          "competitor_corroboration": {
+            "value": 0.5172413793103449,
+            "detail": "15/29 competitors seen by >= 2 independent providers"
+          },
+          "input_completeness": {
+            "value": 1.0,
+            "detail": "6/6 business-fit inputs available"
+          },
+          "freshness": {
+            "value": 1.0,
+            "detail": "6/6 backing snapshots within their source's data-age limit"
+          },
+          "osm_mapping_consistency": {
+            "value": 0.4393939393939394,
+            "detail": "29 mapped competitors per 66 IHK Gastronomie registrations (43.9% vs. best node 100.0%)"
+          }
+        }
+      },
+      "mapping_consistency": {
+        "ratio": 0.4393939393939394,
+        "osm": 29.0,
+        "ihk_gastro": 66,
+        "best_ratio": 1.0,
+        "relative": 0.4393939393939394,
+        "flagged": true
+      }
+    },
+    "warschauer_strasse": {
+      "area_id": "warschauer_strasse",
+      "criteria": [
+        {
+          "key": "daily_people",
+          "pillar": "demand",
+          "day_type": "weekday",
+          "label": "People per weekday in the catchment (residents + workers + visitors)",
+          "unit": "persons/day",
+          "raw_value": 23169.37414726472,
+          "score": 76.04463879649866,
+          "weight": 5.0,
+          "metric_ids": [
+            2289,
+            2277,
+            2294
+          ],
+          "missing_reason": null,
+          "breakdown": {
+            "residents": 3276.8927702997635,
+            "workers": 14101.178207390007,
+            "visitors": 5791.303169574949
+          }
+        },
+        {
+          "key": "daily_people_weekend",
+          "pillar": "demand",
+          "day_type": "weekend",
+          "label": "People per weekend/holiday day in the catchment",
+          "unit": "persons/day",
+          "raw_value": 10607.351137434453,
+          "score": 65.91583718271458,
+          "weight": 2.0,
+          "metric_ids": [
+            2289,
+            2284,
+            2296
+          ],
+          "missing_reason": null,
+          "breakdown": {
+            "residents": 3276.8927702997635,
+            "workers": 1170.5654539699963,
+            "visitors": 6159.892913164693
+          }
+        },
+        {
+          "key": "morning_peak_competition",
+          "pillar": "competition",
+          "day_type": "weekday",
+          "label": "Weekday 7–9 competitors per 10,000 weekday people (bakery, café, supermarket, fuel shop)",
+          "unit": "per 10k",
+          "raw_value": 10.79010587040453,
+          "score": 82.21779683489261,
+          "weight": 2.5,
+          "metric_ids": [
+            2266,
+            2289,
+            2277,
+            2294
+          ],
+          "missing_reason": null,
+          "count": 25.0,
+          "people": 23169.37414726472
+        },
+        {
+          "key": "evening_peak_competition",
+          "pillar": "competition",
+          "day_type": "weekday",
+          "label": "Weekday 16–19 competitors per 10,000 weekday people (späti, fast food, supermarket, fuel shop)",
+          "unit": "per 10k",
+          "raw_value": 20.717003271176697,
+          "score": 49.43769942364748,
+          "weight": 2.5,
+          "metric_ids": [
+            2268,
+            2289,
+            2277,
+            2294
+          ],
+          "missing_reason": null,
+          "count": 48.0,
+          "people": 23169.37414726472
+        },
+        {
+          "key": "weekend_day_competition",
+          "pillar": "competition",
+          "day_type": "weekend",
+          "label": "Weekend 10–19 competitors per 10,000 weekend people (bakery, café, supermarket, späti, fast food, fuel shop)",
+          "unit": "per 10k",
+          "raw_value": 57.03591708818723,
+          "score": 43.9161193068409,
+          "weight": 1.0,
+          "metric_ids": [
+            2270,
+            2289,
+            2284,
+            2296
+          ],
+          "missing_reason": null,
+          "count": 60.5,
+          "people": 10607.351137434453
+        },
+        {
+          "key": "weekend_night_competition",
+          "pillar": "competition",
+          "day_type": "weekend",
+          "label": "Weekend 22–02 competitors per 10,000 weekend people (späti, fast food, fuel shop)",
+          "unit": "per 10k",
+          "raw_value": 34.88146995475913,
+          "score": 0.0,
+          "weight": 1.0,
+          "metric_ids": [
+            2272,
+            2289,
+            2284,
+            2296
+          ],
+          "missing_reason": null,
+          "count": 37.0,
+          "people": 10607.351137434453
+        }
+      ],
+      "pillars": {
+        "demand": 73.15069547827464,
+        "competition": 53.293551421884445
+      },
+      "business_fit": 63.22212345007954,
+      "evidence_quality": {
+        "score": 76.63750431679522,
+        "tier": "verify first",
+        "components": {
+          "competitor_corroboration": {
+            "value": 0.4520547945205479,
+            "detail": "33/73 competitors seen by >= 2 independent providers"
+          },
+          "input_completeness": {
+            "value": 1.0,
+            "detail": "6/6 business-fit inputs available"
+          },
+          "freshness": {
+            "value": 1.0,
+            "detail": "6/6 backing snapshots within their source's data-age limit"
+          },
+          "osm_mapping_consistency": {
+            "value": 0.6134453781512605,
+            "detail": "73 mapped competitors per 119 IHK Gastronomie registrations (61.3% vs. best node 100.0%)"
+          }
+        }
+      },
+      "mapping_consistency": {
+        "ratio": 0.6134453781512605,
+        "osm": 73.0,
+        "ihk_gastro": 119,
+        "best_ratio": 1.0,
+        "relative": 0.6134453781512605,
+        "flagged": false
+      }
+    },
+    "schoenhauser_allee": {
+      "area_id": "schoenhauser_allee",
+      "criteria": [
+        {
+          "key": "daily_people",
+          "pillar": "demand",
+          "day_type": "weekday",
+          "label": "People per weekday in the catchment (residents + workers + visitors)",
+          "unit": "persons/day",
+          "raw_value": 14439.236513459377,
+          "score": 34.47255482599703,
+          "weight": 5.0,
+          "metric_ids": [
+            2354,
+            2342,
+            2359
+          ],
+          "missing_reason": null,
+          "breakdown": {
+            "residents": 10666.964162719822,
+            "workers": 3231.71311512081,
+            "visitors": 540.5592356187441
+          }
+        },
+        {
+          "key": "daily_people_weekend",
+          "pillar": "demand",
+          "day_type": "weekend",
+          "label": "People per weekend/holiday day in the catchment",
+          "unit": "persons/day",
+          "raw_value": 11705.77405447196,
+          "score": 79.8199247401514,
+          "weight": 2.0,
+          "metric_ids": [
+            2354,
+            2349,
+            2361
+          ],
+          "missing_reason": null,
+          "breakdown": {
+            "residents": 10666.964162719822,
+            "workers": 498.2506561333931,
+            "visitors": 540.5592356187441
+          }
+        },
+        {
+          "key": "morning_peak_competition",
+          "pillar": "competition",
+          "day_type": "weekday",
+          "label": "Weekday 7–9 competitors per 10,000 weekday people (bakery, café, supermarket, fuel shop)",
+          "unit": "per 10k",
+          "raw_value": 45.01623055998214,
+          "score": 0.0,
+          "weight": 2.5,
+          "metric_ids": [
+            2331,
+            2354,
+            2342,
+            2359
+          ],
+          "missing_reason": null,
+          "count": 65.0,
+          "people": 14439.236513459377
+        },
+        {
+          "key": "evening_peak_competition",
+          "pillar": "competition",
+          "day_type": "weekday",
+          "label": "Weekday 16–19 competitors per 10,000 weekday people (späti, fast food, supermarket, fuel shop)",
+          "unit": "per 10k",
+          "raw_value": 51.24924709905659,
+          "score": 0.0,
+          "weight": 2.5,
+          "metric_ids": [
+            2333,
+            2354,
+            2342,
+            2359
+          ],
+          "missing_reason": null,
+          "count": 74.0,
+          "people": 14439.236513459377
+        },
+        {
+          "key": "weekend_day_competition",
+          "pillar": "competition",
+          "day_type": "weekend",
+          "label": "Weekend 10–19 competitors per 10,000 weekend people (bakery, café, supermarket, späti, fast food, fuel shop)",
+          "unit": "per 10k",
+          "raw_value": 96.5335564091386,
+          "score": 0.0,
+          "weight": 1.0,
+          "metric_ids": [
+            2335,
+            2354,
+            2349,
+            2361
+          ],
+          "missing_reason": null,
+          "count": 113.0,
+          "people": 11705.77405447196
+        },
+        {
+          "key": "weekend_night_competition",
+          "pillar": "competition",
+          "day_type": "weekend",
+          "label": "Weekend 22–02 competitors per 10,000 weekend people (späti, fast food, fuel shop)",
+          "unit": "per 10k",
+          "raw_value": 32.88975151992775,
+          "score": 0.0,
+          "weight": 1.0,
+          "metric_ids": [
+            2337,
+            2354,
+            2349,
+            2361
+          ],
+          "missing_reason": null,
+          "count": 38.5,
+          "people": 11705.77405447196
+        }
+      ],
+      "pillars": {
+        "demand": 47.42894623004114,
+        "competition": 0.0
+      },
+      "business_fit": 23.71447311502057,
+      "evidence_quality": {
+        "score": 90.43624161073825,
+        "tier": "adequate",
+        "components": {
+          "competitor_corroboration": {
+            "value": 0.6174496644295302,
+            "detail": "92/149 competitors seen by >= 2 independent providers"
+          },
+          "input_completeness": {
+            "value": 1.0,
+            "detail": "6/6 business-fit inputs available"
+          },
+          "freshness": {
+            "value": 1.0,
+            "detail": "6/6 backing snapshots within their source's data-age limit"
+          },
+          "osm_mapping_consistency": {
+            "value": 1.0,
+            "detail": "149 mapped competitors per 149 IHK Gastronomie registrations (100.0% vs. best node 100.0%)"
+          }
+        }
+      },
+      "mapping_consistency": {
+        "ratio": 1.0,
+        "osm": 149.0,
+        "ihk_gastro": 149,
+        "best_ratio": 1.0,
+        "relative": 1.0,
+        "flagged": false
+      }
+    }
+  },
+  "sensitivity": {
+    "base_weights": {
+      "demand": 0.5,
+      "competition": 0.5
+    },
+    "base_fits": {
+      "brandenburger_tor": 92.94091153522368,
+      "warschauer_strasse": 63.22212345007954,
+      "schoenhauser_allee": 23.71447311502057
+    },
+    "base_rank": [
+      "brandenburger_tor",
+      "warschauer_strasse",
+      "schoenhauser_allee"
+    ],
+    "fit_spread": 69.22643842020311,
+    "scenarios": [
+      {
+        "name": "baseline",
+        "weights": {
+          "demand": 0.5,
+          "competition": 0.5
+        },
+        "fits": {
+          "brandenburger_tor": 92.94091153522368,
+          "warschauer_strasse": 63.22212345007954,
+          "schoenhauser_allee": 23.71447311502057
+        },
+        "rank": [
+          "brandenburger_tor",
+          "warschauer_strasse",
+          "schoenhauser_allee"
+        ]
+      },
+      {
+        "name": "demand_led",
+        "weights": {
+          "demand": 0.65,
+          "competition": 0.35
+        },
+        "fits": {
+          "brandenburger_tor": 91.34048482537486,
+          "warschauer_strasse": 66.20069505853807,
+          "schoenhauser_allee": 30.828815049526742
+        },
+        "rank": [
+          "brandenburger_tor",
+          "warschauer_strasse",
+          "schoenhauser_allee"
+        ]
+      },
+      {
+        "name": "competition_led",
+        "weights": {
+          "demand": 0.35,
+          "competition": 0.65
+        },
+        "fits": {
+          "brandenburger_tor": 94.5413382450725,
+          "warschauer_strasse": 60.24355184162101,
+          "schoenhauser_allee": 16.6001311805144
+        },
+        "rank": [
+          "brandenburger_tor",
+          "warschauer_strasse",
+          "schoenhauser_allee"
+        ]
+      },
+      {
+        "name": "demand_heavy",
+        "weights": {
+          "demand": 0.8,
+          "competition": 0.2
+        },
+        "fits": {
+          "brandenburger_tor": 89.74005811552605,
+          "warschauer_strasse": 69.17926666699661,
+          "schoenhauser_allee": 37.94315698403292
+        },
+        "rank": [
+          "brandenburger_tor",
+          "warschauer_strasse",
+          "schoenhauser_allee"
+        ]
+      },
+      {
+        "name": "competition_heavy",
+        "weights": {
+          "demand": 0.2,
+          "competition": 0.8
+        },
+        "fits": {
+          "brandenburger_tor": 96.14176495492133,
+          "warschauer_strasse": 57.26498023316249,
+          "schoenhauser_allee": 9.48578924600823
+        },
+        "rank": [
+          "brandenburger_tor",
+          "warschauer_strasse",
+          "schoenhauser_allee"
+        ]
+      }
+    ],
+    "one_at_a_time": [
+      {
+        "pillar": "demand",
+        "factor": 0.5,
+        "weights": {
+          "demand": 0.3333333333333333,
+          "competition": 0.6666666666666666
+        },
+        "fits": {
+          "brandenburger_tor": 94.71916343505569,
+          "warschauer_strasse": 59.91259944068118,
+          "schoenhauser_allee": 15.809648743347047
+        },
+        "rank": [
+          "brandenburger_tor",
+          "warschauer_strasse",
+          "schoenhauser_allee"
+        ],
+        "top_changed": false
+      },
+      {
+        "pillar": "demand",
+        "factor": 1.5,
+        "weights": {
+          "demand": 0.6,
+          "competition": 0.4
+        },
+        "fits": {
+          "brandenburger_tor": 91.87396039532447,
+          "warschauer_strasse": 65.20783785571857,
+          "schoenhauser_allee": 28.457367738024683
+        },
+        "rank": [
+          "brandenburger_tor",
+          "warschauer_strasse",
+          "schoenhauser_allee"
+        ],
+        "top_changed": false
+      },
+      {
+        "pillar": "competition",
+        "factor": 0.5,
+        "weights": {
+          "demand": 0.6666666666666666,
+          "competition": 0.3333333333333333
+        },
+        "fits": {
+          "brandenburger_tor": 91.16265963539166,
+          "warschauer_strasse": 66.53164745947791,
+          "schoenhauser_allee": 31.619297486694094
+        },
+        "rank": [
+          "brandenburger_tor",
+          "warschauer_strasse",
+          "schoenhauser_allee"
+        ],
+        "top_changed": false
+      },
+      {
+        "pillar": "competition",
+        "factor": 1.5,
+        "weights": {
+          "demand": 0.4,
+          "competition": 0.6
+        },
+        "fits": {
+          "brandenburger_tor": 94.00786267512291,
+          "warschauer_strasse": 61.23640904444052,
+          "schoenhauser_allee": 18.97157849201646
+        },
+        "rank": [
+          "brandenburger_tor",
+          "warschauer_strasse",
+          "schoenhauser_allee"
+        ],
+        "top_changed": false
+      }
+    ],
+    "monte_carlo": {
+      "draws": 10000,
+      "seed": 7,
+      "top_share": {
+        "brandenburger_tor": 1.0,
+        "warschauer_strasse": 0.0,
+        "schoenhauser_allee": 0.0
+      },
+      "mean_rank": {
+        "brandenburger_tor": 1.0,
+        "warschauer_strasse": 2.0,
+        "schoenhauser_allee": 3.0
+      }
+    },
+    "minmax_check": {
+      "fits": {
+        "brandenburger_tor": 100.0,
+        "warschauer_strasse": 61.43251774843795,
+        "schoenhauser_allee": 3.334979334688983
+      },
+      "rank": [
+        "brandenburger_tor",
+        "warschauer_strasse",
+        "schoenhauser_allee"
+      ]
+    },
+    "top_rank_robust": true
+  },
+  "citations": [
+    {
+      "area_id": "brandenburger_tor",
+      "criterion": "daily_people",
+      "metric_id": 2224,
+      "metric_name": "catchment_population_estimate",
+      "period_label": "202412",
+      "value": 1253.845933230495,
+      "snapshot_ids": [
+        33,
+        34
+      ]
+    },
+    {
+      "area_id": "brandenburger_tor",
+      "criterion": "daily_people",
+      "metric_id": 2212,
+      "metric_name": "worker_headcount_estimate",
+      "period_label": "current",
+      "value": 9130.718221248357,
+      "snapshot_ids": [
+        35
+      ]
+    },
+    {
+      "area_id": "brandenburger_tor",
+      "criterion": "daily_people",
+      "metric_id": 2229,
+      "metric_name": "visitor_weekday_estimate",
+      "period_label": "pageviews 2025-09-01..2026-09-01 (end exclusive)",
+      "value": 14171.64566122507,
+      "snapshot_ids": [
+        47
+      ]
+    },
+    {
+      "area_id": "brandenburger_tor",
+      "criterion": "daily_people_weekend",
+      "metric_id": 2224,
+      "metric_name": "catchment_population_estimate",
+      "period_label": "202412",
+      "value": 1253.845933230495,
+      "snapshot_ids": [
+        33,
+        34
+      ]
+    },
+    {
+      "area_id": "brandenburger_tor",
+      "criterion": "daily_people_weekend",
+      "metric_id": 2219,
+      "metric_name": "worker_headcount_weekend",
+      "period_label": "current",
+      "value": 719.499455012636,
+      "snapshot_ids": [
+        35
+      ]
+    },
+    {
+      "area_id": "brandenburger_tor",
+      "criterion": "daily_people_weekend",
+      "metric_id": 2231,
+      "metric_name": "visitor_weekend_estimate",
+      "period_label": "pageviews 2025-09-01..2026-09-01 (end exclusive)",
+      "value": 14171.64566122507,
+      "snapshot_ids": [
+        47
+      ]
+    },
+    {
+      "area_id": "brandenburger_tor",
+      "criterion": "morning_peak_competition",
+      "metric_id": 2201,
+      "metric_name": "morning_peak_competitor_count",
+      "period_label": "weekday_We",
+      "value": 13.0,
+      "snapshot_ids": [
+        50
+      ]
+    },
+    {
+      "area_id": "brandenburger_tor",
+      "criterion": "morning_peak_competition",
+      "metric_id": 2224,
+      "metric_name": "catchment_population_estimate",
+      "period_label": "202412",
+      "value": 1253.845933230495,
+      "snapshot_ids": [
+        33,
+        34
+      ]
+    },
+    {
+      "area_id": "brandenburger_tor",
+      "criterion": "morning_peak_competition",
+      "metric_id": 2212,
+      "metric_name": "worker_headcount_estimate",
+      "period_label": "current",
+      "value": 9130.718221248357,
+      "snapshot_ids": [
+        35
+      ]
+    },
+    {
+      "area_id": "brandenburger_tor",
+      "criterion": "morning_peak_competition",
+      "metric_id": 2229,
+      "metric_name": "visitor_weekday_estimate",
+      "period_label": "pageviews 2025-09-01..2026-09-01 (end exclusive)",
+      "value": 14171.64566122507,
+      "snapshot_ids": [
+        47
+      ]
+    },
+    {
+      "area_id": "brandenburger_tor",
+      "criterion": "evening_peak_competition",
+      "metric_id": 2203,
+      "metric_name": "evening_peak_competitor_count",
+      "period_label": "weekday_We",
+      "value": 12.0,
+      "snapshot_ids": [
+        50
+      ]
+    },
+    {
+      "area_id": "brandenburger_tor",
+      "criterion": "evening_peak_competition",
+      "metric_id": 2224,
+      "metric_name": "catchment_population_estimate",
+      "period_label": "202412",
+      "value": 1253.845933230495,
+      "snapshot_ids": [
+        33,
+        34
+      ]
+    },
+    {
+      "area_id": "brandenburger_tor",
+      "criterion": "evening_peak_competition",
+      "metric_id": 2212,
+      "metric_name": "worker_headcount_estimate",
+      "period_label": "current",
+      "value": 9130.718221248357,
+      "snapshot_ids": [
+        35
+      ]
+    },
+    {
+      "area_id": "brandenburger_tor",
+      "criterion": "evening_peak_competition",
+      "metric_id": 2229,
+      "metric_name": "visitor_weekday_estimate",
+      "period_label": "pageviews 2025-09-01..2026-09-01 (end exclusive)",
+      "value": 14171.64566122507,
+      "snapshot_ids": [
+        47
+      ]
+    },
+    {
+      "area_id": "brandenburger_tor",
+      "criterion": "weekend_day_competition",
+      "metric_id": 2205,
+      "metric_name": "weekend_day_competitor_count",
+      "period_label": "weekend_SaSu",
+      "value": 24.5,
+      "snapshot_ids": [
+        50
+      ]
+    },
+    {
+      "area_id": "brandenburger_tor",
+      "criterion": "weekend_day_competition",
+      "metric_id": 2224,
+      "metric_name": "catchment_population_estimate",
+      "period_label": "202412",
+      "value": 1253.845933230495,
+      "snapshot_ids": [
+        33,
+        34
+      ]
+    },
+    {
+      "area_id": "brandenburger_tor",
+      "criterion": "weekend_day_competition",
+      "metric_id": 2219,
+      "metric_name": "worker_headcount_weekend",
+      "period_label": "current",
+      "value": 719.499455012636,
+      "snapshot_ids": [
+        35
+      ]
+    },
+    {
+      "area_id": "brandenburger_tor",
+      "criterion": "weekend_day_competition",
+      "metric_id": 2231,
+      "metric_name": "visitor_weekend_estimate",
+      "period_label": "pageviews 2025-09-01..2026-09-01 (end exclusive)",
+      "value": 14171.64566122507,
+      "snapshot_ids": [
+        47
+      ]
+    },
+    {
+      "area_id": "brandenburger_tor",
+      "criterion": "weekend_night_competition",
+      "metric_id": 2207,
+      "metric_name": "weekend_night_competitor_count",
+      "period_label": "weekend_SaSu",
+      "value": 10.5,
+      "snapshot_ids": [
+        50
+      ]
+    },
+    {
+      "area_id": "brandenburger_tor",
+      "criterion": "weekend_night_competition",
+      "metric_id": 2224,
+      "metric_name": "catchment_population_estimate",
+      "period_label": "202412",
+      "value": 1253.845933230495,
+      "snapshot_ids": [
+        33,
+        34
+      ]
+    },
+    {
+      "area_id": "brandenburger_tor",
+      "criterion": "weekend_night_competition",
+      "metric_id": 2219,
+      "metric_name": "worker_headcount_weekend",
+      "period_label": "current",
+      "value": 719.499455012636,
+      "snapshot_ids": [
+        35
+      ]
+    },
+    {
+      "area_id": "brandenburger_tor",
+      "criterion": "weekend_night_competition",
+      "metric_id": 2231,
+      "metric_name": "visitor_weekend_estimate",
+      "period_label": "pageviews 2025-09-01..2026-09-01 (end exclusive)",
+      "value": 14171.64566122507,
+      "snapshot_ids": [
+        47
+      ]
+    },
+    {
+      "area_id": "warschauer_strasse",
+      "criterion": "daily_people",
+      "metric_id": 2289,
+      "metric_name": "catchment_population_estimate",
+      "period_label": "202412",
+      "value": 3276.8927702997635,
+      "snapshot_ids": [
+        33,
+        34
+      ]
+    },
+    {
+      "area_id": "warschauer_strasse",
+      "criterion": "daily_people",
+      "metric_id": 2277,
+      "metric_name": "worker_headcount_estimate",
+      "period_label": "current",
+      "value": 14101.178207390007,
+      "snapshot_ids": [
+        36
+      ]
+    },
+    {
+      "area_id": "warschauer_strasse",
+      "criterion": "daily_people",
+      "metric_id": 2294,
+      "metric_name": "visitor_weekday_estimate",
+      "period_label": "pageviews 2025-09-01..2026-09-01 (end exclusive)",
+      "value": 5791.303169574949,
+      "snapshot_ids": [
+        48
+      ]
+    },
+    {
+      "area_id": "warschauer_strasse",
+      "criterion": "daily_people_weekend",
+      "metric_id": 2289,
+      "metric_name": "catchment_population_estimate",
+      "period_label": "202412",
+      "value": 3276.8927702997635,
+      "snapshot_ids": [
+        33,
+        34
+      ]
+    },
+    {
+      "area_id": "warschauer_strasse",
+      "criterion": "daily_people_weekend",
+      "metric_id": 2284,
+      "metric_name": "worker_headcount_weekend",
+      "period_label": "current",
+      "value": 1170.5654539699963,
+      "snapshot_ids": [
+        36
+      ]
+    },
+    {
+      "area_id": "warschauer_strasse",
+      "criterion": "daily_people_weekend",
+      "metric_id": 2296,
+      "metric_name": "visitor_weekend_estimate",
+      "period_label": "pageviews 2025-09-01..2026-09-01 (end exclusive)",
+      "value": 6159.892913164693,
+      "snapshot_ids": [
+        48
+      ]
+    },
+    {
+      "area_id": "warschauer_strasse",
+      "criterion": "morning_peak_competition",
+      "metric_id": 2266,
+      "metric_name": "morning_peak_competitor_count",
+      "period_label": "weekday_We",
+      "value": 25.0,
+      "snapshot_ids": [
+        51
+      ]
+    },
+    {
+      "area_id": "warschauer_strasse",
+      "criterion": "morning_peak_competition",
+      "metric_id": 2289,
+      "metric_name": "catchment_population_estimate",
+      "period_label": "202412",
+      "value": 3276.8927702997635,
+      "snapshot_ids": [
+        33,
+        34
+      ]
+    },
+    {
+      "area_id": "warschauer_strasse",
+      "criterion": "morning_peak_competition",
+      "metric_id": 2277,
+      "metric_name": "worker_headcount_estimate",
+      "period_label": "current",
+      "value": 14101.178207390007,
+      "snapshot_ids": [
+        36
+      ]
+    },
+    {
+      "area_id": "warschauer_strasse",
+      "criterion": "morning_peak_competition",
+      "metric_id": 2294,
+      "metric_name": "visitor_weekday_estimate",
+      "period_label": "pageviews 2025-09-01..2026-09-01 (end exclusive)",
+      "value": 5791.303169574949,
+      "snapshot_ids": [
+        48
+      ]
+    },
+    {
+      "area_id": "warschauer_strasse",
+      "criterion": "evening_peak_competition",
+      "metric_id": 2268,
+      "metric_name": "evening_peak_competitor_count",
+      "period_label": "weekday_We",
+      "value": 48.0,
+      "snapshot_ids": [
+        51
+      ]
+    },
+    {
+      "area_id": "warschauer_strasse",
+      "criterion": "evening_peak_competition",
+      "metric_id": 2289,
+      "metric_name": "catchment_population_estimate",
+      "period_label": "202412",
+      "value": 3276.8927702997635,
+      "snapshot_ids": [
+        33,
+        34
+      ]
+    },
+    {
+      "area_id": "warschauer_strasse",
+      "criterion": "evening_peak_competition",
+      "metric_id": 2277,
+      "metric_name": "worker_headcount_estimate",
+      "period_label": "current",
+      "value": 14101.178207390007,
+      "snapshot_ids": [
+        36
+      ]
+    },
+    {
+      "area_id": "warschauer_strasse",
+      "criterion": "evening_peak_competition",
+      "metric_id": 2294,
+      "metric_name": "visitor_weekday_estimate",
+      "period_label": "pageviews 2025-09-01..2026-09-01 (end exclusive)",
+      "value": 5791.303169574949,
+      "snapshot_ids": [
+        48
+      ]
+    },
+    {
+      "area_id": "warschauer_strasse",
+      "criterion": "weekend_day_competition",
+      "metric_id": 2270,
+      "metric_name": "weekend_day_competitor_count",
+      "period_label": "weekend_SaSu",
+      "value": 60.5,
+      "snapshot_ids": [
+        51
+      ]
+    },
+    {
+      "area_id": "warschauer_strasse",
+      "criterion": "weekend_day_competition",
+      "metric_id": 2289,
+      "metric_name": "catchment_population_estimate",
+      "period_label": "202412",
+      "value": 3276.8927702997635,
+      "snapshot_ids": [
+        33,
+        34
+      ]
+    },
+    {
+      "area_id": "warschauer_strasse",
+      "criterion": "weekend_day_competition",
+      "metric_id": 2284,
+      "metric_name": "worker_headcount_weekend",
+      "period_label": "current",
+      "value": 1170.5654539699963,
+      "snapshot_ids": [
+        36
+      ]
+    },
+    {
+      "area_id": "warschauer_strasse",
+      "criterion": "weekend_day_competition",
+      "metric_id": 2296,
+      "metric_name": "visitor_weekend_estimate",
+      "period_label": "pageviews 2025-09-01..2026-09-01 (end exclusive)",
+      "value": 6159.892913164693,
+      "snapshot_ids": [
+        48
+      ]
+    },
+    {
+      "area_id": "warschauer_strasse",
+      "criterion": "weekend_night_competition",
+      "metric_id": 2272,
+      "metric_name": "weekend_night_competitor_count",
+      "period_label": "weekend_SaSu",
+      "value": 37.0,
+      "snapshot_ids": [
+        51
+      ]
+    },
+    {
+      "area_id": "warschauer_strasse",
+      "criterion": "weekend_night_competition",
+      "metric_id": 2289,
+      "metric_name": "catchment_population_estimate",
+      "period_label": "202412",
+      "value": 3276.8927702997635,
+      "snapshot_ids": [
+        33,
+        34
+      ]
+    },
+    {
+      "area_id": "warschauer_strasse",
+      "criterion": "weekend_night_competition",
+      "metric_id": 2284,
+      "metric_name": "worker_headcount_weekend",
+      "period_label": "current",
+      "value": 1170.5654539699963,
+      "snapshot_ids": [
+        36
+      ]
+    },
+    {
+      "area_id": "warschauer_strasse",
+      "criterion": "weekend_night_competition",
+      "metric_id": 2296,
+      "metric_name": "visitor_weekend_estimate",
+      "period_label": "pageviews 2025-09-01..2026-09-01 (end exclusive)",
+      "value": 6159.892913164693,
+      "snapshot_ids": [
+        48
+      ]
+    },
+    {
+      "area_id": "schoenhauser_allee",
+      "criterion": "daily_people",
+      "metric_id": 2354,
+      "metric_name": "catchment_population_estimate",
+      "period_label": "202412",
+      "value": 10666.964162719822,
+      "snapshot_ids": [
+        33,
+        34
+      ]
+    },
+    {
+      "area_id": "schoenhauser_allee",
+      "criterion": "daily_people",
+      "metric_id": 2342,
+      "metric_name": "worker_headcount_estimate",
+      "period_label": "current",
+      "value": 3231.71311512081,
+      "snapshot_ids": [
+        37
+      ]
+    },
+    {
+      "area_id": "schoenhauser_allee",
+      "criterion": "daily_people",
+      "metric_id": 2359,
+      "metric_name": "visitor_weekday_estimate",
+      "period_label": "pageviews 2025-09-01..2026-09-01 (end exclusive)",
+      "value": 540.5592356187441,
+      "snapshot_ids": [
+        49
+      ]
+    },
+    {
+      "area_id": "schoenhauser_allee",
+      "criterion": "daily_people_weekend",
+      "metric_id": 2354,
+      "metric_name": "catchment_population_estimate",
+      "period_label": "202412",
+      "value": 10666.964162719822,
+      "snapshot_ids": [
+        33,
+        34
+      ]
+    },
+    {
+      "area_id": "schoenhauser_allee",
+      "criterion": "daily_people_weekend",
+      "metric_id": 2349,
+      "metric_name": "worker_headcount_weekend",
+      "period_label": "current",
+      "value": 498.2506561333931,
+      "snapshot_ids": [
+        37
+      ]
+    },
+    {
+      "area_id": "schoenhauser_allee",
+      "criterion": "daily_people_weekend",
+      "metric_id": 2361,
+      "metric_name": "visitor_weekend_estimate",
+      "period_label": "pageviews 2025-09-01..2026-09-01 (end exclusive)",
+      "value": 540.5592356187441,
+      "snapshot_ids": [
+        49
+      ]
+    },
+    {
+      "area_id": "schoenhauser_allee",
+      "criterion": "morning_peak_competition",
+      "metric_id": 2331,
+      "metric_name": "morning_peak_competitor_count",
+      "period_label": "weekday_We",
+      "value": 65.0,
+      "snapshot_ids": [
+        52
+      ]
+    },
+    {
+      "area_id": "schoenhauser_allee",
+      "criterion": "morning_peak_competition",
+      "metric_id": 2354,
+      "metric_name": "catchment_population_estimate",
+      "period_label": "202412",
+      "value": 10666.964162719822,
+      "snapshot_ids": [
+        33,
+        34
+      ]
+    },
+    {
+      "area_id": "schoenhauser_allee",
+      "criterion": "morning_peak_competition",
+      "metric_id": 2342,
+      "metric_name": "worker_headcount_estimate",
+      "period_label": "current",
+      "value": 3231.71311512081,
+      "snapshot_ids": [
+        37
+      ]
+    },
+    {
+      "area_id": "schoenhauser_allee",
+      "criterion": "morning_peak_competition",
+      "metric_id": 2359,
+      "metric_name": "visitor_weekday_estimate",
+      "period_label": "pageviews 2025-09-01..2026-09-01 (end exclusive)",
+      "value": 540.5592356187441,
+      "snapshot_ids": [
+        49
+      ]
+    },
+    {
+      "area_id": "schoenhauser_allee",
+      "criterion": "evening_peak_competition",
+      "metric_id": 2333,
+      "metric_name": "evening_peak_competitor_count",
+      "period_label": "weekday_We",
+      "value": 74.0,
+      "snapshot_ids": [
+        52
+      ]
+    },
+    {
+      "area_id": "schoenhauser_allee",
+      "criterion": "evening_peak_competition",
+      "metric_id": 2354,
+      "metric_name": "catchment_population_estimate",
+      "period_label": "202412",
+      "value": 10666.964162719822,
+      "snapshot_ids": [
+        33,
+        34
+      ]
+    },
+    {
+      "area_id": "schoenhauser_allee",
+      "criterion": "evening_peak_competition",
+      "metric_id": 2342,
+      "metric_name": "worker_headcount_estimate",
+      "period_label": "current",
+      "value": 3231.71311512081,
+      "snapshot_ids": [
+        37
+      ]
+    },
+    {
+      "area_id": "schoenhauser_allee",
+      "criterion": "evening_peak_competition",
+      "metric_id": 2359,
+      "metric_name": "visitor_weekday_estimate",
+      "period_label": "pageviews 2025-09-01..2026-09-01 (end exclusive)",
+      "value": 540.5592356187441,
+      "snapshot_ids": [
+        49
+      ]
+    },
+    {
+      "area_id": "schoenhauser_allee",
+      "criterion": "weekend_day_competition",
+      "metric_id": 2335,
+      "metric_name": "weekend_day_competitor_count",
+      "period_label": "weekend_SaSu",
+      "value": 113.0,
+      "snapshot_ids": [
+        52
+      ]
+    },
+    {
+      "area_id": "schoenhauser_allee",
+      "criterion": "weekend_day_competition",
+      "metric_id": 2354,
+      "metric_name": "catchment_population_estimate",
+      "period_label": "202412",
+      "value": 10666.964162719822,
+      "snapshot_ids": [
+        33,
+        34
+      ]
+    },
+    {
+      "area_id": "schoenhauser_allee",
+      "criterion": "weekend_day_competition",
+      "metric_id": 2349,
+      "metric_name": "worker_headcount_weekend",
+      "period_label": "current",
+      "value": 498.2506561333931,
+      "snapshot_ids": [
+        37
+      ]
+    },
+    {
+      "area_id": "schoenhauser_allee",
+      "criterion": "weekend_day_competition",
+      "metric_id": 2361,
+      "metric_name": "visitor_weekend_estimate",
+      "period_label": "pageviews 2025-09-01..2026-09-01 (end exclusive)",
+      "value": 540.5592356187441,
+      "snapshot_ids": [
+        49
+      ]
+    },
+    {
+      "area_id": "schoenhauser_allee",
+      "criterion": "weekend_night_competition",
+      "metric_id": 2337,
+      "metric_name": "weekend_night_competitor_count",
+      "period_label": "weekend_SaSu",
+      "value": 38.5,
+      "snapshot_ids": [
+        52
+      ]
+    },
+    {
+      "area_id": "schoenhauser_allee",
+      "criterion": "weekend_night_competition",
+      "metric_id": 2354,
+      "metric_name": "catchment_population_estimate",
+      "period_label": "202412",
+      "value": 10666.964162719822,
+      "snapshot_ids": [
+        33,
+        34
+      ]
+    },
+    {
+      "area_id": "schoenhauser_allee",
+      "criterion": "weekend_night_competition",
+      "metric_id": 2349,
+      "metric_name": "worker_headcount_weekend",
+      "period_label": "current",
+      "value": 498.2506561333931,
+      "snapshot_ids": [
+        37
+      ]
+    },
+    {
+      "area_id": "schoenhauser_allee",
+      "criterion": "weekend_night_competition",
+      "metric_id": 2361,
+      "metric_name": "visitor_weekend_estimate",
+      "period_label": "pageviews 2025-09-01..2026-09-01 (end exclusive)",
+      "value": 540.5592356187441,
+      "snapshot_ids": [
+        49
+      ]
+    }
+  ],
+  "snapshot_ids": [
+    33,
+    34,
+    35,
+    36,
+    37,
+    47,
+    48,
+    49,
+    50,
+    51,
+    52
+  ]
+}

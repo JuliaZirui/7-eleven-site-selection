@@ -54,6 +54,10 @@ $mc_table
 
 $structure_check
 
+**Competitor-mapping stress test** — OSM and Overture map some nodes' competitors less completely than others (§3, OSM mapping consistency). Each node's peak competitor counts are scaled up by the best node's mapped-competitors-per-IHK-Gastronomie ratio over its own, i.e. re-scored as if every node were mapped as completely as the best one (people per day unchanged):
+
+$mapping_stress
+
 **Visitor-conversion check** — visitors are the least certain demand segment (Wikipedia pageviews converted to visitors through a fit on Berlin attractions with published counts). Re-scored at the fit's interquartile range:
 
 $visitor_check

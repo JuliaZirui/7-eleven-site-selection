@@ -731,6 +731,67 @@ def competition_structure_check(results: dict[str, dict], weights: dict[str, flo
     }
 
 
+def _scaled_competition_pillars(r: dict, factor: float) -> dict[str, float | None]:
+    """One node's pillars with every peak competitor count multiplied by
+    factor (people per day unchanged)."""
+    defs = {c.key: c for c in BUSINESS_FIT_CRITERIA}
+    crits = []
+    for c in r["criteria"]:
+        if defs[c["key"]].per_demand and c.get("count") is not None and c.get("people"):
+            ratio = c["count"] * factor / (c["people"] / PEOPLE_UNIT)
+            c = {**c, "raw_value": ratio, "score": defs[c["key"]].normalize(ratio)}
+        crits.append(c)
+    return pillar_scores(crits)
+
+
+def competitor_mapping_stress(results: dict[str, dict], weights: dict[str, float] = DEFAULT_WEIGHTS) -> dict | None:
+    """Re-score as if every node were mapped as completely as the best
+    node: each node's peak competitor counts x (best node's OSM-per-IHK
+    ratio / its own). A stress scenario, not a correction: IHK
+    Gastronomie also holds restaurants and bars (the ratio is no coverage
+    rate), and the best node is not known to be complete either. Also reports the factor on the baseline #1 alone at which it
+    would lose #1 (others at their stressed level). None without
+    mapping_consistency (score_all found no IHK Gastronomie data)."""
+    consistency = {a: r.get("mapping_consistency") for a, r in results.items()}
+    if not any(consistency.values()):
+        return None
+    factors = {a: (1.0 / c["relative"] if c and c["relative"] else 1.0) for a, c in consistency.items()}
+    pillars_by_area = {a: _scaled_competition_pillars(r, factors[a]) for a, r in results.items()}
+    fits = _fits(pillars_by_area, weights)
+    stressed_rank = rank(fits)
+    scenario_tops = {name: rank(_fits(pillars_by_area, w))[0] for name, w in SCENARIO_WEIGHTS.items()}
+
+    # Break-even: how far could the baseline #1's counts be under-stated
+    # before it falls to #2, with every other node at its stressed level?
+    leader = rank({a: r["business_fit"] for a, r in results.items()})[0]
+
+    def leader_keeps_top(f: float) -> bool:
+        trial = {**pillars_by_area, leader: _scaled_competition_pillars(results[leader], f)}
+        return rank(_fits(trial, weights))[0] == leader
+
+    break_even = None
+    hi = 20.0
+    if not leader_keeps_top(1.0):
+        break_even = 1.0
+    elif not leader_keeps_top(hi):
+        lo = 1.0
+        for _ in range(40):
+            mid = (lo + hi) / 2
+            lo, hi = (mid, hi) if leader_keeps_top(mid) else (lo, mid)
+        break_even = hi
+    return {
+        "factors": factors,
+        "pillars": pillars_by_area,
+        "fits": fits,
+        "rank": stressed_rank,
+        "scenario_tops": scenario_tops,
+        "monte_carlo": _monte_carlo(pillars_by_area),
+        "leader": leader,
+        "leader_break_even_factor": break_even,
+        "break_even_search_max": 20.0,
+    }
+
+
 def sensitivity_analysis(results: dict[str, dict], base_weights: dict[str, float] = DEFAULT_WEIGHTS) -> dict:
     pillars_by_area = {a: r["pillars"] for a, r in results.items()}
     base_fits = _fits(pillars_by_area, base_weights)
