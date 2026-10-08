@@ -575,3 +575,5 @@ Plan: [plan_llm_tool_selection.md](plan_llm_tool_selection.md). Pre-registration
 | Schönhauser Allee | 132 ÷ 1.44 = 91.4 | 23.7 → **23.7** | 90.4 (adequate) | 0% |
 
 The ranking holds across every input check: visitor conversion at P25 (73.6 / 59.5 / 22.7), verified worker ranges, absolute counts (87.6 / 60.4 / 23.7), and competitor counts scaled to the best mapping rate (82.4 / 49.9 / 23.7; Brandenburger Tor's break-even ×5.6).
+
+**Run #22 (same day, scoring_v8):** the second audit review round re-conflated and re-scored. Brandenburger Tor drops 29 → 27 competitors (24 in the all-day basket, 9.7 per 10,000 weekday people) and gains two public employers missing from the IHK registry (ARD-Hauptstadtstudio, Antidiskriminierungsstelle des Bundes). Schönhauser Allee drops 149 → 140 competitors (85.9 per 10,000). Fit: 94.2 / 69.1 / 23.7. Evidence quality: 72.9 / 76.4 / 90.0. The best mapping rate is now Schönhauser Allee's 94%, so the stress factors are ×2.30 and ×1.60. Ranking unchanged.
