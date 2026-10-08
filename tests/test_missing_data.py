@@ -34,6 +34,8 @@ class MetricsMissingData(PipelineTestCase):
             ("competitors_open_morning_peak", "weekday_We"),
             ("morning_peak_competitor_count", "weekday_We"),
             ("evening_peak_competitor_count", "weekday_We"),
+            ("weekday_all_day_competitor_count", "weekday_We"),
+            ("weekend_all_day_competitor_count", "weekend_SaSu"),
             ("competitor_count_corroborated", None),
         ):
             m = self.metric(node.area_id, name, period)
@@ -50,7 +52,7 @@ class MetricsMissingData(PipelineTestCase):
         metrics_pipeline.compute_area(self.conn, node)
         self.assertEqual(self.metric(node.area_id, "competitor_count_total")["value"], 1.0)
         self.assertEqual(self.metric(node.area_id, "competitor_count_bakery")["value"], 0.0)
-        for name in ("morning_peak_competitor_count", "evening_peak_competitor_count"):
+        for name in ("morning_peak_competitor_count", "evening_peak_competitor_count", "weekday_all_day_competitor_count"):
             self.assertEqual(self.metric(node.area_id, name, "weekday_We")["value"], 0.0, name)
 
     def test_missing_population_is_flagged_not_zero(self):
@@ -158,10 +160,8 @@ class ScoringMissingData(PipelineTestCase):
             ("visitor_weekday_estimate", PV): 4000.0,
             ("worker_headcount_weekend", "current"): 500.0,
             ("visitor_weekend_estimate", PV): 9000.0,
-            ("weekend_day_competitor_count", "weekend_SaSu"): 20.0,
-            ("weekend_night_competitor_count", "weekend_SaSu"): 6.0,
-            ("morning_peak_competitor_count", "weekday_We"): 10.0,
-            ("evening_peak_competitor_count", "weekday_We"): 12.0,
+            ("weekday_all_day_competitor_count", "weekday_We"): 30.0,
+            ("weekend_all_day_competitor_count", "weekend_SaSu"): 40.0,
             ("competitor_count_corroborated", "current"): 10.0,
             ("competitor_count_total", "current"): 20.0,
         }
@@ -188,10 +188,8 @@ class ScoringMissingData(PipelineTestCase):
         self.assertIn("visitors", crits["daily_people"]["missing_reason"])
 
     def test_missing_competition_pillar_renormalizes_weights(self):
-        missing = {("morning_peak_competitor_count", "weekday_We"): None,
-                   ("evening_peak_competitor_count", "weekday_We"): None,
-                   ("weekend_day_competitor_count", "weekend_SaSu"): None,
-                   ("weekend_night_competitor_count", "weekend_SaSu"): None}
+        missing = {("weekday_all_day_competitor_count", "weekday_We"): None,
+                   ("weekend_all_day_competitor_count", "weekend_SaSu"): None}
         pillars = scoring.pillar_scores(scoring._criterion_results(self._metrics_with(missing)))
         self.assertIsNone(pillars["competition"])
         self.assertAlmostEqual(scoring.business_fit(pillars, scoring.DEFAULT_WEIGHTS), pillars["demand"])
@@ -202,20 +200,20 @@ class ScoringMissingData(PipelineTestCase):
         # it must go missing, not fall back to the raw count.
         crits = {c["key"]: c for c in scoring._criterion_results(
             self._metrics_with({("catchment_population_estimate", "202412"): None}))}
-        for key in ("morning_peak_competition", "evening_peak_competition"):
+        for key in ("weekday_competition", "weekend_competition"):
             self.assertIsNone(crits[key]["score"], key)
             self.assertIn("competitors per unit demand undefined", crits[key]["missing_reason"])
         self.assertIsNone(scoring.business_fit(scoring.pillar_scores(list(crits.values())), scoring.DEFAULT_WEIGHTS))
 
     def test_competition_is_per_10k_people(self):
         crits = {c["key"]: c for c in scoring._criterion_results(self._metrics_with())}
-        morning = crits["morning_peak_competition"]
-        self.assertAlmostEqual(morning["raw_value"], 10.0 / 1.5)
+        weekday = crits["weekday_competition"]
+        self.assertAlmostEqual(weekday["raw_value"], 30.0 / 1.5)
         # Same competitors, more visitors: fewer competitors per person.
         busier = {c["key"]: c for c in scoring._criterion_results(
             self._metrics_with({("visitor_weekday_estimate", PV): 24_000.0}))}
-        self.assertAlmostEqual(busier["morning_peak_competition"]["raw_value"], 10.0 / 3.5)
-        self.assertGreaterEqual(busier["morning_peak_competition"]["score"], morning["score"])
+        self.assertAlmostEqual(busier["weekday_competition"]["raw_value"], 30.0 / 3.5)
+        self.assertGreaterEqual(busier["weekday_competition"]["score"], weekday["score"])
 
     def test_visitor_factor_rescales_only_visitors(self):
         crits = {c["key"]: c for c in scoring._criterion_results(self._metrics_with(), visitor_factor=2.0)}
@@ -234,7 +232,7 @@ class ScoringMissingData(PipelineTestCase):
     def test_missing_input_lowers_evidence_quality(self):
         node = self.nodes[0]
         full = self._metrics_with()
-        partial = self._metrics_with({("morning_peak_competitor_count", "weekday_We"): None})
+        partial = self._metrics_with({("weekday_all_day_competitor_count", "weekday_We"): None})
         from datetime import datetime, timezone
         now = datetime.now(timezone.utc)
         eq_full = scoring.evidence_quality(self.conn, node.area_id, full, scoring._criterion_results(full), now)

@@ -138,7 +138,7 @@ class Sensitivity(unittest.TestCase):
         for a, pillars in pillars_by_area.items():
             # One criterion per pillar carrying the pillar score, enough for the min-max check.
             criteria = []
-            for key in ("daily_people", "morning_peak_competition"):
+            for key in ("daily_people", "weekday_competition"):
                 c = crits[key]
                 score = pillars[c.pillar]
                 raw = c.worst + (c.best - c.worst) * score / 100.0
@@ -222,14 +222,14 @@ class Sensitivity(unittest.TestCase):
 
     def test_mapping_stress_scales_counts_by_the_mapping_gap(self):
         res = {
-            "thin": self._mapped(demand_score=80, count=10, people=20_000, relative=0.5),
-            "full": self._mapped(demand_score=60, count=30, people=20_000, relative=1.0),
+            "thin": self._mapped(demand_score=80, count=40, people=20_000, relative=0.5),
+            "full": self._mapped(demand_score=60, count=120, people=20_000, relative=1.0),
         }
         out = scoring.competitor_mapping_stress(res, scoring.DEFAULT_WEIGHTS)
         self.assertEqual(out["factors"], {"thin": 2.0, "full": 1.0})
-        # The best-mapped node is untouched; the thin one is scored on 20 competitors, not 10.
+        # The best-mapped node is untouched; the thin one is scored on 80 competitors, not 40.
         self.assertAlmostEqual(out["fits"]["full"], res["full"]["business_fit"])
-        self.assertAlmostEqual(out["fits"]["thin"], self._mapped(80, 20, 20_000, 0.5)["business_fit"])
+        self.assertAlmostEqual(out["fits"]["thin"], self._mapped(80, 80, 20_000, 0.5)["business_fit"])
         self.assertLess(out["fits"]["thin"], res["thin"]["business_fit"])
         self.assertEqual(out["pillars"]["thin"]["demand"], 80.0)  # demand untouched
         self.assertEqual(out["leader"], "thin")
@@ -237,8 +237,8 @@ class Sensitivity(unittest.TestCase):
 
     def test_mapping_stress_break_even_flips_the_leader(self):
         res = {
-            "thin": self._mapped(demand_score=60, count=10, people=20_000, relative=0.5),
-            "full": self._mapped(demand_score=60, count=20, people=20_000, relative=1.0),
+            "thin": self._mapped(demand_score=60, count=40, people=20_000, relative=0.5),
+            "full": self._mapped(demand_score=60, count=80, people=20_000, relative=1.0),
         }
         out = scoring.competitor_mapping_stress(res, scoring.DEFAULT_WEIGHTS)
         # Equal demand: "thin" leads only while it reports fewer competitors than "full".
@@ -385,6 +385,29 @@ class DayTypes(unittest.TestCase):
         pois = [self._poi("supermarket"), self._poi("cafe")]
         count, closed = day_types.count_window_competitors(pois, self._window("weekend_day"))
         self.assertEqual((count, closed), (1.5, 0.0))  # supermarket open Sa only, cafe both
+
+    def test_all_day_basket_merges_both_peaks_and_drops_only_shops_closed_all_day(self):
+        w = self._window("weekday_all_day")
+        self.assertEqual(set(w.categories),
+                         set(day_types.MORNING_PEAK_CATEGORIES) | set(day_types.EVENING_PEAK_CATEGORIES))
+        pois = [self._poi("bakery", "Mo-Fr 06:00-10:00"),  # open in the morning only: still competes that day
+                self._poi("spati_kiosk", "Mo-Su 18:00-02:00"),
+                self._poi("cafe", "Sa-Su 09:00-17:00"),  # closed all Wednesday: excluded
+                self._poi("fast_food"),  # unknown hours: open
+                self._poi("chemist")]  # not in the basket
+        self.assertEqual(day_types.count_window_competitors(pois, w), (3.0, 1.0))
+
+    def test_only_all_day_windows_are_scored(self):
+        scored = {c.key for c in scoring.BUSINESS_FIT_CRITERIA if c.pillar == "competition"}
+        self.assertEqual(scored, {"weekday_competition", "weekend_competition"})
+        m = {(f"{w.key}_competitor_count", day_types.PERIOD[w.day_type]): {
+                "metric_id": i, "value": 1.0, "is_missing": False, "missing_reason": None}
+             for i, w in enumerate(day_types.COMPETITION_WINDOWS)}
+        read = {c.derive(m).metric_ids for c in scoring.BUSINESS_FIT_CRITERIA if c.pillar == "competition"}
+        keys = [w.key for w in day_types.COMPETITION_WINDOWS]
+        self.assertEqual({keys[i] for (i,) in read}, {"weekday_all_day", "weekend_all_day"})
+        self.assertEqual(set(scoring.DIAGNOSTIC_WINDOW_QUARTILES),
+                         {w.key for w in day_types.DIAGNOSTIC_COMPETITION_WINDOWS})
 
     def test_club_without_hours_counts_only_at_the_weekend(self):
         days = day_types.venue_open_days("nightclub", None)

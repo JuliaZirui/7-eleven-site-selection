@@ -4,7 +4,7 @@ Two scores per area, deliberately never combined into one number:
 
   - business_fit (0-100): how well the public data match the store
     hypothesis (store_hypothesis.md) -- demand, and competition per
-    unit of that demand in each commute peak.
+    unit of that demand over the whole day (weekday and weekend).
   - evidence_quality (0-100): how much the business_fit number can be
     trusted -- completeness, freshness, and sample size of what it was
     computed from.
@@ -38,13 +38,13 @@ from typing import Callable
 from demand_model import latest_visitor_fit
 from metrics_pipeline import latest_area_snapshots, latest_snapshot_id
 
-SCORING_MODEL_VERSION = "scoring_v7"
+SCORING_MODEL_VERSION = "scoring_v8"
 
 WEEKDAY = "weekday_We"
 WEEKEND = "weekend_SaSu"
 
 # Pillar weights for business_fit: demand (people per day) and
-# competition per 10,000 of those people, in each commute peak. Equal
+# competition per 10,000 of those people, over the whole day. Equal
 # weights: demand also enters the competition pillar as its denominator,
 # so a demand lead is not under-weighted at 50/50.
 DEFAULT_WEIGHTS: dict[str, float] = {
@@ -67,7 +67,7 @@ SCENARIO_WEIGHTS: dict[str, dict[str, float]] = {
 EQ_ADEQUATE = 85.0
 EQ_VERIFY_FIRST = 70.0
 
-# Competition per unit demand: a peak's competitor count per this many
+# Competition per unit demand: a day type's competitor count per this many
 # people per day in the catchment (residents + workers + visitors).
 PEOPLE_UNIT = 10_000
 
@@ -241,23 +241,28 @@ class Criterion:
 
 
 # Both scales are measured, not judged. calibrate_anchors.py records each
-# inner-Berlin S/U reference station's morning- and evening-peak
-# competitor counts; calibrate_demand.py converts the same stations'
-# residents, workers and visitors into people per day with the
-# candidates' own method. Each criterion maps P10 / P90 of that
-# reference distribution to 0 / 100 (or 100 / 0 where fewer is better),
-# so a score reads as "busier / less contested than roughly X% of
+# inner-Berlin S/U reference station's competitor counts; calibrate_demand.py
+# converts the same stations' residents, workers and visitors into people
+# per day with the candidates' own method. Each criterion maps P10 / P90 of
+# that reference distribution to 0 / 100 (or 100 / 0 where fewer is
+# better), so a score reads as "busier / less contested than roughly X% of
 # inner-city transit nodes".
-# scoring_v7: competition anchors re-run on the same 139 stations and the
-# same Overture release with conflation_v2 (near-duplicate merge, name /
-# category check, verified corrections); demand anchors unchanged.
-# scoring_v6 run: all 139 stations complete for all six criteria (OSM
-# cache 2026-09-28/10-01, Overture 2026-09-23.1, IHK with NACE divisions
-# fetched 2026-10-02, visitor fit visitor_fit_20261001T130205Z, pageviews
-# 2025-09..2026-09; known attendance -- published counts and
-# venue_attendance_verified.csv -- used instead of the fame conversion).
-COMPETITION_CALIBRATION_REF = "db/raw/calibration/competition_anchors_20261003T153748Z.json"
-DEMAND_CALIBRATION_REF = "db/raw/calibration/demand_anchors_20261003T153754Z.json"
+# scoring_v8: competition is scored per day type over the whole day -- the
+# all-day basket (morning + evening sets merged) open on a weekday / weekend
+# day, per 10,000 of that day type's people. The commute peaks and weekend
+# windows moved to unscored diagnostics: no public source measures footfall
+# by time window, so scoring them assumed the dual-peak hypothesis instead
+# of testing it. Anchors re-run on the same 139 stations, same Overture
+# release and caches (no network); demand anchors reproduce unchanged.
+# scoring_v7: competition anchors re-run with conflation_v2 (near-duplicate
+# merge, name / category check, verified corrections).
+# scoring_v6 run: all 139 stations complete (OSM cache 2026-09-28/10-01,
+# Overture 2026-09-23.1, IHK with NACE divisions fetched 2026-10-02, visitor
+# fit visitor_fit_20261001T130205Z, pageviews 2025-09..2026-09; known
+# attendance -- published counts and venue_attendance_verified.csv -- used
+# instead of the fame conversion).
+COMPETITION_CALIBRATION_REF = "db/raw/calibration/competition_anchors_20261008T150037Z.json"
+DEMAND_CALIBRATION_REF = "db/raw/calibration/demand_anchors_20261008T150048Z.json"
 _PEOPLE_RATIONALE = (
     "Residents: area-weighted MSS 2025 population of the 400m circle (both day types). Workers: IHK registrations "
     "whose nearest S/U station is this node, size classes at their geometric midpoint, large employers at their "
@@ -265,6 +270,7 @@ _PEOPLE_RATIONALE = (
     "~10.3 visitors per annual Wikipedia pageview of every attraction this station is a gateway for, x its 1/k "
     "gateway share, spread over the venue's open days (clubs without OSM hours: Friday/Saturday nights only). "
 )
+_ALL_DAY_BASKET = "bakery, café, supermarket, späti, fast food, fuel shop"
 BUSINESS_FIT_CRITERIA: tuple[Criterion, ...] = (
     Criterion(
         "daily_people", "demand", "People per weekday in the catchment (residents + workers + visitors)",
@@ -281,53 +287,46 @@ BUSINESS_FIT_CRITERIA: tuple[Criterion, ...] = (
         weight=2.0, day_type="weekend",
     ),
     Criterion(
-        "morning_peak_competition", "competition",
-        "Weekday 7–9 competitors per 10,000 weekday people (bakery, café, supermarket, fuel shop)", "per 10k",
-        _single("morning_peak_competitor_count", WEEKDAY), worst=33.4, best=5.9,
-        rationale="Breakfast / coffee-to-go set a commuter passes 7-9. Shops whose OSM hours show them closed are "
-        "excluded; unknown hours count as open. Anchors: P90 / P10 of 139 inner-Berlin S/U stations (33.4 / 5.9).",
-        per_demand=True, weight=2.5, day_type="weekday",
+        "weekday_competition", "competition",
+        f"Weekday competitors per 10,000 weekday people ({_ALL_DAY_BASKET}; open that day)", "per 10k",
+        _single("weekday_all_day_competitor_count", WEEKDAY), worst=67.7, best=12.2,
+        rationale="The morning and evening baskets merged, counted if open at any time on a Wednesday. Shops whose "
+        "OSM hours show them closed all day are excluded; unknown hours count as open. Anchors: P90 / P10 of 139 "
+        "inner-Berlin S/U stations (67.7 / 12.2).",
+        per_demand=True, weight=5.0, day_type="weekday",
     ),
     Criterion(
-        "evening_peak_competition", "competition",
-        "Weekday 16–19 competitors per 10,000 weekday people (späti, fast food, supermarket, fuel shop)", "per 10k",
-        _single("evening_peak_competitor_count", WEEKDAY), worst=35.4, best=5.7,
-        rationale="After-work top-up / snack set 16-19, same rules. Anchors: P90 / P10 of 139 inner-Berlin S/U "
-        "stations (35.4 / 5.7).",
-        per_demand=True, weight=2.5, day_type="weekday",
-    ),
-    Criterion(
-        "weekend_day_competition", "competition",
-        "Weekend 10–19 competitors per 10,000 weekend people (bakery, café, supermarket, späti, fast food, fuel shop)",
-        "per 10k", _single("weekend_day_competitor_count", WEEKEND), worst=90.5, best=14.3,
-        rationale="Average of Saturday and Sunday. Unknown-hours retail follows Berlin's Sunday law: supermarkets, "
-        "spätis, beverage and chemist shops closed on Sunday unless inside a station; bakeries 7-16. "
-        "Anchors: P90 / P10 of 139 inner-Berlin S/U stations (90.5 / 14.3).",
-        per_demand=True, weight=1.0, day_type="weekend",
-    ),
-    Criterion(
-        "weekend_night_competition", "competition",
-        "Weekend 22–02 competitors per 10,000 weekend people (späti, fast food, fuel shop)", "per 10k",
-        _single("weekend_night_competitor_count", WEEKEND), worst=31, best=3.5,
-        rationale="Late-night basket after clubs and events, Saturday and Sunday nights averaged, same Sunday rule. "
-        "Unknown-hours fast food counts as open, so the night count is an upper bound. "
-        "Anchors: P90 / P10 of 139 inner-Berlin S/U stations (31.2 / 3.5).",
-        per_demand=True, weight=1.0, day_type="weekend",
+        "weekend_competition", "competition",
+        f"Weekend competitors per 10,000 weekend people ({_ALL_DAY_BASKET}; open that day)", "per 10k",
+        _single("weekend_all_day_competitor_count", WEEKEND), worst=90.9, best=14.4,
+        rationale="Same basket, average of Saturday and Sunday. Unknown-hours retail follows Berlin's Sunday law: "
+        "supermarkets and spätis closed on Sunday unless inside a station; bakeries 7-16. Anchors: P90 / P10 of "
+        "139 inner-Berlin S/U stations (90.9 / 14.4).",
+        per_demand=True, weight=2.0, day_type="weekend",
     ),
 )
 
 PILLARS: tuple[str, ...] = ("demand", "competition")
 
-# Structural check: the same four competitor counts scored as they are
-# (competitors in the 400m circle), with no demand denominator. Anchors
+# Structural check: the same two all-day competitor counts scored as they
+# are (competitors in the 400m circle), with no demand denominator. Anchors
 # are P90 / P10 of the raw counts at the same 139 reference stations
 # (COMPETITION_CALIBRATION_REF). Used only by
 # competition_structure_check(); the baseline score never reads them.
 ABSOLUTE_COMPETITION_ANCHORS: dict[str, tuple[float, float]] = {
-    "morning_peak_competition": (53.2, 8.0),
-    "evening_peak_competition": (57.2, 7.0),
-    "weekend_day_competition": (96.0, 12.3),
-    "weekend_night_competition": (35.6, 2.9),
+    "weekday_competition": (110.0, 14.6),
+    "weekend_competition": (96.1, 13.1),
+}
+
+# Unscored diagnostic windows (day_types.DIAGNOSTIC_COMPETITION_WINDOWS):
+# P25 / P75 of each window's raw competitor count at the same 139
+# reference stations. The report lists the counts against these and the
+# §5 hypotheses use them; no score reads them.
+DIAGNOSTIC_WINDOW_QUARTILES: dict[str, tuple[float, float]] = {
+    "morning_peak": (12.0, 42.0),
+    "evening_peak": (12.0, 37.0),
+    "weekend_day": (20.5, 63.75),
+    "weekend_night": (6.0, 21.0),
 }
 
 # Demand dimensions in store_hypothesis.md that no v1 source measures.
@@ -732,7 +731,7 @@ def competition_structure_check(results: dict[str, dict], weights: dict[str, flo
 
 
 def _scaled_competition_pillars(r: dict, factor: float) -> dict[str, float | None]:
-    """One node's pillars with every peak competitor count multiplied by
+    """One node's pillars with every competitor count multiplied by
     factor (people per day unchanged)."""
     defs = {c.key: c for c in BUSINESS_FIT_CRITERIA}
     crits = []
@@ -746,7 +745,7 @@ def _scaled_competition_pillars(r: dict, factor: float) -> dict[str, float | Non
 
 def competitor_mapping_stress(results: dict[str, dict], weights: dict[str, float] = DEFAULT_WEIGHTS) -> dict | None:
     """Re-score as if every node were mapped as completely as the best
-    node: each node's peak competitor counts x (best node's OSM-per-IHK
+    node: each node's competitor counts x (best node's OSM-per-IHK
     ratio / its own). A stress scenario, not a correction: IHK
     Gastronomie also holds restaurants and bars (the ratio is no coverage
     rate), and the best node is not known to be complete either. Also reports the factor on the baseline #1 alone at which it
