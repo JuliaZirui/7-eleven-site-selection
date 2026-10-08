@@ -8,6 +8,7 @@ the correction tables; the queue itself never reaches a score.
 
     python3 src/audit_apply.py            # dry run: what would be written
     python3 src/audit_apply.py --write    # append and mark applied
+    python3 src/audit_apply.py --annotate # hints in reviewer_note for pending rows
 
 Mapping (the tables keep their columns; provenance goes into `basis` or
 `found_by`):
@@ -39,6 +40,10 @@ TABLES = {
     "category_error": CALIBRATION / "poi_corrections_verified.csv",
     "duplicate": CALIBRATION / "poi_corrections_verified.csv",
 }
+
+
+# A hand-added employer this close to a flagged building is the same place.
+SAME_PLACE_M = 50.0
 
 
 class ApplyError(ValueError):
@@ -76,7 +81,8 @@ def _range(row: dict, unit: str) -> tuple[float, float, float]:
 
 def _basis(row: dict) -> str:
     who = row["reviewer"].strip() or "unnamed reviewer"
-    note = f" Reviewer: {row['reviewer_note'].strip()}" if row["reviewer_note"].strip() else ""
+    own = "; ".join(x for x in row["reviewer_note"].split("; ") if x.strip() and not x.startswith("hint:"))
+    note = f" Reviewer: {own.strip()}" if own.strip() else ""
     return f"{row['reason']} [added by audit_llm ({row['queue_id']}), reviewed by {who}]{note}"
 
 
@@ -134,6 +140,79 @@ def _key_column(table: Path) -> str:
         return next(csv.reader(f))[0]
 
 
+def _already_corrected(row: dict) -> str | None:
+    """The correction table that already holds this record, if any. The
+    audit runs on the raw state, so it also flags records a person
+    corrected before; those need no review."""
+    issue = row["issue_type"]
+    if issue not in TABLES:
+        return None
+    table = TABLES[issue]
+    refs = set(row["record_ref"].split("|"))
+    if issue == "company_wide_headcount":
+        refs = {r.removeprefix("ihk:") for r in refs}
+    elif issue == "fame_vs_attendance":
+        title = (_worklist_record(row).get("record", {}).get("wikipedia_titles") or {}).get("dewiki")
+        refs = {title} if title else set()
+    elif issue == "missing_entity":
+        # Hand-added employers are keyed by place: one within
+        # SAME_PLACE_M of the flagged building counts as already corrected.
+        from geo import haversine_m
+
+        try:
+            f = _finding(row)
+        except StopIteration:
+            f = {}
+        rec = _worklist_record(row).get("record", {})
+        lat, lon = f.get("lat", rec.get("lat")), f.get("lon", rec.get("lon"))
+        if lat is None or lon is None:
+            return None
+        with table.open(encoding="utf-8") as fh:
+            near = [r for r in csv.DictReader(fh) if r["area_id"] == row["area_id"]
+                    and haversine_m(lat, lon, float(r["lat"]), float(r["lon"])) <= SAME_PLACE_M]
+        return f"{table.name} ({near[0]['name']})" if near else None
+    with table.open(encoding="utf-8") as f:
+        keys = {r[_key_column(table)] for r in csv.DictReader(f)}
+    return table.name if refs & keys else None
+
+
+def annotate(queue: Path = REVIEW_QUEUE_CSV, labels: Path | None = None) -> int:
+    """Hints for the reviewer in pending rows' reviewer_note, never in the
+    decision columns: whether the record is already in a correction
+    table, and the analyst's label from the evaluation, if any."""
+    labels = labels or PROJECT_ROOT / "comparison" / "audit_flag_labels.csv"
+    known = {}
+    if labels.exists():
+        text = labels.read_text(encoding="utf-8-sig")
+        delim = ";" if text.split("\n", 1)[0].count(";") > text.split("\n", 1)[0].count(",") else ","
+        known = {(r["area_id"], r["candidate_id"]): r["label"].strip()
+                 for r in csv.DictReader(text.splitlines(), delimiter=delim)}
+    with queue.open(encoding="utf-8") as f:
+        rows = list(csv.DictReader(f))
+        columns = list(rows[0].keys()) if rows else []
+    changed = 0
+    for row in rows:
+        if row["review_status"] != "pending" or row["reviewer_note"].strip():
+            continue
+        hints = []
+        try:
+            table = _already_corrected(row)
+        except (FileNotFoundError, StopIteration, KeyError):
+            table = None
+        if table:
+            hints.append(f"hint: already corrected in {table}, nothing to do")
+        if known.get((row["area_id"], row["candidate_id"])):
+            hints.append(f"hint: evaluation label {known[(row['area_id'], row['candidate_id'])]}")
+        if hints:
+            row["reviewer_note"] = "; ".join(hints)
+            changed += 1
+    with queue.open("w", newline="", encoding="utf-8") as f:
+        w = csv.DictWriter(f, fieldnames=columns)
+        w.writeheader()
+        w.writerows(rows)
+    return changed
+
+
 def apply(write: bool = False, queue: Path = REVIEW_QUEUE_CSV) -> list[str]:
     with queue.open(encoding="utf-8") as f:
         rows = list(csv.DictReader(f))
@@ -172,5 +251,8 @@ def apply(write: bool = False, queue: Path = REVIEW_QUEUE_CSV) -> list[str]:
 
 
 if __name__ == "__main__":
+    if "--annotate" in sys.argv[1:]:
+        print(f"{annotate()} pending rows annotated in {REVIEW_QUEUE_CSV.relative_to(PROJECT_ROOT)}")
+        raise SystemExit(0)
     lines = apply(write="--write" in sys.argv[1:])
     print("\n".join(lines) if lines else "No accepted rows in the review queue.")

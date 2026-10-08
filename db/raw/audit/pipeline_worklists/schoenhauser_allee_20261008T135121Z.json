@@ -1,0 +1,1617 @@
+{
+ "generator": "audit_candidates_v3",
+ "area_id": "schoenhauser_allee",
+ "name": "Schönhauser Allee",
+ "lat": 52.549317383699474,
+ "lon": 13.413628569194154,
+ "radius_m": 400,
+ "state": "corrections_off",
+ "provenance": {
+  "ihk_snapshot_id": 37,
+  "attraction_snapshot_id": 49,
+  "poi_source_snapshot_ids": {
+   "osm_overpass": 44,
+   "overture_places": 45
+  },
+  "conflation": "conflation_v1 (quality rules and verified corrections off)",
+  "osm_context": "db/raw/audit/osm_context/schoenhauser_allee_20261007T091502Z.json",
+  "visitor_fit": "visitor_fit_20261001T130205Z.json"
+ },
+ "modules_skipped": [],
+ "counts": {
+  "concentration": 1,
+  "large_registration": 0,
+  "missing_entity": 4,
+  "poi_category": 9,
+  "poi_duplicate": 18
+ },
+ "candidates": [
+  {
+   "candidate_id": "concentration:wikidata:Q705353",
+   "module": "concentration",
+   "segment": "visitors",
+   "record_ref": "wikidata:Q705353",
+   "record": {
+    "qid": "Q705353",
+    "name": "Max-Schmeling-Halle",
+    "kind": "events_venue",
+    "wikipedia_titles": {
+     "dewiki": "Max-Schmeling-Halle",
+     "enwiki": "Max-Schmeling-Halle"
+    },
+    "distance_m": 788,
+    "gateway_share": 0.333,
+    "pageviews_12m": 43030
+   },
+   "value_people_per_day": 402.7,
+   "segment_total": 539.1,
+   "share_of_segment": 0.747,
+   "annual_visitors_from_pageviews": 440986,
+   "conversion": "log10(visitors) = 1.011 + 1.000 * log10(12-month de+en pageviews), times the 1/k gateway share, / 365"
+  },
+  {
+   "candidate_id": "missing_entity:osm:node/828741343",
+   "module": "missing_entity",
+   "record_ref": "osm:node/828741343",
+   "record": {
+    "osm_ref": "node/828741343",
+    "distance_m": 0.0,
+    "name": "Medizinisch Diagnostische Institute-MVZ",
+    "office": "company",
+    "address": null,
+    "lat": 52.548158,
+    "lon": 13.408704,
+    "tags": {
+     "health_facility:type": "laboratory",
+     "health_specialty:clinical_pathology": "yes",
+     "medical_system:western": "yes",
+     "name": "Medizinisch Diagnostische Institute-MVZ",
+     "office": "company"
+    }
+   },
+   "footprint_m2": null,
+   "floor_area_m2": null,
+   "levels_tagged": false,
+   "reason_listed": "no IHK registration within 40 m",
+   "ihk_within_40m": {
+    "registrations": 0,
+    "headcount_at_midpoints": 0
+   },
+   "tagged_objects_inside": [],
+   "nearest_station": {
+    "name": "S+U Schönhauser Allee (Berlin)",
+    "distance_m": 454
+   },
+   "nearest_ihk_m": 57.2
+  },
+  {
+   "candidate_id": "missing_entity:osm:way/23495838",
+   "module": "missing_entity",
+   "record_ref": "osm:way/23495838",
+   "record": {
+    "osm_ref": "way/23495838",
+    "distance_m": 0.0,
+    "building": "school",
+    "building:levels": "5",
+    "address": null,
+    "lat": 52.546609,
+    "lon": 13.414661,
+    "tags": {
+     "building": "school",
+     "building:levels": "5",
+     "roof:shape": "gambrel"
+    }
+   },
+   "footprint_m2": 1660,
+   "floor_area_m2": 8300,
+   "levels_tagged": true,
+   "reason_listed": "IHK headcount within 40 m below 1 per 100 m² of floor area",
+   "ihk_within_40m": {
+    "registrations": 40,
+    "headcount_at_midpoints": 24.5
+   },
+   "tagged_objects_inside": [],
+   "nearest_station": {
+    "name": "S+U Schönhauser Allee (Berlin)",
+    "distance_m": 305
+   },
+   "nearest_ihk_m": 6.3
+  },
+  {
+   "candidate_id": "missing_entity:osm:way/28642449",
+   "module": "missing_entity",
+   "record_ref": "osm:way/28642449",
+   "record": {
+    "osm_ref": "way/28642449",
+    "distance_m": 0.0,
+    "building": "commercial",
+    "building:levels": "4",
+    "address": "Schönhauser Allee 123",
+    "lat": 52.547926,
+    "lon": 13.411979,
+    "tags": {
+     "addr:city": "Berlin",
+     "addr:country": "DE",
+     "addr:housenumber": "123",
+     "addr:postcode": "10437",
+     "addr:street": "Schönhauser Allee",
+     "addr:suburb": "Prenzlauer Berg",
+     "building": "commercial",
+     "building:levels": "4",
+     "toilets:wheelchair": "yes",
+     "wheelchair": "yes",
+     "wikidata": "Q32651446",
+     "wikimedia_commons": "Category:Kino Colosseum (Berlin)",
+     "wikipedia": "de:Colosseum (Kino)"
+    }
+   },
+   "footprint_m2": 5388,
+   "floor_area_m2": 21552,
+   "levels_tagged": true,
+   "reason_listed": "IHK headcount within 40 m below 1 per 100 m² of floor area",
+   "ihk_within_40m": {
+    "registrations": 96,
+    "headcount_at_midpoints": 206.0
+   },
+   "tagged_objects_inside": [],
+   "nearest_station": {
+    "name": "S+U Schönhauser Allee (Berlin)",
+    "distance_m": 265
+   },
+   "nearest_ihk_m": 0.0
+  },
+  {
+   "candidate_id": "missing_entity:osm:way/566145932",
+   "module": "missing_entity",
+   "record_ref": "osm:way/566145932",
+   "record": {
+    "osm_ref": "way/566145932",
+    "distance_m": 0.0,
+    "name": "Schönhauser Allee Arcaden",
+    "shop": "mall",
+    "building": "retail",
+    "building:levels": "5",
+    "address": "Schönhauser Allee 80",
+    "lat": 52.549528,
+    "lon": 13.415409,
+    "tags": {
+     "addr:city": "Berlin",
+     "addr:country": "DE",
+     "addr:housenumber": "80",
+     "addr:postcode": "10439",
+     "addr:street": "Schönhauser Allee",
+     "addr:suburb": "Prenzlauer Berg",
+     "building": "retail",
+     "building:levels": "5",
+     "check_date": "2026-07-17",
+     "name": "Schönhauser Allee Arcaden",
+     "opening_hours": "Mo-Sa 10:00-20:00",
+     "phone": "+49 30 447 117 17",
+     "shop": "mall",
+     "toilets": "yes",
+     "toilets:wheelchair": "yes",
+     "website": "https://schoenhauseralleearcaden.de/",
+     "wheelchair": "yes",
+     "wikidata": "Q47088877",
+     "wikimedia_commons": "Category:Schönhauser Allee Arcaden"
+    }
+   },
+   "footprint_m2": 11157,
+   "floor_area_m2": 55784,
+   "levels_tagged": true,
+   "reason_listed": "IHK headcount within 40 m below 1 per 100 m² of floor area",
+   "ihk_within_40m": {
+    "registrations": 185,
+    "headcount_at_midpoints": 519.2
+   },
+   "tagged_objects_inside": [],
+   "nearest_station": {
+    "name": "S+U Schönhauser Allee (Berlin)",
+    "distance_m": 28
+   },
+   "nearest_ihk_m": 0.0
+  },
+  {
+   "candidate_id": "poi_category:node/9793667517",
+   "module": "poi_category",
+   "record_ref": "node/9793667517",
+   "record": {
+    "external_ref": "node/9793667517",
+    "name": "Büro",
+    "category": "cafe",
+    "lat": 52.5468857,
+    "lon": 13.417617,
+    "providers": [
+     "openstreetmap"
+    ],
+    "members": [
+     {
+      "source": "osm_overpass",
+      "ref": "node/9793667517",
+      "name": "Büro",
+      "category": "cafe"
+     }
+    ]
+   },
+   "non_food_words": [
+    "büro"
+   ],
+   "same_name_osm_objects_15m": [],
+   "osm_objects_15m": [
+    {
+     "osm_ref": "node/9793667517",
+     "distance_m": 0.0,
+     "name": "Büro",
+     "amenity": "cafe",
+     "address": "Stargarder Straße 72"
+    },
+    {
+     "osm_ref": "node/2947954495",
+     "distance_m": 3.8,
+     "name": "Krümel",
+     "amenity": "cafe",
+     "address": "Stargarder Straße 73"
+    },
+    {
+     "osm_ref": "node/9392597343",
+     "distance_m": 5.9,
+     "operator": "Bezirksamt Pankow",
+     "amenity": "vending_machine",
+     "address": "Stargarder Straße 72"
+    },
+    {
+     "osm_ref": "node/3055877735",
+     "distance_m": 7.4,
+     "name": "Hokey Pokey",
+     "amenity": "ice_cream",
+     "shop": "ice_cream",
+     "address": "Stargarder Straße 72"
+    },
+    {
+     "osm_ref": "node/9994201286",
+     "distance_m": 9.3,
+     "name": "Hokey Pokey Boutique",
+     "shop": "confectionery",
+     "address": "Stargarder Straße 73"
+    },
+    {
+     "osm_ref": "node/560145213",
+     "distance_m": 14.3,
+     "name": "Pasta & Vino",
+     "amenity": "restaurant",
+     "address": "Stargarder Straße 72"
+    }
+   ]
+  },
+  {
+   "candidate_id": "poi_category:overture:030173c0-2f62-4b77-81b1-47af893cccd2",
+   "module": "poi_category",
+   "record_ref": "overture:030173c0-2f62-4b77-81b1-47af893cccd2",
+   "record": {
+    "external_ref": "overture:030173c0-2f62-4b77-81b1-47af893cccd2",
+    "name": "Godshot Coffee Lab",
+    "category": "cafe",
+    "lat": 52.54652404785156,
+    "lon": 13.410799980163574,
+    "providers": [
+     "meta",
+     "overture"
+    ],
+    "members": [
+     {
+      "source": "overture_places",
+      "ref": "overture:030173c0-2f62-4b77-81b1-47af893cccd2",
+      "name": "Godshot Coffee Lab",
+      "category": "cafe"
+     }
+    ]
+   },
+   "non_food_words": [],
+   "same_name_osm_objects_15m": [
+    {
+     "osm_ref": "node/10075103951",
+     "distance_m": 7.7,
+     "name": "Godshot",
+     "office": "company",
+     "address": "Gaudystraße 8",
+     "osm_category": null
+    }
+   ],
+   "osm_objects_15m": [
+    {
+     "osm_ref": "node/10075103951",
+     "distance_m": 7.7,
+     "name": "Godshot",
+     "office": "company",
+     "address": "Gaudystraße 8"
+    },
+    {
+     "osm_ref": "node/10075117271",
+     "distance_m": 11.6,
+     "name": "Imke Singer / Bert Grigoleit",
+     "office": "architect",
+     "address": "Gaudystraße 7"
+    }
+   ]
+  },
+  {
+   "candidate_id": "poi_category:overture:0df6abd5-8f3a-44b0-80c7-476c12db8afc",
+   "module": "poi_category",
+   "record_ref": "overture:0df6abd5-8f3a-44b0-80c7-476c12db8afc",
+   "record": {
+    "external_ref": "overture:0df6abd5-8f3a-44b0-80c7-476c12db8afc",
+    "name": "Sonnenreich wines at Arnimplatz",
+    "category": "beverages",
+    "lat": 52.551536560058594,
+    "lon": 13.410638809204102,
+    "providers": [
+     "meta",
+     "overture"
+    ],
+    "members": [
+     {
+      "source": "overture_places",
+      "ref": "overture:0df6abd5-8f3a-44b0-80c7-476c12db8afc",
+      "name": "Sonnenreich wines at Arnimplatz",
+      "category": "beverages"
+     }
+    ]
+   },
+   "non_food_words": [],
+   "same_name_osm_objects_15m": [
+    {
+     "osm_ref": "node/5337294219",
+     "distance_m": 4.0,
+     "name": "Sonnnenreich-Weine am Arnimplatz",
+     "shop": "wine",
+     "address": "Seelower Straße 6",
+     "osm_category": null
+    }
+   ],
+   "osm_objects_15m": [
+    {
+     "osm_ref": "way/30147258",
+     "distance_m": 1.0,
+     "building": "apartments",
+     "building:levels": "5",
+     "address": "Seelower Straße 6"
+    },
+    {
+     "osm_ref": "node/5337294219",
+     "distance_m": 4.0,
+     "name": "Sonnnenreich-Weine am Arnimplatz",
+     "shop": "wine",
+     "address": "Seelower Straße 6"
+    },
+    {
+     "osm_ref": "way/30147249",
+     "distance_m": 6.3,
+     "building": "apartments",
+     "building:levels": "5",
+     "address": "Seelower Straße 7"
+    },
+    {
+     "osm_ref": "node/5337294220",
+     "distance_m": 8.5,
+     "name": "Sabine Weichelt",
+     "address": null
+    },
+    {
+     "osm_ref": "way/30302163",
+     "distance_m": 10.8,
+     "building": "apartments",
+     "building:levels": "5",
+     "address": "Seelower Straße 5"
+    }
+   ]
+  },
+  {
+   "candidate_id": "poi_category:overture:e9de36b2-966c-4eed-8c83-efeab965453e",
+   "module": "poi_category",
+   "record_ref": "overture:e9de36b2-966c-4eed-8c83-efeab965453e",
+   "record": {
+    "external_ref": "overture:e9de36b2-966c-4eed-8c83-efeab965453e",
+    "name": "K_eins",
+    "category": "beverages",
+    "lat": 52.54884338378906,
+    "lon": 13.413008689880371,
+    "providers": [
+     "brightquery",
+     "overture"
+    ],
+    "members": [
+     {
+      "source": "overture_places",
+      "ref": "overture:e9de36b2-966c-4eed-8c83-efeab965453e",
+      "name": "K_eins",
+      "category": "beverages"
+     }
+    ]
+   },
+   "non_food_words": [],
+   "same_name_osm_objects_15m": [
+    {
+     "osm_ref": "node/11795793786",
+     "distance_m": 7.4,
+     "name": "K eins",
+     "shop": "wine",
+     "address": "Kopenhagener Straße 1",
+     "osm_category": null
+    }
+   ],
+   "osm_objects_15m": [
+    {
+     "osm_ref": "node/11795793786",
+     "distance_m": 7.4,
+     "name": "K eins",
+     "shop": "wine",
+     "address": "Kopenhagener Straße 1"
+    },
+    {
+     "osm_ref": "node/920059067",
+     "distance_m": 14.5,
+     "name": "Oxfam",
+     "shop": "charity",
+     "address": null
+    }
+   ]
+  },
+  {
+   "candidate_id": "poi_category:overture:66f2af28-1aad-41db-9965-a0fc88a609a3",
+   "module": "poi_category",
+   "record_ref": "overture:66f2af28-1aad-41db-9965-a0fc88a609a3",
+   "record": {
+    "external_ref": "overture:66f2af28-1aad-41db-9965-a0fc88a609a3",
+    "name": "Kohlenquelle",
+    "category": "cafe",
+    "lat": 52.54912567138672,
+    "lon": 13.408138275146484,
+    "providers": [
+     "meta",
+     "overture"
+    ],
+    "members": [
+     {
+      "source": "overture_places",
+      "ref": "overture:66f2af28-1aad-41db-9965-a0fc88a609a3",
+      "name": "Kohlenquelle",
+      "category": "cafe"
+     }
+    ]
+   },
+   "non_food_words": [],
+   "same_name_osm_objects_15m": [
+    {
+     "osm_ref": "node/486063962",
+     "distance_m": 6.5,
+     "name": "Kohlenquelle",
+     "amenity": "pub",
+     "address": "Kopenhagener Straße 16",
+     "osm_category": null
+    }
+   ],
+   "osm_objects_15m": [
+    {
+     "osm_ref": "way/40280350",
+     "distance_m": 0.3,
+     "building": "apartments",
+     "building:levels": "5",
+     "address": "Kopenhagener Straße 16"
+    },
+    {
+     "osm_ref": "node/486063962",
+     "distance_m": 6.5,
+     "name": "Kohlenquelle",
+     "amenity": "pub",
+     "address": "Kopenhagener Straße 16"
+    }
+   ]
+  },
+  {
+   "candidate_id": "poi_category:overture:65842e4e-2673-4ab2-8c30-a827ef848ba7",
+   "module": "poi_category",
+   "record_ref": "overture:65842e4e-2673-4ab2-8c30-a827ef848ba7",
+   "record": {
+    "external_ref": "overture:65842e4e-2673-4ab2-8c30-a827ef848ba7",
+    "name": "Balabait Eatery & Deli",
+    "category": "other_fresh_food",
+    "lat": 52.547428131103516,
+    "lon": 13.408818244934082,
+    "providers": [
+     "brightquery",
+     "overture"
+    ],
+    "members": [
+     {
+      "source": "overture_places",
+      "ref": "overture:65842e4e-2673-4ab2-8c30-a827ef848ba7",
+      "name": "Balabait Eatery & Deli",
+      "category": "other_fresh_food"
+     }
+    ]
+   },
+   "non_food_words": [],
+   "same_name_osm_objects_15m": [
+    {
+     "osm_ref": "node/1166407130",
+     "distance_m": 3.5,
+     "name": "Bala Bait",
+     "address": "Gleimstraße 42",
+     "osm_category": null
+    }
+   ],
+   "osm_objects_15m": [
+    {
+     "osm_ref": "node/1166407130",
+     "distance_m": 3.5,
+     "name": "Bala Bait",
+     "address": "Gleimstraße 42"
+    },
+    {
+     "osm_ref": "node/5354951067",
+     "distance_m": 7.2,
+     "name": "Meramo",
+     "office": "yes",
+     "address": null
+    },
+    {
+     "osm_ref": "node/1023766697",
+     "distance_m": 14.3,
+     "name": "La Buvette",
+     "amenity": "bar",
+     "address": "Gleimstraße 41"
+    }
+   ]
+  },
+  {
+   "candidate_id": "poi_category:overture:30321e1d-4da7-4531-bca5-e4ca9b3c99fc",
+   "module": "poi_category",
+   "record_ref": "overture:30321e1d-4da7-4531-bca5-e4ca9b3c99fc",
+   "record": {
+    "external_ref": "overture:30321e1d-4da7-4531-bca5-e4ca9b3c99fc",
+    "name": "Hala Hala",
+    "category": "supermarket",
+    "lat": 52.54747009277344,
+    "lon": 13.41152286529541,
+    "providers": [
+     "meta",
+     "overture"
+    ],
+    "members": [
+     {
+      "source": "overture_places",
+      "ref": "overture:30321e1d-4da7-4531-bca5-e4ca9b3c99fc",
+      "name": "Hala Hala",
+      "category": "supermarket"
+     }
+    ]
+   },
+   "non_food_words": [],
+   "same_name_osm_objects_15m": [
+    {
+     "osm_ref": "node/1544188682",
+     "distance_m": 11.0,
+     "name": "Hala Hala",
+     "amenity": "restaurant",
+     "address": "Gleimstraße 25",
+     "osm_category": null
+    }
+   ],
+   "osm_objects_15m": [
+    {
+     "osm_ref": "node/1544188682",
+     "distance_m": 11.0,
+     "name": "Hala Hala",
+     "amenity": "restaurant",
+     "address": "Gleimstraße 25"
+    },
+    {
+     "osm_ref": "node/1544188674",
+     "distance_m": 12.1,
+     "name": "Treff 25",
+     "amenity": "bar",
+     "address": "Gleimstraße 25"
+    },
+    {
+     "osm_ref": "node/4946188506",
+     "distance_m": 12.2,
+     "name": "Euronet",
+     "operator": "Euronet",
+     "amenity": "atm",
+     "address": "Gleimstraße 26"
+    },
+    {
+     "osm_ref": "node/12086091451",
+     "distance_m": 12.8,
+     "name": "Martin Michael Fleischer",
+     "address": null
+    },
+    {
+     "osm_ref": "node/12086091453",
+     "distance_m": 12.8,
+     "name": "Hertha Fleischer",
+     "address": null
+    }
+   ]
+  },
+  {
+   "candidate_id": "poi_category:overture:a2ca30cf-e7e9-4307-afcc-febcf4d8797c",
+   "module": "poi_category",
+   "record_ref": "overture:a2ca30cf-e7e9-4307-afcc-febcf4d8797c",
+   "record": {
+    "external_ref": "overture:a2ca30cf-e7e9-4307-afcc-febcf4d8797c",
+    "name": "Berliner Kaffeekontor",
+    "category": "cafe",
+    "lat": 52.54747009277344,
+    "lon": 13.414844512939453,
+    "providers": [
+     "meta",
+     "overture"
+    ],
+    "members": [
+     {
+      "source": "overture_places",
+      "ref": "overture:a2ca30cf-e7e9-4307-afcc-febcf4d8797c",
+      "name": "Berliner Kaffeekontor",
+      "category": "cafe"
+     }
+    ]
+   },
+   "non_food_words": [],
+   "same_name_osm_objects_15m": [
+    {
+     "osm_ref": "node/2930476982",
+     "distance_m": 8.9,
+     "name": "Berliner Kafferkontor",
+     "shop": "coffee",
+     "address": "Stargarder Straße 4",
+     "osm_category": null
+    }
+   ],
+   "osm_objects_15m": [
+    {
+     "osm_ref": "node/370104968",
+     "distance_m": 4.0,
+     "operator": "Deutsche Post",
+     "amenity": "post_box",
+     "address": null
+    },
+    {
+     "osm_ref": "node/2930476982",
+     "distance_m": 8.9,
+     "name": "Berliner Kafferkontor",
+     "shop": "coffee",
+     "address": "Stargarder Straße 4"
+    },
+    {
+     "osm_ref": "node/10035590306",
+     "distance_m": 11.2,
+     "name": "Outlet",
+     "shop": "clothes",
+     "address": "Stargarder Straße 5"
+    }
+   ]
+  },
+  {
+   "candidate_id": "poi_category:overture:44dc6872-1b5a-4788-a5b4-d4e784745e40",
+   "module": "poi_category",
+   "record_ref": "overture:44dc6872-1b5a-4788-a5b4-d4e784745e40",
+   "record": {
+    "external_ref": "overture:44dc6872-1b5a-4788-a5b4-d4e784745e40",
+    "name": "Spreegold",
+    "category": "cafe",
+    "lat": 52.54780960083008,
+    "lon": 13.413814544677734,
+    "providers": [
+     "meta",
+     "overture"
+    ],
+    "members": [
+     {
+      "source": "overture_places",
+      "ref": "overture:44dc6872-1b5a-4788-a5b4-d4e784745e40",
+      "name": "Spreegold",
+      "category": "cafe"
+     }
+    ]
+   },
+   "non_food_words": [],
+   "same_name_osm_objects_15m": [
+    {
+     "osm_ref": "node/2935358101",
+     "distance_m": 9.6,
+     "name": "Spreegold",
+     "amenity": "restaurant",
+     "address": "Stargarder Straße 82",
+     "osm_category": null
+    }
+   ],
+   "osm_objects_15m": [
+    {
+     "osm_ref": "node/12086091441",
+     "distance_m": 7.0,
+     "operator": "Stromnetz Berlin",
+     "address": null
+    },
+    {
+     "osm_ref": "node/2935358101",
+     "distance_m": 9.6,
+     "name": "Spreegold",
+     "amenity": "restaurant",
+     "address": "Stargarder Straße 82"
+    },
+    {
+     "osm_ref": "node/11462822537",
+     "distance_m": 11.6,
+     "name": "One Wall",
+     "address": null
+    }
+   ]
+  },
+  {
+   "candidate_id": "poi_duplicate:node/10035647561|overture:fc92ae81-c552-4a28-a722-eb6efa642c22",
+   "module": "poi_duplicate",
+   "record_ref": "node/10035647561|overture:fc92ae81-c552-4a28-a722-eb6efa642c22",
+   "records": [
+    {
+     "external_ref": "node/10035647561",
+     "name": "Star Mini Market",
+     "category": "spati_kiosk",
+     "lat": 52.5474668,
+     "lon": 13.4140894,
+     "providers": [
+      "openstreetmap"
+     ],
+     "members": [
+      {
+       "source": "osm_overpass",
+       "ref": "node/10035647561",
+       "name": "Star Mini Market",
+       "category": "spati_kiosk"
+      }
+     ]
+    },
+    {
+     "external_ref": "overture:fc92ae81-c552-4a28-a722-eb6efa642c22",
+     "name": "Hermes PaketShop",
+     "category": "spati_kiosk",
+     "lat": 52.547401428222656,
+     "lon": 13.41409969329834,
+     "providers": [
+      "microsoft",
+      "overture"
+     ],
+     "members": [
+      {
+       "source": "overture_places",
+       "ref": "overture:fc92ae81-c552-4a28-a722-eb6efa642c22",
+       "name": "Hermes PaketShop",
+       "category": "spati_kiosk"
+      }
+     ]
+    }
+   ],
+   "distance_m": 7.3
+  },
+  {
+   "candidate_id": "poi_duplicate:node/1120057650|overture:e09cd576-2782-4635-9ee6-e286df3c14a9",
+   "module": "poi_duplicate",
+   "record_ref": "node/1120057650|overture:e09cd576-2782-4635-9ee6-e286df3c14a9",
+   "records": [
+    {
+     "external_ref": "node/1120057650",
+     "name": "Netto Marken-Discount",
+     "category": "supermarket",
+     "lat": 52.5498396,
+     "lon": 13.414376,
+     "providers": [
+      "openstreetmap"
+     ],
+     "members": [
+      {
+       "source": "osm_overpass",
+       "ref": "node/1120057650",
+       "name": "Netto Marken-Discount",
+       "category": "supermarket"
+      }
+     ]
+    },
+    {
+     "external_ref": "overture:e09cd576-2782-4635-9ee6-e286df3c14a9",
+     "name": "Ciao Bella",
+     "category": "supermarket",
+     "lat": 52.5497932434082,
+     "lon": 13.414250373840332,
+     "providers": [
+      "microsoft",
+      "overture"
+     ],
+     "members": [
+      {
+       "source": "overture_places",
+       "ref": "overture:e09cd576-2782-4635-9ee6-e286df3c14a9",
+       "name": "Ciao Bella",
+       "category": "supermarket"
+      }
+     ]
+    }
+   ],
+   "distance_m": 9.9
+  },
+  {
+   "candidate_id": "poi_duplicate:node/12741877924|node/1730496048",
+   "module": "poi_duplicate",
+   "record_ref": "node/12741877924|node/1730496048",
+   "records": [
+    {
+     "external_ref": "node/12741877924",
+     "name": "L'Epicerie",
+     "category": "spati_kiosk",
+     "lat": 52.5504954,
+     "lon": 13.4134875,
+     "providers": [
+      "openstreetmap"
+     ],
+     "members": [
+      {
+       "source": "osm_overpass",
+       "ref": "node/12741877924",
+       "name": "L'Epicerie",
+       "category": "spati_kiosk"
+      }
+     ]
+    },
+    {
+     "external_ref": "node/1730496048",
+     "name": null,
+     "category": "spati_kiosk",
+     "lat": 52.5505017,
+     "lon": 13.4133714,
+     "providers": [
+      "openstreetmap"
+     ],
+     "members": [
+      {
+       "source": "osm_overpass",
+       "ref": "node/1730496048",
+       "name": null,
+       "category": "spati_kiosk"
+      }
+     ]
+    }
+   ],
+   "distance_m": 7.9
+  },
+  {
+   "candidate_id": "poi_duplicate:node/13607939863|node/3452053746",
+   "module": "poi_duplicate",
+   "record_ref": "node/13607939863|node/3452053746",
+   "records": [
+    {
+     "external_ref": "node/13607939863",
+     "name": "Junge",
+     "category": "bakery",
+     "lat": 52.5496436,
+     "lon": 13.4149675,
+     "providers": [
+      "meta",
+      "openstreetmap",
+      "overture"
+     ],
+     "members": [
+      {
+       "source": "osm_overpass",
+       "ref": "node/13607939863",
+       "name": "Junge",
+       "category": "bakery"
+      },
+      {
+       "source": "overture_places",
+       "ref": "overture:9a3c1dc1-1f1d-49eb-8f89-a97ac63a05d4",
+       "name": "Junge Die Bäckerei",
+       "category": "bakery"
+      }
+     ]
+    },
+    {
+     "external_ref": "node/3452053746",
+     "name": "Kamps",
+     "category": "bakery",
+     "lat": 52.5496492,
+     "lon": 13.414906,
+     "providers": [
+      "meta",
+      "openstreetmap",
+      "overture"
+     ],
+     "members": [
+      {
+       "source": "osm_overpass",
+       "ref": "node/3452053746",
+       "name": "Kamps",
+       "category": "bakery"
+      },
+      {
+       "source": "overture_places",
+       "ref": "overture:d4933870-0640-4426-8359-34ef752eabe7",
+       "name": "Kamps",
+       "category": "bakery"
+      }
+     ]
+    }
+   ],
+   "distance_m": 4.2
+  },
+  {
+   "candidate_id": "poi_duplicate:node/1544182405|overture:07280fe9-d71e-4d1a-bc79-d301de727475",
+   "module": "poi_duplicate",
+   "record_ref": "node/1544182405|overture:07280fe9-d71e-4d1a-bc79-d301de727475",
+   "records": [
+    {
+     "external_ref": "node/1544182405",
+     "name": "Weingallerie",
+     "category": "beverages",
+     "lat": 52.5464996,
+     "lon": 13.4118848,
+     "providers": [
+      "openstreetmap"
+     ],
+     "members": [
+      {
+       "source": "osm_overpass",
+       "ref": "node/1544182405",
+       "name": "Weingallerie",
+       "category": "beverages"
+      }
+     ]
+    },
+    {
+     "external_ref": "overture:07280fe9-d71e-4d1a-bc79-d301de727475",
+     "name": "Joachim Rong Weingalerie",
+     "category": "beverages",
+     "lat": 52.54650115966797,
+     "lon": 13.411839485168457,
+     "providers": [
+      "meta",
+      "overture"
+     ],
+     "members": [
+      {
+       "source": "overture_places",
+       "ref": "overture:07280fe9-d71e-4d1a-bc79-d301de727475",
+       "name": "Joachim Rong Weingalerie",
+       "category": "beverages"
+      }
+     ]
+    }
+   ],
+   "distance_m": 3.1
+  },
+  {
+   "candidate_id": "poi_duplicate:node/1730496048|node/3452115332",
+   "module": "poi_duplicate",
+   "record_ref": "node/1730496048|node/3452115332",
+   "records": [
+    {
+     "external_ref": "node/1730496048",
+     "name": null,
+     "category": "spati_kiosk",
+     "lat": 52.5505017,
+     "lon": 13.4133714,
+     "providers": [
+      "openstreetmap"
+     ],
+     "members": [
+      {
+       "source": "osm_overpass",
+       "ref": "node/1730496048",
+       "name": null,
+       "category": "spati_kiosk"
+      }
+     ]
+    },
+    {
+     "external_ref": "node/3452115332",
+     "name": "Kasatschok Russische Spezialitäten",
+     "category": "spati_kiosk",
+     "lat": 52.5505164,
+     "lon": 13.4131676,
+     "providers": [
+      "openstreetmap"
+     ],
+     "members": [
+      {
+       "source": "osm_overpass",
+       "ref": "node/3452115332",
+       "name": "Kasatschok Russische Spezialitäten",
+       "category": "spati_kiosk"
+      }
+     ]
+    }
+   ],
+   "distance_m": 13.9
+  },
+  {
+   "candidate_id": "poi_duplicate:node/2947954495|node/9793667517",
+   "module": "poi_duplicate",
+   "record_ref": "node/2947954495|node/9793667517",
+   "records": [
+    {
+     "external_ref": "node/2947954495",
+     "name": "Krümel",
+     "category": "cafe",
+     "lat": 52.546906,
+     "lon": 13.417571,
+     "providers": [
+      "brightquery",
+      "openstreetmap",
+      "overture"
+     ],
+     "members": [
+      {
+       "source": "osm_overpass",
+       "ref": "node/2947954495",
+       "name": "Krümel",
+       "category": "cafe"
+      },
+      {
+       "source": "overture_places",
+       "ref": "overture:39db73e4-02e6-459e-93d2-736aef6bf623",
+       "name": "Krümel",
+       "category": "cafe"
+      }
+     ]
+    },
+    {
+     "external_ref": "node/9793667517",
+     "name": "Büro",
+     "category": "cafe",
+     "lat": 52.5468857,
+     "lon": 13.417617,
+     "providers": [
+      "openstreetmap"
+     ],
+     "members": [
+      {
+       "source": "osm_overpass",
+       "ref": "node/9793667517",
+       "name": "Büro",
+       "category": "cafe"
+      }
+     ]
+    }
+   ],
+   "distance_m": 3.8
+  },
+  {
+   "candidate_id": "poi_duplicate:node/2947954495|overture:2859af66-d967-4bb6-9cfe-0fef721e590b",
+   "module": "poi_duplicate",
+   "record_ref": "node/2947954495|overture:2859af66-d967-4bb6-9cfe-0fef721e590b",
+   "records": [
+    {
+     "external_ref": "node/2947954495",
+     "name": "Krümel",
+     "category": "cafe",
+     "lat": 52.546906,
+     "lon": 13.417571,
+     "providers": [
+      "brightquery",
+      "openstreetmap",
+      "overture"
+     ],
+     "members": [
+      {
+       "source": "osm_overpass",
+       "ref": "node/2947954495",
+       "name": "Krümel",
+       "category": "cafe"
+      },
+      {
+       "source": "overture_places",
+       "ref": "overture:39db73e4-02e6-459e-93d2-736aef6bf623",
+       "name": "Krümel",
+       "category": "cafe"
+      }
+     ]
+    },
+    {
+     "external_ref": "overture:2859af66-d967-4bb6-9cfe-0fef721e590b",
+     "name": "Café LUC",
+     "category": "cafe",
+     "lat": 52.54678726196289,
+     "lon": 13.417570114135742,
+     "providers": [
+      "meta",
+      "overture"
+     ],
+     "members": [
+      {
+       "source": "overture_places",
+       "ref": "overture:2859af66-d967-4bb6-9cfe-0fef721e590b",
+       "name": "Café LUC",
+       "category": "cafe"
+      }
+     ]
+    }
+   ],
+   "distance_m": 13.2
+  },
+  {
+   "candidate_id": "poi_duplicate:node/319181468|overture:4105630a-826f-4f52-b46a-c00ba8aa3eaa",
+   "module": "poi_duplicate",
+   "record_ref": "node/319181468|overture:4105630a-826f-4f52-b46a-c00ba8aa3eaa",
+   "records": [
+    {
+     "external_ref": "node/319181468",
+     "name": "Espresso House",
+     "category": "cafe",
+     "lat": 52.5498572,
+     "lon": 13.4132889,
+     "providers": [
+      "meta",
+      "openstreetmap",
+      "overture"
+     ],
+     "members": [
+      {
+       "source": "osm_overpass",
+       "ref": "node/319181468",
+       "name": "Espresso House",
+       "category": "cafe"
+      },
+      {
+       "source": "overture_places",
+       "ref": "overture:ec74e963-034d-4372-9aa7-ae6a6c497954",
+       "name": "Espresso House",
+       "category": "cafe"
+      }
+     ]
+    },
+    {
+     "external_ref": "overture:4105630a-826f-4f52-b46a-c00ba8aa3eaa",
+     "name": "Balzac Coffee",
+     "category": "cafe",
+     "lat": 52.54978561401367,
+     "lon": 13.41337776184082,
+     "providers": [
+      "foursquare",
+      "overture"
+     ],
+     "members": [
+      {
+       "source": "overture_places",
+       "ref": "overture:4105630a-826f-4f52-b46a-c00ba8aa3eaa",
+       "name": "Balzac Coffee",
+       "category": "cafe"
+      }
+     ]
+    }
+   ],
+   "distance_m": 10.0
+  },
+  {
+   "candidate_id": "poi_duplicate:node/4862470678|node/4862470679",
+   "module": "poi_duplicate",
+   "record_ref": "node/4862470678|node/4862470679",
+   "records": [
+    {
+     "external_ref": "node/4862470678",
+     "name": "Kuki's",
+     "category": "fast_food",
+     "lat": 52.5478477,
+     "lon": 13.4133786,
+     "providers": [
+      "openstreetmap"
+     ],
+     "members": [
+      {
+       "source": "osm_overpass",
+       "ref": "node/4862470678",
+       "name": "Kuki's",
+       "category": "fast_food"
+      }
+     ]
+    },
+    {
+     "external_ref": "node/4862470679",
+     "name": "Daddy's 100% Steak Kebap",
+     "category": "fast_food",
+     "lat": 52.5478411,
+     "lon": 13.4135033,
+     "providers": [
+      "openstreetmap"
+     ],
+     "members": [
+      {
+       "source": "osm_overpass",
+       "ref": "node/4862470679",
+       "name": "Daddy's 100% Steak Kebap",
+       "category": "fast_food"
+      }
+     ]
+    }
+   ],
+   "distance_m": 8.5
+  },
+  {
+   "candidate_id": "poi_duplicate:node/4877987721|overture:17c21656-5973-4a20-a979-eb7ad4cf5415",
+   "module": "poi_duplicate",
+   "record_ref": "node/4877987721|overture:17c21656-5973-4a20-a979-eb7ad4cf5415",
+   "records": [
+    {
+     "external_ref": "node/4877987721",
+     "name": "Kaplan",
+     "category": "fast_food",
+     "lat": 52.5493267,
+     "lon": 13.4133333,
+     "providers": [
+      "meta",
+      "openstreetmap",
+      "overture"
+     ],
+     "members": [
+      {
+       "source": "osm_overpass",
+       "ref": "node/4877987721",
+       "name": "Kaplan",
+       "category": "fast_food"
+      },
+      {
+       "source": "overture_places",
+       "ref": "overture:169fadf5-1112-4a24-ae00-676094cae0fe",
+       "name": "Kaplan Döner",
+       "category": "fast_food"
+      }
+     ]
+    },
+    {
+     "external_ref": "overture:17c21656-5973-4a20-a979-eb7ad4cf5415",
+     "name": "Kettwurst!",
+     "category": "fast_food",
+     "lat": 52.54937744140625,
+     "lon": 13.413458824157715,
+     "providers": [
+      "meta",
+      "overture"
+     ],
+     "members": [
+      {
+       "source": "overture_places",
+       "ref": "overture:17c21656-5973-4a20-a979-eb7ad4cf5415",
+       "name": "Kettwurst!",
+       "category": "fast_food"
+      }
+     ]
+    }
+   ],
+   "distance_m": 10.2
+  },
+  {
+   "candidate_id": "poi_duplicate:node/5354951057|overture:7f69665c-1d82-4e75-850b-65696fb89b8d",
+   "module": "poi_duplicate",
+   "record_ref": "node/5354951057|overture:7f69665c-1d82-4e75-850b-65696fb89b8d",
+   "records": [
+    {
+     "external_ref": "node/5354951057",
+     "name": "Brocca Café",
+     "category": "cafe",
+     "lat": 52.5474929,
+     "lon": 13.4094453,
+     "providers": [
+      "meta",
+      "openstreetmap",
+      "overture"
+     ],
+     "members": [
+      {
+       "source": "osm_overpass",
+       "ref": "node/5354951057",
+       "name": "Brocca Café",
+       "category": "cafe"
+      },
+      {
+       "source": "overture_places",
+       "ref": "overture:a8b9eeb0-ca4a-408a-b65c-5c1b69853810",
+       "name": "Brocca Café",
+       "category": "cafe"
+      }
+     ]
+    },
+    {
+     "external_ref": "overture:7f69665c-1d82-4e75-850b-65696fb89b8d",
+     "name": "YogaCafé - Mindful Life",
+     "category": "cafe",
+     "lat": 52.5475959777832,
+     "lon": 13.409470558166504,
+     "providers": [
+      "foursquare",
+      "overture"
+     ],
+     "members": [
+      {
+       "source": "overture_places",
+       "ref": "overture:7f69665c-1d82-4e75-850b-65696fb89b8d",
+       "name": "YogaCafé - Mindful Life",
+       "category": "cafe"
+      }
+     ]
+    }
+   ],
+   "distance_m": 11.6
+  },
+  {
+   "candidate_id": "poi_duplicate:node/5386152279|overture:bbf19468-47d7-4575-b94f-c891540c4bac",
+   "module": "poi_duplicate",
+   "record_ref": "node/5386152279|overture:bbf19468-47d7-4575-b94f-c891540c4bac",
+   "records": [
+    {
+     "external_ref": "node/5386152279",
+     "name": "dean&david",
+     "category": "fast_food",
+     "lat": 52.5498034,
+     "lon": 13.4141921,
+     "providers": [
+      "openstreetmap"
+     ],
+     "members": [
+      {
+       "source": "osm_overpass",
+       "ref": "node/5386152279",
+       "name": "dean&david",
+       "category": "fast_food"
+      }
+     ]
+    },
+    {
+     "external_ref": "overture:bbf19468-47d7-4575-b94f-c891540c4bac",
+     "name": "Wrapublic",
+     "category": "fast_food",
+     "lat": 52.549739837646484,
+     "lon": 13.414305686950684,
+     "providers": [
+      "foursquare",
+      "overture"
+     ],
+     "members": [
+      {
+       "source": "overture_places",
+       "ref": "overture:bbf19468-47d7-4575-b94f-c891540c4bac",
+       "name": "Wrapublic",
+       "category": "fast_food"
+      }
+     ]
+    }
+   ],
+   "distance_m": 10.4
+  },
+  {
+   "candidate_id": "poi_duplicate:node/9793667517|overture:2859af66-d967-4bb6-9cfe-0fef721e590b",
+   "module": "poi_duplicate",
+   "record_ref": "node/9793667517|overture:2859af66-d967-4bb6-9cfe-0fef721e590b",
+   "records": [
+    {
+     "external_ref": "node/9793667517",
+     "name": "Büro",
+     "category": "cafe",
+     "lat": 52.5468857,
+     "lon": 13.417617,
+     "providers": [
+      "openstreetmap"
+     ],
+     "members": [
+      {
+       "source": "osm_overpass",
+       "ref": "node/9793667517",
+       "name": "Büro",
+       "category": "cafe"
+      }
+     ]
+    },
+    {
+     "external_ref": "overture:2859af66-d967-4bb6-9cfe-0fef721e590b",
+     "name": "Café LUC",
+     "category": "cafe",
+     "lat": 52.54678726196289,
+     "lon": 13.417570114135742,
+     "providers": [
+      "meta",
+      "overture"
+     ],
+     "members": [
+      {
+       "source": "overture_places",
+       "ref": "overture:2859af66-d967-4bb6-9cfe-0fef721e590b",
+       "name": "Café LUC",
+       "category": "cafe"
+      }
+     ]
+    }
+   ],
+   "distance_m": 11.4
+  },
+  {
+   "candidate_id": "poi_duplicate:overture:3a9ed2c8-8686-44cf-b8a1-601d24046f83|overture:772c3edb-fb87-4e27-9dcf-aad81fc274a3",
+   "module": "poi_duplicate",
+   "record_ref": "overture:3a9ed2c8-8686-44cf-b8a1-601d24046f83|overture:772c3edb-fb87-4e27-9dcf-aad81fc274a3",
+   "records": [
+    {
+     "external_ref": "overture:3a9ed2c8-8686-44cf-b8a1-601d24046f83",
+     "name": "Francisco Deutschland GmbH",
+     "category": "supermarket",
+     "lat": 52.54989242553711,
+     "lon": 13.414167404174805,
+     "providers": [
+      "foursquare",
+      "overture"
+     ],
+     "members": [
+      {
+       "source": "overture_places",
+       "ref": "overture:3a9ed2c8-8686-44cf-b8a1-601d24046f83",
+       "name": "Francisco Deutschland GmbH",
+       "category": "supermarket"
+      }
+     ]
+    },
+    {
+     "external_ref": "overture:772c3edb-fb87-4e27-9dcf-aad81fc274a3",
+     "name": "REWE",
+     "category": "supermarket",
+     "lat": 52.549835205078125,
+     "lon": 13.41397476196289,
+     "providers": [
+      "microsoft",
+      "overture"
+     ],
+     "members": [
+      {
+       "source": "overture_places",
+       "ref": "overture:772c3edb-fb87-4e27-9dcf-aad81fc274a3",
+       "name": "REWE",
+       "category": "supermarket"
+      }
+     ]
+    }
+   ],
+   "distance_m": 14.5
+  },
+  {
+   "candidate_id": "poi_duplicate:overture:3a9ed2c8-8686-44cf-b8a1-601d24046f83|overture:e09cd576-2782-4635-9ee6-e286df3c14a9",
+   "module": "poi_duplicate",
+   "record_ref": "overture:3a9ed2c8-8686-44cf-b8a1-601d24046f83|overture:e09cd576-2782-4635-9ee6-e286df3c14a9",
+   "records": [
+    {
+     "external_ref": "overture:3a9ed2c8-8686-44cf-b8a1-601d24046f83",
+     "name": "Francisco Deutschland GmbH",
+     "category": "supermarket",
+     "lat": 52.54989242553711,
+     "lon": 13.414167404174805,
+     "providers": [
+      "foursquare",
+      "overture"
+     ],
+     "members": [
+      {
+       "source": "overture_places",
+       "ref": "overture:3a9ed2c8-8686-44cf-b8a1-601d24046f83",
+       "name": "Francisco Deutschland GmbH",
+       "category": "supermarket"
+      }
+     ]
+    },
+    {
+     "external_ref": "overture:e09cd576-2782-4635-9ee6-e286df3c14a9",
+     "name": "Ciao Bella",
+     "category": "supermarket",
+     "lat": 52.5497932434082,
+     "lon": 13.414250373840332,
+     "providers": [
+      "microsoft",
+      "overture"
+     ],
+     "members": [
+      {
+       "source": "overture_places",
+       "ref": "overture:e09cd576-2782-4635-9ee6-e286df3c14a9",
+       "name": "Ciao Bella",
+       "category": "supermarket"
+      }
+     ]
+    }
+   ],
+   "distance_m": 12.4
+  },
+  {
+   "candidate_id": "poi_duplicate:overture:3a9ed2c8-8686-44cf-b8a1-601d24046f83|overture:e4a9c3a0-636b-4cbf-aa9b-67e46628d2e0",
+   "module": "poi_duplicate",
+   "record_ref": "overture:3a9ed2c8-8686-44cf-b8a1-601d24046f83|overture:e4a9c3a0-636b-4cbf-aa9b-67e46628d2e0",
+   "records": [
+    {
+     "external_ref": "overture:3a9ed2c8-8686-44cf-b8a1-601d24046f83",
+     "name": "Francisco Deutschland GmbH",
+     "category": "supermarket",
+     "lat": 52.54989242553711,
+     "lon": 13.414167404174805,
+     "providers": [
+      "foursquare",
+      "overture"
+     ],
+     "members": [
+      {
+       "source": "overture_places",
+       "ref": "overture:3a9ed2c8-8686-44cf-b8a1-601d24046f83",
+       "name": "Francisco Deutschland GmbH",
+       "category": "supermarket"
+      }
+     ]
+    },
+    {
+     "external_ref": "overture:e4a9c3a0-636b-4cbf-aa9b-67e46628d2e0",
+     "name": "EDEKA Schönhauser Allee",
+     "category": "supermarket",
+     "lat": 52.549835205078125,
+     "lon": 13.41397476196289,
+     "providers": [
+      "microsoft",
+      "overture"
+     ],
+     "members": [
+      {
+       "source": "overture_places",
+       "ref": "overture:e4a9c3a0-636b-4cbf-aa9b-67e46628d2e0",
+       "name": "EDEKA Schönhauser Allee",
+       "category": "supermarket"
+      }
+     ]
+    }
+   ],
+   "distance_m": 14.5
+  },
+  {
+   "candidate_id": "poi_duplicate:overture:772c3edb-fb87-4e27-9dcf-aad81fc274a3|overture:e4a9c3a0-636b-4cbf-aa9b-67e46628d2e0",
+   "module": "poi_duplicate",
+   "record_ref": "overture:772c3edb-fb87-4e27-9dcf-aad81fc274a3|overture:e4a9c3a0-636b-4cbf-aa9b-67e46628d2e0",
+   "records": [
+    {
+     "external_ref": "overture:772c3edb-fb87-4e27-9dcf-aad81fc274a3",
+     "name": "REWE",
+     "category": "supermarket",
+     "lat": 52.549835205078125,
+     "lon": 13.41397476196289,
+     "providers": [
+      "microsoft",
+      "overture"
+     ],
+     "members": [
+      {
+       "source": "overture_places",
+       "ref": "overture:772c3edb-fb87-4e27-9dcf-aad81fc274a3",
+       "name": "REWE",
+       "category": "supermarket"
+      }
+     ]
+    },
+    {
+     "external_ref": "overture:e4a9c3a0-636b-4cbf-aa9b-67e46628d2e0",
+     "name": "EDEKA Schönhauser Allee",
+     "category": "supermarket",
+     "lat": 52.549835205078125,
+     "lon": 13.41397476196289,
+     "providers": [
+      "microsoft",
+      "overture"
+     ],
+     "members": [
+      {
+       "source": "overture_places",
+       "ref": "overture:e4a9c3a0-636b-4cbf-aa9b-67e46628d2e0",
+       "name": "EDEKA Schönhauser Allee",
+       "category": "supermarket"
+      }
+     ]
+    }
+   ],
+   "distance_m": 0.0
+  }
+ ]
+}
