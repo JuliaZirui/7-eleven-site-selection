@@ -2,7 +2,7 @@
 
 > **Based on analysis run #5** (2026-10-01, `scoring_v4`, POI snapshot 27 with `conflation_v1`). The figures below were not re-run for later versions. The current report is run #19 (`scoring_v7`, `conflation_v2`); only the update note at the end reflects later changes.
 
-2026-10-01 · Day 7 · MVP item "A single comparison of manual vs. tool-assisted workflow — time spent, quality, cost" ([project_plan_v3.md](../project_plan_v3.md)). Manual input: [manual_protocol.md](manual_protocol.md). Tool input: POI snapshot 27 (`poi_conflated`, OSM + Overture, data as of 2026-09-23) and metrics from analysis run #5.
+2026-10-01 · Day 7 · MVP item "A single comparison of manual vs. tool-assisted workflow — time spent, quality, cost" (original project plan). Manual input: [manual_protocol.md](manual_protocol.md). Tool input: POI snapshot 27 (`poi_conflated`, OSM + Overture, data as of 2026-09-23) and metrics from analysis run #5.
 
 ## Scope and limits
 

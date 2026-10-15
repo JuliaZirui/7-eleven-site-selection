@@ -165,7 +165,7 @@ Warschauer Straße stands out on two dimensions at once: it has the shortest nea
 
 ## Day 4: Agent Follow-Up Layer
 
-[`src/agent_followup.py`](src/agent_followup.py) adds the bounded, agent-driven layer described in project_plan_v3.md's "Division of Responsibilities": it reads what Day 1-3 already wrote (no new API calls at detection time), flags information gaps, and — only for gaps a re-fetch can plausibly fix — spends a rationed live-API call to try. Per the plan, the trigger is never a raw count ("fewer than 8 POIs"); it's one of three things:
+[`src/agent_followup.py`](src/agent_followup.py) adds the bounded, agent-driven layer described in the original project plan's "Division of Responsibilities": it reads what Day 1-3 already wrote (no new API calls at detection time), flags information gaps, and — only for gaps a re-fetch can plausibly fix — spends a rationed live-API call to try. Per the plan, the trigger is never a raw count ("fewer than 8 POIs"); it's one of three things:
 
 - **Missing** — an `area_metrics` row already flagged `is_missing=1`, or a competitor POI with no recorded `opening_hours_raw`
 - **Stale** — a source snapshot backing the area is older than 14 days
@@ -192,7 +192,7 @@ Tool selection is a fixed rule table, not an open-ended decision, matching "the 
 
 ## Day 4 (extra): IHK Gewerbedaten Ingestion
 
-project_plan_v3.md lists "IHK or VBB data ingestion" as Day 4 work to add if time allows. Both were checked against the actual live data before choosing:
+The original project plan listed "IHK or VBB data ingestion" as Day 4 work to add if time allows. Both were checked against the actual live data before choosing:
 
 - **VBB** publishes GTFS schedule data (routes/stops/trips), not ridership or foot-traffic counts. Ingesting it would mostly re-derive a transit-magnitude signal already settled in Day 1 via DB's Preisklasse grading (see "Data Verification Log" above), for a ~76MB feed covering the entire Berlin-Brandenburg network — a lot of ingestion weight for a metric this project already has a defensible proxy for.
 - **IHK Berlin's "Gewerbedaten"** (`gdi.berlin.de/services/wfs/gewerbedaten`, license *Datenlizenz Deutschland – Zero – Version 2.0*, no attribution required) publishes ~367,500 anonymized, geocoded business-registration points citywide — branch (`branch_top_level_desc`/`ihk_branch_desc`, NACE-coded), employee-size class, business age, legal form, and LOR Planungsraum — refreshed monthly. This adds a genuinely new signal: registered-business density and composition within each node's own 400m radius, which can directly test the customer-profile hypotheses in this file's node table (e.g. "office + tourist mix" for Warschauer Straße) against real evidence instead of only the qualitative rationale used to build the shortlist. IHK was the clearer win and is what got built.
@@ -251,7 +251,7 @@ Two gaps surfaced while building the scoring, both fixed in [`src/metrics_pipeli
 
 ## Day 6: Fixed Test Cases
 
-`python3 tests/run_day6.py` runs all four fixed test-case categories from project_plan_v3.md, plus a supplementary suite for the Day 5 layer, then an end-to-end reproducibility check. It writes a time/cost/quality log to `reports/day6_test_log_<stamp>.md` and `.json`; the first published log was `reports/day6_test_log_20261004T081832Z.md` (only the latest log is kept in `reports/`). The tests use stdlib `unittest` (no new dependency). Every test builds its own throwaway SQLite database from `db/schema.sql` and redirects every raw-file/report path into a temp dir. A network guard makes any HTTP call a test didn't explicitly mock raise an error, so the real `db/site_selection.db` is never written (checksum identical before and after) and no test can pass by quietly hitting a live API.
+`python3 tests/run_day6.py` runs all four fixed test-case categories from the original project plan, plus a supplementary suite for the Day 5 layer, then an end-to-end reproducibility check. It writes a time/cost/quality log to `reports/day6_test_log_<stamp>.md` and `.json`; the first published log was `reports/day6_test_log_20261004T081832Z.md` (only the latest log is kept in `reports/`). The tests use stdlib `unittest` (no new dependency). Every test builds its own throwaway SQLite database from `db/schema.sql` and redirects every raw-file/report path into a temp dir. A network guard makes any HTTP call a test didn't explicitly mock raise an error, so the real `db/site_selection.db` is never written (checksum identical before and after) and no test can pass by quietly hitting a live API.
 
 | Category | File | What it pins down |
 | --- | --- | --- |

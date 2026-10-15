@@ -3,7 +3,7 @@ business-registration points (IHK Berlin's active-member register) via
 the Berlin Senate's public WFS service (gdi.berlin.de).
 
 Source note: this is the Day 4 (if-time-allows) "IHK or VBB data
-ingestion" item from project_plan_v3.md's 7-day plan. IHK was chosen
+ingestion" item from the original 7-day project plan. IHK was chosen
 over VBB: VBB's open data is GTFS schedule/route data, not ridership
 or foot-traffic figures, so ingesting it would mostly re-derive a
 transit-magnitude signal Day 1 already settled via DB's Preisklasse

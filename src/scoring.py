@@ -13,7 +13,7 @@ A high fit on thin evidence is a "verify first" candidate, not a
 winner; folding the two into one weighted total would hide exactly the
 distinction the report needs to make.
 
-Everything here is Program work (project_plan_v3.md, "Division of
+Everything here is Program work (project rule, "Division of
 Responsibilities"): reads the latest area_metrics rows, no API calls,
 no LLM judgment. Every criterion value carries the metric_ids it was
 derived from so the report can cite and re-verify each figure.

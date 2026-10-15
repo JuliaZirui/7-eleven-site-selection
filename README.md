@@ -152,7 +152,6 @@ What can overturn this ranking is a wrong input, not a different weight. So the 
 | --- | --- |
 | [store_hypothesis.md](store_hypothesis.md) | Store concept and European benchmark chains |
 | [site_candidates.md](site_candidates.md) | Business question, node selection, data-verification log |
-| [project_plan_v3.md](project_plan_v3.md) | Original v1 scope, architecture, 7-day plan |
 | [plan_llm_tool_selection.md](plan_llm_tool_selection.md) | Plan for the LLM follow-up policy and its evaluation (done) |
 | [plan_llm_data_audit.md](plan_llm_data_audit.md) | Plan for the LLM data-plausibility audit, its pre-registration and amendments (done; adopted) |
 | [plan_llm_opening_hours.md](plan_llm_opening_hours.md) | Plan for LLM opening-hours extraction (not started) |
@@ -161,7 +160,7 @@ What can overturn this ranking is a wrong input, not a different weight. So the 
 | `reports/` | Latest site report, score file and test log (earlier runs are kept in the database, not in the repo) |
 | `db/` | SQLite database, schema and raw source snapshots ([GTFS note](db/raw/vbb_gtfs/README.md)) |
 | `.github/workflows/` | CI: test suite + offline reproducibility check |
-| [portfolio/](portfolio/README.md) | Two-page portfolio (PDF and page images), architecture diagram, case-study charts, and the scripts that build them |
+| [portfolio/](portfolio/portfolio.pdf) | Two-page portfolio (PDF) and its pages as images, shown at the top of this README |
 | `comparison/` | Manual vs. tool benchmark and the data-quality fixes it led to; follow-up policy scenarios, results and findings; data-audit answer key, prompt log, labels, evaluation, findings, and the review queue |
 
 Requires Python 3.9+. Everything below runs offline from the committed database and snapshots:

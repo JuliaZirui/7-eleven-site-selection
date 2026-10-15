@@ -2,8 +2,8 @@
 
 Day 3's metrics_pipeline.py is fixed Program work: no judgment, no new
 API calls. This module adds the "bounded, agent-driven follow-up"
-piece from project_plan_v3.md's MVP scope and "Division of
-Responsibilities" table: identify gaps that actually affect the
+piece from the original project plan's MVP scope and "Division of
+Responsibilities": identify gaps that actually affect the
 conclusions, pick a follow-up tool, validate the call budget, update
 evidence, and explain what it did -- or explain why it stopped.
 
