@@ -1,6 +1,6 @@
 # Manual Baseline Protocol — Brandenburger Tor
 
-2026-09-28 · Day 7 · Input for the manual vs. tool-assisted comparison (project_plan_v3.md, MVP item "A single comparison of manual vs. tool-assisted workflow — time spent, quality, cost")
+2026-09-28 · Day 7 · Input for the manual vs. tool-assisted comparison (original project plan, MVP item "A single comparison of manual vs. tool-assisted workflow — time spent, quality, cost")
 
 ## Reduced scope (decided 2026-10-01)
 

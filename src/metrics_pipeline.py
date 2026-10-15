@@ -1,7 +1,7 @@
 """Day 3 pipeline: fixed computation layer. Reads the observations
 already written by poi_pipeline.py / lor_pipeline.py (Day 1-2) and
 computes deterministic area_metrics rows — no new API calls, no LLM
-judgment. Per project_plan_v3.md's "Division of Responsibilities",
+judgment. Per the project's "Division of Responsibilities",
 this whole file is Program work: cleaning is already done, this stage
 is spatial calculation, opening-hours parsing, and scoring inputs.
 

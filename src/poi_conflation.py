@@ -1,6 +1,6 @@
 """Cross-source POI conflation: OSM + Overture + Foursquare -> one competitor set.
 
-project_plan_v3.md's rule "records from different sources are never
+The project rule "records from different sources are never
 summed directly" is what this module enforces for POIs. Each source's
 latest per-area snapshot (entity_type='poi_source') is cut to the same
 radius, matched shop-to-shop, and written as one new snapshot

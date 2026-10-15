@@ -1,6 +1,6 @@
 """Day 5: render the sourced shortlist report and record the run.
 
-Pipeline position (project_plan_v3.md workflow): "Compute area
+Pipeline position (project workflow): "Compute area
 comparison results" -> "Generate sourced report" -> "Verify figures &
 citations". Scoring and sensitivity come from scoring.py; this module
 turns them into templates/report_template.md, verifies every cited

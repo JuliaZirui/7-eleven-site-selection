@@ -1,6 +1,6 @@
 """Fixed test case 1/4: missing data.
 
-Rule under test (project_plan_v3.md, "Key Rules"): unknown values are
+Rule under test (project key rule): unknown values are
 never filled with 0 -- missing is explicitly flagged, and every layer
 downstream (metrics, Agent gap detection, scoring, report) carries the
 flag forward instead of papering over it.
