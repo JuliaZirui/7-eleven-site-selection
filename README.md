@@ -6,6 +6,15 @@ A desk-research tool for retail expansion teams and the consultants who advise t
 
 > **Disclaimer.** This is a hypothetical case I set up myself. It does not represent an actual mandate from 7-Eleven or a market-entry plan by 7-Eleven. The tool ranks sites by *priority for on-site diligence*. It does not forecast revenue, and it does not decide where a store should open.
 
+## Portfolio (two pages)
+
+A two-page summary of the project: the situation, how the system works, the case study and the manual-vs-tool comparison. [Download the PDF](portfolio/portfolio.pdf).
+
+<p>
+  <a href="portfolio/portfolio.pdf"><img src="portfolio/portfolio_p1.png" alt="Portfolio page 1: situation, system architecture and highlights" width="49%"></a>
+  <a href="portfolio/portfolio.pdf"><img src="portfolio/portfolio_p2.png" alt="Portfolio page 2: case study results and manual vs. tool" width="49%"></a>
+</p>
+
 ## Who it is for
 
 - **Retail expansion / site-selection teams** shortlisting locations in a new city.
@@ -152,6 +161,7 @@ What can overturn this ranking is a wrong input, not a different weight. So the 
 | `reports/` | Latest site report, score file and test log (earlier runs are kept in the database, not in the repo) |
 | `db/` | SQLite database, schema and raw source snapshots ([GTFS note](db/raw/vbb_gtfs/README.md)) |
 | `.github/workflows/` | CI: test suite + offline reproducibility check |
+| [portfolio/](portfolio/README.md) | Two-page portfolio (PDF and page images), architecture diagram, case-study charts, and the scripts that build them |
 | `comparison/` | Manual vs. tool benchmark and the data-quality fixes it led to; follow-up policy scenarios, results and findings; data-audit answer key, prompt log, labels, evaluation, findings, and the review queue |
 
 Requires Python 3.9+. Everything below runs offline from the committed database and snapshots:
