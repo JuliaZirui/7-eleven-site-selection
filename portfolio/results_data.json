@@ -1,0 +1,1144 @@
+{
+ "run_at": "2026-10-08T18:14:55.099984+00:00",
+ "nodes": {
+  "brandenburger_tor": {
+   "fit": 94.2,
+   "evidence": 72.9,
+   "weekday": {
+    "residents": 1253.845933230495,
+    "workers": 9380.718221248357,
+    "visitors": 14171.64566122507
+   },
+   "weekend": {
+    "residents": 1253.845933230495,
+    "workers": 753.249455012636,
+    "visitors": 14171.64566122507
+   },
+   "people_weekday": 24806.20981570392,
+   "comp_per10k_weekday": 9.67499677633399,
+   "people_weekend": 16178.7410494682,
+   "comp_per10k_weekend": 13.90713896168057
+  },
+  "warschauer_strasse": {
+   "fit": 69.1,
+   "evidence": 76.4,
+   "weekday": {
+    "residents": 3276.8927702997635,
+    "workers": 14101.178207390007,
+    "visitors": 5791.303169574949
+   },
+   "weekend": {
+    "residents": 3276.8927702997635,
+    "workers": 1170.5654539699963,
+    "visitors": 6159.892913164693
+   },
+   "people_weekday": 23169.37414726472,
+   "comp_per10k_weekday": 27.622671028235594,
+   "people_weekend": 10607.351137434453,
+   "comp_per10k_weekend": 54.67906101016297
+  },
+  "schoenhauser_allee": {
+   "fit": 23.7,
+   "evidence": 90.0,
+   "weekday": {
+    "residents": 10666.964162719822,
+    "workers": 3231.71311512081,
+    "visitors": 540.5592356187441
+   },
+   "weekend": {
+    "residents": 10666.964162719822,
+    "workers": 498.2506561333931,
+    "visitors": 540.5592356187441
+   },
+   "people_weekday": 14439.236513459377,
+   "comp_per10k_weekday": 85.87711676058132,
+   "people_weekend": 11705.77405447196,
+   "comp_per10k_weekend": 91.40788084759141
+  }
+ },
+ "scenarios": [
+  [
+   "Baseline (weekday 5 : weekend 2)",
+   {
+    "brandenburger_tor": 94.2,
+    "warschauer_strasse": 69.1,
+    "schoenhauser_allee": 23.7
+   }
+  ],
+  [
+   "Weekday only",
+   {
+    "brandenburger_tor": 91.9,
+    "warschauer_strasse": 74.1,
+    "schoenhauser_allee": 17.2
+   }
+  ],
+  [
+   "Weekend / holiday only",
+   {
+    "brandenburger_tor": 100.0,
+    "warschauer_strasse": 56.6,
+    "schoenhauser_allee": 39.9
+   }
+  ],
+  [
+   "Visitors per pageview: low (P25)",
+   {
+    "brandenburger_tor": 75.3,
+    "warschauer_strasse": 59.5,
+    "schoenhauser_allee": 22.7
+   }
+  ],
+  [
+   "Visitors per pageview: high (P75)",
+   {
+    "brandenburger_tor": 100.0,
+    "warschauer_strasse": 85.8,
+    "schoenhauser_allee": 26.8
+   }
+  ],
+  [
+   "Workers: low end of verified range",
+   {
+    "brandenburger_tor": 91.2,
+    "warschauer_strasse": 65.1,
+    "schoenhauser_allee": 23.7
+   }
+  ],
+  [
+   "Workers: high end of verified range",
+   {
+    "brandenburger_tor": 97.4,
+    "warschauer_strasse": 71.1,
+    "schoenhauser_allee": 23.7
+   }
+  ],
+  [
+   "Competitors scaled for under-mapping",
+   {
+    "brandenburger_tor": 84.5,
+    "warschauer_strasse": 52.4,
+    "schoenhauser_allee": 23.7
+   }
+  ],
+  [
+   "Competition as absolute counts",
+   {
+    "brandenburger_tor": 89.1,
+    "warschauer_strasse": 60.4,
+    "schoenhauser_allee": 23.7
+   }
+  ],
+  [
+   "Both downsides at once",
+   {
+    "brandenburger_tor": 59.0,
+    "warschauer_strasse": 43.3,
+    "schoenhauser_allee": 22.7
+   }
+  ]
+ ],
+ "mapping": {
+  "factors": {
+   "brandenburger_tor": 2.3,
+   "warschauer_strasse": 1.6,
+   "schoenhauser_allee": 1.0
+  },
+  "break_even": 5.9
+ },
+ "joint_crossover": 0.8608851082193332,
+ "anchors": {
+  "people_weekday": [
+   7200,
+   28200
+  ],
+  "per10k_weekday": [
+   67.7,
+   12.2
+  ],
+  "people_weekend": [
+   5400,
+   13300
+  ],
+  "per10k_weekend": [
+   90.9,
+   14.4
+  ]
+ },
+ "reference": [
+  {
+   "station": "Tiergarten",
+   "people": 8254,
+   "per10k": 7.27,
+   "people_we": 6947,
+   "per10k_we": 8.64
+  },
+  {
+   "station": "Storkower Stra\u00dfe",
+   "people": 6948,
+   "per10k": 35.98,
+   "people_we": 5464,
+   "per10k_we": 33.86
+  },
+  {
+   "station": "Jannowitzbr\u00fccke",
+   "people": 12840,
+   "per10k": 24.14,
+   "people_we": 7556,
+   "per10k_we": 35.73
+  },
+  {
+   "station": "Westend",
+   "people": 9574,
+   "per10k": 28.2,
+   "people_we": 6039,
+   "per10k_we": 35.6
+  },
+  {
+   "station": "Hohenzollerndamm",
+   "people": 9007,
+   "per10k": 13.32,
+   "people_we": 5119,
+   "per10k_we": 17.58
+  },
+  {
+   "station": "Bellevue",
+   "people": 10857,
+   "per10k": 13.82,
+   "people_we": 10022,
+   "per10k_we": 13.97
+  },
+  {
+   "station": "Amrumer Stra\u00dfe",
+   "people": 12951,
+   "per10k": 29.34,
+   "people_we": 10405,
+   "per10k_we": 31.23
+  },
+  {
+   "station": "Zoologischer Garten",
+   "people": 36796,
+   "per10k": 31.8,
+   "people_we": 11442,
+   "per10k_we": 97.01
+  },
+  {
+   "station": "Kurf\u00fcrstendamm",
+   "people": 46801,
+   "per10k": 28.42,
+   "people_we": 13329,
+   "per10k_we": 92.66
+  },
+  {
+   "station": "G\u00fcntzelstra\u00dfe",
+   "people": 14861,
+   "per10k": 21.53,
+   "people_we": 11007,
+   "per10k_we": 23.62
+  },
+  {
+   "station": "Berliner Stra\u00dfe",
+   "people": 14691,
+   "per10k": 19.06,
+   "people_we": 8874,
+   "per10k_we": 23.66
+  },
+  {
+   "station": "Friedrich-Wilhelm-Platz",
+   "people": 10302,
+   "per10k": 21.35,
+   "people_we": 9134,
+   "per10k_we": 17.52
+  },
+  {
+   "station": "Beusselstra\u00dfe",
+   "people": 9793,
+   "per10k": 28.59,
+   "people_we": 6510,
+   "per10k_we": 26.88
+  },
+  {
+   "station": "Deutsche Oper",
+   "people": 13586,
+   "per10k": 43.43,
+   "people_we": 10792,
+   "per10k_we": 45.4
+  },
+  {
+   "station": "Ernst-Reuter-Platz",
+   "people": 19073,
+   "per10k": 23.59,
+   "people_we": 6837,
+   "per10k_we": 51.19
+  },
+  {
+   "station": "Innsbrucker Platz",
+   "people": 13515,
+   "per10k": 13.32,
+   "people_we": 9295,
+   "per10k_we": 15.06
+  },
+  {
+   "station": "Bayerischer Platz",
+   "people": 11662,
+   "per10k": 37.73,
+   "people_we": 10439,
+   "per10k_we": 30.65
+  },
+  {
+   "station": "Brandenburger Tor",
+   "people": 24673,
+   "per10k": 10.54,
+   "people_we": 16241,
+   "per10k_we": 15.09
+  },
+  {
+   "station": "Bismarckstra\u00dfe",
+   "people": 14125,
+   "per10k": 60.18,
+   "people_we": 11129,
+   "per10k_we": 64.69
+  },
+  {
+   "station": "Richard-Wagner-Platz",
+   "people": 12326,
+   "per10k": 31.64,
+   "people_we": 10248,
+   "per10k_we": 31.23
+  },
+  {
+   "station": "Westkreuz",
+   "people": 5517,
+   "per10k": 5.44,
+   "people_we": 4788,
+   "per10k_we": 6.27
+  },
+  {
+   "station": "Eisenacher Stra\u00dfe",
+   "people": 12287,
+   "per10k": 56.16,
+   "people_we": 9983,
+   "per10k_we": 60.6
+  },
+  {
+   "station": "Julius-Leber-Br\u00fccke",
+   "people": 12734,
+   "per10k": 76.96,
+   "people_we": 8817,
+   "per10k_we": 90.74
+  },
+  {
+   "station": "S\u00fcdstern",
+   "people": 9988,
+   "per10k": 39.05,
+   "people_we": 8278,
+   "per10k_we": 44.7
+  },
+  {
+   "station": "Yorckstra\u00dfe",
+   "people": 6751,
+   "per10k": 38.51,
+   "people_we": 6465,
+   "per10k_we": 34.8
+  },
+  {
+   "station": "Gneisenaustra\u00dfe",
+   "people": 12299,
+   "per10k": 73.99,
+   "people_we": 7918,
+   "per10k_we": 97.88
+  },
+  {
+   "station": "Treptower Park",
+   "people": 5505,
+   "per10k": 45.42,
+   "people_we": 5390,
+   "per10k_we": 43.6
+  },
+  {
+   "station": "Kaiserdamm",
+   "people": 6996,
+   "per10k": 52.89,
+   "people_we": 4800,
+   "per10k_we": 64.58
+  },
+  {
+   "station": "Sch\u00f6nhauser Allee",
+   "people": 14737,
+   "per10k": 87.53,
+   "people_we": 12045,
+   "per10k_we": 91.74
+  },
+  {
+   "station": "Heidelberger Platz",
+   "people": 8187,
+   "per10k": 13.44,
+   "people_we": 5395,
+   "per10k_we": 14.83
+  },
+  {
+   "station": "Savignyplatz",
+   "people": 21131,
+   "per10k": 42.12,
+   "people_we": 14644,
+   "per10k_we": 54.29
+  },
+  {
+   "station": "Wedding",
+   "people": 23340,
+   "per10k": 22.28,
+   "people_we": 10475,
+   "per10k_we": 41.53
+  },
+  {
+   "station": "Halensee",
+   "people": 10232,
+   "per10k": 35.18,
+   "people_we": 6365,
+   "per10k_we": 47.13
+  },
+  {
+   "station": "Ostkreuz",
+   "people": 11032,
+   "per10k": 66.17,
+   "people_we": 6717,
+   "per10k_we": 100.5
+  },
+  {
+   "station": "S\u00fcdkreuz (Ringbahn)",
+   "people": 8191,
+   "per10k": 25.64,
+   "people_we": 5305,
+   "per10k_we": 36.76
+  },
+  {
+   "station": "Gesundbrunnen",
+   "people": 9980,
+   "per10k": 57.11,
+   "people_we": 8766,
+   "per10k_we": 55.9
+  },
+  {
+   "station": "Rosenthaler Platz",
+   "people": 26301,
+   "per10k": 42.96,
+   "people_we": 11413,
+   "per10k_we": 90.69
+  },
+  {
+   "station": "Tempelhof",
+   "people": 9622,
+   "per10k": 29.1,
+   "people_we": 3812,
+   "per10k_we": 61.64
+  },
+  {
+   "station": "Nordbahnhof",
+   "people": 27975,
+   "per10k": 11.44,
+   "people_we": 9986,
+   "per10k_we": 28.04
+  },
+  {
+   "station": "Gleisdreieck",
+   "people": 9969,
+   "per10k": 15.05,
+   "people_we": 4740,
+   "per10k_we": 28.48
+  },
+  {
+   "station": "Oranienburger Stra\u00dfe",
+   "people": 26080,
+   "per10k": 24.92,
+   "people_we": 12894,
+   "per10k_we": 46.15
+  },
+  {
+   "station": "Messe Nord/ZOB",
+   "people": 15667,
+   "per10k": 22.98,
+   "people_we": 5203,
+   "per10k_we": 60.54
+  },
+  {
+   "station": "Humboldthain",
+   "people": 6716,
+   "per10k": 29.78,
+   "people_we": 5392,
+   "per10k_we": 33.38
+  },
+  {
+   "station": "Sch\u00f6neberg",
+   "people": 12365,
+   "per10k": 39.63,
+   "people_we": 6894,
+   "per10k_we": 60.92
+  },
+  {
+   "station": "Ostbahnhof",
+   "people": 16764,
+   "per10k": 28.63,
+   "people_we": 7459,
+   "per10k_we": 60.33
+  },
+  {
+   "station": "Prenzlauer Allee",
+   "people": 12454,
+   "per10k": 42.56,
+   "people_we": 11624,
+   "per10k_we": 37.42
+  },
+  {
+   "station": "Stadtmitte",
+   "people": 33573,
+   "per10k": 17.28,
+   "people_we": 7788,
+   "per10k_we": 64.2
+  },
+  {
+   "station": "Sonnenallee",
+   "people": 14357,
+   "per10k": 20.9,
+   "people_we": 7445,
+   "per10k_we": 34.25
+  },
+  {
+   "station": "Warschauer Stra\u00dfe",
+   "people": 23942,
+   "per10k": 26.31,
+   "people_we": 12583,
+   "per10k_we": 45.3
+  },
+  {
+   "station": "Greifswalder Stra\u00dfe",
+   "people": 7040,
+   "per10k": 38.35,
+   "people_we": 6584,
+   "per10k_we": 35.69
+  },
+  {
+   "station": "Seestra\u00dfe",
+   "people": 10115,
+   "per10k": 87.99,
+   "people_we": 9250,
+   "per10k_we": 80.0
+  },
+  {
+   "station": "Leopoldplatz",
+   "people": 12794,
+   "per10k": 74.25,
+   "people_we": 11911,
+   "per10k_we": 66.33
+  },
+  {
+   "station": "Bundesplatz",
+   "people": 11400,
+   "per10k": 28.95,
+   "people_we": 9243,
+   "per10k_we": 29.21
+  },
+  {
+   "station": "Charlottenburg",
+   "people": 14158,
+   "per10k": 77.69,
+   "people_we": 10886,
+   "per10k_we": 88.19
+  },
+  {
+   "station": "Naturkundemuseum",
+   "people": 29090,
+   "per10k": 12.72,
+   "people_we": 9458,
+   "per10k_we": 32.78
+  },
+  {
+   "station": "Voltastra\u00dfe",
+   "people": 9880,
+   "per10k": 35.43,
+   "people_we": 8225,
+   "per10k_we": 35.26
+  },
+  {
+   "station": "Moritzplatz",
+   "people": 16029,
+   "per10k": 25.58,
+   "people_we": 9738,
+   "per10k_we": 33.37
+  },
+  {
+   "station": "Sch\u00f6nleinstra\u00dfe",
+   "people": 14957,
+   "per10k": 80.9,
+   "people_we": 11583,
+   "per10k_we": 87.2
+  },
+  {
+   "station": "Boddinstra\u00dfe",
+   "people": 10109,
+   "per10k": 91.01,
+   "people_we": 8722,
+   "per10k_we": 92.3
+  },
+  {
+   "station": "Leinestra\u00dfe",
+   "people": 9565,
+   "per10k": 76.32,
+   "people_we": 9066,
+   "per10k_we": 70.6
+  },
+  {
+   "station": "Strausberger Platz",
+   "people": 8416,
+   "per10k": 11.88,
+   "people_we": 7610,
+   "per10k_we": 9.86
+  },
+  {
+   "station": "Weberwiese",
+   "people": 13469,
+   "per10k": 12.62,
+   "people_we": 10979,
+   "per10k_we": 12.75
+  },
+  {
+   "station": "S Anhalter Bahnhof",
+   "people": 17642,
+   "per10k": 12.47,
+   "people_we": 11664,
+   "per10k_we": 14.57
+  },
+  {
+   "station": "Potsdamer Platz",
+   "people": 49010,
+   "per10k": 23.06,
+   "people_we": 17082,
+   "per10k_we": 61.17
+  },
+  {
+   "station": "Hallesches Tor",
+   "people": 10794,
+   "per10k": 25.94,
+   "people_we": 8447,
+   "per10k_we": 26.64
+  },
+  {
+   "station": "U Potsdamer Platz",
+   "people": 47435,
+   "per10k": 21.5,
+   "people_we": 17309,
+   "per10k_we": 54.59
+  },
+  {
+   "station": "Hauptbahnhof",
+   "people": 30342,
+   "per10k": 19.77,
+   "people_we": 12555,
+   "per10k_we": 45.8
+  },
+  {
+   "station": "Hackescher Markt",
+   "people": 32265,
+   "per10k": 34.09,
+   "people_we": 14559,
+   "per10k_we": 70.74
+  },
+  {
+   "station": "Weinmeisterstra\u00dfe",
+   "people": 19415,
+   "per10k": 51.51,
+   "people_we": 7695,
+   "per10k_we": 117.61
+  },
+  {
+   "station": "S Friedrichstra\u00dfe",
+   "people": 29322,
+   "per10k": 27.96,
+   "people_we": 9103,
+   "per10k_we": 80.19
+  },
+  {
+   "station": "U Friedrichstra\u00dfe",
+   "people": 29005,
+   "per10k": 30.68,
+   "people_we": 8768,
+   "per10k_we": 92.38
+  },
+  {
+   "station": "Anton-Wilhelm-Amo-Stra\u00dfe",
+   "people": 23187,
+   "per10k": 30.19,
+   "people_we": 7202,
+   "per10k_we": 84.01
+  },
+  {
+   "station": "Landsberger Allee",
+   "people": 16220,
+   "per10k": 12.33,
+   "people_we": 8273,
+   "per10k_we": 19.34
+  },
+  {
+   "station": "Friedenau",
+   "people": 6241,
+   "per10k": 38.46,
+   "people_we": 5652,
+   "per10k_we": 38.04
+  },
+  {
+   "station": "G\u00f6rlitzer Bahnhof",
+   "people": 14841,
+   "per10k": 74.8,
+   "people_we": 13731,
+   "per10k_we": 70.28
+  },
+  {
+   "station": "Klosterstra\u00dfe",
+   "people": 15809,
+   "per10k": 36.06,
+   "people_we": 6968,
+   "per10k_we": 74.63
+  },
+  {
+   "station": "Schillingstra\u00dfe",
+   "people": 17409,
+   "per10k": 6.32,
+   "people_we": 7160,
+   "per10k_we": 11.87
+  },
+  {
+   "station": "Frankfurter Tor",
+   "people": 12470,
+   "per10k": 44.11,
+   "people_we": 11256,
+   "per10k_we": 41.31
+  },
+  {
+   "station": "Schlesisches Tor",
+   "people": 16450,
+   "per10k": 60.18,
+   "people_we": 12255,
+   "per10k_we": 70.99
+  },
+  {
+   "station": "Westhafen",
+   "people": 6144,
+   "per10k": 9.77,
+   "people_we": 3400,
+   "per10k_we": 14.71
+  },
+  {
+   "station": "Prinzenstra\u00dfe",
+   "people": 10313,
+   "per10k": 14.55,
+   "people_we": 9399,
+   "per10k_we": 14.36
+  },
+  {
+   "station": "Platz der Luftbr\u00fccke",
+   "people": 14605,
+   "per10k": 21.91,
+   "people_we": 12626,
+   "per10k_we": 21.38
+  },
+  {
+   "station": "Kottbusser Tor",
+   "people": 14755,
+   "per10k": 96.24,
+   "people_we": 10903,
+   "per10k_we": 111.9
+  },
+  {
+   "station": "Sophie-Charlotte-Platz",
+   "people": 12133,
+   "per10k": 37.91,
+   "people_we": 10323,
+   "per10k_we": 39.23
+  },
+  {
+   "station": "Nollendorfplatz",
+   "people": 13489,
+   "per10k": 54.12,
+   "people_we": 11798,
+   "per10k_we": 55.09
+  },
+  {
+   "station": "Spittelmarkt",
+   "people": 16741,
+   "per10k": 15.53,
+   "people_we": 8201,
+   "per10k_we": 20.12
+  },
+  {
+   "station": "Kurf\u00fcrstenstra\u00dfe",
+   "people": 16816,
+   "per10k": 41.03,
+   "people_we": 10332,
+   "per10k_we": 54.68
+  },
+  {
+   "station": "Schwartzkopffstra\u00dfe",
+   "people": 7964,
+   "per10k": 28.88,
+   "people_we": 5046,
+   "per10k_we": 44.59
+  },
+  {
+   "station": "Alexanderplatz",
+   "people": 36899,
+   "per10k": 36.86,
+   "people_we": 8955,
+   "per10k_we": 139.59
+  },
+  {
+   "station": "Senefelderplatz",
+   "people": 19156,
+   "per10k": 30.8,
+   "people_we": 11404,
+   "per10k_we": 41.21
+  },
+  {
+   "station": "Konstanzer Stra\u00dfe",
+   "people": 8916,
+   "per10k": 26.92,
+   "people_we": 7107,
+   "per10k_we": 28.14
+  },
+  {
+   "station": "Karl-Marx-Stra\u00dfe",
+   "people": 14436,
+   "per10k": 47.1,
+   "people_we": 11209,
+   "per10k_we": 50.85
+  },
+  {
+   "station": "Oranienburger Tor",
+   "people": 24885,
+   "per10k": 28.13,
+   "people_we": 8778,
+   "per10k_we": 66.08
+  },
+  {
+   "station": "Adenauerplatz",
+   "people": 16525,
+   "per10k": 40.55,
+   "people_we": 10575,
+   "per10k_we": 56.27
+  },
+  {
+   "station": "Nauener Platz",
+   "people": 11102,
+   "per10k": 39.63,
+   "people_we": 10374,
+   "per10k_we": 33.74
+  },
+  {
+   "station": "Mendelssohn-Bartholdy-Park",
+   "people": 18677,
+   "per10k": 13.92,
+   "people_we": 6927,
+   "per10k_we": 33.2
+  },
+  {
+   "station": "M\u00f6ckernbr\u00fccke",
+   "people": 10856,
+   "per10k": 18.42,
+   "people_we": 7268,
+   "per10k_we": 23.39
+  },
+  {
+   "station": "Samariterstra\u00dfe",
+   "people": 20461,
+   "per10k": 51.81,
+   "people_we": 15236,
+   "per10k_we": 57.43
+  },
+  {
+   "station": "B\u00fclowstra\u00dfe",
+   "people": 13820,
+   "per10k": 49.93,
+   "people_we": 9886,
+   "per10k_we": 57.15
+  },
+  {
+   "station": "Hausvogteiplatz",
+   "people": 18481,
+   "per10k": 15.69,
+   "people_we": 9422,
+   "per10k_we": 22.82
+  },
+  {
+   "station": "Mehringdamm",
+   "people": 11244,
+   "per10k": 50.69,
+   "people_we": 7856,
+   "per10k_we": 62.38
+  },
+  {
+   "station": "Paradestra\u00dfe",
+   "people": 5315,
+   "per10k": 3.76,
+   "people_we": 5221,
+   "per10k_we": 2.87
+  },
+  {
+   "station": "Uhlandstra\u00dfe",
+   "people": 40621,
+   "per10k": 22.89,
+   "people_we": 8690,
+   "per10k_we": 96.67
+  },
+  {
+   "station": "Wittenbergplatz",
+   "people": 17487,
+   "per10k": 40.6,
+   "people_we": 9062,
+   "per10k_we": 67.32
+  },
+  {
+   "station": "Hansaplatz",
+   "people": 11902,
+   "per10k": 10.92,
+   "people_we": 10789,
+   "per10k_we": 10.66
+  },
+  {
+   "station": "Birkenstra\u00dfe",
+   "people": 9796,
+   "per10k": 30.63,
+   "people_we": 8613,
+   "per10k_we": 29.03
+  },
+  {
+   "station": "Blissestra\u00dfe",
+   "people": 11651,
+   "per10k": 37.77,
+   "people_we": 7411,
+   "per10k_we": 48.58
+  },
+  {
+   "station": "Bundestag",
+   "people": 20911,
+   "per10k": 0.0,
+   "people_we": 19744,
+   "per10k_we": 0.0
+  },
+  {
+   "station": "Turmstra\u00dfe",
+   "people": 16814,
+   "per10k": 49.96,
+   "people_we": 10861,
+   "per10k_we": 63.53
+  },
+  {
+   "station": "Jungfernheide",
+   "people": 6908,
+   "per10k": 15.92,
+   "people_we": 5932,
+   "per10k_we": 14.33
+  },
+  {
+   "station": "M\u00e4rkisches Museum",
+   "people": 18799,
+   "per10k": 15.43,
+   "people_we": 9050,
+   "per10k_we": 24.31
+  },
+  {
+   "station": "Westkreuz (Stadtbahn)",
+   "people": 5679,
+   "per10k": 5.28,
+   "people_we": 5124,
+   "per10k_we": 5.85
+  },
+  {
+   "station": "Kleistpark",
+   "people": 11891,
+   "per10k": 47.09,
+   "people_we": 9790,
+   "per10k_we": 49.54
+  },
+  {
+   "station": "Kochstra\u00dfe/Checkpoint Charlie",
+   "people": 37655,
+   "per10k": 18.86,
+   "people_we": 18772,
+   "per10k_we": 31.7
+  },
+  {
+   "station": "Rathaus Sch\u00f6neberg",
+   "people": 10450,
+   "per10k": 24.88,
+   "people_we": 9348,
+   "per10k_we": 21.39
+  },
+  {
+   "station": "Viktoria-Luise-Platz",
+   "people": 11147,
+   "per10k": 30.5,
+   "people_we": 9157,
+   "per10k_we": 33.31
+  },
+  {
+   "station": "R\u00fcdesheimer Platz",
+   "people": 7229,
+   "per10k": 26.28,
+   "people_we": 6847,
+   "per10k_we": 24.1
+  },
+  {
+   "station": "Augsburger Stra\u00dfe",
+   "people": 16600,
+   "per10k": 35.54,
+   "people_we": 7904,
+   "per10k_we": 64.52
+  },
+  {
+   "station": "Hohenzollernplatz",
+   "people": 12568,
+   "per10k": 36.6,
+   "people_we": 10039,
+   "per10k_we": 38.35
+  },
+  {
+   "station": "Spichernstra\u00dfe",
+   "people": 16031,
+   "per10k": 17.47,
+   "people_we": 9944,
+   "per10k_we": 22.12
+  },
+  {
+   "station": "Fehrbelliner Platz",
+   "people": 9467,
+   "per10k": 17.96,
+   "people_we": 7711,
+   "per10k_we": 18.16
+  },
+  {
+   "station": "Hermannplatz",
+   "people": 12396,
+   "per10k": 90.35,
+   "people_we": 10407,
+   "per10k_we": 92.72
+  },
+  {
+   "station": "Rathaus Neuk\u00f6lln",
+   "people": 16746,
+   "per10k": 85.39,
+   "people_we": 13291,
+   "per10k_we": 89.16
+  },
+  {
+   "station": "Jakob-Kaiser-Platz",
+   "people": 3804,
+   "per10k": 0.0,
+   "people_we": 3782,
+   "per10k_we": 0.0
+  },
+  {
+   "station": "Wilmersdorfer Stra\u00dfe",
+   "people": 15266,
+   "per10k": 94.98,
+   "people_we": 11155,
+   "per10k_we": 109.82
+  },
+  {
+   "station": "Halemweg",
+   "people": 1321,
+   "per10k": 52.99,
+   "people_we": 1230,
+   "per10k_we": 48.78
+  },
+  {
+   "station": "Reinickendorfer Stra\u00dfe",
+   "people": 20059,
+   "per10k": 9.97,
+   "people_we": 7151,
+   "per10k_we": 23.77
+  },
+  {
+   "station": "Rosa-Luxemburg-Platz",
+   "people": 20360,
+   "per10k": 28.98,
+   "people_we": 8378,
+   "per10k_we": 61.47
+  },
+  {
+   "station": "Mierendorffplatz",
+   "people": 8895,
+   "per10k": 32.6,
+   "people_we": 7176,
+   "per10k_we": 31.36
+  },
+  {
+   "station": "Ostkreuz (Ringbahn)",
+   "people": 10583,
+   "per10k": 65.2,
+   "people_we": 6502,
+   "per10k_we": 97.67
+  },
+  {
+   "station": "Yorckstra\u00dfe (Gro\u00dfg\u00f6rschenstra\u00dfe)",
+   "people": 7830,
+   "per10k": 44.7,
+   "people_we": 7166,
+   "per10k_we": 40.47
+  },
+  {
+   "station": "Heinrich-Heine-Stra\u00dfe",
+   "people": 13550,
+   "per10k": 22.14,
+   "people_we": 38166,
+   "per10k_we": 6.68
+  },
+  {
+   "station": "Eberswalder Stra\u00dfe",
+   "people": 19512,
+   "per10k": 58.94,
+   "people_we": 14529,
+   "per10k_we": 73.3
+  },
+  {
+   "station": "Bernauer Stra\u00dfe",
+   "people": 11938,
+   "per10k": 31.83,
+   "people_we": 9712,
+   "per10k_we": 35.01
+  },
+  {
+   "station": "S\u00fcdkreuz (Nord-S\u00fcd)",
+   "people": 8439,
+   "per10k": 24.89,
+   "people_we": 5422,
+   "per10k_we": 35.97
+  },
+  {
+   "station": "Unter den Linden",
+   "people": 40406,
+   "per10k": 20.29,
+   "people_we": 8256,
+   "per10k_we": 89.03
+  },
+  {
+   "station": "Rotes Rathaus",
+   "people": 22593,
+   "per10k": 40.28,
+   "people_we": 14530,
+   "per10k_we": 60.22
+  },
+  {
+   "station": "Museumsinsel",
+   "people": 20642,
+   "per10k": 10.17,
+   "people_we": 18315,
+   "per10k_we": 10.65
+  },
+  {
+   "station": "Berlin Hauptbahnhof Tunnel (S-Bahn)",
+   "people": 25929,
+   "per10k": 23.53,
+   "people_we": 12878,
+   "per10k_we": 45.82
+  }
+ ],
+ "reference_file": "demand_anchors_20261008T150048Z.json"
+}

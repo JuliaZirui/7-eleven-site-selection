@@ -1,0 +1,233 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 985" width="1600" height="985" font-family="Helvetica Neue, Helvetica, Arial, sans-serif">
+<defs>
+  <marker id="a-blue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#1d4e89"/></marker>
+  <marker id="a-purple" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#6b3fb3"/></marker>
+  <marker id="a-amber" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#c77700"/></marker>
+  <marker id="a-gray" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#5b6470"/></marker>
+</defs>
+<rect width="1600" height="985" fill="#ffffff"/>
+<text x="24" y="40" font-size="25" font-weight="700" fill="#0b2545">Transit-Node Site Screening — system architecture</text>
+<text x="24" y="63" font-size="13.5" fill="#5b6470">A deterministic Python pipeline owns every score. Two Claude-powered components work inside guardrails: an LLM data audit and a bounded follow-up agent.</text>
+<rect x="870" y="78" width="14" height="14" rx="3" fill="#e8eef7" stroke="#1d4e89"/>
+<text x="889" y="90" font-size="11" fill="#3c4650">Deterministic Python</text>
+<rect x="1023.0" y="78" width="14" height="14" rx="3" fill="#eef0f2" stroke="#5b6470"/>
+<text x="1042.0" y="90" font-size="11" fill="#3c4650">Data store</text>
+<rect x="1116.0" y="78" width="14" height="14" rx="3" fill="#5b2fa6" stroke="#3f1d7a"/>
+<text x="1135.0" y="90" font-size="11" fill="#3c4650">LLM (Claude)</text>
+<rect x="1221.0" y="78" width="14" height="14" rx="3" fill="#fdeeee" stroke="#b42318"/>
+<text x="1240.0" y="90" font-size="11" fill="#3c4650">Plain-code guard</text>
+<rect x="1350.0" y="78" width="14" height="14" rx="3" fill="#fff3e0" stroke="#c77700"/>
+<text x="1369.0" y="90" font-size="11" fill="#3c4650">Human in the loop</text>
+<rect x="1485.0" y="78" width="14" height="14" rx="3" fill="#0b2545" stroke="#0b2545"/>
+<text x="1504.0" y="90" font-size="11" fill="#3c4650">Output</text>
+<rect x="20" y="100" width="1560" height="110" rx="10" fill="#f6f8fb"/>
+<text x="36" y="119" font-size="11.5" font-weight="700" letter-spacing="1.4" fill="#5b6470">INPUTS</text>
+<rect x="20" y="222" width="1560" height="150" rx="10" fill="#f6f8fb"/>
+<text x="160" y="241" font-size="11.5" font-weight="700" letter-spacing="1.4" fill="#5b6470">DETERMINISTIC PIPELINE · PYTHON</text>
+<rect x="20" y="384" width="1560" height="470" rx="10" fill="#f8f5fd"/>
+<text x="960" y="403" font-size="11.5" font-weight="700" letter-spacing="1.4" fill="#5b6470">AI / LLM / AGENT LAYER · ANTHROPIC CLAUDE</text>
+<rect x="20" y="866" width="1560" height="104" rx="10" fill="#f6f8fb"/>
+<text x="36" y="885" font-size="11.5" font-weight="700" letter-spacing="1.4" fill="#5b6470">ENGINEERING &amp; QUALITY</text>
+<rect x="56" y="126" width="544" height="74" rx="7" fill="#eef0f2" stroke="#5b6470" stroke-width="1.6"/>
+<text x="67" y="147" font-size="13.5" font-weight="700" fill="#1f2933">Open public data — no paid APIs</text>
+<text x="67" y="165" font-size="11" fill="#3c4650">OpenStreetMap (Overpass) · Overture Maps · Berlin LOR / MSS 2025 · IHK Gewerbedaten</text>
+<text x="67" y="180" font-size="11" fill="#3c4650">Wikidata + Wikipedia pageviews · VBB GTFS timetable · DB InfraGO station price classes</text>
+<rect x="623" y="126" width="165" height="74" rx="7" fill="#eef0f2" stroke="#5b6470" stroke-width="1.6"/>
+<text x="634" y="147" font-size="13.5" font-weight="700" fill="#1f2933">Site input</text>
+<text x="634" y="165" font-size="11" fill="#3c4650">store concept + 3</text>
+<text x="634" y="180" font-size="11" fill="#3c4650">candidate sites (JSON)</text>
+<rect x="1001" y="126" width="165" height="74" rx="7" fill="#e8eef7" stroke="#1d4e89" stroke-width="1.6"/>
+<text x="1012" y="147" font-size="13.5" font-weight="700" fill="#0b2545">Calibration</text>
+<text x="1012" y="165" font-size="11" fill="#26364d">139 Berlin stations →</text>
+<text x="1012" y="180" font-size="11" fill="#26364d">P10/P90 anchors</text>
+<rect x="1190" y="126" width="354" height="74" rx="7" fill="#0b2545" stroke="#0b2545" stroke-width="1.6"/>
+<text x="1201" y="147" font-size="13.5" font-weight="700" fill="#ffffff">Outputs</text>
+<text x="1201" y="165" font-size="11" fill="#d6e0ee">Diligence ranking · business fit + evidence quality</text>
+<text x="1201" y="180" font-size="11" fill="#d6e0ee">evidence gaps · field-research checklist</text>
+<rect x="56" y="248" width="165" height="108" rx="7" fill="#e8eef7" stroke="#1d4e89" stroke-width="1.6"/>
+<text x="67" y="269" font-size="13.5" font-weight="700" fill="#0b2545">Ingest</text>
+<text x="67" y="287" font-size="11" fill="#26364d">API clients with</text>
+<text x="67" y="302" font-size="11" fill="#26364d">retries + mirror</text>
+<text x="67" y="317" font-size="11" fill="#26364d">fallback</text>
+<rect x="245" y="248" width="165" height="108" rx="7" fill="#eef0f2" stroke="#5b6470" stroke-width="1.6"/>
+<text x="256" y="269" font-size="13.5" font-weight="700" fill="#1f2933">Snapshot store</text>
+<text x="256" y="287" font-size="11" fill="#3c4650">SQLite, append-only</text>
+<text x="256" y="302" font-size="11" fill="#3c4650">data-as-of ≠ fetched</text>
+<text x="256" y="317" font-size="11" fill="#3c4650">unknown ≠ 0</text>
+<rect x="434" y="248" width="165" height="108" rx="7" fill="#e8eef7" stroke="#1d4e89" stroke-width="1.6"/>
+<text x="445" y="269" font-size="13.5" font-weight="700" fill="#0b2545">Clean &amp; conflate</text>
+<text x="445" y="287" font-size="11" fill="#26364d">dedupe · cross-provider</text>
+<text x="445" y="302" font-size="11" fill="#26364d">POI conflation ·</text>
+<text x="445" y="317" font-size="11" fill="#26364d">opening-hours parser</text>
+<rect x="623" y="248" width="165" height="108" rx="7" fill="#e8eef7" stroke="#1d4e89" stroke-width="1.6"/>
+<text x="634" y="269" font-size="13.5" font-weight="700" fill="#0b2545">Metrics</text>
+<text x="634" y="287" font-size="11" fill="#26364d">people per day =</text>
+<text x="634" y="302" font-size="11" fill="#26364d">residents + workers +</text>
+<text x="634" y="317" font-size="11" fill="#26364d">visitors; competitors</text>
+<rect x="812" y="248" width="165" height="108" rx="7" fill="#e8eef7" stroke="#1d4e89" stroke-width="1.6"/>
+<text x="823" y="269" font-size="13.5" font-weight="700" fill="#0b2545">Gap detection</text>
+<text x="823" y="287" font-size="11" fill="#26364d">missing · stale ·</text>
+<text x="823" y="302" font-size="11" fill="#26364d">conflicting inputs</text>
+<text x="823" y="317" font-size="11" fill="#26364d">that could change a call</text>
+<rect x="1001" y="248" width="165" height="108" rx="7" fill="#e8eef7" stroke="#1d4e89" stroke-width="1.6"/>
+<text x="1012" y="269" font-size="13.5" font-weight="700" fill="#0b2545">Scoring</text>
+<text x="1012" y="287" font-size="11" fill="#26364d">anchored 0–100 scales</text>
+<text x="1012" y="302" font-size="11" fill="#26364d">business fit and</text>
+<text x="1012" y="317" font-size="11" fill="#26364d">evidence quality</text>
+<rect x="1190" y="248" width="165" height="108" rx="7" fill="#e8eef7" stroke="#1d4e89" stroke-width="1.6"/>
+<text x="1201" y="269" font-size="13.5" font-weight="700" fill="#0b2545">Sensitivity</text>
+<text x="1201" y="287" font-size="11" fill="#26364d">inputs first:</text>
+<text x="1201" y="302" font-size="11" fill="#26364d">joint downside,</text>
+<text x="1201" y="317" font-size="11" fill="#26364d">then weights</text>
+<rect x="1379" y="248" width="165" height="108" rx="7" fill="#0b2545" stroke="#0b2545" stroke-width="1.6"/>
+<text x="1390" y="269" font-size="13.5" font-weight="700" fill="#ffffff">Report</text>
+<text x="1390" y="287" font-size="11" fill="#d6e0ee">sourced Markdown ·</text>
+<text x="1390" y="302" font-size="11" fill="#d6e0ee">42 citations re-</text>
+<text x="1390" y="317" font-size="11" fill="#d6e0ee">checked vs. the DB</text>
+<path d="M 221 302 L 242 302" fill="none" stroke="#1d4e89" stroke-width="1.8" marker-end="url(#a-blue)"/>
+<path d="M 410 302 L 431 302" fill="none" stroke="#1d4e89" stroke-width="1.8" marker-end="url(#a-blue)"/>
+<path d="M 599 302 L 620 302" fill="none" stroke="#1d4e89" stroke-width="1.8" marker-end="url(#a-blue)"/>
+<path d="M 788 302 L 809 302" fill="none" stroke="#1d4e89" stroke-width="1.8" marker-end="url(#a-blue)"/>
+<path d="M 977 302 L 998 302" fill="none" stroke="#1d4e89" stroke-width="1.8" marker-end="url(#a-blue)"/>
+<path d="M 1166 302 L 1187 302" fill="none" stroke="#1d4e89" stroke-width="1.8" marker-end="url(#a-blue)"/>
+<path d="M 1355 302 L 1376 302" fill="none" stroke="#1d4e89" stroke-width="1.8" marker-end="url(#a-blue)"/>
+<path d="M 138 200 L 138 245" fill="none" stroke="#1d4e89" stroke-width="1.8" marker-end="url(#a-blue)"/>
+<path d="M 705 200 L 705 245" fill="none" stroke="#1d4e89" stroke-width="1.8" marker-end="url(#a-blue)"/>
+<path d="M 1083 200 L 1083 245" fill="none" stroke="#1d4e89" stroke-width="1.8" marker-end="url(#a-blue)"/>
+<path d="M 1461 248 L 1461 203" fill="none" stroke="#1d4e89" stroke-width="1.8" marker-end="url(#a-blue)"/>
+<rect x="44" y="410" width="726" height="300" rx="9" fill="#ffffff" stroke="#6b3fb3" stroke-width="1.4"/>
+<text x="300" y="433" font-size="14.5" font-weight="700" fill="#3f1d7a">① LLM data-plausibility audit</text>
+<text x="538" y="433" font-size="12" fill="#6b3fb3">review only; never edits a number</text>
+<rect x="66" y="450" width="200" height="108" rx="7" fill="#e8eef7" stroke="#1d4e89" stroke-width="1.6"/>
+<text x="77" y="471" font-size="13.5" font-weight="700" fill="#0b2545">Candidate rules</text>
+<text x="77" y="489" font-size="10.5" fill="#26364d">Python lists likely-wrong records:</text>
+<text x="77" y="504" font-size="10.5" fill="#26364d">whole-company headcount at</text>
+<text x="77" y="519" font-size="10.5" fill="#26364d">one address · fame ≫ capacity ·</text>
+<text x="77" y="534" font-size="10.5" fill="#26364d">missing employer · duplicates</text>
+<rect x="296" y="450" width="220" height="108" rx="7" fill="#5b2fa6" stroke="#3f1d7a" stroke-width="1.6"/>
+<text x="307" y="471" font-size="13.5" font-weight="700" fill="#ffffff">Claude Sonnet 5.5</text>
+<text x="307" y="489" font-size="10.5" fill="#efe7fb">Messages API · tool use</text>
+<text x="307" y="504" font-size="10.5" fill="#efe7fb">web search + web fetch</text>
+<text x="307" y="519" font-size="10.5" fill="#efe7fb">strict-schema findings</text>
+<text x="307" y="534" font-size="10.5" fill="#efe7fb">(report_finding), sources cited</text>
+<rect x="546" y="450" width="204" height="108" rx="7" fill="#fdeeee" stroke="#b42318" stroke-width="1.6"/>
+<text x="557" y="471" font-size="13.5" font-weight="700" fill="#7a1a12">Audit guard</text>
+<text x="557" y="489" font-size="10.5" fill="#5c2a25">validates every finding</text>
+<text x="557" y="504" font-size="10.5" fill="#5c2a25">USD cap per run</text>
+<text x="557" y="519" font-size="10.5" fill="#5c2a25">frozen prompt hash (SHA-256)</text>
+<text x="557" y="534" font-size="10.5" fill="#5c2a25">required on unseen nodes</text>
+<rect x="546" y="588" width="204" height="100" rx="7" fill="#fff3e0" stroke="#c77700" stroke-width="1.6"/>
+<text x="557" y="609" font-size="13.5" font-weight="700" fill="#7a4700">Analyst review</text>
+<text x="557" y="627" font-size="10.5" fill="#5c3d12">accepts / rejects each flag</text>
+<text x="557" y="642" font-size="10.5" fill="#5c3d12">in the review queue (CSV)</text>
+<text x="557" y="657" font-size="10.5" fill="#5c3d12">audit_apply writes accepted</text>
+<text x="557" y="672" font-size="10.5" fill="#5c3d12">rows only</text>
+<rect x="296" y="588" width="220" height="100" rx="7" fill="#eef0f2" stroke="#5b6470" stroke-width="1.6"/>
+<text x="307" y="609" font-size="13.5" font-weight="700" fill="#1f2933">Correction tables</text>
+<text x="307" y="627" font-size="10.5" fill="#3c4650">verified on-site headcounts ·</text>
+<text x="307" y="642" font-size="10.5" fill="#3c4650">unregistered employers ·</text>
+<text x="307" y="657" font-size="10.5" fill="#3c4650">venue attendance · POI</text>
+<text x="307" y="672" font-size="10.5" fill="#3c4650">exclusions</text>
+<rect x="66" y="588" width="200" height="100" rx="7" fill="#ffffff" stroke="#8a94a3" stroke-width="1.6" stroke-dasharray="5 4"/>
+<text x="77" y="609" font-size="12.5" font-weight="700" fill="#3c4650">Evaluated before adoption</text>
+<text x="77" y="627" font-size="10.5" fill="#4b5563">answer key + holdout fixed</text>
+<text x="77" y="642" font-size="10.5" fill="#4b5563">before any code · 4/6 holdout</text>
+<text x="77" y="657" font-size="10.5" fill="#4b5563">issues caught · 57/58 flags</text>
+<text x="77" y="672" font-size="10.5" fill="#4b5563">confirmed at unseen stations</text>
+<path d="M 230 356 L 230 447" fill="none" stroke="#1d4e89" stroke-width="1.8" marker-end="url(#a-blue)"/>
+<text x="222" y="400" font-size="10.5" font-style="italic" fill="#1d4e89" text-anchor="end">stored records</text>
+<path d="M 266 504 L 293 504" fill="none" stroke="#1d4e89" stroke-width="1.8" marker-end="url(#a-blue)"/>
+<path d="M 516 504 L 543 504" fill="none" stroke="#6b3fb3" stroke-width="1.8" marker-end="url(#a-purple)"/>
+<path d="M 648 558 L 648 585" fill="none" stroke="#6b3fb3" stroke-width="1.8" marker-end="url(#a-purple)"/>
+<path d="M 546 638 L 519 638" fill="none" stroke="#c77700" stroke-width="1.8" marker-end="url(#a-amber)"/>
+<path d="M 406 588 L 406 572 L 281 572 L 281 359" fill="none" stroke="#5b6470" stroke-width="1.8" marker-end="url(#a-gray)"/>
+<text x="289" y="400" font-size="10.5" font-style="italic" fill="#5b6470" text-anchor="start">reviewed corrections</text>
+<rect x="800" y="410" width="756" height="300" rx="9" fill="#ffffff" stroke="#6b3fb3" stroke-width="1.4"/>
+<text x="912" y="433" font-size="14.5" font-weight="700" fill="#3f1d7a">② Bounded follow-up agent</text>
+<text x="1128" y="433" font-size="12" fill="#6b3fb3">decides which gaps get live calls; never sees a score</text>
+<rect x="820" y="450" width="160" height="108" rx="7" fill="#e8eef7" stroke="#1d4e89" stroke-width="1.6"/>
+<text x="831" y="471" font-size="13.5" font-weight="700" fill="#0b2545">Gap list</text>
+<text x="831" y="489" font-size="10.5" fill="#26364d">only gaps that could</text>
+<text x="831" y="504" font-size="10.5" fill="#26364d">change a conclusion;</text>
+<text x="831" y="519" font-size="10.5" fill="#26364d">no raw-count triggers</text>
+<rect x="1004" y="450" width="300" height="138" rx="7" fill="#f3edfc" stroke="#6b3fb3" stroke-width="1.6"/>
+<text x="1015" y="471" font-size="13.5" font-weight="700" fill="#3f1d7a">Pluggable decision policy</text>
+<rect x="1016" y="482" width="276" height="27" rx="5" fill="#e8eef7" stroke="#1d4e89"/>
+<text x="1028" y="500" font-size="11.5" font-weight="600" fill="#0b2545">A · Rule baseline (detection order)</text>
+<rect x="1016" y="516" width="276" height="27" rx="5" fill="#e8eef7" stroke="#1d4e89"/>
+<text x="1028" y="534" font-size="11.5" font-weight="600" fill="#0b2545">B · Impact-ordered rule — default</text>
+<rect x="1016" y="550" width="276" height="27" rx="5" fill="#5b2fa6" stroke="#3f1d7a"/>
+<text x="1028" y="568" font-size="11.5" font-weight="600" fill="#ffffff">C · Claude Opus 5.5 — tool-use loop</text>
+<rect x="1330" y="450" width="206" height="138" rx="7" fill="#fdeeee" stroke="#b42318" stroke-width="1.6"/>
+<text x="1341" y="471" font-size="13.5" font-weight="700" fill="#7a1a12">Executor guard</text>
+<text x="1341" y="489" font-size="10.5" fill="#5c2a25">allowed tool only</text>
+<text x="1341" y="504" font-size="10.5" fill="#5c2a25">budget: 4 calls / run,</text>
+<text x="1341" y="519" font-size="10.5" fill="#5c2a25">2 per site</text>
+<text x="1341" y="534" font-size="10.5" fill="#5c2a25">no retry of a failed source</text>
+<text x="1341" y="549" font-size="10.5" fill="#5c2a25">LLM error → falls back to rule</text>
+<rect x="1004" y="612" width="300" height="76" rx="7" fill="#e8eef7" stroke="#1d4e89" stroke-width="1.6"/>
+<text x="1015" y="633" font-size="13.5" font-weight="700" fill="#0b2545">Live tools (refetch)</text>
+<text x="1015" y="651" font-size="10.5" fill="#26364d">refetch_osm_pois · refetch_ihk_gewerbedaten</text>
+<text x="1015" y="666" font-size="10.5" fill="#26364d">refetch_lor_population</text>
+<rect x="1330" y="612" width="206" height="76" rx="7" fill="#fff3e0" stroke="#c77700" stroke-width="1.6"/>
+<text x="1341" y="633" font-size="13.5" font-weight="700" fill="#7a4700">Field flag</text>
+<text x="1341" y="651" font-size="10.5" fill="#5c3d12">flag_field_research +</text>
+<text x="1341" y="666" font-size="10.5" fill="#5c3d12">LLM-written field question</text>
+<rect x="820" y="588" width="160" height="100" rx="7" fill="#ffffff" stroke="#8a94a3" stroke-width="1.6" stroke-dasharray="5 4"/>
+<text x="831" y="609" font-size="12.5" font-weight="700" fill="#3c4650">Evaluated</text>
+<text x="831" y="627" font-size="10.5" fill="#4b5563">16 pre-registered</text>
+<text x="831" y="642" font-size="10.5" fill="#4b5563">scenarios: A 10/16 ·</text>
+<text x="831" y="657" font-size="10.5" fill="#4b5563">B 14/16 · C 16/16</text>
+<text x="831" y="672" font-size="10.5" fill="#4b5563">($0.019 per run)</text>
+<path d="M 894 356 L 894 447" fill="none" stroke="#1d4e89" stroke-width="1.8" marker-end="url(#a-blue)"/>
+<text x="902" y="400" font-size="10.5" font-style="italic" fill="#1d4e89" text-anchor="start">gaps</text>
+<path d="M 980 504 L 1001 504" fill="none" stroke="#1d4e89" stroke-width="1.8" marker-end="url(#a-blue)"/>
+<path d="M 1304 504 L 1327 504" fill="none" stroke="#6b3fb3" stroke-width="1.8" marker-end="url(#a-purple)"/>
+<path d="M 1330 560 L 1307 560" fill="none" stroke="#6b3fb3" stroke-width="1.8" stroke-dasharray="6 4" marker-end="url(#a-purple)"/>
+<path d="M 1400 588 L 1400 600 L 1154 600 L 1154 609" fill="none" stroke="#1d4e89" stroke-width="1.8" marker-end="url(#a-blue)"/>
+<path d="M 1470 588 L 1470 609" fill="none" stroke="#c77700" stroke-width="1.8" marker-end="url(#a-amber)"/>
+<path d="M 1536 650 L 1568 650 L 1568 330 L 1547 330" fill="none" stroke="#c77700" stroke-width="1.8" marker-end="url(#a-amber)"/>
+<text x="1582" y="490" font-size="10.5" font-style="italic" fill="#c77700" text-anchor="middle" transform="rotate(90 1582 490)">field checklist</text>
+<path d="M 1154 688 L 1154 724 L 36 724 L 36 288 L 53 288" fill="none" stroke="#1d4e89" stroke-width="1.8" marker-end="url(#a-blue)"/>
+<text x="600" y="740" font-size="10.5" font-style="italic" fill="#1d4e89" text-anchor="middle">refetch → new snapshot → pipeline reruns</text>
+<rect x="44" y="760" width="1512" height="80" rx="9" fill="#ffffff" stroke="#b42318" stroke-width="1.3" stroke-dasharray="6 4"/>
+<text x="60" y="782" font-size="13.5" font-weight="700" fill="#7a1a12">AI guardrails (both components)</text>
+<rect x="60" y="796" width="170" height="24" rx="12" fill="#fdeeee" stroke="#b42318" stroke-width="1.2"/>
+<text x="145.0" y="812" font-size="11.5" text-anchor="middle" fill="#7a1a12" font-weight="600">AI never writes a score</text>
+<rect x="239" y="796" width="273" height="24" rx="12" fill="#fdeeee" stroke="#b42318" stroke-width="1.2"/>
+<text x="375.5" y="812" font-size="11.5" text-anchor="middle" fill="#7a1a12" font-weight="600">Plain-code guard between model and data</text>
+<rect x="521" y="796" width="253" height="24" rx="12" fill="#fdeeee" stroke="#b42318" stroke-width="1.2"/>
+<text x="647.5" y="812" font-size="11.5" text-anchor="middle" fill="#7a1a12" font-weight="600">Human approval for every data change</text>
+<rect x="783" y="796" width="266" height="24" rx="12" fill="#fdeeee" stroke="#b42318" stroke-width="1.2"/>
+<text x="916.0" y="812" font-size="11.5" text-anchor="middle" fill="#7a1a12" font-weight="600">Hard budgets: calls, web searches, USD</text>
+<rect x="1058" y="796" width="215" height="24" rx="12" fill="#fdeeee" stroke="#b42318" stroke-width="1.2"/>
+<text x="1165.5" y="812" font-size="11.5" text-anchor="middle" fill="#7a1a12" font-weight="600">Rule fallback on any API error</text>
+<rect x="44" y="894" width="121" height="24" rx="12" fill="#e8eef7" stroke="#1d4e89" stroke-width="1.2"/>
+<text x="104.5" y="910" font-size="10.5" text-anchor="middle" fill="#0b2545" font-weight="600">Python 3.9 / 3.12</text>
+<rect x="174" y="894" width="121" height="24" rx="12" fill="#eef0f2" stroke="#5b6470" stroke-width="1.2"/>
+<text x="234.5" y="910" font-size="10.5" text-anchor="middle" fill="#1f2933" font-weight="600">SQLite · 6 tables</text>
+<rect x="304" y="894" width="139" height="24" rx="12" fill="#5b2fa6" stroke="#3f1d7a" stroke-width="1.2"/>
+<text x="373.5" y="910" font-size="10.5" text-anchor="middle" fill="#ffffff" font-weight="600">Anthropic Python SDK</text>
+<rect x="452" y="894" width="186" height="24" rx="12" fill="#5b2fa6" stroke="#3f1d7a" stroke-width="1.2"/>
+<text x="545.0" y="910" font-size="10.5" text-anchor="middle" fill="#ffffff" font-weight="600">Claude Opus 5.5 · Sonnet 5.5</text>
+<rect x="647" y="894" width="192" height="24" rx="12" fill="#f3edfc" stroke="#6b3fb3" stroke-width="1.2"/>
+<text x="743.0" y="910" font-size="10.5" text-anchor="middle" fill="#3f1d7a" font-weight="600">Tool use · web search / fetch</text>
+<rect x="848" y="894" width="139" height="24" rx="12" fill="#e8eef7" stroke="#1d4e89" stroke-width="1.2"/>
+<text x="917.5" y="910" font-size="10.5" text-anchor="middle" fill="#0b2545" font-weight="600">unittest · 241 tests</text>
+<rect x="996" y="894" width="121" height="24" rx="12" fill="#e8eef7" stroke="#1d4e89" stroke-width="1.2"/>
+<text x="1056.5" y="910" font-size="10.5" text-anchor="middle" fill="#0b2545" font-weight="600">GitHub Actions CI</text>
+<rect x="1126" y="894" width="192" height="24" rx="12" fill="#e8eef7" stroke="#1d4e89" stroke-width="1.2"/>
+<text x="1222.0" y="910" font-size="10.5" text-anchor="middle" fill="#0b2545" font-weight="600">Offline reproducibility check</text>
+<rect x="1327" y="894" width="198" height="24" rx="12" fill="#e8eef7" stroke="#1d4e89" stroke-width="1.2"/>
+<text x="1426.0" y="910" font-size="10.5" text-anchor="middle" fill="#0b2545" font-weight="600">CLI: validate · demo · refresh</text>
+<rect x="44" y="928" width="192" height="24" rx="12" fill="#f3edfc" stroke="#6b3fb3" stroke-width="1.2"/>
+<text x="140.0" y="944" font-size="10.5" text-anchor="middle" fill="#3f1d7a" font-weight="600">Pre-registered AI evaluations</text>
+<rect x="245" y="928" width="221" height="24" rx="12" fill="#f3edfc" stroke="#6b3fb3" stroke-width="1.2"/>
+<text x="355.5" y="944" font-size="10.5" text-anchor="middle" fill="#3f1d7a" font-weight="600">Prompt-leakage test vs. answer key</text>
+<rect x="475" y="928" width="274" height="24" rx="12" fill="#f3edfc" stroke="#6b3fb3" stroke-width="1.2"/>
+<text x="612.0" y="944" font-size="10.5" text-anchor="middle" fill="#3f1d7a" font-weight="600">Mocked LLM client + one real-SDK round trip</text>
+<rect x="758" y="928" width="298" height="24" rx="12" fill="#e8eef7" stroke="#1d4e89" stroke-width="1.2"/>
+<text x="907.0" y="944" font-size="10.5" text-anchor="middle" fill="#0b2545" font-weight="600">Geospatial: haversine, area-weighted catchments</text>
+<rect x="1065" y="928" width="245" height="24" rx="12" fill="#e8eef7" stroke="#1d4e89" stroke-width="1.2"/>
+<text x="1187.5" y="944" font-size="10.5" text-anchor="middle" fill="#0b2545" font-weight="600">Opening-hours parser (overnight spans)</text>
+</svg>
